@@ -4,11 +4,10 @@ SDS is the easiest way to start your our design system. Since Astro is compatibl
 The project is still in the development phase, use at your own risk ;-)
 
 
----
-title: Introduction
-description: Docs intro
-layout: ../../layouts/MainLayout.astro
----
+| title       | Introduction                   |
+|-------------|--------------------------------|
+| description | Docs intro                     |
+| layout      | ../../layouts/MainLayout.astro |
 
 
 ## Getting started
