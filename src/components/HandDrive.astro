@@ -1,0 +1,31 @@
+---
+
+const {  class: className, handDrive, biggerText } = Astro.props;
+// import { t, locale} from "i18next";
+import { t } from "i18next";
+import { Image } from 'astro:assets';
+import handDriveImage from "../assets/hand-drive.svg";
+
+const getHandDriveName  = (value: number) => {
+  if (value === 1)
+    return 'lhd'
+
+  else
+    return 'rhd'
+}
+
+const handDriveName =  getHandDriveName(handDrive)
+---
+<div title={handDriveName.toUpperCase()} class="flex items-center" class:list={className}>
+  <Image src={handDriveImage} alt="infoObject.product.hand_drive" width={48} height={34} class={handDriveName} />
+  <div data-pagefind-filter={`${t('part.sw-position')}:${handDriveName.toUpperCase()}`}
+    class={`sm:ml-2 order-0 ${!biggerText ? 'text-xxs md:text-xs' : 'order-0'}`} 
+    set:html={t(`part.for-${handDriveName}`)} 
+  />
+</div>
+
+<style lang="scss">
+  .rhd {
+          transform: scaleX(-1);
+  }
+  </style>

@@ -1,0 +1,129 @@
+---
+title: "Headline"
+layout: "../../layouts/MainLayout.astro"
+---
+import Headline from '../../components/Headline.vue'
+import { Icon } from 'astro-icon/components';
+
+
+## Headline
+
+### Headline - universal HTML tag <small>(nice for SEO)</small>
+Headings give both your visitors and search engines important clues about the content’s hierarchy and relevancy.
+It's good to use only H1-H6 for important headings, but sometimes I want more things to be unified. That's why I created this universal component.
+
+Thanks to this, I can make a header that always looks the same, regardless of whether it is an H1 or a DIV or P.
+
+## Import
+
+```js
+import Headline from 'spoko-design-system/src/components/Headline.vue';
+```
+
+## parameters
+```js
+as: {
+        type: String as PropType<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'div' | 'span'>,
+        default: null,
+        required: true,
+},
+textSize: {
+        type: String as PropType<'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl' | '9xl'>,
+        required: false,
+        default: null
+}
+
+```
+
+#### Headline H1
+
+<div class="component-preview">
+        <Headline as="h1">Lorem Ipsum</Headline>
+</div>
+
+```js
+<Headline as="h1">
+        Lorem Ipsum
+</Headline>
+
+```
+
+
+#### Headline H2
+
+<div class="component-preview">
+<Headline as="h2"><Icon name="ph:cat-thin" class="inline-block mb-0 sm:mb-2.5 md:mb-0 md:(mr-4) text-blue-wrc" aria-hidden="true" />Lorem Ipsum</Headline>
+</div>
+
+```js
+<Headline as="h2">
+        <Icon name="ph:cat-thin" class="mb-0 sm:mb-2.5 md:mb-0 md:(mr-4) text-blue-wrc" aria-hidden="true" />
+        Lorem Ipsum
+</Headline>
+
+```
+
+#### Headline DIV
+
+<div class="component-preview">
+<Headline as="div"><Icon name="ph:cat-thin" class="inline-block  mb-0 sm:mb-2.5 md:mb-0 md:(mr-4) text-blue-wrc" aria-hidden="true" />Lorem Ipsum</Headline>
+</div>
+
+```js
+<Headline as="div">
+        <Icon name="ph:cat-thin" class="inline-block mb-0 sm:mb-2.5 md:mb-0 md:(mr-4) text-blue-wrc" aria-hidden="true" />
+        Lorem Ipsum
+</Headline>
+
+```
+
+#### Headline P
+
+<div class="component-preview">
+<Headline as="p"><Icon name="ph:cat-thin"  class="inline-block text-4xl mb-0 sm:mb-2.5 md:mb-0 md:(mr-4) text-4xl text-blue-wrc" aria-hidden="true" />Lorem Ipsum</Headline>
+</div>
+
+```js
+<Headline as="p">
+        <Icon name="ph:cat-thin"  class="inline-block text-4xl mb-0 sm:mb-2.5 md:mb-0 md:(mr-4) text-4xl text-blue-wrc" aria-hidden="true" />
+        Lorem Ipsum
+</Headline>
+
+```
+
+#### Headline without icon
+
+<div class="component-preview">
+<Headline as="p">Lorem Ipsum</Headline>
+</div>
+
+```js
+<Headline as="p">Lorem Ipsum</Headline>
+
+```
+
+#### Headline without icon, text size 4xl
+
+<div class="component-preview">
+<Headline as="h1" text-size="4xl">Lorem Ipsum</Headline>
+</div>
+
+```js
+<Headline as="h1" text-size="4xl">Lorem Ipsum</Headline>
+
+```
+
+
+#### Headline without icon, text size 4xl with blue icon
+
+<div class="component-preview">
+<Headline as="h1" text-size="4xl"><Icon name="ph:cat-thin"  class="inline-block text-4xl mb-0 sm:mb-2.5 md:mb-0 md:(mr-4) text-4xl text-blue-wrc" aria-hidden="true" />Lorem Ipsum</Headline>
+</div>
+
+```js
+<Headline as="h1" text-size="4xl"  icon-color="blue-wrc">
+        <Icon name="ph:cat-thin"  class="inline-block text-4xl mb-0 sm:mb-2.5 md:mb-0 md:(mr-4) text-4xl text-blue-wrc" aria-hidden="true" />
+        Lorem Ipsum
+</Headline>
+
+```

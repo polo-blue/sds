@@ -1,0 +1,60 @@
+---
+layout: ../../layouts/MainLayout.astro
+---
+
+import Container from '../../components/layout/Container.astro'
+import Header from '../../components/layout/Header.astro'
+
+
+# Patterns
+
+Common patterns for building interfaces.
+
+
+
+## Container (max-w-screen-xl)
+
+<div class="component-preview" style="display: block">
+    <Container class="bg-white">content</Container>
+</div>
+
+### Code
+
+```ts
+<Container class="bg-white">content</Container>
+```
+
+
+## Container FullWidth (max-w-full)
+
+<div class="component-preview" style="display: block">
+    <Container class="bg-white" isFullWidth>content</Container>
+</div>
+
+### Code
+
+```ts
+ <Container class="bg-white" isFullWidth>content</Container>
+```
+
+## Header
+
+<div class="component-preview" style="display: block">
+    <Header class="static">
+        <div slot="logo" class="flex-shrink-0 flex items-center h-8">
+            <div class="bg-gray">LOGO</div>
+        </div>
+        <input type="text" slot="search" class="h-full  w-full sm:w-52 md:w-64 border border-solid px-3 text-sm" placeholder="Search..."/>
+    </Header>
+</div>
+
+### Code
+
+```ts
+<Header>
+    <div slot="logo" class="flex-shrink-0 flex items-center h-8">
+            <div class="bg-gray">LOGO</div>
+        </div>
+    <input type="text" slot="search" class="h-full  w-full sm:w-52 md:w-64 border border-solid px-3 text-sm" placeholder="Search..."/>
+</Header>
+```

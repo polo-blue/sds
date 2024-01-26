@@ -1,0 +1,158 @@
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: 'vw_textregular', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 3px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1); //$secondary;
+    border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    background-color: $blue;
+}
+
+*:focus {
+    outline: none !important;
+}
+
+
+.bg-spoko {
+    background: radial-gradient(circle at 50% 85%, #00437A 0%, #001E50 100%);
+    color: #fff;
+    width: 100%;
+}
+
+.bg-vw {
+    background: radial-gradient(
+        circle at 50% 85%,
+        #00437A 0%,
+        #001E50 100%
+    );
+    color: #fff;
+}
+
+.display-3 {
+    letter-spacing: -0.96px;
+}
+
+code {
+ @apply font-novamono;
+}
+
+
+html {
+    scroll-behavior: smooth;
+    
+    &::-webkit-scrollbar {
+      width: 7px; /* width of the entire scrollbar */
+    }
+  
+    &::-webkit-scrollbar-track {
+      background: #00437A; /* color of the tracking area */
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background-color: $primary; /* color of the scroll thumb */
+      border-radius: 0; /* roundness of the scroll thumb */
+      border: 0 solid #00437A; /* creates padding around scroll thumb */
+    }
+  
+    scrollbar-width: thin;
+    scrollbar-color: $primary #00437A;
+  }
+
+  
+//Swiper styles
+:root {
+    // --swiper-navigation-color: #0099da;
+    --swiper-navigation-size: 22px;
+    --swiper-scrollbar-drag-bg-color: #0099da;
+    --swiper-scrollbar-size: 1px;
+    --swiper-scrollbar-bottom: 0px;
+  }
+  
+  .swiper-horizontal{
+  &> .swiper-scrollbar {
+    height: 1px;
+  }
+  }
+  
+  .fade-enter-active,
+  .fade-leave-active {
+  transition: opacity 0.5s ease;
+  }
+  
+  .fade-enter-from,
+  .fade-leave-to {
+  opacity: 0;
+  }
+  
+  .colon-after {
+  &:after {
+    content: ':'
+  }
+  }
+  
+  .items {
+  & > .item {
+    &:not(:last-child) {
+      &:after {
+        content: ', '
+      }
+    }
+  }
+  }
+  
+  /* override styles when printing */
+  @media print {
+   @page :footer {
+        display: none;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+  
+    @page :header {
+        display: none;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+  }
+
+  .comma:not(:last-child) {
+    @apply mr-1;
+  
+    &:after {
+      content: ','
+    }
+  }
+
+#l-page {
+  table {
+    border-collapse: collapse;
+    border-color: inherit;
+    color: #212529;
+    margin-bottom: .875rem;
+    table-layout: fixed;
+    text-indent: 0;
+    width: 100%;
+  
+    td, th {
+      border: 1px solid;
+      padding: 0.5em;
+    }
+  }
+}

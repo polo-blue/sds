@@ -1,0 +1,36 @@
+---
+title: "PostHeader"
+layout: "../../layouts/MainLayout.astro"
+---
+import PostHeader from '../../components/PostHeader.astro'
+export const author = { firstName: 'Szymon', name: 'CNK' } 
+export const categories = [{"name":"Tools & garage accessories","uri":"#"}, {"name":"Lorem Ipsum","uri":"#"}]
+export const date = "2023-07-13T01:35:03"
+
+## PostHeader
+
+WordPress PostHeader - post top component for WordPress Single Post template data like categories etc. comes from WP Rest API.
+
+
+<div class="component-preview">
+  <div class="relative w-full">
+    <PostHeader
+      author={author}
+      categories={categories}
+      title="Lorem Ipsum"
+      date={date}
+      image="https://placehold.co/2000x700/EEE/31343C"
+    />
+  </div>
+</div>
+
+```js
+  <div class="relative">
+    <PostHeader
+      author={ { firstName: 'Szymon', name: 'CNK' }  }
+      categories={  [{"name":"Tools & garage accessories","uri":"/category/garage/tools-garage-accessories/"}, , {"name":"Lorem Ipsum","uri":"#"}] }
+      date="2023-07-13T01:35:03"
+      image="https://placehold.co/2000x700/EEE/31343C"
+    />
+  </div>
+```

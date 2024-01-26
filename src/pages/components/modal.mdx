@@ -1,0 +1,58 @@
+---
+title: "Modal"
+layout: "../../layouts/MainLayout.astro"
+---
+import Modal from '../../components/Modal.astro'
+import Button from '../../components/Button.vue'
+import { Icon } from 'astro-icon/components';
+
+
+## Modal
+
+### Modal (native) based on dialog tag.
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
+
+
+<div class="component-preview">
+     <Modal id="dialog" open="Open modal">
+          <main slot="main">
+               <p>Some extra content you would like here</p>
+               <hr />
+          </main>
+          <Button primary slot="close" class="mt-4">Close</Button>
+     </Modal>
+</div>
+
+```js
+<Modal id="dialog" open="Open modal">
+    <main slot="main">
+        <p>Some extra content you would like here</p>
+        <hr />
+        <img width="60" height="80" src="/assets/logo.svg" alt="Astro logo">
+    </main>
+    <Button primary slot="close" class="mt-4">Close</Button>
+</Modal>
+```
+
+### Modal with different close button
+
+<div class="component-preview">
+     <Modal id="dialog2" open="Open modal">
+          <main slot="main">
+               <p>Some extra content you would like here</p>
+          </main>
+     <Button primary slot="close" class="mt-4"><Icon name="octicon:x-24" /></Button>
+     </Modal>
+</div>
+
+```js
+<Modal id="dialog2" open="Open modal">
+    <main slot="main">
+        <p>Some extra content you would like here</p>
+        <img width="60" height="80" src="/assets/logo.svg" alt="Astro logo">
+    </main>
+     <Button primary slot="close" class="mt-4"><Icon name="octicon:x-24" /></Button>
+</Modal>
+```
+
+

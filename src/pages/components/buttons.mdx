@@ -1,0 +1,62 @@
+---
+title: "Buttons"
+layout: "../../layouts/MainLayout.astro"
+---
+import Button from '../../components/Button.vue'
+
+## All buttons
+
+This page is an example on how to document your button components, most of the copy was written by AI so don't take it very seriously.
+
+Find the code for this page in the `src/pages/components/buttons.md` file.
+
+<div class="component-preview">
+    <Button primary>Primary</Button>
+    <Button secondary>Secondary</Button>
+    <Button text>Text</Button>
+    <Button tag>Text</Button>
+</div>
+
+```js
+  <Button primary>Primary</Button>
+  <Button secondary>Secondary</Button>
+  <Button text>Text</Button>
+  <Button tag>Text</Button>
+```
+
+## Primary button
+
+We use the primary button for main actions like saving a form or creating a new item.
+
+<div class="component-preview">
+    <Button primary>Primary button</Button>
+</div>
+
+```js
+<Button primary>Primary button</Button>
+```
+
+## Secondary button
+
+Secondary buttons accompany primary buttons to provide additional actions.
+For example, cancel buttons are secondary buttons.
+
+<div class="component-preview">
+    <Button secondary>Secondary button</Button>
+</div>
+
+```js
+<Button secondary>Secondary button</Button>
+```
+
+## Text button
+
+Text buttons are used for actions that do not require a primary or secondary button.
+
+<div class="component-preview">
+    <Button text>Text button</Button>
+</div>
+
+```js
+<Button text>Text button</Button>
+```

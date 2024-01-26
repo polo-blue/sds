@@ -1,0 +1,100 @@
+---
+title: "Breadcrumbs"
+layout: "../../layouts/MainLayout.astro"
+
+
+---
+import Breadcrumbs from '../../components/Breadcrumbs.vue'
+
+## Breadcrumbs
+
+Breadcrumbs component with BreadcrumbList Microdata
+#
+
+https://schema.org/BreadcrumbList
+
+https://schema.org/ListItem
+
+
+
+### show back
+
+<div class="component-preview">
+    <Breadcrumbs
+      breadcrumbs={ [ {"name": "Level1", "path": "#level2"}, {"name": "Level 2", "path": "#level2"}, {"name": "Level 3", "path": "#level3"} ] }
+      product-number="6R0XXXXXX"
+      class="py-1 order-0 px-1 max-w-full flex bg-white"
+      show-back
+      text-back="Home"
+    />
+</div>
+
+```js
+<Breadcrumbs
+  breadcrumbs={ 
+    [ 
+      {"name": "Level1", "path": "level1"},
+      {"name": "Level 2", "path": "level2"},
+      {"name": "Level 3", "path": "level3"}
+    ] 
+  }
+  product-number="6R0XXXXXX"
+  class="py-1 order-0 px-1 max-w-full flex bg-white"
+  show-back
+  text-back="Home"
+/>
+```
+
+
+### show home
+
+<div class="component-preview">
+    <Breadcrumbs
+      breadcrumbs={ [ {"name": "Level1", "path": "#level2"}, {"name": "Level 2", "path": "#level2"}, {"name": "Level 3", "path": "#level3"} ] }
+      product-number="6R0XXXXXX"
+      class="py-1 order-0 px-1 max-w-full flex bg-white"
+      show-home
+    />
+</div>
+
+```js
+<Breadcrumbs
+  breadcrumbs={ 
+    [ 
+      {"name": "Level1", "path": "level 1"},
+      {"name": "Level 2", "path": "level2"},
+      {"name": "Level 3", "path": "level3"}
+    ] 
+  }
+  product-number="6R0XXXXXX"
+  class="py-1 order-0 px-1 max-w-full flex bg-white"
+  show-home
+/>
+```
+
+
+### simply
+
+<div class="component-preview">
+    <Breadcrumbs
+      breadcrumbs={ [ {"name": "Level1", "path": "#level2"}, {"name": "Level 2", "path": "#level2"}, {"name": "Level 3", "path": "#level3"} ] }
+      product-number="6R0XXXXXX"
+      class="py-1 order-0 px-1 max-w-full flex bg-white"
+    />
+</div>
+
+```js
+<Breadcrumbs
+  breadcrumbs={ 
+    [ 
+      {"name": "Level1", "path": "level 1"},
+      {"name": "Level 2", "path": "level2"},
+      {"name": "Level 3", "path": "level3"}
+    ] 
+  }
+  product-number="6R0XXXXXX"
+  class="py-1 order-0 px-1 max-w-full flex bg-white"
+  show-back
+  text-back="Back"
+/>
+```

@@ -1,0 +1,12 @@
+{
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "src/**/*.d.ts"],
+  "compilerOptions": {
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "allowJs": true,
+    "types": ["vite/client"]
+  },
+}

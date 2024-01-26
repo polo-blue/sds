@@ -1,0 +1,52 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { Icon } from 'astro-icon/components';
+
+const iconifyUrl = 'https://icon-sets.iconify.design/'
+
+const ICONS = {
+        mdi: ["facebook", "instagram", "post-it-note-edit-outline"], // Loads only Material Design Icon's "account" SVG
+        'ant-design': ["menu-fold-outlined", "menu-unfold-outlined", "menu-outlined", "cluster-outlined", "audit-outlined", "build-twotone" ],
+        bi: ["envelope-open", "credit-card"],
+        bx: ["arrow-back"],
+        carbon: ["language", "checkmark", "home", "dicom-overlay"],
+        el: ["star-empty", "star"],
+        'eos-icons': ["three-dots-loading"],
+        fluent: ["share-android-24-regular"],
+        'fluent-emoji': ["cookie"],
+        la: ["arrow-right", "arrow-left"],
+        octicon: ["chevron-left-24", "x-24"],
+        uil: ["map-marker", "envelope", "phone"]
+}
+
+---
+
+<MainLayout>
+    <h1>Icons</h1>
+
+        <pre  class="mt-6 astro-code bg-slate-800 text-white">import &#123; Icon &#125; from 'astro-icon/components';</pre>
+        <div class="">
+        {Object.keys(ICONS).map((key) => (
+            <h2 class="mt-6 mx-2">
+                <a href={`${iconifyUrl}/${key}`} target="_blank">
+                    {key}
+                </a>
+            </h2>
+            <div class="inline-grid grid-cols-4 gap-0 w-full">
+                    {ICONS[key].map((value) => (
+                            <div class="mx-1 mb-2">
+                            <div class="component-preview ">
+    <Icon name={`${key}:${value}`} />
+                            </div>
+                            <pre class="astro-code bg-slate-800 text-white text-sm">&lt;Icon name={`${key}:${value}`} /&gt;</pre>
+                            </div>
+                    ))}
+            </div>
+        ))}
+        </div>
+
+
+
+</MainLayout>
+
+

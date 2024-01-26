@@ -1,0 +1,12 @@
+---
+    const { class: className } = Astro.props
+---
+
+      <div class="bg-vw h-11 flex items-center font-headlight justify-between px-4" class:list={[className]}>
+        <slot name="left-item"/>
+        <slot name="middle-item"/>
+        <slot name="right-item"/>
+      </div>
+
+    
+    

@@ -1,0 +1,44 @@
+---
+import { SITE } from "../../config";
+import SkipToContent from "./SkipToContent.astro";
+import { MenuIcon } from "astro-navbar";
+---
+
+<header
+  class="p-3 bg-blue-600 bg-opacity-10 backdrop-blur-md border-b text-slate-900"
+>
+  <SkipToContent />
+  <nav
+    title="Top Navigation"
+    class="mx-auto flex justify-between items-center px-4"
+  >
+    <div class="flex flex-nowrap">
+      <MenuIcon class="w-4 h-4 text-gray-800 sm:hidden mr-4" />
+      <a class="text-2xl font-medium block font-textbold" href="/"> SDS</a>
+    </div>
+    <div class="flex gap-2">
+      {
+        SITE.github && (
+          <a
+            title="Github"
+            class="opacity-80 hover:opacity-100 hover:bg-slate-200 p-2 rounded-full transition-colors"
+            href={"https://github.com/" + SITE.github}
+          >
+            <img class="h-7" src="/github.svg" alt="github logo" />
+          </a>
+        )
+      }
+      {
+        SITE.linkedin && (
+          <a
+            title="linkedin"
+            class="opacity-80 hover:opacity-100 hover:bg-blue-50 p-2 rounded-full transition-colors"
+            href={"https://linkedin.com/in/" + SITE.linkedin}
+          >
+            <img class="h-7" src="/linkedin.svg" alt="linkedin logo" />
+          </a>
+        )
+      }
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,29 @@
+---
+title: "SlimBanner"
+layout: "../../layouts/MainLayout.astro"
+---
+import SlimBanner from '../../components/SlimBanner.vue'
+
+## SlimBanner
+
+SlimBanner - solidarity with Ukraine.
+
+<div class="component-preview">
+      <SlimBanner
+        class="w-full"
+        client:load
+        showCloseButton
+        transition:name="slim-banner"
+        transition:persist
+      />
+</div>
+
+```js
+<SlimBanner
+  class="w-full"
+  client:load
+  showCloseButton
+  transition:name="slim-banner"
+  transition:persist
+/>
+```

@@ -1,0 +1,104 @@
+---
+interface Props {
+  title: string;
+  image: string;
+  date?: string | null;
+  lang: string;
+
+  author: {
+    firstName: string;
+    name: string;
+  } | null;
+
+  categories: {
+    name: string;
+    uri: string;
+  }[];
+}
+
+const { image, title, categories, date, author } =
+  Astro.props;
+import CategoryLink from "./CategoryLink.astro";
+import Date from "./Date.astro";
+---
+
+<header
+  class="post-header pt-11 w-full justify-center text-white z-2 bg-blue-900"
+>
+  <div class="heading flex flex-wrap">
+    <div
+      class="w-full sm:max-w-[640px] md:max-w-3xl lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[1536px] px-4 py-5 flex flex-col flex-wrap"
+    >
+      <h1
+        class="font-textbold text-2xl mb-1 sm:text-3xl md:(text-4xl mb-3) xl:text-6xl mt-1 order-2 line-clamp-3 pb-1"
+      >
+        {title}
+      </h1>
+      <CategoryLink categories={categories} />
+      <div class="order-3 flex items-center text-gray-1 00">
+        {
+          author && (
+            <span class="text-sm" title={author.firstName} data-pagefind-ignore>
+              {author.name}
+            </span>
+          )
+        }
+        {author && date && <span class="mx-1">-</span>}
+        {date && <Date date={date} />}
+      </div>
+    </div>
+  </div>
+  <div class="featured-image">
+    <img src={image} alt={title} />
+  </div>
+</header>
+
+<style lang="scss">
+  .post-header {
+    @apply flex relative items-center;
+    min-height: 19vw;
+  }
+
+  .heading {
+    @apply text-white relative flex items-center justify-center mt-auto w-full pt-11 z-[2];
+  }
+
+  .featured-image {
+    @apply absolute top-0 bottom-0 left-0 right-0 overflow-hidden w-full bg-gray-100 z-1;
+
+    &:before,
+    &:after {
+      @apply content-empty top-0 bottom-0 left-0 right-0 absolute;
+    }
+
+    &:before {
+      z-index: 5;
+      background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.95),
+        transparent 30%,
+        transparent 70%,
+        rgba(0, 0, 0, 0.95)
+      );
+      opacity: 0.5;
+    }
+
+    &:after {
+      background: radial-gradient(circle at 50% 85%, #00437a 0, #001e50 100%);
+      opacity: 0.8;
+    }
+
+    img {
+      @apply w-full h-full object-cover block max-w-full;
+    }
+  }
+</style>
+
+<style is:global>
+  .icon {
+    @apply text-lightBlue-400 mr-2;
+    width: 1em;
+    height: 1em;
+    fill: currentcolor;
+  }
+</style>

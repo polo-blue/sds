@@ -1,0 +1,41 @@
+---
+title: "Copyright"
+layout: "../../layouts/MainLayout.astro"
+---
+import Copyright from '../../components/Copyright.astro'
+
+## Copyright
+
+Copyright component
+<div class="component-preview">
+       <Copyright class="w-full">
+        <div slot="left-item">left item</div>
+        <div slot="middle-item">middle item</div>
+        <div slot="right-item">right item</div>
+       </Copyright>
+</div>
+
+```js
+        <Copyright class="w-full" >
+          <div slot="left-item">left item</div>
+          <div slot="middle-item">middle item</div>
+          <div slot="right-item">right item</div>
+        </Copyright>
+```
+
+Copyright with custom classes
+<div class="component-preview">
+       <Copyright class="z-0 w-full">
+        <div slot="left-item">left item</div>
+        <div slot="middle-item">middle item</div>
+        <div slot="right-item">right item</div>
+       </Copyright>
+</div>
+
+```js
+        <Copyright class="fixed bottom-0 z-0 w-full" >
+          <div slot="left-item">left item</div>
+          <div slot="middle-item">middle item</div>
+          <div slot="right-item">right item</div>
+        </Copyright>
+```

@@ -1,0 +1,68 @@
+---
+import HeadCommon from '../components/HeadCommon.astro';
+import HeadSEO from '../components/HeadSEO.astro';
+import Header from '../components/Header/Header.astro';
+import PageContent from '../components/PageContent.astro';
+import LeftSidebar from '../components/LeftSidebar.astro';
+import { Astronav, MenuItems} from "astro-navbar";
+import * as CONFIG from '../config';
+import { t, changeLanguage } from "i18next";
+import '../styles/main.scss';
+import Copyright from '../components/Copyright.astro'
+const locale = "en";
+changeLanguage(locale);
+const year = new Date().getFullYear()
+const { content = {} } = Astro.props;
+const currentPage = Astro.url.pathname;
+// const currentFile = `src/pages${currentPage.replace(/\/$/, '')}.md`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+console.log('canonicalURL', canonicalURL)
+---
+
+<html dir={content.dir ?? 'ltr'} lang={content.lang ?? 'en-us'} class="initial">
+	<head>
+		<HeadCommon />
+		<HeadSEO {content} canonicalURL={canonicalURL} />
+		<title>{content.title ? `${content.title} 🚀 ${CONFIG.SITE.title}` : CONFIG.SITE.title}</title>
+	</head>
+
+	<body class="bg-blue-50">
+		<div class="sticky top-0 z-10 w-full">
+			<Header currentPage={currentPage} />
+		</div>
+
+		<div class="flex  bg-white z-10 mb-11 relative">
+			<div class="sticky top-0 flex sm:(h-screen w-64) z-50 ">
+				<div class="mr-auto  pb-11 mb-11">
+					<Astronav>
+						<MenuItems class="hidden z-20 bg-white absolute sm:(static bg-blue-500 bg-opacity-5 lg:flex)">
+						  <LeftSidebar currentPage={currentPage} />
+						</MenuItems>
+					  </Astronav>
+				</div>
+			</div>
+			<main class="pb-4 px-4 sm:px-8 col-auto sm:(pb-32) overflow-auto w-full">
+				<div>
+					<PageContent content={content}>
+						<slot />
+					</PageContent>
+				</div>
+			</main>
+		</div>
+		<footer>
+			<Copyright class="fixed bottom-0 z-0 w-full">
+				<a slot="middle-item"  href={`https://${import.meta.env.COPYRIGHT_DOMAIN}`} target="_blank" rel="follow noopener" class="flex my-auto items-center mx-auto" title={`Proudly made in Poland by ${import.meta.env.COPYRIGHT_DOMAIN}`}>
+				  <div class="text-xxs md:text-xs mr-1 mt-0.5 whitespace-nowrap">createdy by</div>
+				  <img
+					class="h-4 md:h-5 w-min"
+					src={`/${import.meta.env.COPYRIGHT_IMG}`}
+					alt="Modern Websites"
+					width="126"
+					height="23"
+					loading="lazy"
+				  >
+				</a>
+			  </Copyright>
+		</footer>
+	</body>
+</html>

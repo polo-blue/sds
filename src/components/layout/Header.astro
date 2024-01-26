@@ -1,0 +1,80 @@
+---
+const { class: className } = Astro.props;
+import { Icon } from "astro-icon/components";
+
+const navItemsLeft = [
+  {
+    title: "Components",
+    description: "The building blocks for our UI.",
+    url: "/components/buttons",
+    img: "/Components.jpg",
+  },
+  {
+    title: "Patterns",
+    description: "Common patterns for building interfaces.",
+    url: "/patterns/introduction",
+    img: "/Patterns.jpg",
+  },
+];
+---
+
+<nav
+  itemscope
+  itemtype="http://schema.org/WPHeader"
+  class:list={[
+    className,
+    "nav print-hidden mx-auto px-4 shadow-md relative flex items-center justify-between h-24 sm:h-14 flex-wrap sm:flex-nowrap pt-1 sm:pt-0",
+  ]}
+>
+  <div class="flex items-center justify-start sm:items-stretch order-1">
+    <slot name="logo" />
+
+    <div class="hidden sm:block sm:ml-6">
+      <div class="flex space-x-4" itemprop="hasPart">
+        {
+          navItemsLeft.map(({ title, description, url, img }) => (
+            <a
+              href={url}
+              class="text-gray-400 hover:bg-blue-700 hover:text-white px-3 py-1 rounded-full text-sm font-medium"
+              title={description}
+              itemprop="url"
+            >
+              {title}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="relative md:block sm:ml-4 w-full sm:w-64 sm:mr-auto order-4 sm:order-2 h-10"
+  >
+    <slot name="search" />
+  </div>
+
+  <div
+    class="flex items-center pr-0 sm:static sm:inset-auto ml-auto sm:ml-6 -mr-2 dark:text-gray-400 print:hidden order-3 sm:order-3 w-20 justify-end"
+    itemprop="hasPart"
+    itemscope
+    itemtype="http://schema.org/SiteNavigationElement"
+  >
+    <a
+      class="icon-btn mx-2"
+      title=""
+      aria-label=""
+      href="#"
+      itemprop="url"
+      data-astro-reload
+    >
+      <Icon name="carbon:language" />
+    </a>
+  </div>
+</nav>
+
+<style lang="scss" is:global>
+  nav {
+    /* display: grid;  */
+    place-items: center;
+  }
+</style>

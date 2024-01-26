@@ -1,0 +1,7 @@
+---
+const { date } = Astro.props;
+---
+
+<time class="text-sm flex items-center mr-2" datetime={date}>
+  {new Date(date).toLocaleDateString()}
+</time>

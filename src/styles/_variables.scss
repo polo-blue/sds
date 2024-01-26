@@ -1,0 +1,75 @@
+$navbar-height-md: 56px;
+$navbar-height: 52px;
+$special-menu-height: 145px;
+$footer-navbar-height: 45px;
+$footer-content-height: 166px;
+
+$content-padding-bottom: 17px;
+
+
+// Color system
+
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$filter-label: #a8a8a8;
+
+$bg-stylish: #F6F6F6;
+$bg-highlighted: #E7E7E7;
+$badge-dark: #202020;
+
+// social media colors:
+$facebook: #4267B2;
+$youtube: #ff0000;
+$ebay: #3665f3;
+
+
+$grays: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$grays: map-merge(("100": $gray-100,
+        "200": $gray-200,
+        "300": $gray-300,
+        "400": $gray-400,
+        "500": $gray-500,
+        "600": $gray-600,
+        "700": $gray-700,
+        "800": $gray-800,
+        "900": $gray-900),
+    $grays);
+
+$lightblue: #ccecff;
+$vwblue: #0786ba;
+$vwblue2: #00b1eb;
+$blue: #0099da; //#0070B2; //#007bff !default;
+$darkblue: #00437A;
+$verydarkblue: #232737;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #dc3545;//#e94e1b; //#dc3545 !default;
+$orange: #ff5a00; //allegro//#f4831d; //#ff9700; // #fd7e14 !default;
+$orange-darken: #e94d1a;
+$yellow: #ffc107 !default;
+$green: #28a745 !default;
+$teal: #20c997 !default;
+$cyan: #17a2b8 !default;
+$grey: #797878 !default;
+
+
+$primary: $blue; // $blue !default;
+$secondary: $grey; //$gray-600; //$gray-600 !default;
+$success: $green !default;
+$info: $ebay;//$cyan !default;
+$warning: $orange !default;
+$danger: $red !default;
+$light: $gray-100 !default;
+$dark: $gray-900 !default;

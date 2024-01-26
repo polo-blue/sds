@@ -1,0 +1,111 @@
+---
+import { Icon } from "astro-icon/components";
+import Search from "astro-pagefind/components/Search";
+import { t } from "i18next";
+const { translation, locale } = Astro.props;
+
+import { Image } from "astro:assets";
+import vwLogo from "./../../../public/vw.svg";
+
+const likes = {
+  list: {
+    ids: [0, 1, 2],
+  },
+};
+---
+
+<nav class="nav print-hidden" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="mx-auto px-4 shadow-md">
+    <div
+      class="relative flex items-center justify-between h-24 sm:h-14 flex-wrap pt-1 sm:pt-0"
+    >
+      <div class="flex items-center justify-start sm:items-stretch order-1">
+        <div class="flex-shrink-0 flex items-center h-8">
+          <a
+            class="flex items-center"
+            href={locale !== "en" ? `/${locale}/` : "/"}
+            title={t("catalog.title")}
+          >
+            <Image
+              src={vwLogo}
+              alt="VW"
+              width="25"
+              height="25"
+              class="logo mr-2 dark:text-white hover:animate-spin"
+            />
+            <span class="text-xl brand text-left leading-none dark:text-white"
+              >catalog
+              <span
+                class="text-xs block leading-none -mt-0.5 text-lightBlue-500"
+                ><strong class="text-black font-400">polo</strong>blue</span
+              >
+            </span>
+          </a>
+        </div>
+        <div class="hidden sm:block sm:ml-6">
+          <div class="flex space-x-4" itemprop="hasPart">
+            <a
+              href={`https://polo.blue${locale === "pl" ? "/pl" : ""}`}
+              class="text-gray-400 hover:bg-blue-700 hover:text-white px-3 py-1 rounded-full text-sm font-medium"
+              title="Polo 6R Blog"
+              itemprop="url">Blog</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="relative md:block sm:ml-4 w-full sm:w-64 sm:mr-auto order-4 sm:order-2 h-10"
+      >
+        <Search
+          id="search"
+          transition:name="search-field"
+          transition:persist
+          className="search-container"
+          uiOptions={{
+            showImages: true,
+            showEmptyFilters: false,
+            resetStyles: true,
+            translations: {
+              clear_search: t("search.clear"),
+              placeholder: t("search.type-to-search"),
+              search_label: t("search.search_label"),
+              filters_label: t("search.filters"),
+              zero_results: t("search.zero-results"),
+              many_results: `[COUNT] ${t("search.results-for")} [SEARCH_TERM]`,
+              one_result: `[COUNT] ${t("search.result-for")} [SEARCH_TERM]`,
+              alt_search: t("search.alt_search"),
+              search_suggestion: t("search.search_suggestion"),
+              searching: t("search.searching"),
+              load_more: t("search.load-more"),
+            },
+          }}
+        />
+      </div>
+
+      <div
+        class="flex items-center pr-0 sm:static sm:inset-auto ml-auto sm:ml-6 -mr-2 dark:text-gray-400 print:hidden order-3 sm:order-3 w-20 justify-end"
+        itemprop="hasPart"
+        itemscope
+        itemtype="http://schema.org/SiteNavigationElement"
+      >
+        <a
+          class="icon-btn mx-2"
+          title={t("button.toggle_langs")}
+          href={translation}
+          itemprop="url"
+          data-astro-reload
+        >
+          <Icon name="carbon:language" />
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style lang="scss">
+  .logo {
+    max-height: 25px;
+    max-width: 25px;
+  }
+</style>
