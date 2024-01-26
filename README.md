@@ -1,14 +1,38 @@
+# Spoko Design System
+
+SDS is the easiest way to start your our design system. Since Astro is compatible with many frameworks, you can import your components and document them right in the markdown files.
+The project is still in the development phase, use at your own risk ;-)
+
+
 ---
 title: Introduction
 description: Docs intro
 layout: ../../layouts/MainLayout.astro
 ---
 
-# Spoko Design System
-
-Astro Design System is the easiest way to start your our design system. Since Astro is compatible with many frameworks, you can import your components and document them right in the markdown files.
 
 ## Getting started
+
+### Installation
+
+```js
+pnpm add spoko-design-system
+
+or just clone the repository.
+
+
+
+Example:
+- https://spoko-design-system.netlify.app/
+
+#
+
+Most of the components from this repository can be seen in my projects:
+
+- http://catalog.polo.blue/
+- https://polo.blue
+
+
 
 ### Adding new sections
 
@@ -16,8 +40,6 @@ Although it's not required, you can create folders for new sections.
 
 To show the section on the left side navigation, add it to the navigation config file at `src/config.ts`.
 
-Example:
-https://spoko-design-system.netlify.app/
 
 ```js
 export const SIDEBAR = [
@@ -34,13 +56,13 @@ export const SIDEBAR = [
 
 ### Adding new pages
 
-To add new pages just create an .astro or markdown file in `src/pages/[section]/my-page.md`. Remember to add it to the navigation config in `src/config.ts` so it shows up in the left side navigation.
+To add new pages just create an .astro or markdown file in `src/pages/[section]/my-page.mdx`. Remember to add it to the navigation config in `src/config.ts` so it shows up in the left side navigation.
 
 You're free to organize the pages however you want.
 
 ### Customizing Core section (colors, typography, shadows...)
 
-If you want to customize the default colors, typography or shadows you can find the configuration file at `src/config/design.config.ts`.
+If you want to customize the default colors, typography or shadows you can find the configuration file at `src/config/design.config.ts`.  I think I have prepared enough shades of blue ;-)
 
 Feel free to add new pages to the Core section
 
@@ -52,7 +74,7 @@ You can find the css for the pages in `src/styles/content.scss`.
 
 Astro is great for design systems because it allows you to import components from different frameworks like react, vue or svelte.
 
-To get started check how the `MainButton` component is used in the `src/pages/en/buttons.md` file.
+To get started check how the `MainButton` component is used in the `src/pages/buttons.mdx` file.
 
 You can import your component library or create your own and document it easily.
 
@@ -66,4 +88,4 @@ There's a class called `.component-preview` that you can use to wrap your compon
 
 ### Have fun!
 
-Spoko Design System template was made by **[@spoko.space](https://spoko.space)** for personal and commercial use.
+Spoko Design System template was made in Poland by **[@spoko.space](https://spoko.space)** for personal and commercial use.
