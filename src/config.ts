@@ -36,6 +36,7 @@ export const SIDEBAR = [
   { text: "PostHeader", link: "/components/post-header" },
   { text: "Table", link: "/components/table" },
   { text: "Image", link: "/components/image" },
+  { text: "Product Number", link: "/components/product-number" },
 
   { text: "Extras", header: true },
   { text: "Flags", link: "/components/flags" },

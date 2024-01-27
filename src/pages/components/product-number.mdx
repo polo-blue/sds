@@ -1,0 +1,64 @@
+---
+title: "ProductNumber"
+layout: "../../layouts/MainLayout.astro"
+---
+import ProductNumber from '../../components/ProductNumber.astro'
+
+## ProductNumber
+
+ProductNumber - with additional formatting adding spacing for Volkswagen product numbers + additional copy button for easier copying.
+
+<div class="component-preview">
+<ProductNumber
+  big
+  productNumber="6R0920870F"
+  class="mb-2"
+/>
+
+<ProductNumber
+  big
+  isPdp
+  productNumber="000051443F"
+  class="mb-2"
+/>
+
+<ProductNumber
+  isPdp
+  productNumber="WHT005227"
+  class="mb-2"
+/>
+
+<ProductNumber
+  isPdp
+  productNumber="N0385491"
+  class="mb-2"
+/>
+
+</div>
+
+```js
+<ProductNumber
+  big
+  productNumber="6R0920870F"
+  class="mb-2"
+/>
+
+<ProductNumber
+  big
+  isPdp
+  productNumber="000051443F"
+  class="mb-2"
+/>
+
+<ProductNumber
+  isPdp
+  productNumber="WHT005227"
+  class="mb-2"
+/>
+
+<ProductNumber
+  isPdp
+  productNumber="N0385491"
+  class="mb-2"
+/>
+```

@@ -1,6 +1,6 @@
 {
   "name": "spoko-design-system",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "scripts": {
     "dev": "astro dev",
@@ -41,7 +41,6 @@
     "@unocss/preset-web-fonts": "^0.58.4",
     "@unocss/preset-wind": "^0.58.4",
     "@unocss/reset": "^0.58.4",
-    "@vueuse/core": "^10.7.2",
     "astro-i18next": "1.0.0-beta.21",
     "astro-icon": "^1.0.2",
     "astro-navbar": "^2.3.0",
@@ -64,7 +63,7 @@
     "@astrojs/react": "^3.0.9",
     "@astrojs/tailwind": "^5.1.0",
     "@unocss/transformer-variant-group": "^0.58.4",
-    "astro": "^4.2.5",
+    "astro": "^4.2.4",
     "unocss": "^0.58.3"
   },
   "pnpm": {
