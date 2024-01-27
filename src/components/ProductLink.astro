@@ -1,12 +1,12 @@
 <!-- ---
 const { productId, bigTile, locale, index } = Astro.props;
 
-import { getProductUrl, getCategoryInfo, getProductById, getImageUrl, getProductTranslation } from '@utils/db'
+// import { getProductUrl, getCategoryInfo, getProductById, getImageUrl, getProductTranslation } from '@utils/db'
 import i18next, { t } from "i18next";
-import { getTranslation } from '@utils/text';
+// import { getTranslation } from '@utils/text';
 // import { imagesDir, imagesMediumDir, imagesSmallDir } from '~/spoko/logic/settings'
-import ProductImage from "@components/ProductImage.astro"
-import ProductNumber from "@components/Product/ProductNumber.astro"
+import ProductImage from "./ProductImage.astro"
+import ProductNumber from "./ProductNumber.astro"
 
 
 const product =  await getProductById(productId)
