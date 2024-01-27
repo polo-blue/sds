@@ -9,20 +9,52 @@ const props = defineProps({
     required: true,
   },
   textSize: {
-    type:  String as PropType<'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl' | '9xl'>,
+    type: String as PropType<'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl' | '9xl'>,
     required: false,
     default: null
+  },
+  underline: {
+    type: Boolean,
+    required: false,
+    default: false
   }
 })
 
 </script>
 
 <template>
-  <component
-    :is="props.as" class="mb-2.5 flex sm:block md:flex items-center leading-none" :class="props.textSize ? `text-${props.textSize}` : 'text-xl'"
-  >
+  <component :is="props.as" class="mb-2.5 flex sm:block md:flex items-center leading-none"
+    :class="`headline ${props.textSize ? `text-${props.textSize}` : 'text-xl'} ${props.underline ? 'headline--underline' : ''}`">
     <!-- default -->
     <slot />
 
   </component>
 </template>
+
+<style lang="scss">
+
+.headline--underline {
+  @apply relative pb-4;
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 55px;
+    background-color: var(--primary);
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    height: 1px;
+    width: 95%;
+    max-width: 255px;
+    background-color: #64748b
+  }
+}
+</style>

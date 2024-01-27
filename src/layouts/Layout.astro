@@ -1,22 +1,14 @@
 ---
 import HeadCommon from '../components/HeadCommon.astro';
 import HeadSEO from '../components/HeadSEO.astro';
-import Header from '../components/Header/Header.astro';
-import PageContent from '../components/PageContent.astro';
-import LeftSidebar from '../components/LeftSidebar.astro';
-import { Astronav, MenuItems} from "astro-navbar";
 import * as CONFIG from '../config';
 import { t, changeLanguage } from "i18next";
 import '../styles/main.scss';
 import Copyright from '../components/Copyright.astro'
 const locale = "en";
 changeLanguage(locale);
-const year = new Date().getFullYear()
 const { content = {} } = Astro.props;
-const currentPage = Astro.url.pathname;
-// const currentFile = `src/pages${currentPage.replace(/\/$/, '')}.md`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
-console.log('canonicalURL', canonicalURL)
 ---
 
 <html dir={content.dir ?? 'ltr'} lang={content.lang ?? 'en-us'} class="initial">

@@ -3,6 +3,7 @@ title: "Jumbatron"
 layout: "../../layouts/MainLayout.astro"
 ---
 import Jumbatron from '../../components/Jumbatron.vue'
+import Button from '../../components/Button.vue'
 
 ## Jumbatron
 
@@ -16,15 +17,12 @@ Find the code for this page in the `src/pages/components/jumbatron.mdx` file.
           class="mt-3 text-base text-gray-200 sm:mt-5 text-lg md:text-xl lg:mx-0 md:mt-5"
           set:html="Nunc posuere massa eget turpis laoreet ultrices eget vel massa."
         />
-
-
-        <a slot="cta"
-          href="/about/"
+        <Button primary slot="cta"
+          href="#"
           title="short text"
-          class="w-full inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-lightBlue-500 hover:bg-lightBlue-600 md:py-2 md:text-lg md:px-10 shadow"
         >
          Read More
-        </a>
+        </Button>
     </Jumbatron>
 </div>
 
@@ -35,14 +33,11 @@ Find the code for this page in the `src/pages/components/jumbatron.mdx` file.
           class="mt-3 text-base text-gray-200 sm:mt-5 text-lg md:text-xl lg:mx-0 md:mt-5"
           set:html="subtitle"
         />
-
-
-        <a slot="cta"
-          href="/about/"
+        <Button primary slot="cta"
+          href="#"
           title="short text"
-          class="w-full inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-lightBlue-500 hover:bg-lightBlue-600 md:py-2 md:text-lg md:px-10 shadow"
         >
          Read More
-        </a>
+        </Button>
     </Jumbatron>
 ```

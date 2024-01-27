@@ -1,24 +1,24 @@
 ---
-import MainLayout from '../../layouts/MainLayout.astro';
-import { Icon } from 'astro-icon/components';
+import { changeLanguage } from "i18next";
+import MainLayout from "../../layouts/MainLayout.astro";
+import { Icon } from "astro-icon/components";
 
-const iconifyUrl = 'https://icon-sets.iconify.design/'
 
+const iconifyUrl = "https://icon-sets.iconify.design/";
 const ICONS = {
-        mdi: ["facebook", "instagram", "post-it-note-edit-outline"], // Loads only Material Design Icon's "account" SVG
-        'ant-design': ["menu-fold-outlined", "menu-unfold-outlined", "menu-outlined", "cluster-outlined", "audit-outlined", "build-twotone" ],
-        bi: ["envelope-open", "credit-card"],
-        bx: ["arrow-back"],
-        carbon: ["language", "checkmark", "home", "dicom-overlay"],
-        el: ["star-empty", "star"],
-        'eos-icons': ["three-dots-loading"],
-        fluent: ["share-android-24-regular"],
-        'fluent-emoji': ["cookie"],
-        la: ["arrow-right", "arrow-left"],
-        octicon: ["chevron-left-24", "x-24"],
-        uil: ["map-marker", "envelope", "phone"]
-}
-
+    mdi: ["facebook", "instagram", "post-it-note-edit-outline"],
+    "ant-design": ["menu-fold-outlined", "menu-unfold-outlined", "menu-outlined", "cluster-outlined", "audit-outlined", "build-twotone"],
+    bi: ["envelope-open", "credit-card"],
+    bx: ["arrow-back"],
+    carbon: ["language", "checkmark", "home", "dicom-overlay"],
+    el: ["star-empty", "star"],
+    "eos-icons": ["three-dots-loading"],
+    fluent: ["share-android-24-regular"],
+    "fluent-emoji": ["cookie"],
+    la: ["arrow-right", "arrow-left"],
+    octicon: ["chevron-left-24", "x-24"],
+    uil: ["map-marker", "envelope", "phone"]
+};
 ---
 
 <MainLayout>

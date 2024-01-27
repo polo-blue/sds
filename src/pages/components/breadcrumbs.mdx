@@ -8,7 +8,10 @@ import Breadcrumbs from '../../components/Breadcrumbs.vue'
 
 ## Breadcrumbs
 
-Breadcrumbs component with BreadcrumbList Microdata
+Breadcrumbs component with BreadcrumbList Microdata.
+
+Structured Data for Breadcrumbs that produce a Rich Snippet (in this case breadcrumbs) in search results that are clickable, too!
+
 #
 
 https://schema.org/BreadcrumbList
@@ -98,3 +101,36 @@ https://schema.org/ListItem
   text-back="Back"
 />
 ```
+
+
+### Schema example:
+- https://validator.schema.org/?hl=en-US#url=https%3A%2F%2Fcatalog.polo.blue%2FN10733102%2F
+#
+
+| @type            | BreadcrumbList                                                                    |
+| ---------------- | --------------------------------------------------------------------------------- |
+| **itemListElement**  |                                                                                   |
+| **@type**          | ListItem                                                                          |
+| **name**             | Electrical, Lighting, Telematics                                                  |
+| **position**         | 1                                                                                 |
+| **item**             |                                                                                   |
+| **@type**            | Thing                                                                             |
+| **@id**              | https://catalog.polo.blue/electrical-lighting-telematics/                         |
+| **itemListElement**  |                                                                                   |
+| **@type**            | ListItem                                                                          |
+| **name**             | Exterior Lighting                                                                 |
+| **position**         | 2                                                                                 |
+| **item**             |                                                                                   |
+| **@type**            | Thing                                                                             |
+| **@id**              | https://catalog.polo.blue/electrical-lighting-telematics/exterior-lighting/       |
+| **itemListElement**  |                                                                                   |
+| **@type**            | ListItem                                                                          |
+| **name**             | Bulbs                                                                             |
+| **position**         | 3                                                                                 |
+| **item**             |                                                                                   |
+| **@type**            | Thing                                                                             |
+| **@id**              | https://catalog.polo.blue/electrical-lighting-telematics/exterior-lighting/bulbs/ |
+| **itemListElement**  |                                                                                   |
+| **@type**            | ListItem                                                                          |
+| **name**             | Bulb carrier with bulb; silver lens                                               |
+| **position**         | 4                                                                                 |

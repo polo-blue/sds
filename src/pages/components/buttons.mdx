@@ -3,6 +3,8 @@ title: "Buttons"
 layout: "../../layouts/MainLayout.astro"
 ---
 import Button from '../../components/Button.vue'
+import ButtonCopy from '../../components/ButtonCopy.vue'
+import { t } from "i18next";
 
 ## All buttons
 
@@ -24,7 +26,7 @@ Find the code for this page in the `src/pages/components/buttons.md` file.
   <Button tag>Text</Button>
 ```
 
-## Primary button
+## Primary button `<button>`
 
 We use the primary button for main actions like saving a form or creating a new item.
 
@@ -59,4 +61,34 @@ Text buttons are used for actions that do not require a primary or secondary but
 
 ```js
 <Button text>Text button</Button>
+```
+
+
+## Link button `<a>`
+
+Text buttons are used for actions that do not require a primary or secondary button.
+
+<div class="component-preview">
+    <Button primary href="#" title="Title">Text button</Button>
+</div>
+
+```js
+<Button primary href="#" title="Title">Text button</Button>
+```
+
+
+
+### Buttony copy
+<div class="component-preview">
+    <ButtonCopy productNumber="6R0920870F" copyDisabled={false} texts={{
+    copy: t('copy'),
+    copied: t('copied')
+  }} client:only />
+</div>
+
+```js
+<ButtonCopy productNumber="6R0920870F" copyDisabled={false} texts={{
+    copy: t('copy'),
+    copied: t('copied')
+  }} client:only />
 ```

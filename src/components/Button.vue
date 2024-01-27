@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { url } from "inspector";
 import { defineProps } from "vue";
 
 const props = defineProps<{
-  url?: string;
+  href?: string;
+  title?: string;
   primary?: boolean;
   secondary?: boolean;
   text?: boolean;
   tag?: boolean;
 }>();
 
-const tag = url && url.length ? 'a' : 'button'
+const tag = props.href && props.href.length ? 'a' : 'button'
 
 const classes = {
   "bg-lightBlue-500 border border-transparent font-medium hover:bg-lightBlue-600 inline-flex items-center justify-center md:px-10 md:py-2 md:text-lg px-8 py-3 rounded-full shadow text-base text-white": props.primary,
@@ -22,7 +22,7 @@ const classes = {
 
 
 <template>
-  <component  :is="tag" :class="classes" :href="props.url">
+  <component  :is="tag" :class="classes" :href="props.href" :title="props.title ? props.title : null">
     <slot></slot>
   </component>
 </template>

@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, sharpImageService } from "astro/config";
 // import tailwind from "@astrojs/tailwind";
 import vue from "@astrojs/vue";
 import mdx from '@astrojs/mdx';
@@ -14,6 +14,10 @@ export default defineConfig({
   site: "https://spoko-design-system.netlify.app",
   server: {
     port: 1234
+  },
+  image: {
+    service: sharpImageService(),
+    domains: ["api.polo.blue", "polo.blue", "media.istockphoto.com", "img.freepik.com"]
   },
   integrations: [
   // Enable Preact to support Preact JSX components.
@@ -39,7 +43,7 @@ export default defineConfig({
         octicon: ["chevron-left-24", "x-24"],
         uil: ["map-marker", "envelope", "phone"],
         'circle-flags': ["uk", "pl", "ua" ],
-        ph: ["cat-thin"]
+        ph: ["cat-thin", "copy-simple-light"]
       }
     }
   )]

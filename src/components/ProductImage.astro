@@ -1,0 +1,30 @@
+---
+import { Image } from 'astro:assets'
+
+const { imageObject } = Astro.props;
+
+let inputProps = {};
+
+
+if (imageObject.index && imageObject.index === 1) {
+  inputProps['data-pagefind-meta'] = 'image[src], image_alt[alt]';
+  inputProps['loading'] = 'eager'
+}
+
+if (imageObject.srcset && imageObject.srcset.length) {
+  inputProps['widths'] = imageObject.srcset
+}
+
+---
+<Image 
+    src={imageObject.src}
+    alt={imageObject.alt}
+    height={imageObject.height} 
+    width={imageObject.width}
+    itemprop="image"
+    format="avif"
+    data-pagefind-index-attrs={imageObject.alt}
+    onerror="this.style.display='none';"
+    class={`h-full w-full select-none pointer-none ${imageObject.class || ''}`}
+    { ...inputProps}
+/>

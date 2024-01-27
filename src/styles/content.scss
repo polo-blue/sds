@@ -49,3 +49,19 @@
   }
 }
 
+
+table {
+  @apply table-auto text-left border bg-white shadow-md;
+
+  tr {
+    @apply border;
+  }
+
+  td, th {
+    @apply px-4 py-2;
+  }
+
+  thead {
+    @apply bg-gray-100;
+  }
+}

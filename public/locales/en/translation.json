@@ -1,6 +1,9 @@
 {
   "part": {
     "for-lhd": "For LHD cars (left-hand drive)",
-    "for-rhd": "For RHD cars (right-hand drive)"
-  }
+    "for-rhd": "For RHD cars (right-hand drive)",
+    "sw-position":"Steering wheel position"
+  },
+  "copied": "Copied",
+  "copy": "Copy product code",
 }

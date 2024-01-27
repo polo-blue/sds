@@ -1,28 +1,31 @@
 ---
+import { changeLanguage } from "i18next";
 import { Icon } from "astro-icon/components";
 import { SITE } from "../config";
 import Jumbatron from "../components/Jumbatron.vue";
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 import Headline from "../components/Headline.vue";
+import Button from "../components/Button.vue";
+
 const navItems = [
-  {
-    title: "Core",
-    description: "Base colors, typography, shadows, and more.",
-    url: "/core/introduction",
-    icon: 'ant-design:cluster-outlined'
-  },
-  {
-    title: "Components",
-    description: "The building blocks for our UI.",
-    url: "/components/buttons",
-    icon: 'ant-design:build-twotone'
-  },
-  {
-    title: "Patterns",
-    description: "Common patterns for building interfaces.",
-    url: "/patterns/introduction",
-    icon: 'ant-design:audit-outlined'
-  },
+    {
+        title: "Core",
+        description: "Base colors, typography, shadows, and more.",
+        url: "/core/introduction",
+        icon: "ant-design:cluster-outlined"
+    },
+    {
+        title: "Components",
+        description: "The building blocks for our UI.",
+        url: "/components/buttons",
+        icon: "ant-design:build-twotone"
+    },
+    {
+        title: "Patterns",
+        description: "Common patterns for building interfaces.",
+        url: "/patterns/introduction",
+        icon: "ant-design:audit-outlined"
+    },
 ];
 ---
 <Layout>
@@ -38,9 +41,9 @@ const navItems = [
 
     <Button slot="cta"
       href="/core/introduction/"
-      title="short text"
-      class="w-full inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-lightBlue-500 hover:bg-lightBlue-600 md:py-2 md:text-lg md:px-10 shadow"
-    >
+      title="Spoko Design System"
+      primary
+      >
      Read More
     </Button>
 </Jumbatron>

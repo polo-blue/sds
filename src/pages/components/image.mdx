@@ -1,0 +1,229 @@
+---
+title: "Jumbatron"
+layout: "../../layouts/MainLayout.astro"
+---
+import ProductImage from '../../components/ProductImage.astro'
+
+## Image
+
+Image converted to AVIF format and resized.
+AVIF compresses images significantly better than older-generation formats such as WebP and JPEG.
+
+- https://en.wikipedia.org/wiki/AVIF
+
+#
+
+You can choose the image format you need so that you do not unnecessarily load an image that is larger than the area in which you are displaying it. This ensures maximum page optimisation.
+
+- https://docs.astro.build/en/guides/images/
+
+#
+
+Use `.img--overlay` class for images on white background to make a layer with light grey overlay.
+
+
+### Small Image
+
+<div class="component-preview">
+  <div class="img--overlay img--4/3 img--small">
+    <ProductImage
+      imageObject={
+        {
+          src: 'https://img.freepik.com/darmowe-wektory/tlo-retro-modeli-geometrycznych_52683-17902.jpg?w=1380&t=st=1706311337~exp=1706311937~hmac=d98ae81cd1b24e90a652da0e05c245f25ed376e039aaa4772f40ef03235c14b9',
+          alt: 'Image Alt',
+          height: '180',
+          width: '240',
+          class: 'object-cover'
+        }
+      }
+    />
+  </div>
+
+
+    <div class="img--4/3 img--small">
+    <ProductImage
+      imageObject={
+        {
+          src: 'https://img.freepik.com/free-photo/beautiful-green-landscape-with-plantations-trees-cloudy-sky_181624-42918.jpg?w=826&t=st=1706315168~exp=1706315768~hmac=ed7872d0924dbda4322a3d346eef282edd77db3673fc209c933b02e37c29f9ac',
+          alt: 'Image Alt',
+          height: '180',
+          width: '240',
+          class: 'object-cover'
+        }
+      }
+    />
+  </div>
+
+      <div class="img--4/3 img--small">
+    <ProductImage
+      imageObject={
+        {
+          src: 'https://img.freepik.com/free-photo/lake-mountains_1204-508.jpg?w=826&t=st=1706315236~exp=1706315836~hmac=5ed2ba33b76b358e5291e28bb012ce7619e3e07dbf85de1a4605ba96a1aeac7b',
+          alt: 'Image Alt',
+          height: '180',
+          width: '240',
+          class: 'object-cover'
+        }
+      }
+    />
+  </div>
+</div>
+
+
+
+
+```js
+<div class="img--overlay img--4/3 img--small">
+  <ProductImage
+    imageObject={
+      {
+        src: 'https://img.freepik.com/darmowe-wektory/tlo-retro-modeli-geometrycznych_52683-17902.jpg?w=1380&t=st=1706311337~exp=1706311937~hmac=d98ae81cd1b24e90a652da0e05c245f25ed376e039aaa4772f40ef03235c14b9',
+        alt: 'Image Alt',
+        height: '180',
+        width: '240',
+        class: 'object-cover'
+      }
+    }
+  />
+
+  <div class="img--4/3 img--small">
+    <ProductImage
+      imageObject={
+        {
+          src: 'https://img.freepik.com/free-photo/beautiful-green-landscape-with-plantations-trees-cloudy-sky_181624-42918.jpg?w=826&t=st=1706315168~exp=1706315768~hmac=ed7872d0924dbda4322a3d346eef282edd77db3673fc209c933b02e37c29f9ac',
+          alt: 'Image Alt',
+          height: '180',
+          width: '240',
+          class: 'object-cover'
+        }
+      }
+    />
+  </div>
+
+  <div class="img--4/3 img--small">
+    <ProductImage
+      imageObject={
+        {
+          src: 'https://img.freepik.com/free-photo/lake-mountains_1204-508.jpg?w=826&t=st=1706315236~exp=1706315836~hmac=5ed2ba33b76b358e5291e28bb012ce7619e3e07dbf85de1a4605ba96a1aeac7b',
+          alt: 'Image Alt',
+          height: '180',
+          width: '240',
+          class: 'object-cover'
+        }
+      }
+    />
+  </div>
+
+  
+
+</div>
+```
+
+
+### Medium Image
+
+<div class="component-preview">
+  <a class="img--medium group b-l b-white" href="#">
+    <ProductImage
+      imageObject={
+        {
+          src: 'https://img.freepik.com/darmowe-wektory/tlo-retro-modeli-geometrycznych_52683-17902.jpg?w=1380&t=st=1706311337~exp=1706311937~hmac=d98ae81cd1b24e90a652da0e05c245f25ed376e039aaa4772f40ef03235c14b9',
+          alt: 'Image Alt',
+          height: '180',
+          width: '240',
+        }
+      }
+    />
+  </a>
+
+  <a class="img--medium group b-l b-white" href="#">
+    <ProductImage
+      imageObject={
+        {
+          src: 'https://img.freepik.com/free-photo/beautiful-green-landscape-with-plantations-trees-cloudy-sky_181624-42918.jpg?w=826&t=st=1706315168~exp=1706315768~hmac=ed7872d0924dbda4322a3d346eef282edd77db3673fc209c933b02e37c29f9ac',
+          alt: 'Image Alt',
+          height: '180',
+          width: '240',
+          class: 'bg-gray-100/70'
+        }
+      }
+    />
+  </a>
+
+  <a class="img--medium group b-l b-white" href="#">
+    <ProductImage
+      imageObject={
+        {
+          src: 'https://img.freepik.com/free-photo/lake-mountains_1204-508.jpg?w=826&t=st=1706315236~exp=1706315836~hmac=5ed2ba33b76b358e5291e28bb012ce7619e3e07dbf85de1a4605ba96a1aeac7b',
+          alt: 'Image Alt',
+          height: '180',
+          width: '240',
+          class: 'bg-gray-100/70'
+        }
+      }
+    />
+  </a>
+</div>
+
+```ts
+  <a class="img--medium group b-l b-white" href="#">
+    <ProductImage
+      imageObject={
+        {
+          src: 'https://img.freepik.com/darmowe-wektory/tlo-retro-modeli-geometrycznych_52683-17902.jpg?w=1380&t=st=1706311337~exp=1706311937~hmac=d98ae81cd1b24e90a652da0e05c245f25ed376e039aaa4772f40ef03235c14b9',
+          alt: 'Image Alt',
+          height: '180',
+          width: '240',
+        }
+      }
+    />
+  </a>
+
+  <a class="img--medium group b-l b-white" href="#">
+    <ProductImage
+      imageObject={
+        {
+          src: 'https://img.freepik.com/free-photo/beautiful-green-landscape-with-plantations-trees-cloudy-sky_181624-42918.jpg?w=826&t=st=1706315168~exp=1706315768~hmac=ed7872d0924dbda4322a3d346eef282edd77db3673fc209c933b02e37c29f9ac',
+          alt: 'Image Alt',
+          height: '180',
+          width: '240',
+          class: 'bg-gray-100/70'
+        }
+      }
+    />
+  </a>
+
+  <a class="img--medium group b-l b-white" href="#">
+    <ProductImage
+      imageObject={
+        {
+          src: 'https://img.freepik.com/free-photo/lake-mountains_1204-508.jpg?w=826&t=st=1706315236~exp=1706315836~hmac=5ed2ba33b76b358e5291e28bb012ce7619e3e07dbf85de1a4605ba96a1aeac7b',
+          alt: 'Image Alt',
+          height: '180',
+          width: '240',
+          class: 'bg-gray-100/70'
+        }
+      }
+    />
+  </a>
+```
+
+### Responsive Image with srcset
+- https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#resolution_switching_different_sizes
+
+<div class="component-preview">
+  <div class="h-full overflow-hidden">
+    <ProductImage
+      imageObject={
+        {
+          src: 'https://img.freepik.com/free-photo/beautiful-green-landscape-with-plantations-trees-cloudy-sky_181624-42918.jpg?w=826&t=st=1706315168~exp=1706315768~hmac=ed7872d0924dbda4322a3d346eef282edd77db3673fc209c933b02e37c29f9ac',
+          alt: 'Image Alt',
+          height: '1350',
+          width: '1800',
+          class: 'bg-gray-100/70',
+          srcset: [430, 690, 960, 1200, 1800]
+        }
+      }
+    />
+  </div>
+</div>

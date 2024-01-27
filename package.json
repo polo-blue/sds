@@ -41,11 +41,12 @@
     "@unocss/preset-web-fonts": "^0.58.4",
     "@unocss/preset-wind": "^0.58.4",
     "@unocss/reset": "^0.58.4",
+    "@vueuse/core": "^10.7.2",
     "astro-i18next": "1.0.0-beta.21",
     "astro-icon": "^1.0.2",
     "astro-navbar": "^2.3.0",
     "astro-pagefind": "^1.4.0",
-    "i18next": "^23.7.19",
+    "i18next": "^23.7.20",
     "i18next-browser-languagedetector": "^7.2.0",
     "i18next-fs-backend": "^2.3.1",
     "i18next-http-backend": "^2.4.2",
@@ -63,7 +64,7 @@
     "@astrojs/react": "^3.0.9",
     "@astrojs/tailwind": "^5.1.0",
     "@unocss/transformer-variant-group": "^0.58.4",
-    "astro": "^4.2.4",
+    "astro": "^4.2.5",
     "unocss": "^0.58.3"
   },
   "pnpm": {

@@ -18,7 +18,7 @@ const props = defineProps({
     <Badge
       v-for="(badge, index) in props.badges" :key="index"
       :badge="badge"
-      :class="(badge.toLocaleLowerCase().includes('gti') ? 'bg-red-600' : '') || (badge.toLocaleLowerCase().includes('motorsport') ? 'bg-blue-600' : '')"
+      :class="(badge.toLocaleLowerCase().includes('gti') ? 'bg-red-600' : badge.toLocaleLowerCase().includes('motorsport') ? 'bg-blue-600' : 'bg-black')"
     />
   </div>
 </template>

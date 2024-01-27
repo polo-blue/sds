@@ -14,7 +14,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="px-1.5 py-px text-white text-xs" :class="props.class">
+  <div class="badge" :class="props.class">
     {{ props.badge }}
   </div>
 </template>

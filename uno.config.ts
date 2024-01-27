@@ -28,6 +28,12 @@ export default defineConfig({
     transformerVariantGroup(),
   ],
   shortcuts: [
+    ['headline','font-headlight font-bold	'],
+    ['badge', 'px-1.5 py-px text-white text-xs mb-1 max-w-fit'],
+    ['img--overlay','after:(content-empty bg-black bg-opacity-[.03] absolute w-full h-full top-0)'],
+    ['img--4/3', 'aspect-[4/3] relative object-cover bg-gray-100 h-auto'],
+    ['img--small', 'w-60 sm:(w-22) xl:(w-30)'],
+    ['img--medium', 'w-60'],
     ['main','text-gray-700 dark:text-gray-200 dark:bg-blue-700 pt-24 sm:pt-14 relative'],
     ['nav','bg-white dark:bg-black absolute sm:fixed w-full top-0 z-40 sm:z-30 max-w-screen'],
     ['cat-menu','fixed bottom-[-4px] w-full z-10 border-t-1 border-gray-300 bg-white dark:bg-blue-900 text-center sm:(static z-auto border-t-none) sm:min-h-32'],

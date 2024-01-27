@@ -16,6 +16,7 @@ The project is still in the development phase, use at your own risk ;-)
 
 ```js
 pnpm add spoko-design-system
+```
 
 or just clone the repository.
 
