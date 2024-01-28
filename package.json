@@ -1,6 +1,6 @@
 {
   "name": "spoko-design-system",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "private": false,
   "scripts": {
     "dev": "astro dev",
@@ -77,7 +77,8 @@
     "sass": "^1.70.0",
     "unocss": "^0.57.7",
     "vite": "^5.0.12",
-    "vue": "^3.4.15"
+    "vue": "^3.4.15",
+    "swiper": "^11.0.5"
   },
   "devDependencies": {
     "@unocss/transformer-variant-group": "^0.58.4",

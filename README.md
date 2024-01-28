@@ -46,6 +46,7 @@ Most of the components from this repository can be seen in my projects:
 - 🗒 [astrojs/mdx](https://github.com/withastro/astro/tree/main/packages/integrations/mdx/) - markdown support
 - 📦 [astro-compress](https://github.com/astro-community/AstroCompress) - compression utilities to your Astro project
 - 🖨 Static-site generation (SSG)
+- 🎡 [Swiper](https://github.com/nolimits4web/swiper) - modern mobile touch slider with hardware accelerated transitions and amazing native behavior
 - 🌠 [View Transitions API](https://docs.astro.build/en/guides/view-transitions/#full-site-view-transitions-spa-mode) - [View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition) - makes it easy to change the DOM in a single step, while creating an animated transition between the two states. It's available in Chrome 111+ ([more details](https://developer.chrome.com/docs/web-platform/view-transitions?hl=en))
 - ☁️ Deploy on Netlify
 

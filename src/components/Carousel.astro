@@ -1,0 +1,41 @@
+---
+
+---
+<script>
+  import { register } from "swiper/element/bundle";
+    
+  document.addEventListener("astro:page-load", () => {
+    //"DOMContentLoaded"
+    // register Swiper custom elements
+    register();
+  })
+
+</script>
+
+<swiper-container
+  class="max-w=full w-full flex"
+  grid-rows="1"
+  mousewheel-force-to-axis="true"
+  navigation="true"
+  pagination-type="fraction"
+  scrollbar="false"
+  slides-per-view="auto"
+  space-between="0"
+>
+  <swiper-slide class="bg-blue-50 p-12 border-1">
+    A
+  </swiper-slide>
+  <swiper-slide class="bg-blue-100 p-12 border-1">
+    B
+  </swiper-slide>
+  <swiper-slide class="bg-blue-200 p-12 border-1">
+    C
+  </swiper-slide>
+  <swiper-slide class="bg-blue-300 p-12 border-1">
+    D
+  </swiper-slide>
+  <swiper-slide class="bg-blue-400 p-12 border-1">
+    A
+  </swiper-slide>
+
+</swiper-container>

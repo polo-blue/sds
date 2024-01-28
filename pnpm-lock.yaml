@@ -153,6 +153,9 @@ dependencies:
   sass:
     specifier: ^1.70.0
     version: 1.70.0
+  swiper:
+    specifier: ^11.0.5
+    version: 11.0.5
   unocss:
     specifier: ^0.57.7
     version: 0.57.7(postcss@8.4.33)(vite@5.0.12)
@@ -5733,6 +5736,11 @@ packages:
       css-what: 6.1.0
       csso: 5.0.5
       picocolors: 1.0.0
+    dev: false
+
+  /swiper@11.0.5:
+    resolution: {integrity: sha512-rhCwupqSyRnWrtNzWzemnBLMoyYuoDgGgspAm/8iBD3jCvAWycPLH4Z3TB0O5520DHLzMx94yUMH/B9Efpa48w==}
+    engines: {node: '>= 4.7.0'}
     dev: false
 
   /tar-fs@2.1.1:
