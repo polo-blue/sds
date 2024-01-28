@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 
-
 const props = defineProps({
   as: {
     type: String as PropType<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'div' | 'span'>,
@@ -19,20 +18,16 @@ const props = defineProps({
     default: false
   }
 })
-
 </script>
 
 <template>
   <component :is="props.as" class="mb-2.5 flex sm:block md:flex items-center leading-none"
     :class="`headline ${props.textSize ? `text-${props.textSize}` : 'text-xl'} ${props.underline ? 'headline--underline' : ''}`">
-    <!-- default -->
     <slot />
-
   </component>
 </template>
 
 <style lang="scss">
-
 .headline--underline {
   @apply relative pb-4;
 

@@ -30,7 +30,6 @@ const props = defineProps({
     required: false,
     default: null
   }
-
 })
 
 const isLast = (index: Number) => {
@@ -105,4 +104,5 @@ const isLast = (index: Number) => {
       color: inherit;
     }
   }
-}</style>
+}
+</style>
