@@ -23,8 +23,8 @@ if (imageObject.srcset && imageObject.srcset.length) {
     width={imageObject.width}
     itemprop="image"
     format="avif"
-    data-pagefind-index-attrs={imageObject.alt}
+    data-pagefind-index-attrs="alt"
     onerror="this.style.display='none';"
-    class={`h-full w-full select-none pointer-none ${imageObject.class || ''}`}
+    class={`h-full w-full select-none pointer-none ${imageObject.class || 'object-cover'}`}
     { ...inputProps}
 />

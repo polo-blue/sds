@@ -36,7 +36,7 @@
   }
 
   .component-preview {
-    @apply bg-blue-600 bg-opacity-5 px-0 mx-0 sm:(p-8) flex items-center;
+    @apply bg-blue-600 bg-opacity-5 px-0 py-4 mx-0 sm:(p-8) flex items-center;
     gap: 1rem;
     border-radius: 0.33rem;
     border: 1px solid theme("colors.slate.200");

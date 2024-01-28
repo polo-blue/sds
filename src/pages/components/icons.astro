@@ -6,39 +6,41 @@ import { Icon } from "astro-icon/components";
 
 const iconifyUrl = "https://icon-sets.iconify.design/";
 const ICONS = {
-    mdi: ["facebook", "instagram", "post-it-note-edit-outline"],
-    "ant-design": ["menu-fold-outlined", "menu-unfold-outlined", "menu-outlined", "cluster-outlined", "audit-outlined", "build-twotone"],
-    bi: ["envelope-open", "credit-card"],
-    bx: ["arrow-back"],
-    carbon: ["language", "checkmark", "home", "dicom-overlay"],
-    el: ["star-empty", "star"],
-    "eos-icons": ["three-dots-loading"],
-    fluent: ["share-android-24-regular"],
-    "fluent-emoji": ["cookie"],
-    la: ["arrow-right", "arrow-left"],
-    octicon: ["chevron-left-24", "x-24"],
-    uil: ["map-marker", "envelope", "phone"]
+    mdi: ["facebook", "instagram", "post-it-note-edit-outline", "car-hatchback", "car-door", "car-side", "car-windshield-outline", "car-light-alert", "car-tire-alert", "car-light-dimmed", "car-light-fog", "car-light-high", "car-parking-lights", "car-esp", "car-brake-abs", "car-horn", "engine-outline", "fan", "fan-off", "air-conditioner", "coolant-temperature", "car-brake-alert", "car-traction-control", "card-text-outline", "fuel", "oil", "hazard-lights", "credit-card-outline"],
+    el: ["star-empty", "star",  "heart-empty",  "heart", "map-marker", "fire", "quote-right", "qrcode", "car", "indent-left", "indent-right", "ok"],    'eos-icons': ["three-dots-loading", "bubble-loading", "loading", "installing"],
+    fluent: ["share-android-24-regular", "checkmark-24-filled", "tag-24-regular", "tag-multiple-24-regular" ],
+    "fluent-emoji": ["cookie", "construction", "warning", "wrench"],
+    la: ["arrow-right", "arrow-left", "car", "car-side"],
+    octicon: ["chevron-left-24", "x-24", "alert-24", "graph-24", "comment-24", "comment-discussion-24", "clock-24", "star-24", "star-fill-24", "file-media-24", "heart-24", "heart-fill-24", "project-roadmap-24", "location-24", "info-24", "mark-github-16"],
+    uil: ["map-marker", "envelope", "phone", "tag-alt"],
+    "simple-icons": ["ebay", "allegro", "volkswagen", "audi", "skoda", "seat", "whatsapp", "x", "facebook", "messenger", "instagram", "telegram"],
+    "icon-park-outline": ["shopping-bag", "comment", "comments", "tag-one"],
+    flowbite: ["arrow-left-outline", "arrow-right-outline", "angle-left-outline", "angle-right-outline", "chevron-left-outline", "chevron-right-outline","map-location-outline", "map-pin-alt-solid", "x-outline", "messages-outline", "arrow-down-to-bracket-outline", "check-outline"]
+
 };
 ---
 
 <MainLayout>
     <h1>Icons</h1>
+    <p>Astro Icon is a straightforward icon system for the Astro framework.</p>
+
+    <a href="https://www.astroicon.dev/">https://www.astroicon.dev/</a>
 
         <pre  class="mt-6 astro-code bg-slate-800 text-white">import &#123; Icon &#125; from 'astro-icon/components';</pre>
         <div class="">
         {Object.keys(ICONS).map((key) => (
             <h2 class="mt-6 mx-2">
-                <a href={`${iconifyUrl}/${key}`} target="_blank">
+                <a href={`${iconifyUrl}${key}/`} target="_blank">
                     {key}
                 </a>
             </h2>
-            <div class="inline-grid grid-cols-4 gap-0 w-full">
+            <div class="inline-grid grid-cols-2 md:grid-cols-4 gap-0 w-full">
                     {ICONS[key].map((value) => (
                             <div class="mx-1 mb-2">
                             <div class="component-preview ">
-    <Icon name={`${key}:${value}`} />
+    <Icon name={`${key}:${value}`} class="text-3xl mx-auto" />
                             </div>
-                            <pre class="astro-code bg-slate-800 text-white text-sm">&lt;Icon name={`${key}:${value}`} /&gt;</pre>
+                            <pre class="astro-code bg-slate-800 text-white text-sm text-center">&lt;Icon name={`"${key}:${value}"`} /&gt;</pre>
                             </div>
                     ))}
             </div>

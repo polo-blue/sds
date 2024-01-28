@@ -4,6 +4,7 @@ layout: "../../layouts/MainLayout.astro"
 ---
 import Button from '../../components/Button.vue'
 import ButtonCopy from '../../components/ButtonCopy.vue'
+import { Icon } from 'astro-icon/components';
 import { t } from "i18next";
 
 ## All buttons
@@ -15,15 +16,18 @@ Find the code for this page in the `src/pages/components/buttons.md` file.
 <div class="component-preview">
     <Button primary>Primary</Button>
     <Button secondary>Secondary</Button>
-    <Button text>Text</Button>
-    <Button tag>Text</Button>
+    <Button tertiary>Tertiary</Button>
+    
+    <Button text medium>Text</Button>
+    <Button tag small>Tag Name</Button>
 </div>
 
 ```js
-  <Button primary>Primary</Button>
-  <Button secondary>Secondary</Button>
-  <Button text>Text</Button>
-  <Button tag>Text</Button>
+    <Button primary>Primary</Button>
+    <Button secondary>Secondary</Button>
+    <Button tertiary>Tertiary</Button>
+    <Button text medium>Text</Button>
+    <Button tag small>Tag Name</Button>
 ```
 
 ## Primary button `<button>`
@@ -31,11 +35,15 @@ Find the code for this page in the `src/pages/components/buttons.md` file.
 We use the primary button for main actions like saving a form or creating a new item.
 
 <div class="component-preview">
-    <Button primary>Primary button</Button>
+    <Button primary>Primary</Button>
+    <Button primary medium>Primary</Button>
+    <Button primary small>Primary</Button>
 </div>
 
 ```js
-<Button primary>Primary button</Button>
+    <Button primary>Primary</Button>
+    <Button primary medium>Primary</Button>
+    <Button primary small>Primary</Button>
 ```
 
 ## Secondary button
@@ -44,11 +52,15 @@ Secondary buttons accompany primary buttons to provide additional actions.
 For example, cancel buttons are secondary buttons.
 
 <div class="component-preview">
-    <Button secondary>Secondary button</Button>
+    <Button secondary>Secondary</Button>
+    <Button secondary medium>Secondary</Button>
+    <Button secondary small>Secondary</Button>
 </div>
 
 ```js
-<Button secondary>Secondary button</Button>
+    <Button secondary>Secondary</Button>
+    <Button secondary medium>Secondary</Button>
+    <Button secondary small>Secondary</Button>
 ```
 
 ## Text button
@@ -57,10 +69,64 @@ Text buttons are used for actions that do not require a primary or secondary but
 
 <div class="component-preview">
     <Button text>Text button</Button>
+    <Button text>Text button</Button>
+    <Button text>Text button</Button>
 </div>
 
 ```js
 <Button text>Text button</Button>
+```
+
+## Link tertiary 
+
+<div class="component-preview">
+
+    <Button tertiary>Tertiary</Button>
+    <Button tertiary medium>Tertiary</Button>
+    <Button tertiary small>Tertiary</Button>
+
+</div>
+
+```html
+    <Button tertiary>Tertiary</Button>
+    <Button tertiary medium>Tertiary</Button>
+    <Button tertiary small>Tertiary</Button>
+```
+
+## Tertiary with icon
+<div class="component-preview">
+    <Button tertiary href="#">
+        Read more
+        <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl -my-1 -mr-1" />
+    </Button>
+
+    <Button tertiary href="#" medium>
+        Read more
+        <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl -my-1 -mr-1" />
+    </Button>
+
+    <Button tertiary href="#" small class="px-5">
+        Read more
+        <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl -my-1 -mr-1" />
+    </Button>
+</div>
+
+```html
+    <Button tertiary href="#">
+        Read more
+        <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl -my-1 -mr-1" />
+    </Button>
+
+    <Button tertiary href="#" medium>
+        Read more
+        <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl -my-1 -mr-1" />
+    </Button>
+
+    <Button tertiary href="#" small class="px-5">
+        Read more
+        <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl -my-1 -mr-1" />
+    </Button>
+
 ```
 
 

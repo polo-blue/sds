@@ -31,9 +31,26 @@ export default defineConfig({
     ['headline','font-headlight font-bold	'],
     ['badge', 'px-1.5 py-px text-white text-xs mb-1 max-w-fit'],
     ['img--overlay','after:(content-empty bg-black bg-opacity-[.03] absolute w-full h-full top-0)'],
-    ['img--4/3', 'aspect-[4/3] relative object-cover bg-gray-100 h-auto'],
+    ['img--4/3', 'aspect-[4/3] relative object-cover bg-gray-100 h-auto max-w-full'],
+    ['img--3/4', 'aspect-[3/4] relative object-cover bg-gray-100 h-auto max-w-full'],
+    ['img--1/1', 'aspect-square relative object-cover bg-gray-100 h-auto max-w-full'],
+    ['img--3/2', 'aspect-[3/2] relative object-cover bg-gray-100 h-auto max-w-full'],
+    ['img--2/3', 'aspect-[2/3] relative object-cover bg-gray-100 h-auto max-w-full'],
+    ['img--3/1', 'aspect-[3/1] relative object-cover bg-gray-100 h-auto max-w-full'],
+    ['img--16/9', 'aspect-video relative object-cover bg-gray-100 h-auto max-w-full'],
     ['img--small', 'w-60 sm:(w-22) xl:(w-30)'],
     ['img--medium', 'w-60'],
+
+    ['btn-primary', 'bg-lightBlue-500 border border-transparent font-medium hover:bg-lightBlue-600 inline-flex items-center justify-center rounded-full shadow text-base text-white'],
+    ['btn-secondary', 'bg-gray-500 border border-transparent font-medium hover:bg-gray-600 inline-flex items-center justify-center rounded-full shadow text-base text-white'],
+    ['btn-tertiary', 'inline-flex items-center font-medium text-center text-white bg-blue-700 rounded-full hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'],
+    ['btn-text', 'text-gray-400 hover:bg-blue-700 hover:text-white rounded-full'],
+    ['btn-tag', 'bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-blue-400 border border-blue-400 hover:border-blue-600'],
+
+    ['btn-normal', 'md:px-10 md:py-2 md:text-lg px-8 py-3'],
+    ['btn-sm', 'px-6 py-2 text-sm'],
+    ['btn-xs', 'px-4 py-1 text-sm font-medium'],
+
     ['product-number','font-mono content-center flex flex-wrap flex-col content-start pr-5 bg-white'],
     ['main','text-gray-700 dark:text-gray-200 dark:bg-blue-700 pt-24 sm:pt-14 relative'],
     ['nav','bg-white dark:bg-black absolute sm:fixed w-full top-0 z-40 sm:z-30 max-w-screen'],
@@ -50,8 +67,6 @@ export default defineConfig({
     ['detail-row','text-sm mt-1 md:mt-4 mb-4 grid grid-cols-2 gap-4 sm:(grid-cols-details-desktop grid-flow-col auto-cols-max)'],
     ['product-thumb', 'h-full w-full object-cover object-center transform scale-100 group-hover:scale-110 absolute inset-0 will-change-transform bg-gray-100'],
     ['product-thumb--plp','aspect-ratio-[4/3] flex items-center flex justify-center mb-3 sm:mb-0 after:(content-empty bg-black bg-opacity-[.03] absolute w-full h-full top-0)'], //filter drop-shadow-sm
-    ['product-thumb--related', 'w-22 min-w-22 xl:w-30 xl:min-w-30 h-auto object-contain object-top bg-gray-100 aspect-[4/3] relative'],
-    ['product-thumb--carousel', 'w-60 min-w-60 sm:w-22 sm:min-w-22 xl:w-30 xl:min-w-30 h-auto object-contain object-top bg-gray-100 aspect-[4/3] relative'],
     ['product-link--related', 'relative flex w-full bg-white dark:bg-blue-901 after:absolute after:bg-lightBlue-500 after:w-full after:left-0 after:h-px after:-bottom-2 after:content-empty after:scale-x-0 after:transition-transform-300 after:origin-top-right hover:after:origin-top-left hover:after:scale-x-100'],
     ['btn', 'px-4 py-1 rounded inline-block bg-teal-600 text-white cursor-pointer hover:bg-teal-700 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50'],
     ['icon-btn', 'text-[0.9em] inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:(opacity-100 text-teal-600)'],
@@ -82,17 +97,15 @@ export default defineConfig({
     ['plp-desc','hidden sm:block col-span-3 md:col-span-1 md:col-start-3 relative px-2 sm:px-0'],
     ['plp-materials', 'text-xs md:text-sm text-gray-900 dark:text-gray-300 leading-tight font-textlight md:font-textregular whitespace-normal md:whitespace-pre-wrap'],
     ['plp-b-desc','whitespace-pre-wrap text-xs md:text-sm font-textlight leading-4 md:leading-5'],
-    ['category-tile', 'flex-wrap sm:flex-nowrap content-between w-64 min-w-64 lg:(w-28.57% min-w-28.57%) 2xl:(w-24.09% min-w-24.09%) 3xl:(w-19.60% min-w-19.60%) flex ml-1 lg:ml-1.5'],
     ['carousel-tile', 'w-52 min-w-52 flex ml-1 lg:ml-1.5'],
     ['category-carousel__link', 'uppercase ml-auto px-4 text-xs flex items-center mt-3 hover:underline'],
     ['adsbygoogle', 'w-full text-center'],
     ['search-container', 'mb-2 sm:mb-0'],
     ['l-main', 'text-gray-700 dark:text-gray-200 pt-24 sm:pt-14 bg-white dark:bg-blue-901'],
-    ['product-link', 'relative flex w-full bg-white pb-1 dark:bg-blue-901 after:absolute after:bg-lightBlue-500 after:w-[calc(100%-1rem)] after:left-0 after:h-px  after:top-[calc(100%-1px)] after:bottom-1 after:content-empty after:scale-x-0 after:transition-transform-300 after:origin-top-right hover:after:origin-top-left hover:after:scale-x-100'],
     ['category-section', 'pb-4 w-full bg-white mb-4 overflow-x-hidden flex flex-wrap max-w-full'],
     ['number-secondary', 'block absolute inset-0 text-gray-400 select-all bg-white dark:bg-blue-901'],
-    ['product-list', 'flex flex-wrap sm:block bg-white dark:bg-blue-901 sm:divide-y-1 sm:divide-solid divide-gray-200 dark:divide-white dark:divide-opacity-10 md:px-2 md:pl-4 mb-4 w-full bg-gray-100 dark:bg-gray-700 mb-auto']
-  
+    ['product-list', 'flex flex-wrap sm:block bg-white dark:bg-blue-901 sm:divide-y-1 sm:divide-solid divide-gray-200 dark:divide-white dark:divide-opacity-10 md:px-2 md:pl-4 mb-4 w-full bg-gray-100 dark:bg-gray-700 mb-auto'],
+    ['btn-prcode', 'relative inline-block text-center leading-none px-1 py-0.5 mr-1 cursor-pointer font-mono border-solid border-1 border-gray-200 select-none text-gray-500 last:mr-0 not-last:mr-2 not-last:after:content-[+] after:(text-blue-700 absolute w-4 pl-0.5)']
   ],
   theme: {
     colors: {

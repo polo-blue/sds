@@ -1,0 +1,39 @@
+---
+title: "ProductTile"
+layout: "../../layouts/MainLayout.astro"
+---
+import ProductTile from '../../components/ProductTile.astro'
+
+export const productObject = {
+  name: 'Combi-instrument MFA+',
+  url: 'https://google.com',
+  number: '6R0920870F',
+  photo: 'https://img.freepik.com/darmowe-wektory/tlo-retro-modeli-geometrycznych_52683-17902.jpg?w=1380&t=st=1706311337'
+}
+
+## ProductTile
+
+ProductTile - product link component which can be used for carousels, section with related products, recently added etc.
+
+<div class="component-preview">
+  <div class="flex flex-wrap bg-white w-full p-4 pb-0">
+
+      <ProductTile productObject={productObject} />
+      <ProductTile productObject={productObject} />
+      <ProductTile productObject={productObject} />
+      <ProductTile productObject={productObject} />
+      <ProductTile productObjec={productObject}t />
+      <ProductTile productObject={productObject} />
+  </div>
+</div>
+
+```js
+export const productObject = {
+  name: 'Combi-instrument MFA+',
+  url: 'https://google.com',
+  number: '6R0920870F',
+  photo: 'https://img.freepik.com/darmowe-wektory/tlo-retro-modeli-geometrycznych_52683-17902.jpg?w=1380&t=st=1706311337'
+}
+
+<ProductTile productObject={productObject} />
+```

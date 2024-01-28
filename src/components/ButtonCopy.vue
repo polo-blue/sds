@@ -8,13 +8,8 @@ import { PropType } from "vue";
 const props = defineProps({
     productNumber: {
         type: String,
-        default: null,
+        default: '',
         required: true,
-    },
-    copyDisabled: {
-        type: Boolean,
-        default: false,
-        required: false,
     },
     tooltipClasses: {
         type: String,
@@ -37,7 +32,7 @@ const { copy, copied, isSupported } = useClipboard({ source });
 
 
 <template>
-    <button v-if="!props.copyDisabled && isSupported" :aria-label="texts.copy"
+    <button v-if="isSupported" :aria-label="String(texts.copy)"
         class="btn-copy has-tooltip" @click="copy()">
         <span :class="`tooltip rounded-full btn-copy-text ${tooltipClasses}`" :data-text="!copied ? texts.copy : texts.copied" />
         <Icon icon="ph-copy-simple-light" class="leading-none w-full h-full" />

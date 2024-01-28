@@ -41,3 +41,31 @@ Find the code for this page in the `src/pages/components/jumbatron.mdx` file.
         </Button>
     </Jumbatron>
 ```
+
+## Jumbatron smaller
+
+<div class="component-preview">
+    <Jumbatron class="w-full" small>
+        <span slot="intro" set:html={`Lorem ipsum dolor sit amet, <span class=\"text-lightBlue-500\">consectetur</span> adipiscing elit.`} />
+        <p slot="subtitle"
+          class="mt-5 sm:mt-8 sm:flex sm:justify-center"
+          set:html="Nunc posuere massa eget turpis laoreet ultrices eget vel massa."
+        />
+    </Jumbatron>
+</div>
+
+```js
+    <Jumbatron small>
+        <span slot="intro" set:html="text-intro" />
+        <p slot="subtitle"
+          class="mt-5 sm:mt-8 sm:flex sm:justify-center"
+          set:html="subtitle"
+        />
+        <Button primary slot="cta"
+          href="#"
+          title="short text"
+        >
+         Read More
+        </Button>
+    </Jumbatron>
+```
