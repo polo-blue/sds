@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import HeadCommon from '../components/HeadCommon.astro';
 import HeadSEO from '../components/HeadSEO.astro';
 import Header from '../components/Header/Header.astro';
@@ -20,25 +21,24 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 		<HeadCommon />
 		<HeadSEO {content} canonicalURL={canonicalURL} />
 		<title>{content.title ? `${content.title} 🚀 ${CONFIG.SITE.title}` : CONFIG.SITE.title}</title>
+		<ViewTransitions />
 	</head>
 
 	<body class="bg-blue-50">
-		<div class="sticky top-0 z-10 w-full">
+		<div class="sticky top-0 z-20 w-full bg-white/70">
 			<Header currentPage={currentPage} />
 		</div>
 
 		<div class="flex bg-white z-10 mb-11 relative">
 			<div class="sticky top-0 flex lg:(h-screen w-64) z-50 ">
-				<div class="mr-auto  ">
+				<div class="mr-auto"  transition:name="sidebar">
 					<LeftSidebar currentPage={currentPage} />
 				</div>
 			</div>
 			<main class="pb-4 px-4 sm:px-8 col-auto sm:(pb-32) overflow-auto w-full">
-				<div>
-					<PageContent content={content}>
-						<slot />
-					</PageContent>
-				</div>
+				<PageContent content={content}  transition:name="content">
+					<slot />
+				</PageContent>
 			</main>
 		</div>
 		<footer>

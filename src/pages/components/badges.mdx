@@ -4,66 +4,52 @@ layout: "../../layouts/MainLayout.astro"
 ---
 import Badges from '../../components/Badges.vue'
 
-## Product badges
+# Product badges
+Extra product badges (labels).
 
-### Badge - GTI
+## Badges - GTI
 <div class="component-preview">
-        <div class="relative min-h-10">
-                <Badges badges={['GTI']} class="top-2" />
-        </div>
+    <div class="relative min-h-19">
+            <Badges badges={['GTI', 'Motorsport', 'Lorem Ipsum']} class="top-2" />
+    </div>
 </div>
 ```js
 <div class="relative min-h-10">
-        <Badges badges={['GTI']} class="top-2" />
+    <Badges badges={['GTI', 'Motorsport', 'Lorem Ipsum']} class="top-2" />
 </div>
 
 ```
 
 
-### Badge - Motorsport
+## Badge on image
 <div class="component-preview">
-        <div class="relative min-h-10">
-                <Badges badges={['Motorsport']} class="top-2" />
-        </div>
+<div class="relative">
+    <img src="https://placehold.co/300x200" alt="image alt" />
+    <Badges badges={['Motorsport']} class="top-2" />
+</div>
 </div>
 
 ```js
-<div class="relative min-h-10">
-        <Badges badges={['Motorsport']} class="top-2" />
+<div class="relative">
+    <img src="https://placehold.co/300x200" alt="image alt" />
+    <Badges badges={['Motorsport']} class="top-2" />
 </div>
 
 ```
 
 
-### Badge on image - Motorsport
+## Few badges on image
 <div class="component-preview">
 <div class="relative">
-        <img src="https://placehold.co/300x200" alt="image alt" />
-        <Badges badges={['Motorsport']} class="top-2" />
+    <img src="https://placehold.co/300x200" alt="image alt" />
+    <Badges badges={['Motorsport', 'Lorem ipsum', 'GTI']} class="top-2" />
 </div>
 </div>
 
 ```js
 <div class="relative">
-        <img src="https://placehold.co/300x200" alt="image alt" />
-        <Badges badges={['Motorsport']} class="top-2" />
-</div>
-
-```
-
-
-### Few badges on image
-<div class="component-preview">
-<div class="relative">
-        <img src="https://placehold.co/300x200" alt="image alt" />
-        <Badges badges={['Motorsport', 'Lorem ipsum', 'GTI']} class="top-2" />
-</div>
-</div>
-
-```js
-<div class="relative">
-        <img src="https://placehold.co/300x200" alt="image alt" />
-        <Badges badges={['Motorsport', 'Lorem ipsum', 'GTI']} class="top-2" />
+    <img src="https://placehold.co/300x200" alt="image alt" />
+    <Badges badges={['Motorsport', 'Lorem ipsum', 'GTI']} class="top-2" />
 </div>
 
 ```

@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-
 import { useClipboard } from "@vueuse/core";
-
 import { Icon } from "@iconify/vue";
 import { PropType } from "vue";
 
@@ -30,7 +28,6 @@ const { copy, copied, isSupported } = useClipboard({ source });
 
 </script>
 
-
 <template>
     <button v-if="isSupported" :aria-label="String(texts.copy)"
         class="btn-copy has-tooltip" @click="copy()">
@@ -40,7 +37,6 @@ const { copy, copied, isSupported } = useClipboard({ source });
 </template>
 
 <style>
-
 .tooltip {
     @apply invisible absolute;
   }
@@ -48,5 +44,4 @@ const { copy, copied, isSupported } = useClipboard({ source });
   .has-tooltip:hover .tooltip {
       @apply visible z-50;
   }
-
 </style>

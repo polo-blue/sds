@@ -1,0 +1,4 @@
+exclude_selectors:
+  - "code"
+  - ".component-preview"
+  - "pre"

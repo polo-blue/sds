@@ -4,7 +4,7 @@ layout: "../../layouts/MainLayout.astro"
 ---
 import Image from '../../components/Image.astro'
 
-## Image
+# Image
 
 Image converted to AVIF format and resized.
 AVIF compresses images significantly better than older-generation formats such as WebP and JPEG.
@@ -27,7 +27,7 @@ You can choose the image format you need so that you do not unnecessarily load a
 Use `.img--overlay` class for images on white background to make a layer with light grey overlay.
 
 
-### Small Image
+## Small Image
 `.img--small`
 
 <div class="component-preview">
@@ -126,7 +126,7 @@ Use `.img--overlay` class for images on white background to make a layer with li
 ```
 
 
-### Medium Image
+## Medium Image
 `.img--medium`
 
 <div class="component-preview">
@@ -215,7 +215,7 @@ Use `.img--overlay` class for images on white background to make a layer with li
   </a>
 ```
 
-### Responsive Image with srcset
+## Responsive Image with srcset
 - https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#resolution_switching_different_sizes
 
 <div class="component-preview">
@@ -252,10 +252,22 @@ Use `.img--overlay` class for images on white background to make a layer with li
 
 
 
-### Image Aspect Ratios
+## Image Aspect Ratios
 
 Image ratio, also known as aspect ratio, is how wide an image is in relation to how tall it is. 
 For viewing on a mobile device, the recommended image ratio is 1:1 (a square picture). 
+
+#
+Ready-made CSS classes:
+
+- `img--1/1`
+- `img--2/3`
+- `img--3/1`
+- `img--3/2`
+- `img--3/4`
+- `img--4/3`
+- `img--16/9`
+
 
 <div class="component-preview">
    <div class="columns-2 lg:columns-4 w-full">
