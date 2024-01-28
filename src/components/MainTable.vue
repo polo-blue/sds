@@ -11,8 +11,6 @@ const capitalizeFirstLetter = (text: String) => {
 
 </script>
 
-
-
 <template>
   <table class="table-auto text-left border bg-white shadow-md">
     <thead class="bg-gray-500 text-white">

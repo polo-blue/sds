@@ -18,7 +18,6 @@ const props = defineProps<{
 }>();
 
 const tag = props.href && props.href.length ? 'a' : 'button'
-
 const classes = {
   "btn-primary": props.primary,
   "btn-primary-outline": props.primaryOutline,
@@ -33,13 +32,10 @@ const classes = {
   "btn-normal": !props.small && !props.medium,
   "rounded-full": props.rounded
 };
-
-
 </script>
 
-
 <template>
-  <component  :is="tag" :class="classes" :href="props.href" :title="props.title ? props.title : null">
+  <component :is="tag" :class="classes" :href="props.href" :title="props.title ? props.title : null">
     <slot></slot>
   </component>
 </template>

@@ -20,7 +20,8 @@ const props = defineProps({
 </script>
 
 <template>
-    <span data-pagefind-filter="PR-Code" class="btn-prcode " :class="`btn-prcode--${props.prcode} ${props.isPdp ? ' btn-prcode--pdp' : ''}`">
+    <span data-pagefind-filter="PR-Code" class="btn-prcode "
+        :class="`btn-prcode--${props.prcode} ${props.isPdp ? ' btn-prcode--pdp' : ''}`">
         {{ props.prcode }}
     </span>
 </template>

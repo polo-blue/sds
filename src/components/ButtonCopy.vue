@@ -29,9 +29,9 @@ const { copy, copied, isSupported } = useClipboard({ source });
 </script>
 
 <template>
-    <button v-if="isSupported" :aria-label="String(texts.copy)"
-        class="btn-copy has-tooltip" @click="copy()">
-        <span :class="`tooltip rounded-full btn-copy-text ${tooltipClasses}`" :data-text="!copied ? texts.copy : texts.copied" />
+    <button v-if="isSupported" :aria-label="String(texts.copy)" class="btn-copy has-tooltip" @click="copy()">
+        <span :class="`tooltip rounded-full btn-copy-text ${tooltipClasses}`"
+            :data-text="!copied ? texts.copy : texts.copied" />
         <Icon icon="ph-copy-simple-light" class="leading-none w-full h-full" />
     </button>
 </template>
@@ -39,9 +39,9 @@ const { copy, copied, isSupported } = useClipboard({ source });
 <style>
 .tooltip {
     @apply invisible absolute;
-  }
-  
-  .has-tooltip:hover .tooltip {
-      @apply visible z-50;
-  }
+}
+
+.has-tooltip:hover .tooltip {
+    @apply visible z-50;
+}
 </style>

@@ -1,43 +1,58 @@
 ---
-import HeadCommon from '../components/HeadCommon.astro';
-import HeadSEO from '../components/HeadSEO.astro';
-import * as CONFIG from '../config';
+import HeadCommon from "../components/HeadCommon.astro";
+import HeadSEO from "../components/HeadSEO.astro";
+import * as CONFIG from "../config";
 import { t, changeLanguage } from "i18next";
-import '../styles/main.scss';
-import Copyright from '../components/Copyright.astro'
+import "../styles/main.scss";
+import Copyright from "../components/Copyright.astro";
 const locale = "en";
 changeLanguage(locale);
 const { content = {} } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
-<html dir={content.dir ?? 'ltr'} lang={content.lang ?? 'en-us'} class="initial">
-	<head>
-		<HeadCommon />
-		<HeadSEO {content} canonicalURL={canonicalURL} />
-		<title>{content.title ? `${content.title} 🚀 ${CONFIG.SITE.title}` : CONFIG.SITE.title}</title>
-	</head>
+<html dir={content.dir ?? "ltr"} lang={content.lang ?? "en-us"} class="initial">
+  <head>
+    <HeadCommon />
+    <HeadSEO {content} canonicalURL={canonicalURL} />
+    <title>
+      {
+        content.title
+          ? `${content.title} 🚀 ${CONFIG.SITE.title}`
+          : CONFIG.SITE.title
+      }
+    </title>
+  </head>
 
-	<body class="bg-blue-50">
-
-
-		<div class=" bg-white z-10 mb-11 relative">
-			<slot />
-		</div>
-		<footer>
-			<Copyright class="fixed bottom-0 z-0 w-full">
-				<a slot="middle-item"  href={`https://spoko.space`} target="_blank" rel="follow noopener" class="flex my-auto items-center mx-auto" title={`Proudly made in Poland by ${import.meta.env.COPYRIGHT_DOMAIN}`}>
-				  <div class="text-xxs md:text-xs mr-1 mt-0.5 whitespace-nowrap">createdy by</div>
-				  <img
-					class="h-4 md:h-5 w-min"
-					src="spoko.space.svg"
-					alt="Modern Websites"
-					width="126"
-					height="23"
-					loading="lazy"
-				  >
-				</a>
-			  </Copyright>
-		</footer>
-	</body>
+  <body class="bg-blue-50">
+    <div class="bg-white z-10 mb-11 relative">
+      <slot />
+    </div>
+    <footer>
+      <Copyright class="fixed bottom-0 z-0 w-full">
+        <a
+          slot="middle-item"
+          href={`https://spoko.space`}
+          target="_blank"
+          rel="follow noopener"
+          class="flex my-auto items-center mx-auto"
+          title={`Proudly made in Poland by ${
+            import.meta.env.COPYRIGHT_DOMAIN
+          }`}
+        >
+          <div class="text-xxs md:text-xs mr-1 mt-0.5 whitespace-nowrap">
+            createdy by
+          </div>
+          <img
+            class="h-4 md:h-5 w-min"
+            src="spoko.space.svg"
+            alt="Modern Websites"
+            width="126"
+            height="23"
+            loading="lazy"
+          />
+        </a>
+      </Copyright>
+    </footer>
+  </body>
 </html>

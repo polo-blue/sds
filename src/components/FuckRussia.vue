@@ -21,7 +21,7 @@
 
 <style lang="scss">
 .bg-ukraine {
-  background: linear-gradient(180deg, #0066cc 56%, rgba(255,204,0,1) 44%);
+  background: linear-gradient(180deg, #0066cc 56%, rgba(255, 204, 0, 1) 44%);
 }
 
 .animate-bull {
@@ -49,17 +49,32 @@
 }
 
 @keyframes AnimateBull1 {
-  0% {transform: translate(14px,0px);}
-  100% {transform: translate(86px,0px);}
+  0% {
+    transform: translate(14px, 0px);
+  }
+
+  100% {
+    transform: translate(86px, 0px);
+  }
 }
 
 @keyframes AnimateBull2 {
-  0% {transform: translate(38px,0px);}
-  100% {transform: translate(80px,0px);}
+  0% {
+    transform: translate(38px, 0px);
+  }
+
+  100% {
+    transform: translate(80px, 0px);
+  }
 }
 
 @keyframes AnimateBull3 {
-  0% {transform: translate(62px,0px);}
-  100% {transform: translate(88px,0px);}
+  0% {
+    transform: translate(62px, 0px);
+  }
+
+  100% {
+    transform: translate(88px, 0px);
+  }
 }
 </style>
