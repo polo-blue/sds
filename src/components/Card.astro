@@ -1,11 +1,11 @@
 ---
-const { class: className, imgSrc, imgAlt } = Astro.props;
+const { class: className, imgSrc, imgAlt, href } = Astro.props;
 
 import Image from '../components/Image.astro'
 ---
 
 <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 overflow-hidden">
-    <a href="#" class="aspect-ratio-video block relative">
+    <a href={href} class="aspect-ratio-video block relative">
         { imgSrc && (
           <Image
             imageObject={

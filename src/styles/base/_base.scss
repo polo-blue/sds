@@ -1,5 +1,7 @@
 :root {
   --primary: #{$blue};
+  --secondary: #{$gray-500}
+  --tertiary: #{$verydarkblue};
 }
 
 * {
@@ -26,7 +28,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
     border-radius: 0;
-    background-color: $blue;
+    background-color: var(--primary);
 }
 
 *:focus {
@@ -70,13 +72,13 @@ html {
     }
   
     &::-webkit-scrollbar-thumb {
-      background-color: $primary; /* color of the scroll thumb */
+      background-color: var(--primary); /* color of the scroll thumb */
       border-radius: 0; /* roundness of the scroll thumb */
       border: 0 solid #00437A; /* creates padding around scroll thumb */
     }
   
     scrollbar-width: thin;
-    scrollbar-color: $primary #00437A;
+    scrollbar-color: var(--primary) #00437A;
   }
 
   
@@ -84,7 +86,7 @@ html {
 :root {
     // --swiper-navigation-color: #0099da;
     --swiper-navigation-size: 22px;
-    --swiper-scrollbar-drag-bg-color: #0099da;
+    --swiper-scrollbar-drag-bg-color: var(--primary);
     --swiper-scrollbar-size: 1px;
     --swiper-scrollbar-bottom: 0px;
   }
@@ -163,4 +165,11 @@ html {
 
 svg {
   color: var(--primary);
+}
+
+.btn-primary,
+.btn-secondary {
+  svg {
+    color: #fff;
+  }
 }

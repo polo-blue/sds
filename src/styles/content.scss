@@ -18,16 +18,14 @@
     }
     &>h3 {
       font-size: 15pt;
-      font-weight: 600;
     }
     &>h4 {
       font-size: 13pt;
     }
-  }
- 
-  p {
-    // margin-top: 0.77rem;
-    // color: theme("colors.slate.600");
+
+    ul {
+      @apply list-disc pl-5
+    }
   }
 
   code {
@@ -36,7 +34,7 @@
   }
 
   .component-preview {
-    @apply bg-blue-600 bg-opacity-5 px-0 py-4 mx-0 sm:(p-8) flex items-center;
+    @apply bg-blue-600 bg-opacity-5 px-0 py-4 mx-0 flex items-center sm:(p-8);
     gap: 1rem;
     border-radius: 0.33rem;
     border: 1px solid theme("colors.slate.200");
@@ -48,7 +46,6 @@
     border-radius: 0.44rem;
   }
 }
-
 
 table {
   @apply table-auto text-left border bg-white shadow-md;

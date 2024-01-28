@@ -5,11 +5,13 @@ layout: "../../layouts/MainLayout.astro"
 import Jumbatron from '../../components/Jumbatron.vue'
 import Button from '../../components/Button.vue'
 
-## Jumbatron
+# Jumbatron
 
-This page is an example on how to document your button components, most of the copy was written by AI so don't take it very seriously.
+A jumbotron indicates a big box for calling extra attention to some special content or information.
 
 Find the code for this page in the `src/pages/components/jumbatron.mdx` file.
+
+## Jumbatron - classic
 <div class="component-preview">
     <Jumbatron class="w-full">
         <span slot="intro" set:html={`Lorem ipsum dolor sit amet, <span class=\"text-lightBlue-500\">consectetur</span> adipiscing elit.`} />
@@ -42,7 +44,7 @@ Find the code for this page in the `src/pages/components/jumbatron.mdx` file.
     </Jumbatron>
 ```
 
-## Jumbatron smaller
+## Small Jumbatron
 
 <div class="component-preview">
     <Jumbatron class="w-full" small>

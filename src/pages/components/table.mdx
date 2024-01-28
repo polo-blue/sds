@@ -5,15 +5,47 @@ layout: "../../layouts/MainLayout.astro"
 ---
 
 import MainTable from '../../components/MainTable.vue'
+export const tableData = [
+  {
+    id: 1,
+    name: "Lorem Ipsum",
+    email: "lorem@email.com",
+  },
+  {
+    id: 2,
+    name: "Chuck Norris",
+    email: "ipsum@email.com",
+  },
+  {
+    id: 3,
+    name: "Ipsum Lorem",
+    email: "lorem@email.com",
+  }
+];
+
+export const tableDataSecondary = [
+  {
+    name: "Lorem Ipsum",
+    email: "lorem@email.com",
+  },
+  {
+    name: "Chuck Norris",
+    email: "ipsum@email.com",
+  },
+  {
+    name: "Ipsum Lorem",
+    email: "lorem@email.com",
+  }
+];
 
 
-## Primary table
+# Table
 
 <div class="component-preview">
-    <MainTable></MainTable>
+    <MainTable data={tableData}></MainTable>
 </div>
 
-### Code
+## Code
 
 ```ts
 const tableData = [
@@ -34,6 +66,42 @@ const tableData = [
   }
 ];
 
+```
 
-<MainTable :data="data"></MainTable>
+```html
+  <!-- Astro -->
+  <MainTable data={tableData} />
+
+  <!-- Vue -->
+  <MainTable :data="tableData" />
+```
+
+
+
+# Table
+
+<div class="component-preview">
+    <MainTable data={tableDataSecondary} />
+</div>
+
+## Code
+
+```ts
+const tableDataSecondary = [
+  {
+    name: "Lorem Ipsum",
+    email: "lorem@email.com",
+  },
+  {
+    name: "Chuck Norris",
+    email: "ipsum@email.com",
+  },
+  {
+    name: "Ipsum Lorem",
+    email: "lorem@email.com",
+  }
+];
+
+
+<MainTable data={tableDataSecondary} />
 ```

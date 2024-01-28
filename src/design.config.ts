@@ -5,6 +5,10 @@ export const COLORS = {
     { name: "300", value: "#b5bbc5" },
     { name: "400", value: "#9ca3af" },
     { name: "500", value: "#64748B" },
+    { name: "600", value: "#475569" },
+    { name: "700", value: "#334155" },
+    { name: "800", value: "#1e293b" },
+    { name: "900", value: "#0f172a" },
   ],
   blue: [
     { name: "50", value: "#eff6ff" },

@@ -38,6 +38,7 @@ export const SIDEBAR = [
   { text: "PostHeader", link: "/components/post-header" },
   { text: "PR-Code", link: "/components/pr-code" },
   { text: "Product Number", link: "/components/product-number" },
+  { text: "Product Tile", link: "/components/product-tile" },
   { text: "Table", link: "/components/table" },
 
   { text: "Extras", header: true },

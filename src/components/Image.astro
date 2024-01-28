@@ -2,9 +2,7 @@
 import { Image } from 'astro:assets'
 
 const { imageObject } = Astro.props;
-
 let inputProps = {};
-
 
 if (imageObject.index && imageObject.index === 1) {
   inputProps['data-pagefind-meta'] = 'image[src], image_alt[alt]';

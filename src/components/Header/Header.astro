@@ -2,6 +2,7 @@
 import { SITE } from "../../config";
 import SkipToContent from "./SkipToContent.astro";
 import { MenuIcon } from "astro-navbar";
+import Search from "astro-pagefind/components/Search";
 ---
 
 <header
@@ -15,6 +16,17 @@ import { MenuIcon } from "astro-navbar";
     <div class="flex flex-nowrap">
       <MenuIcon class="w-4 h-4 text-gray-800 lg:hidden mr-4" />
       <a class="text-2xl font-medium block font-textbold" href="/"> SDS</a>
+      <Search
+        transition:persist
+        transition:name="search-field"
+        className="search-container"
+        id="search"
+        uiOptions={{
+          showImages: false,
+          showFilters: false,
+          resetStyles: true,
+        }}
+      />
     </div>
     <div class="flex gap-2">
       {
@@ -42,3 +54,163 @@ import { MenuIcon } from "astro-navbar";
     </div>
   </nav>
 </header>
+
+<style lang="scss" is:global>
+  #search {
+    @apply ml-6;
+
+    &.search-container {
+      box-sizing: border-box;
+      @apply h-10;
+      @apply h-10 border-0 border-gray-800 rounded-3xl;
+    }
+    .pagefind-ui {
+
+      @apply font-textlight text-base;
+      
+      &__search-input {
+        height: 40px !important;
+        border: 0;
+        @apply rounded-none sm-rounded-3xl h-10 w-full;
+      }
+
+      &__result-excerpt,
+      __button {
+        font-size: 14px !important;
+      }
+
+      &__filter-name {
+        font-size: 12px !important;
+      }
+      &__drawer:not(.pagefind-ui__hidden) {
+        @apply p-4;
+      }
+
+      &__result-link {
+        color: var(--pagefind-ui-primary);
+        // font-family: 'vw_headregular';
+        font-family: vw_headlight;
+        font-size: 1rem;
+
+        &:before {
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          content: "";
+          position: absolute;
+        }
+      }
+
+      &__result-excerpt {
+        color: var(--pagefind-ui-text);
+        order: 3;
+      }
+
+      &__drawer {
+        @apply bg-white md-position-fixed shadow-lg rounded-b-lg border-t border-t-transparent overflow-auto top-17 md:max-w-[calc(100vw-10%)] max-h-[calc(100vh-10%)];
+        gap: 30px;
+      }
+
+      &__search-clear {
+        height: 38px;
+        top: 0;
+        @apply sm-rounded-3xl;
+      }
+
+      &__search-input {
+        font-size: 1rem;
+        font-weight: 400;
+        padding: 0 2.5rem 2px;
+      }
+
+      &__form {
+        &:before {
+          top: 14px;
+          left: 16px;
+          width: 14px;
+          height: 14px;
+        }
+      }
+
+      &__result {
+        padding: 0.875rem 0;
+        gap: 1rem;
+        @apply position-relative;
+      }
+
+      &__filter-block {
+        padding: 0.875rem 0;
+        border-width: 1px;
+      }
+
+      &__filter-group {
+        gap: 0.5rem;
+        padding-top: 0.875rem;
+      }
+
+      &__filter-value {
+        gap: 10px;
+      }
+
+      &__filter-checkbox {
+        border-radius: 3px;
+        margin-top: 1px;
+        min-width: calc(16px * var(--pagefind-ui-scale));
+      }
+
+      &__result-image {
+        @apply drop-shadow-sm w-full h-full object-contain rounded-none;
+      }
+
+      &__filter-panel {
+        // min-width: 220px;
+        @apply hidden;
+      }
+
+      &__filter-label {
+        font-size: 0.9rem;
+      }
+
+      &__button {
+        font-weight: 400;
+        height: 40px;
+      }
+
+      &__result-tag {
+        background: inherit;
+        padding: 0;
+        color: #9ca3af;
+      }
+
+      &__result-thumb {
+        max-width: 120px;
+      }
+
+      &__result-tags {
+        margin-top: 0.4rem;
+        order: 2;
+      }
+
+      &__filter-name {
+        &:after {
+          color: var(--pagefind-ui-primary);
+        }
+      }
+
+      &__result-title {
+        font-size: inherit;
+        line-height: 1;
+      }
+
+      &__filter-panel,
+      &__results-area {
+        margin-top: 0;
+      }
+
+      &__message {
+        padding: 0.875rem 0;
+      }
+    }
+  }
+</style>

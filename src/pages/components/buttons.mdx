@@ -7,27 +7,43 @@ import ButtonCopy from '../../components/ButtonCopy.vue'
 import { Icon } from 'astro-icon/components';
 import { t } from "i18next";
 
-## All buttons
+# All buttons
 
 This page is an example on how to document your button components, most of the copy was written by AI so don't take it very seriously.
 
 Find the code for this page in the `src/pages/components/buttons.md` file.
 
-<div class="component-preview">
-    <Button primary>Primary</Button>
-    <Button secondary>Secondary</Button>
-    <Button tertiary>Tertiary</Button>
-    
-    <Button text medium>Text</Button>
-    <Button tag small>Tag Name</Button>
+<div class="component-preview flex-wrap">
+    <div class="flex w-full gap-4 items-center">
+        <Button primary>Primary</Button>
+        <Button secondary>Secondary</Button>
+        <Button tertiary>Tertiary</Button>
+        
+        <Button text medium>Text</Button>
+        <Button tag small>Tag Name</Button>
+    </div>
+    <div class="flex w-full gap-4 items-center">
+        <Button primary rounded>Primary</Button>
+        <Button secondary rounded>Secondary</Button>
+        <Button tertiary rounded>Tertiary</Button>
+        
+        <Button text medium rounded>Text</Button>
+        <Button tag small rounded>Tag Name</Button>
+    </div>
 </div>
 
 ```js
-    <Button primary>Primary</Button>
-    <Button secondary>Secondary</Button>
-    <Button tertiary>Tertiary</Button>
-    <Button text medium>Text</Button>
-    <Button tag small>Tag Name</Button>
+<Button primary>Primary</Button>
+<Button secondary>Secondary</Button>
+<Button tertiary>Tertiary</Button>
+<Button text medium>Text</Button>
+<Button tag small>Tag Name</Button>
+
+<Button primary rounded>Primary</Button>
+<Button secondary rounded>Secondary</Button>
+<Button tertiary rounded>Tertiary</Button>
+<Button text medium rounded>Text</Button>
+<Button tag small rounded>Tag Name</Button>
 ```
 
 ## Primary button `<button>`
@@ -127,6 +143,83 @@ Text buttons are used for actions that do not require a primary or secondary but
         <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl -my-1 -mr-1" />
     </Button>
 
+```
+
+## Rounded button
+
+Rounded edges
+
+<div class="component-preview flex-wrap">
+    <div class="flex w-full gap-4 items-center">
+        <Button primary rounded>Primary</Button>
+        <Button secondary rounded>Secondary</Button>
+        <Button tertiary rounded>Tertiary</Button>
+        
+        <Button text rounded>Text</Button>
+        <Button tag rounded>Tag Name</Button>
+    </div>
+    <div class="flex w-full gap-4 items-center">
+        <Button primary medium rounded>Primary</Button>
+        <Button secondary medium rounded>Secondary</Button>
+        <Button tertiary medium rounded>Tertiary</Button>
+        
+        <Button text medium rounded>Text</Button>
+        <Button tag medium rounded>Tag Name</Button>
+    </div>
+    <div class="flex w-full gap-4 items-center">
+        <Button primary small rounded>Primary</Button>
+        <Button secondary small rounded>Secondary</Button>
+        <Button tertiary small rounded>Tertiary</Button>
+        
+        <Button text medium small rounded>Text</Button>
+        <Button tag small small rounded>Tag Name</Button>
+    </div>
+</div>
+
+```js
+<Button primary rounded>Primary</Button>
+<Button secondary rounded>Secondary</Button>
+<Button tertiary rounded>Tertiary</Button>
+<Button text medium rounded>Text</Button>
+<Button tag small rounded>Tag Name</Button>
+
+<Button primary medium rounded>Primary</Button>
+<Button secondary medium rounded>Secondary</Button>
+<Button tertiary medium rounded>Tertiary</Button>
+<Button text medium medium rounded>Text</Button>
+<Button tag small medium rounded>Tag Name</Button>
+
+<Button primary small rounded>Primary</Button>
+<Button secondary small rounded>Secondary</Button>
+<Button tertiary small rounded>Tertiary</Button>
+<Button text medium small rounded>Text</Button>
+<Button tag small small rounded>Tag Name</Button>
+```
+
+## Outline button
+
+Text buttons are used for actions that do not require a primary or secondary button.
+
+<div class="component-preview">
+    <Button primary-outline title="Title">Text button</Button>
+    <Button primary-outline rounded title="Title">Text button</Button>
+
+    <Button secondary-outline title="Title">Text button</Button>
+    <Button secondary-outline rounded title="Title">Text button</Button>
+
+    <Button tertiary-outline title="Title">Text button</Button>
+    <Button tertiary-outline rounded title="Title">Text button</Button>
+</div>
+
+```js
+    <Button primary-outline title="Title">Text button</Button>
+    <Button primary-outline rounded title="Title">Text button</Button>
+
+    <Button secondary-outline title="Title">Text button</Button>
+    <Button secondary-outline rounded title="Title">Text button</Button>
+
+    <Button tertiary-outline title="Title">Text button</Button>
+    <Button tertiary-outline rounded title="Title">Text button</Button>
 ```
 
 
