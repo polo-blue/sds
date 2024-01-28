@@ -42,7 +42,7 @@ const likes = {
             </span>
           </a>
         </div>
-        <div class="hidden sm:block sm:ml-6">
+        <div class="hidden sm:(block ml-6)">
           <div class="flex space-x-4" itemprop="hasPart">
             <a
               href={`https://polo.blue${locale === "pl" ? "/pl" : ""}`}
@@ -55,7 +55,7 @@ const likes = {
       </div>
 
       <div
-        class="relative md:block sm:ml-4 w-full sm:w-64 sm:mr-auto order-4 sm:order-2 h-10"
+        class="relative w-full order-4 h-10 md:(w-64 ml-4 mr-auto order-2 block)"
       >
         <Search
           id="search"
@@ -84,7 +84,7 @@ const likes = {
       </div>
 
       <div
-        class="flex items-center pr-0 sm:static sm:inset-auto ml-auto sm:ml-6 -mr-2 dark:text-gray-400 print:hidden order-3 sm:order-3 w-20 justify-end"
+        class="flex items-center pr-0 ml-auto sm:ml-6 -mr-2 dark:text-gray-400 print:hidden order-3 w-20 justify-end md:(static inset-auto order-3)"
         itemprop="hasPart"
         itemscope
         itemtype="http://schema.org/SiteNavigationElement"

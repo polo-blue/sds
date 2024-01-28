@@ -1,0 +1,40 @@
+---
+title: "Card"
+layout: "../../layouts/MainLayout.astro"
+---
+import Button from '../../components/Button.vue';
+import Card from '../../components/Card.astro'
+import { Icon } from 'astro-icon/components';
+import Image from '../../components/Image.astro'
+
+## Card
+
+Card - product link component which can be used for carousels, section with related products, recently added etc.
+
+<div class="component-preview">
+  <div class="grid grid-cols-3 gap-8 w-full" itemscope itemtype="https://schema.org/ItemList">
+    <Card imgAlt="Image Alt" imgSrc="https://img.freepik.com/free-photo/beautiful-green-landscape-with-plantations-trees-cloudy-sky_181624-42918.jpg?w=826&t=st=1706315168~exp=1706315768~hmac=ed7872d0924dbda4322a3d346eef282edd77db3673fc209c933b02e37c29f9ac" >
+        <a href="#">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white leading-none">Lorem Ipsum</h5>
+        </a>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          Magna magna mollit esse incididunt deserunt eiusmod ad id ullamco cupidatat laborum enim nostrud. Irure officia occaecat adipisicing amet labore et incididunt exercitation. Consequat aliqua excepteur duis dolore cupidatat.
+        </p>
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-2xl font-bold text-gray-900 dark:text-white">€599.00</span>
+        </div>
+        <Button tertiary href="#">
+          Read more
+          <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl leading-none" />
+        </Button>
+    </Card>
+  </div>
+</div>
+
+```html
+<div class="grid grid-cols-3 gap-8 w-full" itemscope itemtype="https://schema.org/ItemList">
+
+</div>
+```
+
+

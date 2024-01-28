@@ -1,7 +1,10 @@
 # Spoko Design System
 
-SDS is the easiest way to start your our design system. Since Astro is compatible with many frameworks, you can import your components and document them right in the markdown files.
+SDS is the easiest way to start websites with simple design system. Since Astro is compatible with many frameworks, you can import your components and document them right in the markdown files.
 The project is still in the development phase, use at your own risk ;-)
+#
+Please feel free to fork it, edit it and let me know what do you think about it.
+
 
 
 | title       | Introduction                   |
