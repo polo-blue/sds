@@ -39,3 +39,19 @@ const classes = {
     <slot></slot>
   </component>
 </template>
+
+<style lang="scss">
+.btn-primary,
+.btn-secondary {
+  svg {
+    color: #fff;
+  }
+}
+
+.btn-tertiary {
+  svg {
+    color: var(--primary);
+  }
+}
+
+</style>
