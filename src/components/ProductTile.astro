@@ -1,6 +1,5 @@
 ---
 const { productObject, locale, index } = Astro.props;
-import i18next, { t } from "i18next";
 import Image from "./Image.astro"
 import ProductNumber from "./ProductNumber.astro"
 
@@ -9,7 +8,6 @@ import ProductNumber from "./ProductNumber.astro"
 { productObject && 
   (
 
-  <div  class="flex flex-wrap sm:flex-nowrap content-between w-64 md:(w-96 min-w-96) ml-1 lg:ml-1.5 relative bg-white mb-4 underline-on-hover">
     <!-- product image -->
     <div class="img--4/3 img--small">
       { productObject.photo !== null ?
@@ -45,8 +43,6 @@ import ProductNumber from "./ProductNumber.astro"
         <meta itemprop="name" content={productObject.name} /> )
       }
     </div>
-
-  </div>
 
 )}
 

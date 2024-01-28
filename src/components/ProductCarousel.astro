@@ -1,0 +1,48 @@
+---
+import ProductTile from "../components/ProductTile.astro";
+export const productObject = {
+  name: "Combi-instrument MFA+",
+  url: "https://google.com",
+  number: "6R0920870F",
+  photo:
+    "https://img.freepik.com/darmowe-wektory/tlo-retro-modeli-geometrycznych_52683-17902.jpg?w=1380&t=st=1706311337",
+};
+---
+
+<div class="bg-white rounded-lg p-4 w-full">
+  <swiper-container
+    class="flex w-full max-w-full"
+    grid-rows="1"
+    mousewheel-force-to-axis="true"
+    navigation="false"
+    scrollbar="false"
+    slides-per-view="auto"
+    space-between="0"
+  >
+    <swiper-slide
+      class="carousel-product-tile"
+    >
+      <ProductTile productObject={productObject} />
+    </swiper-slide>
+    <swiper-slide
+      class="carousel-product-tile"
+    >
+      <ProductTile productObject={productObject} />
+    </swiper-slide>
+    <swiper-slide
+      class="carousel-product-tile"
+    >
+      <ProductTile productObject={productObject} />
+    </swiper-slide>
+    <swiper-slide
+      class="carousel-product-tile"
+    >
+      <ProductTile productObject={productObject} />
+    </swiper-slide>
+    <swiper-slide
+      class="carousel-product-tile"
+    >
+      <ProductTile productObject={productObject} />
+    </swiper-slide>
+  </swiper-container>
+</div>
