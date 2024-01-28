@@ -27,6 +27,7 @@ export const SIDEBAR = [
   { text: "Breadcrumbs", link: "/components/breadcrumbs" },
   { text: "Buttons", link: "/components/buttons" },
   { text: "Card", link: "/components/card" },
+  { text: "Carousel", link: "/components/carousel" },
   { text: "Copyright", link: "/components/copyright" },
   { text: "HandDrive", link: "/components/hand-drive" },
   { text: "Headline", link: "/components/headline" },

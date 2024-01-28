@@ -3,6 +3,7 @@ title: "Carousel"
 layout: "../../layouts/MainLayout.astro"
 ---
 import Carousel from '../../components/Carousel.astro'
+import ProductCarousel from '../../components/ProductCarousel.astro'
 
 # Carousel
 
@@ -13,8 +14,49 @@ Carousel - modern carousel based on Swiper Element (Web Component)
 </div>
 
 ```js
-     <Carousel />
+<swiper-container
+  class="max-w-full w-full flex overflow-hidden"
+  grid-rows="1"
+  mousewheel-force-to-axis="true"
+  navigation="true"
+  pagination-type="fraction"
+  scrollbar="false"
+  slides-per-view="auto"
+  space-between="0"
+>
+  <swiper-slide class="bg-blue-50 p-12 border-1 min-w-full">A</swiper-slide>
+  <swiper-slide class="bg-blue-100 p-12 border-1 min-w-full">B</swiper-slide>
+  <swiper-slide class="bg-blue-200 p-12 border-1 min-w-full">C</swiper-slide>
+  <swiper-slide class="bg-blue-300 p-12 border-1 min-w-full">D</swiper-slide>
+  <swiper-slide class="bg-blue-400 p-12 border-1 min-w-full">A</swiper-slide>
+</swiper-container>
 ```
 #
 
 Find the code for this page in the `src/pages/components/carousel.mdx` file.
+
+
+## Product Carousel
+<div class="component-preview">
+  <ProductCarousel />
+</div>
+```html
+<div class="bg-white rounded-lg p-4 w-full">
+  <swiper-container
+    class="flex w-full max-w-full"
+    grid-rows="1"
+    mousewheel-force-to-axis="true"
+    navigation="false"
+    scrollbar="false"
+    slides-per-view="auto"
+    space-between="0"
+  >
+    <swiper-slide
+      class="carousel-product-tile"
+    >
+      <ProductTile productObject={productObject} />
+    </swiper-slide>
+    ...
+  </swiper-container>
+</div>
+```

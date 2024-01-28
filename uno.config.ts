@@ -41,7 +41,7 @@ export default defineConfig({
     ['img--small', 'w-60 sm:(w-22) xl:(w-30)'],
     ['img--medium', 'w-60'],
     ['underline-on-hover', 'relative flex w-full bg-white pb-1 dark:bg-blue-901 after:absolute after:bg-lightBlue-500 after:w-[calc(100%-1rem)] after:left-0 after:h-px  after:top-[calc(100%-1px)] after:bottom-1 after:content-empty after:scale-x-0 after:transition-transform-300 after:origin-top-right hover:after:origin-top-left hover:after:scale-x-100'],
-
+    ['carousel-product-tile', 'flex flex-wrap sm:flex-nowrap content-between w-64 min-w-64 lg:(w-28.57% min-w-28.57%) 2xl:(w-24.09% min-w-24.09%) relative'],
     ['btn-primary', 'bg-lightBlue-500 border border-transparent font-medium hover:bg-lightBlue-600 inline-flex items-center justify-center shadow text-base text-white'],
     ['btn-primary-outline', 'border-lightBlue-500 border font-medium inline-flex items-center justify-center shadow text-base text-lightBlue-500 transition-all hover:(bg-lightBlue-500 text-white)'],
     ['btn-secondary', 'bg-gray-500 border border-transparent font-medium hover:bg-gray-600 inline-flex items-center justify-center shadow text-base text-white'],

@@ -1,19 +1,23 @@
 ---
-
+export const productObject = {
+  name: "Combi-instrument MFA+",
+  url: "https://google.com",
+  number: "6R0920870F",
+  photo:
+    "https://img.freepik.com/darmowe-wektory/tlo-retro-modeli-geometrycznych_52683-17902.jpg?w=1380&t=st=1706311337",
+};
 ---
+
 <script>
   import { register } from "swiper/element/bundle";
-    
-  document.addEventListener("astro:page-load", () => {
-    //"DOMContentLoaded"
-    // register Swiper custom elements
-    register();
-  })
 
+  document.addEventListener("astro:page-load", () => {
+    register();
+  });
 </script>
 
 <swiper-container
-  class="max-w=full w-full flex"
+  class="max-w-full w-full flex overflow-hidden"
   grid-rows="1"
   mousewheel-force-to-axis="true"
   navigation="true"
@@ -22,20 +26,9 @@
   slides-per-view="auto"
   space-between="0"
 >
-  <swiper-slide class="bg-blue-50 p-12 border-1">
-    A
-  </swiper-slide>
-  <swiper-slide class="bg-blue-100 p-12 border-1">
-    B
-  </swiper-slide>
-  <swiper-slide class="bg-blue-200 p-12 border-1">
-    C
-  </swiper-slide>
-  <swiper-slide class="bg-blue-300 p-12 border-1">
-    D
-  </swiper-slide>
-  <swiper-slide class="bg-blue-400 p-12 border-1">
-    A
-  </swiper-slide>
-
+  <swiper-slide class="bg-blue-50 p-12 border-1 min-w-full">A</swiper-slide>
+  <swiper-slide class="bg-blue-100 p-12 border-1 min-w-full">B</swiper-slide>
+  <swiper-slide class="bg-blue-200 p-12 border-1 min-w-full">C</swiper-slide>
+  <swiper-slide class="bg-blue-300 p-12 border-1 min-w-full">D</swiper-slide>
+  <swiper-slide class="bg-blue-400 p-12 border-1 min-w-full">A</swiper-slide>
 </swiper-container>
