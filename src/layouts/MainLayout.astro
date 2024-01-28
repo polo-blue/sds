@@ -15,6 +15,13 @@ const { content = {} } = Astro.props;
 const currentPage = Astro.url.pathname;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 ---
+<script>
+	// Swiper Element
+	import { register } from "swiper/element/bundle";
+	document.addEventListener("astro:page-load", () => {
+		register();
+	});
+</script>
 
 <html dir={content.dir ?? 'ltr'} lang={content.lang ?? 'en-us'} class="initial">
 	<head>

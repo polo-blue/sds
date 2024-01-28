@@ -15,15 +15,27 @@ export const productObject = {
 
 ProductTile - product link component which can be used for carousels, section with related products, recently added etc.
 
+It requires a container with a specific width - it's best to set it directly in the carousel's `<swiper-slide>` tag.
+#
+
 <div class="component-preview">
   <div class="flex flex-wrap bg-white w-full p-4 pb-0">
 
-      <ProductTile productObject={productObject} />
-      <ProductTile productObject={productObject} />
-      <ProductTile productObject={productObject} />
-      <ProductTile productObject={productObject} />
-      <ProductTile productObjec={productObject}t />
-      <ProductTile productObject={productObject} />
+      <div class="flex flex-wrap sm:flex-nowrap content-between w-64 min-w-64 md:(w-96 min-w-96) ml-1 lg:ml-1.5 relative bg-white mb-4 underline-on-hover">
+        <ProductTile productObject={productObject} />
+      </div>
+      <div class="flex flex-wrap sm:flex-nowrap content-between w-64 min-w-64 md:(w-96 min-w-96) ml-1 lg:ml-1.5 relative bg-white mb-4 underline-on-hover">
+        <ProductTile productObject={productObject} />
+      </div>
+      <div class="flex flex-wrap sm:flex-nowrap content-between w-64 min-w-64 md:(w-96 min-w-96) ml-1 lg:ml-1.5 relative bg-white mb-4 underline-on-hover">
+        <ProductTile productObject={productObject} />
+      </div>
+      <div class="flex flex-wrap sm:flex-nowrap content-between w-64 min-w-64 md:(w-96 min-w-96) ml-1 lg:ml-1.5 relative bg-white mb-4 underline-on-hover">
+        <ProductTile productObject={productObject} />
+      </div>
+      <div class="flex flex-wrap sm:flex-nowrap content-between w-64 min-w-64 md:(w-96 min-w-96) ml-1 lg:ml-1.5 relative bg-white mb-4 underline-on-hover">
+        <ProductTile productObject={productObject} />
+      </div>
   </div>
 </div>
 
