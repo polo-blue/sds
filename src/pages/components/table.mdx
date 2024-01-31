@@ -4,7 +4,7 @@ layout: "../../layouts/MainLayout.astro"
 
 ---
 
-import MainTable from '../../components/MainTable.vue'
+import Table from '../../components/Table.vue'
 export const tableData = [
   {
     id: 1,
@@ -44,7 +44,7 @@ export const tableDataSecondary = [
 Simple table based on JSON data object.
 
 <div class="component-preview">
-    <MainTable data={tableData}></MainTable>
+    <Table data={tableData}></Table>
 </div>
 
 ## Code
@@ -72,10 +72,10 @@ const tableData = [
 
 ```html
   <!-- Astro -->
-  <MainTable data={tableData} />
+  <Table data={tableData} />
 
   <!-- Vue -->
-  <MainTable :data="tableData" />
+  <Table :data="tableData" />
 ```
 
 
@@ -83,7 +83,7 @@ const tableData = [
 # Table
 
 <div class="component-preview">
-    <MainTable data={tableDataSecondary} />
+    <Table data={tableDataSecondary} />
 </div>
 
 ## Code
@@ -105,5 +105,5 @@ const tableDataSecondary = [
 ];
 
 
-<MainTable data={tableDataSecondary} />
+<Table data={tableDataSecondary} />
 ```

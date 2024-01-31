@@ -1,0 +1,66 @@
+---
+title: "DetailsList"
+layout: "../../layouts/MainLayout.astro"
+---
+
+import ProductDetailsList from '../../components/ProductDetailsList.vue'
+
+export const tablevalue = [
+  {
+    name: "Product ID",
+    value: "9452694356",
+  },
+  {
+    name: "Color",
+    value: "Black",
+  },
+  {
+    name: "Fitting position",
+    value: "Front axle",
+  },
+  {
+    name: "Brake disc thicknes",
+    value: "22 mm",
+  },
+  {
+        name: "Weight",
+        value: "5.185 kg"
+  }
+];
+
+# Product Details Table
+
+<div class="component-preview flex-wrap">
+ <div class="bg-white rounded-lg p-8">
+    <ProductDetailsList value={tablevalue}></ProductDetailsList>
+ </div>
+</div>
+
+```ts
+ const tablevalue = [
+  {
+    name: "Product ID",
+    value: "9452694356",
+  },
+  {
+    name: "Color",
+    value: "Black",
+  },
+  {
+    name: "Fitting position",
+    value: "Front axle",
+  },
+  {
+    name: "Brake disc thicknes",
+    value: "22 mm",
+  },
+  {
+    name: "Weight",
+    value: "5.185 kg"
+  }
+];
+
+```
+```html
+ <ProductDetailsList value={tablevalue}></ProductDetailsList>
+ ```

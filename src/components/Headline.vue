@@ -4,7 +4,7 @@ import type { PropType } from 'vue'
 const props = defineProps({
   as: {
     type: String as PropType<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'div' | 'span'>,
-    default: null,
+    default: 'span',
     required: true,
   },
   textSize: {

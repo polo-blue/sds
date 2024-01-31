@@ -64,6 +64,7 @@
     font-display: swap;
 }
 
+// for some content which don't need to index in Google
 [data-text]:before {
     content: attr(data-text);
 }
