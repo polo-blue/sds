@@ -16,7 +16,7 @@ const toggleVisibility = () => {
 
 <template>
   <div v-if="isShow" data-pagefind-ignore
-    class="slimbanner bg-lightBlue-500 drop-shadow-md z-2 px-4 sm:px-8 py-3 flex items-center justify-center text-xs sm:text-base leading-none text-white relative print-hidden">
+    class="slimbanner bg-lightBlue-500 drop-shadow-md z-2 px-4 py-3 flex items-center justify-center text-xs sm:(text-base px-8) leading-none text-white relative print-hidden">
     <span
       class="inline-block text-4xl w-6 h-3.5 min-w-[1.25rem] mr-3 bg-gradient-to-b stops-[#0057b7_50%,50%,#ffd700_100%]" />
     <span class="leading-none "><span
@@ -31,7 +31,7 @@ const toggleVisibility = () => {
     </button>
   </div>
   <div v-else data-pagefind-ignore
-    class="px-4 sm:px-8 py-3 flex items-center justify-center text-xs sm:text-base leading-none text-white 	 relative bg-black drop-shadow-md z-2 ">
+    class="px-4 sm:px-8 py-3 flex items-center justify-center text-xs sm:text-base leading-none text-white relative bg-black drop-shadow-md z-2 ">
     <div class="tracking-widest leading-none">
       <span data-text="RUSSIA IS A" /> <span class="underline decoration-red-600 decoration-1 underline-offset-3"
         data-text="TERRORIST" /> <span data-text="STATE" />

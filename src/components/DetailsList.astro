@@ -1,0 +1,75 @@
+---
+import ProductDetailName from "./ProductDetailName.vue";
+
+// const { date } = Astro.props;
+---
+
+<div class="bg-white rounded-xl p-8 w-full">
+
+    <div class="pdp-detail-row">
+        <ProductDetailName  text="Occaecat cupidatat anim" />
+        <div class="leading-4 flex items-end">Aliqua magna incididunt</div>
+    </div>
+
+    
+    <div class="pdp-detail-row">
+        <ProductDetailName  text="Ullamco et dolor" />
+        <div class="leading-4 flex items-end">Consectetur ea eiusmod</div>
+    </div>
+    
+    <div class="pdp-detail-row">
+        <ProductDetailName  text="Lorem ipsum" />
+        <div class="leading-4 flex items-end">Aliquip laborum dolore </div>
+    </div>
+
+    <div class="pdp-detail-row">
+        <ProductDetailName  text="Proident enim" />
+        <div class="leading-4 flex items-end">Eiusmod amet </div>
+    </div>
+
+</div>
+
+<div class="bg-white rounded-xl p-8 w-full mt-5">
+    <table class="details">
+        <tr>
+            <th>
+                <ProductDetailName  text="Eiusmod amet" />
+            </th>
+            <td>
+                Aliquip laborum dolore
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <ProductDetailName  text="Ullamco consequat"></ProductDetailName>
+            </th>
+            <td>
+                Consequat ut veniam elit 
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <ProductDetailName  text="Magna deserunt"></ProductDetailName>
+            </th>
+            <td>
+                Quis minim dolore minim
+            </td>
+        </tr>
+    </table>
+</div>
+
+<style lang="scss">
+    .details {
+        border: none;
+        box-shadow: none;
+
+        td, tr, th {
+            border: none;
+            @apply leading-4 text-sm;
+        }
+
+
+
+      
+    }
+</style>
