@@ -2,45 +2,65 @@
 title: "DetailsList"
 layout: "../../layouts/MainLayout.astro"
 ---
-import DetailsList from '../../components/DetailsList.astro'
+
 import ProductDetailsList from '../../components/ProductDetailsList.vue'
 
-export const tableData = [
+export const tablevalue = [
+  {
+    name: "Product ID",
+    value: "9452694356",
+  },
   {
     name: "Color",
-    data: "Black",
+    value: "Black",
   },
   {
     name: "Fitting position",
-    data: "Front axle",
+    value: "Front axle",
   },
   {
     name: "Brake disc thicknes",
-    data: "22 mm",
+    value: "22 mm",
   },
   {
         name: "Weight",
-        data: "5.185 kg"
+        value: "5.185 kg"
   }
 ];
 
-# Vue Product Details Table
+# Product Details Table
 
 <div class="component-preview flex-wrap">
- <ProductDetailsList data={tableData}></ProductDetailsList>
+ <div class="bg-white rounded-lg p-8">
+    <ProductDetailsList value={tablevalue}></ProductDetailsList>
+ </div>
 </div>
 
+```ts
+ const tablevalue = [
+  {
+    name: "Product ID",
+    value: "9452694356",
+  },
+  {
+    name: "Color",
+    value: "Black",
+  },
+  {
+    name: "Fitting position",
+    value: "Front axle",
+  },
+  {
+    name: "Brake disc thicknes",
+    value: "22 mm",
+  },
+  {
+    name: "Weight",
+    value: "5.185 kg"
+  }
+];
 
-# DetailsList ASTRO
-
-DetailsList component
-
-<div class="component-preview flex-wrap">
-<DetailsList />
-</div>
-
-```js
-        <DetailsList />
 ```
-
-
+```html
+ <ProductDetailsList value={tablevalue}></ProductDetailsList>
+ ```

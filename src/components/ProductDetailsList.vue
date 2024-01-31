@@ -1,21 +1,17 @@
 <script setup lang="ts">
 import ProductDetailName from "./ProductDetailName.vue";
 const props = defineProps<{
-  data: string;
+  value: {name: string, value: string}[];
 }>();
-
-const theads = Object.keys(Object.values(props.data)[0])
-
-
 
 </script>
 
 <template>
-  <table class="details table-auto text-left bg-white w-full max-w-[800px]">
+  <table class="details table-auto text-left bg-white">
     <tbody>
-      <tr class="border" v-for="row in props.data" :key="row">
+      <tr class="border" v-for="row, index in props.value" :key="index">
         <ProductDetailName as="th" :text="row.name" />
-        <td>{{ row.data }}</td>
+        <td>{{ row.value }}</td>
       </tr>
     </tbody>
   </table>
@@ -31,6 +27,10 @@ const theads = Object.keys(Object.values(props.data)[0])
     th {
       border: none;
       @apply leading-4 text-sm;
+    }
+
+    th {
+      @apply pr-0
     }
   }
 </style>
