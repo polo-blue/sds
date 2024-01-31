@@ -3,16 +3,44 @@ title: "DetailsList"
 layout: "../../layouts/MainLayout.astro"
 ---
 import DetailsList from '../../components/DetailsList.astro'
+import ProductDetailsList from '../../components/ProductDetailsList.vue'
 
-# DetailsList
+export const tableData = [
+  {
+    name: "Color",
+    data: "Black",
+  },
+  {
+    name: "Fitting position",
+    data: "Front axle",
+  },
+  {
+    name: "Brake disc thicknes",
+    data: "22 mm",
+  },
+  {
+        name: "Weight",
+        data: "5.185 kg"
+  }
+];
+
+# Vue Product Details Table
+
+<div class="component-preview flex-wrap">
+ <ProductDetailsList data={tableData}></ProductDetailsList>
+</div>
+
+
+# DetailsList ASTRO
 
 DetailsList component
 
 <div class="component-preview flex-wrap">
-       <DetailsList />
+<DetailsList />
 </div>
 
 ```js
         <DetailsList />
 ```
+
 
