@@ -54,7 +54,7 @@
     "@iconify-json/uil": "^1.1.8",
     "@iconify/json": "^2.2.177",
     "@iconify/vue": "^4.1.1",
-    "@types/node": "^20.11.13",
+    "@types/node": "^20.11.14",
     "@types/react": "^18.2.48",
     "@unocss/astro": "^0.58.4",
     "@unocss/preset-attributify": "^0.58.4",
@@ -69,10 +69,10 @@
     "astro-icon": "^1.0.4",
     "astro-navbar": "^2.3.0",
     "astro-pagefind": "^1.4.0",
-    "i18next": "^23.8.1",
+    "i18next": "^23.8.2",
     "i18next-browser-languagedetector": "^7.2.0",
     "i18next-fs-backend": "^2.3.1",
-    "i18next-http-backend": "^2.4.2",
+    "i18next-http-backend": "^2.4.3",
     "i18next-vue": "^3.0.0",
     "sass": "^1.70.0",
     "swiper": "^11.0.5",
@@ -82,7 +82,7 @@
   },
   "devDependencies": {
     "@unocss/transformer-variant-group": "^0.58.4",
-    "astro": "^4.2.7",
+    "astro": "^4.2.8",
     "unocss": "^0.58.3"
   },
   "pnpm": {
