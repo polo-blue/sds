@@ -36,7 +36,7 @@ import ProductNumber from "./ProductNumber.astro"
         { productObject.name }
       </a>
 
-      <ProductNumber productNumber={productObject.number} copyDisabled={true}  />
+      <ProductNumber productNumber={productObject.number} copyDisabled={false}  />
       
       { index !== null && 
         ( <meta itemprop="position" content={String(index)} />

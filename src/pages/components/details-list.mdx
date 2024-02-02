@@ -4,27 +4,41 @@ layout: "../../layouts/MainLayout.astro"
 ---
 
 import ProductDetailsList from '../../components/ProductDetailsList.vue'
+import ProductNumber from "../../components/ProductNumber.astro"
+import PrCode from '../../components/PrCode.vue'
+
+export const prcodesArray = ["PJ4", "CA2", "C4E", "2JZ"]
 
 export const tablevalue = [
   {
-    name: "Product ID",
-    value: "9452694356",
+    slug: "number",
+    name: "Part number",
+    value: "6R0071609GRU",
   },
   {
+    slug: "prcodes",
+    name: "PR-Codes",
+    value: ["PJ4", "CA2", "C4E", "2JZ"],
+  },
+  {
+    slug: "color",
     name: "Color",
     value: "Black",
   },
   {
+    slug: "position",
     name: "Fitting position",
     value: "Front axle",
   },
   {
+    slug: "brake-disck-thicnkess",
     name: "Brake disc thicknes",
     value: "22 mm",
   },
   {
-        name: "Weight",
-        value: "5.185 kg"
+    slug: "weight",
+    name: "Weight",
+    value: "5.185 kg"
   }
 ];
 
@@ -32,29 +46,42 @@ export const tablevalue = [
 
 <div class="component-preview flex-wrap">
  <div class="bg-white rounded-lg p-8">
-    <ProductDetailsList value={tablevalue}></ProductDetailsList>
+    <ProductDetailsList items={tablevalue}>
+        <ProductNumber slot="number" class="py-0" big isPdp productNumber="6R0071609GRU" copyDisabled={false}  />
+        {prcodesArray.map((code) => <PrCode slot="prcodes" prcode={code} /> )}
+    </ProductDetailsList>
  </div>
 </div>
 
 ```ts
  const tablevalue = [
   {
-    name: "Product ID",
-    value: "9452694356",
+    slug: "number",
+    name: "Part number",
+    value: "6R0071609GRU",
   },
   {
+    slug: "prcodes",
+    name: "PR-Codes",
+    value: ["PJ4", "CA2", "C4E"]
+  },
+  {
+    slug: "color",
     name: "Color",
     value: "Black",
   },
   {
+    slug: "position",
     name: "Fitting position",
     value: "Front axle",
   },
   {
+    slug: "brake-disck-thicnkess",
     name: "Brake disc thicknes",
     value: "22 mm",
   },
   {
+    slug: "weight",
     name: "Weight",
     value: "5.185 kg"
   }

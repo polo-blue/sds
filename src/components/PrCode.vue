@@ -7,7 +7,7 @@ import type { PropType } from 'vue'
 
 const props = defineProps({
     prcode: {
-        type: Object as PropType<string[] | null>,
+        type: String,
         default: null,
         required: true,
     },
