@@ -23,7 +23,7 @@
       font-size: 13pt;
     }
 
-    ul {
+    &>ul {
       @apply list-disc pl-5
     }
   }

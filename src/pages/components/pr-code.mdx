@@ -3,7 +3,7 @@ title: "PrCode"
 layout: "../../layouts/MainLayout.astro"
 ---
 import PrCode from '../../components/PrCode.vue'
-
+import ProductCodes from '../../components/ProductCodes.vue'
 
 # PR-Code
 
@@ -17,6 +17,15 @@ They are important when purchasing spare parts as they provide information about
 
 
 ## PR-Code
+Single PR-Code.
+
+### import:
+
+```js
+import PrCode from 'spoko-design-system/src/components/PrCode.vue'
+```
+
+#
 
 <div class="component-preview">
      <div class="bg-white p-6 w-full">
@@ -30,8 +39,27 @@ They are important when purchasing spare parts as they provide information about
      <PrCode prcode="1ZJ" />
 ```
 
+
+
+
+## PR-Codes List
+Component to display list of pr codes from array.
+
 ### import:
 
 ```js
-import PrCode from 'spoko-design-system/src/components/PrCode.vue'
+import ProductCodes from 'spoko-design-system/src/components/ProductCodes.vue'
 ```
+
+#
+
+<div class="component-preview">
+     <div class="bg-white p-6 w-full">
+          <ProductCodes prcodes={["2JP", "1ZJ"]}  />
+     </div>
+</div>
+
+```js
+     <ProductCodes prcodes={["2JP", "1ZJ"]} />
+```
+

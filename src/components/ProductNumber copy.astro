@@ -1,12 +1,10 @@
 ---
 import { t } from "i18next";
 import ButtonCopy from "./ButtonCopy.vue";
-import PartNumber from "./PartNumber.vue";
 
 const {
   copyDisabled,
   productNumber,
-  as,
   isPdp,
   small,
   big,
@@ -65,20 +63,38 @@ const niceName = (string: string, separator = "\u00A0") => {
 
   return word.replace(" ", separator);
 };
-
-
-const classes = `product-number ${big ? "text-lg" : `text-sm ${className ? className : "mt-2 sm:mt-0"}`  }`
-
 ---
-
-<!-- <PartNumber number={productNumber} as="div"></PartNumber> -->
-
 
 {
   productNumber !== null && (
-   
+    <div
+      class={`product-number ${
+        big ? "text-lg" : `text-sm ${className ? className : "mt-2 sm:mt-0"}`
+      }`}
+    >
+      <div
+        class={`inline-flex leading-none relative ${small ? "w-full" : ""}`}
+        itemprop="identifier"
+      >
+        {isPdp ? (
+          <h2 id={productNumber} class="product-code">
+            {productNumber}
+          </h2>
+        ) : (
+          <div id={productNumber} class="product-code">
+            {productNumber}
+          </div>
+        )}
 
-      <PartNumber class={`product-code ${classes}`} number={productNumber} as={isPdp ? 'h2' : 'div'} />
+        {copyDisabled && (
+          <ButtonCopy
+            productNumber={String(productNumber)}
+            texts={butonTexts}
+            tooltipClasses=""
+            client:only
+          />
+        )}
+      </div>
 
       <div
         class={`code-formatted ${small ? "tracking-wide" : "tracking-tight"}`}
@@ -89,19 +105,12 @@ const classes = `product-number ${big ? "text-lg" : `text-sm ${className ? class
         <div class="absolute inset-0" data-pagefind-ignore>
           {niceName(productNumber, "-")}
         </div>
-        <PartNumber class="number-secondary" number={niceName(productNumber)} as={isPdp ? 'h3' : 'div'} />
+        {isPdp ? (
+          <h3 class="number-secondary">{niceName(productNumber)}</h3>
+        ) : (
+          <div class="number-secondary">{niceName(productNumber)}</div>
+        )}
       </div>
-    
+    </div>
   )
 }
-
-
-<!-- {!copyDisabled && ( -->
-  <ButtonCopy
-    class="top-3.5 right-0"
-    productNumber={String(productNumber)}
-    texts={butonTexts}
-    tooltipClasses=""
-    client:only
-  />
-<!-- )}  -->

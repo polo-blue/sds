@@ -30,6 +30,7 @@ export const SIDEBAR = [
   { text: "Carousel", link: "/components/carousel/" },
   { text: "Copyright", link: "/components/copyright/" },
   { text: "Details List", link: "/components/details-list/" },
+  { text: "Features List", link: "/components/features-list/"},
   { text: "HandDrive", link: "/components/hand-drive/" },
   { text: "Headline", link: "/components/headline/" },
   { text: "Icons", link: "/components/icons/" },
