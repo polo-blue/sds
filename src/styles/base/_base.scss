@@ -1,6 +1,7 @@
 :root {
   --primary: #{$blue};
-  --secondary: #{$gray-500} --tertiary: #{$verydarkblue};
+  --secondary: #{$gray-500};
+  --tertiary: #{$verydarkblue};
 }
 
 * {
