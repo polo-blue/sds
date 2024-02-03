@@ -17,7 +17,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <h2 class="font-headregular mb-2 font-medium text-lg colon-after" v-if="props.caption">{{ props.caption }}</h2>
+    <h2 class="mb-2 colon-after text-xl font-textbold block" v-if="props.caption">{{ props.caption }}</h2>
     <ul class="mb-6">
         <li v-for="item in props.items" class="leading-5">
             {{ item }}

@@ -28,6 +28,7 @@ export default defineConfig({
     transformerVariantGroup(),
   ],
   shortcuts: [
+    ['colon-after', 'after:content-[":"]'],
     ['headline','font-headlight font-bold	'],
     ['badge', 'px-1.5 py-px text-white text-xs mb-1 max-w-fit whitespace-nowrap'],
     ['img--overlay','after:(content-empty bg-black bg-opacity-[.03] absolute w-full h-full top-0)'],

@@ -101,12 +101,6 @@ html {
   opacity: 0;
 }
 
-.colon-after {
-  &:after {
-    content: ':'
-  }
-}
-
 .items {
   &>.item {
     &:not(:last-child) {
