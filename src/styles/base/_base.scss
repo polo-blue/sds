@@ -1,150 +1,144 @@
 :root {
   --primary: #{$blue};
-  --secondary: #{$gray-500}
+  --secondary: #{$gray-500};
   --tertiary: #{$verydarkblue};
 }
 
 * {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-    font-family: 'vw_textregular', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
-    overflow-y: scroll;
-    scrollbar-width: thin;
-    overflow-x: hidden;
+  font-family: 'vw_textregular', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
+/*  
+    Chrome 121 added support for scrollbar-width and scrollbar-color. 
+    If you have scrollbar-width it will disable the --webkit-scrollbar pseudo elements.
+    https://developer.chrome.com/blog/new-in-chrome-121
+    https://developer.chrome.com/docs/css-ui/scrollbar-styling
+    https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar
+*/
 ::-webkit-scrollbar {
-    width: 5px;
-    height: 3px;
+  width: 5px;
+  height: 3px;
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1); //$secondary;
-    border-radius: 0;
+  background: rgba(0, 0, 0, 0.1); //$secondary;
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 0;
-    background-color: var(--primary);
+  border-radius: 0;
+  background-color: var(--primary);
+}
+
+// Fallback to browsers without webkit-scrollbar support
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) rgba(0, 0, 0, 0.1)
+  }
 }
 
 *:focus {
-    outline: none !important;
+  outline: none !important;
 }
 
-
 .bg-spoko {
-    background: radial-gradient(circle at 50% 85%, #00437A 0%, #001E50 100%);
-    color: #fff;
-    width: 100%;
+  background: radial-gradient(circle at 50% 85%, #00437A 0%, #001E50 100%);
+  color: #fff;
+  width: 100%;
 }
 
 .bg-vw {
-    background: radial-gradient(
-        circle at 50% 85%,
-        #00437A 0%,
-        #001E50 100%
-    );
-    color: #fff;
+  background: radial-gradient(circle at 50% 85%,
+      #00437A 0%,
+      #001E50 100%);
+  color: #fff;
 }
 
 .display-3 {
-    letter-spacing: -0.96px;
+  letter-spacing: -0.96px;
 }
 
 code {
- @apply font-novamono;
+  @apply font-novamono;
 }
 
 
 html {
-    scroll-behavior: smooth;
-    
-    &::-webkit-scrollbar {
-      width: 7px; /* width of the entire scrollbar */
-    }
-  
-    &::-webkit-scrollbar-track {
-      background: #00437A; /* color of the tracking area */
-    }
-  
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--primary); /* color of the scroll thumb */
-      border-radius: 0; /* roundness of the scroll thumb */
-      border: 0 solid #00437A; /* creates padding around scroll thumb */
-    }
-  
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary) #00437A;
-  }
+  scroll-behavior: smooth;
+}
 
-  
+
 //Swiper styles
 :root {
-    // --swiper-navigation-color: #0099da;
-    --swiper-navigation-size: 22px;
-    --swiper-scrollbar-drag-bg-color: var(--primary);
-    --swiper-scrollbar-size: 1px;
-    --swiper-scrollbar-bottom: 0px;
-  }
-  
-  .swiper-horizontal{
-  &> .swiper-scrollbar {
+  // --swiper-navigation-color: #0099da;
+  --swiper-navigation-size: 22px;
+  --swiper-scrollbar-drag-bg-color: var(--primary);
+  --swiper-scrollbar-size: 1px;
+  --swiper-scrollbar-bottom: 0px;
+}
+
+.swiper-horizontal {
+  &>.swiper-scrollbar {
     height: 1px;
   }
-  }
-  
-  .fade-enter-active,
-  .fade-leave-active {
+}
+
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 0.5s ease;
-  }
-  
-  .fade-enter-from,
-  .fade-leave-to {
+}
+
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
-  }
-  
-  .colon-after {
+}
+
+.colon-after {
   &:after {
     content: ':'
   }
-  }
-  
-  .items {
-  & > .item {
+}
+
+.items {
+  &>.item {
     &:not(:last-child) {
       &:after {
         content: ', '
       }
     }
   }
-  }
-  
-  /* override styles when printing */
-  @media print {
-   @page :footer {
-        display: none;
-        margin-top: 0;
-        margin-bottom: 0;
-    }
-  
-    @page :header {
-        display: none;
-        margin-top: 0;
-        margin-bottom: 0;
-    }
+}
+
+/* override styles when printing */
+@media print {
+  @page :footer {
+    display: none;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
-  .comma:not(:last-child) {
-    @apply mr-1;
-  
-    &:after {
-      content: ','
-    }
+  @page :header {
+    display: none;
+    margin-top: 0;
+    margin-bottom: 0;
   }
+}
+
+.comma:not(:last-child) {
+  @apply mr-1;
+
+  &:after {
+    content: ','
+  }
+}
 
 #l-page {
   table {
@@ -155,8 +149,9 @@ html {
     table-layout: fixed;
     text-indent: 0;
     width: 100%;
-  
-    td, th {
+
+    td,
+    th {
       border: 1px solid;
       padding: 0.5em;
     }
