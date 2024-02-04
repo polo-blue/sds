@@ -52,7 +52,7 @@ const props = defineProps({
     }
 
     th {
-      @apply pr-0
+      @apply px-0
     }
 
     td {
