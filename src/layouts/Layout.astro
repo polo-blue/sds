@@ -1,5 +1,6 @@
 ---
-import HeadCommon from "../components/HeadCommon.astro";
+import HeadCommon from "./partials/HeadCommon.astro";
+import FooterCommon from "./partials/FooterCommon.astro";
 import HeadSEO from "../components/HeadSEO.astro";
 import * as CONFIG from "../config";
 import { t, changeLanguage } from "i18next";
@@ -53,6 +54,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
           />
         </a>
       </Copyright>
+      <FooterCommon />
     </footer>
   </body>
 </html>

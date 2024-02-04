@@ -8,7 +8,7 @@ import astroI18next from "astro-i18next";
 import icon from "astro-icon";
 import sitemap from "@astrojs/sitemap";
 import pagefind from "astro-pagefind";
-
+import AstroPWA from '@vite-pwa/astro';
 // https://astro.build/config
 export default defineConfig({
   site: "https://sds.spoko.space/",
@@ -24,6 +24,58 @@ export default defineConfig({
   vue(),
   mdx(),
   astroI18next(),
+
+  AstroPWA({
+    mode: 'development',
+    base: '/',
+    scope: '/',
+    includeAssets: ['favicon.svg', 'safari-pinned-tab.svg', 'brands/*.svg', 'fonts/*.woff2', 'fonts/*.svg', 'vw.svg', 'polo.blue.svg', 'spoko.space.svg'],
+    // add this to cache all the static assets in the public folder
+    // includeAssets: [
+    //   "**/*",
+    // ],
+    registerType: 'autoUpdate',
+    manifest: {
+      name: 'Spoko Design System',
+      short_name: 'SDS',
+      description: 'SDS PWA app description',
+      categories: ['multimedia'],
+      screenshots: [{
+        "src": "pwa-512x512.png",
+        "sizes": "512x512",
+        "platform": "windows",
+        "label": "SDS"
+      }],
+      theme_color: '#001e50',
+      icons: [{
+        src: 'pwa-192x192.png',
+        sizes: '192x192',
+        type: 'image/png'
+      }, {
+        src: 'pwa-512x512.png',
+        sizes: '512x512',
+        type: 'image/png'
+      }, {
+        src: 'pwa-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'any maskable'
+      }]
+    },
+    workbox: {
+      navigateFallback: '/',
+      globPatterns: ['**/*.{css,js,html,svg,png,ico,txt}'],
+      // globPatterns: ["**/*"],             // add this to cache all the imports
+    },
+    devOptions: {
+      enabled: true,
+      navigateFallbackAllowlist: [/^\//]
+    },
+    experimental: {
+      directoryAndTrailingSlashHandler: true
+    }
+  }),
+
   UnoCSS({
     injectReset: true
   }), icon(

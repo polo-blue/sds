@@ -1,6 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions";
-import HeadCommon from "../components/HeadCommon.astro";
+import HeadCommon from "./partials/HeadCommon.astro";
 import HeadSEO from "../components/HeadSEO.astro";
 import Header from "../components/Header/Header.astro";
 import PageContent from "../components/PageContent.astro";
@@ -35,7 +34,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
           : CONFIG.SITE.title
       }
     </title>
-    <ViewTransitions />
   </head>
 
   <body class="bg-blue-50">
