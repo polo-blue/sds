@@ -6,6 +6,7 @@ import Jumbatron from "../components/Jumbatron.vue";
 import Layout from "../layouts/Layout.astro";
 import Headline from "../components/Headline.vue";
 import Button from "../components/Button.vue";
+import Quote from "../components/Quote.vue";
 
 const navItems = [
     {
@@ -67,6 +68,14 @@ const navItems = [
       }
     </div>
   </nav>
+  <div class="my-12 py-20 bg-blue-700 bg-vw text-white flex items-center justify-center relative">
+    <Quote>
+      <blockquote>
+        Well done is better than well said.
+        <small class="block">-Benjamin Franklin</small>
+      </blockquote></Quote>
+  </div>
+  
 </div>
 </Layout>
 <script is:inline></script>

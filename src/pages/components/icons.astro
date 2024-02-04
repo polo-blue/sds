@@ -1,5 +1,4 @@
 ---
-import { changeLanguage } from "i18next";
 import MainLayout from "../../layouts/MainLayout.astro";
 import { Icon } from "astro-icon/components";
 
@@ -28,27 +27,22 @@ const ICONS = {
 
         <pre  class="mt-6 astro-code bg-slate-800 text-white">import &#123; Icon &#125; from 'astro-icon/components';</pre>
         <div class="">
-        {Object.keys(ICONS).map((key) => (
-            <h2 class="mt-6 mx-2">
-                <a href={`${iconifyUrl}${key}/`} target="_blank">
-                    {key}
-                </a>
-            </h2>
-            <div class="inline-grid grid-cols-2 md:grid-cols-4 gap-0 w-full">
+            {Object.keys(ICONS).map((key) => (
+                <h2 class="mt-6 mx-2">
+                    <a href={`${iconifyUrl}${key}/`} target="_blank">
+                        {key}
+                    </a>
+                </h2>
+                <div class="inline-grid grid-cols-2 md:grid-cols-4 gap-0 w-full">
                     {ICONS[key].map((value) => (
-                            <div class="mx-1 mb-2">
+                        <div class="mx-1 mb-2">
                             <div class="component-preview ">
-    <Icon name={`${key}:${value}`} class="text-3xl mx-auto text-light-blue-400" />
+                                <Icon name={`${key}:${value}`} class="text-3xl mx-auto text-light-blue-400" />
                             </div>
                             <pre class="astro-code bg-slate-800 text-white text-sm text-center">&lt;Icon name={`"${key}:${value}"`} /&gt;</pre>
-                            </div>
+                        </div>
                     ))}
-            </div>
-        ))}
+                </div>
+            ))}
         </div>
-
-
-
 </MainLayout>
-
-

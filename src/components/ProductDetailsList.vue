@@ -3,7 +3,7 @@ import { PropType } from "vue";
 import ProductDetailName from "./ProductDetailName.vue";
 
 interface TableItem {
-  slug: string,
+  id: string,
   name: string 
   value: unknown
 }
@@ -29,7 +29,7 @@ const props = defineProps({
         <ProductDetailName as="th" :text="row.name" />
         <td>
           <slot
-            :name="row.slug"
+            :name="row.id"
           >
            {{ row.value }}
           </slot>
@@ -48,7 +48,7 @@ const props = defineProps({
     tr,
     th {
       border: none;
-      @apply leading-4 text-sm;
+      @apply leading-4 text-sm py-2;
     }
 
     th {
