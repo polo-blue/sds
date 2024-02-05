@@ -28,6 +28,7 @@ export default defineConfig({
     transformerVariantGroup(),
   ],
   shortcuts: [
+    ['product-number','font-novamono content-center flex flex-wrap flex-col content-start pr-5 bg-white'],
     ['colon-after', 'after:content-[":"]'],
     ['headline','font-headlight font-bold	'],
     ['badge', 'px-1.5 py-px text-white text-xs mb-1 max-w-fit whitespace-nowrap'],
@@ -54,7 +55,7 @@ export default defineConfig({
     ['btn-normal', 'md:px-10 md:py-2 md:text-lg px-8 py-3 whitespace-nowrap'],
     ['btn-sm', 'px-6 py-2 text-sm whitespace-nowrap	'],
     ['btn-xs', 'px-4 py-1 text-sm whitespace-nowrap	'],
-    ['product-number','font-novamono leading-none content-center flex flex-wrap flex-col content-start pr-5 bg-white'],
+
     ['main','text-gray-700 dark:text-gray-200 dark:bg-blue-700 pt-24 sm:pt-14 relative'],
     ['nav','bg-white dark:bg-black absolute sm:fixed w-full top-0 z-40 sm:z-30 max-w-screen'],
     ['cat-menu','fixed bottom-[-4px] w-full z-10 border-t-1 border-gray-300 bg-white dark:bg-blue-900 text-center sm:(static z-auto border-t-none) sm:min-h-32'],

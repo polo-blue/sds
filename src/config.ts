@@ -42,8 +42,8 @@ export const SIDEBAR = [
   { text: "PR-Code", link: "/components/pr-code/" },
   { text: "Product Number", link: "/components/product-number/" },
   { text: "Product Tile", link: "/components/product-tile/" },
-  { text: "Table", link: "/components/table/" },
   { text: "Quote", link: "/components/quote/" },
+  { text: "Table", link: "/components/table/" },
 
   { text: "Extras", header: true },
   { text: "Flags", link: "/components/flags/" },

@@ -67,7 +67,7 @@ const niceName = (string: string, separator = "\u00A0") => {
 };
 
 
-const classes = `product-number ${big ? "text-lg" : `text-sm ${className ? className : "mt-2 sm:mt-0"}`  }`
+const classes = `product-number ${big ? "text-lg leading-none" : `text-sm ${className ? className : "mt-2 sm:mt-0"}`  }`
 
 ---
 
@@ -78,7 +78,7 @@ const classes = `product-number ${big ? "text-lg" : `text-sm ${className ? class
   productNumber !== null && (
    
 
-      <PartNumber class={`product-code ${classes}`} number={productNumber} as={isPdp ? 'h2' : 'div'} />
+      <PartNumber class={`${classes} product-code`} number={productNumber} as={isPdp ? 'h2' : 'div'} />
 
       <div
         class={`code-formatted ${small ? "tracking-wide" : "tracking-tight"}`}
@@ -98,7 +98,7 @@ const classes = `product-number ${big ? "text-lg" : `text-sm ${className ? class
 
 <!-- {!copyDisabled && ( -->
   <ButtonCopy
-    class="top-3.5 right-0"
+    class="top-1 right-0"
     productNumber={String(productNumber)}
     texts={butonTexts}
     tooltipClasses=""
