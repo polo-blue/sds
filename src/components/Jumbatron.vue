@@ -21,14 +21,12 @@ const props = defineProps({
         :class="props.small ? 'sm:py-12 md:py-14 lg:py-16 xl:py-20' : 'sm:py-16 md:py-20 lg:py-28 xl:py-32'">
         <header class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="text-center">
-            <h1 class="text-3xl  tracking-tight sm:(text-4xl pt-0) md:text-5xl lg:text-6xl  font-headlight text-white">
+            <h1 class="text-3xl  tracking-tight font-headlight text-white sm:(text-4xl pt-0) md:text-5xl lg:text-6xl ">
               <slot name="intro" />
             </h1>
             <slot name="subtitle" />
-            <div class="mt-5 sm:mt-8 sm:flex sm:justify-center" v-if="hasSlot('cta')">
-              <div>
+            <div class="mt-5 sm:(mt-8 flex justify-center)" v-if="hasSlot('cta')">
                 <slot name="cta" />
-              </div>
             </div>
           </div>
         </header>

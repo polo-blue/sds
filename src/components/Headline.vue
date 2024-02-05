@@ -32,21 +32,14 @@ const props = defineProps({
   @apply relative pb-4;
 
   &:after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
+    @apply content-empty absolute left-0 bottom-0;
     height: 3px;
     width: 55px;
     background-color: var(--primary);
   }
 
   &:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 1px;
-    height: 1px;
+    @apply content-empty absolute left-0 bottom-px h-px;
     width: 95%;
     max-width: 255px;
     background-color: #64748b

@@ -41,14 +41,17 @@ const props = defineProps({
 
 <style lang="scss">
   .details {
-    border: none;
+    @apply border-none w-full md:w-auto
     box-shadow: none;
+
+    col {
+      @apply w-1/2;
+    }
 
     td,
     tr,
     th {
-      border: none;
-      @apply leading-4 text-sm py-2;
+      @apply leading-4 text-sm py-2 border-none;
     }
 
     th {
