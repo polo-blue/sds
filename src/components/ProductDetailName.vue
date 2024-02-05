@@ -34,19 +34,16 @@ const props = defineProps({
   @apply overflow-hidden relative;
 
     span {
-      @apply block bg-white dark:bg-blue-901 relative z-10 pr-1.5 w-full;
+      @apply block bg-white relative z-10 pr-1.5 w-full;
 
       &:before {
         // order: 2;
-        @apply text-gray-300 absolute select-none border-b border-gray-200 dark:border-gray-600 w-full -z-1;
+        @apply text-gray-300 absolute select-none border-b border-gray-200 w-full -z-1 absolute content-empty left-0;
         height: 1em;
         white-space: nowrap;
         font-weight: 100;
         bottom: 2px;
-        left: 0;
         flex: 1;
-        content: '';
-        position:absolute;
       }
     }
 
