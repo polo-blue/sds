@@ -25,7 +25,7 @@ const props = defineProps({
       <col>
     </colgroup>
     <tbody>
-      <tr class="border" v-for="row, index in props.items" :key="index">
+      <tr v-for="row, index in props.items" :key="index">
         <ProductDetailName as="th" :text="row.name" />
         <td>
           <slot
@@ -56,7 +56,7 @@ const props = defineProps({
     }
 
     td {
-      @apply relative;
+      @apply relative pt-0;
     }
   }
 </style>

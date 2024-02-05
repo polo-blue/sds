@@ -1,5 +1,5 @@
 ---
-import { SITE, OPEN_GRAPH } from '../config';
+import { SITE, OPEN_GRAPH } from '../../config';
 export interface Props {
 	content: any;
 	site: any;
@@ -37,5 +37,5 @@ const imageAlt = content?.image?.alt ?? OPEN_GRAPH.image.alt;
   TODO: Add json+ld data, maybe https://schema.org/APIReference makes sense?
   Docs: https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data
   https://www.npmjs.com/package/schema-dts seems like a great resource for implementing this.
-  Even better, there's a React component that integrates with `schema-dts`: https://github.com/google/react-schemaorg
+  Even better, there's a Vue component that integrates with `schema-dts`: https://github.com/vueuse/schema-org
 -->

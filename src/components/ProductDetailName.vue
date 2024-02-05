@@ -22,8 +22,8 @@ const props = defineProps({
 
 <template>
   <component :is="props.as" class="font-bold detail-name w-full sm:w-50 flex">
-    <span class="colon-after" :class="styles && styles.length ? styles : 'mt-auto'">
-      {{ props.text }}
+    <span :class="styles && styles.length ? styles : 'mt-auto'">
+      <b class="bg-white z-1 colon-after pr-1">{{ props.text }}</b>
     </span>
   </component>
 </template>
@@ -42,7 +42,7 @@ const props = defineProps({
         height: 1em;
         white-space: nowrap;
         font-weight: 100;
-        bottom: 3px;
+        bottom: 2px;
         left: 0;
         flex: 1;
         content: '';
