@@ -45,7 +45,7 @@ const props = defineProps({
     box-shadow: none;
 
     col {
-      @apply w-1/2;
+      @apply w-1/2 md:w-auto;
     }
 
     td,
