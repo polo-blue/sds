@@ -47,8 +47,12 @@ export const tableItems = [
 <div class="component-preview flex-wrap">
  <div class="bg-white rounded-lg p-8">
     <ProductDetailsList items={tableItems}>
-      <ProductNumber slot="number" class="py-0" big isPdp productNumber="6R0071609GRU" copyDisabled={false}  />
-      <ProductCodes slot="prcodes" prcodes={prcodesArray} />
+      <td slot="number" class="pt-0">
+        <ProductNumber  class="py-0" big isPdp productNumber="6R0071609GRU" copyDisabled={false} />
+      </td>
+      <td slot="prcodes" class="pt-0">
+        <ProductCodes prcodes={prcodesArray} />
+      </td>
     </ProductDetailsList>
  </div>
 </div>
@@ -91,18 +95,22 @@ export const tableItems = [
 ### Astro:
 ```js
 <ProductDetailsList items={tableItems}>
-  <ProductNumber slot="number" class="py-0" big isPdp productNumber="6R0071609GRU" copyDisabled={false}  />
-  <ProductCodes slot="prcodes" prcodes={prcodesArray} />
+  <td slot="number" class="pt-0">
+    <ProductNumber class="py-0" big isPdp productNumber="6R0071609GRU" copyDisabled={false} />
+  </td>
+  <td slot="prcodes" class="pt-0">
+    <ProductCodes prcodes={prcodesArray} />
+  </td>
 </ProductDetailsList>
  ```
  ### Vue:
 ```js
 <ProductDetailsList items={tableItems}>
   <template #number >
-    <ProductNumber class="py-0" big isPdp productNumber="6R0071609GRU" copyDisabled={false}  />
+    <ProductNumber as="td" class="py-0" big isPdp productNumber="6R0071609GRU" copyDisabled={false}  />
   </template>
   <template #prcodes >
-    <ProductCodes prcodes={prcodesArray} />
+    <ProductCodes as="td" prcodes={prcodesArray} />
   </template>
 </ProductDetailsList>
  ```

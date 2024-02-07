@@ -27,13 +27,9 @@ const props = defineProps({
     <tbody>
       <tr v-for="row, index in props.items" :key="index">
         <ProductDetailName as="th" :text="row.name" />
-        <td>
-          <slot
-            :name="row.id"
-          >
-           {{ row.value }}
-          </slot>
-        </td>
+        <slot :name="row.id">
+          <td>{{ row.value }}</td>
+        </slot>
       </tr>
     </tbody>
   </table>
@@ -41,17 +37,21 @@ const props = defineProps({
 
 <style lang="scss">
   .details {
-    @apply border-none w-full md:w-auto
+    @apply border-none shadow-none w-full md:w-auto
     box-shadow: none;
 
     col {
       @apply w-1/2 md:w-auto;
+
     }
 
-    td,
+    tr {
+      @apply border-none;
+    }
+
     tr,
     th {
-      @apply leading-4 text-sm py-2 border-none;
+      @apply leading-none text-sm py-2 border-none  text-xs md:(text-sm leading-none) xl:(py-4) 3xl:(text-base leading-none);
     }
 
     th {
@@ -59,7 +59,7 @@ const props = defineProps({
     }
 
     td {
-      @apply relative pt-0;
+      @apply relative;
     }
   }
 </style>

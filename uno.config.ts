@@ -28,6 +28,7 @@ export default defineConfig({
     transformerVariantGroup(),
   ],
   shortcuts: [
+    ['detail-name', 'text-gray-900  leading-tight font-textlight line-clamp-3 whitespace-normal md:(whitespace-pre-wrap line-clamp-9 font-textregular)'],
     ['product-number','font-novamono content-center flex flex-wrap flex-col content-start pr-5 bg-white'],
     ['colon-after', 'after:content-[":"]'],
     ['headline','font-headlight font-bold	'],
@@ -64,10 +65,10 @@ export default defineConfig({
     ['subcat', 'whitespace-nowrap cursor-pointer text-light-blue-600 dark:text-lightBlue-500 hover:text-lightBlue-600 font-light mb-1 py-2 md:py-0'],
     ['product-row','bg-white flex flex-wrap  odd:(pr-2.5 pl-3.5 sm:px-0) even:(pl-2.5 pr-3.5 sm:px-0) w-1/2 sm:w-auto sm:grid sm:grid-cols-3 gap-x-1 gap-y-0 md:(grid-cols-product gap-x-4) justify-start content-start content-start  place-content-start py-4 pb-6 sm:pb-4'],
     ['product-row__photo','aspect-ratio-[4/3] mb-2 sm:mb-0 after:(content-empty bg-black bg-opacity-[.03] absolute w-full h-full top-0) w-100 col-span-1 row-span-3 max-w-full text-left overflow-hidden relative bg-gray-100 md:(col-span-1 row-span-1) box-content'], //filter drop-shadow-sm
-    ['product-row__description', 'text-xs text-gray-900 dark:text-gray-300 leading-tight mt-2 font-textlight line-clamp-3 whitespace-normal md:(text-sm mt-0 font-textregular whitespace-pre-wrap)'],
+    ['product-row__description', 'text-xs text-gray-900 leading-tight mt-2 font-textlight line-clamp-3 whitespace-normal md:(text-sm mt-0 font-textregular whitespace-pre-wrap)'],
     ['product-row__main', 'w-full sm:w-auto col-span-2 leading-none relative sm:pl-1 md:(pl-0 row-start-1 col-start-2 col-span-1)'],
     ['product-date', 'inline-block text-xxs md:text-xs leading-none mt-1 md:(mt-4 mb-1) mr-2'],
-    ['detail-name', 'text-xs text-gray-900 dark:text-gray-300 leading-tight font-textlight line-clamp-3 whitespace-normal md:(text-sm whitespace-pre-wrap line-clamp-9 font-textregular)'],
+
     ['detail-row','text-sm mt-1 md:mt-4 mb-4 grid grid-cols-2 gap-4 sm:(grid-cols-details-desktop grid-flow-col auto-cols-max)'],
     ['product-thumb', 'h-full w-full object-cover object-center transform scale-100 group-hover:scale-110 absolute inset-0 will-change-transform bg-gray-100'],
     ['product-thumb--plp','aspect-ratio-[4/3] flex items-center flex justify-center mb-3 sm:mb-0 after:(content-empty bg-black bg-opacity-[.03] absolute w-full h-full top-0)'], //filter drop-shadow-sm
