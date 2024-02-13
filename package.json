@@ -29,7 +29,7 @@
   "dependencies": {
     "@algolia/client-search": "^4.22.1",
     "@astrojs/mdx": "^2.1.1",
-    "@astrojs/node": "^7.0.4",
+    "@astrojs/node": "^8.0.0",
     "@astrojs/sitemap": "^3.0.5",
     "@astrojs/vue": "^4.0.8",
     "@docsearch/css": "^3.5.2",
