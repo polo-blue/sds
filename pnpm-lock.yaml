@@ -145,8 +145,8 @@ dependencies:
     specifier: ^2.4.3
     version: 2.4.3
   i18next-vue:
-    specifier: ^3.0.0
-    version: 3.0.0(i18next@23.8.2)(vue@3.4.15)
+    specifier: ^4.0.0
+    version: 4.0.0(i18next@23.8.2)(vue@3.4.15)
   sass:
     specifier: ^1.70.0
     version: 1.70.0
@@ -4843,8 +4843,8 @@ packages:
       - encoding
     dev: false
 
-  /i18next-vue@3.0.0(i18next@23.8.2)(vue@3.4.15):
-    resolution: {integrity: sha512-YGsrJa6IXq9VcaE2Ot5we8Zb4hLjzzdqd6HZORsWNVFNXK82nZ0BAC/bavkF1kpj+aD1dxz8KWRAtOe6LuI7Fw==}
+  /i18next-vue@4.0.0(i18next@23.8.2)(vue@3.4.15):
+    resolution: {integrity: sha512-yaKWMyFGweyA4EF7JXSGRAvZQ1CJTKjim0iPBsSjFQuuI6lK7cJf6dWK7uO9leB2EnB5JPd8UVtYLTjHXlCVPw==}
     peerDependencies:
       i18next: '>=23'
       vue: ^3.3.4
