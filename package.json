@@ -28,6 +28,7 @@
   ],
   "dependencies": {
     "@algolia/client-search": "^4.22.1",
+    "@astrojs/mdx": "^2.1.1",
     "@astrojs/node": "^8.2.0",
     "@astrojs/sitemap": "^3.0.5",
     "@astrojs/vue": "^4.0.8",
@@ -81,9 +82,6 @@
   "devDependencies": {
     "@unocss/transformer-variant-group": "^0.58.5",
     "astro": "^4.3.6",
-s": {
-    "@unocss/transformer-variant-group": "^0.58.5",
-    "astro": "^4.3.3",
     "unocss": "^0.58.3"
   },
   "packageManager": "pnpm@8.15.2",
