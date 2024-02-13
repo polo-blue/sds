@@ -63,6 +63,13 @@ const niceName = (string: string, separator = "\u00A0") => {
       .replace(/(^\s+|\s+$)/, "");
   }
 
+  // remove single separator from the end of string:
+  let lastCharacter = word.split('').pop() || '';
+  
+  if (!Boolean(lastCharacter.match(/[a-zA-Z0-9]/))) {
+    word = word.slice(0, -1)
+  }
+
   return word.replace(" ", separator);
 };
 
