@@ -116,6 +116,7 @@ export default defineConfig({
     colors: {
       blue: {
         500: '#3b82f6',
+        540: '#0069ff',
         550: '#0040c5',
         600: '#02307d',
         700: '#001e50',
