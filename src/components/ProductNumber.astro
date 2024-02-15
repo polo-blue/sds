@@ -73,8 +73,8 @@ const niceName = (string: string, separator = "\u00A0") => {
   return word.replace(" ", separator);
 };
 
+const classes = `product-number ${big ? "text-lg leading-none" : "text-sm"} ${className}` //mt-2 sm:mt-0
 
-const classes = `product-number ${big ? "text-lg leading-none" : `text-sm ${className ? className : "mt-2 sm:mt-0"}`  }`
 
 ---
 
