@@ -1,6 +1,6 @@
 {
   "name": "spoko-design-system",
-  "version": "0.2.12",
+  "version": "0.2.13",
   "private": false,
   "scripts": {
     "dev": "astro dev",
@@ -74,7 +74,7 @@
     "i18next-fs-backend": "^2.3.1",
     "i18next-http-backend": "^2.4.3",
     "i18next-vue": "^4.0.0",
-    "sass": "^1.70.0",
+    "sass": "^1.71.0",
     "swiper": "^11.0.6",
     "unocss": "^0.58.5",
     "vite": "^5.1.3",
