@@ -46,6 +46,7 @@ Most of the components from this repository can be seen in my projects:
 - 🗒 [astrojs/mdx](https://github.com/withastro/astro/tree/main/packages/integrations/mdx/) - markdown support
 - 📦 [astro-compress](https://github.com/astro-community/AstroCompress) - compression utilities to your Astro project
 - 📲 [PWA](https://github.com/vite-pwa/astro) - Zero-config PWA Integration for Astro
+- 🏷️ [astro-meta-tags](https://github.com/patrick91/astro-meta-tags) - Meta Tags inside for Astro Dev Toolbar
 - 🖨 Static-site generation (SSG)
 - 🎡 [Swiper](https://github.com/nolimits4web/swiper) - modern mobile touch slider with hardware accelerated transitions and amazing native behavior
 - 🌠 [View Transitions API](https://docs.astro.build/en/guides/view-transitions/#full-site-view-transitions-spa-mode) - [View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition) - makes it easy to change the DOM in a single step, while creating an animated transition between the two states. It's available in Chrome 111+ ([more details](https://developer.chrome.com/docs/web-platform/view-transitions?hl=en))
@@ -83,9 +84,11 @@ If you want to customize the default colors, typography or shadows you can find 
 
 Feel free to add new pages to the Core section
 
+
 ### Customizing the page layout
 
 You can find the css for the pages in `src/styles/content.scss`.
+
 
 ### Adding your components
 
@@ -95,6 +98,7 @@ To get started check how the `MainButton` component is used in the `src/pages/bu
 
 You can import your component library or create your own and document it easily.
 
+
 ### `.component-preview` utility
 
 There's a class called `.component-preview` that you can use to wrap your component in a grid, and it will look like this:
@@ -102,6 +106,7 @@ There's a class called `.component-preview` that you can use to wrap your compon
 <div class="component-preview">
     <button class="text-white bg-blue-500 px-4 py-2 rounded-md">Your component</button>
 </div>
+
 
 ### Have fun!
 
