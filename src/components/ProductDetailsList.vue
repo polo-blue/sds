@@ -51,11 +51,11 @@ const props = defineProps({
 
     tr,
     th {
-      @apply leading-none text-sm py-2 border-none  text-xs md:(text-sm leading-none) xl:(py-4) 3xl:(text-base leading-none);
+      @apply leading-none text-3.5 py-2 border-none text-3 xl:(py-4) 3xl:(text-4);
     }
 
     th {
-      @apply px-0
+      @apply px-0;
     }
 
     td {
