@@ -32,7 +32,7 @@ or just clone the repository.
 
 Most of the components from this repository can be seen in my projects:
 
-- http://catalog.polo.blue/
+- https://catalog.polo.blue/
 - https://polo.blue
 
 
