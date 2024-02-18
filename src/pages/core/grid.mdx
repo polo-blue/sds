@@ -8,7 +8,7 @@ import Header from '../../components/layout/Header.astro'
 
 # Grid
 
-Grid templates
+Grid templates for articles, special sections, call to action etc.
 
 
 
@@ -125,36 +125,3 @@ Template inspired by [Kevin Powell](https://www.youtube.com/kevinpowell)
 ```
 
 
-## Container FullWidth (max-w-full)
-
-<div class="component-preview" style="display: block">
-    <Container class="bg-white" isFullWidth>content</Container>
-</div>
-
-### Code
-
-```html
- <Container class="bg-white" isFullWidth>content</Container>
-```
-
-## Header
-
-<div class="component-preview" style="display: block">
-    <Header class="static">
-        <div slot="logo" class="flex-shrink-0 flex items-center h-8">
-            <div class="bg-gray">LOGO</div>
-        </div>
-        <input type="text" slot="search" class="h-full  w-full sm:w-52 md:w-64 border border-solid px-3 text-sm" placeholder="Search..."/>
-    </Header>
-</div>
-
-### Code
-
-```html
-<Header>
-    <div slot="logo" class="flex-shrink-0 flex items-center h-8">
-            <div class="bg-gray">LOGO</div>
-        </div>
-    <input type="text" slot="search" class="h-full  w-full sm:w-52 md:w-64 border border-solid px-3 text-sm" placeholder="Search..."/>
-</Header>
-```
