@@ -21,6 +21,7 @@ export const SIDEBAR = [
   { text: "Colors", link: "/core/colors/" },
   { text: "Typography", link: "/core/typography/" },
   { text: "Shadows", link: "/core/shadows/" },
+  { text: "Grid", link: "/core/grid/" },
 
   { text: "Components", header: true },
   { text: "Badges", link: "/components/badges/" },

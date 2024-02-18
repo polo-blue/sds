@@ -66,7 +66,7 @@ export default defineConfig({
       // globPatterns: ["**/*"],             // add this to cache all the imports
     },
     devOptions: {
-      enabled: true,
+      enabled: false,
       navigateFallbackAllowlist: [/^\//]
     },
     experimental: {
