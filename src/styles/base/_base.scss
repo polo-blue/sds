@@ -1,7 +1,35 @@
 :root {
-  --primary: #{$blue};
+  --color-scheme: light;
+  
+  --clr-primary-400: hsl(198, 100%, 43%) // #{$blue};
   --secondary: #{$gray-500};
   --tertiary: #{$verydarkblue};
+
+  --font-family: 'vw_textregular', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;;
+
+  // variables for future changes:
+
+  // font sies
+  --fs-300: clamp(0.94rem, calc(0.92rem + 0.08vw), 0.98rem);
+  --fs-400: clamp(1.13rem, calc(1.06rem + 0.33vw), 1.31rem);
+  --fs-500: clamp(1.35rem, calc(1.21rem + 0.69vw), 1.75rem);
+  --fs-600: clamp(1.62rem, calc(1.37rem + 1.24vw), 2.33rem);
+  --fs-700: clamp(1.94rem, calc(1.54rem + 2.03vw), 3.11rem);
+  --fs-800: clamp(2.33rem, calc(1.7rem + 3.15vw), 4.14rem);
+  --fs-900: clamp(2.8rem, calc(1.85rem + 4.74vw), 5.52rem);
+
+  // colors
+  --clr-primary-300: rgb(53, 114, 227);
+  --clr-primary-400: hsl(198, 100%, 43%);
+  --clr-primary-500: hsl(219, 76%, 25%);
+  --clr-secondary-300: hsl(269, 75%, 55%);
+  --clr-secondary-400: hsl(269, 75%, 40%);
+  --clr-secondary-500: hsl(269, 75%, 25%);
+  --clr-accent-200: hsl(358, 85%, 80%);
+  --clr-accent-300: hsl(358, 72%, 65%);
+  --clr-accent-400: hsl(358, 72%, 50%);
+  --clr-accent-500: hsl(358, 72%, 35%);
+
 }
 
 * {
@@ -10,7 +38,7 @@
 }
 
 body {
-  font-family: 'vw_textregular', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-family);
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -34,14 +62,14 @@ body {
 
 ::-webkit-scrollbar-thumb {
   border-radius: 0;
-  background-color: var(--primary);
+  background-color: var(--clr-primary-400);
 }
 
 // Fallback to browsers without webkit-scrollbar support
 @supports not selector(::-webkit-scrollbar) {
   * {
     scrollbar-width: thin;
-    scrollbar-color: var(--primary) rgba(0, 0, 0, 0.1)
+    scrollbar-color: var(--clr-primary-400) rgba(0, 0, 0, 0.1)
   }
 }
 
@@ -62,6 +90,10 @@ body {
   color: #fff;
 }
 
+.bg-primary {
+  background: var(--clr-primary-500);
+}
+
 .display-3 {
   letter-spacing: -0.96px;
 }
@@ -80,7 +112,7 @@ html {
 :root {
   // --swiper-navigation-color: #0099da;
   --swiper-navigation-size: 22px;
-  --swiper-scrollbar-drag-bg-color: var(--primary);
+  --swiper-scrollbar-drag-bg-color: var(--clr-primary-400);
   --swiper-scrollbar-size: 1px;
   --swiper-scrollbar-bottom: 0px;
 }

@@ -35,7 +35,7 @@ const props = defineProps({
     @apply content-empty absolute left-0 bottom-0;
     height: 3px;
     width: 55px;
-    background-color: var(--primary);
+    background-color: var(--clr-primary-400);
   }
 
   &:before {
