@@ -50,7 +50,7 @@ dependencies:
     version: 1.1.10
   '@iconify-json/flowbite':
     specifier: ^1.1.1
-    version: 1.1.1
+    version: 1.1.2
   '@iconify-json/fluent':
     specifier: ^1.1.48
     version: 1.1.48
@@ -1808,8 +1808,8 @@ packages:
       '@iconify/types': 2.0.0
     dev: false
 
-  /@iconify-json/flowbite@1.1.1:
-    resolution: {integrity: sha512-fT1eOav3xYjX1j9NG9Zquq0rssFWWBKDuSnoZZ4NUwejvARO0IWpL+GXR9vES4hdLPV59GaXmSNMQbygAr1kjg==}
+  /@iconify-json/flowbite@1.1.2:
+    resolution: {integrity: sha512-fL8O18Yoa8ZEcXzJSfw7AoETB8F/ey7PqW1fFZ0BfszJWYPx/Jt/u5lJOyFNvchTLL7riawWSPOHSCCuv2kZmQ==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: false
