@@ -53,7 +53,7 @@ dependencies:
     version: 1.1.2
   '@iconify-json/fluent':
     specifier: ^1.1.48
-    version: 1.1.48
+    version: 1.1.49
   '@iconify-json/fluent-emoji':
     specifier: 1.1.18
     version: 1.1.18
@@ -1820,8 +1820,8 @@ packages:
       '@iconify/types': 2.0.0
     dev: false
 
-  /@iconify-json/fluent@1.1.48:
-    resolution: {integrity: sha512-qp2/ETNldtnNBDKi6kMHGzkqx9ChINikdo5MuaZm9MziguSmij5DAfgOAs2aNoRVHdvMVD8BKcXTeVH8Sl8u8g==}
+  /@iconify-json/fluent@1.1.49:
+    resolution: {integrity: sha512-BDgdWb8WjWzvfyv1s8JjYViRN/qPDG1cS56tjKt6p0InZq/+PAQFeFBhirTSKtqa8fGzUJpR4dCEBcZDXEb4EA==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: false
