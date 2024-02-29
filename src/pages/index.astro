@@ -88,19 +88,37 @@ const navItems = [
       </Quote>
     </div>
 
-    <div class="flex flex-col py-12">
+    <div class="px-4 grid lg:grid-cols-2 gap-4 md:gap-10 max-w-5xl mx-auto text-center py-12 md:px-0">
+
+      <div>
+        <Headline underline as="div" class="mx-auto text-gray-900" textSize="3xl">Download:</Headline>
+        <div class="grid grid-flow-col gap-4 auto-cols-max text-6xl mb-12">
+          <a href="https://www.npmjs.com/package/spoko-design-system" rel="noopener" title="npm page" class="hover:text-light-blue-400">
+            <Icon name="mdi:npm"/>
+          </a>
+          <a href="https://github.com/polo-blue/sds" rel="noopener" title="Github Page" class="hover:text-light-blue-400">
+            <Icon name="mdi:github"/>
+          </a>
+        </div>
+      </div>
+ 
+
+     <div>
       <Headline underline as="div" class="mx-auto text-gray-900" textSize="3xl">Examples:</Headline>
-      <ul class="mx-auto flex flex-wrap items-center justify-center text-2xl py-6">
-        <li class="leading-5 me-6">
+      <ul class="grid text-2xl pt-6 lg:(auto-cols-max grid-flow-col py-6) text-left">
+        <li class="leading-5 me-6 mb-4 lg:mb-0">
           <a href="https://catalog.polo.blue" class="transition ease-in-out delay-200 duration-300 text-blue-600 hover:(text-light-blue-500 decoration-blue-600) underline decoration-white" target="_blank"> catalog.polo.blue</a>
         </li>
-        <li class="leading-5 me-6">
+        <li class="leading-5 me-6 mb-4 lg:mb-0">
           <a href="https://polo.blue" class="transition ease-in-out delay-200 duration-300 text-blue-600 hover:(text-light-blue-500 decoration-blue-600) underline decoration-white" target="_blank"> polo.blue</a>
         </li>
-        <li class="leading-5 me-6">
+        <li class="leading-5 me-6 mb-4 lg:mb-0">
           <a href="https://spoko.space" class="transition ease-in-out delay-200 duration-300 text-blue-600 hover:(text-light-blue-500 decoration-blue-600) underline decoration-white" target="_blank"> spoko.space</a>
         </li>
       </ul>
+     </div>
+
+
     </div>
   </div>
   <script is:inline></script>
