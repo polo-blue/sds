@@ -77,7 +77,7 @@ export default defineConfig({
   }), icon({
     include: {
       // mdi: ["*"], // (Default) Loads entire Material Design Icon set
-      mdi: ["facebook", "instagram", "post-it-note-edit-outline", "car-hatchback", "car-door", "car-side", "car-windshield-outline", "car-light-alert", "car-tire-alert", "car-light-dimmed", "car-light-fog", "car-light-high", "car-parking-lights", "car-esp", "car-brake-abs", "car-horn", "engine-outline", "fan", "fan-off", "air-conditioner", "coolant-temperature", "car-brake-alert", "car-traction-control", "card-text-outline", "fuel", "oil", "hazard-lights", "credit-card-outline"],
+      mdi: ["npm", "github", "facebook", "instagram", "post-it-note-edit-outline", "car-hatchback", "car-door", "car-side", "car-windshield-outline", "car-light-alert", "car-tire-alert", "car-light-dimmed", "car-light-fog", "car-light-high", "car-parking-lights", "car-esp", "car-brake-abs", "car-horn", "engine-outline", "fan", "fan-off", "air-conditioner", "coolant-temperature", "car-brake-alert", "car-traction-control", "card-text-outline", "fuel", "oil", "hazard-lights", "credit-card-outline"],
       "ant-design": ["menu-fold-outlined", "menu-unfold-outlined", "menu-outlined", "cluster-outlined", "audit-outlined", "build-twotone", "home-outlined", "close-outlined"],
       bi: ["envelope-open", "credit-card", "qr-code", "list-check", "list-task", "text-indent-left", "text-indent-right", "tag", "tags", "x"],
       bx: ["arrow-back", "check", "detail", "file", "car", "credit-card", "barcode", "qr"],
