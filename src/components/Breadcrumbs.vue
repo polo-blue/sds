@@ -39,10 +39,10 @@ const isLast = (index: Number) => {
 
 <template>
   <nav>
-    <ul class="breadcrumbs flex items-center p-0 leading-none	">
-      <li v-if="props.showBack" class="breadcrumb-item flex">
+    <ul class="breadcrumbs flex items-center p-0 overflow-x-auto sm:mr-12 leading-none">
+      <li v-if="props.showBack" class="breadcrumb-item flex h-full">
         <button
-          class="breadcrumb-link flex items-center px-0 py-2 sm:py-1 hover:text-lightBlue-500 whitespace-nowrap px-3 my-auto"
+          class="breadcrumb-link flex items-center px-0 h-full sm:(py-1 h-auto) hover:text-lightBlue-500 whitespace-nowrap px-3 my-auto"
           :title="props.textBack" onclick="history.back()" i-bx-bx-arrow-back />
       </li>
     </ul>
