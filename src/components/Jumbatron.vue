@@ -23,7 +23,7 @@ const props = defineProps({
   <header class="relative flow content-grid bg-vw  mx-auto my-auto py-8 lg:w-full text-center"  :class="props.small ? 'md:min-h-xs sm:py-12 md:py-14 lg:py-16 xl:py-20' : 'md:min-h-md sm:py-16 md:py-20 lg:py-28 xl:py-32'">
       
         <slot name="intro">
-          <h1 class="text-3xl  tracking-tight font-headlight text-white sm:(text-4xl pt-0) md:text-5xl lg:text-6xl " v-html="props.intro" />
+          <h1 class="text-3xl headline-light text-white sm:(text-4xl pt-0) md:text-5xl lg:text-6xl " v-html="props.intro" />
         </slot>
    
       <slot name="subtitle" />

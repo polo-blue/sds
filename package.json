@@ -1,6 +1,6 @@
 {
   "name": "spoko-design-system",
-  "version": "0.2.20",
+  "version": "0.2.21",
   "private": false,
   "scripts": {
     "dev": "astro dev",

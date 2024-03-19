@@ -28,6 +28,7 @@ export default defineConfig({
     transformerVariantGroup(),
   ],
   shortcuts: [
+    ['headline-light', 'font-headlight font-300 tracking-tight'],
     ['detail-name', 'text-gray-900  leading-tight font-textlight line-clamp-3 whitespace-normal md:(whitespace-pre-wrap line-clamp-9 font-textregular)'],
     ['product-number','font-novamono content-center flex flex-wrap flex-col content-start pr-5 bg-white'],
     ['colon-after', 'after:content-[":"]'],
@@ -211,6 +212,7 @@ export default defineConfig({
       }),
       // presetTypography(),
       presetWebFonts({
+        provider: 'none',
         fonts: {
           sans: [{
             name: 'vw_textregular',
@@ -224,10 +226,7 @@ export default defineConfig({
               name: 'Nova Mono',
               provider: 'none'
             }],
-          headlight: [{
-            name: 'vw_headlight',
-            provider: 'none'
-          }],
+          headlight: ['vw_headlight', 'system-ui'],
           headregular: [{
             name: 'vw_headregular',
             provider: 'none'
