@@ -1,7 +1,7 @@
 :root {
   --color-scheme: light;
   
-  --clr-primary-400: hsl(198, 100%, 43%) // #{$blue};
+  --clr-primary-400: hsl(198, 100%, 43%); /* {$blue}; */
   --secondary: #{$gray-500};
   --tertiary: #{$verydarkblue};
 
