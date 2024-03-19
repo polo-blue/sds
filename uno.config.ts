@@ -226,7 +226,7 @@ export default defineConfig({
               name: 'Nova Mono',
               provider: 'none'
             }],
-          headlight: ['vw_headlight', 'system-ui'],
+          headlight: ['vw_headlight', 'system-ui', 'ui-sans-serif'],
           headregular: [{
             name: 'vw_headregular',
             provider: 'none'
