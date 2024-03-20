@@ -26,7 +26,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 <html dir={content.dir ?? "ltr"} lang={content.lang ?? "en-us"} class="initial">
   <head>
     <HeadCommon />
-    <HeadSEO {content} canonicalURL={canonicalURL} />
+    <HeadSEO content={content} canonicalURL={canonicalURL} />
     <title>
       {
         content.title
