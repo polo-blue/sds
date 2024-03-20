@@ -63,7 +63,6 @@ const toggleVisibility = () => {
   content: ' ';
   height: 1.25rem;
   width: 2px;
-  /* background-color: #fff; */
 }
 
 .close-light {

@@ -28,8 +28,8 @@
   ],
   "dependencies": {
     "@algolia/client-search": "^4.22.1",
-    "@astrojs/mdx": "^2.2.0",
-    "@astrojs/node": "^8.2.4",
+    "@astrojs/mdx": "^2.2.1",
+    "@astrojs/node": "^8.2.5",
     "@astrojs/sitemap": "^3.1.1",
     "@astrojs/vue": "^4.0.9",
     "@docsearch/css": "^3.6.0",
@@ -51,7 +51,7 @@
     "@iconify-json/ph": "^1.1.11",
     "@iconify-json/simple-icons": "^1.1.96",
     "@iconify-json/uil": "^1.1.8",
-    "@iconify/json": "^2.2.193",
+    "@iconify/json": "^2.2.194",
     "@iconify/vue": "^4.1.1",
     "@types/node": "^20.11.30",
     "@unocss/astro": "^0.58.6",
@@ -77,12 +77,12 @@
     "sass": "^1.72.0",
     "swiper": "^11.0.7",
     "unocss": "^0.58.6",
-    "vite": "^5.1.6",
+    "vite": "^5.2.2",
     "vue": "^3.4.21"
   },
   "devDependencies": {
     "@unocss/transformer-variant-group": "^0.58.6",
-    "astro": "^4.5.6",
+    "astro": "^4.5.8",
     "unocss": "^0.58.3"
   },
   "packageManager": "pnpm@8.15.5",
