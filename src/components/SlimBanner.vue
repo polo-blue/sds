@@ -65,14 +65,6 @@ const toggleVisibility = () => {
   width: 2px;
 }
 
-.close-light {
-  @apply before:bg-white after:bg-white;
-}
-
-.close-dark {
-  @apply before:bg-black after:bg-black;
-}
-
 .close:before {
   transform: rotate(45deg);
 }
