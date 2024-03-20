@@ -28,6 +28,8 @@ export default defineConfig({
     transformerVariantGroup(),
   ],
   shortcuts: [
+    ['close-light','@apply before:bg-white after:bg-white'],
+    ['close-dark','@apply before:bg-black after:bg-black'],
     ['headline-light', 'font-headlight font-300 tracking-tight'],
     ['detail-name', 'text-gray-900  leading-tight font-textlight line-clamp-3 whitespace-normal md:(whitespace-pre-wrap line-clamp-9 font-textregular)'],
     ['product-number','font-novamono content-center flex flex-wrap flex-col content-start pr-5 bg-white'],
