@@ -24,7 +24,7 @@ export default defineConfig({
   integrations: [
   // Enable Vue to support Vue3 components.
   vue(), mdx(), astroI18next(), AstroPWA({
-    mode: 'development',
+    mode: 'production',
     base: '/',
     scope: '/',
     includeAssets: ['favicon.svg', 'safari-pinned-tab.svg', 'brands/*.svg', 'fonts/*.woff2', 'fonts/*.svg', 'vw.svg', 'polo.blue.svg', 'spoko.space.svg'],
