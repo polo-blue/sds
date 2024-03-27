@@ -91,7 +91,7 @@ export default defineConfig({
     ['slide-thumb__img','pointer-events-none pb-px h-full m-auto object-cover bg-white dark:bg-blue-901'],
     ['cat-card','p-4 text-base md:text-sm'],
     ['flag-ua', 'inline-block text-4xl w-6 h-3.5 min-w-[1.25rem] mr-3 bg-gradient-to-b stops-[#0057b7_50%,50%,#ffd700_100%]'],
-    ['slimbanner','px-4 sm:px-8 py-3 flex items-center justify-center text-xs sm:text-base leading-none text-white relative'],
+    ['slimbanner','px-4 sm:px-8  flex items-center justify-center text-xs sm:text-base leading-none relative bg-gray-100  z-2 px-4 py-3 sm:(text-base px-8) text-blue-700 print-hidden'],
     ['similar-products','flex items-center space-y-4 gap-8 flex-wrap px-4 md:grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5'],
     ['products-grid','flex w-full flex-nowrap items-center pr-4 md:grid grid-rows-1 overflow-hidden grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 max-h-[6rem]'],
     ['cat-link','whitespace-nowrap cursor-pointer text-blue-901 dark:text-white hover:text-lightBlue-400 font-light uppercase py-2 md:py-0'],
