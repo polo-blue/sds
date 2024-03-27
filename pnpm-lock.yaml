@@ -14,16 +14,16 @@ dependencies:
     version: 4.22.1
   '@astrojs/mdx':
     specifier: ^2.2.1
-    version: 2.2.1(astro@4.5.9)
+    version: 2.2.1(astro@4.5.10)
   '@astrojs/node':
     specifier: ^8.2.5
-    version: 8.2.5(astro@4.5.9)
+    version: 8.2.5(astro@4.5.10)
   '@astrojs/sitemap':
     specifier: ^3.1.1
     version: 3.1.1
   '@astrojs/vue':
     specifier: ^4.0.9
-    version: 4.0.9(@babel/core@7.24.3)(astro@4.5.9)(vite@5.2.6)(vue@3.4.21)
+    version: 4.0.9(@babel/core@7.24.3)(astro@4.5.10)(vite@5.2.6)(vue@3.4.21)
   '@docsearch/css':
     specifier: ^3.6.0
     version: 3.6.0
@@ -113,7 +113,7 @@ dependencies:
     version: 0.58.6
   '@vite-pwa/astro':
     specifier: ^0.3.1
-    version: 0.3.1(astro@4.5.9)(vite-plugin-pwa@0.19.7)
+    version: 0.3.1(astro@4.5.10)(vite-plugin-pwa@0.19.7)
   '@vueuse/core':
     specifier: ^10.9.0
     version: 10.9.0(vue@3.4.21)
@@ -122,19 +122,19 @@ dependencies:
     version: 2.2.17
   astro-i18next:
     specifier: 1.0.0-beta.21
-    version: 1.0.0-beta.21(astro@4.5.9)
+    version: 1.0.0-beta.21(astro@4.5.10)
   astro-icon:
     specifier: ^1.1.0
     version: 1.1.0
   astro-meta-tags:
     specifier: ^0.2.2
-    version: 0.2.2(astro@4.5.9)
+    version: 0.2.2(astro@4.5.10)
   astro-navbar:
     specifier: ^2.3.1
     version: 2.3.1
   astro-pagefind:
     specifier: ^1.5.0
-    version: 1.5.0(astro@4.5.9)
+    version: 1.5.0(astro@4.5.10)
   i18next:
     specifier: ^23.10.1
     version: 23.10.1
@@ -172,7 +172,7 @@ devDependencies:
     version: 0.58.6
   astro:
     specifier: ^4.5.9
-    version: 4.5.9(@types/node@20.11.30)(sass@1.72.0)
+    version: 4.5.10(@types/node@20.11.30)(sass@1.72.0)
 
 packages:
 
@@ -262,7 +262,32 @@ packages:
       remark-parse: 11.0.0
       remark-rehype: 11.1.0
       remark-smartypants: 2.1.0
-      shiki: 1.2.0
+      shiki: 1.2.1
+      unified: 11.0.4
+      unist-util-remove-position: 5.0.0
+      unist-util-visit: 5.0.0
+      unist-util-visit-parents: 6.0.1
+      vfile: 6.0.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@astrojs/markdown-remark@4.3.2:
+    resolution: {integrity: sha512-4Oa4VaYiBd0MatB+rWIU/0A8pZH/sK3c2QkRYb+OO2lPl+qzevJtWaZY8hAQc4qurIOlRdn6B6ofDAGhWw+DSg==}
+    dependencies:
+      '@astrojs/prism': 3.0.0
+      github-slugger: 2.0.0
+      hast-util-from-html: 2.0.1
+      hast-util-to-text: 4.0.0
+      import-meta-resolve: 4.0.0
+      mdast-util-definitions: 6.0.0
+      rehype-raw: 7.0.0
+      rehype-stringify: 10.0.0
+      remark-gfm: 4.0.0
+      remark-parse: 11.0.0
+      remark-rehype: 11.1.0
+      remark-smartypants: 2.1.0
+      shiki: 1.2.1
       unified: 11.0.4
       unist-util-remove-position: 5.0.0
       unist-util-visit: 5.0.0
@@ -271,7 +296,7 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@astrojs/mdx@2.2.1(astro@4.5.9):
+  /@astrojs/mdx@2.2.1(astro@4.5.10):
     resolution: {integrity: sha512-bSr/AkvGieD9Pc5ZzMnAk7IHnw0vyt/aOujuYUmYT+NHiWahAUy/+ywNNMhTMmea0irdMYnBVC1AEKMQ/oXxow==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -280,7 +305,7 @@ packages:
       '@astrojs/markdown-remark': 4.3.1
       '@mdx-js/mdx': 3.0.1
       acorn: 8.11.3
-      astro: 4.5.9(@types/node@20.11.30)(sass@1.72.0)
+      astro: 4.5.10(@types/node@20.11.30)(sass@1.72.0)
       es-module-lexer: 1.5.0
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
@@ -297,12 +322,12 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/node@8.2.5(astro@4.5.9):
+  /@astrojs/node@8.2.5(astro@4.5.10):
     resolution: {integrity: sha512-IdVD4dBNyg+ScmCATZ0FM7vNLAHq0TSdiJ3LpR4jcWIUhpN1ps5Jg+9CfzMaLmCCe/SJUZejK5EnzqUJdnGYyg==}
     peerDependencies:
       astro: ^4.2.0
     dependencies:
-      astro: 4.5.9(@types/node@20.11.30)(sass@1.72.0)
+      astro: 4.5.10(@types/node@20.11.30)(sass@1.72.0)
       send: 0.18.0
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -336,7 +361,7 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@astrojs/vue@4.0.9(@babel/core@7.24.3)(astro@4.5.9)(vite@5.2.6)(vue@3.4.21):
+  /@astrojs/vue@4.0.9(@babel/core@7.24.3)(astro@4.5.10)(vite@5.2.6)(vue@3.4.21):
     resolution: {integrity: sha512-go+dRsDQpZYbwvMTJygw9i9W7apsI36STm/Ic4NTcTnlMGjQZlFi3GyQiPB8rstX+FpuTaCDxFSzDhqfD89tig==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -347,7 +372,7 @@ packages:
       '@vitejs/plugin-vue-jsx': 3.1.0(vite@5.2.6)(vue@3.4.21)
       '@vue/babel-plugin-jsx': 1.2.2(@babel/core@7.24.3)
       '@vue/compiler-sfc': 3.4.21
-      astro: 4.5.9(@types/node@20.11.30)(sass@1.72.0)
+      astro: 4.5.10(@types/node@20.11.30)(sass@1.72.0)
       vue: 3.4.21
     transitivePeerDependencies:
       - '@babel/core'
@@ -2612,8 +2637,8 @@ packages:
     requiresBuild: true
     optional: true
 
-  /@shikijs/core@1.2.0:
-    resolution: {integrity: sha512-OlFvx+nyr5C8zpcMBnSGir0YPD6K11uYhouqhNmm1qLiis4GA7SsGtu07r9gKS9omks8RtQqHrJL4S+lqWK01A==}
+  /@shikijs/core@1.2.1:
+    resolution: {integrity: sha512-KaIS0H4EQ3KI2d++TjYqRNgwp8E3M/68e9veR4QtInzA7kKFgcjeiJqb80fuXW+blDy5fmd11PN9g9soz/3ANQ==}
 
   /@surma/rollup-plugin-off-main-thread@2.2.3:
     resolution: {integrity: sha512-lR8q/9W7hZpMWweNiAKU7NQerBnzQQLvi8qnTDU/fxItPhtZVMbPV3lbCwjhIlNBe9Bbr5V+KHshvWmVSG9cxQ==}
@@ -2985,7 +3010,7 @@ packages:
       - rollup
     dev: false
 
-  /@vite-pwa/astro@0.3.1(astro@4.5.9)(vite-plugin-pwa@0.19.7):
+  /@vite-pwa/astro@0.3.1(astro@4.5.10)(vite-plugin-pwa@0.19.7):
     resolution: {integrity: sha512-rSzbYnNZU4L4QBzwO7HTDy06WbWnQ/PPOd0rzVTlOxYz/PPzbXXgnOvMY/4yNRCq7Lhc68sq2fRQ2JEAynmESw==}
     peerDependencies:
       '@vite-pwa/assets-generator': ^0.2.4
@@ -2995,7 +3020,7 @@ packages:
       '@vite-pwa/assets-generator':
         optional: true
     dependencies:
-      astro: 4.5.9(@types/node@20.11.30)(sass@1.72.0)
+      astro: 4.5.10(@types/node@20.11.30)(sass@1.72.0)
       vite-plugin-pwa: 0.19.7(vite@5.2.6)(workbox-build@7.0.0)(workbox-window@7.0.0)
     dev: false
 
@@ -3286,7 +3311,7 @@ packages:
       terser: 5.29.2
     dev: false
 
-  /astro-i18next@1.0.0-beta.21(astro@4.5.9):
+  /astro-i18next@1.0.0-beta.21(astro@4.5.10):
     resolution: {integrity: sha512-1YPqwexumHpK/d9afEoi52CBFTu6k4MYv/oHjsaAasZDvFClU6U5VPttC/OgZcXRYggCM6ee2LOnyHqlmXOeLA==}
     hasBin: true
     peerDependencies:
@@ -3294,7 +3319,7 @@ packages:
     dependencies:
       '@proload/core': 0.3.3
       '@proload/plugin-tsm': 0.2.1(@proload/core@0.3.3)
-      astro: 4.5.9(@types/node@20.11.30)(sass@1.72.0)
+      astro: 4.5.10(@types/node@20.11.30)(sass@1.72.0)
       i18next: 22.5.1
       i18next-browser-languagedetector: 7.2.0
       i18next-fs-backend: 2.3.1
@@ -3316,37 +3341,37 @@ packages:
       - supports-color
     dev: false
 
-  /astro-meta-tags@0.2.2(astro@4.5.9):
+  /astro-meta-tags@0.2.2(astro@4.5.10):
     resolution: {integrity: sha512-7wl4AlklzDJqKU8BIhNVyLvgMKlKk6hJX2auYb2lFujJ4/zu2u1W7VKTx3wZ7WuGsRsZMUj6BvXz17e0KZ3jgw==}
     peerDependencies:
       astro: ^4.0.0
     dependencies:
-      astro: 4.5.9(@types/node@20.11.30)(sass@1.72.0)
+      astro: 4.5.10(@types/node@20.11.30)(sass@1.72.0)
     dev: false
 
   /astro-navbar@2.3.1:
     resolution: {integrity: sha512-lLvhWS03Qc3heMU23adFwEnBUJFlL6gxYi0xPvIyX1atb2oCov4kOS/MaWOPGnvj2nK63szebUzlG+NdIoUZzQ==}
     dev: false
 
-  /astro-pagefind@1.5.0(astro@4.5.9):
+  /astro-pagefind@1.5.0(astro@4.5.10):
     resolution: {integrity: sha512-CN7Afe9qW640U1qliCQMXN259Dl6VPUnl8FneLfKE7STV4HLiif4PbNZejylC6yXYyP6uyNVDHNOfJfBBW5h6A==}
     peerDependencies:
       astro: ^2.0.4 || ^3.0.0 || ^4.0.0
     dependencies:
       '@pagefind/default-ui': 1.0.4
-      astro: 4.5.9(@types/node@20.11.30)(sass@1.72.0)
+      astro: 4.5.10(@types/node@20.11.30)(sass@1.72.0)
       pagefind: 1.0.4
       sirv: 2.0.4
     dev: false
 
-  /astro@4.5.9(@types/node@20.11.30)(sass@1.72.0):
-    resolution: {integrity: sha512-GheU72Goz7dYQNKaqTxB2H49cNvHfahGSbNkTvMXk+gyHf/g633qadqlO2ZQbTUacoUWmDzvS5fhMZt2/w4naQ==}
+  /astro@4.5.10(@types/node@20.11.30)(sass@1.72.0):
+    resolution: {integrity: sha512-xW/ZTSqSHEQyzWzXHJa9gEQXC+MUD3mhzEBJyrMp/JWT+geLgUK2m0Rrc/AnBl8EfdS/6uFadiJV1fWao4lc7w==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
       '@astrojs/compiler': 2.7.0
       '@astrojs/internal-helpers': 0.3.0
-      '@astrojs/markdown-remark': 4.3.1
+      '@astrojs/markdown-remark': 4.3.2
       '@astrojs/telemetry': 3.0.4
       '@babel/core': 7.24.3
       '@babel/generator': 7.24.1
@@ -3394,7 +3419,7 @@ packages:
       rehype: 13.0.1
       resolve: 1.22.8
       semver: 7.6.0
-      shiki: 1.2.0
+      shiki: 1.2.1
       string-width: 7.1.0
       strip-ansi: 7.1.0
       tsconfck: 3.0.3
@@ -7220,10 +7245,10 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
 
-  /shiki@1.2.0:
-    resolution: {integrity: sha512-xLhiTMOIUXCv5DqJ4I70GgQCtdlzsTqFLZWcMHHG3TAieBUbvEGthdrlPDlX4mL/Wszx9C6rEcxU6kMlg4YlxA==}
+  /shiki@1.2.1:
+    resolution: {integrity: sha512-u+XW6o0vCkUNlneZb914dLO+AayEIwK5tI62WeS//R5HIXBFiYaj/Hc5xcq27Yh83Grr4JbNtUBV8W6zyK4hWg==}
     dependencies:
-      '@shikijs/core': 1.2.0
+      '@shikijs/core': 1.2.1
 
   /side-channel@1.0.6:
     resolution: {integrity: sha512-fDW/EZ6Q9RiO8eFG8Hj+7u/oW+XrPTIChwCOM2+th2A6OblDtYYIpve9m+KvI9Z4C9qSEXlaGR6bTEYHReuglA==}
@@ -8260,6 +8285,7 @@ packages:
 
   /workbox-google-analytics@7.0.0:
     resolution: {integrity: sha512-MEYM1JTn/qiC3DbpvP2BVhyIH+dV/5BjHk756u9VbwuAhu0QHyKscTnisQuz21lfRpOwiS9z4XdqeVAKol0bzg==}
+    deprecated: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
     dependencies:
       workbox-background-sync: 7.0.0
       workbox-core: 7.0.0
