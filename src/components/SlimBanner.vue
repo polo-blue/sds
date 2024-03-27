@@ -15,8 +15,7 @@ const toggleVisibility = () => {
 </script>
 
 <template>
-  <div v-if="isShow" data-pagefind-ignore
-    class="slimbanner bg-gray-100 drop-shadow-md z-2 px-4 py-3 flex items-center justify-center text-xs sm:(text-base px-8) leading-none text-blue-700 relative print-hidden">
+  <div v-if="isShow" data-pagefind-ignore class="slimbanner">
     <span
       class="inline-block text-4xl w-6 h-3.5 min-w-[1.25rem] mr-3 bg-gradient-to-b stops-[#0057b7_50%,50%,#ffd700_100%]" />
     <span class="leading-none "><span
