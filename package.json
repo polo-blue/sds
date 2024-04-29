@@ -87,7 +87,7 @@
     "astro": "^4.6.3",
     "unocss": "^0.58.3"
   },
-  "packageManager": "pnpm@8.15.5",
+  "packageManager": "pnpm@8.15.7",
   "pnpm": {
     "default": "8.15.2",
     "overrides": {
