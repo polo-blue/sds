@@ -53,7 +53,7 @@
     "@iconify-json/uil": "^1.1.8",
     "@iconify/json": "^2.2.202",
     "@iconify/vue": "^4.1.2",
-    "@playform/compress": "^0.0.2",
+    "@playform/compress": "^0.0.3",
     "@playform/inline": "github:playform/inline",
     "@types/node": "^20.12.7",
     "@unocss/astro": "^0.58.9",
