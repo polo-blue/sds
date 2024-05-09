@@ -83,7 +83,7 @@ dependencies:
     version: 1.1.8
   '@iconify/json':
     specifier: ^2.2.202
-    version: 2.2.202
+    version: 2.2.203
   '@iconify/vue':
     specifier: ^4.1.2
     version: 4.1.2(vue@3.4.23)
@@ -2126,8 +2126,8 @@ packages:
       '@iconify/types': 2.0.0
     dev: false
 
-  /@iconify/json@2.2.202:
-    resolution: {integrity: sha512-ohR6hsbWPUYscf8FW2HdyN8L07mrhJraruVyMBDWltU2JzY6W0NDB0mIpZ5+3vuhvlecSZyWL95XiH0QFQpoFg==}
+  /@iconify/json@2.2.203:
+    resolution: {integrity: sha512-SjtZP6JGbklux1Nf8nQYDZTYRxdKvXLsRQIRvSgMc2z8z9UHpoRakpe8JGT7w1RjK6MMVIfal7Nrf9w8yjKDcA==}
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
