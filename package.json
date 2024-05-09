@@ -56,13 +56,13 @@
     "@playform/compress": "^0.0.3",
     "@playform/inline": "github:playform/inline",
     "@types/node": "^20.12.7",
-    "@unocss/astro": "^0.58.9",
-    "@unocss/preset-attributify": "^0.58.9",
-    "@unocss/preset-typography": "^0.58.9",
-    "@unocss/preset-uno": "^0.58.9",
-    "@unocss/preset-web-fonts": "^0.58.9",
-    "@unocss/preset-wind": "^0.58.9",
-    "@unocss/reset": "^0.58.9",
+    "@unocss/astro": "^0.60.0",
+    "@unocss/preset-attributify": "^0.60.0",
+    "@unocss/preset-typography": "^0.60.0",
+    "@unocss/preset-uno": "^0.60.0",
+    "@unocss/preset-web-fonts": "^0.60.0",
+    "@unocss/preset-wind": "^0.60.0",
+    "@unocss/reset": "^0.60.0",
     "@vite-pwa/astro": "^0.3.1",
     "@vueuse/core": "^10.9.0",
     "astro-i18next": "1.0.0-beta.21",
@@ -78,14 +78,14 @@
     "i18next-vue": "^4.0.0",
     "sass": "^1.75.0",
     "swiper": "^11.1.1",
-    "unocss": "^0.58.9",
+    "unocss": "^0.60.0",
     "vite": "^5.2.10",
     "vue": "^3.4.23"
   },
   "devDependencies": {
-    "@unocss/transformer-variant-group": "^0.58.9",
+    "@unocss/transformer-variant-group": "^0.60.0",
     "astro": "^4.6.3",
-    "unocss": "^0.58.3"
+    "unocss": "^0.60.0"
   },
   "packageManager": "pnpm@8.15.7",
   "pnpm": {
