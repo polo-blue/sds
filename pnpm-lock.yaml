@@ -38,7 +38,7 @@ dependencies:
     version: 1.1.10
   '@iconify-json/carbon':
     specifier: ^1.1.31
-    version: 1.1.31
+    version: 1.1.32
   '@iconify-json/circle-flags':
     specifier: ^1.1.47
     version: 1.1.47
@@ -2235,8 +2235,8 @@ packages:
       '@iconify/types': 2.0.0
     dev: false
 
-  /@iconify-json/carbon@1.1.31:
-    resolution: {integrity: sha512-CAvECFfiwGyZmlcuM2JLMRDEN3VsIEZv6lml7Xf+3giQ5oXloADm0b5wiVPFZmONKM5jXERmx+E7YSvAtFJIbw==}
+  /@iconify-json/carbon@1.1.32:
+    resolution: {integrity: sha512-9X8wVI7AmcnjTyOdDoCgyNwcFL9lb++nacDS2yLANTc27F4y9Q8pJIfUVsakR4KcGqSSBCyXwEmBDeopeTZFqA==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: false
