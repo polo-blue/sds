@@ -33,9 +33,7 @@ const navItems = [
 
 <Layout>
   <div class="bg-slate-100 min-h-screen text-center">
-    <Jumbatron class="w-full">
-      <span slot="intro" set:html={SITE.title} />
-
+    <Jumbatron class="w-full" intro={SITE.title}>
       <p
         slot="subtitle"
         class="mt-3 text-base text-gray-200 sm:mt-5 text-lg md:text-xl lg:mx-0 md:mt-5"
@@ -114,6 +112,9 @@ const navItems = [
         </li>
         <li class="leading-5 me-6 mb-4 lg:mb-0">
           <a href="https://spoko.space" class="transition ease-in-out delay-200 duration-300 text-blue-600 hover:(text-light-blue-500 decoration-blue-600) underline decoration-white" target="_blank"> spoko.space</a>
+        </li>
+        <li class="leading-5 me-6 mb-4 lg:mb-0">
+          <a href="https://sale.polo.blue/" class="transition ease-in-out delay-200 duration-300 text-blue-600 hover:(text-light-blue-500 decoration-blue-600) underline decoration-white" target="_blank">sale.polo.blue</a>
         </li>
       </ul>
      </div>
