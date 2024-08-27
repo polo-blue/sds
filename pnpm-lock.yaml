@@ -146,7 +146,7 @@ importers:
         version: 0.3.3
       i18next:
         specifier: ^23.11.5
-        version: 23.11.5
+        version: 23.14.0
       i18next-browser-languagedetector:
         specifier: ^8.0.0
         version: 8.0.0
@@ -158,7 +158,7 @@ importers:
         version: 2.5.2
       i18next-vue:
         specifier: ^4.0.0
-        version: 4.0.0(i18next@23.11.5)(vue@3.4.31(typescript@5.5.3))
+        version: 4.0.0(i18next@23.14.0)(vue@3.4.31(typescript@5.5.3))
       sass:
         specifier: ^1.77.8
         version: 1.77.8
@@ -3406,8 +3406,8 @@ packages:
   i18next@22.5.1:
     resolution: {integrity: sha512-8TGPgM3pAD+VRsMtUMNknRz3kzqwp/gPALrWMsDnmC1mKqJwpWyooQRLMcbTwq8z8YwSmuj+ZYvc+xCuEpkssA==}
 
-  i18next@23.11.5:
-    resolution: {integrity: sha512-41pvpVbW9rhZPk5xjCX2TPJi2861LEig/YRhUkY+1FQ2IQPS0bKUDYnEqY8XPPbB48h1uIwLnP9iiEfuSl20CA==}
+  i18next@23.14.0:
+    resolution: {integrity: sha512-Y5GL4OdA8IU2geRrt2+Uc1iIhsjICdHZzT9tNwQ3TVqdNzgxHToGCKf/TPRP80vTCAP6svg2WbbJL+Gx5MFQVA==}
 
   idb@7.1.1:
     resolution: {integrity: sha512-gchesWBzyvGHRO9W8tzUWFDycow5gwjvFKfyV9FF32Y7F50yZMp7mP+T2mJIWFx49zicqyC4uefHM17o6xKIVQ==}
@@ -9179,7 +9179,7 @@ snapshots:
 
   i18next-browser-languagedetector@7.2.1:
     dependencies:
-      '@babel/runtime': 7.24.8
+      '@babel/runtime': 7.25.4
 
   i18next-browser-languagedetector@8.0.0:
     dependencies:
@@ -9193,18 +9193,18 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  i18next-vue@4.0.0(i18next@23.11.5)(vue@3.4.31(typescript@5.5.3)):
+  i18next-vue@4.0.0(i18next@23.14.0)(vue@3.4.31(typescript@5.5.3)):
     dependencies:
-      i18next: 23.11.5
+      i18next: 23.14.0
       vue: 3.4.31(typescript@5.5.3)
 
   i18next@22.5.1:
     dependencies:
-      '@babel/runtime': 7.24.8
+      '@babel/runtime': 7.25.4
 
-  i18next@23.11.5:
+  i18next@23.14.0:
     dependencies:
-      '@babel/runtime': 7.24.8
+      '@babel/runtime': 7.25.4
 
   idb@7.1.1: {}
 
