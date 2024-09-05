@@ -35,7 +35,7 @@ importers:
         version: 1.1.17
       '@iconify-json/bi':
         specifier: ^1.1.23
-        version: 1.1.23
+        version: 1.2.0
       '@iconify-json/bx':
         specifier: ^1.1.10
         version: 1.1.10
@@ -1370,8 +1370,8 @@ packages:
   '@iconify-json/ant-design@1.1.17':
     resolution: {integrity: sha512-iAhvjWTBH5LJbOPNllg9Fs5FwbR0tqqpCScKCwN4E1hoEPg6U/R16IOfte4jlusom0BnX59o2cDlrkPrB706+Q==}
 
-  '@iconify-json/bi@1.1.23':
-    resolution: {integrity: sha512-1te+g9ZzI+PU1Lv6Xerd3XPXf4DE6g3TvDL2buIopTAfrauPHyXCHPFQMrzoQVNrVPCpN3rv3vBtJMPyBwJ9IA==}
+  '@iconify-json/bi@1.2.0':
+    resolution: {integrity: sha512-kaBV87cQlyeMkBBiMqsf3b43Nsxdk/rYKvR29dnktht57WUyHCnBAuH+ca/bscX856CzRpVX+sYs7arjrJD0qA==}
 
   '@iconify-json/bx@1.1.10':
     resolution: {integrity: sha512-4JzMDYhs/hkU9mO8nNMNKZwHn706oQaD46URyUuD4fP/XAWGf01vg6wKITmQseEHsHDrtKAXjwcumfnTUDi3OQ==}
@@ -6708,7 +6708,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/bi@1.1.23':
+  '@iconify-json/bi@1.2.0':
     dependencies:
       '@iconify/types': 2.0.0
 
