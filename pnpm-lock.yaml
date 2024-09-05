@@ -122,7 +122,7 @@ importers:
         version: 0.60.4
       '@vite-pwa/astro':
         specifier: ^0.4.0
-        version: 0.4.0(astro@4.15.3(@types/node@20.14.10)(lightningcss@1.25.1)(rollup@2.79.1)(sass@1.77.8)(terser@5.31.6)(typescript@5.5.3))(vite-plugin-pwa@0.19.8(vite@5.3.3(@types/node@20.14.10)(lightningcss@1.25.1)(sass@1.77.8)(terser@5.31.6))(workbox-build@7.1.0(@types/babel__core@7.20.5))(workbox-window@7.1.0))
+        version: 0.4.3(astro@4.15.3(@types/node@20.14.10)(lightningcss@1.25.1)(rollup@2.79.1)(sass@1.77.8)(terser@5.31.6)(typescript@5.5.3))(vite-plugin-pwa@0.19.8(vite@5.3.3(@types/node@20.14.10)(lightningcss@1.25.1)(sass@1.77.8)(terser@5.31.6))(workbox-build@7.1.0(@types/babel__core@7.20.5))(workbox-window@7.1.0))
       '@vueuse/core':
         specifier: ^10.11.0
         version: 10.11.0(vue@3.4.31(typescript@5.5.3))
@@ -1857,12 +1857,12 @@ packages:
     peerDependencies:
       vite: ^2.9.0 || ^3.0.0-0 || ^4.0.0 || ^5.0.0-0
 
-  '@vite-pwa/astro@0.4.0':
-    resolution: {integrity: sha512-Fw9XCZsS808TRQVCe5nSwiOHGbiUgyXPu8VQBPan7P52JnJpZOomHQsKGBeFGYcwE5RQC6DNXXDGXm9WgYtXuw==}
+  '@vite-pwa/astro@0.4.3':
+    resolution: {integrity: sha512-IfcDw8MgfNwFge+Dhe9MYfGponVTGBbQ+y32tFl/IBsJftSu0Jy7PuZO3rBaaBltr40zVnz5nlZmXfW7caaWFA==}
     peerDependencies:
-      '@vite-pwa/assets-generator': ^0.2.4
+      '@vite-pwa/assets-generator': ^0.2.6
       astro: ^1.6.0 || ^2.0.0 || ^3.0.0 || ^4.0.0
-      vite-plugin-pwa: '>=0.20.0 <1'
+      vite-plugin-pwa: '>=0.20.5 <1'
     peerDependenciesMeta:
       '@vite-pwa/assets-generator':
         optional: true
@@ -3065,8 +3065,8 @@ packages:
     resolution: {integrity: sha512-1BC0BVFhS/p0qtw6enp8e+8OD0UrK0oFLztSjNzhcKA3WDuJxxAPXzPuPtKkjEY9UUoEWlX/8fgKeu2S8i9JTA==}
     engines: {node: '>= 0.4'}
 
-  is-core-module@2.14.0:
-    resolution: {integrity: sha512-a5dFJih5ZLYlRtDc0dZWP7RiKr6xIKzmn/oAYCDvdLThadVgyJwlaoQPmRtMSpz+rk0OGAgIu+TcM9HUF0fk1A==}
+  is-core-module@2.15.1:
+    resolution: {integrity: sha512-z0vtXSwucUJtANQWldhbtbt7BnL0vxiFjIdDLAatwhDYty2bad6s+rijD6Ri4YuYJubLzIJLUidCh09e1djEVQ==}
     engines: {node: '>= 0.4'}
 
   is-data-view@1.0.1:
@@ -6654,7 +6654,7 @@ snapshots:
     transitivePeerDependencies:
       - rollup
 
-  '@vite-pwa/astro@0.4.0(astro@4.15.3(@types/node@20.14.10)(lightningcss@1.25.1)(rollup@2.79.1)(sass@1.77.8)(terser@5.31.6)(typescript@5.5.3))(vite-plugin-pwa@0.19.8(vite@5.3.3(@types/node@20.14.10)(lightningcss@1.25.1)(sass@1.77.8)(terser@5.31.6))(workbox-build@7.1.0(@types/babel__core@7.20.5))(workbox-window@7.1.0))':
+  '@vite-pwa/astro@0.4.3(astro@4.15.3(@types/node@20.14.10)(lightningcss@1.25.1)(rollup@2.79.1)(sass@1.77.8)(terser@5.31.6)(typescript@5.5.3))(vite-plugin-pwa@0.19.8(vite@5.3.3(@types/node@20.14.10)(lightningcss@1.25.1)(sass@1.77.8)(terser@5.31.6))(workbox-build@7.1.0(@types/babel__core@7.20.5))(workbox-window@7.1.0))':
     dependencies:
       astro: 4.15.3(@types/node@20.14.10)(lightningcss@1.25.1)(rollup@2.79.1)(sass@1.77.8)(terser@5.31.6)(typescript@5.5.3)
       vite-plugin-pwa: 0.19.8(vite@5.3.3(@types/node@20.14.10)(lightningcss@1.25.1)(sass@1.77.8)(terser@5.31.6))(workbox-build@7.1.0(@types/babel__core@7.20.5))(workbox-window@7.1.0)
@@ -8292,7 +8292,7 @@ snapshots:
 
   is-callable@1.2.7: {}
 
-  is-core-module@2.14.0:
+  is-core-module@2.15.1:
     dependencies:
       hasown: 2.0.2
 
@@ -9423,7 +9423,7 @@ snapshots:
 
   resolve@1.22.8:
     dependencies:
-      is-core-module: 2.14.0
+      is-core-module: 2.15.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 
