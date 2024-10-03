@@ -17,16 +17,16 @@ importers:
         version: 5.7.0
       '@astrojs/mdx':
         specifier: ^3.1.7
-        version: 3.1.7(astro@4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))
+        version: 3.1.7(astro@4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))
       '@astrojs/node':
         specifier: ^8.3.4
-        version: 8.3.4(astro@4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))
+        version: 8.3.4(astro@4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))
       '@astrojs/sitemap':
         specifier: ^3.1.6
-        version: 3.1.6
+        version: 3.2.0
       '@astrojs/vue':
         specifier: ^4.5.1
-        version: 4.5.1(astro@4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))(rollup@2.79.2)(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.27.0)(sass@1.79.4)(terser@5.34.1))(vue@3.5.10(typescript@5.6.2))
+        version: 4.5.1(astro@4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))(rollup@2.79.2)(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.27.0)(sass@1.79.4)(terser@5.34.1))(vue@3.5.10(typescript@5.6.2))
       '@docsearch/css':
         specifier: ^3.6.2
         version: 3.6.2
@@ -122,25 +122,25 @@ importers:
         version: 0.63.2
       '@vite-pwa/astro':
         specifier: ^0.4.3
-        version: 0.4.3(astro@4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))(vite-plugin-pwa@0.20.5(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.27.0)(sass@1.79.4)(terser@5.34.1))(workbox-build@7.1.1(@types/babel__core@7.20.5))(workbox-window@7.1.0))
+        version: 0.4.3(astro@4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))(vite-plugin-pwa@0.20.5(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.27.0)(sass@1.79.4)(terser@5.34.1))(workbox-build@7.1.1(@types/babel__core@7.20.5))(workbox-window@7.1.0))
       '@vueuse/core':
         specifier: ^11.1.0
         version: 11.1.0(vue@3.5.10(typescript@5.6.2))
       astro-i18next:
         specifier: 1.0.0-beta.21
-        version: 1.0.0-beta.21(astro@4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))
+        version: 1.0.0-beta.21(astro@4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))
       astro-icon:
         specifier: ^1.1.1
         version: 1.1.1
       astro-meta-tags:
         specifier: ^0.3.1
-        version: 0.3.1(astro@4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))
+        version: 0.3.1(astro@4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))
       astro-navbar:
         specifier: ^2.3.3
         version: 2.3.3
       astro-pagefind:
         specifier: ^1.6.0
-        version: 1.6.0(astro@4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))
+        version: 1.6.0(astro@4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))
       astro-remote:
         specifier: ^0.3.3
         version: 0.3.3
@@ -177,7 +177,7 @@ importers:
         version: 0.63.2
       astro:
         specifier: ^4.15.10
-        version: 4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)
+        version: 4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)
 
 packages:
 
@@ -241,8 +241,8 @@ packages:
     resolution: {integrity: sha512-Z9IYjuXSArkAUx3N6xj6+Bnvx8OdUSHA8YoOgyepp3+zJmtVYJIl/I18GozdJVW1p5u/CNpl3Km7/gwTJK85cw==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
 
-  '@astrojs/sitemap@3.1.6':
-    resolution: {integrity: sha512-1Qp2NvAzVImqA6y+LubKi1DVhve/hXXgFvB0szxiipzh7BvtuKe4oJJ9dXSqaubaTkt4nMa6dv6RCCAYeB6xaQ==}
+  '@astrojs/sitemap@3.2.0':
+    resolution: {integrity: sha512-SkrOCL3Z6HxdiXreZ1+aPBWgnBMJ31EgPdcscgQeLqI2Gqk/4EKLuw9q0SqKU9MmHpcPXXtcd0odfCk4barPoA==}
 
   '@astrojs/telemetry@3.1.0':
     resolution: {integrity: sha512-/ca/+D8MIKEC8/A9cSaPUqQNZm+Es/ZinRv0ZAzvu2ios7POQSsVD+VOj7/hypWNsNM3T7RpfgNq7H2TU1KEHA==}
@@ -2052,6 +2052,11 @@ packages:
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
+  astro@4.15.11:
+    resolution: {integrity: sha512-uA9fenaRR+j6ksPFsmhM88ttz94a66SET1TZxAJLxctxWkDlgz58BxZYUc1gNlt0azhgzOgh4hP3q9M4YzAmBA==}
+    engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
+    hasBin: true
+
   async@3.2.6:
     resolution: {integrity: sha512-htCUDlxyyCLMgaM3xXg0C0LW2xqfuQ6p05pCEIsXuyQ+a1koYKTuBMzRNwmybfLgvJDMd0r1LTn4+E0Ti6C2AA==}
 
@@ -2286,7 +2291,7 @@ packages:
     engines: {node: '>=4.0.0'}
 
   concat-map@0.0.1:
-    resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
+    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
   confbox@0.1.7:
     resolution: {integrity: sha512-uJcB/FKZtBMCJpK8MQji6bJHgu1tixKPxRLeGkNzBoOZzpnZUJm0jm2/sBDWcuBx1dYgxV4JU+g5hmNxCyAmdA==}
@@ -3981,8 +3986,8 @@ packages:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
     engines: {node: '>=8.10.0'}
 
-  readdirp@4.0.1:
-    resolution: {integrity: sha512-GkMg9uOTpIWWKbSsgwb5fA4EavTR+SG/PMPoAY8hkhHfEEY0/vqljY+XHqtDf2cr2IJtoNRDbrrEpZUiZCkYRw==}
+  readdirp@4.0.2:
+    resolution: {integrity: sha512-yDMz9g+VaZkqBYS/ozoBJwaBhTbZo3UNYQHNRw1D3UFQB8oHB4uS/tAODO+ZLjGWmUbKnIlOWO+aaIiAxrUWHA==}
     engines: {node: '>= 14.16.0'}
 
   regenerate-unicode-properties@10.2.0:
@@ -4195,9 +4200,9 @@ packages:
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
 
-  sitemap@7.1.2:
-    resolution: {integrity: sha512-ARCqzHJ0p4gWt+j7NlU5eDlIO9+Rkr/JhPFZKKQ1l5GCus7rJH4UdrlVAh0xC/gDS/Qir2UMxqYNHtsKr2rpCw==}
-    engines: {node: '>=12.0.0', npm: '>=5.6.0'}
+  sitemap@8.0.0:
+    resolution: {integrity: sha512-+AbdxhM9kJsHtruUF39bwS/B0Fytw6Fr1o4ZAIAEqA6cke2xcoO2GleBw9Zw7nRzILVEgz7zBM5GiTJjie1G9A==}
+    engines: {node: '>=14.0.0', npm: '>=6.0.0'}
     hasBin: true
 
   smartypants@0.2.2:
@@ -4868,12 +4873,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@3.1.7(astro@4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))':
+  '@astrojs/mdx@3.1.7(astro@4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))':
     dependencies:
       '@astrojs/markdown-remark': 5.2.0
       '@mdx-js/mdx': 3.0.1
       acorn: 8.12.1
-      astro: 4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)
+      astro: 4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)
       es-module-lexer: 1.5.4
       estree-util-visit: 2.0.0
       gray-matter: 4.0.3
@@ -4888,9 +4893,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/node@8.3.4(astro@4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))':
+  '@astrojs/node@8.3.4(astro@4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))':
     dependencies:
-      astro: 4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)
+      astro: 4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)
       send: 0.19.0
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -4900,9 +4905,9 @@ snapshots:
     dependencies:
       prismjs: 1.29.0
 
-  '@astrojs/sitemap@3.1.6':
+  '@astrojs/sitemap@3.2.0':
     dependencies:
-      sitemap: 7.1.2
+      sitemap: 8.0.0
       stream-replace-string: 2.0.0
       zod: 3.23.8
 
@@ -4918,12 +4923,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/vue@4.5.1(astro@4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))(rollup@2.79.2)(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.27.0)(sass@1.79.4)(terser@5.34.1))(vue@3.5.10(typescript@5.6.2))':
+  '@astrojs/vue@4.5.1(astro@4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))(rollup@2.79.2)(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.27.0)(sass@1.79.4)(terser@5.34.1))(vue@3.5.10(typescript@5.6.2))':
     dependencies:
       '@vitejs/plugin-vue': 5.1.4(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.27.0)(sass@1.79.4)(terser@5.34.1))(vue@3.5.10(typescript@5.6.2))
       '@vitejs/plugin-vue-jsx': 4.0.1(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.27.0)(sass@1.79.4)(terser@5.34.1))(vue@3.5.10(typescript@5.6.2))
       '@vue/compiler-sfc': 3.5.10
-      astro: 4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)
+      astro: 4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)
       vite-plugin-vue-devtools: 7.4.6(rollup@2.79.2)(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.27.0)(sass@1.79.4)(terser@5.34.1))(vue@3.5.10(typescript@5.6.2))
       vue: 3.5.10(typescript@5.6.2)
     transitivePeerDependencies:
@@ -6240,7 +6245,7 @@ snapshots:
       '@playform/pipe': 0.1.0
       '@types/csso': 5.0.4
       '@types/html-minifier-terser': 7.0.2
-      astro: 4.15.10(@types/node@22.7.4)(lightningcss@1.25.1)(rollup@2.79.2)(sass@1.79.4)(terser@5.31.3)(typescript@5.6.2)
+      astro: 4.15.11(@types/node@22.7.4)(lightningcss@1.25.1)(rollup@2.79.2)(sass@1.79.4)(terser@5.31.3)(typescript@5.6.2)
       csso: 5.0.5
       deepmerge-ts: 7.1.0
       html-minifier-terser: 7.2.0
@@ -6686,9 +6691,9 @@ snapshots:
       - rollup
       - supports-color
 
-  '@vite-pwa/astro@0.4.3(astro@4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))(vite-plugin-pwa@0.20.5(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.27.0)(sass@1.79.4)(terser@5.34.1))(workbox-build@7.1.1(@types/babel__core@7.20.5))(workbox-window@7.1.0))':
+  '@vite-pwa/astro@0.4.3(astro@4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2))(vite-plugin-pwa@0.20.5(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.27.0)(sass@1.79.4)(terser@5.34.1))(workbox-build@7.1.1(@types/babel__core@7.20.5))(workbox-window@7.1.0))':
     dependencies:
-      astro: 4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)
+      astro: 4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)
       vite-plugin-pwa: 0.20.5(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.27.0)(sass@1.79.4)(terser@5.34.1))(workbox-build@7.1.1(@types/babel__core@7.20.5))(workbox-window@7.1.0)
 
   '@vitejs/plugin-vue-jsx@4.0.1(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.27.0)(sass@1.79.4)(terser@5.34.1))(vue@3.5.10(typescript@5.6.2))':
@@ -6901,11 +6906,11 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro-i18next@1.0.0-beta.21(astro@4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)):
+  astro-i18next@1.0.0-beta.21(astro@4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)):
     dependencies:
       '@proload/core': 0.3.3
       '@proload/plugin-tsm': 0.2.1(@proload/core@0.3.3)
-      astro: 4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)
+      astro: 4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)
       i18next: 22.5.1
       i18next-browser-languagedetector: 7.2.1
       i18next-fs-backend: 2.3.2
@@ -6925,16 +6930,16 @@ snapshots:
       - debug
       - supports-color
 
-  astro-meta-tags@0.3.1(astro@4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)):
+  astro-meta-tags@0.3.1(astro@4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)):
     dependencies:
-      astro: 4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)
+      astro: 4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)
 
   astro-navbar@2.3.3: {}
 
-  astro-pagefind@1.6.0(astro@4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)):
+  astro-pagefind@1.6.0(astro@4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)):
     dependencies:
       '@pagefind/default-ui': 1.1.1
-      astro: 4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)
+      astro: 4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)
       pagefind: 1.1.1
       sirv: 2.0.4
 
@@ -6946,7 +6951,89 @@ snapshots:
       marked-smartypants: 1.1.8(marked@12.0.2)
       ultrahtml: 1.5.3
 
-  astro@4.15.10(@types/node@22.7.4)(lightningcss@1.25.1)(rollup@2.79.2)(sass@1.79.4)(terser@5.31.3)(typescript@5.6.2):
+  astro@4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2):
+    dependencies:
+      '@astrojs/compiler': 2.10.3
+      '@astrojs/internal-helpers': 0.4.1
+      '@astrojs/markdown-remark': 5.2.0
+      '@astrojs/telemetry': 3.1.0
+      '@babel/core': 7.25.7
+      '@babel/plugin-transform-react-jsx': 7.25.7(@babel/core@7.25.7)
+      '@babel/types': 7.25.7
+      '@oslojs/encoding': 1.1.0
+      '@rollup/pluginutils': 5.1.2(rollup@2.79.2)
+      '@types/babel__core': 7.20.5
+      '@types/cookie': 0.6.0
+      acorn: 8.12.1
+      aria-query: 5.3.2
+      axobject-query: 4.1.0
+      boxen: 8.0.1
+      ci-info: 4.0.0
+      clsx: 2.1.1
+      common-ancestor-path: 1.0.1
+      cookie: 0.6.0
+      cssesc: 3.0.0
+      debug: 4.3.7
+      deterministic-object-hash: 2.0.2
+      devalue: 5.1.1
+      diff: 5.2.0
+      dlv: 1.1.3
+      dset: 3.1.4
+      es-module-lexer: 1.5.4
+      esbuild: 0.21.5
+      estree-walker: 3.0.3
+      fast-glob: 3.3.2
+      fastq: 1.17.1
+      flattie: 1.1.1
+      github-slugger: 2.0.0
+      gray-matter: 4.0.3
+      html-escaper: 3.0.3
+      http-cache-semantics: 4.1.1
+      js-yaml: 4.1.0
+      kleur: 4.1.5
+      magic-string: 0.30.11
+      magicast: 0.3.5
+      micromatch: 4.0.8
+      mrmime: 2.0.0
+      neotraverse: 0.6.18
+      ora: 8.1.0
+      p-limit: 6.1.0
+      p-queue: 8.0.1
+      preferred-pm: 4.0.0
+      prompts: 2.4.2
+      rehype: 13.0.2
+      semver: 7.6.3
+      shiki: 1.21.0
+      string-width: 7.2.0
+      strip-ansi: 7.1.0
+      tinyexec: 0.3.0
+      tsconfck: 3.1.3(typescript@5.6.2)
+      unist-util-visit: 5.0.0
+      vfile: 6.0.3
+      vite: 5.4.8(@types/node@22.7.4)(lightningcss@1.27.0)(sass@1.79.4)(terser@5.34.1)
+      vitefu: 1.0.2(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.27.0)(sass@1.79.4)(terser@5.34.1))
+      which-pm: 3.0.0
+      xxhash-wasm: 1.0.2
+      yargs-parser: 21.1.1
+      zod: 3.23.8
+      zod-to-json-schema: 3.23.3(zod@3.23.8)
+      zod-to-ts: 1.2.0(typescript@5.6.2)(zod@3.23.8)
+    optionalDependencies:
+      sharp: 0.33.5
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - lightningcss
+      - rollup
+      - sass
+      - sass-embedded
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+      - typescript
+
+  astro@4.15.11(@types/node@22.7.4)(lightningcss@1.25.1)(rollup@2.79.2)(sass@1.79.4)(terser@5.31.3)(typescript@5.6.2):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.4.1
@@ -7006,7 +7093,7 @@ snapshots:
       unist-util-visit: 5.0.0
       vfile: 6.0.3
       vite: 5.4.8(@types/node@22.7.4)(lightningcss@1.25.1)(sass@1.79.4)(terser@5.31.3)
-      vitefu: 1.0.2(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.27.0)(sass@1.79.4)(terser@5.34.1))
+      vitefu: 1.0.2(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.25.1)(sass@1.79.4)(terser@5.31.3))
       which-pm: 3.0.0
       xxhash-wasm: 1.0.2
       yargs-parser: 21.1.1
@@ -7028,7 +7115,7 @@ snapshots:
       - terser
       - typescript
 
-  astro@4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2):
+  astro@4.15.11(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.4.1
@@ -7289,7 +7376,7 @@ snapshots:
 
   chokidar@4.0.1:
     dependencies:
-      readdirp: 4.0.1
+      readdirp: 4.0.2
     optional: true
 
   chownr@2.0.0: {}
@@ -9365,7 +9452,7 @@ snapshots:
     dependencies:
       picomatch: 2.3.1
 
-  readdirp@4.0.1:
+  readdirp@4.0.2:
     optional: true
 
   regenerate-unicode-properties@10.2.0:
@@ -9721,7 +9808,7 @@ snapshots:
 
   sisteransi@1.0.5: {}
 
-  sitemap@7.1.2:
+  sitemap@8.0.0:
     dependencies:
       '@types/node': 17.0.45
       '@types/sax': 1.2.7
@@ -10226,6 +10313,10 @@ snapshots:
       lightningcss: 1.27.0
       sass: 1.79.4
       terser: 5.34.1
+
+  vitefu@1.0.2(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.25.1)(sass@1.79.4)(terser@5.31.3)):
+    optionalDependencies:
+      vite: 5.4.8(@types/node@22.7.4)(lightningcss@1.25.1)(sass@1.79.4)(terser@5.31.3)
 
   vitefu@1.0.2(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.27.0)(sass@1.79.4)(terser@5.34.1)):
     optionalDependencies:
