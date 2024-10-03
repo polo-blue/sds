@@ -87,7 +87,7 @@ Feel free to add new pages to the Core section
 
 ### Customizing the page layout
 
-You can find the css for the pages in `src/styles/content.scss`.
+You can find the css for the pages in `src/styles/content.css`.
 
 
 ### Adding your components

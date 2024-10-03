@@ -2,14 +2,14 @@
   --color-scheme: light;
   
   --clr-primary-400: hsl(198, 100%, 43%); /* {$blue}; */
-  --secondary: #{$gray-500};
-  --tertiary: #{$verydarkblue};
+  --secondary: #64748B;
+  --tertiary: #001E50;
 
   --font-family: 'vw_textregular', 'system-ui', 'ui-sans-serif', sans-serif;;
 
-  // variables for future changes:
+  /* variables for future changes: */
 
-  // font sies
+  /* font sies */
   --fs-300: clamp(0.94rem, calc(0.92rem + 0.08vw), 0.98rem);
   --fs-400: clamp(1.13rem, calc(1.06rem + 0.33vw), 1.31rem);
   --fs-500: clamp(1.35rem, calc(1.21rem + 0.69vw), 1.75rem);
@@ -18,7 +18,7 @@
   --fs-800: clamp(2.33rem, calc(1.7rem + 3.15vw), 4.14rem);
   --fs-900: clamp(2.8rem, calc(1.85rem + 4.74vw), 5.52rem);
 
-  // colors
+  /* colors */
   --clr-primary-300: rgb(53, 114, 227);
   --clr-primary-400: hsl(198, 100%, 43%);
   --clr-primary-500: hsl(219, 76%, 25%);
@@ -56,7 +56,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1); //$secondary;
+  background: rgba(0, 0, 0, 0.1); 
   border-radius: 0;
 }
 
@@ -65,7 +65,7 @@ body {
   background-color: var(--clr-primary-400);
 }
 
-// Fallback to browsers without webkit-scrollbar support
+/* Fallback to browsers without webkit-scrollbar support */
 @supports not selector(::-webkit-scrollbar) {
   * {
     scrollbar-width: thin;
@@ -108,9 +108,9 @@ html {
 }
 
 
-//Swiper styles
+/* Swiper styles */
 :root {
-  // --swiper-navigation-color: #0099da;
+  /* // --swiper-navigation-color: #0099da; */
   --swiper-navigation-size: 22px;
   --swiper-scrollbar-drag-bg-color: var(--clr-primary-400);
   --swiper-scrollbar-size: 1px;

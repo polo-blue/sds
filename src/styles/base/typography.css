@@ -53,7 +53,7 @@
     src: url('/fonts/nova-mono-v13-latin-regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
-    font-display: swap; //fallback;
+    font-display: swap; 
 }
 
 @font-face {
@@ -64,7 +64,7 @@
     font-display: swap;
 }
 
-// for some content which don't need to index in Google
+/* for some content which don't need to index in Google */
 [data-text]:before {
     content: attr(data-text);
 }

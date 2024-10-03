@@ -17,16 +17,16 @@
         minmax(0, var(--breakout-size)) [breakout-end]
         minmax(var(--padding-inline), 1fr) [full-width-end];
 
-    &> :not(.breakout, .full-width),
+    > :not(.breakout, .full-width),
     .full-width> :not(.breakout, .full-width) {
         grid-column: content;
     }
 
-    &>.breakout {
+    &.breakout {
         grid-column: breakout;
     }
 
-    &>.full-width {
+    >.full-width {
         grid-column: full-width;
     
         display: grid;
@@ -70,8 +70,7 @@ img.full-width {
 }
 
 .call-to-action {
-    @apply px-8 py-6    ; //border-2 border-black;
-    // background: var(--clr-primary-400);
+    @apply px-8 py-6; 
 }
 
 .wrapper {
