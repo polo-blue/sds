@@ -80,7 +80,7 @@ importers:
         version: 1.2.0
       '@iconify-json/simple-icons':
         specifier: ^1.2.5
-        version: 1.2.5
+        version: 1.2.6
       '@iconify-json/uil':
         specifier: ^1.2.0
         version: 1.2.0
@@ -95,7 +95,7 @@ importers:
         version: 0.1.1(@types/node@22.7.4)(rollup@2.79.2)(sass@1.79.4)(typescript@5.6.2)
       '@playform/inline':
         specifier: github:playform/inline
-        version: https://codeload.github.com/playform/inline/tar.gz/d21afc85259c700f6d5f9d5ac3bf7643dbd6983b(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)
+        version: https://codeload.github.com/playform/inline/tar.gz/07c5ea64146574c28ae1964351cfaa6fe3202b5e(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)
       '@types/node':
         specifier: ^22.7.4
         version: 22.7.4
@@ -1208,8 +1208,8 @@ packages:
   '@iconify-json/ph@1.2.0':
     resolution: {integrity: sha512-013eLpgTmX1lACOuDnkuhC7gRHyYj9w/j8SyDmlyUYvsKQrwdRsv1otcXtwH3DevuDAzSkreeeRsCeez+gTyVA==}
 
-  '@iconify-json/simple-icons@1.2.5':
-    resolution: {integrity: sha512-ucqBlm0GSjLpGQR+b61LtmHro0xkyjWl1v23AOzLTiymHK0chx7s7aeuE2s7/5/t/BzKdDu8iYuU2drawzCIQQ==}
+  '@iconify-json/simple-icons@1.2.6':
+    resolution: {integrity: sha512-E4asFcJ3JY/mtk6zeYCSQBBrmG4AncGo8vQ9ZO2oY8h/qA3TlGYSIoYzwRjmDKuFu30QwWJQMS43kka0JcPZUg==}
 
   '@iconify-json/uil@1.2.0':
     resolution: {integrity: sha512-DFhJYbp/H2BGQ2oBS0DmqhvgkdUXpBTgCErhqwLEeRhkt8+MuTKlivpQf/gPgD5/6wHH37gPX4BhlqU4eH372w==}
@@ -1519,8 +1519,8 @@ packages:
   '@playform/compress@0.1.1':
     resolution: {integrity: sha512-nsGzMVGuwUNWtvwSzSB1jNIsKeNBeXs/QAZcYcXipqxflP8VILZjJXbHe/eAmjgQB4wfMOfGTD1GhtQ2mhP6QQ==}
 
-  '@playform/inline@https://codeload.github.com/playform/inline/tar.gz/d21afc85259c700f6d5f9d5ac3bf7643dbd6983b':
-    resolution: {tarball: https://codeload.github.com/playform/inline/tar.gz/d21afc85259c700f6d5f9d5ac3bf7643dbd6983b}
+  '@playform/inline@https://codeload.github.com/playform/inline/tar.gz/07c5ea64146574c28ae1964351cfaa6fe3202b5e':
+    resolution: {tarball: https://codeload.github.com/playform/inline/tar.gz/07c5ea64146574c28ae1964351cfaa6fe3202b5e}
     version: 0.1.0
 
   '@playform/pipe@0.1.0':
@@ -2286,7 +2286,7 @@ packages:
     engines: {node: '>=4.0.0'}
 
   concat-map@0.0.1:
-    resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
+    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
   confbox@0.1.7:
     resolution: {integrity: sha512-uJcB/FKZtBMCJpK8MQji6bJHgu1tixKPxRLeGkNzBoOZzpnZUJm0jm2/sBDWcuBx1dYgxV4JU+g5hmNxCyAmdA==}
@@ -2388,6 +2388,10 @@ packages:
 
   deepmerge-ts@7.1.0:
     resolution: {integrity: sha512-q6bNsfNBtgr8ZOQqmZbl94MmYWm+QcDNIkqCxVWiw1vKvf+y/N2dZQKdnDXn4c5Ygt/y63tDof6OCN+2YwWVEg==}
+    engines: {node: '>=16.0.0'}
+
+  deepmerge-ts@7.1.1:
+    resolution: {integrity: sha512-M27OAbyR/XgJujhAd6ZlYvZGzejbzvGPSZWwuzezPCdKLT9VMtK0kpRNDc5LeUDYqFN3e254gWG1yKpjidCtow==}
     engines: {node: '>=16.0.0'}
 
   deepmerge@4.3.1:
@@ -3981,8 +3985,8 @@ packages:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
     engines: {node: '>=8.10.0'}
 
-  readdirp@4.0.1:
-    resolution: {integrity: sha512-GkMg9uOTpIWWKbSsgwb5fA4EavTR+SG/PMPoAY8hkhHfEEY0/vqljY+XHqtDf2cr2IJtoNRDbrrEpZUiZCkYRw==}
+  readdirp@4.0.2:
+    resolution: {integrity: sha512-yDMz9g+VaZkqBYS/ozoBJwaBhTbZo3UNYQHNRw1D3UFQB8oHB4uS/tAODO+ZLjGWmUbKnIlOWO+aaIiAxrUWHA==}
     engines: {node: '>= 14.16.0'}
 
   regenerate-unicode-properties@10.2.0:
@@ -4012,8 +4016,8 @@ packages:
   regjsgen@0.8.0:
     resolution: {integrity: sha512-RvwtGe3d7LvWiDQXeQw8p5asZUmfU1G/l6WbUXeHta7Y2PEIvBTwH6E2EfmYUK8pxcxEdEmaomqyp0vZZ7C+3Q==}
 
-  regjsparser@0.11.0:
-    resolution: {integrity: sha512-vTbzVAjQDzwQdKuvj7qEq6OlAprCjE656khuGQ4QaBLg7abQ9I9ISpmLuc6inWe7zP75AECjqUa4g4sdQvOXhg==}
+  regjsparser@0.11.1:
+    resolution: {integrity: sha512-1DHODs4B8p/mQHU9kr+jv8+wIC9mtG4eBHxWxIq5mhjE3D5oORhCc6deRKzTjs9DcfRFmj9BHSDguZklqCGFWQ==}
     hasBin: true
 
   rehype-parse@9.0.1:
@@ -5955,7 +5959,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/simple-icons@1.2.5':
+  '@iconify-json/simple-icons@1.2.6':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -6260,12 +6264,12 @@ snapshots:
       - supports-color
       - typescript
 
-  '@playform/inline@https://codeload.github.com/playform/inline/tar.gz/d21afc85259c700f6d5f9d5ac3bf7643dbd6983b(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)':
+  '@playform/inline@https://codeload.github.com/playform/inline/tar.gz/07c5ea64146574c28ae1964351cfaa6fe3202b5e(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)':
     dependencies:
       '@playform/pipe': 0.1.1
       astro: 4.15.10(@types/node@22.7.4)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.79.4)(terser@5.34.1)(typescript@5.6.2)
       critters: 0.0.24
-      deepmerge-ts: 7.1.0
+      deepmerge-ts: 7.1.1
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -7006,7 +7010,7 @@ snapshots:
       unist-util-visit: 5.0.0
       vfile: 6.0.3
       vite: 5.4.8(@types/node@22.7.4)(lightningcss@1.25.1)(sass@1.79.4)(terser@5.31.3)
-      vitefu: 1.0.2(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.27.0)(sass@1.79.4)(terser@5.34.1))
+      vitefu: 1.0.2(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.25.1)(sass@1.79.4)(terser@5.31.3))
       which-pm: 3.0.0
       xxhash-wasm: 1.0.2
       yargs-parser: 21.1.1
@@ -7289,7 +7293,7 @@ snapshots:
 
   chokidar@4.0.1:
     dependencies:
-      readdirp: 4.0.1
+      readdirp: 4.0.2
     optional: true
 
   chownr@2.0.0: {}
@@ -7460,6 +7464,8 @@ snapshots:
       character-entities: 2.0.2
 
   deepmerge-ts@7.1.0: {}
+
+  deepmerge-ts@7.1.1: {}
 
   deepmerge@4.3.1: {}
 
@@ -9365,7 +9371,7 @@ snapshots:
     dependencies:
       picomatch: 2.3.1
 
-  readdirp@4.0.1:
+  readdirp@4.0.2:
     optional: true
 
   regenerate-unicode-properties@10.2.0:
@@ -9394,13 +9400,13 @@ snapshots:
       regenerate: 1.4.2
       regenerate-unicode-properties: 10.2.0
       regjsgen: 0.8.0
-      regjsparser: 0.11.0
+      regjsparser: 0.11.1
       unicode-match-property-ecmascript: 2.0.0
       unicode-match-property-value-ecmascript: 2.2.0
 
   regjsgen@0.8.0: {}
 
-  regjsparser@0.11.0:
+  regjsparser@0.11.1:
     dependencies:
       jsesc: 3.0.2
 
@@ -10226,6 +10232,10 @@ snapshots:
       lightningcss: 1.27.0
       sass: 1.79.4
       terser: 5.34.1
+
+  vitefu@1.0.2(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.25.1)(sass@1.79.4)(terser@5.31.3)):
+    optionalDependencies:
+      vite: 5.4.8(@types/node@22.7.4)(lightningcss@1.25.1)(sass@1.79.4)(terser@5.31.3)
 
   vitefu@1.0.2(vite@5.4.8(@types/node@22.7.4)(lightningcss@1.27.0)(sass@1.79.4)(terser@5.34.1)):
     optionalDependencies:
