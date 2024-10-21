@@ -14,7 +14,7 @@ importers:
     dependencies:
       '@algolia/client-search':
         specifier: ^5.9.1
-        version: 5.9.1
+        version: 5.10.0
       '@astrojs/mdx':
         specifier: ^3.1.8
         version: 3.1.8(astro@4.16.6(@types/node@22.7.7)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.80.3)(terser@5.36.0)(typescript@5.6.3))
@@ -95,7 +95,7 @@ importers:
         version: 0.1.4(@types/node@22.7.7)(rollup@2.79.2)(sass@1.80.3)(typescript@5.6.3)
       '@playform/inline':
         specifier: github:playform/inline
-        version: https://codeload.github.com/playform/inline/tar.gz/f32f725cfcefc5861d5cf439228a4eda331c049b(@types/node@22.7.7)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.80.3)(terser@5.36.0)(typescript@5.6.3)
+        version: https://codeload.github.com/playform/inline/tar.gz/8933d386755c889b48b71146a7c91e96b662d41c(@types/node@22.7.7)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.80.3)(terser@5.36.0)(typescript@5.6.3)
       '@types/node':
         specifier: ^22.7.7
         version: 22.7.7
@@ -181,24 +181,24 @@ importers:
 
 packages:
 
-  '@algolia/client-common@5.9.1':
-    resolution: {integrity: sha512-YWPGDyISFNbPFVswI16c4rgt2CeTgFk82e543FSyw/3H5eNKa0YPb876GguEb50NualXCF7DCuVhcp6XMTpaSg==}
+  '@algolia/client-common@5.10.0':
+    resolution: {integrity: sha512-ppC2DePdASvbkq1QBHLod1PiZmDk8j0O1kf9BKttnkzDVIrp1EX+M1oYUbbcfDq+ZEY6oMxhEN3dc7iVD47WPQ==}
     engines: {node: '>= 14.0.0'}
 
-  '@algolia/client-search@5.9.1':
-    resolution: {integrity: sha512-JDK8kv1ZR2uwEbUVOZ6GA2AQyHI1+T5noupyTsu7SY2M6W3wPwQO3oUou6Xq+fWJmXGUB8TUj4Yv3ioYoTjQVg==}
+  '@algolia/client-search@5.10.0':
+    resolution: {integrity: sha512-UlLsIVMGWZdVXBW8PSWv0eg1mX7yOzz5EsJM/4eco9+sMyKCJXQGpiIq4tD752flRq+RGNXi+I4KoHFfamDWyg==}
     engines: {node: '>= 14.0.0'}
 
-  '@algolia/requester-browser-xhr@5.9.1':
-    resolution: {integrity: sha512-EevzJJ2AXu+U2w14XgK9GnJn9Y4q5GNnoAUWS0aErCCb7XhYiM7xa1eJnVq+FoOwRuZj8RmS4GEV7t3CQI3TqA==}
+  '@algolia/requester-browser-xhr@5.10.0':
+    resolution: {integrity: sha512-wyg9kahHTL2lCfjKqWRS6BrqIhZyP8/mxvPASYzld5EbIUrNYYxtyJb5BhigcmWK6O6BEY5gDKv6OG5SLdZHOQ==}
     engines: {node: '>= 14.0.0'}
 
-  '@algolia/requester-fetch@5.9.1':
-    resolution: {integrity: sha512-gBSi8QotBfOu3BbF25PB2uVbCNfrjVDGyvfeIQ6DukUldjEE8ruusNJnVMHoR00rO1C8G86/USHkbmXx73vf7Q==}
+  '@algolia/requester-fetch@5.10.0':
+    resolution: {integrity: sha512-xRuZcralCnA474JZIJrLDnWSfSFXuxnIkFrXccCdOPyLkcPHIdJO8qol/mLPVgJaGX7ALzd/ZgLiUt1Kv2TlgA==}
     engines: {node: '>= 14.0.0'}
 
-  '@algolia/requester-node-http@5.9.1':
-    resolution: {integrity: sha512-ImECpAR0A0q+9UfTprA099JJ6VZ+GjUoOC+m5rbyJieA4rUbt/A6QHkqeUq/2fObeezOzLn4DZDAXW93YHM+oQ==}
+  '@algolia/requester-node-http@5.10.0':
+    resolution: {integrity: sha512-MSUrli1Q5PRTQmin/W3Wz5f4j0GOKSjy0Uaq0W9d7EeL79a6znGyQCMx1cMVZT/dm9y3awFgVAt1WgfA3iWQYg==}
     engines: {node: '>= 14.0.0'}
 
   '@ampproject/remapping@2.3.0':
@@ -1409,8 +1409,8 @@ packages:
   '@playform/compress@0.1.4':
     resolution: {integrity: sha512-THFexa9FgZprjPYo22daFNYPQIo+P84xOHIWU2Po8GWyg8VTGSFzXpeczlQDUKZSius56ZNpYBzxGhntqFGg4g==}
 
-  '@playform/inline@https://codeload.github.com/playform/inline/tar.gz/f32f725cfcefc5861d5cf439228a4eda331c049b':
-    resolution: {tarball: https://codeload.github.com/playform/inline/tar.gz/f32f725cfcefc5861d5cf439228a4eda331c049b}
+  '@playform/inline@https://codeload.github.com/playform/inline/tar.gz/8933d386755c889b48b71146a7c91e96b662d41c':
+    resolution: {tarball: https://codeload.github.com/playform/inline/tar.gz/8933d386755c889b48b71146a7c91e96b662d41c}
     version: 0.1.0
 
   '@playform/pipe@0.1.1':
@@ -2170,7 +2170,7 @@ packages:
     engines: {node: '>=4.0.0'}
 
   concat-map@0.0.1:
-    resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
+    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
   confbox@0.1.8:
     resolution: {integrity: sha512-RMtmw0iFkeR4YV+fUOSucriAQNb9g8zFR52MWCtl+cCZOFRNL6zeB395vPzFhEjjn4fMxXudmELnl/KF/WrK6w==}
@@ -4640,26 +4640,26 @@ packages:
 
 snapshots:
 
-  '@algolia/client-common@5.9.1': {}
+  '@algolia/client-common@5.10.0': {}
 
-  '@algolia/client-search@5.9.1':
+  '@algolia/client-search@5.10.0':
     dependencies:
-      '@algolia/client-common': 5.9.1
-      '@algolia/requester-browser-xhr': 5.9.1
-      '@algolia/requester-fetch': 5.9.1
-      '@algolia/requester-node-http': 5.9.1
+      '@algolia/client-common': 5.10.0
+      '@algolia/requester-browser-xhr': 5.10.0
+      '@algolia/requester-fetch': 5.10.0
+      '@algolia/requester-node-http': 5.10.0
 
-  '@algolia/requester-browser-xhr@5.9.1':
+  '@algolia/requester-browser-xhr@5.10.0':
     dependencies:
-      '@algolia/client-common': 5.9.1
+      '@algolia/client-common': 5.10.0
 
-  '@algolia/requester-fetch@5.9.1':
+  '@algolia/requester-fetch@5.10.0':
     dependencies:
-      '@algolia/client-common': 5.9.1
+      '@algolia/client-common': 5.10.0
 
-  '@algolia/requester-node-http@5.9.1':
+  '@algolia/requester-node-http@5.10.0':
     dependencies:
-      '@algolia/client-common': 5.9.1
+      '@algolia/client-common': 5.10.0
 
   '@ampproject/remapping@2.3.0':
     dependencies:
@@ -5988,7 +5988,7 @@ snapshots:
       - supports-color
       - typescript
 
-  '@playform/inline@https://codeload.github.com/playform/inline/tar.gz/f32f725cfcefc5861d5cf439228a4eda331c049b(@types/node@22.7.7)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.80.3)(terser@5.36.0)(typescript@5.6.3)':
+  '@playform/inline@https://codeload.github.com/playform/inline/tar.gz/8933d386755c889b48b71146a7c91e96b662d41c(@types/node@22.7.7)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.80.3)(terser@5.36.0)(typescript@5.6.3)':
     dependencies:
       '@playform/pipe': 0.1.1
       astro: 4.16.6(@types/node@22.7.7)(lightningcss@1.27.0)(rollup@2.79.2)(sass@1.80.3)(terser@5.36.0)(typescript@5.6.3)
@@ -6721,7 +6721,7 @@ snapshots:
       unist-util-visit: 5.0.0
       vfile: 6.0.3
       vite: 5.4.9(@types/node@22.7.7)(lightningcss@1.27.0)(sass@1.80.3)(terser@5.34.1)
-      vitefu: 1.0.3(vite@5.4.9(@types/node@22.7.7)(lightningcss@1.27.0)(sass@1.80.3)(terser@5.36.0))
+      vitefu: 1.0.3(vite@5.4.9(@types/node@22.7.7)(lightningcss@1.27.0)(sass@1.80.3)(terser@5.34.1))
       which-pm: 3.0.0
       xxhash-wasm: 1.0.2
       yargs-parser: 21.1.1
@@ -9910,6 +9910,10 @@ snapshots:
       lightningcss: 1.27.0
       sass: 1.80.3
       terser: 5.36.0
+
+  vitefu@1.0.3(vite@5.4.9(@types/node@22.7.7)(lightningcss@1.27.0)(sass@1.80.3)(terser@5.34.1)):
+    optionalDependencies:
+      vite: 5.4.9(@types/node@22.7.7)(lightningcss@1.27.0)(sass@1.80.3)(terser@5.34.1)
 
   vitefu@1.0.3(vite@5.4.9(@types/node@22.7.7)(lightningcss@1.27.0)(sass@1.80.3)(terser@5.36.0)):
     optionalDependencies:
