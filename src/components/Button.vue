@@ -39,7 +39,7 @@ const classes = {
   </component>
 </template>
 
-<style lang="scss">
+<style>
 .btn-primary,
 .btn-secondary {
   svg {

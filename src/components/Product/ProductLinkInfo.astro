@@ -1,0 +1,38 @@
+---
+import type { Product } from '../../types/Product';
+import ProductNumber from "@components/Product/ProductNumber.astro"
+
+interface Props {
+  product: Product;
+  nameFormatted: string;
+  price?: string;
+  url: string;
+  index?: number | null;
+  bigTile?: boolean;
+}
+
+const { product, nameFormatted, price, url, index, bigTile } = Astro.props;
+
+---
+
+<div class={`flex flex-col ${bigTile ? '' : 'sm:pl-4'}`}>
+    {price && (
+      <p class="block mb-2 font-600 font-headbold text-5">
+        {price}
+      </p>
+    )}
+    <a 
+      class="product-link--url"
+      href={url}
+      itemprop="url"
+      title={product.number}
+      set:html={nameFormatted}
+    />
+    <ProductNumber productNumber={product.number} copyDisabled={true} />
+    {index !== null && (
+      <>
+        <meta itemprop="position" content={index} />
+        <meta itemprop="name" content={nameFormatted} />
+      </>
+    )}
+  </div>

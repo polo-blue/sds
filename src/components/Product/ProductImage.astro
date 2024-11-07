@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets'
+
+interface ImageObject {
+  src: string;
+  alt?: string;
+  height?: string | number;
+  width?: string | number;
+  loading?: 'lazy' | 'eager';
+  srcset?: string[];
+  class?: string;
+  index?: number;
+}
+
+const { imageObject, imagesApiUrl } = Astro.props as { imageObject: ImageObject; imagesApiUrl: string };
+
+let inputProps = {};
+
+
+if (imageObject.index && imageObject.index === 1) {
+  inputProps['data-pagefind-meta'] = 'image[src], image_alt[alt]';
+  imageObject.loading = 'eager'
+}
+
+if (imageObject.srcset && imageObject.srcset.length) {
+  inputProps['widths'] = imageObject.srcset
+}
+
+---
+<Image 
+    src={`${imagesApiUrl}${imageObject.src}`}
+    alt={imageObject.alt}
+    height={imageObject.height} 
+    width={imageObject.width}
+    loading={imageObject.loading ? imageObject.loading : 'lazy'}
+    itemprop="image"
+    format="avif"
+    data-pagefind-index-attrs={imageObject.alt}
+    onerror="this.style.display='none';"
+    class={`product-image ${imageObject.class || ''}`}
+    { ...inputProps}
+/>
