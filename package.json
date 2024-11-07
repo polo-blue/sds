@@ -1,7 +1,16 @@
 {
   "name": "spoko-design-system",
-  "version": "0.2.38",
+  "version": "0.2.39",
   "private": false,
+  "main": "./index.ts",
+  "module": "./index.ts",
+  "types": "./index.ts",
+  "exports": {
+    ".": {
+      "import": "./index.ts",
+      "require": "./index.ts"
+    }
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
