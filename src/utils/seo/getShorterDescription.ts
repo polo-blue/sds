@@ -10,3 +10,5 @@ export const getShorterDescription = (description: string | null, limit = MAX_DE
   return description ? cutString(description, limit) || '' : '';
   
 }
+
+export default getShorterDescription;

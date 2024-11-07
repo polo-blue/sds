@@ -13,3 +13,5 @@ export const getProductCheckList = (productDetails) => {
 
     return list.map(detail => t(`detail.value.${detail.value}`));
 }
+
+export default getProductCheckList;

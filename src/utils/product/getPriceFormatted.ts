@@ -12,3 +12,5 @@ export const getPriceFormatted  = (product: any) => {
     }
   }
   
+
+  export default getPriceFormatted;

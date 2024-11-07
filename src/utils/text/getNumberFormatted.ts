@@ -12,6 +12,7 @@ export const getNumberFormatted = (num, digits) => {
   return (num / item.value).toFixed(digits).replace(/\.0+$|(\.[0-9]*[1-9])0+$/, "$1") + item.symbol;
 }
 
+export default getNumberFormatted;
 /*
  * Tests
  */

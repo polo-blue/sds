@@ -21,6 +21,9 @@ dependencies:
   '@astrojs/sitemap':
     specifier: ^3.2.1
     version: 3.2.1
+  '@astrojs/ts-plugin':
+    specifier: ^1.10.4
+    version: 1.10.4
   '@astrojs/vue':
     specifier: ^4.5.2
     version: 4.5.2(astro@4.16.10)(rollup@2.79.2)(vite@5.4.10)(vue@3.5.12)
@@ -82,7 +85,7 @@ dependencies:
     specifier: ^1.2.1
     version: 1.2.1
   '@iconify/json':
-    specifier: ^2.2.268
+    specifier: ^2.2.269
     version: 2.2.269
   '@iconify/vue':
     specifier: ^4.1.2
@@ -343,6 +346,18 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
+  /@astrojs/ts-plugin@1.10.4:
+    resolution: {integrity: sha512-rapryQINgv5VLZF884R/wmgX3mM9eH1PC/I3kkPV9rP6lEWrRN1YClF3bGcDHFrf8EtTLc0Wqxne1Uetpevozg==}
+    dependencies:
+      '@astrojs/compiler': 2.10.3
+      '@astrojs/yaml2ts': 0.2.2
+      '@jridgewell/sourcemap-codec': 1.5.0
+      '@volar/language-core': 2.4.9
+      '@volar/typescript': 2.4.9
+      semver: 7.6.3
+      vscode-languageserver-textdocument: 1.0.12
+    dev: false
+
   /@astrojs/vue@4.5.2(astro@4.16.10)(rollup@2.79.2)(vite@5.4.10)(vue@3.5.12):
     resolution: {integrity: sha512-gUu7J643LpuzQM5nrjWoYh6KeAy/CzS4OmeVZtRSJgV8UGfce2r4Q9P3+m37rQBdI/Dhrwn2lGVnmDwj1UbsPQ==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
@@ -361,6 +376,12 @@ packages:
       - rollup
       - supports-color
       - vite
+    dev: false
+
+  /@astrojs/yaml2ts@0.2.2:
+    resolution: {integrity: sha512-GOfvSr5Nqy2z5XiwqTouBBpy5FyI6DEe+/g/Mk5am9SjILN1S5fOEvYK0GuWHg98yS/dobP4m8qyqw/URW35fQ==}
+    dependencies:
+      yaml: 2.6.0
     dev: false
 
   /@babel/code-frame@7.26.2:
@@ -3075,6 +3096,24 @@ packages:
     dependencies:
       vite: 5.4.10(@types/node@22.9.0)(lightningcss@1.27.0)(terser@5.36.0)
       vue: 3.5.12(typescript@5.6.3)
+
+  /@volar/language-core@2.4.9:
+    resolution: {integrity: sha512-t++GIrUeQnKCieZdY9e+Uar2VmTqOE4Z9KcEcdSHKmKZPuqpbbWow1YKe1i3HpU2s1JqLRVM8y/n87WKXyxJAg==}
+    dependencies:
+      '@volar/source-map': 2.4.9
+    dev: false
+
+  /@volar/source-map@2.4.9:
+    resolution: {integrity: sha512-UGE+WgJwk64OcfBwBOBKIzmF+uNx4dC5GzOvaVsHbTBp/IVqeTVsGiO5CwBAt6l3vVXYbMuddG2DU8FEnBRxTg==}
+    dev: false
+
+  /@volar/typescript@2.4.9:
+    resolution: {integrity: sha512-Zmh3Bq8CFD6OANKYsi4vs/l7togwfjFH0kgrT12uAsDff2AJQjbEUKTVUnxmHbnbH2B9ja7Lb6Mu/Wj9wBuJlg==}
+    dependencies:
+      '@volar/language-core': 2.4.9
+      path-browserify: 1.0.1
+      vscode-uri: 3.0.8
+    dev: false
 
   /@vue/babel-helper-vue-transform-on@1.2.5:
     resolution: {integrity: sha512-lOz4t39ZdmU4DJAa2hwPYmKc8EsuGa2U0L9KaZaOJUt0UwQNjNA3AZTq6uEivhOKhhG1Wvy96SvYBoFmCg3uuw==}
@@ -6743,6 +6782,10 @@ packages:
       tslib: 2.8.1
     dev: false
 
+  /path-browserify@1.0.1:
+    resolution: {integrity: sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==}
+    dev: false
+
   /path-exists@4.0.0:
     resolution: {integrity: sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w==}
     engines: {node: '>=8'}
@@ -7970,7 +8013,6 @@ packages:
       - rollup
       - supports-color
       - vue
-    dev: false
 
   /upath@1.2.0:
     resolution: {integrity: sha512-aZwGpamFO61g3OlfT7OQCHqhGnW43ieH9WZeP7QxN/G/jS4jfqUkZxoryvJgVPEcrl5NL/ggHsSmLMHuH64Lhg==}
@@ -8149,6 +8191,14 @@ packages:
         optional: true
     dependencies:
       vite: 5.4.10(@types/node@22.9.0)(lightningcss@1.27.0)(terser@5.36.0)
+
+  /vscode-languageserver-textdocument@1.0.12:
+    resolution: {integrity: sha512-cxWNPesCnQCcMPeenjKKsOCKQZ/L6Tv19DTRIGuLWe32lyzWhihGVJ/rcckZXJxfdKCFvRLS3fpBIsV/ZGX4zA==}
+    dev: false
+
+  /vscode-uri@3.0.8:
+    resolution: {integrity: sha512-AyFQ0EVmsOZOlAnxoFOGOq1SQDWAB7C6aqMGS23svWAllfOaxbuFvcT8D1i8z3Gyn8fraVeZNNmN6e9bxxXkKw==}
+    dev: false
 
   /vue-demi@0.14.10(vue@3.5.12):
     resolution: {integrity: sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==}
@@ -8437,6 +8487,12 @@ packages:
 
   /yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
+    dev: false
+
+  /yaml@2.6.0:
+    resolution: {integrity: sha512-a6ae//JvKDEra2kdi1qzCyrJW/WZCgFi8ydDV+eXExl95t+5R+ijnqHJbz9tmMh8FUjx3iv2fCQ4dclAQlO2UQ==}
+    engines: {node: '>= 14'}
+    hasBin: true
     dev: false
 
   /yargs-parser@21.1.1:
