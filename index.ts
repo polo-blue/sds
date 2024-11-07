@@ -22,7 +22,7 @@ export { default as CategorySidebarToggler } from './src/components/Category/Cat
 export { default as SubCategoryLink } from './src/components/Category/SubCategoryLink.vue';
 
 // Astro Components
-export { default as Copyright } from './src/components/Copyright.astro';
+export { default as Copyright } from './src/components/Copyright.astro'; ///src/components/Copyright.astro';
 export { default as HandDrive } from './src/components/HandDrive.astro';
 export { default as Faq } from './src/components/Faq.astro';
 export { default as FaqItem } from './src/components/FaqItem.astro';
@@ -33,6 +33,8 @@ export { default as ProductImage } from './src/components/Product/ProductImage.a
 // export { default as CategoriesSidebar } from './src/components/Category/CategoriesSidebar.astro';
 export { default as CategoryDetails } from './src/components/Category/CategoryDetails.astro';
 export { default as CategorySection } from './src/components/Category/CategorySection.astro';
+export { default as CategoryTile } from './src/components/Category/CategoryTile.astro';
+
 
 // Utils: Product
 export { default as getPriceFormatted } from './src/utils/product/getPriceFormatted';

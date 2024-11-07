@@ -1,0 +1,42 @@
+---
+import getTranslatedLink from "@utils/text/getTranslatedLink";
+import { Image } from "astro:assets";
+
+interface CategoryObject {
+  photo: string;
+  desc: string;
+  alt: string;
+  name: string;
+  slug: string;
+  height?: number;
+  width?: number;
+  class?: string;
+}
+
+let inputProps = {};
+const { CategoryObject } = Astro.props as { CategoryObject: CategoryObject };
+CategoryObject.height = CategoryObject.height ?? 70;
+CategoryObject.width = CategoryObject.width ?? 70;
+---
+
+<a
+  href={getTranslatedLink(`/${CategoryObject.slug}/`)}
+  class="carousel-item"
+  {...inputProps}
+>
+  <Image
+    src={`${CategoryObject.photo}`}
+    alt={CategoryObject.alt}
+    height={CategoryObject.height}
+    width={CategoryObject.height}
+    format="avif"
+    loading="eager"
+    onerror="this.style.display='none';"
+    class="cats-img"
+  />
+  <div class="swiper-lazy-preloader"></div>
+
+  <div class="cat-name" itemprop="name">
+    {CategoryObject.name}
+  </div>
+</a>
