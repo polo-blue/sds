@@ -74,37 +74,34 @@ const isLast = (index: Number) => {
   </nav>
 </template>
 
-<style lang="scss" scoped>
-.breadcrumbs {
+<style scoped>.breadcrumbs {
   list-style: none;
   font-size: 0.875rem;
 }
 
-.breadcrumb-item {
+.breadcrumb-item + .breadcrumb-item::before {
+  @apply py-4.25 sm:py-1 px-1;
+  display: inline-block;
+  padding-right: .5rem;
+  color: #bdbdbd;
+  content: "/";
+}
 
-  &+.breadcrumb-item:before {
-    @apply py-4.25 sm:py-1 px-1;
-    display: inline-block;
-    padding-right: .5rem;
-    color: #bdbdbd;
-    content: "/";
-  }
-
-  b {
-    @apply hidden sm:inline font-normal;
-  }
+.breadcrumb-item b {
+  @apply hidden sm:inline font-normal;
 }
 
 .breadcrumb-link {
   border: 0;
   cursor: pointer;
-
-  &--disabled {
-    cursor: default;
-
-    &:hover {
-      color: inherit;
-    }
-  }
 }
+
+.breadcrumb-link--disabled {
+  cursor: default;
+}
+
+.breadcrumb-link--disabled:hover {
+  color: inherit;
+}
+
 </style>

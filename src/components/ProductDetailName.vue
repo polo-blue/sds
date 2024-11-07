@@ -29,7 +29,7 @@ const props = defineProps({
 </template>
 
 
-<style lang="scss">
+<style>
 .detail-name {
   @apply overflow-hidden relative;
 
@@ -37,7 +37,7 @@ const props = defineProps({
       @apply block bg-white relative z-10 pr-1.5 w-full;
 
       &:before {
-        // order: 2;
+        /* // order: 2; */
         @apply text-gray-300 absolute select-none border-b border-gray-200 w-full -z-1 absolute content-empty left-0;
         height: 1em;
         white-space: nowrap;

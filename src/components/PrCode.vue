@@ -26,132 +26,117 @@ const props = defineProps({
     </span>
 </template>
 
-<style lang="scss" scoped>
-.btn-prcode {
-
-    &--pdp {
-        @apply mb-1
-    }
-
-    &:before {
-        @apply rounded-2 shadow-sm py-0.5 px-2 bg-gray-100 whitespace-nowrap text-xs dark:text-black dark:bg-lightBlue-500 text-center z-50;
-
-        display: none;
-        position: absolute;
-        top: -10px;
-        transform: translateY(-50%) translateX(-50%);
-        left: 50%;
-    }
-
-    &:hover:before {
-        display: block;
-    }
-
-    &--2JK {
-        color: #f3881d;
-
-        &:before {
-            content: 'CROSS';
-        }
-    }
-
-    &--1LR,
-    &--1ZG,
-    &--1ZJ {
-        &:before {
-            content: '⌀ 256 mm';
-        }
-    }
-
-    &--1KD,
-    &--1ZP,
-    &--1ZR {
-        &:before {
-            content: '⌀ 310 mm';
-        }
-    }
-
-    &--1ZD,
-    &--1ZC,
-    &--1LN {
-        &:before {
-            content: '⌀ 288 mm; LUCAS';
-        }
-    }
-
-    &--2JZ {
-        @apply: text-lightBlue-500;
-
-        &:before {
-            content: 'Bluemotion';
-        }
-    }
-
-    &--7L6 {
-        @apply: text-lightBlue-500;
-
-        &:before {
-            content: 'Bluemotion (CFWA + start-stop)';
-        }
-    }
-
-    &--1KK,
-    &--1KT,
-    &--1KV,
-    &--1LV,
-    &--2EJ {
-        &:before {
-            content: '⌀ 230 mm';
-        }
-    }
-
-    &--2JE {
-        @apply text-lightBlue-700;
-
-        &:before {
-            content: 'BlueGT';
-        }
-    }
-
-    &--2JP {
-        &:before {
-            content: 'R-Line';
-        }
-    }
-
-    // WRC Street R
-    &--E5M,
-
-    // emblems/stickers
-    &--1KD,
-
-    //brakes
-    &--1ZP,
-
-    //brakes
-    &--2JQ,
-
-    //bumpers / engine parts
-    &--TA2 {
-        color: blue;
-
-        &:before {
-            content: 'R WRC Street';
-        }
-    }
-
-    // GTI
-    &--1KV,
-    &--1ZD,
-    &--1ZR,
-    &--0NH,
-    &--2JD {
-        color: red;
-
-        &:before {
-            content: 'GTI';
-        }
-    }
-
+<style scoped>
+.btn-prcode--pdp {
+  @apply mb-1;
 }
+
+.btn-prcode::before {
+  @apply rounded-2 shadow-sm py-0.5 px-2 bg-gray-100 whitespace-nowrap text-xs dark:text-black dark:bg-lightBlue-500 text-center z-50;
+  display: none;
+  position: absolute;
+  top: -10px;
+  transform: translateY(-50%) translateX(-50%);
+  left: 50%;
+}
+
+.btn-prcode:hover::before {
+  display: block;
+}
+
+.btn-prcode--2JK {
+  color: #f3881d;
+}
+
+.btn-prcode--2JK::before {
+  content: 'CROSS';
+}
+
+.btn-prcode--1LR::before,
+.btn-prcode--1ZG::before,
+.btn-prcode--1ZJ::before {
+  content: '⌀ 256 mm';
+}
+
+.btn-prcode--1KD::before,
+.btn-prcode--1ZP::before,
+.btn-prcode--1ZR::before {
+  content: '⌀ 310 mm';
+}
+
+.btn-prcode--1ZD::before,
+.btn-prcode--1ZC::before,
+.btn-prcode--1LN::before {
+  content: '⌀ 288 mm; LUCAS';
+}
+
+.btn-prcode--2JZ {
+  @apply text-lightBlue-500;
+}
+
+.btn-prcode--2JZ::before {
+  content: 'Bluemotion';
+}
+
+.btn-prcode--7L6 {
+  @apply text-lightBlue-500;
+}
+
+.btn-prcode--7L6::before {
+  content: 'Bluemotion (CFWA + start-stop)';
+}
+
+.btn-prcode--1KK::before,
+.btn-prcode--1KT::before,
+.btn-prcode--1KV::before,
+.btn-prcode--1LV::before,
+.btn-prcode--2EJ::before {
+  content: '⌀ 230 mm';
+}
+
+.btn-prcode--2JE {
+  @apply text-lightBlue-700;
+}
+
+.btn-prcode--2JE::before {
+  content: 'BlueGT';
+}
+
+.btn-prcode--2JP::before {
+  content: 'R-Line';
+}
+
+.btn-prcode--E5M,
+.btn-prcode--1KD,
+.btn-prcode--1ZP,
+.btn-prcode--2JQ,
+.btn-prcode--TA2 {
+  color: blue;
+}
+
+.btn-prcode--E5M::before,
+.btn-prcode--1KD::before,
+.btn-prcode--1ZP::before,
+.btn-prcode--2JQ::before,
+.btn-prcode--TA2::before {
+  content: 'R WRC Street';
+}
+
+.btn-prcode--1KV,
+.btn-prcode--1ZD,
+.btn-prcode--1ZR,
+.btn-prcode--0NH,
+.btn-prcode--2JD {
+  color: red;
+}
+
+.btn-prcode--1KV::before,
+.btn-prcode--1ZD::before,
+.btn-prcode--1ZR::before,
+.btn-prcode--0NH::before,
+.btn-prcode--2JD::before {
+  content: 'GTI';
+}
+
+
 </style>

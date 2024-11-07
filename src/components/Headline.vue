@@ -27,7 +27,7 @@ const props = defineProps({
   </component>
 </template>
 
-<style lang="scss">
+<style>
 .headline--underline {
   @apply relative pb-4;
 

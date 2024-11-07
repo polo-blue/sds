@@ -13,7 +13,7 @@ const props = defineProps({
 <template>
   <strong class="product-model" :data-pagefind-filter="`model:${props.carModel.name}`">{{ props.carModel.name }}</strong>
 </template>
-<style lang="scss">
+<style >
 .product-model:not(:last-child) {
   @apply mr-1;
 

@@ -20,7 +20,7 @@ const props = defineProps({
   </div>
 </template>
 
-<style lang="scss">
+<style>
 .product-model:not(:last-child) {
   @apply mr-1;
 

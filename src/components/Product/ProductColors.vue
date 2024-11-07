@@ -31,7 +31,7 @@ const props = defineProps({
   </span>
 </template>
 
-<style lang="scss">
+<style >
 .product-color:not(:last-child) {
   @apply mr-1;
 

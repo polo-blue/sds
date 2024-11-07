@@ -32,7 +32,7 @@ const props = defineProps({
       </div>
     </header>
 </template>
-<style lang="scss">
+<style>
 .bg-vw {
   background: radial-gradient(circle at 50% 85%,
       #00437A 0%,

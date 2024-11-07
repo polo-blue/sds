@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<{
   </ul>
 </template>
 
-<style lang="scss">
+<style >
 .engine-types {
   @apply flex flex-wrap items-center;
 }

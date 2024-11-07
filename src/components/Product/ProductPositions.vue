@@ -23,9 +23,8 @@ const props = defineProps({
   </span>
 </template>
 
-<style lang="scss">
+<style >
 .product-position:not(:last-child) {
-  // @apply mr-1;
   margin-right: 0.25rem;
 
   &:after {

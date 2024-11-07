@@ -26,7 +26,7 @@ const props = defineProps({
 </template>
 
 
-<style lang="scss" scoped>
+<style  scoped>
 ul {
     @apply list-square pl-5;
 
