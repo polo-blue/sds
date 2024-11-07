@@ -1,5 +1,5 @@
 {
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "src/**/*.d.ts"],
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "src/**/*.astro", "src/**/*.d.ts"],
   "compilerOptions": {
     "target": "esnext",
     "useDefineForClassFields": true,
@@ -7,6 +7,6 @@
     "moduleResolution": "node",
     "jsx": "preserve",
     "allowJs": true,
-    "types": ["vite/client"]
-  },
+    "types": ["vite/client", "@astrojs/ts"]
+  }
 }

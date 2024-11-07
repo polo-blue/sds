@@ -24,12 +24,10 @@ export { default as ProductCodes } from './src/components/ProductCodes.vue';
 export { default as ProductEngineType } from './src/components/Product/ProductEngineType.vue';
 
 
-
 // Astro Components
 export { default as Copyright } from './src/components/Copyright.astro';
 export { default as HandDrive } from './src/components/HandDrive.astro';
 export { default as Faq } from './src/components/Faq.astro';
 export { default as FaqItem } from './src/components/FaqItem.astro';
-
 export { default as ProductNumber } from './src/components/Product/ProductNumber.astro';
 export { default as ProductImage } from './src/components/Product/ProductImage.astro';
