@@ -20,12 +20,9 @@
     "allowJs": true,
     "types": ["vitest, vite/client", "@astrojs/ts","unplugin-vue-macros/macros-global", "unplugin-icons/types/astro"],
     "paths": {
-      "@components/*": [
-        "components/*"
-      ],
-      "@utils/*": [
-        "utils/*"
-      ],
+      "@components/*": ["components/*"],
+      "@utils/*": ["utils/*"],
+      "@types/*": ["types/*"]
     }
   },
   "exclude": ["dist", "node_modules"]
