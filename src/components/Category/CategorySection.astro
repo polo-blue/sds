@@ -1,0 +1,70 @@
+---
+const { category, subcategory, subsubcategory, locale} = Astro.props;
+import { t } from "i18next";
+
+import ProductLink from "@components/Product/ProductLink.astro";
+import { Icon } from 'astro-icon/components';
+
+import { createSubCatLink, createSubSubCatLink } from "@utils/db";
+import { getCategoryProducts } from "@utils/category/getCategoryProducts"
+
+const category2search =  subsubcategory ? subsubcategory : (subcategory ? subcategory : category)
+const mainItemsCount = category2search.children ? 4 : 8
+const products = await getCategoryProducts(category2search.id, mainItemsCount);
+
+const getArray = async () => {
+  const arr: { name: string; id: number }[] = [];
+
+  if (category2search.children) {
+    for (const childCat of category2search.children) {
+      const output = await getCategoryProducts(childCat.id, 3);
+      arr.push(output);
+    }
+  } else {
+    null
+  }
+  return arr.flat(1)
+}
+
+const childrenProducts = await getArray()
+
+const categoryLink = subsubcategory ? createSubSubCatLink(locale, category.slug, subcategory.slug, subsubcategory.slug) : createSubCatLink(locale, category.slug, subcategory.slug);
+---
+<div class="category-section">
+  <div class="px-4 md:px-1.5 py-3 text-xl flex">
+    <a href={categoryLink} class="hover:underline">
+      <h2>{category2search.name}</h2>
+    </a>
+  </div>
+  <swiper-container slides-per-view="auto" space-between="0" class="flex w-full max-w-full"
+    itemscope itemtype="https://schema.org/ItemList"
+  >
+    {childrenProducts && childrenProducts.length > 0 && (
+      childrenProducts.map((product, index) => <swiper-slide class="category-tile product-link"><ProductLink class="w-full" productId={product.id} locale={locale} index={index+1} /></swiper-slide>)
+    )}
+    {products && products.length > 0 && (
+      products.map((product, index) => 
+      <swiper-slide class="category-tile product-link"><ProductLink class="w-full h-full" productId={product.id} locale={locale} index={index+1}/></swiper-slide>)
+    )}
+    <swiper-slide class="category-tile product-link pr-4 pb-4 sm:pb-1">
+          <a
+          href={categoryLink}
+          title={category2search.name}
+          class="uppercase flex items-center bg-white w-full sm:w-auto sm:h-full mt-0 p-8 aspect-ratio-[4/3] sm:aspect-auto mb-auto sm:mb-0 sm:text-sm">
+          {t("more")}
+          <Icon name="la:arrow-right" class="h-4 ml-2 text-blue-500" />
+        </a>
+    </swiper-slide>
+  </swiper-container>
+</div>
+
+<style lang="scss">
+  .category-section {
+    content-visibility: auto;
+
+    &:hover {
+      content-visibility: visible;
+    }
+  }
+  
+</style>

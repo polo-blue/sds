@@ -1,0 +1,82 @@
+---
+import CategorySidebarToggler from "@components/Category/CategorySidebarToggler.vue";
+import { Icon } from 'astro-icon/components';
+const { category, subcategory, subtitle, subsubtitle, titleSmall, locale } = Astro.props;
+import { t } from "i18next";
+
+// Compute base URL for localization
+const baseURL = locale === 'en' ? '' : `/${locale}`;
+---
+
+<div ref="el"
+   class="flex flex-nowrap pr-3 sm:pb-3 sm:pt-4 md:pl-4 relative z-10-off bg-gray-100 md:bg-white"
+   transition:name="category-details"
+   transition:animate="fade"
+>
+  <CategorySidebarToggler onclick="toggleSidebar()">
+    <Icon name="ant-design:menu-fold-outlined" class="toggler-btn hidden md:block" />
+    <Icon name="ant-design:menu-unfold-outlined" class="toggler-btn hidden" />
+    <Icon name="ant-design:menu-outlined" class="toggler-btn md:hidden" />
+  </CategorySidebarToggler>
+
+  <div class="overflow-x-auto overflow-y-hidden flex max-w-full items-center">
+      {subtitle ? (
+        <>
+          <a class="text-lg font-vw-headregular whitespace-nowrap block" href={`${baseURL}/${category.slug}/`}>
+            {category.name}
+            {titleSmall && <small>{titleSmall}</small>}
+          </a>
+          <span class="text-gray-200 text-lg inline-block px-1 font-headlight">/</span>
+          {!subsubtitle ? (
+            <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
+              {subtitle} <span class="sr-only"> {t('catalog.extra-short')}</span>
+            </h1>
+          ) : (
+            <>
+              <div class="text-lg py-2.5 sm:py-0 whitespace-nowrap ">
+                <a href={`${baseURL}/${category.slug}/${subcategory.slug}/`}>
+                  {subtitle}
+                </a>
+              </div>
+              <span class="text-gray-200 text-lg inline-block px-1 font-headlight">/</span>
+              <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
+                {subsubtitle} <span class="sr-only"> {t('catalog.extra-short')}</span>
+              </h1>
+            </>
+          )}
+        </>
+      ) : (
+        <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap">
+          {category.name}
+          {titleSmall && <small>{titleSmall}</small>}
+          <span class="sr-only"> {t('catalog.extra-short')}</span>
+        </h1>
+      )}
+  </div>
+</div>
+
+<script is:inline>
+  function toggleSidebar() {
+    function handleToggle(x) {
+      const sidebar = document.getElementById('sidebar');
+      if (x.matches) { // Mobile view
+        document.body.classList.toggle('overflow-hidden');
+        sidebar.classList.toggle('show');
+      } else {
+        document.body.classList.remove('overflow-hidden');
+        sidebar.classList.toggle('collapsed');
+      }
+    }
+
+    var x = window.matchMedia("(max-width: 768px)");
+    handleToggle(x); // Call listener at runtime
+    x.addListener(handleToggle); // Attach listener for state changes
+  }
+</script>
+
+<style>
+  .category-toggler {
+    right: -1px;
+    bottom: -1px;
+  }
+</style>

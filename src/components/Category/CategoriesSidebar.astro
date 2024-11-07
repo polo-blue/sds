@@ -1,0 +1,187 @@
+---
+// import { Category } from 'types/index';
+import CategoryLink from "@components/Category/CategoryLink.vue"
+import SubCategoryLink from "@components/Category/SubCategoryLink.vue"
+
+
+// import { useTranslation } from "i18next-vue";
+// const { i18next, t } = useTranslation();
+
+import i18next, { t } from 'i18next';
+import { Icon } from 'astro-icon/components';
+import { isSidebarOpen } from '../../stores/info.js';
+import { useStore } from '@nanostores/vue';
+import { getCategoryList } from "@utils/category/getCategoryList"
+
+
+import { createSubCatLink, createSubSubCatLink} from "@utils/db"
+// import type { SubCategory } from 'types/index'
+
+
+// read the store value with the `useStore` hook
+const $isSidebarOpen = useStore(isSidebarOpen);
+const { catParameters, activeSubCategorySlug, activeSubSubCategorySlug, locale } = Astro.props;
+
+
+
+const isActiveSubCategory = (subCategorySlug: string) => {
+  getCategoryList(i18next.language) //  hack to create translations
+  return categories.activeSubCategory !== null && categories.activeSubCategory === subCategorySlug
+}
+
+// const hideSidebar = () => {
+//   sidebar.setMode(false)
+// }
+
+// const isActiveSubCategory = null
+
+// const sidebar = reactive({
+//   isShow: true
+// })
+
+const categories = {
+  activeCategory: catParameters.category,
+  activeSubCategory: activeSubCategorySlug ? activeSubCategorySlug : catParameters.category.children ? catParameters.category.children[0] : null,
+  activeSubSubCategory: null
+}
+
+const info = {
+  isMobile: false,
+}
+
+const isShowCatMobileMenu = false
+
+---
+
+<div data-pagefind-ignore id="sidebar" transition:name="sidebar" transition:animate="fade"
+
+class="
+sidebar mb-4 fixed top-0 ease delay-100 flex-col ml-0 overflow-hidden z-40 sm:z-0 md:(relative transition-all w-1/4 max-w-64 min-w-56 overflow-visible)" >
+  <!-- :class="showSidebar ? 'w-screen h-full-mobile md:h-auto' : 'h-0 w-0 fixed md:(h-auto -ml-64 static)'" -->
+  {  categories.activeSubCategory !== null && categories.activeCategory && categories.activeCategory.children &&  (
+    <div
+      class="subcat-menu bg-white  sm:border box-border sm:border-gray-200 dark:sm:border-gray-500 sm:border-l-0 md:sticky md:top-14 bg-white dark:bg-blue-901 z-10 sm:mb-2 h-full md:h-auto pb-3 h-sidebar max-h-sidebar sm:h-auto sm:max-h-auto"
+    >
+      <div class={`subcategories flex-col pb-3 ${categories.activeSubSubCategory !== null ? 'additional-subcategories' : ''}`} >
+        <div class="sidebar-title">
+          <span>{ t('heading.subcategories') }</span> 
+          <br>
+        </div>
+        <ul>
+          {
+            categories.activeCategory.children.map((subcategory) => (
+              <li class="border-b-1 border-gray-100 sm:border-none">
+                <CategoryLink
+                  active={isActiveSubCategory(subcategory.slug)}
+                  text={t(`cat.${categories.activeCategory.slug}.${subcategory.slug}.name`)}
+                  href={createSubCatLink(locale, catParameters.category.slug, subcategory.slug)}
+                />
+                {
+                  isActiveSubCategory(subcategory.slug) && (
+                    <div>
+                      { catParameters.category && catParameters.subcategory && catParameters.subcategory  &&  catParameters.subcategory && catParameters.subcategory.children && (
+                        <ul
+                          class="subcategories sm:pb-2"
+                        >
+                        {
+                            catParameters.subcategory.children.map((subsubcategory) => (
+                              <li
+                                class="border-t-1 border-gray-100 sm:border-none"
+                              >
+                                <SubCategoryLink
+                                  active={catParameters.subcategory && activeSubSubCategorySlug === subsubcategory.slug}
+                                  text={subsubcategory.name || `missing subsubcat name ${subsubcategory.slug}`}
+                                  href={createSubSubCatLink(locale, catParameters.category.slug, subcategory.slug, subsubcategory.slug)}
+                                />
+                              </li>
+                          ))
+                        }
+                        
+                        </ul>
+                      )
+                      }
+                    </div>
+                  )
+                }
+            </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      
+      <button
+        class="absolute top-2.5 left-2 text-3xl w-9 h-9 hidden md:hidden"
+        onclick="toggleCatMenu()"
+        aria-label="Menu"
+      >
+        <Icon name="octicon:chevron-left-24" class=""  />
+      </button>
+      <button
+        class="absolute top-2.5 right-2 text-3xl w-9 h-9 md:hidden"
+        onclick="hideSidebar()"
+        aria-label="X"
+        >
+        <Icon name="octicon:x-24" class="" />
+      </button>
+
+    </div>
+  )
+}
+
+
+
+
+  <div id="ga-sidebar"></div>
+</div>
+
+<style lang="scss" scoped>
+
+.sidebar {
+
+  @media (max-width: 768px) {
+    &.show {
+      @apply w-screen h-full-mobile md:h-auto;
+    }
+
+    &:not(.show){
+      @apply h-0 w-0 fixed md:(h-auto -ml-64 static);
+    }
+  }
+
+  &.collapsed {
+    @apply md:max-w-0 md:min-w-0;
+  }
+
+}
+
+.subcategories {
+
+  .active {
+    // @apply bg-blue-700 text-white;
+    @apply bg-gray-200 sm:bg-white dark:(bg-blue-901 text-white) text-blue-600 font-600;
+
+    a {
+      color: inherit;
+    }
+  }
+
+  .s-active {
+    @apply bg-gray-100 sm:bg-white dark:(bg-blue-901 text-white) text-blue-600  border-gray-400;
+  }
+}
+
+.form-check-input {
+  @apply  appearance-none h-4 w-4 border border-gray-300 bg-white checked:bg-lightBlue-500 checked:border-lightBlue-500 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer;
+}
+
+.form-check-input:checked[type=checkbox] {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+}
+</style>
+<script is:inline>
+  function hideSidebar() {
+    document.getElementById('sidebar').classList.remove("show");
+    document.body.classList.remove('overflow-hidden')
+  }
+  </script>
