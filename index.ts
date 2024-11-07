@@ -16,6 +16,14 @@ export { default as FeaturesList } from './src/components/FeaturesList.vue';
 export { default as ProductCodes } from './src/components/ProductCodes.vue';
 export { default as ProductEngineType } from './src/components/Product/ProductEngineType.vue';
 export { default as ProductButton } from './src/components/Product/ProductButton.vue';
+export { default as ProductColors } from './src/components/Product/ProductColors.vue';
+export { default as ProductDetailName } from './src/components/Product/ProductDetailName.vue';
+export { default as ProductDetails } from './src/components/Product/ProductDetails.vue';
+export { default as ProductDoc } from './src/components/Product/ProductDoc.vue';
+export { default as ProductModel } from './src/components/Product/ProductModel.vue';
+export { default as ProductModels } from './src/components/Product/ProductModels.vue';
+export { default as ProductName } from './src/components/Product/ProductName.vue';
+export { default as ProductPositions } from './src/components/Product/ProductPositions.vue';
 
 export { default as CategoryLink } from './src/components/Category/CategoryLink.vue';
 export { default as CategorySidebarToggler } from './src/components/Category/CategorySidebarToggler.vue';
