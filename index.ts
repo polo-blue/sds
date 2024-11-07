@@ -36,8 +36,8 @@ export { default as FaqItem } from './src/components/FaqItem.astro';
 export { default as ProductNumber } from './src/components/Product/ProductNumber.astro';
 export { default as ProductImage } from './src/components/Product/ProductImage.astro';
 
-export { default as CategoriesCarousel } from './src/components/Category/CategoriesCarousel.astro';
-export { default as CategoriesSidebar } from './src/components/Category/CategoriesSidebar.astro';
+// export { default as CategoriesCarousel } from './src/components/Category/CategoriesCarousel.astro';
+// export { default as CategoriesSidebar } from './src/components/Category/CategoriesSidebar.astro';
 export { default as CategoryDetails } from './src/components/Category/CategoryDetails.astro';
 export { default as CategorySection } from './src/components/Category/CategorySection.astro';
 

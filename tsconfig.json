@@ -1,12 +1,32 @@
 {
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "src/**/*.astro", "src/**/*.d.ts"],
   "compilerOptions": {
+    "baseUrl": "src",
+
+    // Enable JSON imports.
+    "resolveJsonModule": true,
+    
+    // Enable stricter transpilation for better output.
+    "isolatedModules": true,
+    
+    // Astro will directly run your TypeScript code, no transpilation needed.
+    "noEmit": true,
+
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",
     "moduleResolution": "node",
     "jsx": "preserve",
     "allowJs": true,
-    "types": ["vite/client", "@astrojs/ts"]
-  }
+    "types": ["vitest, vite/client", "@astrojs/ts","unplugin-vue-macros/macros-global", "unplugin-icons/types/astro"],
+    "paths": {
+      "@components/*": [
+        "components/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ],
+    }
+  },
+  "exclude": ["dist", "node_modules"]
 }
