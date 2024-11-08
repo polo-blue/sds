@@ -24,6 +24,7 @@ export { default as ProductModel } from './src/components/Product/ProductModel.v
 export { default as ProductModels } from './src/components/Product/ProductModels.vue';
 export { default as ProductName } from './src/components/Product/ProductName.vue';
 export { default as ProductPositions } from './src/components/Product/ProductPositions.vue';
+export { default as ProductNumber } from './src/components/Product/ProductNumber.astro';
 
 export { default as CategoryLink } from './src/components/Category/CategoryLink.vue';
 export { default as CategorySidebarToggler } from './src/components/Category/CategorySidebarToggler.vue';
@@ -34,7 +35,7 @@ export { default as Copyright } from './src/components/Copyright.astro'; ///src/
 export { default as HandDrive } from './src/components/HandDrive.astro';
 export { default as Faq } from './src/components/Faq.astro';
 export { default as FaqItem } from './src/components/FaqItem.astro';
-export { default as ProductNumber } from './src/components/Product/ProductNumber.astro';
+
 export { default as ProductImage } from './src/components/Product/ProductImage.astro';
 
 // export { default as CategoriesCarousel } from './src/components/Category/CategoriesCarousel.astro';
@@ -52,6 +53,10 @@ export { default as getProductChecklist } from './src/utils/product/getProductCh
 export { default as getShorterDescription } from './src/utils/seo/getShorterDescription';
 
 // Utils: Text
+export { getData as default } from './src/utils/getData';
+// export { default as getData } from './src/utils/getData';
+// export { getData } from './src/utils/getData'; 
+export { getTranslation, text2paragraphs, countWords, firstSentence, removeSemicolon } from './src/utils/text';
 export { default as formatDate } from './src/utils/text/formatDate';
 export { default as formatLocaleNumber } from './src/utils/text/formatLocaleNumber';
 export { default as formatPad } from './src/utils/text/formatPad';

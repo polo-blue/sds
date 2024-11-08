@@ -2,7 +2,7 @@
 const { productObject, locale, index } = Astro.props;
 import Image from "./Image.astro"
 import ProductNumber from "./Product/ProductNumber.astro"
-
+import { t } from "i18next";
 ---
 
 { productObject && 
@@ -36,7 +36,7 @@ import ProductNumber from "./Product/ProductNumber.astro"
         { productObject.name }
       </a>
 
-      <ProductNumber productNumber={productObject.number} copyDisabled={false}  />
+      <ProductNumber productNumber={productObject.number} copyDisabled={false} buttonTexts={{ copy: t('copy'), copied: t('copied') }}  />
       
       { index !== null && 
         ( <meta itemprop="position" content={String(index)} />

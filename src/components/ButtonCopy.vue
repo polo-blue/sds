@@ -1,12 +1,11 @@
 <script lang="ts" setup>
 import { useClipboard } from "@vueuse/core";
-import { Icon } from "@iconify/vue";
-import { PropType } from "vue";
+// import { Icon } from "@iconify/vue";
 
 const props = defineProps({
     productNumber: {
         type: String,
-        default: '',
+        default: null,
         required: true,
     },
     tooltipClasses: {
@@ -24,24 +23,14 @@ const props = defineProps({
     }
 })
 const source = props.productNumber;
-const { copy, copied, isSupported } = useClipboard({ source });
+const { copy, copied, isSupported } = useClipboard({ source, legacy: true });
 
 </script>
 
 <template>
-    <button v-if="isSupported" :aria-label="String(texts.copy)" class="btn-copy has-tooltip" @click="copy()">
+    <button :aria-label="texts.copy" class="btn-copy has-tooltip" @click="copy()">
         <span :class="`tooltip rounded-full btn-copy-text ${tooltipClasses}`"
             :data-text="!copied ? texts.copy : texts.copied" />
-        <Icon icon="ph-copy-simple-light" class="leading-none w-full h-full" />
+        <span i-ph-copy-simple-light class="leading-none w-full h-full" />
     </button>
 </template>
-
-<style>
-.tooltip {
-    @apply invisible absolute;
-}
-
-.has-tooltip:hover .tooltip {
-    @apply visible z-50;
-}
-</style>

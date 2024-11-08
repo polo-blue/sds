@@ -1,104 +1,60 @@
 ---
-import { t } from "i18next";
-import ButtonCopy from "./../ButtonCopy.vue";
+import ButtonCopy from '../ButtonCopy.vue';
+import useFormatProductNumber from '../../utils/product/useFormatProductNumber';
 
-interface Props {
-  productNumber: string | null;
-  copyDisabled?: boolean;
-  isPdp?: boolean;
-  small?: boolean;
-  big?: boolean;
-  class?: string;
-}
-
-const { 
-  productNumber, 
-  copyDisabled, 
-  isPdp, 
-  small, 
-  big, 
-  class: className 
+const {
+  productNumber,
+  copyDisabled = false,
+  isPdp = false,
+  small = false,
+  big = false,
+  class: customClass = '',
+  buttonTexts = { copy: "Copy", copied: "Copied" },
 } = Astro.props;
 
-const buttonTexts = {
-  copy: t('copy'),
-  copied: t('copied')
-} as const;
+// Use formatted product number using a helper function
+const { formattedNumbers: formatted } = useFormatProductNumber(productNumber);
 
-// Regex patterns:
-const LIQUIDS_PATTERN = /^(\w{1})(\w{3})(\w{3})(.*)$/;
-const WHEELS_EMBLEMS_PATTERN = /^(\w{3})(\w{3})(\w{3})(.*)(\w{3})$/;
-const ACCESSORIES_MATS_PATTERN = /^(\w{3})(\w{3})(\w{3})(\w{1})(.*)$/;
-const OTHER_PARTS_PATTERN = /(\w{3})/g;
-
-const isLetter = (char: string): boolean => 
-  char.toLowerCase() !== char.toUpperCase();
-
-const formatProductNumber = (number: string, separator: string): string => {
-  if (!number) return '';
-  
-  let formatted = number;
-
-  if (isLetter(number[0]) && !isLetter(number[1]) && number.length === 9) {
-    formatted = formatted.replace(LIQUIDS_PATTERN, `$1${separator}$2${separator}$3${separator}$4`);
-  } else if (number.length >= 13) {
-    formatted = formatted.replace(WHEELS_EMBLEMS_PATTERN, `$1${separator}$2${separator}$3${separator}$4${separator}$5`);
-  } else if (number.length > 12) {
-    formatted = formatted.replace(ACCESSORIES_MATS_PATTERN, `$1${separator}$2${separator}$3${separator}$4${separator}$5`);
-  } else {
-    formatted = formatted.replace(OTHER_PARTS_PATTERN, `$1${separator}`);
-  }
-
-  return formatted
-    .replace(' ', separator)
-    .replace(/[^a-zA-Z0-9]$/, ''); // Remove the end trailing separator
-};
-
-// Memoization of formatted numbers
-const formattedNumbers = productNumber ? {
-  standard: formatProductNumber(productNumber, '\u00A0'),
-  dot: formatProductNumber(productNumber, '.'),
-  dash: formatProductNumber(productNumber, '-')
-} : null;
-
+// Define classes dynamically
 const classNames = [
   'product-number',
   big ? 'text-4.5' : 'number-big',
-  className
+  customClass,
 ].filter(Boolean).join(' ');
 
 const trackingClass = small ? 'tracking-wide' : 'tracking-tight';
 
+// Determine wrapper tags based on `isPdp`
 const ProductWrapper = isPdp ? 'h2' : 'div';
 const FormattedWrapper = isPdp ? 'h3' : 'div';
 ---
 
-{productNumber && formattedNumbers && (
+{productNumber && formatted && (
   <div class={classNames}>
-    <div class={`p-number ${small ? "w-full" : ""}`} itemprop="identifier">
+    <div class={['p-number', small ? 'w-full' : ''].join(' ')} itemprop="identifier">
       <ProductWrapper id={productNumber} class="product-code">
         {productNumber}
       </ProductWrapper>
 
       {big && (
-        <ButtonCopy 
-          productNumber={productNumber} 
-          copyDisabled={!big} 
-          texts={buttonTexts} 
-          client:idle 
+        <ButtonCopy
+          productNumber={productNumber}
+          texts={buttonTexts}
+          tooltipClasses=""
+          client:only="vue"
         />
       )}
     </div>
 
-    <div class={`code-formatted ${trackingClass}`}>
+    <div class={['code-formatted', trackingClass].join(' ')}>
       <div class="relative inset-0" data-pagefind-ignore>
-        {formattedNumbers.dot}
+        {formatted.dot}
       </div>
       <div class="absolute inset-0" data-pagefind-ignore>
-        {formattedNumbers.dash}
+        {formatted.dash}
       </div>
       <FormattedWrapper class="number-secondary">
-        {formattedNumbers.standard}
+        {formatted.standard}
       </FormattedWrapper>
     </div>
   </div>
