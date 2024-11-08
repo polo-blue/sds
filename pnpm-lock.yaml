@@ -152,7 +152,7 @@ importers:
         version: 16.4.5
       i18next:
         specifier: ^23.16.4
-        version: 23.16.4
+        version: 23.16.5
       i18next-browser-languagedetector:
         specifier: ^8.0.0
         version: 8.0.0
@@ -164,7 +164,7 @@ importers:
         version: 2.6.2
       i18next-vue:
         specifier: ^5.0.0
-        version: 5.0.0(i18next@23.16.4)(vue@3.5.12(typescript@5.6.3))
+        version: 5.0.0(i18next@23.16.5)(vue@3.5.12(typescript@5.6.3))
       swiper:
         specifier: ^11.1.14
         version: 11.1.14
@@ -2112,7 +2112,7 @@ packages:
     engines: {node: '>=4.0.0'}
 
   concat-map@0.0.1:
-    resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
+    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
   confbox@0.1.8:
     resolution: {integrity: sha512-RMtmw0iFkeR4YV+fUOSucriAQNb9g8zFR52MWCtl+cCZOFRNL6zeB395vPzFhEjjn4fMxXudmELnl/KF/WrK6w==}
@@ -2872,8 +2872,8 @@ packages:
   i18next@22.5.1:
     resolution: {integrity: sha512-8TGPgM3pAD+VRsMtUMNknRz3kzqwp/gPALrWMsDnmC1mKqJwpWyooQRLMcbTwq8z8YwSmuj+ZYvc+xCuEpkssA==}
 
-  i18next@23.16.4:
-    resolution: {integrity: sha512-9NIYBVy9cs4wIqzurf7nLXPyf3R78xYbxExVqHLK9od3038rjpyOEzW+XB130kZ1N4PZ9inTtJ471CRJ4Ituyg==}
+  i18next@23.16.5:
+    resolution: {integrity: sha512-KTlhE3EP9x6pPTAW7dy0WKIhoCpfOGhRQlO+jttQLgzVaoOjWwBWramu7Pp0i+8wDNduuzXfe3kkVbzrKyrbTA==}
 
   iconv-lite@0.6.3:
     resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
@@ -7774,16 +7774,16 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  i18next-vue@5.0.0(i18next@23.16.4)(vue@3.5.12(typescript@5.6.3)):
+  i18next-vue@5.0.0(i18next@23.16.5)(vue@3.5.12(typescript@5.6.3)):
     dependencies:
-      i18next: 23.16.4
+      i18next: 23.16.5
       vue: 3.5.12(typescript@5.6.3)
 
   i18next@22.5.1:
     dependencies:
       '@babel/runtime': 7.26.0
 
-  i18next@23.16.4:
+  i18next@23.16.5:
     dependencies:
       '@babel/runtime': 7.26.0
 
