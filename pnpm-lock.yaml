@@ -59,7 +59,7 @@ importers:
         version: 1.2.2
       '@iconify-json/fluent':
         specifier: ^1.2.6
-        version: 1.2.6
+        version: 1.2.7
       '@iconify-json/fluent-emoji':
         specifier: 1.2.1
         version: 1.2.1
@@ -1131,8 +1131,8 @@ packages:
   '@iconify-json/fluent-emoji@1.2.1':
     resolution: {integrity: sha512-foBd/hSanmOOWFa8ogWAbLH31mFFuUfMOJQNQrC8Ylui7jIVtcsCqwkoXjz3OlPNfCvCClYdQIAVaWMXo93y2A==}
 
-  '@iconify-json/fluent@1.2.6':
-    resolution: {integrity: sha512-T0uNVNH9rTv3de2kZUKsmt+/La7Vhpoek0+c9BpViNHYbehnT9I/G9jMASEX6rcEL+4cKRu9S8afa38C3S+YqQ==}
+  '@iconify-json/fluent@1.2.7':
+    resolution: {integrity: sha512-R5Duyek2QCPxHP0NlcgYsaSFe0ftiMiL17fJrCxop0OKgZbUuqpgruGSmnRqljjvsdv3TdR7HV5XobGYejUIBw==}
 
   '@iconify-json/icon-park-outline@1.2.1':
     resolution: {integrity: sha512-cNvUJL9mk3xOfyffErQuxvyRCWk0hCx1M8AEyGmNXjqIfgPC25OChCstt0KFB3IULS+hw9es+uA7pvVPmQh+AA==}
@@ -2112,7 +2112,7 @@ packages:
     engines: {node: '>=4.0.0'}
 
   concat-map@0.0.1:
-    resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
+    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
   confbox@0.1.8:
     resolution: {integrity: sha512-RMtmw0iFkeR4YV+fUOSucriAQNb9g8zFR52MWCtl+cCZOFRNL6zeB395vPzFhEjjn4fMxXudmELnl/KF/WrK6w==}
@@ -3549,8 +3549,8 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  object-inspect@1.13.2:
-    resolution: {integrity: sha512-IRZSRuzJiynemAXPYtPe5BoI/RESNYR7TYm50MC5Mqbd3Jmw5y790sErYw3V6SryFJD64b74qQQs9wn5Bg/k3g==}
+  object-inspect@1.13.3:
+    resolution: {integrity: sha512-kDCGIbxkDSXE3euJZZXzc6to7fCrKHNI/hSRQnRuQ+BWjFNzZwiFF8fj/6o2t2G9/jTj8PSIYTfCLelLZEeRpA==}
     engines: {node: '>= 0.4'}
 
   object-keys@1.1.1:
@@ -5617,7 +5617,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/fluent@1.2.6':
+  '@iconify-json/fluent@1.2.7':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -7131,7 +7131,7 @@ snapshots:
       is-string: 1.0.7
       is-typed-array: 1.1.13
       is-weakref: 1.0.2
-      object-inspect: 1.13.2
+      object-inspect: 1.13.3
       object-keys: 1.1.1
       object.assign: 4.1.5
       regexp.prototype.flags: 1.5.3
@@ -8642,7 +8642,7 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  object-inspect@1.13.2: {}
+  object-inspect@1.13.3: {}
 
   object-keys@1.1.1: {}
 
@@ -9201,7 +9201,7 @@ snapshots:
       call-bind: 1.0.7
       es-errors: 1.3.0
       get-intrinsic: 1.2.4
-      object-inspect: 1.13.2
+      object-inspect: 1.13.3
 
   signal-exit@4.1.0: {}
 
