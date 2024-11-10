@@ -1,3 +1,9 @@
-import { getData } from "@utils/getData"
+import { getData } from "../getData"
 
-export const getApiCategories = await getData('categories')
+export const getApiCategories = getData('categories')
+
+// const getApiCategories = async () => {
+//     return await getData('categories');
+// }
+
+export default getApiCategories;

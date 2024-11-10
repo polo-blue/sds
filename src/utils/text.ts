@@ -1,4 +1,3 @@
-
 import i18next, { t } from "i18next";
 
 // import { t } from "i18next";
@@ -26,3 +25,4 @@ export const firstSentence = (str: string) => {
 export const removeSemicolon = (name: string) => {
   return name.replace(';', '')
 }
+
