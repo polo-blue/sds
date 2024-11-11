@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets'
-
+import getEnvVariable from "./../../utils/getEnvVariable";
+const API_URL = getEnvVariable('API_URL', 'https://default-api.com');
 interface ImageObject {
   src: string;
   alt?: string;
@@ -12,7 +13,7 @@ interface ImageObject {
   index?: number;
 }
 
-const { imageObject, imagesApiUrl } = Astro.props as { imageObject: ImageObject; imagesApiUrl: string };
+const { imageObject } = Astro.props as { imageObject: ImageObject; };
 
 let inputProps = {};
 
@@ -28,7 +29,7 @@ if (imageObject.srcset && imageObject.srcset.length) {
 
 ---
 <Image 
-    src={`${imagesApiUrl}${imageObject.src}`}
+    src={`${API_URL}${imageObject.src}`}
     alt={imageObject.alt}
     height={imageObject.height} 
     width={imageObject.width}
