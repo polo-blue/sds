@@ -1,0 +1,101 @@
+---
+import type { Product } from 'types/index';
+
+interface Props {
+  productId?: number;
+  productObject?: Product;
+  locale: string;
+  index: number;
+  bigTile?: boolean;
+  loading?: "eager" | "lazy";
+  isShopProduct?: boolean;
+}
+
+const {
+  productId,
+  productObject,
+  bigTile,
+  locale,
+  index,
+  loading = "lazy",
+  isShopProduct = false,
+} = Astro.props;
+
+import { getProductById } from '@utils/product/getProductById';
+import { getShopProductById } from '@utils/product/getShopProductById';
+import { getProductUrl } from "@utils/product/getProductUrl";
+import { getShopProductUrl } from "@utils/product/getShopProductUrl";
+import { getProductTranslation } from "@utils/product/getProductTranslation";
+import { getImageUrl } from '@utils/getImageUrl';
+import i18next, { t } from "i18next";
+import { ProductImage, ProductNumber, removeSemicolon, getPriceFormatted } from "spoko-design-system";
+
+// Użycie productObject jeśli przekazane, inaczej pobranie produktu na podstawie productId
+const product = productObject || (productId ? (isShopProduct ? await getShopProductById(productId) : await getProductById(productId)) : null);
+
+// Określenie URL miniatury produktu
+const thumb = product ? (
+  isShopProduct
+    ? await getImageUrl(product.images?.[0]?.path || "", "SHOP")
+    : await getImageUrl(product.photo || "", `'ProductLink' ${product.number}`)
+) : "";
+
+// Tłumaczenie nazwy produktu jeśli dostępne
+const productTranslation = i18next.exists(`parts.${product?.number}.name`)
+  ? null
+  : productId ? await getProductTranslation(productId, product?.number || "") : null;
+ 
+// const productName = product ? (
+//   isShopProduct
+//     ? (locale === "pl" ? product.name_pl : product.name_en)
+//     : productTranslation?.name || t(`parts.${product.number}.name`)
+// ) : "";
+
+const productName = product.name || 'NO NAME';
+
+const nameFormatted = removeSemicolon(productName.toString());
+---
+
+{product && (
+  <div class={bigTile ? 'product-link--big-tile' : 'product-thumb--plp product-thumb--carousel'}>
+    {product.photo !== null && thumb ? (
+      <ProductImage
+        imagesApiUrl="https://api.polo.blue"
+        imageObject={{
+          src: thumb,
+          alt: productName,
+          height: '180',
+          width: '240',
+          loading
+        }}
+      />
+    ) : (
+      <img src="/1x1.png" class="bg-gray-100/70" alt={productName} />
+    )}
+  </div>
+
+  <div class={bigTile ? '' : 'sm:pl-4'}>
+    {product.price_pln && (
+      <p class="block mb-2 font-600 font-headbold text-5">
+        {getPriceFormatted(product)}
+      </p>
+    )}
+
+    <a 
+      class="product-link--url"
+      href={isShopProduct ? getShopProductUrl(product.slug, locale) : getProductUrl(product.number, locale)}
+      itemprop="url"
+      title={product.number}
+      set:html={nameFormatted}
+    />
+
+    <ProductNumber productNumber={product.number} copyDisabled={true} />
+    
+    {index !== null && (
+      <>
+        <meta itemprop="position" content={index.toString()} />
+        <meta itemprop="name" content={nameFormatted} />
+      </>
+    )}
+  </div>
+)}
