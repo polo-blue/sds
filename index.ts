@@ -65,3 +65,4 @@ export { default as formatPad } from './src/utils/text/formatPad';
 export { default as getNumberFormatted } from './src/utils/text/getNumberFormatted';
 export { default as getTranslatedLink } from './src/utils/text/getTranslatedLink';
 export { default as getApiCategories } from './src/utils/api/getCategories';
+export { default as getEnvVariable } from './src/utils/getEnvVariable';
