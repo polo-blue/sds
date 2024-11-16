@@ -1,6 +1,7 @@
 ---
-import { getTranslatedLink } from "@utils/text/getTranslatedLink";
+
 import { Image } from "astro:assets";
+import { getTranslatedLink } from "../../utils/text/getTranslatedLink"
 
 interface CategoryObject {
   photo: string;
@@ -13,14 +14,19 @@ interface CategoryObject {
   class?: string;
 }
 
+
+
 let inputProps = {};
-const { CategoryObject } = Astro.props as { CategoryObject: CategoryObject };
+const { CategoryObject, locale='en' } = Astro.props as { CategoryObject: CategoryObject, locale: string };
 CategoryObject.height = CategoryObject.height ?? 70;
 CategoryObject.width = CategoryObject.width ?? 70;
+
+const mainCategoryLink =  getTranslatedLink(`/${CategoryObject.slug}/`, locale);
+
 ---
 
 <a
-  href={getTranslatedLink(`/${CategoryObject.slug}/`)}
+  href={mainCategoryLink}
   class="carousel-item"
   data-astro-prefetch
   {...inputProps}

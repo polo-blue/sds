@@ -1,7 +1,5 @@
 ---
 import { Image } from 'astro:assets'
-import getEnvVariable from "./../../utils/getEnvVariable";
-const API_URL = getEnvVariable('API_URL', 'https://default-api.com');
 interface ImageObject {
   src: string;
   alt?: string;
@@ -29,10 +27,10 @@ if (imageObject.srcset && imageObject.srcset.length) {
 
 ---
 <Image 
-    src={`${API_URL}${imageObject.src}`}
+    src={imageObject.src}
     alt={imageObject.alt}
-    height={imageObject.height} 
-    width={imageObject.width}
+    height={Number(imageObject.height)} 
+    width={Number(imageObject.width)}
     loading={imageObject.loading ? imageObject.loading : 'lazy'}
     itemprop="image"
     format="avif"
