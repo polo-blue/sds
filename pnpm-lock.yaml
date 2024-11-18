@@ -167,7 +167,7 @@ importers:
         version: 5.0.0(i18next@23.16.5)(vue@3.5.13(typescript@5.6.3))
       swiper:
         specifier: ^11.1.14
-        version: 11.1.14
+        version: 11.1.15
       unocss:
         specifier: ^0.64.1
         version: 0.64.1(postcss@8.4.49)(rollup@2.79.2)(vite@5.4.11(@types/node@22.9.0)(lightningcss@1.28.1)(terser@5.36.0))(vue@3.5.13(typescript@5.6.3))
@@ -2112,7 +2112,7 @@ packages:
     engines: {node: '>=4.0.0'}
 
   concat-map@0.0.1:
-    resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
+    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
   confbox@0.1.8:
     resolution: {integrity: sha512-RMtmw0iFkeR4YV+fUOSucriAQNb9g8zFR52MWCtl+cCZOFRNL6zeB395vPzFhEjjn4fMxXudmELnl/KF/WrK6w==}
@@ -4182,8 +4182,8 @@ packages:
     engines: {node: '>=14.0.0'}
     hasBin: true
 
-  swiper@11.1.14:
-    resolution: {integrity: sha512-VbQLQXC04io6AoAjIUWuZwW4MSYozkcP9KjLdrsG/00Q/yiwvhz9RQyt0nHXV10hi9NVnDNy1/wv7Dzq1lkOCQ==}
+  swiper@11.1.15:
+    resolution: {integrity: sha512-IzWeU34WwC7gbhjKsjkImTuCRf+lRbO6cnxMGs88iVNKDwV+xQpBCJxZ4bNH6gSrIbbyVJ1kuGzo3JTtz//CBw==}
     engines: {node: '>= 4.7.0'}
 
   tar@6.2.1:
@@ -6704,7 +6704,7 @@ snapshots:
       unist-util-visit: 5.0.0
       vfile: 6.0.3
       vite: 5.4.11(@types/node@22.9.0)(lightningcss@1.27.0)(terser@5.36.0)
-      vitefu: 1.0.3(vite@5.4.11(@types/node@22.9.0)(lightningcss@1.28.1)(terser@5.36.0))
+      vitefu: 1.0.3(vite@5.4.11(@types/node@22.9.0)(lightningcss@1.27.0)(terser@5.36.0))
       which-pm: 3.0.0
       xxhash-wasm: 1.0.2
       yargs-parser: 21.1.1
@@ -9574,7 +9574,7 @@ snapshots:
       csso: 5.0.5
       picocolors: 1.1.1
 
-  swiper@11.1.14: {}
+  swiper@11.1.15: {}
 
   tar@6.2.1:
     dependencies:
@@ -9910,6 +9910,10 @@ snapshots:
       fsevents: 2.3.3
       lightningcss: 1.28.1
       terser: 5.36.0
+
+  vitefu@1.0.3(vite@5.4.11(@types/node@22.9.0)(lightningcss@1.27.0)(terser@5.36.0)):
+    optionalDependencies:
+      vite: 5.4.11(@types/node@22.9.0)(lightningcss@1.27.0)(terser@5.36.0)
 
   vitefu@1.0.3(vite@5.4.11(@types/node@22.9.0)(lightningcss@1.28.1)(terser@5.36.0)):
     optionalDependencies:
