@@ -57,7 +57,7 @@ export { default as getShorterDescription } from './src/utils/seo/getShorterDesc
 
 // Utils: Text
 
-export { getTranslation, text2paragraphs, countWords, firstSentence, removeSemicolon } from './src/utils/text';
+export { text2paragraphs, countWords, firstSentence, removeSemicolon } from './src/utils/text';
 export { default as formatDate } from './src/utils/text/formatDate';
 export { default as formatLocaleNumber } from './src/utils/text/formatLocaleNumber';
 export { default as formatPad } from './src/utils/text/formatPad';
