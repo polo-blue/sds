@@ -18,7 +18,7 @@ const handDriveName =  getHandDriveName(handDrive)
 <div title={handDriveName.toUpperCase()} class="flex items-center" class:list={className}>
   <Image src={handDriveImage} alt="infoObject.product.hand_drive" width={48} height={34} class={handDriveName} />
   <div data-pagefind-filter={`${t('part.sw-position')}:${handDriveName.toUpperCase()}`}
-    class={`sm:ml-2 order-0 ${!biggerText ? 'text-xxs md:text-xs' : 'order-0'}`} 
+    class={`ml-2 order-0 ${!biggerText ? 'text-xxs md:text-xs' : 'order-0'}`} 
     set:html={t(`part.for-${handDriveName}`)} 
   />
 </div>

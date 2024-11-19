@@ -1,6 +1,6 @@
 {
   "name": "spoko-design-system",
-  "version": "0.2.80",
+  "version": "0.2.81",
   "private": false,
   "main": "./index.ts",
   "module": "./index.ts",
@@ -79,7 +79,7 @@
     "astro-i18next": "1.0.0-beta.21",
     "astro-icon": "^1.1.2",
     "astro-meta-tags": "^0.3.1",
-    "astro-navbar": "^2.3.6",
+    "astro-navbar": "^2.3.7",
     "astro-pagefind": "^1.6.0",
     "astro-remote": "^0.3.3",
     "dotenv": "^16.4.5",
@@ -88,7 +88,7 @@
     "i18next-fs-backend": "^2.3.2",
     "i18next-http-backend": "^2.6.2",
     "i18next-vue": "^5.0.0",
-    "swiper": "^11.1.14",
+    "swiper": "^11.1.15",
     "unocss": "^0.64.1",
     "vite": "^5.4.11",
     "vue": "^3.5.13"
