@@ -44,7 +44,7 @@ importers:
         version: 1.2.1
       '@iconify-json/carbon':
         specifier: ^1.2.4
-        version: 1.2.4
+        version: 1.2.5
       '@iconify-json/circle-flags':
         specifier: ^1.2.1
         version: 1.2.1
@@ -1287,8 +1287,8 @@ packages:
   '@iconify-json/bx@1.2.1':
     resolution: {integrity: sha512-FQCpVnEqCRZmyzpJ5Ba31ff8b2lDLhjRuV8ZC0Cw4HsV/IgXoyW9CGH4vI0P7UGeTXHIj3iSDNwIpOoCpPqXVg==}
 
-  '@iconify-json/carbon@1.2.4':
-    resolution: {integrity: sha512-DhW2jjMVGwV0DLHc0cmDYohdtGxMra8UuwgjHrryPy+rQX4gXhJwCBBVP2h2UG/92AoRCTn7zUJve4WvY5MLYg==}
+  '@iconify-json/carbon@1.2.5':
+    resolution: {integrity: sha512-aI3TEzOrUDGhs74zIT3ym/ZQBUEziyu8JifntX2Hb4siVzsP5sQ/QEfVdmcCUj37kQUYT3TYBSeAw2vTfCJx9w==}
 
   '@iconify-json/circle-flags@1.2.1':
     resolution: {integrity: sha512-/gDW8eWHUcF22aR4RIAoqtyBWy2VQOS7JFk27z+gFJ4gxiSS2dRG156sU8Hy30TYf5MaN/fRQPwAJ1ksfiXQig==}
@@ -6045,7 +6045,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/carbon@1.2.4':
+  '@iconify-json/carbon@1.2.5':
     dependencies:
       '@iconify/types': 2.0.0
 
