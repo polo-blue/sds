@@ -41,7 +41,7 @@ importers:
         version: 1.2.2
       '@iconify-json/bx':
         specifier: ^1.2.1
-        version: 1.2.1
+        version: 1.2.2
       '@iconify-json/carbon':
         specifier: ^1.2.4
         version: 1.2.4
@@ -1284,8 +1284,8 @@ packages:
   '@iconify-json/bi@1.2.2':
     resolution: {integrity: sha512-f/Wm+RTdBosw3cI/gmg5uSFmdumkw2thUk4qVFS56jTerdal6wqWnWAbRTSJJ/vhH9/y16pRKnvE8F2+M23dzw==}
 
-  '@iconify-json/bx@1.2.1':
-    resolution: {integrity: sha512-FQCpVnEqCRZmyzpJ5Ba31ff8b2lDLhjRuV8ZC0Cw4HsV/IgXoyW9CGH4vI0P7UGeTXHIj3iSDNwIpOoCpPqXVg==}
+  '@iconify-json/bx@1.2.2':
+    resolution: {integrity: sha512-hZVx6LMEkYckScdRdUuQWcmv8Lm2au6Cnf799TLoR6YgiAfFvaJ4M5ElwcnExvCu8ntsS7jW89r0W5LwBAfZXQ==}
 
   '@iconify-json/carbon@1.2.4':
     resolution: {integrity: sha512-DhW2jjMVGwV0DLHc0cmDYohdtGxMra8UuwgjHrryPy+rQX4gXhJwCBBVP2h2UG/92AoRCTn7zUJve4WvY5MLYg==}
@@ -6041,7 +6041,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/bx@1.2.1':
+  '@iconify-json/bx@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 
