@@ -20,7 +20,7 @@ importers:
         version: 4.0.1(astro@5.0.2(@types/node@22.10.1)(jiti@1.21.7)(lightningcss@1.27.0)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))
       '@astrojs/node':
         specifier: ^9.0.0
-        version: 9.0.0(astro@5.0.2(@types/node@22.10.1)(jiti@1.21.7)(lightningcss@1.27.0)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))
+        version: 9.0.1(astro@5.0.2(@types/node@22.10.1)(jiti@1.21.7)(lightningcss@1.27.0)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))
       '@astrojs/sitemap':
         specifier: ^3.2.1
         version: 3.2.1
@@ -241,8 +241,8 @@ packages:
     peerDependencies:
       astro: ^5.0.0
 
-  '@astrojs/node@9.0.0':
-    resolution: {integrity: sha512-3h/5kFZvpuo+chYAjj75YhtRUxfquxEJrpZRRC7TdiMGp2WhLp2us4VXm2mjezJp/zHKotW2L3qgp0P2ujQ0xw==}
+  '@astrojs/node@9.0.1':
+    resolution: {integrity: sha512-vIKmKYhzK9o3NXANkHyjcFqi9e9N84mhgCESC/+rQ8danWnktu9uR6rGvbj3bdTb9+Dn5LDsmEm123P2Cun9nQ==}
     peerDependencies:
       astro: ^5.0.0
 
@@ -4952,7 +4952,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/node@9.0.0(astro@5.0.2(@types/node@22.10.1)(jiti@1.21.7)(lightningcss@1.27.0)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))':
+  '@astrojs/node@9.0.1(astro@5.0.2(@types/node@22.10.1)(jiti@1.21.7)(lightningcss@1.27.0)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1))':
     dependencies:
       astro: 5.0.2(@types/node@22.10.1)(jiti@1.21.7)(lightningcss@1.27.0)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
       send: 1.1.0
@@ -7933,7 +7933,7 @@ snapshots:
 
   extract-zip@2.0.1:
     dependencies:
-      debug: 4.3.7
+      debug: 4.4.0
       get-stream: 5.2.0
       yauzl: 2.10.0
     optionalDependencies:
@@ -8365,7 +8365,7 @@ snapshots:
   importx@0.4.4:
     dependencies:
       bundle-require: 5.0.0(esbuild@0.23.1)
-      debug: 4.3.7
+      debug: 4.4.0
       esbuild: 0.23.1
       jiti: 2.0.0-beta.3
       jiti-v1: jiti@1.21.7
@@ -9727,7 +9727,7 @@ snapshots:
 
   send@1.1.0:
     dependencies:
-      debug: 4.3.7
+      debug: 4.4.0
       destroy: 1.2.0
       encodeurl: 2.0.0
       escape-html: 1.0.3
