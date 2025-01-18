@@ -97,7 +97,7 @@
     "@unocss/transformer-variant-group": "^0.65.1",
     "@vitejs/plugin-vue": "^5.2.1",
     "astro": "^5.0.2",
-    "unocss": "^0.60.0"
+    "unocss": "^0.65.0"
   },
   "packageManager": "pnpm@9.15.3",
   "pnpm": {
