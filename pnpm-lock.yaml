@@ -35,7 +35,7 @@ importers:
         version: 3.8.0
       '@iconify-json/ant-design':
         specifier: ^1.2.3
-        version: 1.2.3
+        version: 1.2.5
       '@iconify-json/bi':
         specifier: ^1.2.1
         version: 1.2.2
@@ -1105,8 +1105,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@iconify-json/ant-design@1.2.3':
-    resolution: {integrity: sha512-LoGrgGfRJ9iwwmTbtKnWg0FtN+87gy/C5WWErC2qUygyRuOyOMTxKJoUnl360UaXejiInDIK58o0jlJKoIVS4Q==}
+  '@iconify-json/ant-design@1.2.5':
+    resolution: {integrity: sha512-SYxhrx1AFq2MBcXk77AERYz2mPhLQes1F0vtvG64+dJZWyge9studXo7MiR8PPeLjRjZdWRrReRbxiwdRMf70Q==}
 
   '@iconify-json/bi@1.2.2':
     resolution: {integrity: sha512-f/Wm+RTdBosw3cI/gmg5uSFmdumkw2thUk4qVFS56jTerdal6wqWnWAbRTSJJ/vhH9/y16pRKnvE8F2+M23dzw==}
@@ -5755,7 +5755,7 @@ snapshots:
   '@esbuild/win32-x64@0.24.2':
     optional: true
 
-  '@iconify-json/ant-design@1.2.3':
+  '@iconify-json/ant-design@1.2.5':
     dependencies:
       '@iconify/types': 2.0.0
 
