@@ -155,7 +155,7 @@ importers:
         version: 24.0.5(typescript@5.7.2)
       i18next-browser-languagedetector:
         specifier: ^8.0.0
-        version: 8.0.0
+        version: 8.0.2
       i18next-fs-backend:
         specifier: ^2.6.0
         version: 2.6.0
@@ -2889,11 +2889,11 @@ packages:
     resolution: {integrity: sha512-/1/GPCpDUCCYwlERiYjxoczfP0zfvZMU/OWgQPMya9AbAE24vseigFdhAMObpc8Q4lc/kjutPfUddDYyAmejnA==}
     engines: {node: '>=18.18.0'}
 
-  i18next-browser-languagedetector@7.2.1:
-    resolution: {integrity: sha512-h/pM34bcH6tbz8WgGXcmWauNpQupCGr25XPp9cZwZInR9XHSjIFDYp1SIok7zSPsTOMxdvuLyu86V+g2Kycnfw==}
+  i18next-browser-languagedetector@7.2.2:
+    resolution: {integrity: sha512-6b7r75uIJDWCcCflmbof+sJ94k9UQO4X0YR62oUfqGI/GjCLVzlCwu8TFdRZIqVLzWbzNcmkmhfqKEr4TLz4HQ==}
 
-  i18next-browser-languagedetector@8.0.0:
-    resolution: {integrity: sha512-zhXdJXTTCoG39QsrOCiOabnWj2jecouOqbchu3EfhtSHxIB5Uugnm9JaizenOy39h7ne3+fLikIjeW88+rgszw==}
+  i18next-browser-languagedetector@8.0.2:
+    resolution: {integrity: sha512-shBvPmnIyZeD2VU5jVGIOWP7u9qNG3Lj7mpaiPFpbJ3LVfHZJvVzKR4v1Cb91wAOFpNw442N+LGPzHOHsten2g==}
 
   i18next-fs-backend@2.6.0:
     resolution: {integrity: sha512-3ZlhNoF9yxnM8pa8bWp5120/Ob6t4lVl1l/tbLmkml/ei3ud8IWySCHt2lrY5xWRlSU5D9IV2sm5bEbGuTqwTw==}
@@ -6770,7 +6770,7 @@ snapshots:
       '@proload/plugin-tsm': 0.2.1(@proload/core@0.3.3)
       astro: 5.1.7(@types/node@22.10.1)(jiti@2.4.2)(lightningcss@1.27.0)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
       i18next: 22.5.1
-      i18next-browser-languagedetector: 7.2.1
+      i18next-browser-languagedetector: 7.2.2
       i18next-fs-backend: 2.6.0
       i18next-http-backend: 2.7.1
       iso-639-1: 2.1.15
@@ -8161,11 +8161,11 @@ snapshots:
 
   human-signals@8.0.0: {}
 
-  i18next-browser-languagedetector@7.2.1:
+  i18next-browser-languagedetector@7.2.2:
     dependencies:
       '@babel/runtime': 7.26.0
 
-  i18next-browser-languagedetector@8.0.0:
+  i18next-browser-languagedetector@8.0.2:
     dependencies:
       '@babel/runtime': 7.26.0
 
