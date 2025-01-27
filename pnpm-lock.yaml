@@ -61,8 +61,8 @@ importers:
         specifier: ^1.2.8
         version: 1.2.8
       '@iconify-json/fluent-emoji':
-        specifier: 1.2.1
-        version: 1.2.1
+        specifier: 1.2.2
+        version: 1.2.2
       '@iconify-json/icon-park-outline':
         specifier: ^1.2.1
         version: 1.2.1
@@ -98,7 +98,7 @@ importers:
         version: 0.1.6(@types/node@22.10.1)(jiti@2.4.2)(rollup@2.79.2)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
       '@playform/inline':
         specifier: github:playform/inline
-        version: https://codeload.github.com/playform/inline/tar.gz/9cb74b9746c415938dbf3c48b750d387b97dde55(@types/node@22.10.1)(jiti@2.4.2)(lightningcss@1.27.0)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
+        version: https://codeload.github.com/playform/inline/tar.gz/314f60a706d8ca587150732a67740ad7544fbd8a(@types/node@22.10.1)(jiti@2.4.2)(lightningcss@1.27.0)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
       '@types/node':
         specifier: ^22.10.1
         version: 22.10.1
@@ -1129,8 +1129,8 @@ packages:
   '@iconify-json/flowbite@1.2.2':
     resolution: {integrity: sha512-qqJIYvwE4vIX3GFgnx5l5SR+IcC9/FGzvMBnKY5jg+3R28u705bKG/zoEMQY+g7DAkXxa4BUUJEkJrmX76P3cw==}
 
-  '@iconify-json/fluent-emoji@1.2.1':
-    resolution: {integrity: sha512-foBd/hSanmOOWFa8ogWAbLH31mFFuUfMOJQNQrC8Ylui7jIVtcsCqwkoXjz3OlPNfCvCClYdQIAVaWMXo93y2A==}
+  '@iconify-json/fluent-emoji@1.2.2':
+    resolution: {integrity: sha512-nunoN4CbvR395D4wDSJTxZz04j6LxvGm/lHpOj4GPiIT4uqSjgOwoOTzEliu91BnfK1Gn1UO7os50NzuYD3qwg==}
 
   '@iconify-json/fluent@1.2.8':
     resolution: {integrity: sha512-yFpS3eKof874LYu0/pK0epz2c+UXlF5lTY+oX+xcXP9V5NAe4oSgWMBnKvJsxsYSEbgGhAMqDf+4y0GvyBzLVw==}
@@ -1358,8 +1358,8 @@ packages:
   '@playform/compress@0.1.6':
     resolution: {integrity: sha512-T76ABM/naxhIEYQ9D4z+6MS9OW6IGxChlUd8gBPGa5ipTxsQTRV3QkB5v2/l7ZOnds/JoaXqzr0J6xThKXjm7Q==}
 
-  '@playform/inline@https://codeload.github.com/playform/inline/tar.gz/9cb74b9746c415938dbf3c48b750d387b97dde55':
-    resolution: {tarball: https://codeload.github.com/playform/inline/tar.gz/9cb74b9746c415938dbf3c48b750d387b97dde55}
+  '@playform/inline@https://codeload.github.com/playform/inline/tar.gz/314f60a706d8ca587150732a67740ad7544fbd8a':
+    resolution: {tarball: https://codeload.github.com/playform/inline/tar.gz/314f60a706d8ca587150732a67740ad7544fbd8a}
     version: 0.1.1
 
   '@playform/pipe@0.1.1':
@@ -5782,7 +5782,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/fluent-emoji@1.2.1':
+  '@iconify-json/fluent-emoji@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -6088,7 +6088,7 @@ snapshots:
       - uploadthing
       - yaml
 
-  '@playform/inline@https://codeload.github.com/playform/inline/tar.gz/9cb74b9746c415938dbf3c48b750d387b97dde55(@types/node@22.10.1)(jiti@2.4.2)(lightningcss@1.27.0)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)':
+  '@playform/inline@https://codeload.github.com/playform/inline/tar.gz/314f60a706d8ca587150732a67740ad7544fbd8a(@types/node@22.10.1)(jiti@2.4.2)(lightningcss@1.27.0)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)':
     dependencies:
       '@playform/pipe': 0.1.2
       astro: 5.1.7(@types/node@22.10.1)(jiti@2.4.2)(lightningcss@1.27.0)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
