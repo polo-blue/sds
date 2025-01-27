@@ -61,8 +61,8 @@ importers:
         specifier: ^1.2.8
         version: 1.2.8
       '@iconify-json/fluent-emoji':
-        specifier: 1.2.1
-        version: 1.2.1
+        specifier: 1.2.2
+        version: 1.2.2
       '@iconify-json/icon-park-outline':
         specifier: ^1.2.1
         version: 1.2.1
@@ -1133,8 +1133,8 @@ packages:
   '@iconify-json/flowbite@1.2.2':
     resolution: {integrity: sha512-qqJIYvwE4vIX3GFgnx5l5SR+IcC9/FGzvMBnKY5jg+3R28u705bKG/zoEMQY+g7DAkXxa4BUUJEkJrmX76P3cw==}
 
-  '@iconify-json/fluent-emoji@1.2.1':
-    resolution: {integrity: sha512-foBd/hSanmOOWFa8ogWAbLH31mFFuUfMOJQNQrC8Ylui7jIVtcsCqwkoXjz3OlPNfCvCClYdQIAVaWMXo93y2A==}
+  '@iconify-json/fluent-emoji@1.2.2':
+    resolution: {integrity: sha512-nunoN4CbvR395D4wDSJTxZz04j6LxvGm/lHpOj4GPiIT4uqSjgOwoOTzEliu91BnfK1Gn1UO7os50NzuYD3qwg==}
 
   '@iconify-json/fluent@1.2.8':
     resolution: {integrity: sha512-yFpS3eKof874LYu0/pK0epz2c+UXlF5lTY+oX+xcXP9V5NAe4oSgWMBnKvJsxsYSEbgGhAMqDf+4y0GvyBzLVw==}
@@ -5794,7 +5794,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/fluent-emoji@1.2.1':
+  '@iconify-json/fluent-emoji@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 
