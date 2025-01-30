@@ -50,7 +50,7 @@ importers:
         version: 1.2.1
       '@iconify-json/el':
         specifier: ^1.2.0
-        version: 1.2.0
+        version: 1.2.1
       '@iconify-json/eos-icons':
         specifier: ^1.2.1
         version: 1.2.1
@@ -98,7 +98,7 @@ importers:
         version: 0.1.6(@types/node@22.10.1)(jiti@2.4.2)(rollup@2.79.2)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
       '@playform/inline':
         specifier: github:playform/inline
-        version: https://codeload.github.com/playform/inline/tar.gz/314f60a706d8ca587150732a67740ad7544fbd8a(@types/node@22.10.1)(jiti@2.4.2)(lightningcss@1.27.0)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
+        version: https://codeload.github.com/playform/inline/tar.gz/16df753a55da60418e9ea5e181b80ac71c6be867(@types/node@22.10.1)(jiti@2.4.2)(lightningcss@1.27.0)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
       '@types/node':
         specifier: ^22.10.1
         version: 22.10.1
@@ -1124,8 +1124,8 @@ packages:
   '@iconify-json/circle-flags@1.2.1':
     resolution: {integrity: sha512-/gDW8eWHUcF22aR4RIAoqtyBWy2VQOS7JFk27z+gFJ4gxiSS2dRG156sU8Hy30TYf5MaN/fRQPwAJ1ksfiXQig==}
 
-  '@iconify-json/el@1.2.0':
-    resolution: {integrity: sha512-pW4kkQTSqKUi29xqdNVM3haF7sFebPEFU63Wg030KNZ/Z1PRdBUtHM33ME/ThaoiYcQEK/M7/5pV+BnXZd2Rbg==}
+  '@iconify-json/el@1.2.1':
+    resolution: {integrity: sha512-yRE1zKacqO6tnfqFDvkz+3ABR1RFkBPi6jtkcwo5jSswa0xOxKkye0fDDtyvu/ViiTlWxgl7n2fFOhS5p8/txQ==}
 
   '@iconify-json/eos-icons@1.2.1':
     resolution: {integrity: sha512-nqucN9E670dRHDk5osNNObhxQg/eBI8wvYA+zWaOMsJR0g8VodF9z/cpDvMH7YyUm4elOF9r8cGIj3byFBFLRQ==}
@@ -1362,8 +1362,8 @@ packages:
   '@playform/compress@0.1.6':
     resolution: {integrity: sha512-T76ABM/naxhIEYQ9D4z+6MS9OW6IGxChlUd8gBPGa5ipTxsQTRV3QkB5v2/l7ZOnds/JoaXqzr0J6xThKXjm7Q==}
 
-  '@playform/inline@https://codeload.github.com/playform/inline/tar.gz/314f60a706d8ca587150732a67740ad7544fbd8a':
-    resolution: {tarball: https://codeload.github.com/playform/inline/tar.gz/314f60a706d8ca587150732a67740ad7544fbd8a}
+  '@playform/inline@https://codeload.github.com/playform/inline/tar.gz/16df753a55da60418e9ea5e181b80ac71c6be867':
+    resolution: {tarball: https://codeload.github.com/playform/inline/tar.gz/16df753a55da60418e9ea5e181b80ac71c6be867}
     version: 0.1.1
 
   '@playform/pipe@0.1.1':
@@ -5782,7 +5782,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/el@1.2.0':
+  '@iconify-json/el@1.2.1':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -6100,7 +6100,7 @@ snapshots:
       - uploadthing
       - yaml
 
-  '@playform/inline@https://codeload.github.com/playform/inline/tar.gz/314f60a706d8ca587150732a67740ad7544fbd8a(@types/node@22.10.1)(jiti@2.4.2)(lightningcss@1.27.0)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)':
+  '@playform/inline@https://codeload.github.com/playform/inline/tar.gz/16df753a55da60418e9ea5e181b80ac71c6be867(@types/node@22.10.1)(jiti@2.4.2)(lightningcss@1.27.0)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)':
     dependencies:
       '@playform/pipe': 0.1.2
       astro: 5.1.9(@types/node@22.10.1)(jiti@2.4.2)(lightningcss@1.27.0)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.6.1)
