@@ -10,24 +10,17 @@ import {
    transformerDirectives,
   } from 'unocss'
 
-
-// import transformerVariantGroup from '@unocss/transformer-variant-group'
-
-// import presetWind from '@unocss/preset-wind';
-// import presetUno from '@unocss/preset-uno';
-// import presetAttributify from '@unocss/preset-attributify';
-// import presetTypography from '@unocss/preset-typography';
-// import presetWebFonts from '@unocss/preset-web-fonts';
-
-
-
 export default defineConfig({
-  // ...
   transformers: [
     transformerDirectives(),
     transformerVariantGroup(),
   ],
   shortcuts: [
+    ['btn-white-hover', 'hover:(text-blue-700 bg-white border-blue-700)'],
+    ['btn-light-hover', 'hover:(text-blue-700 bg-lightBlue-400 border-lightBlue-400)'],
+    ['btn-medium-hover', 'hover:(text-white bg-blue-400 border-blue-700)'],
+    ['btn-dark-hover', 'hover:(bg-blue-700 text-white border-blue-700)'],
+    ['img-base', 'relative object-cover bg-gray-100 h-auto max-w-full'],
     ['close-light','@apply before:bg-white after:bg-white'],
     ['close-dark','@apply before:bg-black after:bg-black'],
     ['headline-light', 'font-headlight font-300 tracking-tight'],
@@ -37,13 +30,13 @@ export default defineConfig({
     ['headline','font-headlight font-bold	'],
     ['badge', 'px-1.5 py-px text-white text-xs mb-1 max-w-fit whitespace-nowrap'],
     ['img--overlay','after:(content-empty bg-black bg-opacity-[.03] absolute w-full h-full top-0)'],
-    ['img--4/3', 'aspect-[4/3] relative object-cover bg-gray-100 h-auto max-w-full'],
-    ['img--3/4', 'aspect-[3/4] relative object-cover bg-gray-100 h-auto max-w-full'],
-    ['img--1/1', 'aspect-square relative object-cover bg-gray-100 h-auto max-w-full'],
-    ['img--3/2', 'aspect-[3/2] relative object-cover bg-gray-100 h-auto max-w-full'],
-    ['img--2/3', 'aspect-[2/3] relative object-cover bg-gray-100 h-auto max-w-full'],
-    ['img--3/1', 'aspect-[3/1] relative object-cover bg-gray-100 h-auto max-w-full'],
-    ['img--16/9', 'aspect-video relative object-cover bg-gray-100 h-auto max-w-full'],
+    ['img--4/3', 'aspect-[4/3] img-base'],
+    ['img--3/4', 'aspect-[3/4] img-base'],
+    ['img--1/1', 'aspect-square img-base'],
+    ['img--3/2', 'aspect-[3/2] img-base'],
+    ['img--2/3', 'aspect-[2/3] img-base'],
+    ['img--3/1', 'aspect-[3/1] img-base'],
+    ['img--16/9', 'aspect-video img-base'],
     ['img--small', 'h-full w-60 sm:(w-22) xl:(w-30)'],
     ['img--medium', 'h-full w-60'],
     ['underline-on-hover', 'relative flex w-full bg-white pb-1 dark:bg-blue-901 after:absolute after:bg-lightBlue-500 after:w-[calc(100%-1rem)] after:left-0 after:h-px  after:top-[calc(100%-1px)] after:bottom-1 after:content-empty after:scale-x-0 after:transition-transform-300 after:origin-top-right hover:after:origin-top-left hover:after:scale-x-100'],
@@ -53,7 +46,7 @@ export default defineConfig({
     ['btn-secondary', 'bg-gray-500 border border-transparent font-medium hover:bg-gray-600 inline-flex items-center justify-center shadow text-base text-white'],
     ['btn-secondary-outline', 'border-gray-500 border text-gray-500 font-medium inline-flex items-center justify-center shadow text-base hover:(text-white bg-gray-500)'],
     ['btn-tertiary', 'inline-flex border border-transparent items-center font-medium text-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300'],
-    ['btn-tertiary-outline', 'inline-flex border items-center font-medium text-center text-blue-700 border-blue-700 transition-all hover:(bg-blue-700 text-white) focus:ring-4 focus:outline-none focus:ring-blue-300 '],
+    ['btn-tertiary-outline', 'inline-flex border items-center font-medium text-center text-blue-700 border-blue-700 transition-colors focus:(ring-2 outline-none ring-blue-300)'],
     ['btn-text', 'text-gray-500 border border-transparent hover:underline transition-all'],
     ['btn-tag', 'bg-blue-100 text-blue-800 font-medium mr-2 dark:bg-gray-700 dark:text-blue-400 border border-blue-400 hover:border-blue-600 justify-center'],
     ['btn-normal', 'md:px-10 md:py-2 md:text-lg px-8 py-3 whitespace-nowrap'],
@@ -118,6 +111,7 @@ export default defineConfig({
   theme: {
     colors: {
       blue: {
+        400: '#0040c5',
         500: '#3b82f6',
         540: '#0069ff',
         545: '#005ad7',

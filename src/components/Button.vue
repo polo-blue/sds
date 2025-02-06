@@ -14,6 +14,10 @@ const props = defineProps<{
   small?: boolean;
   medium?: boolean;
   rounded?: boolean;
+  whiteHover?: boolean;
+  lightHover?: boolean;
+  mediumHover?: boolean;
+  darkHover?: boolean;
 }>();
 
 const tag = props.href && props.href.length ? 'a' : 'button'
@@ -29,7 +33,11 @@ const classes = {
   "btn-sm": props.medium,
   "btn-xs": props.small,
   "btn-normal": !props.small && !props.medium,
-  "rounded-full": props.rounded
+  "rounded-full": props.rounded,
+  "btn-white-hover": props.whiteHover,
+  "btn-light-hover": props.lightHover,
+  "btn-medium-hover": props.mediumHover,
+  "btn-dark-hover": props.darkHover
 };
 </script>
 

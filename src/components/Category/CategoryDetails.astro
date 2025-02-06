@@ -57,22 +57,46 @@ const baseURL = locale === 'en' ? '' : `/${locale}`;
 
 <script is:inline>
   function toggleSidebar() {
-    function handleToggle(x) {
-      const sidebar = document.getElementById('sidebar');
-      if (x.matches) { // Mobile view
+    const sidebar = document.getElementById('sidebar');
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    if (sidebar) {
+      if (isMobile) {
         document.body.classList.toggle('overflow-hidden');
         sidebar.classList.toggle('show');
+        localStorage.setItem('sidebarState', sidebar.classList.contains('show') ? 'open' : 'closed');
       } else {
         document.body.classList.remove('overflow-hidden');
         sidebar.classList.toggle('collapsed');
+        localStorage.setItem('sidebarState', sidebar.classList.contains('collapsed') ? 'closed' : 'open');
       }
     }
-
-    var x = window.matchMedia("(max-width: 768px)");
-    handleToggle(x); // Call listener at runtime
-    x.addListener(handleToggle); // Attach listener for state changes
   }
+
+  // Read status from localStorage on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.getElementById('sidebar');
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const savedState = localStorage.getItem('sidebarState');
+
+    if (sidebar) {
+      if (savedState === 'open') {
+        if (isMobile) {
+          sidebar.classList.add('show');
+        } else {
+          sidebar.classList.remove('collapsed');
+        }
+      } else if (savedState === 'closed') {
+        if (isMobile) {
+          sidebar.classList.remove('show');
+        } else {
+          sidebar.classList.add('collapsed');
+        }
+      }
+    }
+  });
 </script>
+
 
 <style>
   .category-toggler {
