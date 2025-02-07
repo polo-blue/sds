@@ -1,5 +1,5 @@
 {
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "src/**/*.astro", "src/**/*.d.ts"],
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "src/**/*.astro", "src/**/*.d.ts", "*.ts"],
   "compilerOptions": {
     "baseUrl": "src",
 

@@ -1,6 +1,6 @@
 {
   "name": "spoko-design-system",
-  "version": "0.2.83",
+  "version": "0.2.84",
   "private": false,
   "main": "./index.ts",
   "module": "./index.ts",
@@ -96,6 +96,7 @@
   "devDependencies": {
     "@unocss/transformer-variant-group": "^65.4.3",
     "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/compiler-sfc": "^3.5.13",
     "astro": "^5.2.5",
     "unocss": "^0.65.0"
   },
