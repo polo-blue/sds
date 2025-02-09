@@ -93,9 +93,7 @@ export default defineConfig({
       "icon-park-outline": ["shopping-bag", "comment", "comments", "tag-one"],
       flowbite: ["arrow-left-outline", "arrow-right-outline", "angle-left-outline", "angle-right-outline", "chevron-left-outline", "chevron-right-outline", "map-location-outline", "map-pin-alt-solid", "x-outline", "messages-outline", "arrow-down-to-bracket-outline", "check-outline"]
     }
-  }), 
-  // Compress({
-  //   CSS: true,
+  }),   //   CSS: true,
   //   HTML: {
   //     caseSensitive: true,
   //     collapseBooleanAttributes: true,

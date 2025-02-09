@@ -1,0 +1,99 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  showText: string;      // "Show:"
+  listText: string;      // "List"
+  gridText: string;      // "Grid"
+  listAriaLabel: string; // "List view"
+  gridAriaLabel: string; // "Grid view"
+}
+
+const { 
+  showText, 
+  listText, 
+  gridText, 
+  listAriaLabel, 
+  gridAriaLabel 
+} = Astro.props;
+---
+
+<div class="flex items-center gap-2 ml-auto">
+  <span class="text-gray-600 text-sm">{showText}</span>
+  <div class="flex border rounded">
+    <button 
+      data-view="list"
+      class="view-toggle flex items-center gap-1 px-3 py-1.5 transition-colors"
+      aria-label={listAriaLabel}
+    >
+      <Icon name="ant-design:bars-outlined" class="w-4 h-4" />
+      <span class="text-sm">{listText}</span>
+    </button>
+    <button 
+      data-view="grid"
+      class="view-toggle flex items-center gap-1 px-3 py-1.5 transition-colors"
+      aria-label={gridAriaLabel}
+    >
+      <Icon name="ant-design:appstore-outlined" class="w-4 h-4" />
+      <span class="text-sm">{gridText}</span>
+    </button>
+  </div>
+</div>
+
+<script>
+  // Initialize view state
+  function initializeView() {
+    const savedView = localStorage.getItem('categoryView') || 'list';
+    const buttons = document.querySelectorAll('.view-toggle');
+    const productsContainer = document.querySelector('.products-container');
+
+    // Set initial active state
+    buttons.forEach(button => {
+      if (button instanceof HTMLElement) {
+        const isActive = button.dataset.view === savedView;
+        button.classList.toggle('bg-gray-100', isActive);
+      }
+    });
+
+    // Set initial view on products container
+    if (productsContainer) {
+      productsContainer.classList.remove('view-grid', 'view-list');
+      productsContainer.classList.add(`view-${savedView}`);
+    }
+  }
+
+  // Handle view changes
+  function setupViewToggle() {
+    const buttons = document.querySelectorAll('.view-toggle');
+    
+    buttons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        const clickedButton = e.currentTarget;
+        if (!(clickedButton instanceof HTMLElement)) return;
+        
+        const view = clickedButton.dataset.view;
+        if (!view) return;
+
+        // Update localStorage
+        localStorage.setItem('categoryView', view);
+
+        // Update button states
+        buttons.forEach(btn => btn.classList.remove('bg-gray-100'));
+        clickedButton.classList.add('bg-gray-100');
+
+        // Update products container
+        const productsContainer = document.querySelector('.products-container');
+        if (productsContainer) {
+          productsContainer.classList.remove('view-grid', 'view-list');
+          productsContainer.classList.add(`view-${view}`);
+        }
+      });
+    });
+  }
+
+  // Setup on page load
+  document.addEventListener('astro:page-load', () => {
+    initializeView();
+    setupViewToggle();
+  });
+</script>

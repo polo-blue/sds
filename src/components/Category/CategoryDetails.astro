@@ -1,63 +1,77 @@
 ---
 import CategorySidebarToggler from './CategorySidebarToggler.vue';
+import CategoryViewToggler from './CategoryViewToggler.astro';
 import { Icon } from 'astro-icon/components';
 const { category, subcategory, subtitle, subsubtitle, titleSmall, locale } = Astro.props;
 import { t } from "i18next";
 
 // Compute base URL for localization
 const baseURL = locale === 'en' ? '' : `/${locale}`;
+
+// View toggler translations
+const viewerLabels = {
+  showText: t('category.view.show'),
+  listText: t('category.view.list'),
+  gridText: t('category.view.grid'),
+  listAriaLabel: t('category.view.listAriaLabel'),
+  gridAriaLabel: t('category.view.gridAriaLabel')
+};
 ---
 
-<div ref="el"
-   class="flex flex-nowrap pr-3 sm:pb-3 sm:pt-4 md:pl-4 relative z-10-off bg-gray-100 md:bg-white"
-   transition:name="category-details"
-   transition:animate="fade"
+<div 
+  ref="el"
+  class="flex flex-nowrap items-center pr-3 sm:pb-3 sm:pt-4 md:pl-4 relative z-10-off bg-gray-100 md:bg-white"
+  transition:name="category-details"
+  transition:animate="fade"
 >
-  <CategorySidebarToggler onclick="toggleSidebar()">
+  <CategorySidebarToggler client:load onclick="toggleSidebar()">
     <Icon name="ant-design:menu-fold-outlined" class="toggler-btn hidden md:block" />
     <Icon name="ant-design:menu-unfold-outlined" class="toggler-btn hidden" />
     <Icon name="ant-design:menu-outlined" class="toggler-btn md:hidden" />
   </CategorySidebarToggler>
 
   <div class="overflow-x-auto overflow-y-hidden flex max-w-full items-center">
-      {subtitle ? (
-        <>
-          <a class="text-lg font-vw-headregular whitespace-nowrap block" href={`${baseURL}/${category.slug}/`}>
-            {category.name}
-            {titleSmall && <small>{titleSmall}</small>}
-          </a>
-          <span class="text-gray-200 text-lg inline-block px-1 font-headlight">/</span>
-          {!subsubtitle ? (
-            <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
-              {subtitle} <span class="sr-only"> {t('catalog.extra-short')}</span>
-            </h1>
-          ) : (
-            <>
-              <div class="text-lg py-2.5 sm:py-0 whitespace-nowrap ">
-                <a href={`${baseURL}/${category.slug}/${subcategory.slug}/`}>
-                  {subtitle}
-                </a>
-              </div>
-              <span class="text-gray-200 text-lg inline-block px-1 font-headlight">/</span>
-              <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
-                {subsubtitle} <span class="sr-only"> {t('catalog.extra-short')}</span>
-              </h1>
-            </>
-          )}
-        </>
-      ) : (
-        <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap">
+    {subtitle ? (
+      <>
+        <a class="text-lg font-vw-headregular whitespace-nowrap block" href={`${baseURL}/${category.slug}/`}>
           {category.name}
           {titleSmall && <small>{titleSmall}</small>}
-          <span class="sr-only"> {t('catalog.extra-short')}</span>
-        </h1>
-      )}
+        </a>
+        <span class="text-gray-200 text-lg inline-block px-1 font-headlight">/</span>
+        {!subsubtitle ? (
+          <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
+            {subtitle} <span class="sr-only"> {t('catalog.extra-short')}</span>
+          </h1>
+        ) : (
+          <>
+            <div class="text-lg py-2.5 sm:py-0 whitespace-nowrap ">
+              <a href={`${baseURL}/${category.slug}/${subcategory.slug}/`}>
+                {subtitle}
+              </a>
+            </div>
+            <span class="text-gray-200 text-lg inline-block px-1 font-headlight">/</span>
+            <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
+              {subsubtitle} <span class="sr-only"> {t('catalog.extra-short')}</span>
+            </h1>
+          </>
+        )}
+      </>
+    ) : (
+      <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap">
+        {category.name}
+        {titleSmall && <small>{titleSmall}</small>}
+        <span class="sr-only"> {t('catalog.extra-short')}</span>
+      </h1>
+    )}
   </div>
+
+  <CategoryViewToggler {...viewerLabels} />
 </div>
 
 <script is:inline>
   function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
+    const togglers = document.querySelectorAll('.toggler-btn');
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
     if (sidebar) {
@@ -69,13 +83,17 @@ const baseURL = locale === 'en' ? '' : `/${locale}`;
         document.body.classList.remove('overflow-hidden');
         sidebar.classList.toggle('collapsed');
         localStorage.setItem('sidebarState', sidebar.classList.contains('collapsed') ? 'closed' : 'open');
+        
+        // Toggle visibility of buttons on desktop
+        togglers.forEach(btn => btn.classList.toggle('hidden'));
       }
     }
   }
 
   // Read status from localStorage on page load
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('astro:page-load', () => {
     const sidebar = document.getElementById('sidebar');
+    const togglers = document.querySelectorAll('.toggler-btn');
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const savedState = localStorage.getItem('sidebarState');
 
@@ -85,22 +103,35 @@ const baseURL = locale === 'en' ? '' : `/${locale}`;
           sidebar.classList.add('show');
         } else {
           sidebar.classList.remove('collapsed');
+          // Show correct button on desktop
+          if (togglers.length >= 2) {
+            togglers[0].classList.remove('hidden'); // menu-fold
+            togglers[1].classList.add('hidden');    // menu-unfold
+          }
         }
       } else if (savedState === 'closed') {
         if (isMobile) {
           sidebar.classList.remove('show');
         } else {
           sidebar.classList.add('collapsed');
+          // Show correct button on desktop
+          if (togglers.length >= 2) {
+            togglers[0].classList.add('hidden');    // menu-fold
+            togglers[1].classList.remove('hidden'); // menu-unfold
+          }
         }
       }
     }
   });
 </script>
 
-
 <style>
-  .category-toggler {
-    right: -1px;
-    bottom: -1px;
+  /* View toggle styles */
+  .view-grid {
+    @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
+  }
+
+  .view-list {
+    @apply flex flex-col gap-4;
   }
 </style>
