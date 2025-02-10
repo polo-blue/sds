@@ -8,6 +8,7 @@ interface Props {
   listAriaLabel: string; // "List view"
   gridAriaLabel: string; // "Grid view"
   showViewToggler: boolean;
+  class?: string; 
 }
 
 const { 
@@ -16,13 +17,14 @@ const {
   gridText, 
   listAriaLabel, 
   gridAriaLabel, 
-  showViewToggler
+  showViewToggler,
+  class: className
 } = Astro.props;
 ---
 
 {
   showViewToggler && 
-<div class="flex items-center gap-2 ml-auto">
+<div class:list={[ "flex items-center gap-2 ml-auto", className ]}>
   <span class="text-slate-default text-sm">{showText}</span>
   <div class="flex border rounded">
     <button 
