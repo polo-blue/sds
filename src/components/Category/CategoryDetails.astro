@@ -2,20 +2,13 @@
 import CategorySidebarToggler from './CategorySidebarToggler.vue';
 import CategoryViewToggler from './CategoryViewToggler.astro';
 import { Icon } from 'astro-icon/components';
-const { category, subcategory, subtitle, subsubtitle, titleSmall, locale, showViewToggler, viewerLabels } = Astro.props;
 import { t } from "i18next";
+
+const { category, subcategory, subtitle, subsubtitle, titleSmall, locale, showViewToggler, viewerLabels } = Astro.props;
 
 // Compute base URL for localization
 const baseURL = locale === 'en' ? '' : `/${locale}`;
 
-// View toggler translations
-// const viewerLabels = {
-//   showText: t('category.view.show'),
-//   listText: t('category.view.list'),
-//   gridText: t('category.view.grid'),
-//   listAriaLabel: t('category.view.listAriaLabel'),
-//   gridAriaLabel: t('category.view.gridAriaLabel')
-// };
 ---
 
 <div 
@@ -24,11 +17,26 @@ const baseURL = locale === 'en' ? '' : `/${locale}`;
   transition:name="category-details"
   transition:animate="fade"
 >
-  <CategorySidebarToggler client:load onclick="toggleSidebar()">
-    <Icon name="ant-design:menu-fold-outlined" class="toggler-btn hidden md:block" />
-    <Icon name="ant-design:menu-unfold-outlined" class="toggler-btn hidden" />
-    <Icon name="ant-design:menu-outlined" class="toggler-btn md:hidden" />
-  </CategorySidebarToggler>
+<CategorySidebarToggler onclick="toggleSidebar()" client:load>
+  <!-- First icon - visible only on desktop when sidebar is expanded -->
+  <Icon 
+    name="ant-design:menu-fold-outlined" 
+    class="toggler-btn hidden md:[&:not(.hidden)]:block" 
+    aria-hidden="true"
+  />
+  <!-- Second icon - visible only on desktop when sidebar is collapsed -->
+  <Icon 
+    name="ant-design:menu-unfold-outlined" 
+    class="toggler-btn hidden md:[&:not(.hidden)]:block" 
+    aria-hidden="true"
+  />
+  <!-- Mobile icon -->
+  <Icon 
+    name="ant-design:menu-outlined" 
+    class="toggler-btn block md:hidden" 
+    aria-hidden="true"
+  />
+</CategorySidebarToggler>
 
   <div class="overflow-x-auto overflow-y-hidden flex max-w-full items-center">
     {subtitle ? (
@@ -76,10 +84,11 @@ const baseURL = locale === 'en' ? '' : `/${locale}`;
 
     if (sidebar) {
       if (isMobile) {
+        // On mobile just toggle classes without localStorage
         document.body.classList.toggle('overflow-hidden');
         sidebar.classList.toggle('show');
-        localStorage.setItem('sidebarState', sidebar.classList.contains('show') ? 'open' : 'closed');
       } else {
+        // On desktop save the state
         document.body.classList.remove('overflow-hidden');
         sidebar.classList.toggle('collapsed');
         localStorage.setItem('sidebarState', sidebar.classList.contains('collapsed') ? 'closed' : 'open');
@@ -90,48 +99,37 @@ const baseURL = locale === 'en' ? '' : `/${locale}`;
     }
   }
 
-  // Read status from localStorage on page load
-  document.addEventListener('astro:page-load', () => {
+  function handlePageLoad() {
     const sidebar = document.getElementById('sidebar');
     const togglers = document.querySelectorAll('.toggler-btn');
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    const savedState = localStorage.getItem('sidebarState');
-
-    if (sidebar) {
+    
+    if (sidebar && !isMobile) {
+      const savedState = localStorage.getItem('sidebarState');
+      
       if (savedState === 'open') {
-        if (isMobile) {
-          sidebar.classList.add('show');
-        } else {
-          sidebar.classList.remove('collapsed');
-          // Show correct button on desktop
-          if (togglers.length >= 2) {
-            togglers[0].classList.remove('hidden'); // menu-fold
-            togglers[1].classList.add('hidden');    // menu-unfold
-          }
+        sidebar.classList.remove('collapsed');
+        // Show correct button on desktop
+        if (togglers.length >= 2) {
+          togglers[0].classList.remove('hidden'); // menu-fold
+          togglers[1].classList.add('hidden');    // menu-unfold
         }
       } else if (savedState === 'closed') {
-        if (isMobile) {
-          sidebar.classList.remove('show');
-        } else {
-          sidebar.classList.add('collapsed');
-          // Show correct button on desktop
-          if (togglers.length >= 2) {
-            togglers[0].classList.add('hidden');    // menu-fold
-            togglers[1].classList.remove('hidden'); // menu-unfold
-          }
+        sidebar.classList.add('collapsed');
+        // Show correct button on desktop
+        if (togglers.length >= 2) {
+          togglers[0].classList.add('hidden');    // menu-fold
+          togglers[1].classList.remove('hidden'); // menu-unfold
         }
       }
     }
-  });
+  }
+
+  // Remove previous listener if exists
+  document.removeEventListener('astro:page-load', handlePageLoad);
+  // Add new listener
+  document.addEventListener('astro:page-load', handlePageLoad);
+  
+  // Initial call to set up the initial state
+  handlePageLoad();
 </script>
-
-<style>
-  /* View toggle styles */
-  .view-grid {
-    @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
-  }
-
-  .view-list {
-    @apply flex flex-col gap-4;
-  }
-</style>

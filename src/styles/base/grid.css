@@ -22,7 +22,7 @@
         grid-column: content;
     }
 
-    &.breakout {
+    >.breakout {
         grid-column: breakout;
     }
 

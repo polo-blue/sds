@@ -34,6 +34,7 @@ Most of the components from this repository can be seen in my projects:
 
 - https://catalog.polo.blue/
 - https://polo.blue
+- https://polo6r.pl
 
 
 ### Feateures
