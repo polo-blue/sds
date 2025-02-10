@@ -5,7 +5,7 @@
       ]">
         <!-- Slot na ProductImage z Astro -->
         <slot name="image">
-          <img src="/1x1.png" class="bg-gray-100/70" :alt="productName" />
+          <img src="/1x1.png" class="bg-neutral-lightest/70" :alt="productName" />
         </slot>
       </div>
   

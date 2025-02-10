@@ -16,6 +16,6 @@ const props = defineProps({
 <template>
   <div v-if="(props.badges && props.badges.length > 0)" class="absolute z-2">
     <Badge v-for="(badge, index) in props.badges" :key="index" :badge="badge"
-      :class="(badge.toLocaleLowerCase().includes('gti') ? 'bg-red-600' : badge.toLocaleLowerCase().includes('motorsport') ? 'bg-blue-600' : 'bg-black')" />
+      :class="(badge.toLocaleLowerCase().includes('gti') ? 'bg-red-600' : badge.toLocaleLowerCase().includes('motorsport') ? 'bg-blue-wrc' : 'bg-black')" />
   </div>
 </template>

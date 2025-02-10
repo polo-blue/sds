@@ -7,6 +7,7 @@ interface Props {
   gridText: string;      // "Grid"
   listAriaLabel: string; // "List view"
   gridAriaLabel: string; // "Grid view"
+  showViewToggler: boolean;
 }
 
 const { 
@@ -14,12 +15,15 @@ const {
   listText, 
   gridText, 
   listAriaLabel, 
-  gridAriaLabel 
+  gridAriaLabel, 
+  showViewToggler
 } = Astro.props;
 ---
 
+{
+  showViewToggler && 
 <div class="flex items-center gap-2 ml-auto">
-  <span class="text-gray-600 text-sm">{showText}</span>
+  <span class="text-slate-default text-sm">{showText}</span>
   <div class="flex border rounded">
     <button 
       data-view="list"
@@ -39,8 +43,10 @@ const {
     </button>
   </div>
 </div>
+}
 
-<script>
+<script define:vars={{ showViewToggler }}>
+    
   // Initialize view state
   function initializeView() {
     const savedView = localStorage.getItem('categoryView') || 'list';
@@ -51,7 +57,7 @@ const {
     buttons.forEach(button => {
       if (button instanceof HTMLElement) {
         const isActive = button.dataset.view === savedView;
-        button.classList.toggle('bg-gray-100', isActive);
+        button.classList.toggle('bg-neutral-lightest', isActive);
       }
     });
 
@@ -78,8 +84,8 @@ const {
         localStorage.setItem('categoryView', view);
 
         // Update button states
-        buttons.forEach(btn => btn.classList.remove('bg-gray-100'));
-        clickedButton.classList.add('bg-gray-100');
+        buttons.forEach(btn => btn.classList.remove('bg-neutral-lightest'));
+        clickedButton.classList.add('bg-neutral-lightest');
 
         // Update products container
         const productsContainer = document.querySelector('.products-container');
@@ -93,7 +99,9 @@ const {
 
   // Setup on page load
   document.addEventListener('astro:page-load', () => {
-    initializeView();
-    setupViewToggle();
+    if (showViewToggler) {
+        initializeView();
+        setupViewToggle();
+    }
   });
 </script>

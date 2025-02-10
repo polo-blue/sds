@@ -2,25 +2,25 @@
 import CategorySidebarToggler from './CategorySidebarToggler.vue';
 import CategoryViewToggler from './CategoryViewToggler.astro';
 import { Icon } from 'astro-icon/components';
-const { category, subcategory, subtitle, subsubtitle, titleSmall, locale } = Astro.props;
+const { category, subcategory, subtitle, subsubtitle, titleSmall, locale, showViewToggler, viewerLabels } = Astro.props;
 import { t } from "i18next";
 
 // Compute base URL for localization
 const baseURL = locale === 'en' ? '' : `/${locale}`;
 
 // View toggler translations
-const viewerLabels = {
-  showText: t('category.view.show'),
-  listText: t('category.view.list'),
-  gridText: t('category.view.grid'),
-  listAriaLabel: t('category.view.listAriaLabel'),
-  gridAriaLabel: t('category.view.gridAriaLabel')
-};
+// const viewerLabels = {
+//   showText: t('category.view.show'),
+//   listText: t('category.view.list'),
+//   gridText: t('category.view.grid'),
+//   listAriaLabel: t('category.view.listAriaLabel'),
+//   gridAriaLabel: t('category.view.gridAriaLabel')
+// };
 ---
 
 <div 
   ref="el"
-  class="flex flex-nowrap items-center pr-3 sm:pb-3 sm:pt-4 md:pl-4 relative z-10-off bg-gray-100 md:bg-white"
+  class="flex flex-nowrap items-center pr-3 sm:pb-3 sm:pt-4 md:pl-4 relative z-10-off bg-neutral-lightest md:bg-white"
   transition:name="category-details"
   transition:animate="fade"
 >
@@ -37,7 +37,7 @@ const viewerLabels = {
           {category.name}
           {titleSmall && <small>{titleSmall}</small>}
         </a>
-        <span class="text-gray-200 text-lg inline-block px-1 font-headlight">/</span>
+        <span class="text-neutral-lighter text-lg inline-block px-1 font-headlight">/</span>
         {!subsubtitle ? (
           <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
             {subtitle} <span class="sr-only"> {t('catalog.extra-short')}</span>
@@ -49,7 +49,7 @@ const viewerLabels = {
                 {subtitle}
               </a>
             </div>
-            <span class="text-gray-200 text-lg inline-block px-1 font-headlight">/</span>
+            <span class="text-neutral-lighter text-lg inline-block px-1 font-headlight">/</span>
             <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
               {subsubtitle} <span class="sr-only"> {t('catalog.extra-short')}</span>
             </h1>
@@ -65,7 +65,7 @@ const viewerLabels = {
     )}
   </div>
 
-  <CategoryViewToggler {...viewerLabels} />
+  <CategoryViewToggler {...viewerLabels} showViewToggler={showViewToggler} />
 </div>
 
 <script is:inline>

@@ -33,7 +33,7 @@ const props = defineProps({
   <template v-for="(detail, index) in details" :key="index" class="" v-if="details && details.length">
     <!-- PDP PAGE - PRODUCT ROW -->
     <!-- <pre>{{  JSON.stringify(details) }}</pre> -->
-    <li v-if="props.small" class="text-xs md:text-sm text-gray-900 dark:text-gray-300 leading-tight font-textlight md:font-textregular">
+    <li v-if="props.small" class="text-xs md:text-sm text-slate-darkest dark:text-neutral-light leading-tight font-textlight md:font-textregular">
 
       <span v-if="detail.id" class="inline-block mr-1 items--0">
         {{ getTranslation(`detail.${detail.id}`) }}:
