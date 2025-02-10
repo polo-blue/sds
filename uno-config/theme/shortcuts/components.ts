@@ -4,7 +4,9 @@ import { ASPECT_RATIO } from './constants'
 
 export const componentShortcuts = [
   // Product related
-  ['product-row', 'bg-white flex flex-wrap odd:(pr-2.5 pl-3.5 sm:px-0) even:(pl-2.5 pr-3.5 sm:px-0) w-1/2 sm:w-auto sm:grid sm:grid-cols-3 gap-x-1 gap-y-0 md:(grid-cols-product gap-x-4) justify-start content-start content-start place-content-start py-4 pb-6 sm:pb-4'],
+  ['product-row','bg-white flex flex-wrap odd:(pr-2.5 pl-3.5 sm:px-0) even:(pl-2.5 pr-3.5 sm:px-0) w-1/2 sm:(w-auto grid grid-cols-3) gap-x-1 gap-y-0 md:(grid-cols-product gap-x-4) justify-start content-start content-start  place-content-start py-4 pb-6 sm:pb-4'],
+
+
   ['product-row__photo', `${ASPECT_RATIO} mb-2 sm:mb-0 after:(content-empty bg-black bg-opacity-[.03] absolute w-full h-full top-0) w-100 col-span-1 row-span-3 max-w-full text-left overflow-hidden relative bg-neutral-lightest md:(col-span-1 row-span-1) box-content`],
   ['product-row__description', 'text-xs text-slate-darkest dark:text-neutral-light leading-tight mt-2 font-textlight line-clamp-3 whitespace-normal md:(text-sm mt-0 font-textregular whitespace-pre-wrap)'],
   ['product-row__main', 'w-full sm:w-auto col-span-2 leading-none relative sm:pl-1 md:(pl-0 row-start-1 col-start-2 col-span-1)'],
