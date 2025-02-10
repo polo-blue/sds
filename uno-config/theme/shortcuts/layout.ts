@@ -54,6 +54,6 @@ export const layoutShortcuts = [
     ['adsbygoogle', 'w-full text-center'],
 
     ['underline-on-hover', 'relative flex w-full bg-white pb-1 after:absolute after:bg-lightBlue-55000 after:w-[calc(100%-1rem)] after:left-0 after:h-px after:top-[calc(100%-1px)] after:bottom-1 after:content-empty after:scale-x-0 after:transition-transform-300 after:origin-top-right hover:after:origin-top-left hover:after:scale-x-100'],
-    ['cat-link', 'cursor-pointer text-blue-901 dark:text-white hover:(text-lightBlue-400 underline) uppercase py-2 md:py-0'],
+    ['cat-link', 'cursor-pointer text-accent-deepBlue dark:text-white hover:(text-lightBlue-400 underline) uppercase py-2 md:py-0'],
 
   ];

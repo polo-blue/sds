@@ -72,7 +72,7 @@ export const componentShortcuts = [
   ['slide-img', 'cursor-zoom-in my-auto z-50 h-full max-w-screen-2xl object-center object-contain pointer-events-none'],
   ['slide-pic', 'w-full flex justify-end absolute top-0 bottom-0'],
   ['slide-thumb', `block bg-gray-100 ${ASPECT_RATIO} w-30 h-22.5 cursor-grab active:cursor-grabbing`],
-  ['slide-thumb__img', 'pointer-events-none pb-px h-22.5 w-30 m-auto object-cover bg-white dark:bg-blue-901'],
+  ['slide-thumb__img', 'pointer-events-none pb-px h-22.5 w-30 m-auto object-cover bg-white dark:bg-accent-deepBlue'],
   ['product-carousel', 'flex-wrap content-between w-64 min-w-64 flex ml-1 first:ml-4'],
   ['pdp-slide', `h-full bg-gray-100 ${ASPECT_RATIO} relative overflow-hidden border border-transparent`],
   ['product-link', 'relative flex w-full bg-white after:(absolute bg-lightBlue-500 w-[calc(100%-1rem)] left-0 h-px top-[calc(100%-1px)] bottom-1 content-empty scale-x-0 transition-transform-300 origin-top-right) hover:after:(origin-top-left scale-x-100)'],

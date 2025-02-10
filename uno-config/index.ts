@@ -33,6 +33,9 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
       ...theme,
       ...(customConfig.theme || {})
     },
+    safelist: [
+      'md:grid-cols-product'
+    ],
     presets: [
       presetUno(),
       presetAttributify(),

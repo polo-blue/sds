@@ -11,9 +11,7 @@ export const theme = {
   ...typography,
   ...dimensions,
   ...effects,
-  gridTemplateColumns: {
-    ...gridTemplates.columns
-  },
+  gridTemplateColumn: gridTemplates.columns, 
   breakpoints,
   screens: breakpoints,
 };
