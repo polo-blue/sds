@@ -7,11 +7,11 @@ export const layoutShortcuts = [
   
     // View Toggles
     ['view-grid', 'grid grid-cols-2'],
-    ['view-list', 'flex flex-col gap-4'],
+    ['view-list', 'flex flex-col gap-4 sm:(divide-y-1 divide-solid) divide-neutral-lighter'],
   
     // Containers
     ['products-container', 'products-wrapper'],
-    ['products-wrapper', 'bg-white sm:(divide-y-1 divide-solid) divide-neutral-lighter mb-4 w-full mb-auto md:(pl-4 px-2 -mt-3)'],
+    ['products-wrapper', 'bg-white mb-4 w-full mb-auto md:(pl-4 px-2 -mt-3)'],
     ['product-list', 'flex flex-wrap sm:block products-wrapper'],
     ['products-grid', 'flex w-full flex-nowrap items-center pr-4 md:grid grid-rows-1 overflow-hidden grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 max-h-[6rem]'],
     ['similar-products', 'flex items-center space-y-4 gap-8 flex-wrap px-4 md:grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5'],
