@@ -12,7 +12,7 @@
     },
     "./styles/*": "./src/styles/*",
     "./icons": "./icon.config.ts",
-    "./uno-config": "./src/uno-config/index.ts"
+    "./uno-config": "./uno-config/index.ts"
   },
   "scripts": {
     "dev": "astro dev",
