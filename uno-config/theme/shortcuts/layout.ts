@@ -6,13 +6,13 @@ export const layoutShortcuts = [
     ['nav', 'bg-white dark:bg-black absolute sm:fixed w-full top-0 z-41 mx-auto px-4 pt-1 h-24 flex shadow-md justify-between items-center flex-wrap sm:(flex-nowrap pt-0 h-14) max-w-screen print-hidden'],
   
     // View Toggles
-    ['view-grid', 'grid grid-cols-2'],
-    ['view-list', 'flex flex-col gap-4 sm:(divide-y-1 divide-solid) divide-neutral-lighter'],
+    ['view-grid', 'md:(grid grid-cols-2)'],
+    ['view-list', 'md:(flex flex-col gap-4 divide-y-1 divide-solid) divide-neutral-lighter'],
   
     // Containers
     ['products-container', 'products-wrapper'],
-    ['products-wrapper', 'bg-white mb-4 w-full mb-auto md:(pl-4 px-2 -mt-3)'],
-    ['product-list', 'flex flex-wrap sm:block products-wrapper'],
+    ['products-wrapper', 'flex flex-wrap bg-white mb-4 w-full mb-auto md:(pl-4 px-2 -mt-3)'],
+    ['product-list', 'sm:block products-wrapper'],
     ['products-grid', 'flex w-full flex-nowrap items-center pr-4 md:grid grid-rows-1 overflow-hidden grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 max-h-[6rem]'],
     ['similar-products', 'flex items-center space-y-4 gap-8 flex-wrap px-4 md:grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5'],
     ['similar-section', 'bg-white w-full drop-shadow-xl'],
