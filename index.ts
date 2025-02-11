@@ -27,7 +27,7 @@ export { default as ProductPositions } from './src/components/Product/ProductPos
 export { default as ProductNumber } from './src/components/Product/ProductNumber.astro';
 export { default as ProductLink } from './src/components/Product/ProductLink.vue';
 // export { default as ProductCarousel } from './src/components/Product/ProductCarousel.astro';
-
+export { default as LanguageSuggestion } from './src/components/LanguageSuggestion.astro';
 
 export { default as CategoryLink } from './src/components/Category/CategoryLink.vue';
 export { default as CategorySidebarToggler } from './src/components/Category/CategorySidebarToggler.vue';

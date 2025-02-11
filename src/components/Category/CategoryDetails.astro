@@ -126,9 +126,10 @@ const baseURL = locale === 'en' ? '' : `/${locale}`;
   }
 
   // Remove previous listener if exists
-  document.removeEventListener('astro:page-load', handlePageLoad);
+  // document.removeEventListener('astro:page-load', handlePageLoad);
   // Add new listener
-  document.addEventListener('astro:page-load', handlePageLoad);
+  // document.addEventListener('astro:page-load', handlePageLoad);
+  document.addEventListener('astro:page-load', handlePageLoad, { once: true });
   
   // Initial call to set up the initial state
   handlePageLoad();

@@ -1,6 +1,6 @@
 {
   "name": "spoko-design-system",
-  "version": "0.2.95",
+  "version": "0.2.96",
   "private": false,
   "main": "./index.ts",
   "module": "./index.ts",
@@ -39,7 +39,7 @@
     "spoko design system"
   ],
   "dependencies": {
-    "@algolia/client-search": "^5.20.1",
+    "@algolia/client-search": "^5.20.2",
     "@astrojs/mdx": "^4.0.8",
     "@astrojs/node": "^9.0.2",
     "@astrojs/sitemap": "^3.2.1",

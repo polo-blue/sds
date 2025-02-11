@@ -48,62 +48,34 @@ const {
 }
 
 <script define:vars={{ showViewToggler }}>
+  function handleViewToggle(e) {
+    const button = e.currentTarget;
+    if (!(button instanceof HTMLElement)) return;
     
-  // Initialize view state
-  function initializeView() {
-    const savedView = localStorage.getItem('categoryView') || 'list';
-    const buttons = document.querySelectorAll('.view-toggle');
+    const view = button.dataset.view;
+    if (!view) return;
+  
+    localStorage.setItem('categoryView', view);
+    updateUI(view);
+  }
+  
+  function updateUI(view) {
+    document.querySelectorAll('.view-toggle')
+      .forEach(btn => btn.classList.toggle('bg-neutral-lightest', 
+        btn.dataset.view === view));
+  
     const productsContainer = document.querySelector('.products-container');
-
-    // Set initial active state
-    buttons.forEach(button => {
-      if (button instanceof HTMLElement) {
-        const isActive = button.dataset.view === savedView;
-        button.classList.toggle('bg-neutral-lightest', isActive);
-      }
-    });
-
-    // Set initial view on products container
     if (productsContainer) {
       productsContainer.classList.remove('view-grid', 'view-list');
-      productsContainer.classList.add(`view-${savedView}`);
+      productsContainer.classList.add(`view-${view}`);
     }
   }
-
-  // Handle view changes
-  function setupViewToggle() {
-    const buttons = document.querySelectorAll('.view-toggle');
-    
-    buttons.forEach(button => {
-      button.addEventListener('click', (e) => {
-        const clickedButton = e.currentTarget;
-        if (!(clickedButton instanceof HTMLElement)) return;
-        
-        const view = clickedButton.dataset.view;
-        if (!view) return;
-
-        // Update localStorage
-        localStorage.setItem('categoryView', view);
-
-        // Update button states
-        buttons.forEach(btn => btn.classList.remove('bg-neutral-lightest'));
-        clickedButton.classList.add('bg-neutral-lightest');
-
-        // Update products container
-        const productsContainer = document.querySelector('.products-container');
-        if (productsContainer) {
-          productsContainer.classList.remove('view-grid', 'view-list');
-          productsContainer.classList.add(`view-${view}`);
-        }
-      });
-    });
-  }
-
-  // Setup on page load
+  
   document.addEventListener('astro:page-load', () => {
-    if (showViewToggler) {
-        initializeView();
-        setupViewToggle();
-    }
-  });
-</script>
+    if (!showViewToggler) return;
+    
+    updateUI(localStorage.getItem('categoryView') || 'list');
+    document.querySelectorAll('.view-toggle')
+      .forEach(btn => btn.addEventListener('click', handleViewToggle));
+  }, { once: true });
+  </script>

@@ -1,49 +1,39 @@
 ---
-
 import { Image } from "astro:assets";
-import { getTranslatedLink } from "../../utils/text/getTranslatedLink"
 
-interface CategoryObject {
-  photo: string;
-  desc: string;
-  alt: string;
-  name: string;
-  slug: string;
-  height?: number;
-  width?: number;
-  class?: string;
+interface Props {
+  CategoryObject: {
+    photo: string;
+    desc: string;
+    alt: string;
+    name: string;
+    slug: string;
+    height?: number;
+    width?: number;
+    class?: string;
+  };
+  locale?: string;
 }
 
-
-
-let inputProps = {};
-const { CategoryObject, locale='en' } = Astro.props as { CategoryObject: CategoryObject, locale: string };
-CategoryObject.height = CategoryObject.height ?? 70;
-CategoryObject.width = CategoryObject.width ?? 70;
-
-const mainCategoryLink =  getTranslatedLink(`/${CategoryObject.slug}/`, locale);
-
+const { CategoryObject, locale = 'en' } = Astro.props;
+const { height = 70, width = 70 } = CategoryObject;
 ---
 
-<a
-  href={mainCategoryLink}
+
+  href={`/${CategoryObject.slug}/`}
   class="carousel-item"
   data-astro-prefetch
-  {...inputProps}
 >
   <Image
-    src={`${CategoryObject.photo}`}
+    src={CategoryObject.photo}
     alt={CategoryObject.alt}
-    height={CategoryObject.height}
-    width={CategoryObject.height}
+    {height}
+    {width}
     format="avif"
     loading="eager"
     onerror="this.style.display='none';"
     class="cats-img"
   />
-  <div class="swiper-lazy-preloader"></div>
-
-  <div class="cat-name" itemprop="name">
-    {CategoryObject.name}
-  </div>
+  <div class="swiper-lazy-preloader" />
+  <div class="cat-name" itemprop="name">{CategoryObject.name}</div>
 </a>

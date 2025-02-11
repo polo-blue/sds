@@ -1,48 +1,28 @@
 ---
-    import MainLayout from '../../layouts/MainLayout.astro'
-    import { TYPOGRAPHY } from '../../design.config'
-    import { FONTS } from '../../design.config'
-    const getStyle = (item) => {
-        return `font-size: ${item.size}; font-weight: ${item.weight};`
-    }
+import MainLayout from '../../layouts/MainLayout.astro'
+import { typography } from '../../../uno-config/theme/typography'
+
+const fonts = Object.entries(typography.fontFamily)
 ---
 
 <MainLayout>
-    <h1>Typography</h1>
-    <div class="w-full">
-    {
-        TYPOGRAPHY.scale.map((item) => (
-            <div class="mt-6 border-t py-4">
-                <p style={getStyle(item)}>Hello world</p>
-                <div class="flex gap-6 text-slate-500 font-mono">
-                    <span>{item.name}</span>
-                    <span>weight: {item.weight}</span>
-                    <span>size: {item.size}</span>
-                </div>
-            </div>
-        ))
-    }
-    </div>
-    <div class="font-novamono"></div>
-
-
-    <h1>Fonts</h1>
-    <div class="component-preview ">
-        <div class="flex flex-wrap gap-16">
-        {FONTS.types.map(({name, value}) => (
+    <h1>Fonts Preview</h1>
+    <div class="flex flex-wrap gap-16">
+        {fonts.map(([name, family]) => (
             <div class="w-full">
-                <div class={`${value} text-3xl`} >Lorem Ipsum</div>
-                <div class="">{name}</div>
-                <code>{value}</code>
+                <div class={`font-${name} text-3xl`}>Lorem Ipsum</div>
+                <div class="text-slate-500">{name}</div>
+                <code class="text-sm">{family.join(', ')}</code>
             </div>
         ))}
-        </div>
     </div>
 
-    <pre class="astro-code bg-slate-800 text-white">
-    {FONTS.types.map(({name, value}) => (
-            <div class="my-5">{`${name}:`}<br><pre>{value}</pre></div>
+    <pre class="astro-code bg-slate-800 text-white p-4 mt-8">
+        {fonts.map(([name, family]) => (
+            <div class="my-5">
+                font-{name}:<br/>
+                {family.join(', ')}
+            </div>
         ))}
     </pre>
-
 </MainLayout>
