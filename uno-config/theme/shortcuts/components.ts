@@ -17,7 +17,8 @@ export const componentShortcuts = [
   ['product-row__main', 'w-full sm:w-auto col-span-2 leading-none relative sm:pl-1 md:(pl-0 row-start-1 col-start-2 col-span-1)'],
 
   // Product elements
-  ['product-number', `font-novamono ${LAYOUT.flex.colCenter} content-start pr-5 ${COLORS.bgWhite}`],
+  ['product-number',`font-novamono content-center flex flex-wrap flex-col content-start pr-5 ${COLORS.bgWhite}`],
+
   ['p-number', `${LAYOUT.flex.base} leading-none relative`],
   ['tooltip', 'invisible absolute'],
   ['has-tooltip', 'hover:(visible z-50)'],
