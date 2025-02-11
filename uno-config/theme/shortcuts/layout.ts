@@ -26,7 +26,7 @@ export const layoutShortcuts = [
 
   // Containers
   ['products-container', 'products-wrapper'],
-  ['products-wrapper', `${LAYOUT.flex.wrap} gap-4 ${COLORS.bgWhite} mb-4 w-full mb-auto md:(pl-4 px-2 -mt-3)`],
+  ['products-wrapper', `${LAYOUT.flex.wrap} ${COLORS.bgWhite} mb-4 w-full mb-auto md:(pl-4 px-2 -mt-3)`],
   ['product-list', 'sm:block products-wrapper'],
   ['products-grid', `${LAYOUT.flex.alignCenter} w-full flex-nowrap pr-4 md:grid grid-rows-1 overflow-hidden ${LAYOUT.grid.cols2} lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 max-h-[6rem]`],
   ['similar-products', `${LAYOUT.flex.center} space-y-4 gap-8 flex-wrap px-4 md:grid ${LAYOUT.grid.cols2} lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5`],
