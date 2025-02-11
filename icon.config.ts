@@ -220,6 +220,11 @@ interface IconConfig {
   
       et: [
         'documents'
+      ],
+
+      'system-uicon': [
+        'document-justified'
       ]
+  
     }
   };

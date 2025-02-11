@@ -45,6 +45,9 @@ dependencies:
   '@iconify-json/circle-flags':
     specifier: ^1.2.6
     version: 1.2.6
+  '@iconify-json/ei':
+    specifier: ^1.2.2
+    version: 1.2.2
   '@iconify-json/el':
     specifier: ^1.2.1
     version: 1.2.1
@@ -90,6 +93,9 @@ dependencies:
   '@iconify-json/simple-icons':
     specifier: ^1.2.24
     version: 1.2.24
+  '@iconify-json/system-uicons':
+    specifier: ^1.2.2
+    version: 1.2.2
   '@iconify-json/uil':
     specifier: ^1.2.3
     version: 1.2.3
@@ -1993,6 +1999,12 @@ packages:
       '@iconify/types': 2.0.0
     dev: false
 
+  /@iconify-json/ei@1.2.2:
+    resolution: {integrity: sha512-Ev9rmhPZh7Mci4szCNHq4Ewx1H1uNQrjk0bK+ZmzzMZ9IPVIqnpaIdL578XgBKT3UivTj6fLF2mDkatwqTMMgA==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
   /@iconify-json/el@1.2.1:
     resolution: {integrity: sha512-yRE1zKacqO6tnfqFDvkz+3ABR1RFkBPi6jtkcwo5jSswa0xOxKkye0fDDtyvu/ViiTlWxgl7n2fFOhS5p8/txQ==}
     dependencies:
@@ -2079,6 +2091,12 @@ packages:
 
   /@iconify-json/simple-icons@1.2.24:
     resolution: {integrity: sha512-06ZWXZx3PHCE+02zn+iIGOKKNgE3kyPd0Yh7IUEIa0bCYI6UmGlsYYghRx8As9TnTNYMCEiy5V0zI4Jb6EY6XA==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
+  /@iconify-json/system-uicons@1.2.2:
+    resolution: {integrity: sha512-E5mwm7F3ahs58YacvifJlj7tPN/QYTMWtLe38bwS9LVylyfT7hAsHdBiBUcsgM5Isdr+6x1TTSz1iAq+/bkUcw==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: false
@@ -8333,6 +8351,7 @@ packages:
       - rollup
       - supports-color
       - vue
+    dev: false
 
   /unstorage@1.14.4:
     resolution: {integrity: sha512-1SYeamwuYeQJtJ/USE1x4l17LkmQBzg7deBJ+U9qOBoHo15d1cDxG4jM31zKRgF7pG0kirZy4wVMX6WL6Zoscg==}
