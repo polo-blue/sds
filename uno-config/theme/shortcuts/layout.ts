@@ -6,8 +6,8 @@ export const layoutShortcuts = [
     ['nav', 'bg-white dark:bg-black absolute sm:fixed w-full top-0 z-41 mx-auto px-4 pt-1 h-24 flex border-b border-neutral-lighter justify-between items-center flex-wrap sm:(flex-nowrap pt-0 h-14) max-w-screen print-hidden'],
   
     // View Toggles
-    ['view-grid', 'md:(grid grid-cols-2)'],
-    ['view-list', 'md:(flex flex-col gap-4 divide-y-1 divide-solid) divide-neutral-lighter'],
+    ['view-grid', 'lg:(grid grid-cols-2)'],
+    ['view-list', 'lg:(flex flex-col gap-4 divide-y-1 divide-solid) divide-neutral-lighter'],
   
     // Containers
     ['products-container', 'products-wrapper'],
