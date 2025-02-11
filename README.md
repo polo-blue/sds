@@ -105,7 +105,7 @@ You can import your component library or create your own and document it easily.
 There's a class called `.component-preview` that you can use to wrap your component in a grid, and it will look like this:
 
 <div class="component-preview">
-    <button class="text-white bg-blue-500 px-4 py-2 rounded-md">Your component</button>
+    <button class="text-white bg-blue-lightest px-4 py-2 rounded-md">Your component</button>
 </div>
 
 

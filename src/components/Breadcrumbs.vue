@@ -42,7 +42,7 @@ const isLast = (index: Number) => {
     <ul class="breadcrumbs flex items-center p-0 leading-none	">
       <li v-if="props.showBack" class="breadcrumb-item flex">
         <button
-          class="breadcrumb-link flex items-center px-3 sm:px-0 py-4.25 sm:py-1 hover:text-lightBlue-500 whitespace-nowrap  my-auto"
+          class="breadcrumb-link flex items-center px-3 sm:px-0 py-4.25 sm:py-1 hover:text-accent-light whitespace-nowrap  my-auto"
           :title="props.textBack" onclick="history.back()">
           <span class="block px-3" i-bx-bx-arrow-back />
         </button>
@@ -52,7 +52,7 @@ const isLast = (index: Number) => {
       itemtype="https://schema.org/BreadcrumbList">
       <li v-if="props.showHome" class="breadcrumb-item flex">
         <a href="/"
-          class="breadcrumb-link flex items-center px-3 sm:px-0 py-4.25 sm:py-1 hover:text-lightBlue-400 whitespace-nowrap translate-y-0 text-sm my-auto px-3"
+          class="breadcrumb-link flex items-center px-3 sm:px-0 py-4.25 sm:py-1 hover:text-brand-secondary whitespace-nowrap translate-y-0 text-sm my-auto px-3"
           :title="textBack" itemprop="item" i-carbon-home>
         </a>
         <meta itemprop="position" content="1">

@@ -47,7 +47,7 @@ const settings = {
 
 <style  scoped>
 .btn-prcode {
-  @apply relative inline-block leading-none px-1 py-0.5 mr-1 cursor-pointer font-mono border-solid border-1 border-gray-200 select-none text-gray-500 last:mr-0 dark:border-white dark:border-opacity-10 dark:text-gray-300 dark:bg-white dark:bg-opacity-30 not-last:mr-2 not-last:after:content-[+] dark:after:text-white/50 after:pl-0.5 after:text-blue-700 after:absolute after:w-4 text-center;
+  @apply relative inline-block leading-none px-1 py-0.5 mr-1 cursor-pointer font-mono border-solid border-1 border-gray-200 select-none text-gray-500 last:mr-0 dark:border-white dark:border-opacity-10 dark:text-gray-300 dark:bg-white dark:bg-opacity-30 not-last:mr-2 not-last:after:content-[+] dark:after:text-white/50 after:pl-0.5 after:text-blue-darker after:absolute after:w-4 text-center;
 }
 
 .btn-prcode--pdp {
@@ -55,7 +55,7 @@ const settings = {
 }
 
 .btn-prcode::before {
-  @apply rounded-2 shadow-sm py-0.5 px-2 bg-gray-100 whitespace-nowrap text-xs dark:text-black dark:bg-lightBlue-500;
+  @apply rounded-2 shadow-sm py-0.5 px-2 bg-gray-100 whitespace-nowrap text-xs dark:text-black dark:bg-accent-light;
   display: none;
   position: absolute;
   text-align: center;
@@ -102,7 +102,7 @@ const settings = {
 }
 
 .btn-prcode--2JZ {
-  @apply text-lightBlue-500;
+  @apply text-accent-light;
 }
 
 .btn-prcode--2JZ::before {
@@ -110,7 +110,7 @@ const settings = {
 }
 
 .btn-prcode--7L6 {
-  @apply text-lightBlue-500;
+  @apply text-accent-light;
 }
 
 .btn-prcode--7L6::before {
@@ -128,7 +128,7 @@ const settings = {
 }
 
 .btn-prcode--2JE {
-  @apply text-lightBlue-700;
+  @apply text-accent-dark;
 }
 
 .btn-prcode--2JE::before {

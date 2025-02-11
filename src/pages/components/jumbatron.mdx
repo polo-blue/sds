@@ -13,7 +13,7 @@ Find the code for this page in the `src/pages/components/jumbatron.mdx` file.
 
 ## Jumbatron - classic
 <div class="component-preview">
-    <Jumbatron class="w-full"  intro={`Lorem ipsum dolor sit amet, <span class=\"text-lightBlue-500\">consectetur</span> adipiscing elit.`}>
+    <Jumbatron class="w-full"  intro={`Lorem ipsum dolor sit amet, <span class=\"text-accent-light\">consectetur</span> adipiscing elit.`}>
         <p slot="subtitle"
           class="mt-3 text-base text-gray-200 sm:mt-5 text-lg md:text-xl lg:mx-0 md:mt-5"
           set:html="Nunc posuere massa eget turpis laoreet ultrices eget vel massa."
@@ -28,7 +28,7 @@ Find the code for this page in the `src/pages/components/jumbatron.mdx` file.
 </div>
 
 ```js
-    <Jumbatron intro={`Lorem ipsum dolor sit amet, <span class=\"text-lightBlue-500\">consectetur</span> adipiscing elit.`}>
+    <Jumbatron intro={`Lorem ipsum dolor sit amet, <span class=\"text-accent-light\">consectetur</span> adipiscing elit.`}>
         <span slot="intro" set:html= />
         <p slot="subtitle"
           class="mt-3 text-base text-gray-200 sm:mt-5 text-lg md:text-xl lg:mx-0 md:mt-5"
@@ -46,7 +46,7 @@ Find the code for this page in the `src/pages/components/jumbatron.mdx` file.
 ## Small Jumbatron
 
 <div class="component-preview">
-    <Jumbatron class="w-full" small intro={`Lorem ipsum dolor sit amet, <span class=\"text-lightBlue-500\">consectetur</span> adipiscing elit.`}>
+    <Jumbatron class="w-full" small intro={`Lorem ipsum dolor sit amet, <span class=\"text-accent-light\">consectetur</span> adipiscing elit.`}>
         <p slot="subtitle"
           class="mt-5 sm:mt-8 sm:flex sm:justify-center"
           set:html="Nunc posuere massa eget turpis laoreet ultrices eget vel massa."
@@ -55,7 +55,7 @@ Find the code for this page in the `src/pages/components/jumbatron.mdx` file.
 </div>
 
 ```js
-    <Jumbatron small intro={`Lorem ipsum dolor sit amet, <span class=\"text-lightBlue-500\">consectetur</span> adipiscing elit.`}>
+    <Jumbatron small intro={`Lorem ipsum dolor sit amet, <span class=\"text-accent-light\">consectetur</span> adipiscing elit.`}>
        
         <p slot="subtitle"
           class="mt-5 sm:mt-8 sm:flex sm:justify-center"
@@ -74,7 +74,7 @@ Find the code for this page in the `src/pages/components/jumbatron.mdx` file.
 ## Small Jumbatron - custom slot intro instead of prop
 <div class="component-preview">
     <Jumbatron class="w-full" small >
-        <h2 slot="intro" class="text-3xl text-white sm:(text-3xl pt-0) md:text-4xl lg:text-5xl font-light font-headbold">Lorem ipsum dolor sit amet, <span class="text-lightBlue-500">consectetur</span> adipiscing elit.</h2>
+        <h2 slot="intro" class="text-3xl text-white sm:(text-3xl pt-0) md:text-4xl lg:text-5xl font-light font-headbold">Lorem ipsum dolor sit amet, <span class="text-accent-light">consectetur</span> adipiscing elit.</h2>
         <p slot="subtitle"
           class="mt-5 sm:mt-8 sm:flex sm:justify-center"
           set:html="Nunc posuere massa eget turpis laoreet ultrices eget vel massa."
@@ -85,7 +85,7 @@ Find the code for this page in the `src/pages/components/jumbatron.mdx` file.
 ```js
     <Jumbatron class="w-full" small >
         <h2 slot="intro" class="text-3xl text-white sm:(text-3xl pt-0) md:text-4xl lg:text-5xl font-light font-headbold">
-          Lorem ipsum dolor sit amet, <span class="text-lightBlue-500">consectetur</span> adipiscing elit.
+          Lorem ipsum dolor sit amet, <span class="text-accent-light">consectetur</span> adipiscing elit.
         </h2>
         <p slot="subtitle"
           class="mt-5 sm:mt-8 sm:flex sm:justify-center"

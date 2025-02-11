@@ -32,7 +32,7 @@ const props = defineProps({
 }
 
 .btn-prcode::before {
-  @apply rounded-2 shadow-sm py-0.5 px-2 bg-gray-100 whitespace-nowrap text-xs dark:text-black dark:bg-lightBlue-500 text-center z-50;
+  @apply rounded-2 shadow-sm py-0.5 px-2 bg-gray-100 whitespace-nowrap text-xs dark:text-black dark:bg-accent-light text-center z-50;
   display: none;
   position: absolute;
   top: -10px;
@@ -71,7 +71,7 @@ const props = defineProps({
 }
 
 .btn-prcode--2JZ {
-  @apply text-lightBlue-500;
+  @apply text-accent-light;
 }
 
 .btn-prcode--2JZ::before {
@@ -79,7 +79,7 @@ const props = defineProps({
 }
 
 .btn-prcode--7L6 {
-  @apply text-lightBlue-500;
+  @apply text-accent-light;
 }
 
 .btn-prcode--7L6::before {
@@ -95,7 +95,7 @@ const props = defineProps({
 }
 
 .btn-prcode--2JE {
-  @apply text-lightBlue-700;
+  @apply text-accent-dark;
 }
 
 .btn-prcode--2JE::before {

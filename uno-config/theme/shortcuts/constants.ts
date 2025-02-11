@@ -12,7 +12,7 @@ export const aspectRatios = {
 // Theme colors
 export const COLORS = {
   bgWhite: 'bg-white',
-  bgDark: 'dark:bg-blue-901',
+  bgDark: 'dark:bg-accent-deepBlue',
   textSlate: 'text-slate-500',
   textNeutralLight: 'dark:text-neutral-light',
   textSlateDark: 'text-slate-darkest',
@@ -32,9 +32,17 @@ export const LAYOUT = {
   flex: {
     base: 'flex',
     center: 'flex items-center justify-center',
+    alignCenter: 'flex items-center',
+    justifyCenter: 'flex justify-center',
     between: 'flex items-center justify-between',
     wrap: 'flex flex-wrap',
     nowrap: 'flex-nowrap',
+    col: 'flex flex-col',
+    colCenter: 'flex flex-col items-center',
+    start: 'flex items-start',
+    end: 'flex items-end',
+    justifyEnd: 'flex justify-end',
+    alignEnd: 'flex items-end',
   },
   spacing: {
     topPadding: 'pt-24 sm:pt-14',
@@ -74,7 +82,7 @@ export const BUTTON_STYLES = {
   },
   variants: {
     primary: {
-      solid: 'bg-accent-lightest border border-transparent hover:bg-accent-light text-blue-darker shadow',
+      solid: 'bg-brand-secondary border border-transparent hover:bg-accent-light text-blue-darker shadow',
       outline: 'border-accent-light border text-accent-default hover:(bg-accent-light text-white)',
     },
     secondary: {
@@ -88,27 +96,9 @@ export const BUTTON_STYLES = {
   },
   hover: {
     white: 'hover:(text-blue-darker bg-white border-blue-darker)',
-    light: 'hover:(text-blue-darker bg-accent-lightest border-accent-lightest)',
+    light: 'hover:(text-blue-darker bg-brand-secondary border-brand-secondary)',
     medium: 'hover:(text-white bg-brand-primary border-brand-primary)',
     dark: 'hover:(bg-blue-darker text-white border-blue-darker)',
-  },
-} as const
-
-// Product specific styles
-export const PRODUCT_STYLES = {
-  thumb: {
-    base: 'h-full w-full object-cover object-center transform scale-100 group-hover:scale-110 absolute inset-0 will-change-transform bg-neutral-lightest',
-    container: `${aspectRatios['4/3']} flex items-center justify-center mb-3 sm:mb-0 ${IMAGE_STYLES.overlay}`,
-  },
-  link: {
-    base: 'relative flex w-full bg-white after:(absolute bg-lightBlue-500 w-[calc(100%-1rem)] left-0 h-px top-[calc(100%-1px)] bottom-1 content-empty scale-x-0 transition-transform-300 origin-top-right) hover:after:(origin-top-left scale-x-100)',
-    url: 'font-light leading-none mb-2 pr-4 line-clamp-2 h-[2em]',
-    urlOverlay: 'before:(content-empty absolute left-0 right-4 h-full top-0)',
-    bigTile: `aspect-[4/3] flex items-center justify-center mb-3 w-60 min-w-60 h-auto object-contain object-top bg-gray-50 relative ${IMAGE_STYLES.overlay}`,
-  },
-  description: {
-    base: `text-xs ${COLORS.textSlateDark} ${COLORS.textNeutralLight} leading-tight font-textlight line-clamp-3 whitespace-normal`,
-    md: 'md:(text-sm mt-0 font-textregular whitespace-pre-wrap)',
   },
 } as const
 
@@ -127,13 +117,17 @@ export const TYPOGRAPHY = {
   },
 } as const
 
-// Product constants
-export const PRODUCT_CONSTANTS = {
+// Product specific styles (merged PRODUCT_STYLES and PRODUCT_CONSTANTS)
+export const PRODUCT_STYLES = {
+  thumb: {
+    base: 'h-full w-full object-cover object-center transform scale-100 group-hover:scale-110 absolute inset-0 will-change-transform bg-neutral-lightest',
+    container: `${aspectRatios['4/3']} ${LAYOUT.flex.alignCenter} mb-3 sm:mb-0 ${IMAGE_STYLES.overlay}`,
+  },
   link: {
-    base: 'relative flex w-full',
+    base: 'relative flex w-full bg-white after:(absolute bg-accent-light w-[calc(100%-1rem)] left-0 h-px top-[calc(100%-1px)] bottom-1 content-empty scale-x-0 transition-transform-300 origin-top-right) hover:after:(origin-top-left scale-x-100)',
     url: 'font-light leading-none mb-2 pr-4 line-clamp-2 h-[2em]',
     urlOverlay: 'before:(content-empty absolute left-0 right-4 h-full top-0)',
-    bigTile: `${aspectRatios['4/3']} flex items-center justify-center mb-3 w-60 min-w-60 h-auto object-contain object-top bg-gray-50 relative ${IMAGE_STYLES.overlay}`,
+    bigTile: `${aspectRatios['4/3']} ${LAYOUT.flex.center} mb-3 w-60 min-w-60 h-auto object-contain object-top bg-gray-50 relative ${IMAGE_STYLES.overlay}`,
   },
   image: {
     base: `${aspectRatios['4/3']} ${IMAGE_STYLES.base} ${IMAGE_STYLES.overlay}`,

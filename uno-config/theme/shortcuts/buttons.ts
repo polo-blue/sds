@@ -1,5 +1,5 @@
 // shortcuts/buttons.ts
-import { BUTTON_STYLES, TRANSITIONS } from './constants'
+import { BUTTON_STYLES, TRANSITIONS, LAYOUT, COLORS } from './constants'
 
 const { base, sizes, variants, hover } = BUTTON_STYLES
 
@@ -10,7 +10,7 @@ export const buttonShortcuts = [
 
     // Primary buttons
     ['btn-primary', `${base.layout} ${base.text} ${variants.primary.solid}`],
-    ['btn-primary-outline', `${base.layout} ${base.text} ${variants.primary.outline} ${base.transition}`],
+    ['btn-primary-outline', `${base.layout} ${base.text} ${variants.primary.outline} ${TRANSITIONS.base}`],
     
     // Secondary buttons
     ['btn-secondary', `${base.layout} ${base.text} ${variants.secondary.solid}`],
@@ -18,11 +18,11 @@ export const buttonShortcuts = [
     
     // Tertiary buttons
     ['btn-tertiary', `${base.layout} ${base.text} ${variants.tertiary.solid}`],
-    ['btn-tertiary-outline', `${base.layout} border ${base.text} ${variants.tertiary.outline} ${base.transition}`],
+    ['btn-tertiary-outline', `${base.layout} border ${base.text} ${variants.tertiary.outline} ${TRANSITIONS.base}`],
     
     // Utility buttons
-    ['btn-text', 'text-neutral-dark border border-transparent hover:underline transition-all'],
-    ['btn-tag', 'bg-blue-ultralight text-blue-darker font-medium mr-2 dark:bg-neutral-darker dark:text-blue-light border border-blue-default hover:border-blue-medium justify-center'],
+    ['btn-text', `text-neutral-dark border border-transparent hover:underline ${TRANSITIONS.base}`],
+    ['btn-tag', `bg-blue-ultralight text-blue-darker font-medium mr-2 dark:bg-neutral-darker dark:text-blue-light border border-blue-default hover:border-blue-medium ${LAYOUT.flex.center}`],
     
     // Size variants
     ['btn-normal', sizes.normal],
@@ -36,7 +36,7 @@ export const buttonShortcuts = [
     ['btn-dark-hover', hover.dark],
 
     // Special buttons
-    ['btn-copy', 'leading-none opacity-10 hover:opacity-80 ml-auto w-6 h-6 -right-7 sm:(h-4 w-4 -right-5) absolute'],
+    ['btn-copy', `leading-none opacity-10 hover:opacity-80 ml-auto w-6 h-6 -right-7 sm:(h-4 w-4 -right-5) ${LAYOUT.position.absolute}`],
     ['btn-copy-text', 'shadow-sm py-0.5 px-1 bg-gray-100 -ml-1 -mt-4 text-xxs whitespace-nowrap'],
-    ['btn-prcode', 'relative inline-block text-center leading-none px-1 py-0.5 mr-1 cursor-pointer font-mono border-solid border-1 border-gray-200 select-none text-gray-500 last:mr-0 not-last:mr-2 not-last:after:content-[+] after:(text-blue-700 absolute w-4 pl-0.5)']
+    ['btn-prcode', `${LAYOUT.position.relative} inline-block text-center leading-none px-1 py-0.5 mr-1 cursor-pointer font-mono border-solid border-1 border-gray-200 select-none text-gray-500 last:mr-0 not-last:mr-2 not-last:after:content-[+] after:(text-blue-darker ${LAYOUT.position.absolute} w-4 pl-0.5)`]
 ];
