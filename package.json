@@ -1,6 +1,6 @@
 {
   "name": "spoko-design-system",
-  "version": "0.2.97",
+  "version": "0.2.99",
   "private": false,
   "main": "./index.ts",
   "module": "./index.ts",
@@ -12,6 +12,7 @@
     },
     "./styles/*": "./src/styles/*",
     "./icons": "./icon.config.ts",
+    "./icon-collections": "./icon.collections.ts",
     "./uno-config": "./uno-config/index.ts"
   },
   "scripts": {
