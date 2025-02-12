@@ -34,7 +34,7 @@ export const componentShortcuts = [
   // Category related
   ['category-section', `pb-4 w-full ${COLORS.bgWhite} mb-4 overflow-x-hidden ${LAYOUT.flex.wrap} max-w-full`],
   ['category-tile', `${LAYOUT.flex.wrap} sm:flex-nowrap content-between w-64 min-w-64 lg:(w-28.57% min-w-28.57%) 2xl:(w-24.09% min-w-24.09%) 3xl:(w-19.60% min-w-19.60%) flex ml-1 lg:ml-1.5 first:ml-4`],
-  ['category-toggler', `sm:bg-opacity-20 pt-1 ${LAYOUT.flex.center} hover:text-accent-light text-neutral-light hover:text-blue-lightest px-4 leading-7 pb-0.5 md:pl-0`],
+  ['category-toggler', `w-8 sm:bg-opacity-20 pt-1 ${LAYOUT.flex.center} hover:text-accent-light text-neutral-light hover:text-blue-lightest px-4 leading-7 pb-0.5 md:pl-0`],
   ['category-link', 'w-full sm:w-auto text-neutral-default hover:(bg-gray-50 sm:bg-inherit) py-2 sm:py-0 text-lg font-medium text-left px-3 block sm:(text-base leading-4 mb-1.5) md:(px-4 py-1 table-cell)'],
   ['category-carousel__link', `uppercase ml-auto px-4 text-xs ${LAYOUT.flex.alignCenter} mt-3 hover:underline`],
 
