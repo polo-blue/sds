@@ -8,34 +8,34 @@ const { category, subcategory, subtitle, subsubtitle, titleSmall, locale, showVi
 
 // Compute base URL for localization
 const baseURL = locale === 'en' ? '' : `/${locale}`;
+   
 ---
 
 <div 
-  ref="el"
   class="flex flex-nowrap items-center pr-3 sm:pb-3 sm:pt-4 md:pl-4 relative z-10-off bg-neutral-lightest md:bg-white"
   transition:name="category-details"
   transition:animate="fade"
 >
-  <CategorySidebarToggler onclick="toggleSidebar()">
-    <!-- Desktop expanded -->
-    <Icon 
-      name="ant-design:menu-fold-outlined" 
-      class="toggler-btn hidden md:[&:not(.hidden)]:block" 
-      aria-hidden="true"
-    />
-    <!-- Desktop collapsed -->
-    <Icon 
-      name="ant-design:menu-unfold-outlined" 
-      class="toggler-btn hidden md:[&:not(.hidden)]:block" 
-      aria-hidden="true"
-    />
-    <!-- Mobile icon -->
-    <Icon 
-      name="ant-design:menu-outlined" 
-      class="toggler-btn block md:hidden" 
-      aria-hidden="true"
-    />
-  </CategorySidebarToggler>
+<CategorySidebarToggler onclick="toggleSidebar()">
+  <!-- Desktop expanded - initially visible -->
+  <Icon 
+    name="ant-design:menu-fold-outlined" 
+    class="toggler-btn md:[&:not(.hidden)]:block" 
+    aria-hidden="true"
+  />
+  <!-- Desktop collapsed - initially hidden -->
+  <Icon 
+    name="ant-design:menu-unfold-outlined" 
+    class="toggler-btn hidden md:[&:not(.hidden)]:block" 
+    aria-hidden="true"
+  />
+  <!-- Mobile icon -->
+  <Icon 
+    name="ant-design:menu-outlined" 
+    class="toggler-btn block md:hidden" 
+    aria-hidden="true"
+  />
+</CategorySidebarToggler>
 
   <div class="overflow-x-auto overflow-y-hidden flex max-w-full items-center">
     {subtitle ? (
@@ -66,59 +66,61 @@ const baseURL = locale === 'en' ? '' : `/${locale}`;
     ) : (
       <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap">
         {category.name}
-        {titleSmall && <small>{titleSmall}</small>}
+        {titleSmall && (<small>{titleSmall}</small>)}
         <span class="sr-only"> {t('catalog.extra-short')}</span>
       </h1>
     )}
   </div>
 
-  <CategoryViewToggler {...viewerLabels} showViewToggler={showViewToggler} class="hidden lg:flex items-center gap-2 ml-auto" />
+{ showViewToggler && (  <CategoryViewToggler {...viewerLabels}  class="hidden lg:flex items-center gap-2 ml-auto" /> ) }
+
 </div>
 
 <script is:inline>
-function handlePageLoad() {
-  const sidebar = document.getElementById('sidebar');
-  const togglers = document.querySelectorAll('.toggler-btn');
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
-  
-  if (sidebar && !isMobile) {
+  function initializeSidebar() {
+    const sidebar = document.getElementById('sidebar');
     const savedState = localStorage.getItem('sidebarState') || 'open';
     
-    sidebar.classList.toggle('collapsed', savedState === 'closed');
-    if (togglers.length >= 2) {
-      // Restore correct icon visibility based on sidebar state
-      const isCollapsed = savedState === 'closed';
-      togglers[0].classList.toggle('hidden', isCollapsed);     // menu-fold
-      togglers[1].classList.toggle('hidden', !isCollapsed);    // menu-unfold
-    }
-  }
-}
-
-function toggleSidebar() {
-  const sidebar = document.getElementById('sidebar');
-  const togglers = document.querySelectorAll('.toggler-btn');
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
-  if (sidebar) {
-    if (isMobile) {
-      const isShown = sidebar.classList.toggle('show');
-      document.body.classList.toggle('overflow-hidden', isShown);
-    } else {
-      const isCollapsed = sidebar.classList.toggle('collapsed');
-      document.body.classList.remove('overflow-hidden');
-      localStorage.setItem('sidebarState', isCollapsed ? 'closed' : 'open');
+    if (sidebar) {
+      sidebar.classList.toggle('collapsed', savedState === 'closed');
       
+      const togglers = document.querySelectorAll('.toggler-btn');
       if (togglers.length >= 2) {
-        togglers[0].classList.toggle('hidden', isCollapsed);     // menu-fold
-        togglers[1].classList.toggle('hidden', !isCollapsed);    // menu-unfold
+        const isCollapsed = savedState === 'closed';
+        togglers[0].classList.toggle('hidden', isCollapsed);
+        togglers[1].classList.toggle('hidden', !isCollapsed);
       }
     }
   }
-}
+  
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const togglers = document.querySelectorAll('.toggler-btn');
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  
+    if (sidebar) {
+      if (isMobile) {
+        const isShown = sidebar.classList.toggle('show');
+        document.body.classList.toggle('overflow-hidden', isShown);
+      } else {
+        const isCollapsed = sidebar.classList.toggle('collapsed');
+        document.body.classList.remove('overflow-hidden');
+        localStorage.setItem('sidebarState', isCollapsed ? 'closed' : 'open');
+        
+        if (togglers.length >= 2) {
+          togglers[0].classList.toggle('hidden', isCollapsed);
+          togglers[1].classList.toggle('hidden', !isCollapsed);
+        }
+      }
+    }
+  }
+  
+  document.addEventListener('DOMContentLoaded', initializeSidebar);
+  document.addEventListener('astro:page-load', initializeSidebar, { once: true });
+  </script>
 
-// Listen for next navigation
-document.addEventListener('astro:page-load', handlePageLoad, { once: true });
-
-// Initial setup
-handlePageLoad();
-</script>
+  <style>
+    .toggler-btn {
+      @apply md:-mt-0.5;
+    }
+  </style>

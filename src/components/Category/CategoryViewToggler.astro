@@ -7,7 +7,6 @@ interface Props {
   gridText: string;      // "Grid"
   listAriaLabel: string; // "List view"
   gridAriaLabel: string; // "Grid view"
-  showViewToggler: boolean;
   class?: string; 
 }
 
@@ -17,13 +16,10 @@ const {
   gridText, 
   listAriaLabel, 
   gridAriaLabel, 
-  showViewToggler,
   class: className
 } = Astro.props;
 ---
 
-{
-  showViewToggler && 
 <div class:list={[ className ]}>
   <span class="text-slate-default text-sm">{showText}</span>
   <div class="flex border rounded">
@@ -45,9 +41,9 @@ const {
     </button>
   </div>
 </div>
-}
 
-<script define:vars={{ showViewToggler }}>
+
+<script >
   function handleViewToggle(e) {
     const button = e.currentTarget;
     if (!(button instanceof HTMLElement)) return;
@@ -72,7 +68,6 @@ const {
   }
   
   document.addEventListener('astro:page-load', () => {
-    if (!showViewToggler) return;
     
     updateUI(localStorage.getItem('categoryView') || 'list');
     document.querySelectorAll('.view-toggle')

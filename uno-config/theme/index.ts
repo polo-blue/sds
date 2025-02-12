@@ -5,6 +5,7 @@ import { breakpoints } from './breakpoints';
 import { dimensions } from './dimensions';
 import { effects } from './effects';
 import { gridTemplates } from './grid';
+import { container } from './container';
 
 export const theme = {
   colors,
@@ -14,6 +15,7 @@ export const theme = {
   gridTemplateColumn: gridTemplates.columns, 
   breakpoints,
   screens: breakpoints,
+  container,
 };
 
 export {
@@ -23,4 +25,5 @@ export {
   dimensions,
   effects,
   gridTemplates,
+  container,
 };

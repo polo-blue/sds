@@ -2,94 +2,231 @@
 title: "Jumbatron"
 layout: "../../layouts/MainLayout.astro"
 ---
-import Jumbatron from '../../components/Jumbatron.vue'
+import Jumbatron from '../../components/Jumbatron.astro'
 import Button from '../../components/Button.vue'
 
 # Jumbatron
 
-A jumbotron indicates a big box for calling extra attention to some special content or information.
+A Jumbatron indicates a big box for calling extra attention to some special content or information.
 
-Find the code for this page in the `src/pages/components/jumbatron.mdx` file.
+Find the code for this page in the `src/pages/components/Jumbatron.mdx` file.
 
-## Jumbatron - classic
+## Default Variant (Classic)
+
 <div class="component-preview">
-    <Jumbatron class="w-full"  intro={`Lorem ipsum dolor sit amet, <span class=\"text-accent-light\">consectetur</span> adipiscing elit.`}>
+    <Jumbatron 
+      variant="default"
+      title={`Lorem ipsum dolor sit amet, <span class="text-accent-light">consectetur</span> adipiscing elit.`}
+    >
         <p slot="subtitle"
           class="mt-3 text-base text-gray-200 sm:mt-5 text-lg md:text-xl lg:mx-0 md:mt-5"
-          set:html="Nunc posuere massa eget turpis laoreet ultrices eget vel massa."
-        />
-        <Button primary slot="cta" rounded
-          href="#"
-          title="short text"
         >
-         Read More
-        </Button>
+          Nunc posuere massa eget turpis laoreet ultrices eget vel massa.
+        </p>
+        <Fragment slot="cta-content">
+          <Button primary rounded href="#" title="short text">
+            Read More
+          </Button>
+        </Fragment>
     </Jumbatron>
 </div>
 
 ```js
-    <Jumbatron intro={`Lorem ipsum dolor sit amet, <span class=\"text-accent-light\">consectetur</span> adipiscing elit.`}>
-        <span slot="intro" set:html= />
-        <p slot="subtitle"
-          class="mt-3 text-base text-gray-200 sm:mt-5 text-lg md:text-xl lg:mx-0 md:mt-5"
-          set:html="subtitle"
-        />
-        <Button primary slot="cta" rounded
-          href="#"
-          title="short text"
-        >
-         Read More
-        </Button>
-    </Jumbatron>
+<Jumbatron 
+  variant="default"
+  title={`Lorem ipsum dolor sit amet, <span class="text-accent-light">consectetur</span> adipiscing elit.`}
+>
+    <p slot="subtitle"
+      class="mt-3 text-base text-gray-200 sm:mt-5 text-lg md:text-xl lg:mx-0 md:mt-5"
+    >
+      Nunc posuere massa eget turpis laoreet ultrices eget vel massa.
+    </p>
+    <Fragment slot="cta-content">
+      <Button primary rounded href="#" title="short text">
+        Read More
+      </Button>
+    </Fragment>
+</Jumbatron>
 ```
 
-## Small Jumbatron
+## Small Variant
 
 <div class="component-preview">
-    <Jumbatron class="w-full" small intro={`Lorem ipsum dolor sit amet, <span class=\"text-accent-light\">consectetur</span> adipiscing elit.`}>
+    <Jumbatron 
+      variant="default"
+      small
+      title={`Lorem ipsum dolor sit amet, <span class="text-accent-light">consectetur</span> adipiscing elit.`}
+    >
         <p slot="subtitle"
           class="mt-5 sm:mt-8 sm:flex sm:justify-center"
-          set:html="Nunc posuere massa eget turpis laoreet ultrices eget vel massa."
-        />
+        >
+          Nunc posuere massa eget turpis laoreet ultrices eget vel massa.
+        </p>
     </Jumbatron>
 </div>
 
 ```js
-    <Jumbatron small intro={`Lorem ipsum dolor sit amet, <span class=\"text-accent-light\">consectetur</span> adipiscing elit.`}>
-       
-        <p slot="subtitle"
-          class="mt-5 sm:mt-8 sm:flex sm:justify-center"
-          set:html="subtitle"
-        />
-        <Button primary slot="cta"
-          href="#"
-          title="short text"
-        >
-         Read More
-        </Button>
-    </Jumbatron>
+<Jumbatron 
+  variant="default"
+  small
+  title={`Lorem ipsum dolor sit amet, <span class="text-accent-light">consectetur</span> adipiscing elit.`}
+>
+    <p slot="subtitle"
+      class="mt-5 sm:mt-8 sm:flex sm:justify-center"
+    >
+      Nunc posuere massa eget turpis laoreet ultrices eget vel massa.
+    </p>
+</Jumbatron>
 ```
 
+## Hero Variant
 
-## Small Jumbatron - custom slot intro instead of prop
 <div class="component-preview">
-    <Jumbatron class="w-full" small >
-        <h2 slot="intro" class="text-3xl text-white sm:(text-3xl pt-0) md:text-4xl lg:text-5xl font-light font-headbold">Lorem ipsum dolor sit amet, <span class="text-accent-light">consectetur</span> adipiscing elit.</h2>
-        <p slot="subtitle"
-          class="mt-5 sm:mt-8 sm:flex sm:justify-center"
-          set:html="Nunc posuere massa eget turpis laoreet ultrices eget vel massa."
-        />
-    </Jumbatron>
+    <Jumbatron
+      variant="hero"
+      title="Main Hero Title"
+      description="Detailed description of the hero section goes here."
+      info="Additional information can be displayed here"
+      image="https://img.freepik.com/free-photo/nature-beauty-tropical-rainforest-adventure-tranquility-freshness-generated-by-artificial-intellingence_25030-62539.jpg?size=1920&ext=jpg"
+    />
 </div>
 
 ```js
-    <Jumbatron class="w-full" small >
+<Jumbatron
+  variant="hero"
+  title="Main Hero Title"
+  description="Detailed description of the hero section goes here."
+  info="Additional information can be displayed here"
+  image="https://img.freepik.com/free-photo/nature-beauty-tropical-rainforest-adventure-tranquility-freshness-generated-by-artificial-intellingence_25030-62539.jpg?size=1920&ext=jpg"
+/>
+```
+
+## Post Variant (Full Overlay)
+
+<div class="component-preview">
+    <Jumbatron
+      variant="post"
+      title="Blog Post Title"
+      image="https://img.freepik.com/free-photo/nature-beauty-tropical-rainforest-adventure-tranquility-freshness-generated-by-artificial-intellingence_25030-62539.jpg?size=1920&ext=jpg"
+      categories={[
+        { name: 'Technology', uri: '/tech' },
+        { name: 'Design', uri: '/design' }
+      ]}
+      author={{
+        firstName: "John",
+        name: "John Doe"
+      }}
+      date="2024-02-12"
+    />
+</div>
+
+```js
+<Jumbatron
+  variant="post"
+  title="Blog Post Title"
+  image="https://img.freepik.com/free-photo/nature-beauty-tropical-rainforest-adventure-tranquility-freshness-generated-by-artificial-intellingence_25030-62539.jpg?size=1920&ext=jpg"
+  categories={[
+    { name: 'Technology', uri: '/tech' },
+    { name: 'Design', uri: '/design' }
+  ]}
+  author={{
+    firstName: "John",
+    name: "John Doe"
+  }}
+  date="2024-02-12"
+/>
+```
+
+## Post Split Variant
+
+<div class="component-preview pb-6">
+    <Jumbatron
+      variant="post-split"
+      title="Blog Post Title"
+      formatted_headline="<b>Formatted</b> Blog Post Title"
+      image="http://localhost:1234/_image?href=https%3A%2F%2Fimg.freepik.com%2Ffree-photo%2Fnature-beauty-tropical-rainforest-adventure-tranquility-freshness-generated-by-artificial-intellingence_25030-62539.jpg%3Fsize%3D960%26ext%3Djpg&w=1200&h=675&f=webp"
+      categories={[
+        { name: 'Technology', uri: '/tech' },
+        { name: 'Design', uri: '/design' }
+      ]}
+      author={{
+        firstName: "John",
+        name: "John Doe"
+      }}
+      date="2024-02-12"
+    />
+</div>
+
+```js
+<Jumbatron
+  variant="post-split"
+  title="Blog Post Title"
+  formatted_headline="<b>Formatted</b> Blog Post Title"
+  image="http://localhost:1234/_image?href=https%3A%2F%2Fimg.freepik.com%2Ffree-photo%2Fnature-beauty-tropical-rainforest-adventure-tranquility-freshness-generated-by-artificial-intellingence_25030-62539.jpg%3Fsize%3D960%26ext%3Djpg&w=1200&h=675&f=webp"
+  categories={[
+    { name: 'Technology', uri: '/tech' },
+    { name: 'Design', uri: '/design' }
+  ]}
+  author={{
+    firstName: "John",
+    name: "John Doe"
+  }}
+  date="2024-02-12"
+/>
+```
+
+## Custom Intro Slot Example
+
+<div class="component-preview">
+    <Jumbatron variant="default" small>
         <h2 slot="intro" class="text-3xl text-white sm:(text-3xl pt-0) md:text-4xl lg:text-5xl font-light font-headbold">
           Lorem ipsum dolor sit amet, <span class="text-accent-light">consectetur</span> adipiscing elit.
         </h2>
         <p slot="subtitle"
           class="mt-5 sm:mt-8 sm:flex sm:justify-center"
-          set:html="Nunc posuere massa eget turpis laoreet ultrices eget vel massa."
-        />
+        >
+          Nunc posuere massa eget turpis laoreet ultrices eget vel massa.
+        </p>
     </Jumbatron>
+</div>
+
+```js
+<Jumbatron variant="default" small>
+    <h2 slot="intro" class="text-3xl text-white sm:(text-3xl pt-0) md:text-4xl lg:text-5xl font-light font-headbold">
+      Lorem ipsum dolor sit amet, <span class="text-accent-light">consectetur</span> adipiscing elit.
+    </h2>
+    <p slot="subtitle"
+      class="mt-5 sm:mt-8 sm:flex sm:justify-center"
+    >
+      Nunc posuere massa eget turpis laoreet ultrices eget vel massa.
+    </p>
+</Jumbatron>
 ```
+
+## Props Reference
+
+### Common Props
+- `variant`: 'default' | 'hero' | 'post' | 'post-split' (default: 'default')
+- `title`: string
+- `image`: string (optional)
+
+### Default & Hero Props
+- `small`: boolean (optional)
+- `description`: string (optional)
+- `info`: string (optional)
+
+### Post Variants Props
+- `formatted_headline`: string
+- `date`: string
+- `author`: Object with properties:
+  - `firstName`: string
+  - `name`: string
+- `categories`: Array of objects with properties:
+  - `name`: string
+  - `uri`: string
+
+### Slots
+- `intro`: Custom intro content
+- `subtitle`: Subtitle content
+- `cta`: CTA wrapper (default variant only)
+- `cta-content`: CTA content (default variant only)

@@ -20,7 +20,6 @@ export const colors = {
 
     // Secondary colors - accent palette
     accent: {
-        lightest: '#00b0f0',
         light: '#0099da',
         default: '#0087c1',    // Default accent
         dark: '#006ea6',
@@ -36,7 +35,6 @@ export const colors = {
         default: '#9ca3af',    // Base gray
         dark: '#6a767d',       
         darker: '#4b5563',
-        black: '#000000',      // Pure black
     },
       
     // Slate colors - gray-blue palette

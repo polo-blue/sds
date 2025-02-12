@@ -1,0 +1,267 @@
+---
+interface Author {
+  firstName?: string;
+  name: string;
+}
+
+interface Category {
+  name: string;
+  uri: string;
+}
+
+interface Props {
+  // Common props
+  variant?: "default" | "hero" | "post" | "post-split";
+  title: string;
+  image?: string;
+
+  // Default & Hero variant props
+  small?: boolean;
+  description?: string;
+  info?: string;
+
+  // Post variants props
+  formatted_headline?: string;
+  date?: string;
+  author?: Author;
+  categories?: Category[];
+}
+
+const {
+  variant = "default",
+  title,
+  image,
+  small = false,
+  description,
+  info,
+  formatted_headline,
+  date,
+  author,
+  categories = [],
+} = Astro.props;
+
+import CategoryLink from "./CategoryLink.astro";
+import Date from "./Date.astro";
+import { Image } from "astro:assets";
+---
+
+{
+  variant === "default" && (
+    <header
+      class:list={[
+        "relative flow content-grid bg-vw mx-auto my-auto py-8 lg:w-full text-center",
+        small
+          ? "md:min-h-xs sm:py-12 md:py-14 lg:py-16 xl:py-20"
+          : "md:min-h-md sm:py-16 md:py-20 lg:py-28 xl:py-32",
+      ]}
+    >
+      <slot name="intro">
+        <h1
+          class="text-3xl headline-light text-white sm:(text-4xl pt-0) md:text-5xl lg:text-6xl"
+          set:html={title}
+        />
+      </slot>
+      <slot name="subtitle" />
+      <slot name="cta">
+        <div class="mt-5 sm:(mt-8 flex justify-center)">
+          <slot name="cta-content" />
+        </div>
+      </slot>
+    </header>
+  )
+}
+
+{
+  variant === "hero" && (
+    <div class="bg-blue-900 bg-vw w-full">
+      <div class="xl:container mx-auto px-3.5 md:px-8 py-8 flex items-center h-56 sm:h-72 md:max-h-72 text-white relative">
+        <header class="w-full relative z-10">
+          <h1
+            class="font-headlight text-3xl sm:text-4xl md:text-5xl xl:text-6xl mt-1 line-clamp-3 leading-tight"
+            set:html={title}
+          />
+          {description && (
+            <div
+              class="mb-1 line-clamp-3 text-base sm:text-lg leading-none mt-4"
+              set:html={description}
+            />
+          )}
+          {info && (
+            <div
+              class="font-medium mb-4 line-clamp-1 text-base sm:text-lg mt-2"
+              set:html={info}
+            />
+          )}
+        </header>
+        {image && (
+          <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-transparent opacity-90 z-1" />
+            <img
+              class="absolute inset-0 w-full h-full object-cover"
+              src={image}
+              alt={title}
+            />
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+{
+  variant === "post" && (
+    <header class="post-header pt-11 w-full justify-center text-white z-2 bg-blue-darkest">
+      <div class="heading flex flex-wrap">
+        <div class="w-full sm:max-w-[640px] md:max-w-3xl lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[1536px] px-4 py-5 flex flex-col flex-wrap">
+          <h1 class="font-textbold text-2xl mb-1 sm:text-3xl md:(text-4xl mb-3) xl:text-6xl mt-1 order-2 line-clamp-3 pb-1">
+            {title}
+          </h1>
+          <CategoryLink categories={categories} />
+          <div class="order-3 flex items-center text-gray-100">
+            {author && (
+              <span class="text-sm" title={author.firstName}>
+                {author.name}
+              </span>
+            )}
+            {author && date && <span class="mx-1">-</span>}
+            {date && <Date date={date} />}
+          </div>
+        </div>
+      </div>
+      <div class="featured-image-overlay">
+        <img src={image} alt={title} />
+      </div>
+    </header>
+  )
+}
+
+{variant === 'post-split' && (
+  <div class="bg-blue-900 bg-vw w-full">
+    <div class="xl:container mx-auto px-3.5 md:px-0">
+      <header class="post-header-split w-full justify-center text-white z-2 mt-auto md:(grid grid-cols-2) pb-4 mb-8">
+        <div class="heading flex flex-wrap">
+          <div class="container px-3.5 py-5 md:py-0 flex flex-wrap">
+            <h1 class="font-headlight text-3xl md:(text-4xl mb-3) xl:text-11 mt-1 order-2 line-clamp-3 pb-1 w-full"
+              set:html={formatted_headline || title} />
+            <CategoryLink categories={categories} />
+            <div class="order-3 flex items-center text-gray-100">
+              {author && (
+                <span class="text-sm" title={author.firstName} data-pagefind-ignore>{author.name}</span>
+              )}
+              {author && date && <span class="mx-1">-</span>}
+              {date && <Date date={date} />}
+            </div>
+          </div>
+        </div>
+        {image && (
+          <div class="featured-image -mb-8 shadow-xl md:(mt-4 max-h-112)">
+            <Image 
+              class="aspect-video border-white border-4"
+              src={image} 
+              alt={title}
+              width={768}
+              height={432}
+              loading="eager"
+            />
+          </div>
+        )}
+      </header>
+    </div>
+  </div>
+)}
+
+<style>
+  .bg-vw {
+    background: radial-gradient(circle at 50% 85%, #00437a 0%, #001e50 100%);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 30, 80, 0.9) 0%,
+      rgba(0, 30, 80, 0.6) 100%
+    );
+    z-index: 1;
+  }
+
+  .featured-image-overlay {
+    @apply absolute top-0 bottom-0 left-0 right-0 overflow-hidden w-full bg-gray-100 z-1;
+
+    &:before,
+    &:after {
+      @apply content-empty top-0 bottom-0 left-0 right-0 absolute;
+    }
+
+    &:before {
+      z-index: 5;
+      background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.95),
+        transparent 30%,
+        transparent 70%,
+        rgba(0, 0, 0, 0.95)
+      );
+      opacity: 0.5;
+    }
+
+    &:after {
+      background: radial-gradient(circle at 50% 85%, #00437a 0, #001e50 100%);
+      opacity: 0.8;
+    }
+
+    img {
+      @apply w-full h-full object-cover block max-w-full;
+    }
+  }
+
+  .featured-image {
+    position: static;
+    width: 100%;
+    @apply bg-blue-900;
+
+    &::before,
+    &::after {
+      content: unset;
+    }
+
+    img {
+      width: 100%;
+      object-fit: cover;
+      max-width: 100%;
+      display: block;
+    }
+  }
+
+  .post-header {
+    @apply flex relative items-center;
+  }
+
+  /* .post-header-split {
+    @apply relative items-center;
+  } */
+
+  .heading {
+    @apply text-white relative flex items-center justify-center mt-auto w-full z-[2];
+  }
+
+  h1 {
+    b {
+      @apply font-headregular whitespace-pre-line;
+    }
+    small {
+      @apply text-6 whitespace-pre-line;
+    }
+  }
+</style>
+
+<style is:global>
+  .icon {
+    width: 1em;
+    height: 1em;
+    fill: currentcolor;
+    color: #00b1eb;
+    margin-right: 0.5rem;
+  }
+</style>

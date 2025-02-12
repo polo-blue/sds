@@ -81,7 +81,7 @@ You're free to organize the pages however you want.
 
 ### Customizing Core section (colors, typography, shadows...)
 
-If you want to customize the default colors, typography or shadows you can find the configuration file at `src/config/design.config.ts`.  I think I have prepared enough shades of blue ;-)
+If you want to customize the default colors, typography or shadows you can find the configuration file at uno.config.ts`.  I think I have prepared enough shades of blue ;-)
 
 Feel free to add new pages to the Core section
 

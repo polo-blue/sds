@@ -10,6 +10,9 @@ import pagefind from "astro-pagefind";
 import AstroPWA from '@vite-pwa/astro';
 import metaTags from "astro-meta-tags";
 import playformInline from "@playform/inline";
+import { createSdsConfig } from './uno-config';
+
+const unoConfig = createSdsConfig();
 
 // https://astro.build/config
 export default defineConfig({
@@ -72,8 +75,10 @@ export default defineConfig({
     experimental: {
       directoryAndTrailingSlashHandler: true
     }
-  }), UnoCSS({
-    injectReset: true
+  }), 
+  UnoCSS({
+    injectReset: true,
+    ...unoConfig
   }),
   icon(iconConfig), 
   metaTags(),

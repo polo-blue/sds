@@ -45,7 +45,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
             createdy by
           </div>
           <img
-            class="h-4 w-min md:h-5 "
+            class="h-4 w-min md:h-5"
             src="spoko.space.svg"
             alt="Modern Websites"
             width="126"
@@ -58,3 +58,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
     </footer>
   </body>
 </html>
+
+<style is:global>
+  .container {
+    @apply mx-auto px-4;
+    max-width: 1280px;
+  }
+</style>
