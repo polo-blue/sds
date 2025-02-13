@@ -66,7 +66,7 @@ export const SIDEBAR = [
     { text: "Introduction", link: "/core/introduction" },
     ...,
     { text: "Components", header: true },
-    { text: "Buttons", link: "/components/jumbatron" },
+    { text: "Buttons", link: "/components/jumbotron" },
     ...,
     { text: "New section", header: true },
     { text: "New component", link: "/new-section/new-component.md" },

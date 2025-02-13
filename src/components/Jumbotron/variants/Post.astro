@@ -1,0 +1,61 @@
+---
+import type { Author, Category } from '../types';
+import CategoryLink from "../../CategoryLink.astro";
+import Date from "../../Date.astro";
+
+interface Props {
+  title: string;
+  image?: string;
+  author?: Author;
+  date?: string;
+  categories?: Category[];
+  hasMetadata: boolean;
+  hasCategories: boolean;
+}
+
+const {
+  title,
+  image,
+  author,
+  date,
+  categories = [],
+  hasMetadata,
+  hasCategories,
+} = Astro.props;
+---
+
+<header class="post-header pt-11 w-full justify-center text-white z-2 bg-blue-darkest relative flex items-center min-h-[50vh]">
+  <div class="heading text-white relative flex items-center justify-center mt-auto w-full z-[2]">
+    <div class="w-full sm:max-w-[640px] md:max-w-3xl lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[1536px] px-4 py-5 flex flex-col flex-wrap">
+      <h1 class="font-headlight text-2xl mb-1 sm:text-3xl md:(text-4xl mb-3) xl:text-6xl mt-1 order-2 line-clamp-3 pb-1">
+        {title}
+      </h1>
+      
+      {hasCategories && (
+        <div class="order-1">
+          <CategoryLink categories={categories} />
+        </div>
+      )}
+
+      {hasMetadata && (
+        <div class="order-3 flex items-center text-gray-100">
+          {author && (
+            <span class="text-sm" title={author.firstName}>
+              {author.name}
+            </span>
+          )}
+          {author && date && <span class="mx-1">-</span>}
+          {date && <Date date={date} />}
+        </div>
+      )}
+    </div>
+  </div>
+
+  <div class="featured-image-overlay">
+    <img 
+      src={image} 
+      alt={title} 
+      class="w-full h-full object-cover block max-w-full" 
+    />
+  </div>
+</header>

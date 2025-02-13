@@ -1,0 +1,150 @@
+---
+import type { Author, Category } from './types';
+import DefaultVariant from './variants/Default.astro';
+import HeroVariant from './variants/Hero.astro';
+import PostVariant from './variants/Post.astro';
+import PostSplitVariant from './variants/PostSplit.astro';
+
+interface Props {
+  variant?: "default" | "hero" | "post" | "post-split";
+  title?: string;
+  image?: string;
+  small?: boolean;
+  description?: string;
+  info?: string;
+  date?: string;
+  author?: Author;
+  categories?: Category[];
+}
+
+const {
+  variant = "default",
+  title = "",
+  image,
+  small = false,
+  description,
+  info,
+  date,
+  author,
+  categories = [],
+} = Astro.props;
+
+// Helper (function to check if a slot has content)
+const hasSlotContent = async (slotName) => {
+  const slot = await Astro.slots.render(slotName);
+  return slot?.trim().length > 0;
+};
+
+// Get content status
+const hasIntroContent = await hasSlotContent('intro');
+const hasSubtitleContent = await hasSlotContent('subtitle');
+const hasCtaContent = await hasSlotContent('cta-content');
+
+// Content helpers
+const hasMetadata = author || date;
+const hasCategories = categories.length > 0;
+
+// Props to pass to variants
+const commonProps = {
+  title,
+  image,
+  hasIntroContent,
+  hasSubtitleContent,
+  hasCtaContent,
+  hasMetadata,
+  hasCategories,
+};
+---
+
+{variant === "default" && (
+  <DefaultVariant 
+    {...commonProps}
+    small={small}
+  >
+    <slot name="intro" slot="intro" />
+    <slot name="subtitle" slot="subtitle" />
+    <slot name="cta-content" slot="cta-content" />
+  </DefaultVariant>
+)}
+
+{variant === "hero" && (
+  <HeroVariant 
+    {...commonProps}
+    description={description}
+    info={info}
+  />
+)}
+
+{variant === "post" && (
+  <PostVariant 
+    {...commonProps}
+    author={author}
+    date={date}
+    categories={categories}
+  />
+)}
+
+{variant === "post-split" && (
+  <PostSplitVariant 
+    {...commonProps}
+    author={author}
+    date={date}
+    categories={categories}
+  />
+)}
+
+<style is:global>
+  .bg-vw {
+    background: radial-gradient(circle at 50% 85%, #00437a 0%, #001e50 100%);
+  }
+
+  .featured-image-overlay {
+    @apply absolute top-0 bottom-0 left-0 right-0 overflow-hidden w-full bg-gray-100 z-1;
+
+    &:before,
+    &:after {
+      @apply content-empty top-0 bottom-0 left-0 right-0 absolute;
+    }
+
+    &:before {
+      z-index: 5;
+      background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.95),
+        transparent 30%,
+        transparent 70%,
+        rgba(0, 0, 0, 0.95)
+      );
+      opacity: 0.5;
+    }
+
+    &:after {
+      background: radial-gradient(circle at 50% 85%, #00437a 0, #001e50 100%);
+      opacity: 0.8;
+    }
+  }
+
+  .featured-image {
+    width: 100%;
+    @apply bg-blue-900;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+      max-width: 100%;
+      display: block;
+    }
+  }
+
+  h1 {
+    b {
+      @apply font-headregular whitespace-nowrap;
+    }
+    small {
+      @apply text-6 whitespace-nowrap;
+    }
+    span {
+      @apply text-accent-light;
+    }
+  }
+</style>

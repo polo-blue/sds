@@ -37,7 +37,7 @@ export const SIDEBAR = [
   { text: "Icons", link: "/components/icons/" },
   { text: "Image", link: "/components/image/" },
   { text: "Input", link: "/components/input/" },
-  { text: "Jumbatron", link: "/components/jumbatron/" },
+  { text: "Jumbotron", link: "/components/jumbotron/" },
   { text: "Modal", link: "/components/modal/" },
   { text: "PostHeader", link: "/components/post-header/" },
   { text: "PR-Code", link: "/components/pr-code/" },

@@ -2,7 +2,7 @@
 import { changeLanguage } from "i18next";
 import { Icon } from "astro-icon/components";
 import { SITE } from "../config";
-import Jumbatron from "../components/Jumbatron.vue";
+import Jumbotron from "../components/Jumbotron.astro";
 import Layout from "../layouts/Layout.astro";
 import Headline from "../components/Headline.vue";
 import Button from "../components/Button.vue";
@@ -33,7 +33,7 @@ const navItems = [
 
 <Layout>
   <div class="bg-slate-100 min-h-screen text-center">
-    <Jumbatron class="w-full" intro={SITE.title}>
+    <Jumbotron title={SITE.title}>
       <p
         slot="subtitle"
         class="mt-3 text-base text-gray-200 sm:mt-5 text-lg md:text-xl lg:mx-0 md:mt-5"
@@ -41,7 +41,7 @@ const navItems = [
       />
 
       <Button
-        slot="cta"
+        slot="cta-content"
         href="/core/introduction/"
         title="Spoko Design System"
         primary
@@ -49,7 +49,7 @@ const navItems = [
       >
         Read More
       </Button>
-    </Jumbatron>
+    </Jumbotron>
     <nav>
       <div
         class="px-4 flex-col flex flex-wrap md:flex-nowrap gap-4 max-w-5xl mx-auto text-left mt-12 md:(px-0 flex-row)"
@@ -105,16 +105,16 @@ const navItems = [
       <Headline underline as="div" class="mx-auto text-gray-900" textSize="3xl">Examples:</Headline>
       <ul class="grid text-2xl pt-6 lg:(auto-cols-max grid-flow-col py-6) text-left">
         <li class="leading-5 me-6 mb-4 lg:mb-0">
-          <a href="https://catalog.polo.blue" class="transition ease-in-out delay-200 duration-300 text-blue-medium hover:(text-accent-light decoration-blue-medium) underline decoration-white" target="_blank"> catalog.polo.blue</a>
+          <a href="https://catalog.polo.blue" class="example-link" target="_blank"> catalog.polo.blue</a>
         </li>
         <li class="leading-5 me-6 mb-4 lg:mb-0">
-          <a href="https://polo.blue" class="transition ease-in-out delay-200 duration-300 text-blue-medium hover:(text-accent-light decoration-blue-medium) underline decoration-white" target="_blank"> polo.blue</a>
+          <a href="https://polo.blue" class="example-link" target="_blank"> polo.blue</a>
         </li>
         <li class="leading-5 me-6 mb-4 lg:mb-0">
-          <a href="https://spoko.space" class="transition ease-in-out delay-200 duration-300 text-blue-medium hover:(text-accent-light decoration-blue-medium) underline decoration-white" target="_blank"> spoko.space</a>
+          <a href="https://spoko.space" class="example-link" target="_blank"> spoko.space</a>
         </li>
         <li class="leading-5 me-6 mb-4 lg:mb-0">
-          <a href="https://sale.polo.blue/" class="transition ease-in-out delay-200 duration-300 text-blue-medium hover:(text-accent-light decoration-blue-medium) underline decoration-white" target="_blank">sale.polo.blue</a>
+          <a href="https://sale.polo.blue/" class="example-link" target="_blank">sale.polo.blue</a>
         </li>
       </ul>
      </div>
@@ -124,3 +124,8 @@ const navItems = [
   </div>
   <script is:inline></script>
 </Layout>
+<style>
+  .example-link {
+    @apply transition ease-in-out delay-200 duration-300 text-blue-medium hover:(text-accent-light decoration-blue-medium) underline decoration-white;
+  }
+</style>

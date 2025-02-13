@@ -1,0 +1,70 @@
+---
+import type { Author, Category } from '../types';
+import CategoryLink from "../../CategoryLink.astro";
+import Date from "../../Date.astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  title: string;
+  image?: string;
+  author?: Author;
+  date?: string;
+  categories?: Category[];
+  hasMetadata: boolean;
+  hasCategories: boolean;
+}
+
+const {
+  title,
+  image,
+  author,
+  date,
+  categories = [],
+  hasMetadata,
+  hasCategories,
+} = Astro.props;
+---
+
+<div class="bg-blue-900 bg-vw w-full">
+  <div class="xl:container mx-auto px-3.5 md:px-0">
+    <header class="w-full justify-center text-white z-2 mt-auto md:(grid grid-cols-2) pb-4 mb-8">
+      <div class="heading flex flex-wrap text-white relative items-center justify-center mt-auto w-full z-[2]">
+        <div class="container px-3.5 py-5 md:py-0 flex flex-wrap">
+          <h1 class="font-headlight text-3xl md:(text-4xl mb-3) xl:text-11 mt-1 order-2 line-clamp-3 pb-1 w-full"
+            set:html={title} />
+          
+          {hasCategories && (
+            <div class="order-1">
+              <CategoryLink categories={categories} />
+            </div>
+          )}
+
+          {hasMetadata && (
+            <div class="order-3 flex items-center text-gray-100">
+              {author && (
+                <span class="text-sm" title={author.firstName} data-pagefind-ignore>
+                  {author.name}
+                </span>
+              )}
+              {author && date && <span class="mx-1">-</span>}
+              {date && <Date date={date} />}
+            </div>
+          )}
+        </div>
+      </div>
+      
+      <div class="relative -mb-8 md:(mt-4 -ml-4)">
+        <div class="featured-image relative shadow-xl md:max-h-112">
+          <Image 
+            class="aspect-video border-white border-4"
+            src={image} 
+            alt={title}
+            width={768}
+            height={432}
+            loading="eager"
+          />
+        </div>
+      </div>
+    </header>
+  </div>
+</div>

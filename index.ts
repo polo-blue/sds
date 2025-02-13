@@ -8,7 +8,7 @@ export { default as FuckRussia } from './src/components/FuckRussia.vue';
 export { default as FlagPL } from './src/components/flags/FlagPL.vue';
 export { default as Badges } from './src/components/Badges.vue';
 export { default as SlimBanner } from './src/components/SlimBanner.vue';
-export { default as Jumbatron } from './src/components/Jumbatron.vue';
+export { default as Jumbotron } from './src/components/Jumbotron.astro';
 export { default as Button } from './src/components/Button.vue';
 export { default as Breadcrumbs } from './src/components/Breadcrumbs.vue';
 export { default as ProductDetailsList } from './src/components/ProductDetailsList.vue';
