@@ -73,38 +73,41 @@ import { Image } from "astro:assets";
 
 {
   variant === "hero" && (
-    <div class="bg-blue-900 bg-vw w-full">
-      <div class="xl:container mx-auto px-3.5 md:px-8 py-8 flex items-center h-56 sm:h-72 md:max-h-72 text-white relative">
-        <header class="w-full relative z-10">
-          <h1
-            class="font-headlight text-3xl sm:text-4xl md:text-5xl xl:text-6xl mt-1 line-clamp-3 leading-tight"
-            set:html={title}
-          />
-          {description && (
-            <div
-              class="mb-1 line-clamp-3 text-base sm:text-lg leading-none mt-4"
-              set:html={description}
-            />
-          )}
-          {info && (
-            <div
-              class="font-medium mb-4 line-clamp-1 text-base sm:text-lg mt-2"
-              set:html={info}
-            />
-          )}
-        </header>
-        {image && (
-          <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-transparent opacity-90 z-1" />
-            <img
-              class="absolute inset-0 w-full h-full object-cover"
-              src={image}
-              alt={title}
-            />
-          </div>
-        )}
-      </div>
+<div class="relative w-full bg-blue-900">
+  {/* Image background - now outside the container */}
+  {image && (
+    <div class="absolute inset-0 w-full h-full">
+      <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-transparent opacity-90 z-1" />
+      <img
+        class="w-full h-full object-cover"
+        src={image}
+        alt={title}
+      />
     </div>
+  )}
+  
+  {/* Content container */}
+  <div class="xl:container mx-auto px-3.5 md:px-8 py-8 h-56 sm:h-72 md:max-h-72 items-center flex">
+    <header class="relative z-10 text-white">
+      <h1
+        class="font-headlight text-3xl sm:text-4xl md:text-5xl xl:text-6xl mt-1 line-clamp-3 leading-tight"
+        set:html={title}
+      />
+      {description && (
+        <div
+          class="mb-1 line-clamp-3 text-base sm:text-lg leading-none mt-4"
+          set:html={description}
+        />
+      )}
+      {info && (
+        <div
+          class="font-medium mb-4 line-clamp-1 text-base sm:text-lg mt-2"
+          set:html={info}
+        />
+      )}
+    </header>
+  </div>
+</div>
   )
 }
 
@@ -154,7 +157,7 @@ import { Image } from "astro:assets";
           </div>
         </div>
         {image && (
-          <div class="featured-image -mb-8 shadow-xl md:(mt-4 max-h-112)">
+          <div class="featured-image -mb-8 shadow-xl md:(mt-4 max-h-112 -ml-4)">
             <Image 
               class="aspect-video border-white border-4"
               src={image} 
@@ -248,10 +251,10 @@ import { Image } from "astro:assets";
 
   h1 {
     b {
-      @apply font-headregular whitespace-pre-line;
+      @apply font-headregular whitespace-nowrap;
     }
     small {
-      @apply text-6 whitespace-pre-line;
+      @apply text-6 whitespace-nowrap;
     }
   }
 </style>
