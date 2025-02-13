@@ -154,6 +154,16 @@ Hero variant supports different background classes to match your design needs.
       description="Uses the default bg-blue-darker background"
     />
 </div>
+```js
+<div class="component-preview">
+    <Jumbotron
+      variant="hero"
+      title="<b>Blue Darker Background</b> (Default)"
+      description="Uses the default bg-blue-darker background"
+    />
+</div>
+```
+<br/>
 
 <div class="component-preview">
     <Jumbotron
@@ -163,6 +173,17 @@ Hero variant supports different background classes to match your design needs.
       backgroundClass="bg-blue-darkest"
     />
 </div>
+```js
+<div class="component-preview">
+    <Jumbotron
+      variant="hero"
+      title="<b>Blue Darkest Background</b>"
+      description="Uses blue-darkest background"
+      backgroundClass="bg-blue-darkest"
+    />
+</div>
+```
+<br/>
 
 <div class="component-preview">
     <Jumbotron
@@ -173,6 +194,18 @@ Hero variant supports different background classes to match your design needs.
     />
 </div>
 
+```js
+<div class="component-preview">
+    <Jumbotron
+      variant="hero"
+      title="<b>Accent Background</b>"
+      description="Uses accent-darker background"
+      backgroundClass="bg-accent-darker"
+    />
+</div>
+```
+<br/>
+
 <div class="component-preview">
     <Jumbotron
       variant="hero"
@@ -181,6 +214,16 @@ Hero variant supports different background classes to match your design needs.
       backgroundClass="bg-vw"
     />
 </div>
+```js
+<div class="component-preview">
+    <Jumbotron
+      variant="hero"
+      title="<b>Gradient Background</b>"
+      description="Uses custom gradient background"
+      backgroundClass="bg-vw"
+    />
+</div>
+
 
 ## Post Variant (Full Overlay)
 Designed for blog posts and articles, featuring a full-width image overlay with metadata support for author, date, and categories.
@@ -191,8 +234,8 @@ Designed for blog posts and articles, featuring a full-width image overlay with 
       title="Blog Post Title"
       image="https://img.freepik.com/free-photo/nature-beauty-tropical-rainforest-adventure-tranquility-freshness-generated-by-artificial-intellingence_25030-62539.jpg?size=1920&ext=jpg"
       categories={[
-        { name: 'Technology', uri: '/tech' },
-        { name: 'Design', uri: '/design' }
+        { name: 'Technology', uri: '#' },
+        { name: 'Design', uri: '#' }
       ]}
       author={{
         firstName: "John",
@@ -208,8 +251,8 @@ Designed for blog posts and articles, featuring a full-width image overlay with 
   title="Blog Post Title"
   image="https://img.freepik.com/free-photo/nature-beauty-tropical-rainforest-adventure-tranquility-freshness-generated-by-artificial-intellingence_25030-62539.jpg?size=1920&ext=jpg"
   categories={[
-    { name: 'Technology', uri: '/tech' },
-    { name: 'Design', uri: '/design' }
+    { name: 'Technology', uri: '#' },
+    { name: 'Design', uri: '#' }
   ]}
   author={{
     firstName: "John",
@@ -228,8 +271,8 @@ A two-column layout variant for posts where image and content need equal emphasi
       title="<b>Formatted</b> Blog Post Title <small>Lorem Ipsum</small>"
       image="http://localhost:1234/_image?href=https%3A%2F%2Fimg.freepik.com%2Ffree-photo%2Fnature-beauty-tropical-rainforest-adventure-tranquility-freshness-generated-by-artificial-intellingence_25030-62539.jpg%3Fsize%3D960%26ext%3Djpg&w=1200&h=675&f=webp"
       categories={[
-        { name: 'Technology', uri: '/tech' },
-        { name: 'Design', uri: '/design' }
+        { name: 'Technology', uri: '#' },
+        { name: 'Design', uri: '#' }
       ]}
       author={{
         firstName: "John",
@@ -245,8 +288,8 @@ A two-column layout variant for posts where image and content need equal emphasi
   title="<b>Formatted</b> Blog Post Title <small>Lorem Ipsum</small>"
   image="path/to/image.jpg"
   categories={[
-    { name: 'Technology', uri: '/tech' },
-    { name: 'Design', uri: '/design' }
+    { name: 'Technology', uri: '#' },
+    { name: 'Design', uri: '#' }
   ]}
   author={{
     firstName: "John",
