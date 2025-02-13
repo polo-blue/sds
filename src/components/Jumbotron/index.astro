@@ -15,6 +15,7 @@ interface Props {
   date?: string;
   author?: Author;
   categories?: Category[];
+  backgroundClass?: string;
 }
 
 const {
@@ -27,6 +28,7 @@ const {
   date,
   author,
   categories = [],
+  backgroundClass = 'bg-blue-darker'
 } = Astro.props;
 
 // Helper (function to check if a slot has content)
@@ -53,6 +55,7 @@ const commonProps = {
   hasCtaContent,
   hasMetadata,
   hasCategories,
+  backgroundClass,
 };
 ---
 

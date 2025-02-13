@@ -5,7 +5,7 @@ import Date from "../../Date.astro";
 import { Image } from "astro:assets";
 
 interface Props {
-  title: string;
+  title?: string;
   image?: string;
   author?: Author;
   date?: string;
@@ -15,7 +15,7 @@ interface Props {
 }
 
 const {
-  title,
+  title = "",
   image,
   author,
   date,
@@ -25,22 +25,21 @@ const {
 } = Astro.props;
 ---
 
-<div class="bg-blue-900 bg-vw w-full">
-  <div class="xl:container mx-auto px-3.5 md:px-0">
-    <header class="w-full justify-center text-white z-2 mt-auto md:(grid grid-cols-2) pb-4 mb-8">
+<div class="jumbotron-split-wrapper bg-blue-900 bg-vw">
+  <div class="jumbotron-split-container">
+    <header class="jumbotron-split-header">
       <div class="heading flex flex-wrap text-white relative items-center justify-center mt-auto w-full z-[2]">
-        <div class="container px-3.5 py-5 md:py-0 flex flex-wrap">
-          <h1 class="font-headlight text-3xl md:(text-4xl mb-3) xl:text-11 mt-1 order-2 line-clamp-3 pb-1 w-full"
-            set:html={title} />
+        <div class="jumbotron-split-content">
+          <h1 class="jumbotron-split-title" set:html={title} />
           
           {hasCategories && (
-            <div class="order-1">
+            <div class="jumbotron-categories">
               <CategoryLink categories={categories} />
             </div>
           )}
 
           {hasMetadata && (
-            <div class="order-3 flex items-center text-gray-100">
+            <div class="jumbotron-split-meta">
               {author && (
                 <span class="text-sm" title={author.firstName} data-pagefind-ignore>
                   {author.name}
@@ -53,18 +52,20 @@ const {
         </div>
       </div>
       
-      <div class="relative -mb-8 md:(mt-4 -ml-4)">
-        <div class="featured-image relative shadow-xl md:max-h-112">
-          <Image 
-            class="aspect-video border-white border-4"
-            src={image} 
-            alt={title}
-            width={768}
-            height={432}
-            loading="eager"
-          />
+      {image && (
+        <div class="jumbotron-split-image-wrapper">
+          <div class="jumbotron-split-image">
+            <Image 
+              class="jumbotron-split-img"
+              src={image} 
+              alt={title}
+              width={768}
+              height={432}
+              loading="eager"
+            />
+          </div>
         </div>
-      </div>
+      )}
     </header>
   </div>
 </div>

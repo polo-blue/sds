@@ -14,6 +14,8 @@ export interface Props {
   variant?: "default" | "hero" | "post" | "post-split";
   title?: string; 
   image?: string;
+  backgroundClass?: string;
+
 
   // Default & Hero variant props
   small?: boolean;

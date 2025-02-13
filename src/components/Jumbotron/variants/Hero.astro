@@ -5,6 +5,7 @@ interface Props {
   image?: string;
   description?: string;
   info?: string;
+  backgroundClass?: string;
 }
 
 const {
@@ -12,10 +13,13 @@ const {
   image,
   description,
   info,
+  backgroundClass
 } = Astro.props;
+
+console.log('Received backgroundClass:', backgroundClass); // debug
 ---
 
-<div class="relative w-full bg-blue-900">
+<div class={`relative w-full ${backgroundClass}`}>
   {image && (
     <div class="absolute inset-0 w-full h-full">
       <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-transparent opacity-90 z-1" />

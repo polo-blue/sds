@@ -7,11 +7,35 @@ import Button from '../../components/Button.vue'
 
 # Jumbotron
 
-A Jumbotron indicates a big box for calling extra attention to some special content or information.
+A Jumbotron indicates a big box for calling extra attention to some special content or information. It provides various layouts through different variants to suit your content presentation needs.
 
-Find the code for this page in the `src/pages/components/Jumbotron.mdx` file.
+## Table of Contents
+- [Best Practices](#best-practices)
+- [Responsive Behavior](#responsive-behavior)
+- [Variants](#variants)
+  - [Default Variant](#default-variant-classic)
+  - [Small Variant](#small-variant)
+  - [Hero Variant](#hero-variant)
+  - [Post Variant](#post-variant-full-overlay)
+  - [Post Split Variant](#post-split-variant)
+- [Component API](#component-api)
+- [Accessibility](#accessibility)
+
+## Best Practices
+- Use the `default` variant for main content sections and general announcements
+- Use the `hero` variant for page headers with background images and important messaging
+- Use the `post` variant for blog posts and articles with full-width image overlays
+- Use the `post-split` variant when you need to display image alongside content
+- Consider using `small` prop for less important or secondary sections
+
+## Responsive Behavior
+The component adapts to different screen sizes:
+- On mobile: Stacks content vertically, adjusts font sizes and padding
+- On tablet: Optimizes layout and spacing
+- On desktop: Full layout with optimal content width and spacing
 
 ## Default Variant (Classic)
+The default variant is ideal for primary content sections. It supports custom intro, subtitle, and CTA content with centered layout.
 
 <div class="component-preview !block">
     <Jumbotron 
@@ -48,6 +72,7 @@ Find the code for this page in the `src/pages/components/Jumbotron.mdx` file.
 ```
 
 ## Small Variant
+A more compact version of the default variant, useful for secondary content sections or when vertical space is limited.
 
 <div class="component-preview">
     <Jumbotron 
@@ -76,6 +101,7 @@ Find the code for this page in the `src/pages/components/Jumbotron.mdx` file.
 ```
 
 ## Hero Variant
+Perfect for page headers and key sections that need visual impact. Features a background image with gradient overlay and optional description and info text.
 
 <div class="component-preview">
     <Jumbotron
@@ -97,7 +123,67 @@ Find the code for this page in the `src/pages/components/Jumbotron.mdx` file.
 />
 ```
 
+### Hero Variant without image
+When used without an image, the hero variant provides a clean, simple header with a solid background color.
+
+<div class="component-preview">
+    <Jumbotron
+      variant="hero"
+      title="<b>Simple Hero</b> Title"
+      description="A clean and simple hero section without background image."
+      info="Perfect for text-focused content sections"
+    />
+</div>
+
+```js
+<Jumbotron
+  variant="hero"
+  title="<b>Simple Hero</b> Title"
+  description="A clean and simple hero section without background image."
+  info="Perfect for text-focused content sections"
+/>
+```
+
+### Hero Variant with Different Backgrounds
+Hero variant supports different background classes to match your design needs.
+
+<div class="component-preview">
+    <Jumbotron
+      variant="hero"
+      title="<b>Blue Darker Background</b> (Default)"
+      description="Uses the default bg-blue-darker background"
+    />
+</div>
+
+<div class="component-preview">
+    <Jumbotron
+      variant="hero"
+      title="<b>Blue Darkest Background</b>"
+      description="Uses blue-darkest background"
+      backgroundClass="bg-blue-darkest"
+    />
+</div>
+
+<div class="component-preview">
+    <Jumbotron
+      variant="hero"
+      title="<b>Accent Background</b>"
+      description="Uses accent-darker background"
+      backgroundClass="bg-accent-darker"
+    />
+</div>
+
+<div class="component-preview">
+    <Jumbotron
+      variant="hero"
+      title="<b>Gradient Background</b>"
+      description="Uses custom gradient background"
+      backgroundClass="bg-vw"
+    />
+</div>
+
 ## Post Variant (Full Overlay)
+Designed for blog posts and articles, featuring a full-width image overlay with metadata support for author, date, and categories.
 
 <div class="component-preview">
     <Jumbotron
@@ -134,6 +220,7 @@ Find the code for this page in the `src/pages/components/Jumbotron.mdx` file.
 ```
 
 ## Post Split Variant
+A two-column layout variant for posts where image and content need equal emphasis. Great for featured articles or important announcements.
 
 <div class="component-preview pb-0 !block">
     <Jumbotron
@@ -156,7 +243,7 @@ Find the code for this page in the `src/pages/components/Jumbotron.mdx` file.
 <Jumbotron
   variant="post-split"
   title="<b>Formatted</b> Blog Post Title <small>Lorem Ipsum</small>"
-  image="http://localhost:1234/_image?href=https%3A%2F%2Fimg.freepik.com%2Ffree-photo%2Fnature-beauty-tropical-rainforest-adventure-tranquility-freshness-generated-by-artificial-intellingence_25030-62539.jpg%3Fsize%3D960%26ext%3Djpg&w=1200&h=675&f=webp"
+  image="path/to/image.jpg"
   categories={[
     { name: 'Technology', uri: '/tech' },
     { name: 'Design', uri: '/design' }
@@ -166,14 +253,15 @@ Find the code for this page in the `src/pages/components/Jumbotron.mdx` file.
     name: "John Doe"
   }}
   date="2024-02-12"
-/>Nunc posuere massa eget turpis laoreet ultrices eget vel massa.
+/>
 ```
 
 ## Custom Intro Slot Example
+Shows how to fully customize the header section using the intro slot. Useful for complex layouts or custom styling.
 
 <div class="component-preview">
     <Jumbotron variant="default" small>
-        <h2 slot="intro" class="text-3xl text-white sm:(text-3xl pt-0) md:text-4xl lg:text-5xl font-light font-headbold">
+        <h2 slot="intro" class="text-3xl text-white sm:(text-3xl pt-0) md:text-4xl lg:text-5xl">
           Lorem ipsum dolor sit amet, <span class="text-accent-light">consectetur</span> adipiscing elit.
         </h2>
         <p slot="subtitle"
@@ -184,7 +272,7 @@ Find the code for this page in the `src/pages/components/Jumbotron.mdx` file.
 
 ```js
 <Jumbotron variant="default" small>
-    <h2 slot="intro" class="text-3xl text-white sm:(text-3xl pt-0) md:text-4xl lg:text-5xl font-light font-headbold">
+    <h2 slot="intro" class="text-3xl text-white sm:(text-3xl pt-0) md:text-4xl lg:text-5xl">
       Lorem ipsum dolor sit amet, <span class="text-accent-light">consectetur</span> adipiscing elit.
     </h2>
     <p slot="subtitle"
@@ -195,29 +283,35 @@ Find the code for this page in the `src/pages/components/Jumbotron.mdx` file.
 </Jumbotron>
 ```
 
-## Props Reference
+## Component API
 
 ### Common Props
-- `variant`: 'default' | 'hero' | 'post' | 'post-split' (default: 'default')
-- `title`: string
-- `image`: string (optional)
+- `variant`: Layout variant ('default' | 'hero' | 'post' | 'post-split')
+  - default: 'default'
+- `title`: Main heading text. Supports HTML markup for styling.
+- `image`: Image URL (required for hero, post and post-split variants)
 
 ### Default & Hero Props
-- `small`: boolean (optional)
-- `description`: string (optional)
-- `info`: string (optional)
+- `small`: Reduces vertical padding (useful for secondary content)
+- `description`: Secondary text below title (hero variant only)
+- `info`: Additional information text (hero variant only)
 
 ### Post Variants Props
-- `date`: string
-- `author`: Object with properties:
-  - `firstName`: string
-  - `name`: string
-- `categories`: Array of objects with properties:
-  - `name`: string
-  - `uri`: string
+- `date`: Publication date string
+- `author`: Author information object
+  - `firstName`: Author's first name (used in title attribute)
+  - `name`: Full author name (displayed)
+- `categories`: Array of category objects for post categorization
+  - `name`: Category display name
+  - `uri`: Category link URL
 
 ### Slots
-- `intro`: Custom intro content
-- `subtitle`: Subtitle content
-- `cta`: CTA wrapper (default variant only)
-- `cta-content`: CTA content (default variant only)
+- `intro`: Replaces the default title with custom content. Useful for complex headings or custom markup.
+- `subtitle`: Additional content below the title. Supports markdown and HTML.
+- `cta-content`: Call to action content (buttons, links etc.) - wrapped in centered container.
+
+## Accessibility
+- Use semantic HTML markup in slots
+- Ensure proper contrast for text over background images
+- Provide meaningful alt text for images
+- Title text supports HTML markup for better semantics and styling

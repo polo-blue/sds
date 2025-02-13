@@ -1,10 +1,11 @@
 ---
+// variants/Post.astro
 import type { Author, Category } from '../types';
 import CategoryLink from "../../CategoryLink.astro";
 import Date from "../../Date.astro";
 
 interface Props {
-  title: string;
+  title?: string;
   image?: string;
   author?: Author;
   date?: string;
@@ -14,7 +15,7 @@ interface Props {
 }
 
 const {
-  title,
+  title = "",
   image,
   author,
   date,
@@ -24,7 +25,7 @@ const {
 } = Astro.props;
 ---
 
-<header class="post-header pt-11 w-full justify-center text-white z-2 bg-blue-darkest relative flex items-center min-h-[50vh]">
+<header class="post-header pt-11 w-full justify-center text-white z-2 bg-blue-darkest relative">
   <div class="heading text-white relative flex items-center justify-center mt-auto w-full z-[2]">
     <div class="w-full sm:max-w-[640px] md:max-w-3xl lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[1536px] px-4 py-5 flex flex-col flex-wrap">
       <h1 class="font-headlight text-2xl mb-1 sm:text-3xl md:(text-4xl mb-3) xl:text-6xl mt-1 order-2 line-clamp-3 pb-1">

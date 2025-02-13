@@ -19,25 +19,21 @@ const {
 
 <header
   class:list={[
-    "relative flow content-grid bg-vw mx-auto my-auto py-8 lg:w-full text-center",
-    small
-      ? "md:min-h-xs sm:py-12 md:py-14 lg:py-16 xl:py-20"
-      : "md:min-h-md sm:py-16 md:py-20 lg:py-28 xl:py-32"
+    "flow content-grid", // globalne klasy
+    "jumbotron-header-base bg-vw", // klasy bazowe i tło
+    small ? "jumbotron-container-small" : "jumbotron-container-large" // wariant rozmiaru
   ]}
 >
   {hasIntroContent ? (
     <slot name="intro" />
   ) : (
-    <h1
-      class="text-3xl headline-light text-white sm:(text-4xl pt-0) md:text-5xl lg:text-6xl"
-      set:html={title}
-    />
+    <h1 class="jumbotron-title-default" set:html={title} />
   )}
   
   {hasSubtitleContent && <slot name="subtitle" />}
   
   {hasCtaContent && (
-    <div class="mt-5 sm:(mt-8 flex justify-center)">
+    <div class="jumbotron-cta-wrapper">
       <slot name="cta-content" />
     </div>
   )}
