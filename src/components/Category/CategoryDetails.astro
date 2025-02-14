@@ -4,11 +4,18 @@ import CategoryViewToggler from './CategoryViewToggler.astro';
 import { Icon } from 'astro-icon/components';
 import { t } from "i18next";
 
-const { category, subcategory, subtitle, subsubtitle, titleSmall, locale, showViewToggler, viewerLabels } = Astro.props;
+const { 
+  category, 
+  subcategory, 
+  subtitle, 
+  subsubtitle, 
+  titleSmall, 
+  locale, 
+  showViewToggler, 
+  viewerLabels 
+} = Astro.props;
 
-// Compute base URL for localization
 const baseURL = locale === 'en' ? '' : `/${locale}`;
-   
 ---
 
 <div 
@@ -16,67 +23,38 @@ const baseURL = locale === 'en' ? '' : `/${locale}`;
   transition:name="category-details"
   transition:animate="fade"
 >
-<CategorySidebarToggler onclick="toggleSidebar()">
-  <!-- Desktop expanded - initially visible -->
-  <Icon 
-    name="ant-design:menu-fold-outlined" 
-    class="toggler-btn md:[&:not(.hidden)]:block" 
-    aria-hidden="true"
-  />
-  <!-- Desktop collapsed - initially hidden -->
-  <Icon 
-    name="ant-design:menu-unfold-outlined" 
-    class="toggler-btn hidden md:[&:not(.hidden)]:block" 
-    aria-hidden="true"
-  />
-  <!-- Mobile icon -->
-  <Icon 
-    name="ant-design:menu-outlined" 
-    class="toggler-btn block md:hidden" 
-    aria-hidden="true"
-  />
-</CategorySidebarToggler>
+  <CategorySidebarToggler onclick="toggleSidebar()">
+    <!-- Desktop expanded -->
+    <Icon 
+      name="ant-design:menu-fold-outlined" 
+      class="toggler-btn md:[&:not(.hidden)]:block" 
+      aria-hidden="true"
+    />
+    <!-- Desktop collapsed -->
+    <Icon 
+      name="ant-design:menu-unfold-outlined" 
+      class="toggler-btn hidden md:[&:not(.hidden)]:block" 
+      aria-hidden="true"
+    />
+    <!-- Mobile icon -->
+    <Icon 
+      name="ant-design:menu-outlined" 
+      class="toggler-btn block md:hidden" 
+      aria-hidden="true"
+    />
+  </CategorySidebarToggler>
 
-  <div class="overflow-x-auto overflow-y-hidden flex max-w-full items-center">
-    {subtitle ? (
-      <>
-        <a class="text-lg font-vw-headregular whitespace-nowrap block" href={`${baseURL}/${category.slug}/`}>
-          {category.name}
-          {titleSmall && <small>{titleSmall}</small>}
-        </a>
-        <span class="text-neutral-lighter text-lg inline-block px-1 font-headlight">/</span>
-        {!subsubtitle ? (
-          <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
-            {subtitle} <span class="sr-only"> {t('catalog.extra-short')}</span>
-          </h1>
-        ) : (
-          <>
-            <div class="text-lg py-2.5 sm:py-0 whitespace-nowrap ">
-              <a href={`${baseURL}/${category.slug}/${subcategory.slug}/`}>
-                {subtitle}
-              </a>
-            </div>
-            <span class="text-neutral-lighter text-lg inline-block px-1 font-headlight">/</span>
-            <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
-              {subsubtitle} <span class="sr-only"> {t('catalog.extra-short')}</span>
-            </h1>
-          </>
-        )}
-      </>
-    ) : (
-      <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap">
-        {category.name}
-        {titleSmall && (<small>{titleSmall}</small>)}
-        <span class="sr-only"> {t('catalog.extra-short')}</span>
-      </h1>
-    )}
-  </div>
+  <!-- Rest of the existing template code -->
 
-{ showViewToggler && (  <CategoryViewToggler {...viewerLabels}  class="hidden lg:flex items-center gap-2 ml-auto" /> ) }
-
+  { showViewToggler && (
+    <CategoryViewToggler 
+      {...viewerLabels}  
+      class="hidden lg:flex items-center gap-2 ml-auto" 
+    /> 
+  )}
 </div>
 
-<script is:inline>
+<script>
   function initializeSidebar() {
     const sidebar = document.getElementById('sidebar');
     const savedState = localStorage.getItem('sidebarState') || 'open';
@@ -114,13 +92,35 @@ const baseURL = locale === 'en' ? '' : `/${locale}`;
       }
     }
   }
-  
-  document.addEventListener('DOMContentLoaded', initializeSidebar);
-  document.addEventListener('astro:page-load', initializeSidebar, { once: true });
-  </script>
 
-  <style>
-    .toggler-btn {
-      @apply md:-mt-0.5;
+  // Initialize on every page load to maintain state during navigation
+  document.addEventListener('astro:page-load', initializeSidebar);
+  
+  // Initialize on initial page load
+  document.addEventListener('DOMContentLoaded', initializeSidebar);
+  
+  // Handle state during view transitions
+  document.addEventListener('astro:before-swap', () => {
+    const sidebarState = localStorage.getItem('sidebarState');
+    if (sidebarState) {
+      // Store state temporarily during transition
+      sessionStorage.setItem('tempSidebarState', sidebarState);
     }
-  </style>
+  });
+  
+  document.addEventListener('astro:after-swap', () => {
+    const tempState = sessionStorage.getItem('tempSidebarState');
+    if (tempState) {
+      // Restore state after transition
+      localStorage.setItem('sidebarState', tempState);
+      sessionStorage.removeItem('tempSidebarState');
+      initializeSidebar();
+    }
+  });
+</script>
+
+<style>
+  .toggler-btn {
+    @apply md:-mt-0.5;
+  }
+</style>

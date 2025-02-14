@@ -42,35 +42,41 @@ const {
   </div>
 </div>
 
-
-<script >
-  function handleViewToggle(e) {
-    const button = e.currentTarget;
-    if (!(button instanceof HTMLElement)) return;
+<script>
+  function initializeView() {
+    const savedView = localStorage.getItem('categoryView') || 'list';
+    updateUI(savedView);
     
-    const view = button.dataset.view;
+    // Clean up existing listeners to prevent duplicates
+    document.querySelectorAll('.view-toggle').forEach(btn => {
+      btn.removeEventListener('click', handleViewToggle);
+      btn.addEventListener('click', handleViewToggle);
+    });
+  }
+
+  function handleViewToggle(e) {
+    if (!(e.currentTarget instanceof HTMLElement)) return;
+    const view = e.currentTarget.dataset.view;
     if (!view) return;
-  
+
     localStorage.setItem('categoryView', view);
     updateUI(view);
   }
-  
+
   function updateUI(view) {
-    document.querySelectorAll('.view-toggle')
-      .forEach(btn => btn.classList.toggle('bg-neutral-lightest', 
-        btn.dataset.view === view));
-  
+    // Update toggle buttons
+    document.querySelectorAll('.view-toggle').forEach(btn => {
+      btn.classList.toggle('bg-neutral-lightest', btn.dataset.view === view);
+    });
+
+    // Update products container
     const productsContainer = document.querySelector('.products-container');
     if (productsContainer) {
       productsContainer.classList.remove('view-grid', 'view-list');
       productsContainer.classList.add(`view-${view}`);
     }
   }
-  
-  document.addEventListener('astro:page-load', () => {
-    
-    updateUI(localStorage.getItem('categoryView') || 'list');
-    document.querySelectorAll('.view-toggle')
-      .forEach(btn => btn.addEventListener('click', handleViewToggle));
-  }, { once: true });
-  </script>
+
+  // Initialize on page load and view transitions
+  document.addEventListener('astro:page-load', initializeView);
+</script>
