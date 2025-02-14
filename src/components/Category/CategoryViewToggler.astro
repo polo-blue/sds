@@ -25,6 +25,7 @@ const {
   <div class="flex border rounded">
     <button 
       data-view="list"
+      data-view-toggle
       class="view-toggle flex items-center gap-1 px-3 py-0.5 transition-colors"
       aria-label={listAriaLabel}
     >
@@ -33,6 +34,7 @@ const {
     </button>
     <button 
       data-view="grid"
+      data-view-toggle
       class="view-toggle flex items-center gap-1 px-3 py-0.5 transition-colors"
       aria-label={gridAriaLabel}
     >
@@ -48,28 +50,35 @@ const {
     updateUI(savedView);
     
     // Clean up existing listeners to prevent duplicates
-    document.querySelectorAll('.view-toggle').forEach(btn => {
+    document.querySelectorAll('[data-view-toggle]').forEach(btn => {
       btn.removeEventListener('click', handleViewToggle);
       btn.addEventListener('click', handleViewToggle);
     });
   }
 
-  function handleViewToggle(e) {
-    if (!(e.currentTarget instanceof HTMLElement)) return;
-    const view = e.currentTarget.dataset.view;
-    if (!view) return;
-
+  function handleViewToggle(e: Event) {
+    const button = e.currentTarget as HTMLElement;
+    if (!button?.dataset.view) return;
+    
+    const view = button.dataset.view;
     localStorage.setItem('categoryView', view);
     updateUI(view);
+
+    // Push to dataLayer directly
+    if (window.dataLayer) {
+      window.dataLayer.push({
+        event: 'view_style_change',
+        viewType: view,
+        category: window.location.pathname
+      });
+    }
   }
 
-  function updateUI(view) {
-    // Update toggle buttons
+  function updateUI(view: string) {
     document.querySelectorAll('.view-toggle').forEach(btn => {
       btn.classList.toggle('bg-neutral-lightest', btn.dataset.view === view);
     });
 
-    // Update products container
     const productsContainer = document.querySelector('.products-container');
     if (productsContainer) {
       productsContainer.classList.remove('view-grid', 'view-list');
@@ -77,6 +86,5 @@ const {
     }
   }
 
-  // Initialize on page load and view transitions
   document.addEventListener('astro:page-load', initializeView);
 </script>

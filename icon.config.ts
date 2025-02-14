@@ -258,7 +258,7 @@ export const iconConfig: IconConfig = {
   }
 };
 
-// Pomocnicze funkcje
+// Helpers
 export function isIconIncluded(collection: IconCollectionName, iconName: string): boolean {
   return iconConfig.include[collection]?.includes(iconName) ?? false;
 }

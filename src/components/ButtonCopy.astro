@@ -14,7 +14,7 @@ const {
   texts 
 } = Astro.props;
 
-// Move SVG definition to a constant to avoid recomputing
+// SVG icon as data URL for mask
 const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
   `<svg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'><path fill='currentColor' d='M184 66H40a6 6 0 0 0-6 6v144a6 6 0 0 0 6 6h144a6 6 0 0 0 6-6V72a6 6 0 0 0-6-6m-6 144H46V78h132Zm44-170v144a6 6 0 0 1-12 0V46H72a6 6 0 0 1 0-12h144a6 6 0 0 1 6 6'/></svg>`
 )}")`;
@@ -24,6 +24,7 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
   aria-label={texts.copy} 
   class="btn-copy has-tooltip" 
   data-copy-text={productNumber}
+  data-category={Astro.url.pathname.split('/')[1] || ''}
 >
   <span 
     class:list={["tooltip rounded-full btn-copy-text", tooltipClasses]}
@@ -35,7 +36,8 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
 
 <script>
   class ClipboardButton {
-    private static COPY_TIMEOUT = 2000;
+    private static readonly COPY_TIMEOUT = 2000;
+    private static readonly ANALYTICS_EVENT = 'product_code_copy';
 
     constructor(private button: HTMLButtonElement) {
       this.init();
@@ -53,6 +55,10 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
       return this.button.dataset.copyText || '';
     }
 
+    private get category(): string {
+      return this.button.dataset.category || '';
+    }
+
     private get originalText(): string {
       return this.tooltip.dataset.text || 'Copy';
     }
@@ -65,9 +71,22 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
       try {
         await this.copyToClipboard();
         this.updateTooltip();
+        this.trackCopy();
       } catch (err) {
         console.error('Failed to copy text:', err);
       }
+    }
+
+    private trackCopy(): void {
+      if (!window.dataLayer) return;
+
+      window.dataLayer.push({
+        event: ClipboardButton.ANALYTICS_EVENT,
+        productCode: this.copyText,
+        category: this.category,
+        pageUrl: window.location.pathname,
+        timestamp: new Date().toISOString()
+      });
     }
 
     private async copyToClipboard(): Promise<void> {
@@ -104,7 +123,7 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
     }
   }
 
-  // Use a single event listener with event delegation
+  // Initialize copy buttons on page load
   document.addEventListener('astro:page-load', () => {
     document.querySelectorAll('.btn-copy').forEach(button => {
       if (button instanceof HTMLButtonElement) {
