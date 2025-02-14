@@ -44,13 +44,46 @@ const baseURL = locale === 'en' ? '' : `/${locale}`;
     />
   </CategorySidebarToggler>
 
-  <!-- Rest of the existing template code -->
+  <div class="overflow-x-auto overflow-y-hidden flex max-w-full items-center">
+    {subtitle ? (
+      <>
+        <a class="text-lg font-vw-headregular whitespace-nowrap block" href={`${baseURL}/${category.slug}/`}>
+          {category.name}
+          {titleSmall && <small>{titleSmall}</small>}
+        </a>
+        <span class="text-neutral-lighter text-lg inline-block px-1 font-headlight">/</span>
+        {!subsubtitle ? (
+          <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
+            {subtitle} <span class="sr-only"> {t('catalog.extra-short')}</span>
+          </h1>
+        ) : (
+          <>
+            <div class="text-lg py-2.5 sm:py-0 whitespace-nowrap">
+              <a href={`${baseURL}/${category.slug}/${subcategory.slug}/`}>
+                {subtitle}
+              </a>
+            </div>
+            <span class="text-neutral-lighter text-lg inline-block px-1 font-headlight">/</span>
+            <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
+              {subsubtitle} <span class="sr-only"> {t('catalog.extra-short')}</span>
+            </h1>
+          </>
+        )}
+      </>
+    ) : (
+      <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap">
+        {category.name}
+        {titleSmall && <small>{titleSmall}</small>}
+        <span class="sr-only"> {t('catalog.extra-short')}</span>
+      </h1>
+    )}
+  </div>
 
-  { showViewToggler && (
+  {showViewToggler && (
     <CategoryViewToggler 
       {...viewerLabels}  
       class="hidden lg:flex items-center gap-2 ml-auto" 
-    /> 
+    />
   )}
 </div>
 
@@ -61,19 +94,20 @@ const baseURL = locale === 'en' ? '' : `/${locale}`;
     
     if (sidebar) {
       sidebar.classList.toggle('collapsed', savedState === 'closed');
-      
-      const togglers = document.querySelectorAll('.toggler-btn');
-      if (togglers.length >= 2) {
-        const isCollapsed = savedState === 'closed';
-        togglers[0].classList.toggle('hidden', isCollapsed);
-        togglers[1].classList.toggle('hidden', !isCollapsed);
-      }
+      updateTogglers(savedState === 'closed');
+    }
+  }
+
+  function updateTogglers(isCollapsed) {
+    const togglers = document.querySelectorAll('.toggler-btn');
+    if (togglers.length >= 2) {
+      togglers[0].classList.toggle('hidden', isCollapsed);
+      togglers[1].classList.toggle('hidden', !isCollapsed);
     }
   }
   
   function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
-    const togglers = document.querySelectorAll('.toggler-btn');
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
   
     if (sidebar) {
@@ -84,26 +118,18 @@ const baseURL = locale === 'en' ? '' : `/${locale}`;
         const isCollapsed = sidebar.classList.toggle('collapsed');
         document.body.classList.remove('overflow-hidden');
         localStorage.setItem('sidebarState', isCollapsed ? 'closed' : 'open');
-        
-        if (togglers.length >= 2) {
-          togglers[0].classList.toggle('hidden', isCollapsed);
-          togglers[1].classList.toggle('hidden', !isCollapsed);
-        }
+        updateTogglers(isCollapsed);
       }
     }
   }
 
-  // Initialize on every page load to maintain state during navigation
+  // Initialize on astro page load
   document.addEventListener('astro:page-load', initializeSidebar);
   
-  // Initialize on initial page load
-  document.addEventListener('DOMContentLoaded', initializeSidebar);
-  
-  // Handle state during view transitions
+  // Preserve state during view transitions
   document.addEventListener('astro:before-swap', () => {
     const sidebarState = localStorage.getItem('sidebarState');
     if (sidebarState) {
-      // Store state temporarily during transition
       sessionStorage.setItem('tempSidebarState', sidebarState);
     }
   });
@@ -111,7 +137,6 @@ const baseURL = locale === 'en' ? '' : `/${locale}`;
   document.addEventListener('astro:after-swap', () => {
     const tempState = sessionStorage.getItem('tempSidebarState');
     if (tempState) {
-      // Restore state after transition
       localStorage.setItem('sidebarState', tempState);
       sessionStorage.removeItem('tempSidebarState');
       initializeSidebar();

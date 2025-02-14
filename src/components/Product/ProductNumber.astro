@@ -1,5 +1,5 @@
 ---
-import ButtonCopy from '../ButtonCopy.vue';
+import ButtonCopy from '../ButtonCopy.astro';
 import useFormatProductNumber from '../../utils/product/useFormatProductNumber';
 
 const {
@@ -41,7 +41,6 @@ const FormattedWrapper = isPdp ? 'h3' : 'div';
           productNumber={productNumber}
           texts={buttonTexts}
           tooltipClasses=""
-          client:only="vue"
         />
       )}
     </div>

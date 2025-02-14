@@ -1,0 +1,165 @@
+---
+interface Props {
+  productNumber: string;
+  tooltipClasses?: string;
+  texts: {
+    copy: string;
+    copied: string;
+  };
+}
+
+const { 
+  productNumber,
+  tooltipClasses = '',
+  texts 
+} = Astro.props;
+
+// Move SVG definition to a constant to avoid recomputing
+const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
+  `<svg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'><path fill='currentColor' d='M184 66H40a6 6 0 0 0-6 6v144a6 6 0 0 0 6 6h144a6 6 0 0 0 6-6V72a6 6 0 0 0-6-6m-6 144H46V78h132Zm44-170v144a6 6 0 0 1-12 0V46H72a6 6 0 0 1 0-12h144a6 6 0 0 1 6 6'/></svg>`
+)}")`;
+---
+
+<button 
+  aria-label={texts.copy} 
+  class="btn-copy has-tooltip" 
+  data-copy-text={productNumber}
+>
+  <span 
+    class:list={["tooltip rounded-full btn-copy-text", tooltipClasses]}
+    data-text={texts.copy}
+    data-copied-text={texts.copied}
+  />
+  <span class="copy-icon" role="img" aria-hidden="true" />
+</button>
+
+<script>
+  class ClipboardButton {
+    private static COPY_TIMEOUT = 2000;
+
+    constructor(private button: HTMLButtonElement) {
+      this.init();
+    }
+
+    private init(): void {
+      this.button.addEventListener('click', () => this.handleCopy());
+    }
+
+    private get tooltip(): HTMLSpanElement {
+      return this.button.querySelector('.tooltip') as HTMLSpanElement;
+    }
+
+    private get copyText(): string {
+      return this.button.dataset.copyText || '';
+    }
+
+    private get originalText(): string {
+      return this.tooltip.dataset.text || 'Copy';
+    }
+
+    private get copiedText(): string {
+      return this.tooltip.dataset.copiedText || 'Copied';
+    }
+
+    private async handleCopy(): Promise<void> {
+      try {
+        await this.copyToClipboard();
+        this.updateTooltip();
+      } catch (err) {
+        console.error('Failed to copy text:', err);
+      }
+    }
+
+    private async copyToClipboard(): Promise<void> {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(this.copyText);
+      } else {
+        this.fallbackCopy();
+      }
+    }
+
+    private updateTooltip(): void {
+      this.tooltip.dataset.text = this.copiedText;
+      setTimeout(() => {
+        this.tooltip.dataset.text = this.originalText;
+      }, ClipboardButton.COPY_TIMEOUT);
+    }
+
+    private fallbackCopy(): void {
+      const textArea = document.createElement('textarea');
+      textArea.value = this.copyText;
+      textArea.style.position = 'fixed';
+      textArea.style.opacity = '0';
+      
+      document.body.appendChild(textArea);
+      textArea.select();
+      
+      try {
+        document.execCommand('copy');
+      } catch (err) {
+        console.error('Fallback copy failed:', err);
+      } finally {
+        document.body.removeChild(textArea);
+      }
+    }
+  }
+
+  // Use a single event listener with event delegation
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll('.btn-copy').forEach(button => {
+      if (button instanceof HTMLButtonElement) {
+        new ClipboardButton(button);
+      }
+    });
+  });
+</script>
+
+<style define:vars={{ iconUrl: COPY_ICON }}>
+  .btn-copy {
+    position: absolute;
+    right: -1.75rem;
+    margin-left: auto;
+    width: 1.5rem;
+    height: 1.5rem;
+    line-height: 1;
+    opacity: 0.1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .btn-copy:hover {
+    opacity: 1;
+  }
+
+  @media (min-width: 640px) {
+    .btn-copy {
+      right: -1.25rem;
+    }
+  }
+
+  .tooltip {
+    @apply invisible absolute -top-8 left-1/2 -translate-x-1/2 bg-neutral px-2 py-1 text-xs text-white opacity-0 transition-opacity;
+  }
+
+  .tooltip::before {
+    content: attr(data-text);
+  }
+
+  .has-tooltip:hover .tooltip {
+    @apply visible opacity-100;
+  }
+
+  .copy-icon {
+    width: 1.2em;
+    height: 1.2em;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: currentColor;
+    -webkit-mask: var(--iconUrl) no-repeat;
+    mask: var(--iconUrl) no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+  }
+</style>

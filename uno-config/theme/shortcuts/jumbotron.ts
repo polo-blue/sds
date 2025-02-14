@@ -25,7 +25,7 @@ export const jumbotronShortcuts = [
 
   // Metadata and categories
   ['jumbotron-meta', 'order-3 flex items-center text-gray-100'],
-  ['jumbotron-categories', 'order-1'],
+  ['jumbotron-categories', 'order-1 mt-4'],
 
   // Content styles
   ['jumbotron-description', 'mb-1 line-clamp-3 text-base sm:text-lg leading-none mt-4'],
