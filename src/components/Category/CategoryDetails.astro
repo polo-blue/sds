@@ -23,26 +23,30 @@ const baseURL = locale === 'en' ? '' : `/${locale}`;
   transition:name="category-details"
   transition:animate="fade"
 >
-  <CategorySidebarToggler onclick="toggleSidebar()">
-    <!-- Desktop expanded -->
+<CategorySidebarToggler class="category-sidebar-toggler w-12 md:w-8" data-state="desktop">
+  <div class="desktop-icons hidden md:block">
+    <!-- Desktop icons container -->
     <Icon 
       name="ant-design:menu-fold-outlined" 
-      class="toggler-btn md:[&:not(.hidden)]:block" 
+      class="toggler-btn w-6 expanded-icon" 
       aria-hidden="true"
     />
-    <!-- Desktop collapsed -->
     <Icon 
       name="ant-design:menu-unfold-outlined" 
-      class="toggler-btn hidden md:[&:not(.hidden)]:block" 
+      class="toggler-btn w-6 collapsed-icon hidden" 
       aria-hidden="true"
     />
-    <!-- Mobile icon -->
+  </div>
+  <!-- Mobile icon in separate container -->
+  <div class="mobile-icon block md:hidden">
     <Icon 
       name="ant-design:menu-outlined" 
-      class="toggler-btn block md:hidden" 
+      class="toggler-btn w-6" 
       aria-hidden="true"
     />
-  </CategorySidebarToggler>
+  </div>
+</CategorySidebarToggler>
+
 
   <div class="overflow-x-auto overflow-y-hidden flex max-w-full items-center">
     {subtitle ? (
@@ -99,11 +103,15 @@ const baseURL = locale === 'en' ? '' : `/${locale}`;
   }
 
   function updateTogglers(isCollapsed) {
-    const togglers = document.querySelectorAll('.toggler-btn');
-    if (togglers.length >= 2) {
-      togglers[0].classList.toggle('hidden', isCollapsed);
-      togglers[1].classList.toggle('hidden', !isCollapsed);
-    }
+    document.querySelectorAll('.category-sidebar-toggler').forEach(toggler => {
+      const expandedIcon = toggler.querySelector('.expanded-icon');
+      const collapsedIcon = toggler.querySelector('.collapsed-icon');
+      
+      if (expandedIcon && collapsedIcon) {
+        expandedIcon.classList.toggle('hidden', isCollapsed);
+        collapsedIcon.classList.toggle('hidden', !isCollapsed);
+      }
+    });
   }
   
   function toggleSidebar() {
@@ -123,8 +131,18 @@ const baseURL = locale === 'en' ? '' : `/${locale}`;
     }
   }
 
-  // Initialize on astro page load
-  document.addEventListener('astro:page-load', initializeSidebar);
+  function setupTogglers() {
+    document.querySelectorAll('.category-sidebar-toggler').forEach(toggler => {
+      toggler.removeEventListener('click', toggleSidebar);
+      toggler.addEventListener('click', toggleSidebar);
+    });
+  }
+
+  // Initialize on page load
+  document.addEventListener('astro:page-load', () => {
+    initializeSidebar();
+    setupTogglers();
+  });
   
   // Preserve state during view transitions
   document.addEventListener('astro:before-swap', () => {
@@ -143,6 +161,7 @@ const baseURL = locale === 'en' ? '' : `/${locale}`;
     }
   });
 </script>
+
 
 <style>
   .toggler-btn {
