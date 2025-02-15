@@ -104,7 +104,7 @@ importers:
         version: 1.2.3
       '@iconify/json':
         specifier: ^2.2.306
-        version: 2.2.306
+        version: 2.2.307
       '@iconify/vue':
         specifier: ^4.3.0
         version: 4.3.0(vue@3.5.13(typescript@5.7.3))
@@ -114,12 +114,6 @@ importers:
       '@playform/inline':
         specifier: ^0.1.1
         version: 0.1.1(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.28.2)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
-      '@types/gtag.js':
-        specifier: ^0.0.20
-        version: 0.0.20
-      '@types/node':
-        specifier: ^22.13.4
-        version: 22.13.4
       '@unocss/astro':
         specifier: ^65.4.3
         version: 65.4.3(rollup@2.79.2)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.28.2)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0))(vue@3.5.13(typescript@5.7.3))
@@ -189,13 +183,16 @@ importers:
       unocss:
         specifier: ^65.4.3
         version: 65.4.3(postcss@8.5.2)(rollup@2.79.2)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.28.2)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0))(vue@3.5.13(typescript@5.7.3))
-      vite:
-        specifier: ^6.1.0
-        version: 6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.28.2)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0)
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.7.3)
     devDependencies:
+      '@types/gtag.js':
+        specifier: ^0.0.20
+        version: 0.0.20
+      '@types/node':
+        specifier: ^22.13.4
+        version: 22.13.4
       '@unocss/transformer-variant-group':
         specifier: ^65.4.3
         version: 65.4.3
@@ -208,6 +205,9 @@ importers:
       astro:
         specifier: ^5.3.0
         version: 5.3.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.28.2)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      vite:
+        specifier: ^6.1.0
+        version: 6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.28.2)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0)
 
 packages:
 
@@ -1195,8 +1195,8 @@ packages:
   '@iconify-json/uil@1.2.3':
     resolution: {integrity: sha512-if91+UBhDQc6glPsIaXecGIcXnbQZfEO4Gdv89TV2xQ+V5e9GWbY5rNl2fsKZd8COsRQ5lRQAKimVQVL0CZZVg==}
 
-  '@iconify/json@2.2.306':
-    resolution: {integrity: sha512-TjpGQt8zrfA7ezi3CjbFzcm1C+6uvK94kCT3mcDC2y6u1E+7Oe0cvtN+hd+YzP1/YJe1ohe6HSR5TrHwZ0MXDw==}
+  '@iconify/json@2.2.307':
+    resolution: {integrity: sha512-540d6XxtPwSVdWf2fM0JTq9j7DYPV7SLpjxPtU5i/AXPTltqZVk0hjVCt5yiFW5fYi0/eiCM44tSDJZJXgKp/w==}
 
   '@iconify/tools@4.1.1':
     resolution: {integrity: sha512-Hybu/HGhv6T8nLQhiG9rKx+ekF7NNpPOEQAy7JRSKht3s3dcFSsPccYzk24Znc9MTxrR6Gak3cg6CPP5dyvS2Q==}
@@ -5849,7 +5849,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify/json@2.2.306':
+  '@iconify/json@2.2.307':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
