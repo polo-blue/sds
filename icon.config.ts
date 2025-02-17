@@ -43,7 +43,8 @@ export const iconConfig: IconConfig = {
       "github", 
       "facebook", 
       "instagram",
-      
+      "youtube",
+
       // Notes & Content
       "post-it-note-edit-outline",
       
@@ -237,7 +238,8 @@ export const iconConfig: IconConfig = {
       'images-light',
       'image-square-thin',
       'cat-thin',
-      'copy-simple-light'
+      'copy-simple-light',
+      'engine-bold',
     ],
 
     ic: [

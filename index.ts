@@ -18,7 +18,7 @@ export { default as ProductEngineType } from './src/components/Product/ProductEn
 export { default as ProductButton } from './src/components/Product/ProductButton.vue';
 export { default as ProductColors } from './src/components/Product/ProductColors.vue';
 export { default as ProductDetailName } from './src/components/Product/ProductDetailName.vue';
-export { default as ProductDetails } from './src/components/Product/ProductDetails.vue';
+// export { default as ProductDetails } from './src/components/Product/ProductDetails.vue';
 export { default as ProductDoc } from './src/components/Product/ProductDoc.vue';
 export { default as ProductModel } from './src/components/Product/ProductModel.vue';
 export { default as ProductModels } from './src/components/Product/ProductModels.vue';

@@ -2,7 +2,7 @@
 import type { PropType } from 'vue'
 import type { DetailList, DetailObject } from '../../types/index'
 import ProductDetailName from './ProductDetailName.vue'
-import {getTranslation} from "@utils/text"
+import {getTranslation} from "../../utils/text"
 // import ProductColors from "@components/Product/ProductColors.vue"
 
 const props = defineProps({
