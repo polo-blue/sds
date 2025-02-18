@@ -175,8 +175,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       i18next-vue:
-        specifier: ^5.1.0
-        version: 5.1.0(i18next@24.2.2(typescript@5.7.3))(vue@3.5.13(typescript@5.7.3))
+        specifier: ^5.2.0
+        version: 5.2.0(i18next@24.2.2(typescript@5.7.3))(vue@3.5.13(typescript@5.7.3))
       swiper:
         specifier: ^11.2.4
         version: 11.2.4
@@ -2923,8 +2923,8 @@ packages:
   i18next-http-backend@3.0.2:
     resolution: {integrity: sha512-PdlvPnvIp4E1sYi46Ik4tBYh/v/NbYfFFgTjkwFl0is8A18s7/bx9aXqsrOax9WUbeNS6mD2oix7Z0yGGf6m5g==}
 
-  i18next-vue@5.1.0:
-    resolution: {integrity: sha512-//yggMBbhf5qdiewDA6zPRp1MRiS+xybVR8d04obY+RSJCHp5elLCvCbSAsXI9lZUgBhP1QFSZkIg39p1bIa7g==}
+  i18next-vue@5.2.0:
+    resolution: {integrity: sha512-VlP2BoEhBQkjr8v0e/TZ3o+3WCExxEbEDYHTEv3FpGZbr6idnIUBYu0NWKG+Sv7f1Xxp78qAR7fM5vy2pRJ18A==}
     peerDependencies:
       i18next: '>=23'
       vue: ^3.4.38
@@ -8156,7 +8156,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  i18next-vue@5.1.0(i18next@24.2.2(typescript@5.7.3))(vue@3.5.13(typescript@5.7.3)):
+  i18next-vue@5.2.0(i18next@24.2.2(typescript@5.7.3))(vue@3.5.13(typescript@5.7.3)):
     dependencies:
       i18next: 24.2.2(typescript@5.7.3)
       vue: 3.5.13(typescript@5.7.3)

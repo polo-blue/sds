@@ -1,6 +1,6 @@
 {
   "name": "spoko-design-system",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "private": false,
   "main": "./index.ts",
   "module": "./index.ts",
@@ -94,7 +94,7 @@
     "i18next-browser-languagedetector": "^8.0.3",
     "i18next-fs-backend": "^2.6.0",
     "i18next-http-backend": "^3.0.2",
-    "i18next-vue": "^5.1.0",
+    "i18next-vue": "^5.2.0",
     "swiper": "^11.2.4",
     "unocss": "^66.0.0",
     "vue": "^3.5.13"

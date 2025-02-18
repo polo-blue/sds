@@ -106,7 +106,8 @@ export const iconConfig: IconConfig = {
       "tag",
       "tags",
       "x",
-      "graph-up"
+      "graph-up",
+      "folder"
     ],
 
     bx: [
