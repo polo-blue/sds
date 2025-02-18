@@ -3,7 +3,7 @@ title: "Buttons"
 layout: "../../layouts/MainLayout.astro"
 ---
 import Button from '../../components/Button.vue'
-import ButtonCopy from '../../components/ButtonCopy.vue'
+import ButtonCopy from '../../components/ButtonCopy.astro'
 import { Icon } from 'astro-icon/components';
 import { t } from "i18next";
 
@@ -113,34 +113,34 @@ Text buttons are used for actions that do not require a primary or secondary but
 <div class="component-preview">
     <Button tertiary href="#">
         Read more
-        <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl -my-1 -mr-1" />
+        <Icon name="la:arrow-right" class="ml-2 text-2xl -my-1 -mr-1" />
     </Button>
 
     <Button tertiary href="#" medium>
         Read more
-        <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl -my-1 -mr-1" />
+        <Icon name="la:arrow-right" class="ml-2 text-2xl -my-1 -mr-1" />
     </Button>
 
     <Button tertiary href="#" small class="px-5">
         Read more
-        <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl -my-1 -mr-1" />
+        <Icon name="la:arrow-right" class="ml-2 text-2xl -my-1 -mr-1" />
     </Button>
 </div>
 
 ```html
     <Button tertiary href="#">
         Read more
-        <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl -my-1 -mr-1" />
+        <Icon name="la:arrow-right" class="ml-2 text-2xl -my-1 -mr-1" />
     </Button>
 
     <Button tertiary href="#" medium>
         Read more
-        <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl -my-1 -mr-1" />
+        <Icon name="la:arrow-right" class="ml-2 text-2xl -my-1 -mr-1" />
     </Button>
 
     <Button tertiary href="#" small class="px-5">
         Read more
-        <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl -my-1 -mr-1" />
+        <Icon name="la:arrow-right" class="ml-2 text-2xl -my-1 -mr-1" />
     </Button>
 
 ```
@@ -250,4 +250,108 @@ Text buttons are used for actions that do not require a primary or secondary but
 
 ```js
 <Button primary href="#" title="Title">Text button</Button>
+```
+
+## Circle button
+
+Circle buttons are perfect for icon-only actions, maintaining equal width and height.
+
+<div class="component-preview flex-wrap">
+    <div class="flex w-full gap-4 items-center">
+        <Button primary circle>
+            <Icon name="la:arrow-right" />
+        </Button>
+        <Button secondary circle>
+            <Icon name="la:arrow-right" />
+        </Button>
+        <Button tertiary circle>
+            <Icon name="la:arrow-right" />
+        </Button>
+    </div>
+    <div class="flex w-full gap-4 items-center">
+        <Button primary medium circle>
+            <Icon name="la:arrow-right" class="text-xl" />
+        </Button>
+        <Button secondary medium circle>
+            <Icon name="la:arrow-right" class="text-xl" />
+        </Button>
+        <Button tertiary medium circle>
+            <Icon name="la:arrow-right" class="text-xl" />
+        </Button>
+    </div>
+    <div class="flex w-full gap-4 items-center">
+        <Button primary small circle>
+            <Icon name="la:arrow-right" class="text-lg" />
+        </Button>
+        <Button secondary small circle>
+            <Icon name="la:arrow-right" class="text-lg" />
+        </Button>
+        <Button tertiary small circle>
+            <Icon name="la:arrow-right" class="text-lg" />
+        </Button>
+    </div>
+</div>
+
+```js
+<Button primary circle>
+    <Icon name="la:arrow-right" />
+</Button>
+<Button secondary circle>
+    <Icon name="la:arrow-right" />
+</Button>
+<Button tertiary circle>
+    <Icon name="la:arrow-right" />
+</Button>
+
+<Button primary medium circle>
+    <Icon name="la:arrow-right" class="text-xl" />
+</Button>
+<Button secondary medium circle>
+    <Icon name="la:arrow-right" class="text-xl" />
+</Button>
+<Button tertiary medium circle>
+    <Icon name="la:arrow-right" class="text-xl" />
+</Button>
+
+
+
+<Button primary small circle>
+    <Icon name="la:arrow-right" class="text-lg" />
+</Button>
+<Button secondary small circle>
+    <Icon name="la:arrow-right" class="text-lg" />
+</Button>
+<Button tertiary small circle>
+    <Icon name="la:arrow-right" class="text-lg" />
+</Button>
+```
+
+### Circle outline buttons
+
+Circle buttons are also available in outline variants.
+
+<div class="component-preview">
+    <Button primary-outline circle>
+        <Icon name="la:arrow-right" class="text-2xl" />
+    </Button>
+
+    <Button secondary-outline circle>
+        <Icon name="la:arrow-right" class="text-2xl" />
+    </Button>
+
+    <Button tertiary-outline circle>
+        <Icon name="la:arrow-right" class="text-2xl" />
+    </Button>
+</div>
+
+```js
+    <Button primary-outline circle>
+        <Icon name="la:arrow-right" class="text-2xl" />
+    </Button>
+    <Button secondary-outline circle>
+        <Icon name="la:arrow-right" class="text-2xl" />
+    </Button>
+    <Button tertiary-outline circle>
+        <Icon name="la:arrow-right" class="text-2xl" />
+    </Button>
 ```

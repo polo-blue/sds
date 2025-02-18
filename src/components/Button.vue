@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const props = defineProps<{
   href?: string;
   title?: string;
@@ -18,7 +17,15 @@ const props = defineProps<{
   lightHover?: boolean;
   mediumHover?: boolean;
   darkHover?: boolean;
+  circle?: boolean;
 }>();
+
+// Check if we should add a default mediumHover for tertiary
+const shouldAddDefaultMediumHover = props.tertiary || props.tertiaryOutline && 
+  !props.whiteHover && 
+  !props.lightHover && 
+  !props.mediumHover && 
+  !props.darkHover;
 
 const tag = props.href && props.href.length ? 'a' : 'button'
 const classes = {
@@ -34,9 +41,10 @@ const classes = {
   "btn-xs": props.small,
   "btn-normal": !props.small && !props.medium,
   "rounded-full": props.rounded,
+  "btn-circle": props.circle,
   "btn-white-hover": props.whiteHover,
   "btn-light-hover": props.lightHover,
-  "btn-medium-hover": props.mediumHover,
+  "btn-medium-hover": props.mediumHover || shouldAddDefaultMediumHover,
   "btn-dark-hover": props.darkHover
 };
 </script>
@@ -61,4 +69,20 @@ const classes = {
   }
 }
 
+/* Circle button styles */
+.btn-circle.btn-normal {
+  @apply w-12;
+}
+
+.btn-circle.btn-sm {
+  @apply w-9.5;
+}
+
+.btn-circle.btn-xs {
+  @apply w-7;
+}
+
+.btn-circle svg {
+  margin: 0;
+}
 </style>

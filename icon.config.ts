@@ -231,7 +231,9 @@ export const iconConfig: IconConfig = {
       "x-outline",
       "messages-outline",
       "arrow-down-to-bracket-outline",
-      "check-outline"
+      "check-outline",
+      "plus-outline",
+      "edit-outline",
     ],
 
     ph: [

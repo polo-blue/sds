@@ -63,22 +63,22 @@ export const LAYOUT = {
 
 // Common transitions
 export const TRANSITIONS = {
-  base: 'transition-all duration-300 ease-linear',
+  base: 'transition-all duration-100 ease-linear',
   transform: 'transition-transform-300',
-  hover: 'transition duration-200 ease-in-out',
+  hover: 'transition duration-100 ease-in-out',
 } as const
 
 // Button base styles
 export const BUTTON_STYLES = {
   base: {
     layout: 'inline-flex items-center justify-center',
-    text: 'text-base font-medium text-center',
+    text: 'text-base font-medium text-center leading-4.5',
     transition: 'transition-all duration-200 ease-in-out',
   },
   sizes: {
-    normal: 'md:px-10 md:py-2 md:text-lg px-8 py-3 whitespace-nowrap',
-    sm: 'px-6 py-2 text-sm whitespace-nowrap',
-    xs: 'px-4 py-1 text-sm whitespace-nowrap',
+    normal: 'md:px-10 md:py-2 md:text-lg px-8 py-3 whitespace-nowrap h-12',
+    sm: 'px-6 py-2 text-sm whitespace-nowrap h-9.5',
+    xs: 'px-4 py-1 text-sm whitespace-nowrap ',
   },
   variants: {
     primary: {
@@ -110,10 +110,10 @@ export const TYPOGRAPHY = {
     light: 'font-headlight font-300 tracking-tight',
   },
   text: {
-    xs: 'text-xs',
-    sm: 'text-sm',
-    base: 'text-base',
-    lg: 'text-lg',
+    xs: 'text-3',
+    sm: 'text 3.5',
+    base: 'text-4',
+    lg: 'text-4.5',
   },
 } as const
 
