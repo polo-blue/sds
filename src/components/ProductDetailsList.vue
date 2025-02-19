@@ -35,7 +35,7 @@ const props = defineProps({
   </table>
 </template>
 
-<style  scoped>
+<style scoped>
   .details {
     @apply border-none shadow-none w-full md:w-auto
     box-shadow: none;
