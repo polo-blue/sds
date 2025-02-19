@@ -8,6 +8,7 @@ export { default as FuckRussia } from './src/components/FuckRussia.vue';
 export { default as FlagPL } from './src/components/flags/FlagPL.vue';
 export { default as Badges } from './src/components/Badges.vue';
 export { default as SlimBanner } from './src/components/SlimBanner.vue';
+
 export { default as Jumbotron } from './src/components/Jumbotron.astro';
 export { default as Button } from './src/components/Button.vue';
 export { default as Breadcrumbs } from './src/components/Breadcrumbs.vue';
@@ -28,6 +29,7 @@ export { default as ProductNumber } from './src/components/Product/ProductNumber
 export { default as ProductLink } from './src/components/Product/ProductLink.vue';
 // export { default as ProductCarousel } from './src/components/Product/ProductCarousel.astro';
 export { default as LanguageSuggestion } from './src/components/LanguageSuggestion.astro';
+export { default as Input } from './src/components/Input.astro';
 
 export { default as CategoryLink } from './src/components/Category/CategoryLink.vue';
 export { default as CategorySidebarToggler } from './src/components/Category/CategorySidebarToggler.vue';

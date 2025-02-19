@@ -1,0 +1,58 @@
+---
+// Input.astro
+interface Props {
+  id: string;
+  label: string;
+  variant?: 'filled' | 'standard';
+  type?: string;
+  value?: string;
+  required?: boolean;
+}
+
+const {
+  id,
+  label,
+  variant = 'standard',
+  type = 'text',
+  value = '',
+  required = false
+} = Astro.props;
+
+// Common classes for both variants
+const baseInputClasses = "block w-full text-sm text-blue-medium border-0 border-b-2 border-neutral-light appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-lightest focus:outline-none focus:ring-0 focus:border-blue-medium peer";
+
+const baseLabelClasses = "absolute text-sm text-slate-medium dark:text-neutral-defaultduration-300 transform scale-75 origin-[0] peer-focus:text-blue-medium peer-focus:dark:text-blue-lightest peer-placeholder-shown:scale-100 peer-focus:scale-75 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto";
+
+// Variant specific classes
+const variantClasses = {
+  filled: {
+    wrapper: "relative",
+    input: `${baseInputClasses} rounded-t-lg px-2.5 pb-2.5 pt-5 bg-gray-50 dark:bg-gray-700`,
+    label: `${baseLabelClasses} -translate-y-4 top-4 z-10 start-2.5 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-4`
+  },
+  standard: {
+    wrapper: "relative z-0",
+    input: `${baseInputClasses} py-2.5 px-0 bg-transparent`,
+    label: `${baseLabelClasses} -translate-y-6 top-3 -z-10 peer-focus:start-0 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-6`
+  }
+};
+
+const classes = variantClasses[variant];
+---
+
+<div class={classes.wrapper}>
+  <input
+    type={type}
+    id={id}
+    value={value}
+    required={required}
+    class={classes.input}
+    placeholder=" "
+  />
+  <label
+    for={id}
+    class={classes.label}
+  >
+    {label}
+  </label>
+</div>
