@@ -22,7 +22,7 @@ export default defineConfig({
   },
   image: {
     service: sharpImageService(),
-    domains: ["placehold.co", "api.polo.blue", "polo.blue", "media.istockphoto.com", "img.freepik.com", "polo6r.pl"]
+    domains: ["placehold.co", "api.polo.blue", "polo.blue", "media.istockphoto.com", "freepik.com", "img.freepik.com", "polo6r.pl"]
   },
   integrations: [
     // Enable Vue to support Vue3 components

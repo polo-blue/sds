@@ -35,10 +35,10 @@ export const jumbotronShortcuts = [
   ['jumbotron-split-wrapper', 'w-full'],
   ['jumbotron-split-container', 'xl:container mx-auto px-3.5 md:px-0'],
   ['jumbotron-split-header', 'w-full justify-center text-white z-2 mt-auto md:(grid grid-cols-2) pb-4 mb-8'],
-  ['jumbotron-split-content', 'container px-3.5 py-5 md:py-0 flex flex-wrap'],
+  ['jumbotron-split-content', 'pl-4 pr-8 py-5 xl:(py-0 pl-0) flex flex-wrap'],
   ['jumbotron-split-title', 'font-headlight text-3xl md:(text-4xl mb-3) xl:text-11 mt-1 order-2 line-clamp-3 pb-1 w-full'],
   ['jumbotron-split-meta', 'order-3 flex items-center text-gray-100'],
-  ['jumbotron-split-image-wrapper', 'relative -mb-8 md:(mt-4 -ml-4 mr-4)'],
+  ['jumbotron-split-image-wrapper', 'relative -mb-8 md:(mt-4 -ml-4 mr-4) xl:(ml-0 mr-0)'],
   ['jumbotron-split-image', 'relative shadow-xl md:max-h-112'],
   ['jumbotron-split-img', 'aspect-video'] // border-white border-4
 ];
