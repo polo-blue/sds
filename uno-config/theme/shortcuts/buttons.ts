@@ -22,8 +22,19 @@ export const buttonShortcuts = [
     
     // Utility buttons
     ['btn-text', `text-neutral-dark border border-transparent hover:underline ${TRANSITIONS.base}`],
-    ['btn-tag', `bg-blue-ultralight text-blue-darker font-medium mr-2 dark:bg-neutral-darker dark:text-blue-light border border-blue-default hover:border-blue-medium ${LAYOUT.flex.center}`],
-    
+    ['btn-tag', `
+        inline-flex items-center
+        px-3 py-1
+        text-sm
+        bg-blue-ultralight text-blue-medium
+        dark:bg-accent-deepBlue dark:text-neutral-lighter
+        rounded-full
+        border border-blue-ultralight dark:border-accent-darker
+        transition-all duration-200
+        hover:(bg-neutral-lightest dark:bg-accent-darker)
+        hover:scale-105
+        active:scale-95
+    `],    
     // Size variants
     ['btn-normal', sizes.normal],
     ['btn-sm', sizes.sm],
