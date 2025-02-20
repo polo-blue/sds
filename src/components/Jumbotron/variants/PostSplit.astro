@@ -1,6 +1,6 @@
 ---
 import type { Author, Category } from '../types';
-import CategoryLink from "../../CategoryLink.astro";
+import PostCategories from "../../Post/PostCategories.astro";
 import Date from "../../Date.astro";
 import { Image } from "astro:assets";
 
@@ -42,7 +42,7 @@ const cleanTitle = stripHtml(title);
           
           {hasCategories && (
             <div class="jumbotron-categories">
-              <CategoryLink categories={categories} />
+              <PostCategories categories={categories} />
             </div>
           )}
 

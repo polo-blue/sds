@@ -31,7 +31,7 @@ export { default as ProductLink } from './src/components/Product/ProductLink.vue
 export { default as LanguageSuggestion } from './src/components/LanguageSuggestion.astro';
 export { default as Input } from './src/components/Input.astro';
 
-export { default as CategoryLink } from './src/components/Category/CategoryLink.vue';
+export { default as PostCategories } from './src/components/Post/PostCategories.vue';
 export { default as CategorySidebarToggler } from './src/components/Category/CategorySidebarToggler.vue';
 export { default as SubCategoryLink } from './src/components/Category/SubCategoryLink.vue';
 

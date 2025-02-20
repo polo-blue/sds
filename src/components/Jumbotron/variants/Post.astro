@@ -1,7 +1,7 @@
 ---
 // variants/Post.astro
 import type { Author, Category } from '../types';
-import CategoryLink from "../../CategoryLink.astro";
+import PostCategories from "../../Post/PostCategories.astro";
 import Date from "../../Date.astro";
 
 interface Props {
@@ -34,7 +34,7 @@ const {
       
       {hasCategories && (
         <div class="order-1">
-          <CategoryLink categories={categories} />
+          <PostCategories categories={categories} />
         </div>
       )}
 

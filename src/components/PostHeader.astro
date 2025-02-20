@@ -17,7 +17,7 @@ interface Props {
 }
 
 const { image, title, categories, date, author } = Astro.props;
-import CategoryLink from "./CategoryLink.astro";
+import PostCategories from "./Post/PostCategories.astro";
 import Date from "./Date.astro";
 ---
 
@@ -33,7 +33,7 @@ import Date from "./Date.astro";
       >
         {title}
       </h1>
-      <CategoryLink categories={categories} />
+      <PostCategories categories={categories} />
       <div class="order-3 flex items-center text-gray-1 00">
         {
           author && (
