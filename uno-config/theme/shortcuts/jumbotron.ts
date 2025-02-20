@@ -1,5 +1,9 @@
 // shortcuts/jumbotron.ts
-import { COLORS, LAYOUT, TRANSITIONS, IMAGE_STYLES } from './constants'
+// import { COLORS, LAYOUT, TRANSITIONS, IMAGE_STYLES } from './constants'
+import { breakpoints } from './../breakpoints';
+
+
+
 
 export const jumbotronShortcuts = [
   // Default variant
@@ -20,7 +24,7 @@ export const jumbotronShortcuts = [
   // Post variant
   ['jumbotron-post-header', 'post-header pt-11 w-full justify-center text-white z-2 relative'],
   ['jumbotron-post-heading', 'heading text-white relative flex items-center justify-center mt-auto w-full z-[2]'],
-  ['jumbotron-post-container', 'w-full sm:max-w-[640px] md:max-w-3xl lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[1536px] px-4 py-5 flex flex-col flex-wrap'],
+  ['jumbotron-post-container', `w-full sm:max-w-[${breakpoints.sm}] md:max-w-3xl lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[${breakpoints['2xl']}] px-4 py-5 flex flex-col flex-wrap`],
   ['jumbotron-post-title', 'font-headlight text-2xl mb-1 sm:text-3xl md:(text-4xl mb-3) xl:text-6xl mt-1 order-2 line-clamp-3 pb-1'],
 
   // Metadata and categories

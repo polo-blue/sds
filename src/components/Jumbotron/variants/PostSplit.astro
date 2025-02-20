@@ -23,6 +23,14 @@ const {
   hasMetadata,
   hasCategories,
 } = Astro.props;
+
+// Helper function to remove HTML tags
+const stripHtml = (html: string) => {
+  return html.replace(/<[^>]*>/g, '');
+};
+
+// Get clean title for alt attribute
+const cleanTitle = stripHtml(title);
 ---
 
 <div class="jumbotron-split-wrapper bg-blue-900 bg-vw">
@@ -58,7 +66,7 @@ const {
             <Image 
               class="jumbotron-split-img"
               src={image} 
-              alt={title}
+              alt={cleanTitle}
               width={768}
               height={432}
               loading="eager"
