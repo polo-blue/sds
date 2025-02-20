@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const props = defineProps<{
+import { useAttrs } from 'vue'
+
+interface ButtonProps {
   href?: string;
   title?: string;
   primary?: boolean;
@@ -18,7 +20,10 @@ const props = defineProps<{
   mediumHover?: boolean;
   darkHover?: boolean;
   circle?: boolean;
-}>();
+  [key: string]: any; // To allow additional props
+}
+
+const props = defineProps<ButtonProps>();
 
 // Check if we should add a default mediumHover for tertiary
 const shouldAddDefaultMediumHover = props.tertiary || props.tertiaryOutline && 
@@ -47,10 +52,19 @@ const classes = {
   "btn-medium-hover": props.mediumHover || shouldAddDefaultMediumHover,
   "btn-dark-hover": props.darkHover
 };
+
+
+const attrs = useAttrs();
 </script>
 
 <template>
-  <component :is="tag" :class="classes" :href="props.href" :title="props.title ? props.title : null">
+ <component 
+    :is="tag" 
+    :class="classes" 
+    v-bind="attrs"
+    :href="props.href" 
+    :title="props.title ? props.title : null"
+  >
     <slot></slot>
   </component>
 </template>
