@@ -1,6 +1,6 @@
 {
   "name": "spoko-design-system",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "private": false,
   "main": "./index.ts",
   "module": "./index.ts",
@@ -42,10 +42,10 @@
   "dependencies": {
     "@algolia/client-search": "^5.20.3",
     "@astrojs/mdx": "^4.0.8",
-    "@astrojs/node": "^9.1.0",
+    "@astrojs/node": "^9.1.1",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/ts-plugin": "^1.10.4",
-    "@astrojs/vue": "^5.0.6",
+    "@astrojs/vue": "^5.0.7",
     "@docsearch/css": "^3.9.0",
     "@iconify-json/ant-design": "^1.2.5",
     "@iconify-json/bi": "^1.2.2",
@@ -67,10 +67,10 @@
     "@iconify-json/noto-v1": "^1.2.1",
     "@iconify-json/octicon": "^1.2.5",
     "@iconify-json/ph": "^1.2.2",
-    "@iconify-json/simple-icons": "^1.2.25",
+    "@iconify-json/simple-icons": "^1.2.26",
     "@iconify-json/system-uicons": "^1.2.2",
     "@iconify-json/uil": "^1.2.3",
-    "@iconify/json": "^2.2.309",
+    "@iconify/json": "^2.2.310",
     "@iconify/vue": "^4.3.0",
     "@playform/compress": "^0.1.7",
     "@playform/inline": "^0.1.1",
@@ -101,13 +101,13 @@
   },
   "devDependencies": {
     "@types/gtag.js": "^0.0.20",
-    "@types/node": "^22.13.4",
+    "@types/node": "^22.13.5",
     "@unocss/transformer-variant-group": "^66.0.0",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/compiler-sfc": "^3.5.13",
-    "astro": "^5.3.0",
+    "astro": "^5.3.1",
     "unocss": "^0.65.0",
-    "vite": "^6.1.1"
+    "vite": "^6.2.0"
   },
   "packageManager": "pnpm@9.15.3",
   "pnpm": {

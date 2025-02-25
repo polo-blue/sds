@@ -44,5 +44,5 @@ export const jumbotronShortcuts = [
   ['jumbotron-split-meta', 'order-3 flex items-center text-gray-100'],
   ['jumbotron-split-image-wrapper', 'relative -mb-8 md:(mt-4 -ml-4 mr-4) xl:(ml-0 mr-0)'],
   ['jumbotron-split-image', 'relative shadow-xl md:max-h-112'],
-  ['jumbotron-split-img', 'aspect-video'] // border-white border-4
+  ['jumbotron-split-img', 'aspect-video object-cover']
 ];
