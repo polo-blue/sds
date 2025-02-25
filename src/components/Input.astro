@@ -5,9 +5,12 @@ interface Props {
   name?: string; 
   label: string;
   variant?: 'filled' | 'standard';
-  type?: HTMLInputElement['type']; 
+  type?: HTMLInputElement['type'] | 'textarea'; // support textarea
   value?: string;
   required?: boolean;
+  rows?: number; // rows for textarea
+  placeholder?: string; 
+  class?: string; // additional classes
 }
 
 const {
@@ -17,7 +20,11 @@ const {
   variant = 'standard',
   type = 'text',
   value = '',
-  required = false
+  required = false,
+  rows = 3, 
+  placeholder = " ", //space for "floating label")
+  class: additionalClasses = "", 
+  ...restProps 
 } = Astro.props;
 
 // Common classes for both variants
@@ -29,29 +36,47 @@ const baseLabelClasses = "absolute text-sm text-slate-medium dark:text-neutral-d
 const variantClasses = {
   filled: {
     wrapper: "relative",
-    input: `${baseInputClasses} rounded-t-lg px-2.5 pb-2.5 pt-5 bg-gray-50 dark:bg-gray-700`,
+    input: `${baseInputClasses} rounded-t-lg px-2.5 pb-2.5 pt-5 bg-gray-50 dark:bg-gray-700 ${additionalClasses}`,
     label: `${baseLabelClasses} -translate-y-4 top-4 z-10 start-2.5 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-4`
   },
   standard: {
     wrapper: "relative z-0",
-    input: `${baseInputClasses} py-2.5 px-0 bg-transparent`,
+    input: `${baseInputClasses} py-2.5 px-0 bg-transparent ${additionalClasses}`,
     label: `${baseLabelClasses} -translate-y-6 top-3 -z-10 peer-focus:start-0 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-6`
   }
 };
 
 const classes = variantClasses[variant];
+
+// Dla textarea modyfikujemy nieco style
+const textareaClasses = type === 'textarea' 
+  ? classes.input.replace('border-b-1', 'border-1') + ' resize-none' 
+  : classes.input;
 ---
 
 <div class={classes.wrapper}>
-  <input
-    type={type}
-    name={name}
-    id={id}
-    value={value}
-    required={required}
-    class={classes.input}
-    placeholder=" "
-  />
+  {type === 'textarea' ? (
+    <textarea
+      name={name}
+      id={id}
+      rows={rows}
+      required={required}
+      class={textareaClasses}
+      placeholder={placeholder}
+      {...restProps}
+    >{value}</textarea>
+  ) : (
+    <input
+      type={type}
+      name={name}
+      id={id}
+      value={value}
+      required={required}
+      class={classes.input}
+      placeholder={placeholder}
+      {...restProps}
+    />
+  )}
   <label
     for={id}
     class={classes.label}
