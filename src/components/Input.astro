@@ -48,9 +48,9 @@ const variantClasses = {
 
 const classes = variantClasses[variant];
 
-// Dla textarea modyfikujemy nieco style
+// Keep border-b-1 for textarea but add resize-none
 const textareaClasses = type === 'textarea' 
-  ? classes.input.replace('border-b-1', 'border-1') + ' resize-none' 
+  ? `${classes.input} resize-none` 
   : classes.input;
 ---
 
