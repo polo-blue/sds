@@ -5,6 +5,7 @@ import { layoutShortcuts } from './layout';
 import { componentShortcuts } from './components';
 import { productShortcuts } from './product';
 import { jumbotronShortcuts } from './jumbotron';
+import { inputShortcuts } from './inputs'; 
 
 const convertToShortcuts = (shortcuts: string[][]): UserShortcuts => {
   return Object.fromEntries(shortcuts.map(([name, value]) => [name, value]));
@@ -16,4 +17,5 @@ export const shortcuts: UserShortcuts = {
   ...convertToShortcuts(componentShortcuts),
   ...convertToShortcuts(productShortcuts),
   ...convertToShortcuts(jumbotronShortcuts),
+  ...convertToShortcuts(inputShortcuts),
 };
