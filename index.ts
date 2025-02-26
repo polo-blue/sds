@@ -29,7 +29,7 @@ export { default as ProductNumber } from './src/components/Product/ProductNumber
 export { default as ProductLink } from './src/components/Product/ProductLink.vue';
 // export { default as ProductCarousel } from './src/components/Product/ProductCarousel.astro';
 export { default as LanguageSuggestion } from './src/components/LanguageSuggestion.astro';
-export { default as Input } from './src/components/Input.astro';
+export { default as Input } from './src/components/Input.vue';
 
 export { default as PostCategories } from './src/components/Post/PostCategories.vue';
 export { default as CategorySidebarToggler } from './src/components/Category/CategorySidebarToggler.vue';
