@@ -2,18 +2,7 @@
 title: Input
 layout: ../../layouts/MainLayout.astro
 ---
-import MainInput from '../../components/MainInput.vue'
 import Input from '../../components/Input.vue';
-
-# Basic Input text
-
-<div class="component-preview">
-    <MainInput label="Name"></MainInput>
-</div>
-
-```js
-<MainInput type="text" value="Hello world!"></MainInput>
-```
 
 # Floating Label Input
 <div class="component-preview">
@@ -55,6 +44,7 @@ import Input from '../../components/Input.vue';
         id="name-filled"
         label="Floating filled"
         variant="filled"
+        
         type="textarea"
         />
         <Input
@@ -83,3 +73,296 @@ import Input from '../../components/Input.vue';
   type="textarea"
 />
 ```
+
+# Input with Error State
+The Input component supports error states to provide validation feedback to users. You can pass a string as the error prop to display a specific error message.
+
+<div class="component-preview">
+    <div class="bg-white grid items-end w-full gap-6 md:grid-cols-2 px-4 py-6">
+        <Input
+            id="error-filled"
+            label="With error"
+            variant="filled"
+            error="This field is required"
+        />
+        <Input
+            id="error-standard" 
+            label="With error"
+            variant="standard"
+            error="Please enter a valid email"
+        />
+    </div>
+</div>
+    
+```js
+// Error with filled variant
+<Input
+  id="error-filled"
+  label="With error"
+  variant="filled"
+  error="This field is required"
+/>
+
+// Error with standard variant
+<Input
+  id="error-standard" 
+  label="With error"
+  variant="standard"
+  error="Please enter a valid email"
+/>
+```
+
+You can also pass a boolean `true` to indicate an error state without a message:
+
+```js
+<Input
+  label="Username"
+  error={true}
+/>
+```
+
+# Input with Success State
+Similar to errors, you can indicate a successful validation state using the success prop:
+
+<div class="component-preview">
+    <div class="bg-white grid items-end w-full gap-6 md:grid-cols-2 px-4 py-6">
+        <Input
+            id="success-filled"
+            label="With success"
+            variant="filled"
+            success="Username is available"
+        />
+        <Input
+            id="success-standard" 
+            label="With success"
+            variant="standard"
+            success={true}
+        />
+    </div>
+</div>
+    
+```js
+// Success with message
+<Input
+  id="success-filled"
+  label="With success"
+  variant="filled"
+  success="Username is available"
+/>
+
+// Success without message
+<Input
+  id="success-standard" 
+  label="With success"
+  variant="standard"
+  success={true}
+/>
+```
+
+# Input Sizes
+The Input component supports different sizes: `sm`, `md` (default), and `lg`.
+
+<div class="component-preview">
+    <div class="bg-white grid items-end w-full gap-6 px-4 py-6">
+        <Input
+            id="small-input"
+            label="Small input"
+            variant="filled"
+            size="sm"
+        />
+        <Input
+            id="medium-input" 
+            label="Medium input (default)"
+            variant="filled"
+            size="md"
+        />
+        <Input
+            id="large-input" 
+            label="Large input"
+            variant="filled"
+            size="lg"
+        />
+    </div>
+</div>
+    
+```js
+// Small input
+<Input
+  id="small-input"
+  label="Small input"
+  variant="filled"
+  size="sm"
+/>
+
+// Medium input (default)
+<Input
+  id="medium-input" 
+  label="Medium input (default)"
+  variant="filled"
+  size="md"
+/>
+
+// Large input
+<Input
+  id="large-input" 
+  label="Large input"
+  variant="filled"
+  size="lg"
+/>
+```
+
+# Required Input
+You can mark an input as required, which will add a red asterisk to the label:
+
+<div class="component-preview">
+    <div class="bg-white grid items-end w-full gap-6 md:grid-cols-2 px-4 py-6">
+        <Input
+            id="required-filled"
+            label="Required field"
+            variant="filled"
+            required
+        />
+        <Input
+            id="required-standard" 
+            label="Required field"
+            variant="standard"
+            required
+        />
+    </div>
+</div>
+    
+```js
+<Input
+  id="required-filled"
+  label="Required field"
+  variant="filled"
+  required
+/>
+```
+
+# Input Types
+The Input component supports all standard HTML input types, plus a special `textarea` type:
+
+<div class="component-preview">
+    <div class="bg-white grid items-end w-full gap-6 md:grid-cols-2 px-4 py-6">
+        <Input
+            id="email-input"
+            label="Email"
+            type="email"
+            variant="filled"
+        />
+        <Input
+            id="password-input" 
+            label="Password"
+            type="password"
+            variant="standard"
+        />
+        <Input
+            id="number-input" 
+            label="Age"
+            type="number"
+            variant="filled"
+        />
+        <Input
+            id="date-input" 
+            label="Date"
+            type="date"
+            variant="standard"
+        />
+    </div>
+</div>
+    
+```js
+// Email input
+<Input
+  id="email-input"
+  label="Email"
+  type="email"
+  variant="filled"
+/>
+
+// Password input
+<Input
+  id="password-input" 
+  label="Password"
+  type="password"
+  variant="standard"
+/>
+
+// Number input
+<Input
+  id="number-input" 
+  label="Age"
+  type="number"
+  variant="filled"
+/>
+
+// Date input
+<Input
+  id="date-input" 
+  label="Date"
+  type="date"
+  variant="standard"
+/>
+```
+
+# Using with v-model
+The Input component fully supports Vue's v-model for two-way binding:
+
+```js
+<script setup>
+import { ref } from 'vue';
+import { Input } from 'spoko-design-system';
+
+const username = ref('');
+const email = ref('');
+</script>
+
+<template>
+  <Input
+    v-model="username"
+    label="Username"
+    variant="filled"
+  />
+  
+  <Input
+    v-model="email"
+    label="Email"
+    variant="standard"
+    type="email"
+  />
+  
+  <div>
+    Current values:
+    <p>Username: {{ username }}</p>
+    <p>Email: {{ email }}</p>
+  </div>
+</template>
+```
+
+# Props Reference
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `id` | `string` | Random ID | Unique identifier for the input |
+| `name` | `string` | Same as id | Name attribute for the input field |
+| `label` | `string` | Required | Label text for the input |
+| `variant` | `'standard' \| 'filled'` | `'standard'` | Visual style variant |
+| `type` | `string` | `'text'` | Input type (all HTML types + 'textarea') |
+| `modelValue` | `string \| number` | `''` | Value for v-model binding |
+| `required` | `boolean` | `false` | Whether the field is required |
+| `rows` | `number` | `3` | Number of rows (for textarea only) |
+| `placeholder` | `string` | `' '` | Placeholder text (space for floating label) |
+| `error` | `string \| boolean` | `false` | Error state or message |
+| `success` | `string \| boolean` | `false` | Success state or message |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size of the input |
+| `class` | `string` | `''` | Additional CSS classes |
+
+# Events
+
+| Event | Parameters | Description |
+|-------|------------|-------------|
+| `update:modelValue` | `(value: string \| number)` | Emitted when input value changes (for v-model) |
+| `input` | `(event: Event)` | Native input event |
+| `focus` | `(event: FocusEvent)` | Native focus event |
+| `blur` | `(event: FocusEvent)` | Native blur event |

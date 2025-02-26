@@ -46,12 +46,12 @@ export const inputShortcuts = [
   // Input sizes
   ['input-sm', 'text-sm'],
   ['input-md', 'text-base'],
-  ['input-lg', 'text-lg py-3'],
+  ['input-lg', 'text-lg '],
   
   // Label sizes
-  ['input-label-sm', 'text-xs'],
+  ['input-label-sm', 'text-sm'],
   ['input-label-md', 'text-sm'],
-  ['input-label-lg', 'text-base'],
+  ['input-label-lg', 'text-sm'],
   
   // Status classes
   ['input-error', 'border-red-500 focus:border-red-500 dark:border-red-400 dark:focus:border-red-400'],
