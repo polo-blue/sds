@@ -169,3 +169,17 @@ const handleBlur = (event: FocusEvent) => emit('blur', event);
     </div>
   </div>
 </template>
+<style>
+.input-base {
+  @apply block w-full text-4.5 text-blue-medium border-0 border-b-1 border-neutral-light appearance-none;
+}
+
+/* Explicit CSS for floating label behavior */
+.input-base:focus ~ .input-label-base {
+  @apply text-blue-light dark:text-blue-lightest scale-75;
+}
+
+.input-base:focus ~ .input-label-standard {
+  @apply -translate-y-6;
+}
+</style>
