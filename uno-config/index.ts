@@ -14,6 +14,26 @@ import {
 import { shortcuts } from './theme/shortcuts';
 import { theme } from './theme';
 
+// List of peer selectors we want to preserve during build
+const peerSelectorClasses = [
+  // Focus state classes
+  'peer-focus:text-blue-light',
+  'peer-focus:dark:text-blue-lightest',
+  'peer-focus:scale-75',
+  'peer-focus:-translate-y-6',
+  'peer-focus:-translate-y-4',
+  'peer-focus:start-0',
+  
+  // Placeholder shown classes
+  'peer-placeholder-shown:scale-100',
+  'peer-placeholder-shown:translate-y-0',
+  
+  // Not placeholder shown classes
+  'peer-not-placeholder-shown:scale-75',
+  'peer-not-placeholder-shown:-translate-y-6',
+  'peer-not-placeholder-shown:-translate-y-4',
+];
+
 interface CustomConfig extends Partial<UserConfig> {
   shortcuts?: UserShortcuts;
   theme?: Partial<typeof theme>;
@@ -33,21 +53,71 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
       ...theme,
       ...(customConfig.theme || {})
     },
-    // safelist section with transform origin classes
+    // Enhanced variants to better handle peer selectors
+    variants: [
+      // Add specific peer variant support
+      (matcher) => {
+        if (!matcher.startsWith('peer-'))
+          return matcher;
+        
+        const peerVariant = matcher.slice(5);
+        const selectorMap = {
+          'focus:': (s) => `.peer:focus ~ ${s}`,
+          'hover:': (s) => `.peer:hover ~ ${s}`,
+          'placeholder-shown:': (s) => `.peer:placeholder-shown ~ ${s}`,
+          'not-placeholder-shown:': (s) => `.peer:not(:placeholder-shown) ~ ${s}`,
+        };
+        
+        // Check for nested variants like 'peer-focus:text-blue'
+        for (const [key, selectorFn] of Object.entries(selectorMap)) {
+          if (peerVariant.startsWith(key)) {
+            return {
+              matcher: peerVariant.slice(key.length),
+              selector: selectorFn,
+            };
+          }
+        }
+        
+        // Default peer handling
+        return {
+          matcher: peerVariant,
+          selector: (s) => `.peer:${peerVariant} ~ ${s}`,
+        };
+      },
+    ],
+    // Comprehensive safelist with all needed classes
     safelist: [
       // Existing safelist items
       'md:grid-cols-product',
       
-      // Basic input classes
+      // Base peer class
+      'peer',
+      
+      // All input component classes from shortcuts
       'input-base',
       'input-label-base',
+      'input-placeholder',
       'input-standard',
       'input-filled',
       'input-wrapper-standard',
       'input-wrapper-filled',
       'input-label-standard',
       'input-label-filled',
-      'peer',
+      
+      // Label state shortcuts
+      'input-label-focus-color',
+      'input-label-focus-scale',
+      'input-label-focus-translate-standard',
+      'input-label-focus-translate-filled',
+      'input-label-placeholder',
+      'input-label-filled-standard',
+      'input-label-filled-filled',
+      'input-label-standard-state',
+      'input-label-filled-state',
+      
+      // Input types
+      'input-textarea',
+      'resize-none',
       
       // Size variants
       'input-sm',
@@ -57,10 +127,6 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
       'input-label-md',
       'input-label-lg',
       
-      // Special types
-      'input-textarea',
-      'resize-none',
-      
       // Status classes
       'input-error',
       'input-label-error',
@@ -69,7 +135,7 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
       'input-label-success',
       'input-success-message',
       
-      // Transform related
+      // Transform related classes
       'origin-top-left',
       'transform-gpu',
       'translate-y-0',
@@ -116,6 +182,30 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
       '--un-scale-x',
       '--un-scale-y',
       '--un-translate-y',
+      
+      // All peer selectors from the list
+      ...peerSelectorClasses,
+    ],
+    // Custom extractors to ensure peer classes are preserved
+    extractors: [
+      {
+        name: 'vue-astro',
+        extract({ code }) {
+          const result = new Set();
+          
+          // Extract all peer selectors in the code
+          const peerRegex = /peer-([a-zA-Z0-9-]+:[a-zA-Z0-9-]+)/g;
+          const peerMatches = code.match(peerRegex);
+          if (peerMatches) {
+            peerMatches.forEach(match => result.add(match));
+          }
+          
+          // Add all known peer selectors
+          peerSelectorClasses.forEach(cls => result.add(cls));
+          
+          return result;
+        },
+      },
     ],
     presets: [
       presetUno(),

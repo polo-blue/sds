@@ -6,16 +6,16 @@ interface InputProps {
   name?: string;
   label: string;
   variant?: 'filled' | 'standard';
-  type?: string; // HTMLInputElement['type'] | 'textarea'
-  modelValue?: string | number; // For v-model compatibility
+  type?: string;
+  modelValue?: string | number;
   required?: boolean;
-  rows?: number; // rows for textarea
+  rows?: number;
   placeholder?: string;
   error?: string | boolean;
   success?: string | boolean;
-  size?: 'sm' | 'md' | 'lg'; // Size prop
-  class?: string; // additional classes
-  [key: string]: any; // To allow additional props
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+  [key: string]: any;
 }
 
 const props = withDefaults(defineProps<InputProps>(), {
@@ -26,7 +26,7 @@ const props = withDefaults(defineProps<InputProps>(), {
   modelValue: '',
   required: false,
   rows: 3,
-  placeholder: ' ', // space is important for "floating label"
+  placeholder: ' ', // space for "floating label"
   error: false,
   success: false,
   size: 'md',
@@ -38,86 +38,72 @@ const emit = defineEmits(['update:modelValue', 'input', 'focus', 'blur']);
 // Handle external attrs
 const attrs = useAttrs();
 
-// Compute wrapper class
+// Compute wrapper class - uses existing shortcut
 const wrapperClass = computed(() => `input-wrapper-${props.variant}`);
 
-// Compute input classes going back to direct arbitrary selectors
+// Compute input classes - uses shortcuts
 const inputClass = computed(() => {
-  // Base classes
-  const classes = ['input-base', `input-${props.variant}`];
+  const classes = ['input-base', 'input-placeholder', `input-${props.variant}`];
   
-  // Focus and placeholder behavior - using direct arbitrary selectors
-  classes.push('[&:focus~label]:text-blue-light');
-  classes.push('[&:focus~label]:dark:text-blue-lightest');
-  classes.push('[&:focus~label]:scale-75');
-  classes.push('[&:placeholder-shown~label]:scale-100');
-  classes.push('[&:placeholder-shown~label]:translate-y-0');
-  classes.push('[&:not(:placeholder-shown)~label]:scale-75');
-  
-  // Variant-specific behaviors
-  if (props.variant === 'standard') {
-    classes.push('[&:focus~label]:-translate-y-6');
-    classes.push('[&:focus~label]:start-0');
-    classes.push('[&:not(:placeholder-shown)~label]:-translate-y-6');
-  } else if (props.variant === 'filled') {
-    classes.push('[&:focus~label]:-translate-y-4');
-    classes.push('[&:not(:placeholder-shown)~label]:-translate-y-4');
-  }
-  
-  // Additional classes
+  // Add size class
   if (props.size) classes.push(`input-${props.size}`);
+  
+  // Add textarea class if needed
   if (props.type === 'textarea') classes.push('input-textarea');
+  
+  // Add status classes
   if (props.error) classes.push('input-error');
   else if (props.success) classes.push('input-success');
+  
+  // Add custom classes
   if (props.class) classes.push(props.class);
   
   return classes.join(' ');
 });
 
-// Compute label classes - important: add -translate-y for initial state explicitly
+// Compute label classes - using optimized shortcuts
 const labelClass = computed(() => {
-  // Base classes
-  const classes = ['input-label-base', `input-label-${props.variant}`];
+  const classes = [
+    // Base label style
+    'input-label-base', 
+    
+    // Position styling
+    `input-label-${props.variant}`, 
+    
+    // State styling - contains all transformations for the specific variant
+    `input-label-${props.variant}-state`
+  ];
   
-  // Explicitly add transform for initial state to ensure consistency
-  if (props.variant === 'standard') {
-    // Start in position and let focus/content move it
-    classes.push('translate-y-0');
-  } else if (props.variant === 'filled') {
-    // Start in position and let focus/content move it
-    classes.push('translate-y-0');
-  }
-  
-  // Additional classes
+  // Add size class
   if (props.size) classes.push(`input-label-${props.size}`);
+  
+  // Add status classes
   if (props.error) classes.push('input-label-error');
   else if (props.success) classes.push('input-label-success');
   
   return classes.join(' ');
 });
 
-// Emit modelValue on input change
+// Event handlers
 const handleInput = (event: Event) => {
   const target = event.target as HTMLInputElement | HTMLTextAreaElement;
   emit('update:modelValue', target.value);
   emit('input', event);
 };
 
-// Forward focus and blur events
 const handleFocus = (event: FocusEvent) => emit('focus', event);
 const handleBlur = (event: FocusEvent) => emit('blur', event);
 </script>
 
 <template>
   <div :class="wrapperClass">
-    <!-- Textarea field -->
     <textarea
       v-if="type === 'textarea'"
       :id="id"
       :name="name || id"
       :rows="rows"
       :required="required"
-      :class="inputClass"
+      :class="inputClass + ' peer'"
       :placeholder="placeholder"
       :value="modelValue"
       @input="handleInput"
@@ -126,14 +112,13 @@ const handleBlur = (event: FocusEvent) => emit('blur', event);
       v-bind="attrs"
     ></textarea>
     
-    <!-- Input field -->
     <input
       v-else
       :type="type"
       :id="id"
       :name="name || id"
       :required="required"
-      :class="inputClass"
+      :class="inputClass + ' peer'"
       :placeholder="placeholder"
       :value="modelValue"
       @input="handleInput"
@@ -142,7 +127,6 @@ const handleBlur = (event: FocusEvent) => emit('blur', event);
       v-bind="attrs"
     />
     
-    <!-- Label with guaranteed correct transform origin -->
     <label
       :for="id"
       :class="labelClass"
@@ -152,7 +136,6 @@ const handleBlur = (event: FocusEvent) => emit('blur', event);
       <span v-if="required" class="text-red-500 ml-1">*</span>
     </label>
     
-    <!-- Error message -->
     <div 
       v-if="error && typeof error === 'string'" 
       class="input-error-message"
@@ -160,7 +143,6 @@ const handleBlur = (event: FocusEvent) => emit('blur', event);
       {{ error }}
     </div>
     
-    <!-- Success message -->
     <div 
       v-if="success && typeof success === 'string'" 
       class="input-success-message"
@@ -169,17 +151,3 @@ const handleBlur = (event: FocusEvent) => emit('blur', event);
     </div>
   </div>
 </template>
-<style>
-.input-base {
-  @apply block w-full text-4.5 text-blue-medium border-0 border-b-1 border-neutral-light appearance-none;
-}
-
-/* Explicit CSS for floating label behavior */
-.input-base:focus ~ .input-label-base {
-  @apply text-blue-light dark:text-blue-lightest scale-75;
-}
-
-.input-base:focus ~ .input-label-standard {
-  @apply -translate-y-6;
-}
-</style>
