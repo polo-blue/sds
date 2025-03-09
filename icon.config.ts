@@ -96,18 +96,19 @@ export const iconConfig: IconConfig = {
     ],
 
     bi: [
-      "envelope-open",
       "credit-card",
-      "qr-code",
+      "emoji-smile",
+      "envelope-open",
+      "folder",
+      "graph-up",
       "list-check",
       "list-task",
-      "text-indent-left",
-      "text-indent-right",
+      "qr-code",
       "tag",
       "tags",
-      "x",
-      "graph-up",
-      "folder"
+      "text-indent-left",
+      "text-indent-right",
+      "x"
     ],
 
     bx: [
