@@ -82,7 +82,7 @@
     "@unocss/preset-wind": "66.1.0-beta.3",
     "@unocss/reset": "66.1.0-beta.3",
     "@vite-pwa/astro": "^0.5.0",
-    "@vueuse/core": "^12.8.2",
+    "@vueuse/core": "^13.0.0",
     "astro-i18next": "1.0.0-beta.21",
     "astro-icon": "^1.1.5",
     "astro-meta-tags": "^0.3.1",
