@@ -34,6 +34,7 @@ export { default as Input } from './src/components/Input.vue';
 export { default as PostCategories } from './src/components/Post/PostCategories.vue';
 export { default as CategorySidebarToggler } from './src/components/Category/CategorySidebarToggler.vue';
 export { default as SubCategoryLink } from './src/components/Category/SubCategoryLink.vue';
+export { default as CategoryLink } from './src/components/Category/CategoryLink.vue';
 
 // Astro Components
 export { default as Copyright } from './src/components/Copyright.astro'; 
