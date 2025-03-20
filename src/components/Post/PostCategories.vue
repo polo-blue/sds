@@ -28,7 +28,7 @@ const props = withDefaults(defineProps<Props>(), {
   </a>
 </template>
 
-<style>
+<style scoped>
 .category-link {
   @apply text-sm sm:text-base text-accent-lightest uppercase hover:text-blue-500 transition-colors;
 }
