@@ -62,7 +62,7 @@ importers:
         version: 1.2.1
       '@iconify-json/flowbite':
         specifier: ^1.2.4
-        version: 1.2.4
+        version: 1.2.5
       '@iconify-json/fluent':
         specifier: ^1.2.16
         version: 1.2.16
@@ -1153,8 +1153,8 @@ packages:
   '@iconify-json/et@1.2.1':
     resolution: {integrity: sha512-bJyOBAOztbeNAL5WduqzdWrtfQ/W2glId+lmoHBlt1/h7vLtX7dG7qXFGAtKAfs0AefudiKAocqIFQ98ggM8NA==}
 
-  '@iconify-json/flowbite@1.2.4':
-    resolution: {integrity: sha512-xKzfqhcxKAd+oF1zL8OQYMNwdE78kxDlR9ulcdK7J5x3UZ+VZp2//t76O+Mtpzgpn87TIcBiRcYIi4uK0wgTQg==}
+  '@iconify-json/flowbite@1.2.5':
+    resolution: {integrity: sha512-HPaKCC4U5F3OrzDGkC6vTNv5DO9HG4rTYl2D1B4x6vetoNNhuHdh1mM3hDnpCPhNIUlbe2sBSMJxBtewP+YjVA==}
 
   '@iconify-json/fluent-emoji@1.2.3':
     resolution: {integrity: sha512-q9oSqx463rVTQbPbVwvpOkeVii+9BifvJcluv5lqs5ybdab4lnVnpQ/uE2zAseFGOWNygKJsXZl6HbgV9HGhZw==}
@@ -5751,7 +5751,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/flowbite@1.2.4':
+  '@iconify-json/flowbite@1.2.5':
     dependencies:
       '@iconify/types': 2.0.0
 
