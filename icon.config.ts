@@ -215,6 +215,7 @@ export const iconConfig: IconConfig = {
       "folder",
       "info",
       "lamp",
+      "lightbulb",
       "package",
       "qr-code",
       "radio",
