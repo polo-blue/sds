@@ -30,7 +30,8 @@ export const iconCollections = [
   'ph',
   'simple-icons',
   'system-uicons',
-  'uil'
+  'uil',
+  'lucide',
 ] as const;
 
 export type IconCollectionName = typeof iconCollections[number];
@@ -196,6 +197,15 @@ export const iconConfig: IconConfig = {
       "envelope",
       "phone",
       "tag-alt"
+    ],
+
+    lucide: [
+      "info",
+      "car",
+      "car-front",
+      "book-text",
+      "qr-code",
+      "scan-qr-code"
     ],
 
     "simple-icons": [
