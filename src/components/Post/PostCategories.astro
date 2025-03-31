@@ -11,9 +11,13 @@ interface Category {
 
 interface Props {
   categories: Category[];
+  lang?: string;
 }
 
-const { categories } = Astro.props;
+const { categories, lang = 'en' } = Astro.props;
+
+// Determine the category label based on language
+const categoryLabel = lang === 'pl' ? 'Kategoria' : 'Category';
 ---
 
 <div class="text-brand-secondary uppercase text-base z-3 relative w-full">
@@ -25,8 +29,8 @@ const { categories } = Astro.props;
               <span class="w-px h-2.5 bg-gray-300 mx-2.5 inline-block relative" />
             )}
             <a
-              class="term-link text-sm sm:text-base hover:text-light-blue-400
-"
+              class="term-link text-sm sm:text-base hover:text-light-blue-400"
+              data-pagefind-filter={`${categoryLabel}:${category.name}`}
               href={category.link}
             >
               {category.name}

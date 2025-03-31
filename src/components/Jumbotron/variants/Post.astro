@@ -12,6 +12,7 @@ interface Props {
   categories?: Category[];
   hasMetadata: boolean;
   hasCategories: boolean;
+  lang?: string;
 }
 
 const {
@@ -22,6 +23,7 @@ const {
   categories = [],
   hasMetadata,
   hasCategories,
+  lang = 'en'
 } = Astro.props;
 ---
 
@@ -34,7 +36,7 @@ const {
       
       {hasCategories && (
         <div class="order-1">
-          <PostCategories categories={categories} />
+          <PostCategories categories={categories} lang={lang} />
         </div>
       )}
 

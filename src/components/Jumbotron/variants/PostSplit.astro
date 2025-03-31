@@ -12,6 +12,7 @@ interface Props {
   categories?: Category[];
   hasMetadata: boolean;
   hasCategories: boolean;
+  lang: string;
 }
 
 const {
@@ -22,6 +23,7 @@ const {
   categories = [],
   hasMetadata,
   hasCategories,
+  lang='en'
 } = Astro.props;
 
 // Helper function to remove HTML tags
@@ -42,7 +44,7 @@ const cleanTitle = stripHtml(title);
           
           {hasCategories && (
             <div class="jumbotron-categories">
-              <PostCategories categories={categories} />
+              <PostCategories categories={categories} lang={lang} />
             </div>
           )}
 

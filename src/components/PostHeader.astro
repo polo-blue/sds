@@ -16,7 +16,7 @@ interface Props {
   }[];
 }
 
-const { image, title, categories, date, author } = Astro.props;
+const { image, title, categories, date, author, lang } = Astro.props;
 import PostCategories from "./Post/PostCategories.astro";
 import Date from "./Date.astro";
 ---
@@ -33,7 +33,7 @@ import Date from "./Date.astro";
       >
         {title}
       </h1>
-      <PostCategories categories={categories} />
+      <PostCategories categories={categories} lang={lang} />
       <div class="order-3 flex items-center text-gray-1 00">
         {
           author && (
