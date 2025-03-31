@@ -1,5 +1,6 @@
 {
-  "name": "spoko-design-system",  "version": "0.6.9",
+  "name": "spoko-design-system",
+  "version": "0.6.9",
   "private": false,
   "main": "./index.ts",
   "module": "./index.ts",
@@ -105,14 +106,6 @@
     "@vitejs/plugin-vue": "^5.2.3",
     "@vue/compiler-sfc": "^3.5.13",
     "astro": "^5.5.6",
-eta.8",
-    "@vitejs/plugin-vue": "^5.2.3",
-    "@vue/compiler-sfc": "^3.5.13",
-    "astro": "^5.5.5",
-eta.8",
-    "@vitejs/plugin-vue": "^5.2.3",
-    "@vue/compiler-sfc": "^3.5.13",
-    "astro": "^5.5.5",
     "unocss": "^0.65.0",
     "vite": "^6.2.4"
   },
