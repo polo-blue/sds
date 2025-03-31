@@ -204,6 +204,7 @@ export const iconConfig: IconConfig = {
       "car",
       "car-front",
       "book-text",
+      "codesandbox",
       "qr-code",
       "scan-qr-code"
     ],
