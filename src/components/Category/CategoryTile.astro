@@ -18,10 +18,9 @@ interface Props {
 const { CategoryObject, locale = 'en' } = Astro.props;
 const { height = 70, width = 70 } = CategoryObject;
 
-const href = `/${locale !== 'en' ? `${locale}/` : ''}${CategoryObject.slug}/`;
-
+const prefix = locale === 'en' ? '' : `${locale}/`;
+const href = `/${prefix}${CategoryObject.slug}/`;
 ---
-
 
 <a href={href} class="carousel-item" data-astro-prefetch>
   <Image
