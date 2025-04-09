@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PropType } from "vue";
+import { PropType, computed } from "vue";
 import ProductDetailName from "./ProductDetailName.vue";
 
 interface TableItem {
@@ -10,26 +10,84 @@ interface TableItem {
   icon?: boolean;
 }
 
+interface GroupedLink {
+  id: string;
+  links: {
+    name: string;
+    value: string;
+  }[];
+}
+
 const props = defineProps({
   items: { type: Array as PropType<TableItem[]>, default: () => [] },
   caption: { type: String, default: null }
 });
 
-// Funkcja do sprawdzania, czy wartość jest linkiem
+//  Function for checking whether a value is a link
 const isLink = (id: string) => {
   return ['blog', 'youtube', 'vimeo'].includes(id);
 };
 
-// Funkcja do określania tekstu nagłówka
-const getHeaderText = (row: TableItem) => {
-  // Dla bloga, używamy id zamiast name
+// Function for specifying header text
+const getHeaderText = (row: TableItem | GroupedLink) => {
+  //  For the blog, we use id instead of name
   if (row.id === 'blog') {
     return row.id.charAt(0).toUpperCase() + row.id.slice(1); // "Blog" z dużej litery
   }
   
-  // Dla innych typów, używamy name
-  return row.name;
+  // For other types, we use name (if it is GroupedLink, there is no name)
+  return 'name' in row ? row.name : row.id.charAt(0).toUpperCase() + row.id.slice(1);
 };
+
+//  Function to determine the icon class for a link type
+const getLinkIconClass = (linkId: string) => {
+  switch (linkId) {
+    case 'blog':
+      return 'i-lucide-book-text';
+    case 'youtube':
+      return 'i-simple-icons-youtube';
+    case 'vimeo':
+      return 'i-simple-icons-vimeo';
+    default:
+      return 'i-lucide-link';
+  }
+};
+
+// Grouping of elements by id
+const groupedItems = computed(() => {
+  const result: (TableItem | GroupedLink)[] = [];
+  const linkGroups = new Map<string, GroupedLink>();
+  
+  // We process all elements
+  props.items.forEach(item => {
+    // If it's a link (blog, youtube, vimeo)
+    if (isLink(item.id)) {
+      // Add a link to the relevant group
+      if (!linkGroups.has(item.id)) {
+        linkGroups.set(item.id, { 
+          id: item.id, 
+          links: [] 
+        });
+      }
+      
+      // Dodajemy link do odpowiedniej grupy
+      linkGroups.get(item.id)?.links.push({
+        name: item.name,
+        value: item.value as string
+      });
+    } else {
+      // If it is not a link, we add it normally to the results
+      result.push(item);
+    }
+  });
+  
+  // Add all link groups at the end
+  linkGroups.forEach(group => {
+    result.push(group);
+  });
+  
+  return result;
+});
 </script>
 
 <template>
@@ -42,19 +100,24 @@ const getHeaderText = (row: TableItem) => {
       <col>
     </colgroup>
     <tbody>
-      <tr v-for="row, index in props.items" :key="index">
-        <!-- Używamy funkcji getHeaderText do określenia, co wyświetlić w nagłówku -->
+      <tr v-for="row, index in groupedItems" :key="index">
+        <!-- We use the getHeaderText function to specify the header text -->
         <ProductDetailName as="th" :text="getHeaderText(row)" />
         
-        <!-- Specjalna obsługa dla linków -->
-        <td v-if="isLink(row.id)" class="link-cell">
-          <a :href="row.value as string" target="_blank" rel="noopener noreferrer" class="link-primary">
-            {{ row.name }} <!-- row.name zawiera tekst anchora dla linków -->
-          </a>
+        <!-- Handling link groups -->
+        <td v-if="'links' in row" class="link-cell">
+          <ul class="list-none p-0 m-0">
+            <li v-for="(link, linkIndex) in row.links" :key="linkIndex" class="mb-2 last:mb-0 flex items-center">
+              <span :class="[getLinkIconClass(row.id), 'leading-none inline-block mr-2 w-4 h-4 text-gray-400']" />
+              <a :href="link.value" target="_blank" rel="noopener noreferrer" class="link-primary">
+                {{ link.name }}
+              </a>
+            </li>
+          </ul>
         </td>
         
-        <!-- Standardowe sloty dla innych typów -->
-        <slot v-else :name="row.id">
+        <!--  Support for standard types -->
+        <slot v-else-if="'id' in row" :name="row.id">
           <td>{{ row.value }}</td>
         </slot>
       </tr>
