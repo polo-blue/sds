@@ -137,7 +137,7 @@ importers:
         version: 66.1.0-beta.10
       '@vite-pwa/astro':
         specifier: ^1.0.0
-        version: 1.0.0(astro@5.6.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.1))(vite-plugin-pwa@0.21.1(vite@6.2.5(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.3)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.1))(workbox-build@7.3.0)(workbox-window@7.3.0))
+        version: 1.0.1(astro@5.6.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.1))(vite-plugin-pwa@0.21.1(vite@6.2.5(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.3)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.1))(workbox-build@7.3.0)(workbox-window@7.3.0))
       '@vueuse/core':
         specifier: ^13.1.0
         version: 13.1.0(vue@3.5.13(typescript@5.7.3))
@@ -1753,8 +1753,8 @@ packages:
     peerDependencies:
       vite: ^2.9.0 || ^3.0.0-0 || ^4.0.0 || ^5.0.0-0 || ^6.0.0-0
 
-  '@vite-pwa/astro@1.0.0':
-    resolution: {integrity: sha512-sdevvfkC5BEdORU6xjPJEW4iOLiNMngTQB41EXX7DzlLWyLH+hpzrwGuAwJQgS90EDxk7Gqma+qDfqoxzkxwIA==}
+  '@vite-pwa/astro@1.0.1':
+    resolution: {integrity: sha512-jwtlgII0AqztSUS58H85kDLqyJy8w49rWsi0CwYG7Ik8ya6viMTHZBR5eQ5r0wzQJ++1fj6Uvx1nFBuyxjE/Uw==}
     peerDependencies:
       '@vite-pwa/assets-generator': ^1.0.0
       astro: ^1.6.0 || ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
@@ -6496,7 +6496,7 @@ snapshots:
     transitivePeerDependencies:
       - vue
 
-  '@vite-pwa/astro@1.0.0(astro@5.6.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.1))(vite-plugin-pwa@0.21.1(vite@6.2.5(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.3)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.1))(workbox-build@7.3.0)(workbox-window@7.3.0))':
+  '@vite-pwa/astro@1.0.1(astro@5.6.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.1))(vite-plugin-pwa@0.21.1(vite@6.2.5(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.3)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.1))(workbox-build@7.3.0)(workbox-window@7.3.0))':
     dependencies:
       astro: 5.6.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.1)
       vite-plugin-pwa: 0.21.1(vite@6.2.5(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.3)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.1))(workbox-build@7.3.0)(workbox-window@7.3.0)
