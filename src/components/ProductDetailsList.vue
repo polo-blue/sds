@@ -108,7 +108,7 @@ const groupedItems = computed(() => {
         <td v-if="'links' in row" class="link-cell">
           <ul class="list-none p-0 m-0">
             <li v-for="(link, linkIndex) in row.links" :key="linkIndex" class="mb-2 last:mb-0 flex items-center">
-              <span :class="[getLinkIconClass(row.id), 'leading-none inline-block mr-2 w-4 h-4 text-gray-400']" />
+              <span :class="[getLinkIconClass(row.id), 'leading-none inline-block mr-2 w-4 min-w-4 h-4 text-gray-400']" />
               <a :href="link.value" target="_blank" rel="noopener noreferrer" class="link-primary">
                 {{ link.name }}
               </a>
@@ -153,6 +153,6 @@ const groupedItems = computed(() => {
 }
 
 .link-primary {
-  @apply text-blue-600 hover:text-blue-800 hover:underline;
+  @apply leading-none text-brand-primary hover:text-accent-light hover:underline;
 }
 </style>
