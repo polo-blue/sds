@@ -1,15 +1,20 @@
 // uno-config/index.ts
 import type { UserConfig, UserShortcuts } from 'unocss'
 import { defineConfig } from 'unocss';
+
+// REQUIRED IMPORTS: These imports are used in the createSdsConfig function
+// Removing or commenting out any of these will break the UnoCSS configuration
 import {
-  transformerDirectives,
-  transformerVariantGroup,
-  presetAttributify,
-  presetIcons,
-  presetTypography,
-  presetUno,
-  presetWebFonts,
+  transformerDirectives,   // Used in transformers array
+  transformerVariantGroup, // Used in transformers array
+  presetAttributify,       // Used in presets array
+  presetIcons,             // Used in presets array with specific configuration
 } from 'unocss';
+
+// These presets must be imported explicitly to be used in the configuration
+import presetUno from '@unocss/preset-uno';             // Primary UnoCSS preset
+import presetTypography from '@unocss/preset-typography'; // Typography preset
+import presetWebFonts from '@unocss/preset-web-fonts';    // Web fonts preset
 
 import { shortcuts } from './theme/shortcuts';
 import { theme } from './theme';
@@ -39,8 +44,19 @@ interface CustomConfig extends Partial<UserConfig> {
   theme?: Partial<typeof theme>;
 }
 
+/**
+ * Creates a UnoCSS configuration with Spoko Design System defaults
+ * 
+ * IMPORTANT: This function requires all the imported UnoCSS presets and transformers.
+ * Do not remove any imports at the top of this file as they are necessary for
+ * proper functioning of the UnoCSS configuration.
+ * 
+ * @param customConfig - Optional custom configuration to merge with defaults
+ * @returns Complete UnoCSS configuration
+ */
 export function createSdsConfig(customConfig: CustomConfig = {}) {
   return defineConfig({
+    // Transform directives and variant groups
     transformers: [
       transformerDirectives(),
       transformerVariantGroup(),
@@ -207,6 +223,7 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
         },
       },
     ],
+    // IMPORTANT: All of these presets are required for proper functioning
     presets: [
       presetUno(),
       presetAttributify(),
