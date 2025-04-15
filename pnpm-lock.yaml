@@ -163,8 +163,8 @@ importers:
         specifier: ^16.5.0
         version: 16.5.0
       i18next:
-        specifier: ^24.2.3
-        version: 24.2.3(typescript@5.7.3)
+        specifier: ^25.0.0
+        version: 25.0.0(typescript@5.7.3)
       i18next-browser-languagedetector:
         specifier: ^8.0.4
         version: 8.0.4
@@ -176,7 +176,7 @@ importers:
         version: 3.0.2
       i18next-vue:
         specifier: ^5.2.0
-        version: 5.2.0(i18next@24.2.3(typescript@5.7.3))(vue@3.5.13(typescript@5.7.3))
+        version: 5.2.0(i18next@25.0.0(typescript@5.7.3))(vue@3.5.13(typescript@5.7.3))
       swiper:
         specifier: ^11.2.6
         version: 11.2.6
@@ -2924,8 +2924,8 @@ packages:
   i18next@22.5.1:
     resolution: {integrity: sha512-8TGPgM3pAD+VRsMtUMNknRz3kzqwp/gPALrWMsDnmC1mKqJwpWyooQRLMcbTwq8z8YwSmuj+ZYvc+xCuEpkssA==}
 
-  i18next@24.2.3:
-    resolution: {integrity: sha512-lfbf80OzkocvX7nmZtu7nSTNbrTYR52sLWxPtlXX1zAhVw8WEnFk4puUkCR4B1dNQwbSpEHHHemcZu//7EcB7A==}
+  i18next@25.0.0:
+    resolution: {integrity: sha512-POPvwjOPR1GQvRnbikTMPEhQD+ekd186MHE6NtVxl3Lby+gPp0iq60eCqGrY6wfRnp1lejjFNu0EKs1afA322w==}
     peerDependencies:
       typescript: ^5
     peerDependenciesMeta:
@@ -8004,16 +8004,16 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  i18next-vue@5.2.0(i18next@24.2.3(typescript@5.7.3))(vue@3.5.13(typescript@5.7.3)):
+  i18next-vue@5.2.0(i18next@25.0.0(typescript@5.7.3))(vue@3.5.13(typescript@5.7.3)):
     dependencies:
-      i18next: 24.2.3(typescript@5.7.3)
+      i18next: 25.0.0(typescript@5.7.3)
       vue: 3.5.13(typescript@5.7.3)
 
   i18next@22.5.1:
     dependencies:
       '@babel/runtime': 7.27.0
 
-  i18next@24.2.3(typescript@5.7.3):
+  i18next@25.0.0(typescript@5.7.3):
     dependencies:
       '@babel/runtime': 7.27.0
     optionalDependencies:
