@@ -95,7 +95,7 @@ importers:
         version: 1.2.2
       '@iconify-json/simple-icons':
         specifier: ^1.2.31
-        version: 1.2.31
+        version: 1.2.33
       '@iconify-json/system-uicons':
         specifier: ^1.2.2
         version: 1.2.2
@@ -1186,8 +1186,8 @@ packages:
   '@iconify-json/ph@1.2.2':
     resolution: {integrity: sha512-PgkEZNtqa8hBGjHXQa4pMwZa93hmfu8FUSjs/nv4oUU6yLsgv+gh9nu28Kqi8Fz9CCVu4hj1MZs9/60J57IzFw==}
 
-  '@iconify-json/simple-icons@1.2.31':
-    resolution: {integrity: sha512-xBUPtvkcSAiXs9DfVtudhLddQtQYin3I3Ph/W5FNYA0oE6r2hmLB8TgOog9OjOt1Sxn3IB5+4n5+64DMf2xNmQ==}
+  '@iconify-json/simple-icons@1.2.33':
+    resolution: {integrity: sha512-nL5/UmI9x5PQ/AHv6bOaL2pH6twEdEz4pI89efB/K7HFn5etQnxMtGx9DFlOg/sRA2/yFpX8KXvc95CSDv5bJA==}
 
   '@iconify-json/system-uicons@1.2.2':
     resolution: {integrity: sha512-E5mwm7F3ahs58YacvifJlj7tPN/QYTMWtLe38bwS9LVylyfT7hAsHdBiBUcsgM5Isdr+6x1TTSz1iAq+/bkUcw==}
@@ -2666,6 +2666,14 @@ packages:
 
   fdir@6.4.3:
     resolution: {integrity: sha512-PMXmW2y1hDDfTSRc9gaXIuCCRpuoz3Kaz8cUelp3smouvfT632ozg2vrT6lJsHKKOF59YLbOGfAWGUcKEfRMQw==}
+    peerDependencies:
+      picomatch: ^3 || ^4
+    peerDependenciesMeta:
+      picomatch:
+        optional: true
+
+  fdir@6.4.4:
+    resolution: {integrity: sha512-1NZP+GK4GfuAv3PqKvxQRDMjdSRZjnkq7KfhlNrCNNlZ0ygQFpebfrnfnq/W7fpUnAv9aGWmY1zKx7FYL3gwhg==}
     peerDependencies:
       picomatch: ^3 || ^4
     peerDependenciesMeta:
@@ -4191,6 +4199,10 @@ packages:
 
   tinyglobby@0.2.12:
     resolution: {integrity: sha512-qkf4trmKSIiMTs/E63cxH+ojC2unam7rJ0WrauAzpT3ECNTxGRMlaXxVbfxMUC/w0LaYk6jQ4y/nGR9uBO3tww==}
+    engines: {node: '>=12.0.0'}
+
+  tinyglobby@0.2.13:
+    resolution: {integrity: sha512-mEwzpUgrLySlveBwEVDMKk5B57bhLPYovRfPAXD5gA/98Opn0rCDj3GtLwFvCvH5RK9uPCExUROW5NjDwvqkxw==}
     engines: {node: '>=12.0.0'}
 
   to-regex-range@5.0.1:
@@ -5795,7 +5807,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/simple-icons@1.2.31':
+  '@iconify-json/simple-icons@1.2.33':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -7642,6 +7654,10 @@ snapshots:
       pend: 1.2.0
 
   fdir@6.4.3(picomatch@4.0.2):
+    optionalDependencies:
+      picomatch: 4.0.2
+
+  fdir@6.4.4(picomatch@4.0.2):
     optionalDependencies:
       picomatch: 4.0.2
 
@@ -9668,6 +9684,11 @@ snapshots:
       fdir: 6.4.3(picomatch@4.0.2)
       picomatch: 4.0.2
 
+  tinyglobby@0.2.13:
+    dependencies:
+      fdir: 6.4.4(picomatch@4.0.2)
+      picomatch: 4.0.2
+
   to-regex-range@5.0.1:
     dependencies:
       is-number: 7.0.0
@@ -9935,7 +9956,7 @@ snapshots:
     dependencies:
       debug: 4.4.0
       pretty-bytes: 6.1.1
-      tinyglobby: 0.2.12
+      tinyglobby: 0.2.13
       vite: 6.2.6(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.1)
       workbox-build: 7.3.0
       workbox-window: 7.3.0
