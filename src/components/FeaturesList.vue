@@ -17,25 +17,21 @@ const props = defineProps({
 </script>
 
 <template>
-    <h2 class="mb-2 colon-after text-xl font-textbold block leading-none" v-if="props.caption">{{ props.caption }}</h2>
-    <ul class="mb-6">
-        <li v-for="item in props.items" class="leading-5">
+    <h2 
+        class="features-list-caption" 
+        v-if="props.caption"
+    >
+        {{ props.caption }}
+    </h2>
+    <ul class="features-list-ul">
+        <li 
+            v-for="item in props.items" 
+            class="features-list-item"
+            :key="item"
+        >
             {{ item }}
         </li>
     </ul>
 </template>
 
 
-<style  scoped>
-ul {
-    @apply list-square pl-5;
-
-    li {
-        @apply relative mb-2;
-
-        &::marker {
-            @apply text-blue-400;
-        }
-    }
-}
-</style>

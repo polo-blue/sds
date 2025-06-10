@@ -20,20 +20,12 @@ const props = withDefaults(defineProps<Props>(), {
 <template>
   <a
     :href="props.category.link"
-    class="category-link"
-    :class="{ 'active': props.active }"
+    class="category-link-base"
+    :class="{ 'category-link-active': props.active }"
     :title="props.category.description || props.category.name"
   >
     {{ props.category.name }}
   </a>
 </template>
 
-<style scoped>
-.category-link {
-  @apply text-sm sm:text-base text-accent-lightest uppercase hover:text-blue-500 transition-colors;
-}
-
-.category-link.active {
-  @apply text-blue-500;
-}
-</style>
+<!-- No <style> section - all styles are now UnoCSS shortcuts -->

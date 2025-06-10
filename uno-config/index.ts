@@ -105,6 +105,16 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
     safelist: [
       // Existing safelist items
       'md:grid-cols-product',
+
+      'breadcrumb-link-disabled',
+      'breadcrumb-link',
+      'breadcrumb-item',
+      'features-list-caption',
+      'features-list-ul',
+      'features-list-item',
+
+      'category-link-base',
+      'category-link-active',
       
       // Base peer class
       'peer',

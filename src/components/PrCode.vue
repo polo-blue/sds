@@ -26,7 +26,7 @@ const props = defineProps({
     </span>
 </template>
 
-<style scoped>
+<style>
 .btn-prcode--pdp {
   @apply mb-1;
 }

@@ -23,14 +23,14 @@ const props = defineProps({
   caption: { type: String, default: null }
 });
 
-//  Function for checking whether a value is a link
+// Function for checking whether a value is a link
 const isLink = (id: string) => {
   return ['blog', 'youtube', 'vimeo'].includes(id);
 };
 
 // Function for specifying header text
 const getHeaderText = (row: TableItem | GroupedLink) => {
-  //  For the blog, we use id instead of name
+  // For the blog, we use id instead of name
   if (row.id === 'blog') {
     return row.id.charAt(0).toUpperCase() + row.id.slice(1); // "Blog" z dużej litery
   }
@@ -39,7 +39,7 @@ const getHeaderText = (row: TableItem | GroupedLink) => {
   return 'name' in row ? row.name : row.id.charAt(0).toUpperCase() + row.id.slice(1);
 };
 
-//  Function to determine the icon class for a link type
+// Function to determine the icon class for a link type
 const getLinkIconClass = (linkId: string) => {
   switch (linkId) {
     case 'blog':
@@ -91,21 +91,25 @@ const groupedItems = computed(() => {
 </script>
 
 <template>
-  <table class="details table-auto text-left bg-white">
+  <table class="details-table">
     <caption v-if="!!$slots.caption || caption">
       <slot name="caption">{{ caption }}</slot>
     </caption>
     <colgroup>
-      <col>
-      <col>
+      <col class="details-table-col">
+      <col class="details-table-col">
     </colgroup>
     <tbody>
-      <tr v-for="row, index in groupedItems" :key="index">
+      <tr v-for="row, index in groupedItems" :key="index" class="details-table-row">
         <!-- We use the getHeaderText function to specify the header text -->
-        <ProductDetailName as="th" :text="getHeaderText(row)" />
+        <ProductDetailName 
+          as="th" 
+          :text="getHeaderText(row)" 
+          class="details-table-header"
+        />
         
         <!-- Handling link groups -->
-        <td v-if="'links' in row" class="link-cell">
+        <td v-if="'links' in row" class="details-table-cell">
           <ul class="list-none p-0 m-0">
             <li v-for="(link, linkIndex) in row.links" :key="linkIndex" class="mb-2 last:mb-0 flex items-center">
               <span :class="[getLinkIconClass(row.id), 'leading-none inline-block mr-2 w-4 min-w-4 h-4 text-gray-400']" />
@@ -116,43 +120,11 @@ const groupedItems = computed(() => {
           </ul>
         </td>
         
-        <!--  Support for standard types -->
+        <!-- Support for standard types -->
         <slot v-else-if="'id' in row" :name="row.id">
-          <td>{{ row.value }}</td>
+          <td class="details-table-cell">{{ row.value }}</td>
         </slot>
       </tr>
     </tbody>
   </table>
 </template>
-
-<style scoped>
-.details {
-  @apply border-none shadow-none w-full md:w-auto;
-  box-shadow: none;
-
-  col {
-    @apply w-1/2 md:w-auto;
-  }
-
-  tr {
-    @apply border-none;
-  }
-
-  tr,
-  th {
-    @apply leading-none text-3.5 py-2 border-none xl:(py-4) 3xl:(text-4);
-  }
-
-  th {
-    @apply px-0;
-  }
-
-  td {
-    @apply relative;
-  }
-}
-
-.link-primary {
-  @apply leading-none text-brand-primary hover:text-accent-light hover:underline;
-}
-</style>

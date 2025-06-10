@@ -89,5 +89,36 @@ export const componentShortcuts = [
   ['product-link', PRODUCT_STYLES.link.base],
   ['number-big', 'text-3.75 mr-2 mt-2 mb-0 sm:mt-0'],
   ['product-thumb--related', `w-22 min-w-22 xl:w-30 xl:min-w-30 h-auto ${IMAGE_STYLES.objectContain} object-top bg-gray-100 ${aspectRatios['4/3']} ${LAYOUT.position.relative}`],
-  ['product-thumb--carousel', `w-60 min-w-60 sm:w-22 sm:min-w-22 xl:w-30 xl:min-w-30 h-auto ${IMAGE_STYLES.objectContain} object-top bg-gray-100 ${aspectRatios['4/3']} ${LAYOUT.position.relative}`]
+  ['product-thumb--carousel', `w-60 min-w-60 sm:w-22 sm:min-w-22 xl:w-30 xl:min-w-30 h-auto ${IMAGE_STYLES.objectContain} object-top bg-gray-100 ${aspectRatios['4/3']} ${LAYOUT.position.relative}`],
+
+  
+  // FeaturesList component
+  ['features-list', 'mb-6'],
+  ['features-list-item', 'leading-5 relative mb-2'],
+  ['features-list-ul', 'list-square pl-5 mb-6 marker:[color:#00b0f0]'],
+
+  ['features-list-caption', 'mb-2 colon-after text-xl font-textbold block leading-none'],
+
+
+
+  // Breadcrumbs
+  ['breadcrumbs-base', 'flex items-center p-0 leading-none list-none text-sm'],
+  ['breadcrumb-item', 'flex'],
+  ['breadcrumb-link', 'border-0 cursor-pointer whitespace-nowrap py-4.25 sm:py-1 px-1'],
+  ['breadcrumb-link-disabled', 'cursor-default pointer-events-none'],
+  ['breadcrumb-back-btn', 'flex items-center px-3 sm:px-0 py-4.25 sm:py-1 hover:text-accent-light whitespace-nowrap my-auto'],
+
+  // PostCategories
+  ['category-link-base', 'text-sm sm:text-base text-accent-lightest uppercase hover:text-blue-500 transition-colors'],
+  ['category-link-active', 'text-blue-500'],
+
+  // Details table
+  ['details-table', 'border-none shadow-none w-full md:w-auto'],
+  ['details-table-row', 'border-none'],
+  ['details-table-header', 'leading-none text-3.5 py-2 border-none xl:py-4 3xl:text-4 px-0'],
+  ['details-table-cell', 'relative'],
+  ['details-table-col', 'w-1/2 md:w-auto'],
+  ['link-primary', 'leading-none text-brand-primary hover:text-accent-light hover:underline'],
+
+
 ];
