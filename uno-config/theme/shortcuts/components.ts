@@ -115,7 +115,7 @@ export const componentShortcuts = [
   // Details table
   ['details-table', 'border-none shadow-none w-full md:w-auto'],
   ['details-table-row', 'border-none'],
-  ['details-table-header', 'leading-none text-3.5 py-2 border-none xl:py-4 3xl:text-4 px-0'],
+  ['details-table-header', 'leading-none text-3.5 py-2 border-none xl:py-4 3xl:text-4 px-0 text-left'],
   ['details-table-cell', 'relative'],
   ['details-table-col', 'w-1/2 md:w-auto'],
   ['link-primary', 'leading-none text-brand-primary hover:text-accent-light hover:underline'],
