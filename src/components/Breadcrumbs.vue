@@ -82,7 +82,7 @@ const isLast = (index: number) => {
            class="breadcrumb-link breadcrumb-link-disabled"
            :title="`Polo 6R ${crumb.name} ${productNumber}`">
           <strong class="font-normal" itemprop="name" v-html="crumb.name" /> 
-          <b class="hidden sm:inline font-normal">{{ productNumber }}</b>
+          <b class="hidden sm:inline font-normal ml-1">{{ productNumber }}</b>
         </a>
         <meta itemprop="position" :content="String(props.showHome ? index + 2 : index + 1)">
       </li>
