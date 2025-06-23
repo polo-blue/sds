@@ -2,12 +2,26 @@
 import { PropType, computed } from "vue";
 import ProductDetailName from "./ProductDetailName.vue";
 
+interface ColorCode {
+  code: string;
+  name: string;
+}
+
+interface PaintMark {
+  count: number;
+  color: string;
+}
+
 interface TableItem {
   id: string;
   name: string;
   value: unknown;
   translated?: boolean;
   icon?: boolean;
+  isArrayValue?: boolean;
+  isColorArray?: boolean;
+  isPaintMarks?: boolean;
+  isGenericArray?: boolean;
 }
 
 interface GroupedLink {
@@ -28,11 +42,31 @@ const isLink = (id: string) => {
   return ['blog', 'youtube', 'vimeo'].includes(id);
 };
 
+// Function for checking if it's a color array
+const isColorArray = (item: TableItem) => {
+  return item.isColorArray && Array.isArray(item.value);
+};
+
+// Function for checking if it's paint marks
+const isPaintMarks = (item: TableItem) => {
+  return item.isPaintMarks && Array.isArray(item.value);
+};
+
+// Function for checking if it's a generic array
+const isGenericArray = (item: TableItem) => {
+  return item.isGenericArray && Array.isArray(item.value);
+};
+
+// Function to check if value is HTML string (fallback)
+const isHtmlValue = (value: unknown): boolean => {
+  return typeof value === 'string' && (value.includes('<span') || value.includes('<br>'));
+};
+
 // Function for specifying header text
 const getHeaderText = (row: TableItem | GroupedLink) => {
   // For the blog, we use id instead of name
   if (row.id === 'blog') {
-    return row.id.charAt(0).toUpperCase() + row.id.slice(1); // "Blog" z dużej litery
+    return row.id.charAt(0).toUpperCase() + row.id.slice(1);
   }
   
   // For other types, we use name (if it is GroupedLink, there is no name)
@@ -70,7 +104,7 @@ const groupedItems = computed(() => {
         });
       }
       
-      // Dodajemy link do odpowiedniej grupy
+      // Add link to the relevant group
       linkGroups.get(item.id)?.links.push({
         name: item.name,
         value: item.value as string
@@ -119,6 +153,39 @@ const groupedItems = computed(() => {
             </li>
           </ul>
         </td>
+        
+        <!-- Special handling for color arrays (already translated) -->
+        <td v-else-if="'id' in row && isColorArray(row)" class="details-table-cell">
+        <ul>
+          <li v-for="(colorItem, colorIndex) in (row.value as ColorCode[])" :key="colorIndex" 
+               class="flex items-center gap-2 mb-1 last:mb-0">
+            <code class="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm font-mono font-semibold">
+              {{ colorItem.code }}
+            </code>
+            <span class="text-gray-400">-</span>
+            <span class="text-gray-700 dark:text-gray-300">{{ colorItem.name }}</span>
+          </li>
+          </ul>
+        </td>
+        
+        <!-- Special handling for paint marks (already translated) -->
+        <td v-else-if="'id' in row && isPaintMarks(row)" class="details-table-cell">
+          <span class="text-gray-700 dark:text-gray-300">{{ row.value }}</span>
+        </td>
+        
+        <!-- Generic array handling (bullet list) -->
+        <td v-else-if="'id' in row && isGenericArray(row)" class="details-table-cell">
+          <ul class="list-none p-0 m-0">
+            <li v-for="(item, itemIndex) in (row.value as string[])" :key="itemIndex" 
+                class="flex items-start gap-2 mb-1 last:mb-0 leading-relaxed">
+              <span class="text-gray-500 font-bold flex-shrink-0 mt-0.5">·</span>
+              <span class="text-gray-700 dark:text-gray-300 text-sm">{{ item }}</span>
+            </li>
+          </ul>
+        </td>
+        
+        <!-- Handling HTML values (fallback for already formatted HTML) -->
+        <td v-else-if="'id' in row && isHtmlValue(row.value)" class="details-table-cell" v-html="row.value"></td>
         
         <!-- Support for standard types -->
         <slot v-else-if="'id' in row" :name="row.id">
