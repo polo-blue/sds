@@ -121,7 +121,7 @@ export const TYPOGRAPHY = {
 export const PRODUCT_STYLES = {
   thumb: {
     base: 'h-full w-full object-cover object-center transform scale-100 group-hover:scale-110 absolute inset-0 will-change-transform bg-neutral-lightest',
-    container: `${aspectRatios['4/3']} ${LAYOUT.flex.alignCenter} mb-3 sm:mb-0 ${IMAGE_STYLES.overlay}`,
+    container: `${aspectRatios['4/3']} ${LAYOUT.flex.alignCenter} mb-3 sm:mb-auto ${IMAGE_STYLES.overlay}`,
   },
   link: {
     base: 'relative flex w-full bg-white after:(absolute bg-accent-light w-[calc(100%-1rem)] left-0 h-px top-[calc(100%-1px)] bottom-1 content-empty scale-x-0 transition-transform-300 origin-top-right) hover:after:(origin-top-left scale-x-100)',

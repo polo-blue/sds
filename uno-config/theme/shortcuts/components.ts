@@ -109,7 +109,7 @@ export const componentShortcuts = [
   ['breadcrumb-back-btn', 'flex items-center px-3 sm:px-0 py-4.25 sm:py-1 hover:text-accent-light whitespace-nowrap my-auto'],
 
   // PostCategories
-  ['category-link-base', 'text-sm sm:text-base text-accent-lightest uppercase hover:text-blue-500 transition-colors'],
+  ['category-link-base', 'text-sm sm:text-base text-accent-light uppercase hover:text-blue-500 transition-colors'],
   ['category-link-active', 'text-blue-500'],
 
   // Details table
