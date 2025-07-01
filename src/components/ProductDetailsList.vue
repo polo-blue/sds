@@ -158,8 +158,8 @@ const groupedItems = computed(() => {
         <td v-else-if="'id' in row && isColorArray(row)" class="details-table-cell">
         <ul>
           <li v-for="(colorItem, colorIndex) in (row.value as ColorCode[])" :key="colorIndex" 
-               class="flex items-center gap-2 mb-1 last:mb-0">
-            <code class="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm font-mono font-semibold">
+               class="flex items-center gap-1 mb-1 last:mb-0">
+            <code>
               {{ colorItem.code }}
             </code>
             <span class="text-gray-400">-</span>
