@@ -15,6 +15,13 @@ const imageShortcuts = Object.entries(aspectRatios).map(([ratio, aspect]) => [
 ])
 
 export const layoutShortcuts = [
+  
+  // Headers and Banners
+  ['headline', TYPOGRAPHY.headline.bold],
+  ['headline-light', TYPOGRAPHY.headline.light],
+  ['slimbanner', `px-4 sm:px-8 ${LAYOUT.flex.center} text-xs sm:text-base leading-none ${LAYOUT.position.relative} bg-gray-50 z-2 px-4 py-3 sm:(text-base px-8) text-blue-darker print-hidden`],
+
+
   // Main Layout
   ['l-main', `text-slate-dark ${LAYOUT.spacing.topPadding} ${COLORS.bgWhite}`],
   ['main', `text-slate-dark ${COLORS.textNeutralLight} ${COLORS.bgDark} ${LAYOUT.spacing.topPadding} ${LAYOUT.position.relative}`],
@@ -46,8 +53,11 @@ export const layoutShortcuts = [
   ['subsubcat', 'pl-2'],
 
   // Headers and Banners
-  ['headline', TYPOGRAPHY.headline.bold],
-  ['headline-light', TYPOGRAPHY.headline.light],
+  ['headline', TYPOGRAPHY.headline.base],        
+  ['headline-light', TYPOGRAPHY.headline.light], 
+  ['headline-bold', TYPOGRAPHY.headline.bold],
+  ['headline-light-bold', TYPOGRAPHY.headline.lightBold],
+  ['headline-light-thin', TYPOGRAPHY.headline.lightThin],
   ['slimbanner', `px-4 sm:px-8 ${LAYOUT.flex.center} text-xs sm:text-base leading-none ${LAYOUT.position.relative} bg-gray-50 z-2 px-4 py-3 sm:(text-base px-8) text-blue-darker print-hidden`],
 
   // Image Shortcuts

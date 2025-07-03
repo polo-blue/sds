@@ -12,17 +12,57 @@ const props = defineProps({
     required: false,
     default: null
   },
+  fontFamily: {
+    type: String as PropType<'head' | 'text' | 'novamono' | 'mono'>,
+    required: false,
+    default: 'head'
+  },
+  fontWeight: {
+    type: String as PropType<'light' | 'regular' | 'bold' | 'light-bold' | 'light-thin'>,
+    required: false,
+    default: 'regular'
+  },
   underline: {
     type: Boolean,
     required: false,
     default: false
   }
 })
+
+// Generate the typography class based on font family and weight
+const getTypographyClass = (): string => {
+  const family = props.fontFamily
+  const weight = props.fontWeight
+  
+  // Handle special cases for mono fonts
+  if (family === 'novamono' || family === 'mono') {
+    return `font-${family}`
+  }
+  
+  // For head family, generate specific classes
+  if (family === 'head') {
+    if (weight === 'light') return 'headline-light'
+    if (weight === 'bold') return 'headline-bold'
+    if (weight === 'light-bold') return 'headline-light-bold'
+    if (weight === 'light-thin') return 'headline-light-thin'
+    return 'headline' // for regular weight
+  }
+  
+  // For text family, generate appropriate class
+  if (family === 'text') {
+    return `font-text${weight}`
+  }
+  
+  // Default fallback
+  return 'headline'
+}
+
+const typographyClass = getTypographyClass()
 </script>
 
 <template>
   <component :is="props.as" class="mb-2.5 flex sm:block md:flex items-center leading-none"
-    :class="`headline ${props.textSize ? `text-${props.textSize}` : 'text-xl'} ${props.underline ? 'headline--underline' : ''}`">
+    :class="`${typographyClass} ${props.textSize ? `text-${props.textSize}` : 'text-xl'} ${props.underline ? 'headline--underline' : ''}`">
     <slot />
   </component>
 </template>

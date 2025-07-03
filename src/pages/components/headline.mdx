@@ -29,7 +29,7 @@ supported parameters
 ```js
 as: {
         type: String as PropType<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'div' | 'span'>,
-        default: null,
+        default: 'span',  
         required: true,
 },
 textSize: {
@@ -40,113 +40,98 @@ textSize: {
 
 ```
 
-## Headline H1
 
-<div class="component-preview">
-        <Headline as="h1">Lorem Ipsum</Headline>
+## Examples
+
+<div class="component-preview flex-wrap flex-col justify-start !items-start">
+<ul class="list-decimal list-outside">
+  <li class="px-4 pb-4"><Headline as="h1" font-family="head" font-weight="regular">Regular Headline</Headline></li>
+  <li class="px-4 pb-4"><Headline as="h2" font-family="head" font-weight="light">Light Headline</Headline></li>
+  <li class="px-4 pb-4"><Headline as="h2" font-family="head" font-weight="light">Light Headline</Headline></li>
+  <li class="px-4 pb-4"><Headline as="h3" font-family="head" font-weight="bold">Bold Headline</Headline></li>
+  <li class="px-4 pb-4"><Headline as="h4" font-family="head" font-weight="light-bold">Light Bold Headline</Headline></li>
+  <li class="px-4 pb-4"><Headline as="h5" font-family="head" font-weight="light-thin">Light Thin Headline</Headline></li>
+  <li class="px-4 pb-4"><Headline as="p" font-family="text" font-weight="light">Light Text Content</Headline></li>
+  <li class="px-4 pb-4"><Headline as="p" font-family="text" font-weight="bold">Bold Text Content</Headline></li>
+  <li class="px-4 pb-4"><Headline as="p" font-family="text" font-weight="light-bold">Light Bold Text Content</Headline></li>
+  <li class="px-4 pb-4"><Headline as="p" font-family="text" font-weight="light-thin">Light Thin Text Content</Headline></li>
+  <li class="px-4 pb-4"><Headline as="code" font-family="novamono">Nova Mono Code Text</Headline></li>
+  <li class="px-4 pb-4"><Headline as="code" font-family="mono">Mono Code Text</Headline></li>
+  <li class="px-4 pb-4"><Headline as="h1" font-family="head" font-weight="bold" text-size="4xl">Large Bold Headline</Headline></li>
+  <li class="px-4 pb-4"><Headline as="h2" font-family="head" font-weight="light-thin" text-size="3xl" underline>Underlined Light Thin Headline</Headline></li>
+  <li class="px-4 pb-4"><Headline as="h3" font-family="head" font-weight="bold" text-size="2xl">
+    <Icon name="ph:cat-thin" class="inline-block mr-4" />
+    Headline with Icon
+  </Headline></li>
+  <li class="px-4 pb-4"><Headline as="h1">Default Headline</Headline></li>
+  <li class="px-4 pb-4"><Headline as="h1" font-family="head" font-weight="light-bold" text-size="4xl" underline>
+    <Icon name="ph:cat-thin" class="inline-block mr-4" />
+    Complete Example
+  </Headline></li>
+</ul>
 </div>
 
 ```js
-<Headline as="h1">
-        Lorem Ipsum
+/* 1 */
+<Headline as="h1" font-family="head" font-weight="regular">Regular Headline</Headline>
+
+/* 2 */
+<Headline as="h2" font-family="head" font-weight="light">Light Headline</Headline>
+
+/* 3 */
+<Headline as="h3" font-family="head" font-weight="bold">Bold Headline</Headline>
+
+/* 4 */
+<Headline as="h4" font-family="head" font-weight="light-bold">Light Bold Headline</Headline>
+
+/* 5 */
+<Headline as="h5" font-family="head" font-weight="light-thin">Light Thin Headline</Headline>
+
+/* 6 */
+<Headline as="p" font-family="text" font-weight="light">Light Text Content</Headline>
+
+/* 7 */
+<Headline as="p" font-family="text" font-weight="regular">Regular Text Content</Headline>
+
+/* 8 */
+<Headline as="p" font-family="text" font-weight="bold">Bold Text Content</Headline>
+
+/* 9 */
+<Headline as="p" font-family="text" font-weight="light-bold">Light Bold Text Content</Headline>
+
+/* 10 */
+<Headline as="p" font-family="text" font-weight="light-thin">Light Thin Text Content</Headline>
+
+/* 11 */
+<Headline as="code" font-family="novamono">Nova Mono Code Text</Headline>
+
+/* 12 */
+<Headline as="code" font-family="mono">Mono Code Text</Headline>
+
+/* 13 */
+<Headline as="h1" font-family="head" font-weight="bold" text-size="4xl">Large Bold Headline</Headline>
+
+/* 14 */
+<Headline as="h2" font-family="head" font-weight="light-thin" text-size="3xl" underline>Underlined Light Thin Headline</Headline>
+
+/* 15 */
+<Headline as="h3" font-family="head" font-weight="bold" text-size="2xl">
+  <Icon name="ph:cat-thin" class="inline-block mr-4 text-blue-wrc" />
+  Headline with Icon
 </Headline>
 
-```
+/* 16 */
+<Headline as="h1">Default Headline</Headline>
 
-
-## Headline H2
-
-<div class="component-preview">
-<Headline as="h2"><Icon name="ph:cat-thin" class="inline-block mb-0 sm:mb-2.5 md:mb-0 md:(mr-4)" aria-hidden="true" />Lorem Ipsum</Headline>
-</div>
-
-```js
-<Headline as="h2">
-        <Icon name="ph:cat-thin" class="mb-0 sm:mb-2.5 md:mb-0 md:(mr-4)" aria-hidden="true" />
-        Lorem Ipsum
+/* 17 */
+<Headline as="h1" font-family="head" font-weight="light-bold" text-size="4xl" underline>
+  <Icon name="ph:cat-thin" class="inline-block mr-4 text-blue-wrc" />
+  Complete Example
 </Headline>
 
-```
 
-## Headline DIV
-
-<div class="component-preview">
-<Headline as="div"><Icon name="ph:cat-thin" class="inline-block  mb-0 sm:mb-2.5 md:mb-0 md:(mr-4) text-blue-wrc" aria-hidden="true" />Lorem Ipsum</Headline>
-</div>
-
-```js
-<Headline as="div">
-        <Icon name="ph:cat-thin" class="inline-block mb-0 sm:mb-2.5 md:mb-0 md:(mr-4) text-blue-wrc" aria-hidden="true" />
-        Lorem Ipsum
-</Headline>
 
 ```
 
-## Headline P
-Paragraph `<p>`
-
-<div class="component-preview">
-<Headline as="p"><Icon name="ph:cat-thin"  class="inline-block text-4xl mb-0 sm:mb-2.5 md:mb-0 md:(mr-4) text-4xl text-blue-wrc" aria-hidden="true" />Lorem Ipsum</Headline>
-</div>
-
-```js
-<Headline as="p">
-        <Icon name="ph:cat-thin"  class="inline-block text-4xl mb-0 sm:mb-2.5 md:mb-0 md:(mr-4) text-4xl text-blue-wrc" aria-hidden="true" />
-        Lorem Ipsum
-</Headline>
-
-```
-
-## Headline without icon
-
-<div class="component-preview">
-<Headline as="p">Lorem Ipsum</Headline>
-</div>
-
-```js
-<Headline as="p">Lorem Ipsum</Headline>
-
-```
-
-## Headline without icon, text size 4xl
-
-<div class="component-preview">
-<Headline as="h1" text-size="4xl">Lorem Ipsum</Headline>
-</div>
-
-```js
-<Headline as="h1" text-size="4xl">Lorem Ipsum</Headline>
-
-```
-
-
-## Headline without icon, text size 4xl with blue icon
-
-<div class="component-preview">
-<Headline as="h1" text-size="4xl"><Icon name="ph:cat-thin"  class="inline-block text-4xl mb-0 sm:mb-2.5 md:mb-0 md:(mr-4) text-4xl text-blue-wrc" aria-hidden="true" />Lorem Ipsum</Headline>
-</div>
-
-```js
-<Headline as="h1" text-size="4xl"  icon-color="blue-wrc">
-        <Icon name="ph:cat-thin"  class="inline-block text-4xl mb-0 sm:mb-2.5 md:mb-0 md:(mr-4) text-4xl text-blue-wrc" aria-hidden="true" />
-        Lorem Ipsum
-</Headline>
-
-```
-
-
-## Headline with underline
-
-<div class="component-preview">
-<Headline as="h1" text-size="4xl" underline><Icon name="ph:cat-thin"  class="inline-block text-4xl mb-0 sm:mb-2.5 md:mb-0 md:(mr-4) text-4xl text-blue-wrc" aria-hidden="true" />Lorem Ipsum</Headline>
-</div>
-
-```js
-<Headline as="h1" text-size="4xl"  icon-color="blue-wrc" underline>
-        <Icon name="ph:cat-thin"  class="inline-block text-4xl mb-0 sm:mb-2.5 md:mb-0 md:(mr-4) text-4xl text-blue-wrc" aria-hidden="true" />
-        Lorem Ipsum
-</Headline>
-
-```
 
 #

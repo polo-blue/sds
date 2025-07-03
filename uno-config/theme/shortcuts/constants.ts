@@ -105,11 +105,21 @@ export const BUTTON_STYLES = {
 // Common typography styles
 export const TYPOGRAPHY = {
   headline: {
-    base: 'font-headlight',
-    bold: 'font-headlight font-bold',
-    light: 'font-headlight font-300 tracking-tight',
+    base: 'font-headregular',        
+    bold: 'font-headbold',           // dedykowany font bold
+    light: 'font-headlight',         
+    lightBold: 'font-headlight font-bold',  // light font + CSS bold
+    lightThin: 'font-headlight font-300 tracking-tight',  // light + thin + tracking
+    // base: 'font-headregular',
+    // bold: 'font-headlight font-bold',
+    // light: 'font-headlight font-300 tracking-tight',
   },
   text: {
+    light: 'font-textlight',         
+    regular: 'font-textregular',     
+    bold: 'font-textbold',           
+    lightBold: 'font-textlight font-bold',  // light font + CSS bold
+    lightThin: 'font-textlight font-300 tracking-tight',  // light + th
     xs: 'text-3',
     sm: 'text 3.5',
     base: 'text-4',
