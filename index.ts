@@ -16,6 +16,7 @@ export { default as ProductDetailsList } from './src/components/ProductDetailsLi
 export { default as FeaturesList } from './src/components/FeaturesList.vue';
 export { default as ProductCodes } from './src/components/ProductCodes.vue';
 export { default as Headline } from './src/components/Headline.vue';
+export { default as Quote } from './src/components/Quote.vue';
 
 export { default as ProductEngineType } from './src/components/Product/ProductEngineType.vue';
 export { default as ProductButton } from './src/components/Product/ProductButton.vue';

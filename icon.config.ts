@@ -216,6 +216,7 @@ export const iconConfig: IconConfig = {
       "info",
       "lamp",
       "lightbulb",
+      "link",
       "package",
       "qr-code",
       "radio",
