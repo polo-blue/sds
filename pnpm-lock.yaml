@@ -102,6 +102,9 @@ importers:
       '@iconify-json/uil':
         specifier: ^1.2.3
         version: 1.2.3
+      '@iconify/icons-lucide':
+        specifier: ^1.2.135
+        version: 1.2.135
       '@iconify/json':
         specifier: ^2.2.354
         version: 2.2.354
@@ -1207,6 +1210,9 @@ packages:
 
   '@iconify-json/uil@1.2.3':
     resolution: {integrity: sha512-if91+UBhDQc6glPsIaXecGIcXnbQZfEO4Gdv89TV2xQ+V5e9GWbY5rNl2fsKZd8COsRQ5lRQAKimVQVL0CZZVg==}
+
+  '@iconify/icons-lucide@1.2.135':
+    resolution: {integrity: sha512-odjb/fGnKGIw3aNwZV8n4lTmpPN9LR2nHa3hjmZGrHNK3y1gHhiaU4H1XlCrSeQxkEN6TOB+l/falLwRo1rGRw==}
 
   '@iconify/json@2.2.354':
     resolution: {integrity: sha512-I7sYXaLfvGw0msuc5p2VdQJ4nthbsqLW8IF9j1jaekUcs/xwGVgs3SHO5lEiFglv0odlkCu26CMbboZMvwkTcw==}
@@ -6061,6 +6067,10 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/uil@1.2.3':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify/icons-lucide@1.2.135':
     dependencies:
       '@iconify/types': 2.0.0
 
