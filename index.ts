@@ -15,6 +15,8 @@ export { default as Breadcrumbs } from './src/components/Breadcrumbs.vue';
 export { default as ProductDetailsList } from './src/components/ProductDetailsList.vue';
 export { default as FeaturesList } from './src/components/FeaturesList.vue';
 export { default as ProductCodes } from './src/components/ProductCodes.vue';
+export { default as Headline } from './src/components/Headline.vue';
+
 export { default as ProductEngineType } from './src/components/Product/ProductEngineType.vue';
 export { default as ProductButton } from './src/components/Product/ProductButton.vue';
 export { default as ProductColors } from './src/components/Product/ProductColors.vue';

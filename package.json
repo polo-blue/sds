@@ -1,6 +1,6 @@
 {
   "name": "spoko-design-system",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "private": false,
   "main": "./index.ts",
   "module": "./index.ts",
@@ -42,7 +42,7 @@
   "dependencies": {
     "@algolia/client-search": "^5.30.0",
     "@astrojs/mdx": "^4.3.0",
-    "@astrojs/node": "^9.2.2",
+    "@astrojs/node": "^9.3.0",
     "@astrojs/sitemap": "^3.4.1",
     "@astrojs/ts-plugin": "^1.10.4",
     "@astrojs/vue": "^5.1.0",
@@ -105,9 +105,9 @@
     "@unocss/transformer-variant-group": "66.3.2",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vue/compiler-sfc": "^3.5.17",
-    "astro": "^5.10.2",
+    "astro": "^5.11.0",
     "unocss": "^0.65.0",
-    "vite": "^7.0.0"
+    "vite": "^7.0.1"
   },
   "packageManager": "pnpm@9.15.3",
   "pnpm": {
