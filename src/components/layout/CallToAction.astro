@@ -1,0 +1,53 @@
+---
+import Button from "./../Button.vue"
+
+interface Props {
+  class?: string;
+  title?: string;
+  description?: string;
+}
+
+const { class: additionalClasses, title: propTitle, description: propDescription } = Astro.props;
+
+// Sprawdzamy, czy slot 'description' ma jakąkolwiek zawartość
+const hasDescriptionSlotContent = Astro.slots.has('description');
+---
+
+<section
+  class:list={[
+    "full-width border-blue-medium bg-blue-darker/5 border-t-4 md:(border-t-0 px-6 bg-white) my-8",
+    additionalClasses,
+  ]}
+>
+  <div class="flex flex-col items-center gap-4 md:(flex-row border-l-4 border-blue-medium bg-blue-darker/5 px-6) py-6">
+    <div class="flex-shrink-0 hidden md:block">
+      <slot name="icon">
+        <span i-ph:sparkle-thin class="mr-1 text-8 md:text-10 text-brand-secondary"></span>
+      </slot>
+    </div>
+    <div class="flex-1 text-center md:text-left">
+      <h3 class="text-lg font-semibold text-blue-darker">
+        <slot name="title">
+          {propTitle || 'Domyślny tytuł akcji'}
+        </slot>
+      </h3>
+      {(propDescription || hasDescriptionSlotContent) && (
+        <p class="text-blue-darker mt-1">
+          <slot name="description">
+            {propDescription || 'Domyślny opis, który zachęca do działania.'}
+          </slot>
+        </p>
+      )}
+    </div>
+    <slot name="action">
+      <Button
+        type="button"
+        class:list="w-fit place-self-center gap-2"
+        tertiary
+        rounded
+        title="Domyślny przycisk akcji">
+        Kliknij mnie!
+      </Button>
+    </slot>
+  </div>
+</section>

@@ -44,7 +44,7 @@ export const layoutShortcuts = [
   ['cat-menu', `fixed h-21 bottom-[-6px] w-full z-10 border-t-1 border-neutral-light ${COLORS.bgWhite} dark:bg-blue-darkest text-center sm:(static z-auto border-t-none h-28)`],
   ['cat-card', 'p-4 text-base break-inside-avoid-column'],
   ['cat-name', 'mt-2 h-[2em] text-xs leading-none group-hover:filter-invert 3xl:text-3.25'],
-  ['cats-slide', `${TRANSITIONS.base} mb-0.5 min-h-tile-mobile sm:(min-h-tile h-tile mb-2 p-3) text-black ${COLORS.textNeutralLight} hover:(text-white even:bg-blue-medium odd:bg-accent-light) cursor-pointer ${LAYOUT.flex.colCenter} px-1.5 cursor-grab active:cursor-grabbing overflow-hidden`],
+  ['cats-slide', `${TRANSITIONS.base} pt-1 mb-0.5 min-h-tile-mobile sm:(min-h-tile h-tile mb-2 p-3) text-black ${COLORS.textNeutralLight} hover:(text-white even:bg-blue-medium odd:bg-accent-light) cursor-pointer ${LAYOUT.flex.colCenter} px-1.5 cursor-grab active:cursor-grabbing overflow-hidden`],
   ['cats-img', `max-w-full h-8 md:h-icon ${IMAGE_STYLES.objectContain} w-full left-0 right-0 top-0 bottom-0`],
 
   // Sidebars and Navigation

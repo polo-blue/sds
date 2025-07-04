@@ -46,7 +46,7 @@ export const componentShortcuts = [
   // Carousel
   ['carousel-tile', `${LAYOUT.flex.base} w-52 min-w-52 ml-1 lg:ml-1.5`],
   ['carousel-product-tile', `${LAYOUT.flex.wrap} sm:flex-nowrap content-between w-64 min-w-64 lg:(w-28.57% min-w-28.57%) 2xl:(w-24.09% min-w-24.09%) relative`],
-  ['carousel-item', `w-full w-full group-hover:filter-invert relative ${LAYOUT.flex.col}`],
+  ['carousel-item', `w-full pt-1 w-full group-hover:filter-invert relative ${LAYOUT.flex.col}`],
   ['carousel-big', 'shadow-[inset_0_10px_60px_-15px_rgba(0,0,0,0.1)] w-full h-full'],
 
   // PDP (Product Detail Page)
