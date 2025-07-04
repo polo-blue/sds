@@ -80,7 +80,7 @@ importers:
         version: 1.2.1
       '@iconify-json/lucide':
         specifier: ^1.2.54
-        version: 1.2.54
+        version: 1.2.55
       '@iconify-json/material-symbols-light':
         specifier: ^1.2.28
         version: 1.2.28
@@ -105,9 +105,6 @@ importers:
       '@iconify-json/uil':
         specifier: ^1.2.3
         version: 1.2.3
-      '@iconify/icons-lucide':
-        specifier: ^1.2.135
-        version: 1.2.135
       '@iconify/json':
         specifier: ^2.2.354
         version: 2.2.354
@@ -1190,8 +1187,8 @@ packages:
   '@iconify-json/la@1.2.1':
     resolution: {integrity: sha512-7VUpZ+E7PfBpCXmAzLEGRR0LqCyFQRJiJTriO/vIZtQ1BLJ4xiDlIQ8gCCQvyTnKPG4IrvencwAxXpJGhk4pYg==}
 
-  '@iconify-json/lucide@1.2.54':
-    resolution: {integrity: sha512-sUHvGWE0WI+XVew//03Y1jw7AFRv57X1BFxrLBdjwt9xccr4Y2JartcWXM/Zeinxrr3ZgBt0n16WkeN/fx9QAQ==}
+  '@iconify-json/lucide@1.2.55':
+    resolution: {integrity: sha512-JXEV8emCxVZpdfV7d4X+nhn3cp0HU06apijGoxOHpR9CQB2jERqUHpXR6g1p0tEh2IZk84QJBCujG0Ei8XI1Dg==}
 
   '@iconify-json/material-symbols-light@1.2.28':
     resolution: {integrity: sha512-CP0EhkxcPulGrVU2WDgFxMHgXvOmFBGFk905hcOsGGkSMaY39k5xUMa4rbCcPfOy79qOR0A2EL7cmwzBCwXNAA==}
@@ -1216,9 +1213,6 @@ packages:
 
   '@iconify-json/uil@1.2.3':
     resolution: {integrity: sha512-if91+UBhDQc6glPsIaXecGIcXnbQZfEO4Gdv89TV2xQ+V5e9GWbY5rNl2fsKZd8COsRQ5lRQAKimVQVL0CZZVg==}
-
-  '@iconify/icons-lucide@1.2.135':
-    resolution: {integrity: sha512-odjb/fGnKGIw3aNwZV8n4lTmpPN9LR2nHa3hjmZGrHNK3y1gHhiaU4H1XlCrSeQxkEN6TOB+l/falLwRo1rGRw==}
 
   '@iconify/json@2.2.354':
     resolution: {integrity: sha512-I7sYXaLfvGw0msuc5p2VdQJ4nthbsqLW8IF9j1jaekUcs/xwGVgs3SHO5lEiFglv0odlkCu26CMbboZMvwkTcw==}
@@ -6044,7 +6038,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/lucide@1.2.54':
+  '@iconify-json/lucide@1.2.55':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -6077,10 +6071,6 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/uil@1.2.3':
-    dependencies:
-      '@iconify/types': 2.0.0
-
-  '@iconify/icons-lucide@1.2.135':
     dependencies:
       '@iconify/types': 2.0.0
 
