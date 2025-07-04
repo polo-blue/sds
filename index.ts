@@ -45,7 +45,7 @@ export { default as HandDrive } from './src/components/HandDrive.astro';
 export { default as Faq } from './src/components/Faq.astro';
 export { default as FaqItem } from './src/components/FaqItem.astro';
 export { default as ButtonCopy } from './src/components/ButtonCopy.astro';
-export { default as CallToAction } from './src/components/Layout/CallToAction.vue';
+export { default as CallToAction } from './src/components/Layout/CallToAction.astro';
 
 export { default as ProductImage } from './src/components/Product/ProductImage.astro';
 
