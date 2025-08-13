@@ -151,8 +151,8 @@ importers:
         specifier: ^1.1.5
         version: 1.1.5
       astro-meta-tags:
-        specifier: ^0.3.2
-        version: 0.3.2(astro@5.11.0(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.8.0))
+        specifier: ^0.4.0
+        version: 0.4.0(astro@5.11.0(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.8.0))
       astro-navbar:
         specifier: ^2.4.0
         version: 2.4.0
@@ -2078,8 +2078,8 @@ packages:
   astro-icon@1.1.5:
     resolution: {integrity: sha512-CJYS5nWOw9jz4RpGWmzNQY7D0y2ZZacH7atL2K9DeJXJVaz7/5WrxeyIxO8KASk1jCM96Q4LjRx/F3R+InjJrw==}
 
-  astro-meta-tags@0.3.2:
-    resolution: {integrity: sha512-T2jO2WrA6970265xSYFgZD/JprPXYlmqVqj16yCdvi2OsRNWIRYzyBASPSY3SZxR9L+gGct1Nk8YnYVK21BPiA==}
+  astro-meta-tags@0.4.0:
+    resolution: {integrity: sha512-SWUyZbu0sgdkMYpG5J8mBH61oLTco2bZmixYHg6mqAgEFjc4P+urP+IG2TkfQxq4LEYnyyxcXxwnuSLleMIJ2Q==}
     peerDependencies:
       astro: ^4.0.0 || ^5.0.0-beta.0
 
@@ -7105,7 +7105,7 @@ snapshots:
       - debug
       - supports-color
 
-  astro-meta-tags@0.3.2(astro@5.11.0(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.8.0)):
+  astro-meta-tags@0.4.0(astro@5.11.0(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.8.0)):
     dependencies:
       astro: 5.11.0(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.8.0)
 
