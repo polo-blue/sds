@@ -83,7 +83,7 @@ importers:
         version: 1.2.63
       '@iconify-json/material-symbols-light':
         specifier: ^1.2.32
-        version: 1.2.32
+        version: 1.2.33
       '@iconify-json/mdi':
         specifier: ^1.2.3
         version: 1.2.3
@@ -1199,8 +1199,8 @@ packages:
   '@iconify-json/lucide@1.2.63':
     resolution: {integrity: sha512-4rRKhUhEh4TsBq5ypbimHbBA6ApIcDLR9gzjnJT2cvUn2+rG+oG4TPXgHLFmIaRkHKYcMKukdcfOUaJbM/G4pQ==}
 
-  '@iconify-json/material-symbols-light@1.2.32':
-    resolution: {integrity: sha512-QbXhpJD+PHdl/G/esFrjBWwTOWzmUTILowa8m1yAMtS645+SKcN9R7HZt8Ir6OXbLaxv+6CzLW4oaTyu5nXaTA==}
+  '@iconify-json/material-symbols-light@1.2.33':
+    resolution: {integrity: sha512-OZNss65ipsMDkcX1a92MV7Bx6idC2UhztlnfdRUSSyfTnljfv4hn3H3SqwqgGbayvF2tDym79sq7lFAaQaCBEQ==}
 
   '@iconify-json/mdi@1.2.3':
     resolution: {integrity: sha512-O3cLwbDOK7NNDf2ihaQOH5F9JglnulNDFV7WprU2dSoZu3h3cWH//h74uQAB87brHmvFVxIOkuBX2sZSzYhScg==}
@@ -2194,6 +2194,11 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
 
+  browserslist@4.25.4:
+    resolution: {integrity: sha512-4jYpcjabC606xJ3kw2QwGEZKX0Aw7sgQdZCvIK9dhVSPh76BKo+C+btT1RRofH7B+8iNpEbgGNVWiLki5q93yg==}
+    engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
+    hasBin: true
+
   buffer-crc32@0.2.13:
     resolution: {integrity: sha512-VO9Ht/+p3SN7SKWqcrgEzjGbRSJYTx+Q1pTQC0wrWqHx0vpJraQ6GtHx8tvcg1rlK1byhU5gccxgOgj7B0TDkQ==}
 
@@ -2229,6 +2234,9 @@ packages:
 
   caniuse-lite@1.0.30001735:
     resolution: {integrity: sha512-EV/laoX7Wq2J9TQlyIXRxTJqIw4sxfXS4OYgudGxBYRuTv0q7AM6yMEpU/Vo1I94thg9U6EZ2NfZx9GJq83u7w==}
+
+  caniuse-lite@1.0.30001739:
+    resolution: {integrity: sha512-y+j60d6ulelrNSwpPyrHdl+9mJnQzHBr08xm48Qno0nSk4h3Qojh+ziv2qE6rXf4k3tadF4o1J/1tAbVm1NtnA==}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -2364,8 +2372,8 @@ packages:
     resolution: {integrity: sha512-yCEafptTtb4bk7GLEQoM8KVJpxAfdBJYaXyzQEgQQQgYrZiDp8SJmGKlYza6CYjEDNstAdNdKA3UuoULlEbS6w==}
     engines: {node: '>=12.13'}
 
-  core-js-compat@3.45.0:
-    resolution: {integrity: sha512-gRoVMBawZg0OnxaVv3zpqLLxaHmsubEGyTnqdpI/CEBvX4JadI1dMSHxagThprYRtSVbuQxvi6iUatdPxohHpA==}
+  core-js-compat@3.45.1:
+    resolution: {integrity: sha512-tqTt5T4PzsMIZ430XGviK4vzYSoeNJ6CXODi6c/voxOT6IZqBht5/EKaSNnYiEjjRYxjVz7DQIsOsY0XNi8PIA==}
 
   cross-fetch@3.2.0:
     resolution: {integrity: sha512-Q+xVJLoGOeIMXZmbUK4HYk+69cQH6LudR0Vu/pRm2YlU/hDV9CiS0gKUMaWY5f2NeUH9C1nV3bsTlCo0FsTV1Q==}
@@ -2550,6 +2558,9 @@ packages:
 
   electron-to-chromium@1.5.206:
     resolution: {integrity: sha512-/eucXSTaI8L78l42xPurxdBzPTjAkMVCQO7unZCWk9LnZiwKcSvQUhF4c99NWQLwMQXxjlfoQy0+8m9U2yEDQQ==}
+
+  electron-to-chromium@1.5.211:
+    resolution: {integrity: sha512-IGBvimJkotaLzFnwIVgW9/UD/AOJ2tByUmeOrtqBfACSbAw5b1G0XpvdaieKyc7ULmbwXVx+4e4Be8pOPBrYkw==}
 
   emoji-regex@10.4.0:
     resolution: {integrity: sha512-EC+0oUMY1Rqm4O6LLrgjtYDvcVYTy7chDnM4Q7030tP4Kwj3u/pR6gP9ygnp2CJMK5Gq+9Q2oqmrFJAz01DXjw==}
@@ -2820,8 +2831,8 @@ packages:
   fast-json-stable-stringify@2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
 
-  fast-uri@3.0.6:
-    resolution: {integrity: sha512-Atfo14OibSv5wAp4VWNsFYE1AchQRTv9cBGWET4pZWHzYshFSS9NQI6I57rdKn9croWVMbYFbLhJ+yJvmZIIHw==}
+  fast-uri@3.1.0:
+    resolution: {integrity: sha512-iPeeDKJSWf4IEOasVVrknXpaBV0IApz/gp7S2bb7Z4Lljbl2MGJRqInZiUrQwV16cpzw/D3S5j5Julj/gT52AA==}
 
   fastq@1.19.1:
     resolution: {integrity: sha512-GwLTyxkCXjXbxqIhTsMI2Nui8huMPtnxg7krajPJAjnEG/iiOS7i+zCtWGZR9G0NBKbXKh6X9m9UIsYX/N6vvQ==}
@@ -5776,7 +5787,7 @@ snapshots:
       babel-plugin-polyfill-corejs2: 0.4.14(@babel/core@7.28.3)
       babel-plugin-polyfill-corejs3: 0.13.0(@babel/core@7.28.3)
       babel-plugin-polyfill-regenerator: 0.6.5(@babel/core@7.28.3)
-      core-js-compat: 3.45.0
+      core-js-compat: 3.45.1
       semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
@@ -6048,7 +6059,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/material-symbols-light@1.2.32':
+  '@iconify-json/material-symbols-light@1.2.33':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -7043,7 +7054,7 @@ snapshots:
   ajv@8.17.1:
     dependencies:
       fast-deep-equal: 3.1.3
-      fast-uri: 3.0.6
+      fast-uri: 3.1.0
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
@@ -7369,7 +7380,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.28.3
       '@babel/helper-define-polyfill-provider': 0.6.5(@babel/core@7.28.3)
-      core-js-compat: 3.45.0
+      core-js-compat: 3.45.1
     transitivePeerDependencies:
       - supports-color
 
@@ -7442,6 +7453,13 @@ snapshots:
       node-releases: 2.0.19
       update-browserslist-db: 1.1.3(browserslist@4.25.3)
 
+  browserslist@4.25.4:
+    dependencies:
+      caniuse-lite: 1.0.30001739
+      electron-to-chromium: 1.5.211
+      node-releases: 2.0.19
+      update-browserslist-db: 1.1.3(browserslist@4.25.4)
+
   buffer-crc32@0.2.13: {}
 
   buffer-from@1.1.2: {}
@@ -7477,6 +7495,8 @@ snapshots:
   camelcase@8.0.0: {}
 
   caniuse-lite@1.0.30001735: {}
+
+  caniuse-lite@1.0.30001739: {}
 
   ccount@2.0.1: {}
 
@@ -7599,9 +7619,9 @@ snapshots:
     dependencies:
       is-what: 4.1.16
 
-  core-js-compat@3.45.0:
+  core-js-compat@3.45.1:
     dependencies:
-      browserslist: 4.25.3
+      browserslist: 4.25.4
 
   cross-fetch@3.2.0:
     dependencies:
@@ -7781,6 +7801,8 @@ snapshots:
       jake: 10.9.4
 
   electron-to-chromium@1.5.206: {}
+
+  electron-to-chromium@1.5.211: {}
 
   emoji-regex@10.4.0: {}
 
@@ -8129,7 +8151,7 @@ snapshots:
 
   fast-json-stable-stringify@2.1.0: {}
 
-  fast-uri@3.0.6: {}
+  fast-uri@3.1.0: {}
 
   fastq@1.19.1:
     dependencies:
@@ -10458,6 +10480,12 @@ snapshots:
   update-browserslist-db@1.1.3(browserslist@4.25.3):
     dependencies:
       browserslist: 4.25.3
+      escalade: 3.2.0
+      picocolors: 1.1.1
+
+  update-browserslist-db@1.1.3(browserslist@4.25.4):
+    dependencies:
+      browserslist: 4.25.4
       escalade: 3.2.0
       picocolors: 1.1.1
 
