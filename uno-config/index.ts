@@ -245,6 +245,13 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
           'display': 'inline-block',
           'vertical-align': 'middle',
         },
+        collections: {
+          // Only load specific icon collections to prevent auto-detection issues
+          'lucide': () => import('@iconify-json/lucide/icons.json').then(i => i.default),
+          'simple-icons': () => import('@iconify-json/simple-icons/icons.json').then(i => i.default),
+          'mdi': () => import('@iconify-json/mdi/icons.json').then(i => i.default),
+          'carbon': () => import('@iconify-json/carbon/icons.json').then(i => i.default),
+        }
       }),
       presetTypography(),
       presetWebFonts({

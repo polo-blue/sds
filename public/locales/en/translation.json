@@ -5,5 +5,9 @@
     "sw-position":"Steering wheel position"
   },
   "copied": "Copied",
-  "copy": "Copy product code"
+  "copy": "Copy product code",
+  "date": {
+    "published": "Published",
+    "updated": "Updated"
+  }
 }

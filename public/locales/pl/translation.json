@@ -2,8 +2,12 @@
     "part": {
         "for-lhd": "Do pojazdów LHD (z kierownicą z lewej strony)",
         "for-rhd": "Do pojazdów RHD (z kierownicą z prawej strony)",
-        "sw-position":"Pozycja kierownicy",
+        "sw-position":"Pozycja kierownicy"
     },
     "copied": "Skopiowano",
-    "copy": "Skopiuj numer produktu"
+    "copy": "Skopiuj numer produktu",
+    "date": {
+        "published": "Opublikowano",
+        "updated": "Zaktualizowano"
+    }
 }

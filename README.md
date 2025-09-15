@@ -1,5 +1,7 @@
 # Spoko Design System
 
+![Version](https://img.shields.io/github/package-json/v/polo-blue/sds)
+
 SDS is the easiest way to start websites with simple design system. Since Astro is compatible with many frameworks, you can import your components and document them right in the markdown files.
 The project is still in the development phase, use at your own risk ;-)
 #
