@@ -4,7 +4,8 @@
       "Bash(git remote get-url:*)",
       "Bash(npm run dev:*)",
       "Bash(tasklist)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []

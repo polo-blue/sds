@@ -255,8 +255,8 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
         getCSS: () => `
           /* Optimized base styles for static builds */
           *,*::before,*::after{box-sizing:border-box}
-          html{line-height:1.15;-webkit-text-size-adjust:100%}
-          body{margin:0;font-family:system-ui,sans-serif}
+          html{line-height:1.5;-webkit-text-size-adjust:100%}
+          body{margin:0;font-family:vw_textregular,system-ui,sans-serif}
         `
       }
     ],
