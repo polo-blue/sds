@@ -19,6 +19,32 @@ import presetWebFonts from '@unocss/preset-web-fonts';    // Web fonts preset
 import { shortcuts } from './theme/shortcuts';
 import { theme } from './theme';
 
+// Static imports for all icon collections (prevents Vite module runner issues)
+import antDesignIcons from '@iconify-json/ant-design/icons.json';
+import biIcons from '@iconify-json/bi/icons.json';
+import bxIcons from '@iconify-json/bx/icons.json';
+import carbonIcons from '@iconify-json/carbon/icons.json';
+import circleFlagsIcons from '@iconify-json/circle-flags/icons.json';
+import eiIcons from '@iconify-json/ei/icons.json';
+import elIcons from '@iconify-json/el/icons.json';
+import eosIcons from '@iconify-json/eos-icons/icons.json';
+import etIcons from '@iconify-json/et/icons.json';
+import flowbiteIcons from '@iconify-json/flowbite/icons.json';
+import fluentIcons from '@iconify-json/fluent/icons.json';
+import fluentEmojiIcons from '@iconify-json/fluent-emoji/icons.json';
+import icIcons from '@iconify-json/ic/icons.json';
+import iconParkOutlineIcons from '@iconify-json/icon-park-outline/icons.json';
+import laIcons from '@iconify-json/la/icons.json';
+import lucideIcons from '@iconify-json/lucide/icons.json';
+import materialSymbolsLightIcons from '@iconify-json/material-symbols-light/icons.json';
+import mdiIcons from '@iconify-json/mdi/icons.json';
+import notoV1Icons from '@iconify-json/noto-v1/icons.json';
+import octiconIcons from '@iconify-json/octicon/icons.json';
+import phIcons from '@iconify-json/ph/icons.json';
+import simpleIcons from '@iconify-json/simple-icons/icons.json';
+import systemUiconsIcons from '@iconify-json/system-uicons/icons.json';
+import uilIcons from '@iconify-json/uil/icons.json';
+
 // List of peer selectors we want to preserve during build
 const peerSelectorClasses = [
   // Focus state classes
@@ -56,6 +82,12 @@ interface CustomConfig extends Partial<UserConfig> {
  */
 export function createSdsConfig(customConfig: CustomConfig = {}) {
   return defineConfig({
+    // Optimizations for static builds
+    ...(process.env.NODE_ENV === 'production' && {
+      inspector: false,
+      hmr: false,
+    }),
+
     // Transform directives and variant groups
     transformers: [
       transformerDirectives(),
@@ -101,134 +133,71 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
         };
       },
     ],
-    // Comprehensive safelist with all needed classes
+    // Optimized safelist for static Astro builds
     safelist: [
-      // Existing safelist items
+      // Layout and grid classes that might be used dynamically
       'md:grid-cols-product',
 
+      // Component-specific classes for static generation
       'breadcrumb-link-disabled',
       'breadcrumb-link',
       'breadcrumb-item',
       'features-list-caption',
       'features-list-ul',
       'features-list-item',
-
       'category-link-base',
       'category-link-active',
-      
-      // Base peer class
+
+      // Essential peer and input classes
       'peer',
-      
-      // All input component classes from shortcuts
-      'input-base',
-      'input-label-base',
-      'input-placeholder',
-      'input-standard',
-      'input-filled',
-      'input-wrapper-standard',
-      'input-wrapper-filled',
-      'input-label-standard',
-      'input-label-filled',
-      
-      // Label state shortcuts
-      'input-label-focus-color',
-      'input-label-focus-scale',
-      'input-label-focus-translate-standard',
-      'input-label-focus-translate-filled',
-      'input-label-placeholder',
-      'input-label-filled-standard',
-      'input-label-filled-filled',
-      'input-label-standard-state',
-      'input-label-filled-state',
-      
-      // Input types
-      'input-textarea',
       'resize-none',
-      
-      // Size variants
-      'input-sm',
-      'input-md',
-      'input-lg',
-      'input-label-sm',
-      'input-label-md',
-      'input-label-lg',
-      
-      // Status classes
-      'input-error',
-      'input-label-error',
-      'input-error-message',
-      'input-success',
-      'input-label-success',
-      'input-success-message',
-      
-      // Transform related classes
       'origin-top-left',
       'transform-gpu',
-      'translate-y-0',
-      '-translate-y-4',
-      '-translate-y-6',
-      'scale-75',
-      'scale-100',
-      
-      // Every possible arbitrary selector used
-      '[&:focus~label]:scale-75',
-      '[&:focus~label]:-translate-y-4',
-      '[&:focus~label]:-translate-y-6',
-      '[&:focus~label]:text-blue-light',
-      '[&:focus~label]:dark:text-blue-lightest',
-      '[&:focus~label]:start-0',
-      '[&:placeholder-shown~label]:scale-100',
-      '[&:placeholder-shown~label]:translate-y-0',
-      '[&:not(:placeholder-shown)~label]:scale-75',
-      '[&:not(:placeholder-shown)~label]:-translate-y-4',
-      '[&:not(:placeholder-shown)~label]:-translate-y-6',
-      
-      // Combinations of selectors
-      'peer:focus:text-blue-light',
-      'peer:focus:dark:text-blue-lightest',
-      'peer:focus:scale-75',
-      'peer:focus:-translate-y-4',
-      'peer:focus:-translate-y-6',
-      'peer:focus:start-0',
-      'peer-placeholder-shown:scale-100',
-      'peer-placeholder-shown:translate-y-0',
-      'peer-not-placeholder-shown:scale-75',
-      'peer-not-placeholder-shown:-translate-y-4',
-      'peer-not-placeholder-shown:-translate-y-6',
-      
-      // With !important for good measure
-      '[&:focus~label]:!scale-75',
-      '[&:focus~label]:!-translate-y-4',
-      '[&:focus~label]:!-translate-y-6',
-      '[&:not(:placeholder-shown)~label]:!scale-75',
-      '[&:not(:placeholder-shown)~label]:!-translate-y-4',
-      '[&:not(:placeholder-shown)~label]:!-translate-y-6',
-      
-      // Direct css vars that might be used
-      '--un-scale-x',
-      '--un-scale-y',
-      '--un-translate-y',
-      
-      // All peer selectors from the list
+
+      // All peer selectors from the list (needed for floating labels)
       ...peerSelectorClasses,
     ],
-    // Custom extractors to ensure peer classes are preserved
+    // Optimized extractors for static Astro builds
     extractors: [
       {
-        name: 'vue-astro',
-        extract({ code }) {
+        name: 'astro-static',
+        extract({ code, id }) {
           const result = new Set();
-          
-          // Extract all peer selectors in the code
-          const peerRegex = /peer-([a-zA-Z0-9-]+:[a-zA-Z0-9-]+)/g;
+
+          // Enhanced class extraction for Astro components
+          const classRegex = /class(?:Name)?=["'`]([^"'`]+)["'`]/g;
+          let match;
+          while ((match = classRegex.exec(code)) !== null) {
+            match[1].split(/\s+/).forEach(cls => {
+              if (cls) result.add(cls);
+            });
+          }
+
+          // Extract peer selectors
+          const peerRegex = /peer-[a-zA-Z0-9-]+(?::[a-zA-Z0-9-]+)*/g;
           const peerMatches = code.match(peerRegex);
           if (peerMatches) {
             peerMatches.forEach(match => result.add(match));
           }
-          
-          // Add all known peer selectors
-          peerSelectorClasses.forEach(cls => result.add(cls));
-          
+
+          // Extract shortcut references
+          const shortcutRegex = /\b(?:input|button|layout|component|product|jumbotron)-[a-zA-Z0-9-]+/g;
+          const shortcutMatches = code.match(shortcutRegex);
+          if (shortcutMatches) {
+            shortcutMatches.forEach(match => result.add(match));
+          }
+
+          // For .astro files, extract from both template and script sections
+          if (id && id.endsWith('.astro')) {
+            // Extract from dynamic class bindings
+            const dynamicClassRegex = /class:\w+\s*=\s*["'`]([^"'`]+)["'`]/g;
+            while ((match = dynamicClassRegex.exec(code)) !== null) {
+              match[1].split(/\s+/).forEach(cls => {
+                if (cls) result.add(cls);
+              });
+            }
+          }
+
           return result;
         },
       },
@@ -246,11 +215,31 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
           'vertical-align': 'middle',
         },
         collections: {
-          // Only load specific icon collections to prevent auto-detection issues
-          'lucide': () => import('@iconify-json/lucide/icons.json').then(i => i.default),
-          'simple-icons': () => import('@iconify-json/simple-icons/icons.json').then(i => i.default),
-          'mdi': () => import('@iconify-json/mdi/icons.json').then(i => i.default),
-          'carbon': () => import('@iconify-json/carbon/icons.json').then(i => i.default),
+          // All icon collections with static imports to prevent Vite module runner issues
+          'ant-design': antDesignIcons,
+          'bi': biIcons,
+          'bx': bxIcons,
+          'carbon': carbonIcons,
+          'circle-flags': circleFlagsIcons,
+          'ei': eiIcons,
+          'el': elIcons,
+          'eos-icons': eosIcons,
+          'et': etIcons,
+          'flowbite': flowbiteIcons,
+          'fluent': fluentIcons,
+          'fluent-emoji': fluentEmojiIcons,
+          'ic': icIcons,
+          'icon-park-outline': iconParkOutlineIcons,
+          'la': laIcons,
+          'lucide': lucideIcons,
+          'material-symbols-light': materialSymbolsLightIcons,
+          'mdi': mdiIcons,
+          'noto-v1': notoV1Icons,
+          'octicon': octiconIcons,
+          'ph': phIcons,
+          'simple-icons': simpleIcons,
+          'system-uicons': systemUiconsIcons,
+          'uil': uilIcons,
         }
       }),
       presetTypography(),
@@ -259,6 +248,19 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
         fonts: theme.fontFamily
       })
     ],
+
+    // Additional optimizations for static Astro builds
+    preflights: [
+      {
+        getCSS: () => `
+          /* Optimized base styles for static builds */
+          *,*::before,*::after{box-sizing:border-box}
+          html{line-height:1.15;-webkit-text-size-adjust:100%}
+          body{margin:0;font-family:system-ui,sans-serif}
+        `
+      }
+    ],
+
     ...customConfig
   });
 }
