@@ -22,7 +22,7 @@ const props = defineProps({
     required: false,
   },
   breadcrumbs: {
-    type: Object as PropType<Breadcrumb[]>,
+    type: Array as PropType<Breadcrumb[]>,
     required: true
   },
   productNumber: {

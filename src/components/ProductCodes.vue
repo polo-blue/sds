@@ -4,7 +4,7 @@ import PrCode from './PrCode.vue';
 
 const props = defineProps({
   prcodes: {
-    type: Object as PropType<string[] | null>,
+    type: Array as PropType<string[] | null>,
     default: null,
     required: true,
   },

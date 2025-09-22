@@ -3,7 +3,7 @@ import type { PropType } from 'vue'
 
 const props = defineProps({
   colors: {
-    type: Object as PropType<{id: number, slug: string, name: string}[]>,
+    type: Array as PropType<{id: number, slug: string, name: string}[]>,
     default: null,
     required: true,
   },

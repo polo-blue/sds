@@ -4,7 +4,7 @@ import type { Position } from 'types/index'
 import type { PropType } from 'vue';
 const props = defineProps({
   positions: {
-    type: Object as PropType<Position[]>,
+    type: Array as PropType<Position[]>,
     default: null,
     required: true,
   },

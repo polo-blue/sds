@@ -9,7 +9,7 @@ const props = defineProps({
         required: true,
     },
     caption: {
-        type: Object as PropType<String | null>,
+        type: String as PropType<String | null>,
         default: null,
         required: false,
     }

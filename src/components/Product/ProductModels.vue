@@ -1,8 +1,10 @@
 <script lang="ts" setup>
+import type { PropType } from 'vue'
+
 const props = defineProps({
   modelIds: {
-    type: Array,
-    default: null,
+    type: Array as PropType<(string | number)[]>,
+    default: () => [],
     required: true,
   },
 })
