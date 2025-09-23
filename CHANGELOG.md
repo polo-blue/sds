@@ -1,3 +1,9 @@
+## [1.1.7](https://github.com/polo-blue/sds/compare/v1.1.6...v1.1.7) (2025-09-23)
+
+### Bug Fixes
+
+* remove unnecessary escape characters in text.ts ([f1ae714](https://github.com/polo-blue/sds/commit/f1ae7145d86a7b4df1976ba850650fc390624667))
+
 ## [1.1.6](https://github.com/polo-blue/sds/compare/v1.1.5...v1.1.6) (2025-09-23)
 
 ### Bug Fixes
