@@ -1,3 +1,9 @@
+## [1.1.15](https://github.com/polo-blue/sds/compare/v1.1.14...v1.1.15) (2025-09-23)
+
+### Bug Fixes
+
+* resolve majority of ESLint warnings ([54c4b7f](https://github.com/polo-blue/sds/commit/54c4b7f611301523ef61359cd62e818026033549))
+
 ## [1.1.14](https://github.com/polo-blue/sds/compare/v1.1.13...v1.1.14) (2025-09-23)
 
 ### Bug Fixes
