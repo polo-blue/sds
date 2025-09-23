@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/polo-blue/sds/compare/v1.0.0...v1.0.1) (2025-09-23)
+
+### Bug Fixes
+
+* improve design system and add icon collections documentation ([007c465](https://github.com/polo-blue/sds/commit/007c46522f48bad8d0a04fbe811066edf6c3c78f))
+* remove invalid vscode-icons to resolve build errors ([ab1fea5](https://github.com/polo-blue/sds/commit/ab1fea51182b35159953ae0005bb8c226fe14e9d))
+* update icons and improve UnoCSS extractor ([aca7861](https://github.com/polo-blue/sds/commit/aca786103a56f5a180a15d6db044068bab596f62))
+
 ## 1.0.0 (2025-09-23)
 
 ### Features
