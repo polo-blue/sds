@@ -1,3 +1,9 @@
+## [1.1.8](https://github.com/polo-blue/sds/compare/v1.1.7...v1.1.8) (2025-09-23)
+
+### Bug Fixes
+
+* update ESLint configuration to properly parse Vue files ([0eb941a](https://github.com/polo-blue/sds/commit/0eb941a37002c80753f1324c30873888cfe62f70))
+
 ## [1.1.7](https://github.com/polo-blue/sds/compare/v1.1.6...v1.1.7) (2025-09-23)
 
 ### Bug Fixes
