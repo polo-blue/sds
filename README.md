@@ -39,21 +39,37 @@ Most of the components from this repository can be seen in my projects:
 - https://polo6r.pl
 
 
-### Feateures
+### Features
 - ⚡️[Vue 3](https://github.com/vuejs/core), [Vite](https://github.com/vitejs/vite), [pnpm](https://pnpm.io/) - born with fastness
 - 🎨 [UnoCSS](https://github.com/antfu/unocss) - the instant on-demand atomic CSS engine
 - 😃 [astro-icon](https://github.com/natemoo-re/astro-icon) - for local icons, sprites and `@iconify-json/*` sets
 - 🍔 [astro-navbar](https://github.com/surjithctly/astro-navbar) -  fully responsive and accessible headless navigation bar
-- 🌍 [astro-i18next](https://github.com/yassinedoghri/astro-i18next) - Astro integration of i18next
 - 🔎 [astro-pagefind](https://github.com/shishkin/astro-pagefind) - Astro integration for Pagefind static site search
 - 🗒 [astrojs/mdx](https://github.com/withastro/astro/tree/main/packages/integrations/mdx/) - markdown support
-- 📦 [astro-compress](https://github.com/astro-community/AstroCompress) - compression utilities to your Astro project
+- 📦 [Playform compression](https://github.com/Playform/compress) - compression utilities to your Astro project
 - 📲 [PWA](https://github.com/vite-pwa/astro) - Zero-config PWA Integration for Astro
 - 🏷️ [astro-meta-tags](https://github.com/patrick91/astro-meta-tags) - Meta Tags inside for Astro Dev Toolbar
 - 🖨 Static-site generation (SSG)
 - 🎡 [Swiper](https://github.com/nolimits4web/swiper) - modern mobile touch slider with hardware accelerated transitions and amazing native behavior
 - 🌠 [View Transitions API](https://docs.astro.build/en/guides/view-transitions/#full-site-view-transitions-spa-mode) - [View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition) - makes it easy to change the DOM in a single step, while creating an animated transition between the two states. It's available in Chrome 111+ ([more details](https://developer.chrome.com/docs/web-platform/view-transitions?hl=en))
 - ☁️ Deploy on Netlify
+
+### Icon Collections
+
+The design system includes carefully curated icon collections from Iconify:
+
+- 🎨 [Material Design Icons](https://icon-sets.iconify.design/mdi/) - comprehensive icon set for UI elements
+- 🚗 [Ant Design Icons](https://icon-sets.iconify.design/ant-design/) - clean outlined icons
+- 📱 [Bootstrap Icons](https://icon-sets.iconify.design/bi/) - simple and consistent icons
+- 🎯 [Boxicons](https://icon-sets.iconify.design/bx/) - high quality web icons
+- 🌍 [Carbon Icons](https://icon-sets.iconify.design/carbon/) - IBM's design language icons
+- 🎪 [Lucide Icons](https://icon-sets.iconify.design/lucide/) - beautiful & consistent icon toolkit
+- 🎨 [Streamline Freehand Color](https://icon-sets.iconify.design/streamline-freehand-color/) - hand-drawn style colored icons
+- 📟 [VS Code Icons](https://icon-sets.iconify.design/vscode-icons/) - file type and technology icons
+- 🏢 [Simple Icons](https://icon-sets.iconify.design/simple-icons/) - brand icons for popular services
+- ⚡ [Fluent UI Icons](https://icon-sets.iconify.design/fluent/) - Microsoft's design system icons
+
+See the complete list and configuration in [`icon.config.ts`](./icon.config.ts).
 
 ### Adding new sections
 

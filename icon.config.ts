@@ -3,10 +3,13 @@
 interface IconConfig {
   include: {
     [key: string]: string[];
-  }
+  };
+  collections?: {
+    [key: string]: () => Promise<any>;
+  };
 }
 
-// Lista wszystkich wspieranych kolekcji
+// List of all supported collections
 export const iconCollections = [
   'ant-design',
   'bi',
@@ -32,6 +35,8 @@ export const iconCollections = [
   'system-uicons',
   'uil',
   'lucide',
+  'vscode-icons',
+  'streamline-freehand-color',
 ] as const;
 
 export type IconCollectionName = typeof iconCollections[number];
@@ -291,7 +296,33 @@ export const iconConfig: IconConfig = {
 
     'system-uicons': [
       'document-justified'
+    ],
+
+    'vscode-icons': [
+      'file-type-light-astro',
+      'file-type-unocss',
+      'file-type-vue',
+      'file-type-typescript-official',
+      'file-type-node',
+      'file-type-npm',
+      'default-gear',
+      'default-package'
+    ],
+
+    'streamline-freehand-color': [
+      'data-transfer-document-module',
+      'design-process-drawing-board',
+      'app-window-source-code',
+      'app-window-layout',
+      'database',
+      'module-building-blocks',
+      'layouts-array-1',
+      'archive-box',
+      'donation-charity-donate-box'
     ]
+  },
+  collections: {
+    "streamline-freehand-color": () => import("@iconify-json/streamline-freehand-color/icons.json")
   }
 };
 

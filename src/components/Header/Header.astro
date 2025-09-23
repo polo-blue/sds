@@ -69,32 +69,32 @@ import Search from "astro-pagefind/components/Search";
   @apply font-textlight text-base;
 }
 
-.pagefind-ui__search-input {
-  height: 40px !important;
+.pagefind-ui .pagefind-ui__search-input {
+  height: 40px;
   border: 0;
-  @apply rounded-none sm:rounded-3xl h-10 w-full;
+  @apply rounded-none sm:rounded-3xl w-full;
 }
 
-.pagefind-ui__result-excerpt,
-.pagefind-ui__button {
-  font-size: 14px !important;
+.pagefind-ui .pagefind-ui__result-excerpt,
+.pagefind-ui .pagefind-ui__button {
+  font-size: 14px;
 }
 
-.pagefind-ui__filter-name {
-  font-size: 12px !important;
+.pagefind-ui .pagefind-ui__filter-name {
+  font-size: 12px;
 }
 
-.pagefind-ui__drawer:not(.pagefind-ui__hidden) {
+.pagefind-ui .pagefind-ui__drawer:not(.pagefind-ui__hidden) {
   @apply p-4;
 }
 
-.pagefind-ui__result-link {
+.pagefind-ui .pagefind-ui__result-link {
   color: var(--pagefind-ui-primary);
   font-family: vw_headlight;
   font-size: 1rem;
 }
 
-.pagefind-ui__result-link::before {
+.pagefind-ui .pagefind-ui__result-link::before {
   top: 0;
   bottom: 0;
   left: 0;
@@ -103,107 +103,107 @@ import Search from "astro-pagefind/components/Search";
   position: absolute;
 }
 
-.pagefind-ui__result-excerpt {
+.pagefind-ui .pagefind-ui__result-excerpt {
   color: var(--pagefind-ui-text);
   order: 3;
 }
 
-.pagefind-ui__drawer {
+.pagefind-ui .pagefind-ui__drawer {
   @apply bg-white md:fixed shadow-lg rounded-b-lg border-t border-t-transparent overflow-auto top-17 md:max-w-[calc(100vw-10%)] max-h-[calc(100vh-10%)] gap-[30px];
 }
 
-.pagefind-ui__search-clear {
+.pagefind-ui .pagefind-ui__search-clear {
   height: 38px;
   top: 0;
   @apply sm:rounded-3xl;
 }
 
-.pagefind-ui__search-input {
+.pagefind-ui .pagefind-ui__search-input {
   font-size: 1rem;
   font-weight: 400;
   padding: 0 2.5rem 2px;
 }
 
-.pagefind-ui__form::before {
+.pagefind-ui .pagefind-ui__form::before {
   top: 14px;
   left: 16px;
   width: 14px;
   height: 14px;
 }
 
-.pagefind-ui__result {
+.pagefind-ui .pagefind-ui__result {
   padding: 0.875rem 0;
   gap: 1rem;
   @apply relative;
 }
 
-.pagefind-ui__filter-block {
+.pagefind-ui .pagefind-ui__filter-block {
   padding: 0.875rem 0;
   border-width: 1px;
 }
 
-.pagefind-ui__filter-group {
+.pagefind-ui .pagefind-ui__filter-group {
   gap: 0.5rem;
   padding-top: 0.875rem;
 }
 
-.pagefind-ui__filter-value {
+.pagefind-ui .pagefind-ui__filter-value {
   gap: 10px;
 }
 
-.pagefind-ui__filter-checkbox {
+.pagefind-ui .pagefind-ui__filter-checkbox {
   border-radius: 3px;
   margin-top: 1px;
   min-width: calc(16px * var(--pagefind-ui-scale));
 }
 
-.pagefind-ui__result-image {
+.pagefind-ui .pagefind-ui__result-image {
   @apply drop-shadow-sm w-full h-full object-contain rounded-none;
 }
 
-.pagefind-ui__filter-panel {
+.pagefind-ui .pagefind-ui__filter-panel {
   @apply hidden;
 }
 
-.pagefind-ui__filter-label {
+.pagefind-ui .pagefind-ui__filter-label {
   font-size: 0.9rem;
 }
 
-.pagefind-ui__button {
+.pagefind-ui .pagefind-ui__button {
   font-weight: 400;
   height: 40px;
 }
 
-.pagefind-ui__result-tag {
+.pagefind-ui .pagefind-ui__result-tag {
   background: inherit;
   padding: 0;
   color: #9ca3af;
 }
 
-.pagefind-ui__result-thumb {
+.pagefind-ui .pagefind-ui__result-thumb {
   max-width: 120px;
 }
 
-.pagefind-ui__result-tags {
+.pagefind-ui .pagefind-ui__result-tags {
   margin-top: 0.4rem;
   order: 2;
 }
 
-.pagefind-ui__filter-name::after {
+.pagefind-ui .pagefind-ui__filter-name::after {
   color: var(--pagefind-ui-primary);
 }
 
-.pagefind-ui__result-title {
+.pagefind-ui .pagefind-ui__result-title {
   font-size: inherit;
   line-height: 1;
 }
 
-.pagefind-ui__filter-panel,
-.pagefind-ui__results-area {
+.pagefind-ui .pagefind-ui__filter-panel,
+.pagefind-ui .pagefind-ui__results-area {
   margin-top: 0;
 }
 
-.pagefind-ui__message {
+.pagefind-ui .pagefind-ui__message {
   padding: 0.875rem 0;
 }
 

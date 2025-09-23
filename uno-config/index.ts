@@ -44,6 +44,8 @@ import phIcons from '@iconify-json/ph/icons.json';
 import simpleIcons from '@iconify-json/simple-icons/icons.json';
 import systemUiconsIcons from '@iconify-json/system-uicons/icons.json';
 import uilIcons from '@iconify-json/uil/icons.json';
+import vscodeIcons from '@iconify-json/vscode-icons/icons.json';
+import streamlineFreehandColorIcons from '@iconify-json/streamline-freehand-color/icons.json';
 
 // List of peer selectors we want to preserve during build
 const peerSelectorClasses = [
@@ -164,7 +166,7 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
         extract({ code, id }) {
           const result = new Set();
 
-          // Enhanced class extraction for Astro components
+          // Only extract from class attributes to prevent false positives
           const classRegex = /class(?:Name)?=["'`]([^"'`]+)["'`]/g;
           let match;
           while ((match = classRegex.exec(code)) !== null) {
@@ -173,23 +175,8 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
             });
           }
 
-          // Extract peer selectors
-          const peerRegex = /peer-[a-zA-Z0-9-]+(?::[a-zA-Z0-9-]+)*/g;
-          const peerMatches = code.match(peerRegex);
-          if (peerMatches) {
-            peerMatches.forEach(match => result.add(match));
-          }
-
-          // Extract shortcut references
-          const shortcutRegex = /\b(?:input|button|layout|component|product|jumbotron)-[a-zA-Z0-9-]+/g;
-          const shortcutMatches = code.match(shortcutRegex);
-          if (shortcutMatches) {
-            shortcutMatches.forEach(match => result.add(match));
-          }
-
-          // For .astro files, extract from both template and script sections
+          // For .astro files, extract from dynamic class bindings
           if (id && id.endsWith('.astro')) {
-            // Extract from dynamic class bindings
             const dynamicClassRegex = /class:\w+\s*=\s*["'`]([^"'`]+)["'`]/g;
             while ((match = dynamicClassRegex.exec(code)) !== null) {
               match[1].split(/\s+/).forEach(cls => {
@@ -240,6 +227,8 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
           'simple-icons': simpleIcons,
           'system-uicons': systemUiconsIcons,
           'uil': uilIcons,
+          'vscode-icons': vscodeIcons,
+          'streamline-freehand-color': streamlineFreehandColorIcons,
         }
       }),
       presetTypography(),

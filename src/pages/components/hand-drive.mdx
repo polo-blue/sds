@@ -68,33 +68,6 @@ import HandDrive from 'spoko-design-system/src/components/HandDrive.astro'
 />
 ```
 
-## API Integration
-
-The component is designed to work seamlessly with API data:
-
-```js
-// API Response Format
-{
-  "hand_drive": 1,                    // Original number (legacy)
-  "hand_drive_type": "lhd",          // Clean string value
-  "hand_drive_text": "Left-Hand Drive" // Translated text
-}
-
-// Component Usage
-<HandDrive
-  handDrive={partData.hand_drive_type}
-  text={partData.hand_drive_text}
-/>
-```
-
-### API Call Example
-```js
-const response = await fetch('/api/parts/6R106150282V?locale=en&with_translations=1');
-const partData = await response.json();
-
-// partData.hand_drive_type = "lhd"
-// partData.hand_drive_text = "Left-Hand Drive"
-```
 
 ## Design Principles
 

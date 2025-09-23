@@ -1,5 +1,4 @@
 ---
-import { changeLanguage } from "i18next";
 import { Icon } from "astro-icon/components";
 import { SITE } from "../config";
 import Jumbotron from "../components/Jumbotron.astro";
@@ -14,19 +13,19 @@ const navItems = [
     title: "Core",
     description: "Base colors, typography, shadows etc.",
     url: "/core/introduction",
-    icon: "ant-design:cluster-outlined",
+    icon: "streamline-freehand-color:database",
   },
   {
     title: "Components",
     description: "The building blocks for our UI.",
     url: "/components/buttons",
-    icon: "ant-design:build-twotone",
+    icon: "streamline-freehand-color:module-building-blocks",
   },
   {
     title: "Patterns",
     description: "Common patterns for building interfaces.",
     url: "/patterns/introduction",
-    icon: "ant-design:audit-outlined",
+    icon: "streamline-freehand-color:layouts-array-1",
   },
 ];
 ---
@@ -75,6 +74,69 @@ const navItems = [
         }
       </div>
     </nav>
+
+    <!-- Features Section -->
+    <section class="py-16 px-4 max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <Headline as="h2" textSize="3xl" underline="center" class="text-gray-900 mb-6">
+          Why Spoko Design System?
+        </Headline>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          A modern, comprehensive design system built with Astro and Vue, featuring consistent components and patterns for rapid development.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
+          <Headline as="h3" textSize="xl" underline={false} class="mb-3 text-gray-900 flex items-center justify-center">
+            <Icon name="vscode-icons:file-type-light-astro" aria-hidden="true" class="text-3xl text-blue-400 mr-3" />
+            Astro-Powered
+          </Headline>
+          <p class="text-gray-600">Built with <a href="https://astro.build/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline transition-colors">Astro</a> for lightning-fast performance and seamless integration with modern frameworks.</p>
+        </div>
+
+        <div class="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
+          <Headline as="h3" textSize="xl" underline={false} class="mb-3 text-gray-900 flex items-center justify-center">
+            <Icon name="streamline-freehand-color:data-transfer-document-module" aria-hidden="true" class="text-3xl text-blue-400 mr-3" />
+            Rich Components
+          </Headline>
+          <p class="text-gray-600">20+ production-ready components including buttons, modals, carousels, and specialized automotive elements.</p>
+        </div>
+
+        <div class="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
+          <Headline as="h3" textSize="xl" underline={false} class="mb-3 text-gray-900 flex items-center justify-center">
+            <Icon name="vscode-icons:file-type-unocss" aria-hidden="true" class="text-3xl text-blue-400 mr-3" />
+            UnoCSS Styling
+          </Headline>
+          <p class="text-gray-600">Atomic CSS approach with <a href="https://unocss.dev/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline transition-colors">UnoCSS</a> for flexible, maintainable styling and consistent design tokens.</p>
+        </div>
+
+        <div class="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
+          <Headline as="h3" textSize="xl" underline={false} class="mb-3 text-gray-900 flex items-center justify-center">
+            <Icon name="vscode-icons:file-type-vue" aria-hidden="true" class="text-3xl text-blue-400 mr-3" />
+            Vue Integration
+          </Headline>
+          <p class="text-gray-600">Seamless <a href="https://vuejs.org/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline transition-colors">Vue 3</a> component integration with TypeScript support for interactive elements.</p>
+        </div>
+
+        <div class="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
+          <Headline as="h3" textSize="xl" underline={false} class="mb-3 text-gray-900 flex items-center justify-center">
+            <Icon name="streamline-freehand-color:design-process-drawing-board" aria-hidden="true" class="text-3xl text-blue-400 mr-3" />
+            Design Patterns
+          </Headline>
+          <p class="text-gray-600">Proven patterns and layouts for common use cases, from landing pages to product catalogs.</p>
+        </div>
+
+        <div class="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
+          <Headline as="h3" textSize="xl" underline={false} class="mb-3 text-gray-900 flex items-center justify-center">
+            <Icon name="streamline-freehand-color:app-window-source-code" aria-hidden="true" class="text-3xl text-blue-400 mr-3" />
+            Developer Ready
+          </Headline>
+          <p class="text-gray-600">Complete documentation, TypeScript support, and easy npm installation for quick project setup.</p>
+        </div>
+      </div>
+    </section>
+
     <div
       class="mt-12 py-20 bg-blue-darker bg-vw text-white flex items-center justify-center relative"
     >
@@ -86,44 +148,113 @@ const navItems = [
       </Quote>
     </div>
 
-    <div class="px-4 grid lg:grid-cols-2 gap-4 md:gap-10 max-w-5xl mx-auto text-center py-12 md:px-0">
+    <!-- Download & Examples Section -->
+    <section class="py-16 px-4 max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-8 md:gap-12">
 
-      <div>
-        <Headline underline as="div" class="mx-auto text-gray-900" textSize="3xl">Download:</Headline>
-        <div class="grid grid-flow-col gap-4 auto-cols-max text-6xl mb-12">
-          <a href="https://www.npmjs.com/package/spoko-design-system" rel="noopener" title="npm page" class="hover:text-accent-light">
-            <Icon name="mdi:npm"/>
-          </a>
-          <a href="https://github.com/polo-blue/sds" rel="noopener" title="Github Page" class="hover:text-accent-light">
-            <Icon name="mdi:github"/>
-          </a>
+        <!-- Download Section -->
+        <div class="text-center">
+          <Headline underline as="h2" class="text-gray-900 mb-8" textSize="3xl">
+            <Icon name="streamline-freehand-color:archive-box" aria-hidden="true" class="text-3xl text-blue-400 mr-3" />
+            Get Started
+          </Headline>
+
+          <!-- Installation Commands -->
+          <div class="bg-gray-900 rounded-lg p-6 mb-6 text-left space-y-4">
+            <div>
+              <p class="text-gray-400 text-sm mb-2">Install via npm:</p>
+              <code class="text-green-400 font-mono text-lg">npm install spoko-design-system</code>
+            </div>
+            <div>
+              <p class="text-gray-400 text-sm mb-2">Or with pnpm (recommended):</p>
+              <code class="text-blue-400 font-mono text-lg">pnpm add spoko-design-system</code>
+            </div>
+          </div>
+
+          <!-- Download Links -->
+          <div class="flex justify-center gap-6 mb-6">
+            <a href="https://www.npmjs.com/package/spoko-design-system"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg transition-colors">
+              <Icon name="mdi:npm" class="text-3xl" />
+              <span class="font-semibold">npm Package</span>
+            </a>
+            <a href="https://github.com/polo-blue/sds"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="flex items-center gap-3 bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-lg transition-colors">
+              <Icon name="mdi:github" class="text-2xl" />
+              <span class="font-semibold">Source Code</span>
+            </a>
+          </div>
+
+          <p class="text-gray-600 text-sm">
+            TypeScript support included • Complete documentation • Production ready
+          </p>
         </div>
+
+        <!-- Examples Section -->
+        <div class="text-center">
+          <Headline underline as="h2" class="text-gray-900 mb-8" textSize="3xl">
+            <Icon name="streamline-freehand-color:app-window-layout" aria-hidden="true" class="text-3xl text-blue-400 mr-3" />
+            Live Examples
+          </Headline>
+
+          <!-- Example Sites Grid -->
+          <div class="grid gap-4 mb-6">
+            <a href="https://catalog.polo.blue"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:border-blue-400 hover:shadow-md transition-all group">
+              <div class="text-left">
+                <h4 class="font-semibold text-gray-900 group-hover:text-blue-600">catalog.polo.blue</h4>
+                <p class="text-sm text-gray-600">Car parts catalog</p>
+              </div>
+              <Icon name="lucide:link" class="text-gray-400 group-hover:text-blue-400" />
+            </a>
+
+            <a href="https://polo.blue"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:border-blue-400 hover:shadow-md transition-all group">
+              <div class="text-left">
+                <h4 class="font-semibold text-gray-900 group-hover:text-blue-600">polo.blue</h4>
+                <p class="text-sm text-gray-600">Polo 6R DIY workshop & guides</p>
+              </div>
+              <Icon name="lucide:link" class="text-gray-400 group-hover:text-blue-400" />
+            </a>
+
+            <a href="https://sale.polo.blue/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:border-blue-400 hover:shadow-md transition-all group">
+              <div class="text-left">
+                <h4 class="font-semibold text-gray-900 group-hover:text-blue-600">sale.polo.blue</h4>
+                <p class="text-sm text-gray-600">Used car parts marketplace</p>
+              </div>
+              <Icon name="lucide:link" class="text-gray-400 group-hover:text-blue-400" />
+            </a>
+
+            <a href="https://polo6r.pl"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:border-blue-400 hover:shadow-md transition-all group">
+              <div class="text-left">
+                <h4 class="font-semibold text-gray-900 group-hover:text-blue-600">polo6r.pl</h4>
+                <p class="text-sm text-gray-600">Polo V Manual</p>
+              </div>
+              <Icon name="lucide:link" class="text-gray-400 group-hover:text-blue-400" />
+            </a>
+          </div>
+
+          <p class="text-gray-600 text-sm">
+            See the design system in action across different project types
+          </p>
+        </div>
+
       </div>
- 
-
-     <div>
-      <Headline underline as="div" class="mx-auto text-gray-900" textSize="3xl">Examples:</Headline>
-      <ul class="flex flex-wrap text-2xl pt-6 lg:(py-4 gap-4) text-left justify-center lg:justify-start w-full">
-        <li class="leading-5 me-6 mb-4 lg:mb-0 flex-shrink-0">
-          <a href="https://catalog.polo.blue" class="example-link whitespace-nowrap" target="_blank"> catalog.polo.blue</a>
-        </li>
-        <li class="leading-5 me-6 mb-4 lg:mb-0 flex-shrink-0">
-          <a href="https://polo.blue" class="example-link whitespace-nowrap" target="_blank"> polo.blue</a>
-        </li>
-        <li class="leading-5 me-6 mb-4 lg:mb-0 flex-shrink-0">
-          <a href="https://spoko.space" class="example-link whitespace-nowrap" target="_blank"> spoko.space</a>
-        </li>
-        <li class="leading-5 me-6 mb-4 lg:mb-0 flex-shrink-0">
-          <a href="https://sale.polo.blue/" class="example-link whitespace-nowrap" target="_blank">sale.polo.blue</a>
-        </li>
-        <li class="leading-5 me-6 mb-4 lg:mb-0 flex-shrink-0">
-          <a href="https://polo6r.pl" class="example-link whitespace-nowrap" target="_blank">polo6r.pl</a>
-        </li>
-      </ul>
-     </div>
-
-
-    </div>
+    </section>
   </div>
   <script is:inline></script>
 </Layout>

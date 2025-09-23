@@ -23,7 +23,7 @@ const props = defineProps({
     default: 'regular'
   },
   underline: {
-    type: Boolean,
+    type: [Boolean, String] as PropType<boolean | 'center'>,
     required: false,
     default: false
   }
@@ -61,8 +61,8 @@ const typographyClass = getTypographyClass()
 </script>
 
 <template>
-  <component :is="props.as" class="mb-2.5 flex sm:block md:flex items-center leading-none"
-    :class="`${typographyClass} ${props.textSize ? `text-${props.textSize}` : 'text-xl'} ${props.underline ? 'headline--underline' : ''}`">
+  <component :is="props.as" class="mb-2.5 leading-none"
+    :class="`${typographyClass} ${props.textSize ? `text-${props.textSize}` : 'text-xl'} ${props.underline === true ? 'headline--underline' : ''} ${props.underline === 'center' ? 'headline--underline-center block text-center' : 'flex sm:block md:flex items-center'}`">
     <slot />
   </component>
 </template>
@@ -82,7 +82,27 @@ const typographyClass = getTypographyClass()
     @apply content-empty absolute left-0 bottom-px h-px;
     width: 95%;
     max-width: 255px;
-    background-color: #64748b
+    background-color: #64748b;
+  }
+}
+
+.headline--underline-center {
+  @apply relative pb-4;
+
+  &:before {
+    @apply content-empty absolute left-1/2 bottom-px h-px;
+    width: 95%;
+    max-width: 255px;
+    background-color: #64748b;
+    transform: translateX(-50%);
+  }
+
+  &:after {
+    @apply content-empty absolute bottom-0;
+    height: 3px;
+    width: 55px;
+    background-color: var(--clr-primary-400);
+    left: calc(50% - min(47.5%, 127.5px));
   }
 }
 </style>
