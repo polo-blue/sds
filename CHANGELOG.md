@@ -1,3 +1,9 @@
+## [1.1.10](https://github.com/polo-blue/sds/compare/v1.1.9...v1.1.10) (2025-09-23)
+
+### Bug Fixes
+
+* apply prettier formatting to PrCode.vue ([7de045c](https://github.com/polo-blue/sds/commit/7de045c0749153c1e1301e2223cbbcd18483cd23))
+
 ## [1.1.9](https://github.com/polo-blue/sds/compare/v1.1.8...v1.1.9) (2025-09-23)
 
 ### Bug Fixes
