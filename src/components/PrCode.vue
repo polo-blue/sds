@@ -3,7 +3,6 @@
      VAG group (VW/Audi/Skoda/Seat/Porsche/Bentley/Lamborghini/Ducati/Cupra/Scania/MAN) manufacturer PR-Code
 */
 
-
 const props = defineProps({
   prcode: {
     type: String,
