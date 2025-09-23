@@ -1,3 +1,9 @@
+## [1.1.2](https://github.com/polo-blue/sds/compare/v1.1.1...v1.1.2) (2025-09-23)
+
+### Bug Fixes
+
+* add Prettier Astro plugin and format most files ([19e776d](https://github.com/polo-blue/sds/commit/19e776df1bed0ded35ca9b287db266b653ecb1ae))
+
 ## [1.1.1](https://github.com/polo-blue/sds/compare/v1.1.0...v1.1.1) (2025-09-23)
 
 ### Bug Fixes
