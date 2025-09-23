@@ -1,3 +1,9 @@
+## [1.1.3](https://github.com/polo-blue/sds/compare/v1.1.2...v1.1.3) (2025-09-23)
+
+### Bug Fixes
+
+* resolve Astro syntax errors in components ([18003e7](https://github.com/polo-blue/sds/commit/18003e78558a1dbc8f34d0e4faed6183eaaa80cb))
+
 ## [1.1.2](https://github.com/polo-blue/sds/compare/v1.1.1...v1.1.2) (2025-09-23)
 
 ### Bug Fixes
