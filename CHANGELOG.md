@@ -1,3 +1,9 @@
+## [1.1.0](https://github.com/polo-blue/sds/compare/v1.0.1...v1.1.0) (2025-09-23)
+
+### Features
+
+* add SonarCloud and ESLint/Prettier code quality workflows ([349ad03](https://github.com/polo-blue/sds/commit/349ad034e4ca90c73d77927dfe8e6b66bde3fd37))
+
 ## [1.0.1](https://github.com/polo-blue/sds/compare/v1.0.0...v1.0.1) (2025-09-23)
 
 ### Bug Fixes
