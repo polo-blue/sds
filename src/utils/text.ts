@@ -5,8 +5,8 @@ export const text2paragraphs = (text: string, firstLineBottomMargin: boolean = f
     (firstLineBottomMargin ? 'class="mb-3"' : '') +
     '>' +
     text.split('\n').join('</p><p>') +
-    '<\/p>';
-  return out.split('<p><\/p><p>').join('<p class="mt-3">');
+    '</p>';
+  return out.split('<p></p><p>').join('<p class="mt-3">');
 };
 
 export const countWords = (str: string) => {
@@ -14,7 +14,7 @@ export const countWords = (str: string) => {
 };
 
 export const firstSentence = (str: string) => {
-  return str.split('\.');
+  return str.split('.');
 };
 
 export const removeSemicolon = (name: string) => {
