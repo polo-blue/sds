@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.astro/
+pnpm-lock.yaml
+*.md
+*.svg
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.ico
+*.woff
+*.woff2
+*.ttf
+*.eot
