@@ -15,7 +15,10 @@ const props = withDefaults(
 </script>
 
 <template>
-  <ul v-if="props.engines.length" class="engine-types">
+  <ul
+    v-if="props.engines.length"
+    class="engine-types"
+  >
     <li
       v-for="(engine, index) in props.engines"
       :key="engine.id"

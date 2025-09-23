@@ -15,7 +15,10 @@ const props = defineProps({
 
 <template>
   <div class="font-bold detail-name w-full sm:w-50 flex">
-    <span class="colon-after" :class="styles && styles.length ? styles : 'mt-auto'">
+    <span
+      class="colon-after"
+      :class="styles && styles.length ? styles : 'mt-auto'"
+    >
       {{ props.text }}
     </span>
   </div>

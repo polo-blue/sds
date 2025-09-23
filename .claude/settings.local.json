@@ -17,7 +17,9 @@
       "Bash(git push:*)",
       "Bash(pnpm run:*)",
       "Bash(git stash:*)",
-      "Bash(git pull:*)"
+      "Bash(git pull:*)",
+      "Bash(npx prettier:*)",
+      "Bash(npx eslint:*)"
     ],
     "deny": [],
     "ask": []

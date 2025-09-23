@@ -10,7 +10,10 @@ const props = defineProps({
 });
 </script>
 <template>
-  <strong class="product-model" :data-pagefind-filter="`model:${props.carModel.name}`">{{
+  <strong
+    class="product-model"
+    :data-pagefind-filter="`model:${props.carModel.name}`"
+  >{{
     props.carModel.name
   }}</strong>
 </template>

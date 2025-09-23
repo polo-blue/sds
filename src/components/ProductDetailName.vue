@@ -23,7 +23,10 @@ const props = defineProps({
 </script>
 
 <template>
-  <component :is="props.as" class="font-bold detail-name w-full sm:w-50 flex 2xl:w-64">
+  <component
+    :is="props.as"
+    class="font-bold detail-name w-full sm:w-50 flex 2xl:w-64"
+  >
     <span :class="styles && styles.length ? styles : 'mt-auto'">
       <b class="bg-white z-1 colon-after pr-1">{{ props.text }}</b>
     </span>
