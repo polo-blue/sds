@@ -1,3 +1,9 @@
+## [1.1.9](https://github.com/polo-blue/sds/compare/v1.1.8...v1.1.9) (2025-09-23)
+
+### Bug Fixes
+
+* resolve critical ESLint errors in Vue components ([b95d043](https://github.com/polo-blue/sds/commit/b95d04384c9c676c2caeab1118c5ac7934498340))
+
 ## [1.1.8](https://github.com/polo-blue/sds/compare/v1.1.7...v1.1.8) (2025-09-23)
 
 ### Bug Fixes
