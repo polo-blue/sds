@@ -26,10 +26,10 @@ const props = defineProps({
 
 <template>
   <span
-    v-for="(color, index) in colors"
+    v-for="(color, index) in props.colors"
     :key="index"
     class="product-color"
-    :data-pagefind-filter="filterName"
+    :data-pagefind-filter="props.filterName"
   >
     {{ color.name }}
   </span>

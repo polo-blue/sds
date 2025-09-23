@@ -97,7 +97,7 @@ const getLinkIconClass = (linkId: string) => {
 const groupedItems = computed(() => {
   // ✅ Add validation to ensure props.items is an array
   if (!Array.isArray(props.items)) {
-    console.warn('ProductDetailsList: items prop is not an array:', props.items);
+    globalThis.console.warn('ProductDetailsList: items prop is not an array:', props.items);
     return [];
   }
 

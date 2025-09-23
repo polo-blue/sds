@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { PropType } from 'vue';
-import type { DetailList, DetailObject } from '../../types/index';
+import type { DetailList } from '../../types/index';
 import ProductDetailName from './ProductDetailName.vue';
 import { getTranslation } from '../../utils/text';
 // import ProductColors from "@components/Product/ProductColors.vue"
@@ -29,12 +29,11 @@ const props = defineProps({
 </script>
 
 <template>
-  <template
-    v-for="(detail, index) in details"
-    :key="index"
-    class=""
-    v-if="details && details.length"
-  >
+  <div v-if="details && details.length">
+    <template
+      v-for="(detail, index) in details"
+      :key="index"
+    >
     <!-- PDP PAGE - PRODUCT ROW -->
     <!-- <pre>{{  JSON.stringify(details) }}</pre> -->
     <li
@@ -111,5 +110,6 @@ const props = defineProps({
         </ul>
       </div>
     </div>
-  </template>
+    </template>
+  </div>
 </template>
