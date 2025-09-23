@@ -1,3 +1,9 @@
+## [1.1.4](https://github.com/polo-blue/sds/compare/v1.1.3...v1.1.4) (2025-09-23)
+
+### Bug Fixes
+
+* remove unused variables and improve TypeScript types ([db637f6](https://github.com/polo-blue/sds/commit/db637f6829bb2a23342a35d8041e803d4c9ad9c4))
+
 ## [1.1.3](https://github.com/polo-blue/sds/compare/v1.1.2...v1.1.3) (2025-09-23)
 
 ### Bug Fixes
