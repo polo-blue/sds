@@ -125,31 +125,18 @@ const handleBlur = (event: globalThis.FocusEvent) => emit('blur', event);
       @input="handleInput"
       @focus="handleFocus"
       @blur="handleBlur"
-    >
+    />
 
-    <label
-      :for="id"
-      :class="labelClass"
-      style="transform-origin: top left"
-    >
+    <label :for="id" :class="labelClass" style="transform-origin: top left">
       {{ label }}
-      <span
-        v-if="required"
-        class="text-red-500 ml-1"
-      >*</span>
+      <span v-if="required" class="text-red-500 ml-1">*</span>
     </label>
 
-    <div
-      v-if="error && typeof error === 'string'"
-      class="input-error-message"
-    >
+    <div v-if="error && typeof error === 'string'" class="input-error-message">
       {{ error }}
     </div>
 
-    <div
-      v-if="success && typeof success === 'string'"
-      class="input-success-message"
-    >
+    <div v-if="success && typeof success === 'string'" class="input-success-message">
       {{ success }}
     </div>
   </div>

@@ -14,10 +14,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div
-    v-if="props.badges && props.badges.length > 0"
-    class="absolute z-2"
-  >
+  <div v-if="props.badges && props.badges.length > 0" class="absolute z-2">
     <Badge
       v-for="(badge, index) in props.badges"
       :key="index"
