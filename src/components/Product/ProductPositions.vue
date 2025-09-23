@@ -16,7 +16,11 @@ const props = defineProps({
 </script>
 
 <template>
-  <span v-for="position in props.positions" :key="position.sort" class="product-position">
+  <span
+    v-for="position in props.positions"
+    :key="position.sort"
+    class="product-position"
+  >
     {{ position.name }}
   </span>
 </template>

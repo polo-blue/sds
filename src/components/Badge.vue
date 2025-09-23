@@ -14,7 +14,10 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="badge" :class="props.class">
+  <div
+    class="badge"
+    :class="props.class"
+  >
     {{ props.badge }}
   </div>
 </template>
