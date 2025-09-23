@@ -299,14 +299,11 @@ export const iconConfig: IconConfig = {
     ],
 
     'vscode-icons': [
-      'file-type-light-astro',
-      'file-type-unocss',
+      'file-type-astro',
       'file-type-vue',
-      'file-type-typescript-official',
+      'file-type-typescript',
       'file-type-node',
-      'file-type-npm',
-      'default-gear',
-      'default-package'
+      'file-type-npm'
     ],
 
     'streamline-freehand-color': [
