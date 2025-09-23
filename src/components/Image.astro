@@ -1,16 +1,16 @@
 ---
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets';
 
 const { imageObject } = Astro.props;
 let inputProps = {};
 
 if (imageObject.index && imageObject.index === 1) {
-  inputProps["data-pagefind-meta"] = "image[src], image_alt[alt]";
-  inputProps["loading"] = "eager";
+  inputProps['data-pagefind-meta'] = 'image[src], image_alt[alt]';
+  inputProps['loading'] = 'eager';
 }
 
 if (imageObject.srcset && imageObject.srcset.length) {
-  inputProps["widths"] = imageObject.srcset;
+  inputProps['widths'] = imageObject.srcset;
 }
 ---
 
@@ -23,8 +23,6 @@ if (imageObject.srcset && imageObject.srcset.length) {
   format="avif"
   data-pagefind-index-attrs="alt"
   onerror="this.style.display='none';"
-  class={`h-full w-full select-none pointer-none ${
-    imageObject.class || "object-cover"
-  }`}
+  class={`h-full w-full select-none pointer-none ${imageObject.class || 'object-cover'}`}
   {...inputProps}
 />

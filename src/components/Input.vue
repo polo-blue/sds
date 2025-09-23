@@ -30,7 +30,7 @@ const props = withDefaults(defineProps<InputProps>(), {
   error: false,
   success: false,
   size: 'md',
-  class: ''
+  class: '',
 });
 
 const emit = defineEmits(['update:modelValue', 'input', 'focus', 'blur']);
@@ -44,20 +44,20 @@ const wrapperClass = computed(() => `input-wrapper-${props.variant}`);
 // Compute input classes - uses shortcuts
 const inputClass = computed(() => {
   const classes = ['input-base', 'input-placeholder', `input-${props.variant}`];
-  
+
   // Add size class
   if (props.size) classes.push(`input-${props.size}`);
-  
+
   // Add textarea class if needed
   if (props.type === 'textarea') classes.push('input-textarea');
-  
+
   // Add status classes
   if (props.error) classes.push('input-error');
   else if (props.success) classes.push('input-success');
-  
+
   // Add custom classes
   if (props.class) classes.push(props.class);
-  
+
   return classes.join(' ');
 });
 
@@ -65,22 +65,22 @@ const inputClass = computed(() => {
 const labelClass = computed(() => {
   const classes = [
     // Base label style
-    'input-label-base', 
-    
+    'input-label-base',
+
     // Position styling
-    `input-label-${props.variant}`, 
-    
+    `input-label-${props.variant}`,
+
     // State styling - contains all transformations for the specific variant
-    `input-label-${props.variant}-state`
+    `input-label-${props.variant}-state`,
   ];
-  
+
   // Add size class
   if (props.size) classes.push(`input-label-${props.size}`);
-  
+
   // Add status classes
   if (props.error) classes.push('input-label-error');
   else if (props.success) classes.push('input-label-success');
-  
+
   return classes.join(' ');
 });
 
@@ -111,7 +111,7 @@ const handleBlur = (event: FocusEvent) => emit('blur', event);
       @blur="handleBlur"
       v-bind="attrs"
     ></textarea>
-    
+
     <input
       v-else
       :type="type"
@@ -126,27 +126,17 @@ const handleBlur = (event: FocusEvent) => emit('blur', event);
       @blur="handleBlur"
       v-bind="attrs"
     />
-    
-    <label
-      :for="id"
-      :class="labelClass"
-      style="transform-origin: top left;"
-    >
+
+    <label :for="id" :class="labelClass" style="transform-origin: top left">
       {{ label }}
       <span v-if="required" class="text-red-500 ml-1">*</span>
     </label>
-    
-    <div 
-      v-if="error && typeof error === 'string'" 
-      class="input-error-message"
-    >
+
+    <div v-if="error && typeof error === 'string'" class="input-error-message">
       {{ error }}
     </div>
-    
-    <div 
-      v-if="success && typeof success === 'string'" 
-      class="input-success-message"
-    >
+
+    <div v-if="success && typeof success === 'string'" class="input-success-message">
       {{ success }}
     </div>
   </div>

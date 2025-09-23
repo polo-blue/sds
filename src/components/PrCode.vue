@@ -3,27 +3,30 @@
      VAG group (VW/Audi/Skoda/Seat/Porsche/Bentley/Lamborghini/Ducati/Cupra/Scania/MAN) manufacturer PR-Code
 */
 
-import type { PropType } from 'vue'
+import type { PropType } from 'vue';
 
 const props = defineProps({
-    prcode: {
-        type: String,
-        default: null,
-        required: true,
-    },
-    isPdp: {
-        type: Boolean,
-        default: false,
-        required: false,
-    },
-})
+  prcode: {
+    type: String,
+    default: null,
+    required: true,
+  },
+  isPdp: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
+});
 </script>
 
 <template>
-    <span data-pagefind-filter="PR-Code" class="btn-prcode "
-        :class="`btn-prcode--${props.prcode} ${props.isPdp ? ' btn-prcode--pdp' : ''}`">
-        {{ props.prcode }}
-    </span>
+  <span
+    data-pagefind-filter="PR-Code"
+    class="btn-prcode"
+    :class="`btn-prcode--${props.prcode} ${props.isPdp ? ' btn-prcode--pdp' : ''}`"
+  >
+    {{ props.prcode }}
+  </span>
 </template>
 
 <style>
@@ -137,6 +140,4 @@ const props = defineProps({
 .btn-prcode--2JD::before {
   content: 'GTI';
 }
-
-
 </style>

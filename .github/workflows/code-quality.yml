@@ -42,10 +42,10 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Check Prettier formatting
-        run: pnpm exec prettier --check "src/**/*.{js,ts,jsx,tsx,vue,astro,json,css,md}"
+        run: pnpm run format:check
 
       - name: Run ESLint
-        run: pnpm exec eslint "src/**/*.{js,ts,jsx,tsx,vue,astro}"
+        run: pnpm run lint
 
       - name: Type check
-        run: pnpm exec astro check
+        run: pnpm run check

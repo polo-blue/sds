@@ -1,12 +1,10 @@
 ---
 const { class: className, imgSrc, imgAlt, href } = Astro.props;
 
-import Image from "../components/Image.astro";
+import Image from '../components/Image.astro';
 ---
 
-<div
-  class="bg-white border border-gray-200 rounded-lg shadow overflow-hidden"
->
+<div class="bg-white border border-gray-200 rounded-lg shadow overflow-hidden">
   <a href={href} class="aspect-ratio-video block relative">
     {
       imgSrc && (
@@ -14,8 +12,8 @@ import Image from "../components/Image.astro";
           imageObject={{
             src: imgSrc,
             alt: imgAlt,
-            height: "405",
-            width: "720",
+            height: '405',
+            width: '720',
           }}
         />
       )

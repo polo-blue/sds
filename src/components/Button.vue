@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAttrs } from 'vue'
+import { useAttrs } from 'vue';
 
 interface ButtonProps {
   href?: string;
@@ -26,43 +26,44 @@ interface ButtonProps {
 const props = defineProps<ButtonProps>();
 
 // Check if we should add a default mediumHover for tertiary
-const shouldAddDefaultMediumHover = props.tertiary || props.tertiaryOutline && 
-  !props.whiteHover && 
-  !props.lightHover && 
-  !props.mediumHover && 
-  !props.darkHover;
+const shouldAddDefaultMediumHover =
+  props.tertiary ||
+  (props.tertiaryOutline &&
+    !props.whiteHover &&
+    !props.lightHover &&
+    !props.mediumHover &&
+    !props.darkHover);
 
-const tag = props.href && props.href.length ? 'a' : 'button'
+const tag = props.href && props.href.length ? 'a' : 'button';
 const classes = {
-  "btn-primary": props.primary,
-  "btn-primary-outline": props.primaryOutline,
-  "btn-secondary": props.secondary,
-  "btn-secondary-outline": props.secondaryOutline,
-  "btn-tertiary": props.tertiary,
-  "btn-tertiary-outline": props.tertiaryOutline,
-  "btn-text": props.text,
-  "btn-tag": props.tag,
-  "btn-sm": props.medium,
-  "btn-xs": props.small,
-  "btn-normal": !props.small && !props.medium,
-  "rounded-full": props.rounded,
-  "btn-circle": props.circle,
-  "btn-white-hover": props.whiteHover,
-  "btn-light-hover": props.lightHover,
-  "btn-medium-hover": props.mediumHover || shouldAddDefaultMediumHover,
-  "btn-dark-hover": props.darkHover
+  'btn-primary': props.primary,
+  'btn-primary-outline': props.primaryOutline,
+  'btn-secondary': props.secondary,
+  'btn-secondary-outline': props.secondaryOutline,
+  'btn-tertiary': props.tertiary,
+  'btn-tertiary-outline': props.tertiaryOutline,
+  'btn-text': props.text,
+  'btn-tag': props.tag,
+  'btn-sm': props.medium,
+  'btn-xs': props.small,
+  'btn-normal': !props.small && !props.medium,
+  'rounded-full': props.rounded,
+  'btn-circle': props.circle,
+  'btn-white-hover': props.whiteHover,
+  'btn-light-hover': props.lightHover,
+  'btn-medium-hover': props.mediumHover || shouldAddDefaultMediumHover,
+  'btn-dark-hover': props.darkHover,
 };
-
 
 const attrs = useAttrs();
 </script>
 
 <template>
- <component 
-    :is="tag" 
-    :class="classes" 
+  <component
+    :is="tag"
+    :class="classes"
     v-bind="attrs"
-    :href="props.href" 
+    :href="props.href"
     :title="props.title ? props.title : null"
   >
     <slot></slot>

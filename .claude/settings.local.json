@@ -15,7 +15,8 @@
       "WebFetch(domain:polo.blue)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Bash(pnpm run:*)"
+      "Bash(pnpm run:*)",
+      "Bash(git stash:*)"
     ],
     "deny": [],
     "ask": []

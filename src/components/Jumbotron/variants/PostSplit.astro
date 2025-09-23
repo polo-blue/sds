@@ -1,8 +1,8 @@
 ---
 import type { Author, Category } from '../types';
-import PostCategories from "../../Post/PostCategories.astro";
-import Date from "../../Date.astro";
-import { Image } from "astro:assets";
+import PostCategories from '../../Post/PostCategories.astro';
+import Date from '../../Date.astro';
+import { Image } from 'astro:assets';
 
 interface Props {
   title?: string;
@@ -16,14 +16,14 @@ interface Props {
 }
 
 const {
-  title = "",
+  title = '',
   image,
   author,
   date,
   categories = [],
   hasMetadata,
   hasCategories,
-  lang='en'
+  lang = 'en',
 } = Astro.props;
 
 // Helper function to remove HTML tags
@@ -38,44 +38,52 @@ const cleanTitle = stripHtml(title);
 <div class="jumbotron-split-wrapper bg-blue-900 bg-vw">
   <div class="jumbotron-split-container">
     <header class="jumbotron-split-header">
-      <div class="heading flex flex-wrap text-white relative items-center justify-center mt-auto w-full z-[2]">
+      <div
+        class="heading flex flex-wrap text-white relative items-center justify-center mt-auto w-full z-[2]"
+      >
         <div class="jumbotron-split-content">
           <h1 class="jumbotron-split-title" set:html={title} />
-          
-          {hasCategories && (
-            <div class="jumbotron-categories">
-              <PostCategories categories={categories} lang={lang} />
-            </div>
-          )}
 
-          {hasMetadata && (
-            <div class="jumbotron-split-meta">
-              {author && (
-                <span class="text-sm" title={author.firstName} data-pagefind-ignore>
-                  {author.name}
-                </span>
-              )}
-              {author && date && <span class="mx-1">-</span>}
-              {date && <Date date={date} />}
-            </div>
-          )}
+          {
+            hasCategories && (
+              <div class="jumbotron-categories">
+                <PostCategories categories={categories} lang={lang} />
+              </div>
+            )
+          }
+
+          {
+            hasMetadata && (
+              <div class="jumbotron-split-meta">
+                {author && (
+                  <span class="text-sm" title={author.firstName} data-pagefind-ignore>
+                    {author.name}
+                  </span>
+                )}
+                {author && date && <span class="mx-1">-</span>}
+                {date && <Date date={date} />}
+              </div>
+            )
+          }
         </div>
       </div>
-      
-      {image && (
-        <div class="jumbotron-split-image-wrapper">
-          <div class="jumbotron-split-image">
-            <Image 
-              class="jumbotron-split-img"
-              src={image} 
-              alt={cleanTitle}
-              width={768}
-              height={432}
-              loading="eager"
-            />
+
+      {
+        image && (
+          <div class="jumbotron-split-image-wrapper">
+            <div class="jumbotron-split-image">
+              <Image
+                class="jumbotron-split-img"
+                src={image}
+                alt={cleanTitle}
+                width={768}
+                height={432}
+                loading="eager"
+              />
+            </div>
           </div>
-        </div>
-      )}
+        )
+      }
     </header>
   </div>
 </div>

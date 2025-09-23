@@ -1,21 +1,21 @@
 ---
-import { SITE } from "../../config";
-import SkipToContent from "./SkipToContent.astro";
-import { MenuIcon } from "astro-navbar";
-import Search from "astro-pagefind/components/Search";
+import { SITE } from '../../config';
+import SkipToContent from './SkipToContent.astro';
+import { MenuIcon } from 'astro-navbar';
+import Search from 'astro-pagefind/components/Search';
 ---
 
-<header
-  class="p-3 bg-blue-medium bg-opacity-10 backdrop-blur-md border-b text-slate-900"
->
+<header class="p-3 bg-blue-medium bg-opacity-10 backdrop-blur-md border-b text-slate-900">
   <SkipToContent />
-  <nav
-    title="Top Navigation"
-    class="mx-auto flex justify-between items-center px-4"
-  >
+  <nav title="Top Navigation" class="mx-auto flex justify-between items-center px-4">
     <div class="flex flex-nowrap">
       <MenuIcon class="w-4 h-4 text-gray-800 lg:hidden mr-4" />
-      <a class="text-2xl font-medium block font-textbold leading-none block my-auto text-blue-medium" href="/"> SDS</a>
+      <a
+        class="text-2xl font-medium block font-textbold leading-none block my-auto text-blue-medium"
+        href="/"
+      >
+        SDS</a
+      >
       <Search
         transition:persist
         transition:name="search-field"
@@ -34,7 +34,7 @@ import Search from "astro-pagefind/components/Search";
           <a
             title="Github"
             class="opacity-80 hover:opacity-100 hover:bg-slate-200 p-2 rounded-full transition-colors"
-            href={"https://github.com/" + SITE.github}
+            href={'https://github.com/' + SITE.github}
           >
             <img class="h-7" src="/github.svg" alt="github logo" />
           </a>
@@ -45,7 +45,7 @@ import Search from "astro-pagefind/components/Search";
           <a
             title="linkedin"
             class="opacity-80 hover:opacity-100 hover:bg-blue-50 p-2 rounded-full transition-colors"
-            href={"https://linkedin.com/in/" + SITE.linkedin}
+            href={'https://linkedin.com/in/' + SITE.linkedin}
           >
             <img class="h-7" src="/linkedin.svg" alt="linkedin logo" />
           </a>
@@ -55,156 +55,155 @@ import Search from "astro-pagefind/components/Search";
   </nav>
 </header>
 
-<style  is:global>
-#search {
-  @apply ml-6;
-}
+<style is:global>
+  #search {
+    @apply ml-6;
+  }
 
-.search-container {
-  box-sizing: border-box;
-  @apply h-10 border-0 border-gray-800 rounded-3xl hidden md:block;
-}
+  .search-container {
+    box-sizing: border-box;
+    @apply h-10 border-0 border-gray-800 rounded-3xl hidden md:block;
+  }
 
-.pagefind-ui {
-  @apply font-textlight text-base;
-}
+  .pagefind-ui {
+    @apply font-textlight text-base;
+  }
 
-.pagefind-ui .pagefind-ui__search-input {
-  height: 40px;
-  border: 0;
-  @apply rounded-none sm:rounded-3xl w-full;
-}
+  .pagefind-ui .pagefind-ui__search-input {
+    height: 40px;
+    border: 0;
+    @apply rounded-none sm:rounded-3xl w-full;
+  }
 
-.pagefind-ui .pagefind-ui__result-excerpt,
-.pagefind-ui .pagefind-ui__button {
-  font-size: 14px;
-}
+  .pagefind-ui .pagefind-ui__result-excerpt,
+  .pagefind-ui .pagefind-ui__button {
+    font-size: 14px;
+  }
 
-.pagefind-ui .pagefind-ui__filter-name {
-  font-size: 12px;
-}
+  .pagefind-ui .pagefind-ui__filter-name {
+    font-size: 12px;
+  }
 
-.pagefind-ui .pagefind-ui__drawer:not(.pagefind-ui__hidden) {
-  @apply p-4;
-}
+  .pagefind-ui .pagefind-ui__drawer:not(.pagefind-ui__hidden) {
+    @apply p-4;
+  }
 
-.pagefind-ui .pagefind-ui__result-link {
-  color: var(--pagefind-ui-primary);
-  font-family: vw_headlight;
-  font-size: 1rem;
-}
+  .pagefind-ui .pagefind-ui__result-link {
+    color: var(--pagefind-ui-primary);
+    font-family: vw_headlight;
+    font-size: 1rem;
+  }
 
-.pagefind-ui .pagefind-ui__result-link::before {
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  content: "";
-  position: absolute;
-}
+  .pagefind-ui .pagefind-ui__result-link::before {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: '';
+    position: absolute;
+  }
 
-.pagefind-ui .pagefind-ui__result-excerpt {
-  color: var(--pagefind-ui-text);
-  order: 3;
-}
+  .pagefind-ui .pagefind-ui__result-excerpt {
+    color: var(--pagefind-ui-text);
+    order: 3;
+  }
 
-.pagefind-ui .pagefind-ui__drawer {
-  @apply bg-white md:fixed shadow-lg rounded-b-lg border-t border-t-transparent overflow-auto top-17 md:max-w-[calc(100vw-10%)] max-h-[calc(100vh-10%)] gap-[30px];
-}
+  .pagefind-ui .pagefind-ui__drawer {
+    @apply bg-white md:fixed shadow-lg rounded-b-lg border-t border-t-transparent overflow-auto top-17 md:max-w-[calc(100vw-10%)] max-h-[calc(100vh-10%)] gap-[30px];
+  }
 
-.pagefind-ui .pagefind-ui__search-clear {
-  height: 38px;
-  top: 0;
-  @apply sm:rounded-3xl;
-}
+  .pagefind-ui .pagefind-ui__search-clear {
+    height: 38px;
+    top: 0;
+    @apply sm:rounded-3xl;
+  }
 
-.pagefind-ui .pagefind-ui__search-input {
-  font-size: 1rem;
-  font-weight: 400;
-  padding: 0 2.5rem 2px;
-}
+  .pagefind-ui .pagefind-ui__search-input {
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 0 2.5rem 2px;
+  }
 
-.pagefind-ui .pagefind-ui__form::before {
-  top: 14px;
-  left: 16px;
-  width: 14px;
-  height: 14px;
-}
+  .pagefind-ui .pagefind-ui__form::before {
+    top: 14px;
+    left: 16px;
+    width: 14px;
+    height: 14px;
+  }
 
-.pagefind-ui .pagefind-ui__result {
-  padding: 0.875rem 0;
-  gap: 1rem;
-  @apply relative;
-}
+  .pagefind-ui .pagefind-ui__result {
+    padding: 0.875rem 0;
+    gap: 1rem;
+    @apply relative;
+  }
 
-.pagefind-ui .pagefind-ui__filter-block {
-  padding: 0.875rem 0;
-  border-width: 1px;
-}
+  .pagefind-ui .pagefind-ui__filter-block {
+    padding: 0.875rem 0;
+    border-width: 1px;
+  }
 
-.pagefind-ui .pagefind-ui__filter-group {
-  gap: 0.5rem;
-  padding-top: 0.875rem;
-}
+  .pagefind-ui .pagefind-ui__filter-group {
+    gap: 0.5rem;
+    padding-top: 0.875rem;
+  }
 
-.pagefind-ui .pagefind-ui__filter-value {
-  gap: 10px;
-}
+  .pagefind-ui .pagefind-ui__filter-value {
+    gap: 10px;
+  }
 
-.pagefind-ui .pagefind-ui__filter-checkbox {
-  border-radius: 3px;
-  margin-top: 1px;
-  min-width: calc(16px * var(--pagefind-ui-scale));
-}
+  .pagefind-ui .pagefind-ui__filter-checkbox {
+    border-radius: 3px;
+    margin-top: 1px;
+    min-width: calc(16px * var(--pagefind-ui-scale));
+  }
 
-.pagefind-ui .pagefind-ui__result-image {
-  @apply drop-shadow-sm w-full h-full object-contain rounded-none;
-}
+  .pagefind-ui .pagefind-ui__result-image {
+    @apply drop-shadow-sm w-full h-full object-contain rounded-none;
+  }
 
-.pagefind-ui .pagefind-ui__filter-panel {
-  @apply hidden;
-}
+  .pagefind-ui .pagefind-ui__filter-panel {
+    @apply hidden;
+  }
 
-.pagefind-ui .pagefind-ui__filter-label {
-  font-size: 0.9rem;
-}
+  .pagefind-ui .pagefind-ui__filter-label {
+    font-size: 0.9rem;
+  }
 
-.pagefind-ui .pagefind-ui__button {
-  font-weight: 400;
-  height: 40px;
-}
+  .pagefind-ui .pagefind-ui__button {
+    font-weight: 400;
+    height: 40px;
+  }
 
-.pagefind-ui .pagefind-ui__result-tag {
-  background: inherit;
-  padding: 0;
-  color: #9ca3af;
-}
+  .pagefind-ui .pagefind-ui__result-tag {
+    background: inherit;
+    padding: 0;
+    color: #9ca3af;
+  }
 
-.pagefind-ui .pagefind-ui__result-thumb {
-  max-width: 120px;
-}
+  .pagefind-ui .pagefind-ui__result-thumb {
+    max-width: 120px;
+  }
 
-.pagefind-ui .pagefind-ui__result-tags {
-  margin-top: 0.4rem;
-  order: 2;
-}
+  .pagefind-ui .pagefind-ui__result-tags {
+    margin-top: 0.4rem;
+    order: 2;
+  }
 
-.pagefind-ui .pagefind-ui__filter-name::after {
-  color: var(--pagefind-ui-primary);
-}
+  .pagefind-ui .pagefind-ui__filter-name::after {
+    color: var(--pagefind-ui-primary);
+  }
 
-.pagefind-ui .pagefind-ui__result-title {
-  font-size: inherit;
-  line-height: 1;
-}
+  .pagefind-ui .pagefind-ui__result-title {
+    font-size: inherit;
+    line-height: 1;
+  }
 
-.pagefind-ui .pagefind-ui__filter-panel,
-.pagefind-ui .pagefind-ui__results-area {
-  margin-top: 0;
-}
+  .pagefind-ui .pagefind-ui__filter-panel,
+  .pagefind-ui .pagefind-ui__results-area {
+    margin-top: 0;
+  }
 
-.pagefind-ui .pagefind-ui__message {
-  padding: 0.875rem 0;
-}
-
+  .pagefind-ui .pagefind-ui__message {
+    padding: 0.875rem 0;
+  }
 </style>

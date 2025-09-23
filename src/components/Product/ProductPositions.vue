@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-
-import type { Position } from 'types/index'
+import type { Position } from 'types/index';
 import type { PropType } from 'vue';
 const props = defineProps({
   positions: {
@@ -12,23 +11,22 @@ const props = defineProps({
     type: String,
     default: null,
     required: false,
-  }
-})
-
+  },
+});
 </script>
 
 <template>
-  <span v-for="(position) in positions" :key="position.sort" class="product-position">
-    {{  position.name }}
+  <span v-for="position in positions" :key="position.sort" class="product-position">
+    {{ position.name }}
   </span>
 </template>
 
-<style >
+<style>
 .product-position:not(:last-child) {
   margin-right: 0.25rem;
 
   &:after {
-    content: ','
+    content: ',';
   }
 }
 </style>

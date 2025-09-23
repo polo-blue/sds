@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { colors } from "./../../uno-config/theme/colors";
+import { colors } from './../../uno-config/theme/colors';
 
 // Get color categories
 const colorCategories = Object.entries(colors);

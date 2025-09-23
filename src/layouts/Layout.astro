@@ -1,24 +1,20 @@
 ---
-import HeadCommon from "./partials/HeadCommon.astro";
-import FooterCommon from "./partials/FooterCommon.astro";
-import HeadSEO from "../layouts/partials/HeadSEO.astro";
-import * as CONFIG from "../config";
-import "../styles/main.css";
-import Copyright from "../components/Copyright.astro";
+import HeadCommon from './partials/HeadCommon.astro';
+import FooterCommon from './partials/FooterCommon.astro';
+import HeadSEO from '../layouts/partials/HeadSEO.astro';
+import * as CONFIG from '../config';
+import '../styles/main.css';
+import Copyright from '../components/Copyright.astro';
 const { content = {} } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
-<html dir={content.dir ?? "ltr"} lang={content.lang ?? "en-us"} class="initial">
+<html dir={content.dir ?? 'ltr'} lang={content.lang ?? 'en-us'} class="initial">
   <head>
     <HeadCommon />
     <HeadSEO {content} canonicalURL={canonicalURL} />
     <title>
-      {
-        content.title
-          ? `${content.title} 🚀 ${CONFIG.SITE.title}`
-          : CONFIG.SITE.title
-      }
+      {content.title ? `${content.title} 🚀 ${CONFIG.SITE.title}` : CONFIG.SITE.title}
     </title>
   </head>
 
@@ -34,13 +30,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
           target="_blank"
           rel="follow noopener"
           class="flex my-auto items-center mx-auto"
-          title={`Proudly made in Poland by ${
-            import.meta.env.COPYRIGHT_DOMAIN
-          }`}
+          title={`Proudly made in Poland by ${import.meta.env.COPYRIGHT_DOMAIN}`}
         >
-          <div class="text-xxs md:text-xs mr-1 mt-0.5 whitespace-nowrap">
-            createdy by
-          </div>
+          <div class="text-xxs md:text-xs mr-1 mt-0.5 whitespace-nowrap">createdy by</div>
           <img
             class="h-4 w-min md:h-5"
             src="spoko.space.svg"
@@ -55,4 +47,3 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
     </footer>
   </body>
 </html>
-

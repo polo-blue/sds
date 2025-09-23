@@ -1,11 +1,11 @@
 :root {
   --color-scheme: light;
-  
-  --clr-primary-400: hsl(198, 100%, 43%); /* {$blue}; */
-  --secondary: #64748B;
-  --tertiary: #001E50;
 
-  --font-family: 'vw_textregular', 'system-ui', 'ui-sans-serif', sans-serif;;
+  --clr-primary-400: hsl(198, 100%, 43%); /* {$blue}; */
+  --secondary: #64748b;
+  --tertiary: #001e50;
+
+  --font-family: 'vw_textregular', 'system-ui', 'ui-sans-serif', sans-serif;
 
   /* variables for future changes: */
 
@@ -29,7 +29,6 @@
   --clr-accent-300: hsl(358, 72%, 65%);
   --clr-accent-400: hsl(358, 72%, 50%);
   --clr-accent-500: hsl(358, 72%, 35%);
-
 }
 
 * {
@@ -56,7 +55,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1); 
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 0;
 }
 
@@ -69,7 +68,7 @@ body {
 @supports not selector(::-webkit-scrollbar) {
   * {
     scrollbar-width: thin;
-    scrollbar-color: var(--clr-primary-400) rgba(0, 0, 0, 0.1)
+    scrollbar-color: var(--clr-primary-400) rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -78,15 +77,13 @@ body {
 }
 
 .bg-spoko {
-  background: radial-gradient(circle at 50% 85%, #00437A 0%, #001E50 100%);
+  background: radial-gradient(circle at 50% 85%, #00437a 0%, #001e50 100%);
   color: #fff;
   width: 100%;
 }
 
 .bg-vw {
-  background: radial-gradient(circle at 50% 85%,
-      #00437A 0%,
-      #001E50 100%);
+  background: radial-gradient(circle at 50% 85%, #00437a 0%, #001e50 100%);
   color: #fff;
 }
 
@@ -102,11 +99,9 @@ code {
   @apply font-novamono;
 }
 
-
 html {
   scroll-behavior: smooth;
 }
-
 
 /* Swiper styles */
 :root {
@@ -118,7 +113,7 @@ html {
 }
 
 .swiper-horizontal {
-  &>.swiper-scrollbar {
+  & > .swiper-scrollbar {
     height: 1px;
   }
 }
@@ -134,10 +129,10 @@ html {
 }
 
 .items {
-  &>.item {
+  & > .item {
     &:not(:last-child) {
       &:after {
-        content: ', '
+        content: ', ';
       }
     }
   }
@@ -162,7 +157,7 @@ html {
   @apply mr-1;
 
   &:after {
-    content: ','
+    content: ',';
   }
 }
 
@@ -171,7 +166,7 @@ html {
     border-collapse: collapse;
     border-color: inherit;
     color: #212529;
-    margin-bottom: .875rem;
+    margin-bottom: 0.875rem;
     table-layout: fixed;
     text-indent: 0;
     width: 100%;

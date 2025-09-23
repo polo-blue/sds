@@ -14,16 +14,10 @@ interface Props {
   title?: string;
 }
 
-const {
-  class: className,
-  handDrive,
-  text,
-  biggerText = false,
-  title
-} = Astro.props;
+const { class: className, handDrive, text, biggerText = false, title } = Astro.props;
 
 import { Image } from 'astro:assets';
-import handDriveImage from "../assets/hand-drive.svg";
+import handDriveImage from '../assets/hand-drive.svg';
 
 // Don't render if no valid hand drive specified
 if (!handDrive || (handDrive !== 'lhd' && handDrive !== 'rhd')) {
@@ -42,15 +36,17 @@ const titleText = title || handDrive.toUpperCase();
     height={34}
     class={handDrive}
   />
-  {text && (
-    <div class={`ml-2 ${biggerText ? 'text-sm md:text-base' : 'text-xxs md:text-xs'}`}>
-      {text}
-    </div>
-  )}
+  {
+    text && (
+      <div class={`ml-2 ${biggerText ? 'text-sm md:text-base' : 'text-xxs md:text-xs'}`}>
+        {text}
+      </div>
+    )
+  }
 </div>
 
 <style>
   .rhd {
-          transform: scaleX(-1);
+    transform: scaleX(-1);
   }
-  </style>
+</style>

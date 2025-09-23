@@ -1,9 +1,5 @@
 <template>
-  <a
-    :href="href"
-    class="category-link"
-    :class="{ 'active': active }"
-  >
+  <a :href="href" class="category-link" :class="{ active: active }">
     {{ text }}
   </a>
 </template>
@@ -14,16 +10,16 @@ export default {
   props: {
     active: {
       type: Boolean,
-      default: false
+      default: false,
     },
     text: {
       type: String,
-      required: true
+      required: true,
     },
     href: {
       type: String,
-      required: true
-    }
-  }
-}
+      required: true,
+    },
+  },
+};
 </script>

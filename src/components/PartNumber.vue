@@ -17,8 +17,7 @@ const props = defineProps({
     default: '',
     required: false,
   },
-})
-
+});
 </script>
 
 <template>

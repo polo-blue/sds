@@ -11,11 +11,10 @@ export interface Category {
 
 export interface Props {
   // Common props
-  variant?: "default" | "hero" | "post" | "post-split";
-  title?: string; 
+  variant?: 'default' | 'hero' | 'post' | 'post-split';
+  title?: string;
   image?: string;
   backgroundClass?: string;
-
 
   // Default & Hero variant props
   small?: boolean;

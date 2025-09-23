@@ -2,6 +2,8 @@
 const { class: className, isFullWidth } = Astro.props;
 ---
 
-<div class:list={[`${isFullWidth ? 'max-w-full' : 'max-w-screen-xl'}  mx-auto px-5 py-4`, className]}>
+<div
+  class:list={[`${isFullWidth ? 'max-w-full' : 'max-w-screen-xl'}  mx-auto px-5 py-4`, className]}
+>
   <slot />
 </div>

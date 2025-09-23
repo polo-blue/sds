@@ -8,39 +8,36 @@ interface Props {
   showIcon?: boolean;
 }
 
-const { 
+const {
   position = 'bottom',
   className = '',
   customPath,
   dismissTimeout,
-  showIcon = true
+  showIcon = true,
 } = Astro.props;
 
 const currentLocale = Astro.currentLocale;
 const preferredLocale = Astro.preferredLocale;
 
-const targetPath = customPath 
+const targetPath = customPath
   ? `/${preferredLocale}${customPath}`
   : `/${preferredLocale}${Astro.url.pathname}`;
 ---
 
-<div 
+<div
   id="languageSuggestion"
   class:list={[
     'fixed right-4 bg-white shadow-lg p-4 rounded-lg hidden transition-opacity duration-300',
     position === 'top' ? 'top-4' : 'bottom-4',
-    className
+    className,
   ]}
   role="alert"
 >
-  <a 
-    href={targetPath} 
-    class="flex items-center gap-2 font-medium hover:underline"
-  >
+  <a href={targetPath} class="flex items-center gap-2 font-medium hover:underline">
     {showIcon && <span class="material-icons-outlined text-sm">translate</span>}
-    {new Intl.DisplayNames([preferredLocale], {type: 'language'}).of(preferredLocale)}
+    {new Intl.DisplayNames([preferredLocale], { type: 'language' }).of(preferredLocale)}
   </a>
-  <button 
+  <button
     class="absolute top-1.5 right-1.5 p-1 opacity-60 hover:opacity-100 transition-opacity"
     aria-label="Dismiss"
     onclick="this.parentElement.remove(); localStorage.setItem('languageSuggestDenied', true);"
@@ -50,20 +47,20 @@ const targetPath = customPath
 </div>
 
 <script define:vars={{ currentLocale, preferredLocale, dismissTimeout }}>
-const shouldShow = 
-  preferredLocale && 
-  preferredLocale !== currentLocale && 
-  !localStorage.getItem('languageSuggestDenied');
+  const shouldShow =
+    preferredLocale &&
+    preferredLocale !== currentLocale &&
+    !localStorage.getItem('languageSuggestDenied');
 
-if (shouldShow) {
-  const popup = document.getElementById('languageSuggestion');
-  popup?.classList.remove('hidden');
-  
-  if (dismissTimeout) {
-    setTimeout(() => {
-      popup?.classList.add('opacity-0');
-      setTimeout(() => popup?.remove(), 300);
-    }, dismissTimeout);
+  if (shouldShow) {
+    const popup = document.getElementById('languageSuggestion');
+    popup?.classList.remove('hidden');
+
+    if (dismissTimeout) {
+      setTimeout(() => {
+        popup?.classList.add('opacity-0');
+        setTimeout(() => popup?.remove(), 300);
+      }, dismissTimeout);
+    }
   }
-}
 </script>

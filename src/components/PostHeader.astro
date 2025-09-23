@@ -17,13 +17,11 @@ interface Props {
 }
 
 const { image, title, categories, date, author, lang } = Astro.props;
-import PostCategories from "./Post/PostCategories.astro";
-import Date from "./Date.astro";
+import PostCategories from './Post/PostCategories.astro';
+import Date from './Date.astro';
 ---
 
-<header
-  class="post-header pt-11 w-full justify-center text-white z-2 bg-blue-darkest"
->
+<header class="post-header pt-11 w-full justify-center text-white z-2 bg-blue-darkest">
   <div class="heading flex flex-wrap">
     <div
       class="w-full sm:max-w-[640px] md:max-w-3xl lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[1536px] px-4 py-5 flex flex-col flex-wrap"
@@ -52,7 +50,7 @@ import Date from "./Date.astro";
   </div>
 </header>
 
-<style >
+<style>
   .post-header {
     @apply flex relative items-center;
     min-height: 19vw;

@@ -25,9 +25,7 @@ const categoryLabel = lang === 'pl' ? 'Kategoria' : 'Category';
     categories && categories.length > 0
       ? categories.map((category, index) => (
           <>
-            {index > 0 && (
-              <span class="w-px h-2.5 bg-gray-300 mx-2.5 inline-block relative" />
-            )}
+            {index > 0 && <span class="w-px h-2.5 bg-gray-300 mx-2.5 inline-block relative" />}
             <a
               class="term-link text-sm sm:text-base hover:text-light-blue-400"
               data-pagefind-filter={`${categoryLabel}:${category.name}`}

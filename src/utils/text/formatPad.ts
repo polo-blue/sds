@@ -1,6 +1,6 @@
 export const formatPad = (num: number, size: number) => {
   return String(num).padStart(size, '0');
-}
+};
 
 export default formatPad;
 // export const formatPad = (num: number, size: number) => {

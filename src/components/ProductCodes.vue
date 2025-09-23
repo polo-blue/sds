@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { PropType } from 'vue'
+import type { PropType } from 'vue';
 import PrCode from './PrCode.vue';
 
 const props = defineProps({
@@ -13,27 +13,25 @@ const props = defineProps({
     default: false,
     required: false,
   },
-})
+});
 
-const codes = props.prcodes || []
-const decodedCodes = codes ? codes.sort() : []
+const codes = props.prcodes || [];
+const decodedCodes = codes ? codes.sort() : [];
 
 const settings = {
   prcodes: decodedCodes,
-}
+};
 </script>
 
 <template>
- 
- <span
-    v-for="(prcode, index) in settings.prcodes"
-    :key="index"
-    class="not-last:mr-1"
-  >
+  <span v-for="(prcode, index) in settings.prcodes" :key="index" class="not-last:mr-1">
     <PrCode :prcode="prcode" v-if="!String(prcode).includes('+')" />
-    <span v-else >
-      <PrCode  v-for="(splittedCode, index2) in String(prcode).split('+')" :key="index2" :prcode="splittedCode" />
+    <span v-else>
+      <PrCode
+        v-for="(splittedCode, index2) in String(prcode).split('+')"
+        :key="index2"
+        :prcode="splittedCode"
+      />
     </span>
   </span>
 </template>
-

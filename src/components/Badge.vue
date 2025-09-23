@@ -10,7 +10,7 @@ const props = defineProps({
     required: true,
     default: 'bg-gray',
   },
-})
+});
 </script>
 
 <template>

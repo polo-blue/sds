@@ -9,8 +9,8 @@ const props = defineProps({
     type: String,
     default: '',
     required: false,
-  }
-})
+  },
+});
 </script>
 
 <template>

@@ -1,3 +1,3 @@
 <template>
-    <span class="flag-ua" />
+  <span class="flag-ua" />
 </template>

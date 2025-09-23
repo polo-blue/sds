@@ -1,19 +1,19 @@
 ---
 const { class: className } = Astro.props;
-import { Icon } from "astro-icon/components";
+import { Icon } from 'astro-icon/components';
 
 const navItemsLeft = [
   {
-    title: "Components",
-    description: "The building blocks for our UI.",
-    url: "/components/buttons",
-    img: "/Components.jpg",
+    title: 'Components',
+    description: 'The building blocks for our UI.',
+    url: '/components/buttons',
+    img: '/Components.jpg',
   },
   {
-    title: "Patterns",
-    description: "Common patterns for building interfaces.",
-    url: "/patterns/introduction",
-    img: "/Patterns.jpg",
+    title: 'Patterns',
+    description: 'Common patterns for building interfaces.',
+    url: '/patterns/introduction',
+    img: '/Patterns.jpg',
   },
 ];
 ---
@@ -23,7 +23,7 @@ const navItemsLeft = [
   itemtype="http://schema.org/WPHeader"
   class:list={[
     className,
-    "nav print-hidden mx-auto px-4 shadow-md relative flex items-center justify-between h-24 sm:h-14 flex-wrap sm:flex-nowrap pt-1 sm:pt-0",
+    'nav print-hidden mx-auto px-4 shadow-md relative flex items-center justify-between h-24 sm:h-14 flex-wrap sm:flex-nowrap pt-1 sm:pt-0',
   ]}
 >
   <div class="flex items-center justify-start sm:items-stretch order-1">
@@ -47,9 +47,7 @@ const navItemsLeft = [
     </div>
   </div>
 
-  <div
-    class="relative md:block sm:ml-4 w-full order-4 h-10 md:(w-64 mr-auto order-2)"
-  >
+  <div class="relative md:block sm:ml-4 w-full order-4 h-10 md:(w-64 mr-auto order-2)">
     <slot name="search" />
   </div>
 
@@ -59,14 +57,7 @@ const navItemsLeft = [
     itemscope
     itemtype="http://schema.org/SiteNavigationElement"
   >
-    <a
-      class="icon-btn mx-2"
-      title=""
-      aria-label=""
-      href="#"
-      itemprop="url"
-      data-astro-reload
-    >
+    <a class="icon-btn mx-2" title="" aria-label="" href="#" itemprop="url" data-astro-reload>
       <Icon name="carbon:language" />
     </a>
   </div>

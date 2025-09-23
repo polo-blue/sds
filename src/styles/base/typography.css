@@ -1,70 +1,70 @@
 @font-face {
-    font-family: 'vw_textregular';
-    src: url('/fonts/vwtext-regular-webfont.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'vw_textregular';
+  src: url('/fonts/vwtext-regular-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'vw_textbold';
-    src: url('/fonts/vwtext-bold-webfont.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: fallback;
+  font-family: 'vw_textbold';
+  src: url('/fonts/vwtext-bold-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
 }
 
 .font-vw-textbold {
-    font-family: 'vw_textbold';
-    font-display: fallback;
+  font-family: 'vw_textbold';
+  font-display: fallback;
 }
 
 @font-face {
-    font-family: 'vw_headbold';
-    src: url('/fonts/vwhead-bold-webfont.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: fallback;
+  font-family: 'vw_headbold';
+  src: url('/fonts/vwhead-bold-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
 }
 
 .font-vw-headbold {
-    font-family: 'vw_headbold' !important;
-    font-display: fallback;
+  font-family: 'vw_headbold' !important;
+  font-display: fallback;
 }
 
 @font-face {
-    font-family: 'vw_headregular';
-    src: url('/fonts/vwhead-regular-webfont.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: fallback;
+  font-family: 'vw_headregular';
+  src: url('/fonts/vwhead-regular-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
 }
 
 @font-face {
-    font-family: 'vw_headlight';
-    src: url('/fonts/vwhead-light-webfont.woff2') format('woff2'),;
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'vw_headlight';
+  src: url('/fonts/vwhead-light-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Nova Mono';
-    src: url('/fonts/nova-mono-v13-latin-regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap; 
+  font-family: 'Nova Mono';
+  src: url('/fonts/nova-mono-v13-latin-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'vw_textlight';
-    src: url('/fonts/vwtext-light-webfont.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'vw_textlight';
+  src: url('/fonts/vwtext-light-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* for some content which don't need to index in Google */
 [data-text]:before {
-    content: attr(data-text);
+  content: attr(data-text);
 }

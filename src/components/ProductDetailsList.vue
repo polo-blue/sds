@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { PropType, computed } from "vue";
-import ProductDetailName from "./ProductDetailName.vue";
+import { PropType, computed } from 'vue';
+import ProductDetailName from './ProductDetailName.vue';
 
 interface ColorCode {
   code: string;
@@ -30,7 +30,7 @@ interface GroupedLink {
 
 const props = defineProps({
   items: { type: Array as PropType<TableItem[]>, default: () => [] },
-  caption: { type: String, default: null }
+  caption: { type: String, default: null },
 });
 
 // Function to check if a value is a link
@@ -60,7 +60,6 @@ const isForExteriorColour = (item: TableItem) => {
   return item.id === 'for-exterior-colour' && Array.isArray(item.value);
 };
 
-
 // Function to check if value is HTML string (fallback)
 const isHtmlValue = (value: unknown): boolean => {
   return typeof value === 'string' && (value.includes('<span') || value.includes('<br>'));
@@ -72,9 +71,12 @@ const getHeaderText = (row: TableItem | GroupedLink) => {
     return row.id.charAt(0).toUpperCase() + row.id.slice(1);
   }
   // Użyj `name` z obiektu `TableItem`, jeśli istnieje, w przeciwnym razie sformatuj `id`.
-  return 'name' in row ? row.name : row.id.split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
+  return 'name' in row
+    ? row.name
+    : row.id
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
 };
 
 // Function to determine the icon class for a link type
@@ -110,14 +112,14 @@ const groupedItems = computed(() => {
       if (!linkGroups.has(item.id)) {
         linkGroups.set(item.id, {
           id: item.id,
-          links: []
+          links: [],
         });
       }
 
       // Add link to the relevant group
       linkGroups.get(item.id)?.links.push({
         name: item.name,
-        value: item.value as string
+        value: item.value as string,
       });
     } else {
       // If it's not a link, add it normally to the results
@@ -140,18 +142,26 @@ const groupedItems = computed(() => {
       <slot name="caption">{{ caption }}</slot>
     </caption>
     <colgroup>
-      <col class="details-table-col">
-      <col class="details-table-col">
+      <col class="details-table-col" />
+      <col class="details-table-col" />
     </colgroup>
     <tbody>
-      <tr v-for="row, index in groupedItems" :key="index" class="details-table-row">
+      <tr v-for="(row, index) in groupedItems" :key="index" class="details-table-row">
         <ProductDetailName as="th" :text="getHeaderText(row)" class="details-table-header" />
 
         <td v-if="'links' in row" class="details-table-cell">
           <ul class="list-none p-0 m-0">
-            <li v-for="(link, linkIndex) in row.links" :key="linkIndex" class="mb-2 last:mb-0 flex items-center">
+            <li
+              v-for="(link, linkIndex) in row.links"
+              :key="linkIndex"
+              class="mb-2 last:mb-0 flex items-center"
+            >
               <span
-                :class="[getLinkIconClass(row.id), 'leading-none inline-block mr-2 w-4 min-w-4 h-4 text-gray-400']" />
+                :class="[
+                  getLinkIconClass(row.id),
+                  'leading-none inline-block mr-2 w-4 min-w-4 h-4 text-gray-400',
+                ]"
+              />
               <a :href="link.value" target="_blank" rel="noopener noreferrer" class="link-primary">
                 {{ link.name }}
               </a>
@@ -161,13 +171,15 @@ const groupedItems = computed(() => {
 
         <td v-else-if="'id' in row && isColorArray(row)" class="details-table-cell">
           <ul class="list-none p-0 m-0">
-            <li v-for="(colorItem, colorIndex) in (row.value as ColorCode[])" :key="colorIndex"
-              class="flex items-center gap-1 mb-1 last:mb-0">
-
+            <li
+              v-for="(colorItem, colorIndex) in row.value as ColorCode[]"
+              :key="colorIndex"
+              class="flex items-center gap-1 mb-1 last:mb-0"
+            >
               <template v-if="colorItem.code">
                 <code class="font-mono text-sm">
-                        {{ colorItem.code }}
-                    </code>
+                  {{ colorItem.code }}
+                </code>
                 <span class="text-gray-400">-</span>
               </template>
               <span class="text-gray-700 dark:text-gray-300">{{ colorItem.name }}</span>
@@ -181,13 +193,15 @@ const groupedItems = computed(() => {
 
         <td v-else-if="'id' in row && isForExteriorColour(row)" class="details-table-cell">
           <ul class="list-none p-0 m-0">
-            <li v-for="(colorEntry, colourIndex) in (row.value as ColorCode[])" :key="colourIndex"
-              class="flex items-center gap-1 mb-1 last:mb-0">
-
+            <li
+              v-for="(colorEntry, colourIndex) in row.value as ColorCode[]"
+              :key="colourIndex"
+              class="flex items-center gap-1 mb-1 last:mb-0"
+            >
               <template v-if="colorEntry.code">
                 <code class="font-mono text-sm">
-                        {{ colorEntry.code }}
-                    </code>
+                  {{ colorEntry.code }}
+                </code>
                 <span class="text-gray-400">-</span>
               </template>
               <span class="text-gray-700 dark:text-gray-300">{{ colorEntry.name }}</span>
@@ -197,15 +211,22 @@ const groupedItems = computed(() => {
 
         <td v-else-if="'id' in row && isGenericArray(row)" class="details-table-cell">
           <ul class="list-none p-0 m-0">
-            <li v-for="(item, itemIndex) in (row.value as string[])" :key="itemIndex"
-              class="flex items-start gap-2 mb-1 last:mb-0 leading-relaxed">
+            <li
+              v-for="(item, itemIndex) in row.value as string[]"
+              :key="itemIndex"
+              class="flex items-start gap-2 mb-1 last:mb-0 leading-relaxed"
+            >
               <span class="text-gray-500 font-bold flex-shrink-0 mt-0.5">·</span>
               <span class="text-gray-700 dark:text-gray-300 text-sm">{{ item }}</span>
             </li>
           </ul>
         </td>
 
-        <td v-else-if="'id' in row && isHtmlValue(row.value)" class="details-table-cell" v-html="row.value"></td>
+        <td
+          v-else-if="'id' in row && isHtmlValue(row.value)"
+          class="details-table-cell"
+          v-html="row.value"
+        ></td>
 
         <slot v-else-if="'id' in row" :name="row.id">
           <td class="details-table-cell">{{ row.value }}</td>

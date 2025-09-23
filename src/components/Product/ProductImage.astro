@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets'
+import { Image } from 'astro:assets';
 interface ImageObject {
   src: string;
   alt?: string;
@@ -11,31 +11,30 @@ interface ImageObject {
   index?: number;
 }
 
-const { imageObject } = Astro.props as { imageObject: ImageObject; };
+const { imageObject } = Astro.props as { imageObject: ImageObject };
 
 let inputProps = {};
 
-
 if (imageObject.index && imageObject.index === 1) {
   inputProps['data-pagefind-meta'] = 'image[src], image_alt[alt]';
-  imageObject.loading = 'eager'
+  imageObject.loading = 'eager';
 }
 
 if (imageObject.srcset && imageObject.srcset.length) {
-  inputProps['widths'] = imageObject.srcset
+  inputProps['widths'] = imageObject.srcset;
 }
-
 ---
-<Image 
-    src={imageObject.src}
-    alt={imageObject.alt}
-    height={Number(imageObject.height)} 
-    width={Number(imageObject.width)}
-    loading={imageObject.loading ? imageObject.loading : 'lazy'}
-    itemprop="image"
-    format="avif"
-    data-pagefind-index-attrs={imageObject.alt}
-    onerror="this.style.display='none';"
-    class={`product-image ${imageObject.class || ''}`}
-    { ...inputProps}
+
+<Image
+  src={imageObject.src}
+  alt={imageObject.alt}
+  height={Number(imageObject.height)}
+  width={Number(imageObject.width)}
+  loading={imageObject.loading ? imageObject.loading : 'lazy'}
+  itemprop="image"
+  format="avif"
+  data-pagefind-index-attrs={imageObject.alt}
+  onerror="this.style.display='none';"
+  class={`product-image ${imageObject.class || ''}`}
+  {...inputProps}
 />

@@ -1,136 +1,145 @@
 ---
-import MainLayout from "../../layouts/MainLayout.astro";
-import { Icon } from "astro-icon/components";
+import MainLayout from '../../layouts/MainLayout.astro';
+import { Icon } from 'astro-icon/components';
 import { iconConfig } from '../../../icon.config';
 
-const iconifyUrl = "https://icon-sets.iconify.design/";
+const iconifyUrl = 'https://icon-sets.iconify.design/';
 const ICONS = iconConfig.include;
 
 type IconGroup = {
- name: string;
- icons: string[];
- url: string;
+  name: string;
+  icons: string[];
+  url: string;
 };
 
 const sortedIconCollections = Object.entries(ICONS)
- .sort(([a], [b]) => a.localeCompare(b))
- .map(([name, icons]) => ({
-   name,
-   icons,
-   url: `${iconifyUrl}${name}/`
- }));
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([name, icons]) => ({
+    name,
+    icons,
+    url: `${iconifyUrl}${name}/`,
+  }));
 ---
 
 <MainLayout>
-   <div class="max-w-7xl mx-auto px-4 py-8">
-       <h1 class="text-2xl font-bold mb-4">Icons</h1>
-       <p class="mb-4">Astro Icon is a straightforward icon system for the Astro framework.</p>
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <h1 class="text-2xl font-bold mb-4">Icons</h1>
+    <p class="mb-4">Astro Icon is a straightforward icon system for the Astro framework.</p>
 
-       <a href="https://www.astroicon.dev/" 
-          class="text-blue-medium hover:text-accent-darker underline"
-          target="_blank" 
-          rel="noopener noreferrer">
-           https://www.astroicon.dev/
-       </a>
+    <a
+      href="https://www.astroicon.dev/"
+      class="text-blue-medium hover:text-accent-darker underline"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      https://www.astroicon.dev/
+    </a>
 
-       <pre class="mt-6 p-4 rounded bg-slate-800 text-white overflow-x-auto">
+    <pre
+      class="mt-6 p-4 rounded bg-slate-800 text-white overflow-x-auto">
            import &#123; Icon &#125; from 'astro-icon/components';
        </pre>
 
-       <div class="mt-8 space-y-12">
-           {sortedIconCollections.map(({ name, icons, url }) => (
-               <div>
-                   <h2 class="text-xl font-semibold mb-4">
-                       <a href={url} 
-                          class="text-blue-medium hover:text-accent-darker inline-flex items-center gap-2"
-                          target="_blank" 
-                          rel="noopener noreferrer">
-                           {name}
-                           <span class="text-sm text-gray-500">({icons.length} icons)</span>
-                       </a>
-                   </h2>
-                   <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                       {icons.map((iconName) => (
-                           <div class="group relative p-4 border rounded-lg hover:shadow-md transition-shadow cursor-pointer icon-card"
-                                data-icon-name={`${name}:${iconName}`}>
-                               <div class="flex flex-col items-center">
-                                   <div class="p-4 bg-gray-50 rounded-lg mb-2 w-full flex justify-center items-center min-h-[64px]">
-                                       <Icon 
-                                           name={`${name}:${iconName}`} 
-                                           class="text-3xl text-blue-medium" 
-                                       />
-                                   </div>
-                                   <code class="text-sm text-gray-600 text-center break-all">
-                                       {name}:{iconName}
-                                   </code>
-                               </div>
-                               <div class="tooltip opacity-0 invisible absolute left-1/2 -translate-x-1/2 -top-10 bg-gray-800 text-white px-3 py-1.5 rounded text-sm whitespace-nowrap transition-all z-10">
-                                   Copied!
-                               </div>
-                           </div>
-                       ))}
-                   </div>
-               </div>
-           ))}
-       </div>
+    <div class="mt-8 space-y-12">
+      {
+        sortedIconCollections.map(({ name, icons, url }) => (
+          <div>
+            <h2 class="text-xl font-semibold mb-4">
+              <a
+                href={url}
+                class="text-blue-medium hover:text-accent-darker inline-flex items-center gap-2"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {name}
+                <span class="text-sm text-gray-500">({icons.length} icons)</span>
+              </a>
+            </h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+              {icons.map(iconName => (
+                <div
+                  class="group relative p-4 border rounded-lg hover:shadow-md transition-shadow cursor-pointer icon-card"
+                  data-icon-name={`${name}:${iconName}`}
+                >
+                  <div class="flex flex-col items-center">
+                    <div class="p-4 bg-gray-50 rounded-lg mb-2 w-full flex justify-center items-center min-h-[64px]">
+                      <Icon name={`${name}:${iconName}`} class="text-3xl text-blue-medium" />
+                    </div>
+                    <code class="text-sm text-gray-600 text-center break-all">
+                      {name}:{iconName}
+                    </code>
+                  </div>
+                  <div class="tooltip opacity-0 invisible absolute left-1/2 -translate-x-1/2 -top-10 bg-gray-800 text-white px-3 py-1.5 rounded text-sm whitespace-nowrap transition-all z-10">
+                    Copied!
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
 
-       <div class="fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-2 rounded-lg opacity-0 invisible transition-all duration-300" id="globalNotification">
-           Icon code copied to clipboard!
-       </div>
-   </div>
+    <div
+      class="fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-2 rounded-lg opacity-0 invisible transition-all duration-300"
+      id="globalNotification"
+    >
+      Icon code copied to clipboard!
+    </div>
+  </div>
 
-   <script>
-       document.addEventListener('astro:page-load', () => {
-           const cards = document.querySelectorAll('.icon-card');
-           const globalNotification = document.getElementById('globalNotification');
-           
-           cards.forEach(card => {
-               card.addEventListener('click', async () => {
-                   const iconName = card.getAttribute('data-icon-name');
-                   if (!iconName) return;
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const cards = document.querySelectorAll('.icon-card');
+      const globalNotification = document.getElementById('globalNotification');
 
-                   try {
-                       await navigator.clipboard.writeText(`<Icon name="${iconName}" />`);
-                       
-                       // Show tooltip
-                       const tooltip = card.querySelector('.tooltip');
-                       if (tooltip) {
-                           tooltip.classList.remove('opacity-0', 'invisible');
-                           tooltip.classList.add('opacity-100', 'visible');
-                           
-                           // Hide tooltip after 2 seconds
-                           setTimeout(() => {
-                               tooltip.classList.add('opacity-0', 'invisible');
-                               tooltip.classList.remove('opacity-100', 'visible');
-                           }, 2000);
-                       }
+      cards.forEach(card => {
+        card.addEventListener('click', async () => {
+          const iconName = card.getAttribute('data-icon-name');
+          if (!iconName) return;
 
-                       // Show global notification
-                       if (globalNotification) {
-                           globalNotification.classList.remove('opacity-0', 'invisible');
-                           globalNotification.classList.add('opacity-100', 'visible');
-                           
-                           setTimeout(() => {
-                               globalNotification.classList.add('opacity-0', 'invisible');
-                               globalNotification.classList.remove('opacity-100', 'visible');
-                           }, 2000);
-                       }
-                   } catch (err) {
-                       console.error('Failed to copy:', err);
-                   }
-               });
-           });
-       });
-   </script>
+          try {
+            await navigator.clipboard.writeText(`<Icon name="${iconName}" />`);
 
-   <style>
-       .tooltip {
-           transition: all 0.2s ease-in-out;
-       }
-       
-       #globalNotification {
-           transition: all 0.3s ease-in-out;
-           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-       }
-   </style>
+            // Show tooltip
+            const tooltip = card.querySelector('.tooltip');
+            if (tooltip) {
+              tooltip.classList.remove('opacity-0', 'invisible');
+              tooltip.classList.add('opacity-100', 'visible');
+
+              // Hide tooltip after 2 seconds
+              setTimeout(() => {
+                tooltip.classList.add('opacity-0', 'invisible');
+                tooltip.classList.remove('opacity-100', 'visible');
+              }, 2000);
+            }
+
+            // Show global notification
+            if (globalNotification) {
+              globalNotification.classList.remove('opacity-0', 'invisible');
+              globalNotification.classList.add('opacity-100', 'visible');
+
+              setTimeout(() => {
+                globalNotification.classList.add('opacity-0', 'invisible');
+                globalNotification.classList.remove('opacity-100', 'visible');
+              }, 2000);
+            }
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .tooltip {
+      transition: all 0.2s ease-in-out;
+    }
+
+    #globalNotification {
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    }
+  </style>
 </MainLayout>

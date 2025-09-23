@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets';
 
 interface Props {
   CategoryObject: {
@@ -33,6 +33,6 @@ const href = `/${prefix}${CategoryObject.slug}/`;
     onerror="this.style.display='none';"
     class="cats-img"
   />
-  <div class="swiper-lazy-preloader" />
+  <div class="swiper-lazy-preloader"></div>
   <div class="cat-name" itemprop="name">{CategoryObject.name}</div>
 </a>

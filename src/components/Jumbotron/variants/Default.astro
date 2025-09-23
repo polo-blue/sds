@@ -9,7 +9,7 @@ interface Props {
 }
 
 const {
-  title = "",
+  title = '',
   small = false,
   hasIntroContent,
   hasSubtitleContent,
@@ -19,22 +19,26 @@ const {
 
 <header
   class:list={[
-    "flow content-grid", // globalne klasy
-    "jumbotron-header-base bg-vw", // klasy bazowe i tło
-    small ? "jumbotron-container-small" : "jumbotron-container-large" // wariant rozmiaru
+    'flow content-grid', // globalne klasy
+    'jumbotron-header-base bg-vw', // klasy bazowe i tło
+    small ? 'jumbotron-container-small' : 'jumbotron-container-large', // wariant rozmiaru
   ]}
 >
-  {hasIntroContent ? (
-    <slot name="intro" />
-  ) : (
-    <h1 class="jumbotron-title-default" set:html={title} />
-  )}
-  
+  {
+    hasIntroContent ? (
+      <slot name="intro" />
+    ) : (
+      <h1 class="jumbotron-title-default" set:html={title} />
+    )
+  }
+
   {hasSubtitleContent && <slot name="subtitle" />}
-  
-  {hasCtaContent && (
-    <div class="jumbotron-cta-wrapper">
-      <slot name="cta-content" />
-    </div>
-  )}
+
+  {
+    hasCtaContent && (
+      <div class="jumbotron-cta-wrapper">
+        <slot name="cta-content" />
+      </div>
+    )
+  }
 </header>

@@ -1,22 +1,22 @@
 ---
-import { SIDEBAR } from "../config";
-import { Astronav, MenuItems } from "astro-navbar";
+import { SIDEBAR } from '../config';
+import { Astronav, MenuItems } from 'astro-navbar';
 const { currentPage } = Astro.props;
 const currentPageMatch = currentPage.slice(1);
 
-const isCurrentPage = (item) => {
+const isCurrentPage = item => {
   if (item.link) {
     return item.link.includes(currentPageMatch);
   }
   return false;
 };
 
-const getLinkClasses = (link) => {
+const getLinkClasses = link => {
   const baseClasses =
-    "block py-1.5 px-6  my-1 transition-colors border-l hover:border-slate-400 text-slate-500 hover:text-slate-900";
+    'block py-1.5 px-6  my-1 transition-colors border-l hover:border-slate-400 text-slate-500 hover:text-slate-900';
 
   if (isCurrentPage(link)) {
-    return baseClasses + " border-slate-500 text-slate-900";
+    return baseClasses + ' border-slate-500 text-slate-900';
   } else {
     return baseClasses;
   }
@@ -29,14 +29,14 @@ const getLinkClasses = (link) => {
   >
     <ul class="mt-0 mb-auto">
       {
-        SIDEBAR.map((item) =>
+        SIDEBAR.map(item =>
           item.header ? (
             <h2 class="mt-4 font-semibold text-slate-700">{item.text}</h2>
           ) : (
             <li class={getLinkClasses(item)}>
               <a href={item.link}>{item.text}</a>
             </li>
-          ),
+          )
         )
       }
     </ul>
@@ -44,10 +44,10 @@ const getLinkClasses = (link) => {
 </Astronav>
 
 <script is:inline>
-  window.addEventListener("DOMContentLoaded", (event) => {
+  window.addEventListener('DOMContentLoaded', event => {
     var target = document.querySelector('[aria-current="page"]');
     if (target && target.offsetTop > window.innerHeight - 100) {
-      document.querySelector(".nav-groups").scrollTop = target.offsetTop;
+      document.querySelector('.nav-groups').scrollTop = target.offsetTop;
     }
   });
 </script>

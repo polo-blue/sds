@@ -1,36 +1,47 @@
 ---
-import ProductLink from "./ProductLink.astro";
+import ProductLink from './ProductLink.astro';
 
 // Get the product directly from the prop on render
 const { locale, class: className, products, isShopProduct = false, ...rest } = Astro.props;
-
 ---
 
-
 {
-    products && products.length && (
-         <swiper-container slides-per-view="auto" space-between="0" class="flex"
-            itemscope itemtype="https://schema.org/ItemList">
-            {
-                products.map((product, index) => (
-                    <swiper-slide class="product-carousel" 
-                      itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" >
-                        <ProductLink productObject={product} locale={locale} index={index+1} bigTile loading="eager" isShopProduct={isShopProduct} />
-                        <div class="swiper-lazy-preloader"></div>
-                    </swiper-slide>
-                ))
-            }
-            </swiper-container>
-    )
-  }
-  
-  <style>
-    .similar-section {
-      @apply relative z-20;
+  products && products.length && (
+    <swiper-container
+      slides-per-view="auto"
+      space-between="0"
+      class="flex"
+      itemscope
+      itemtype="https://schema.org/ItemList"
+    >
+      {products.map((product, index) => (
+        <swiper-slide
+          class="product-carousel"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem"
+        >
+          <ProductLink
+            productObject={product}
+            locale={locale}
+            index={index + 1}
+            bigTile
+            loading="eager"
+            isShopProduct={isShopProduct}
+          />
+          <div class="swiper-lazy-preloader" />
+        </swiper-slide>
+      ))}
+    </swiper-container>
+  )
+}
 
-      &:hover {
-        content-visibility: visible;
-      }
+<style>
+  .similar-section {
+    @apply relative z-20;
+
+    &:hover {
+      content-visibility: visible;
     }
-    
-  </style>
+  }
+</style>

@@ -5,14 +5,11 @@ const props = defineProps({
     default: false,
     required: false,
   },
-})
+});
 </script>
 
 <template>
-  <button
-    class="product-button"
-    :class="props.shadow ? 'drop-shadow hover:(drop-shadow-md)' : ''"
-  >
+  <button class="product-button" :class="props.shadow ? 'drop-shadow hover:(drop-shadow-md)' : ''">
     <slot />
   </button>
 </template>

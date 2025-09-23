@@ -1,12 +1,12 @@
 ---
-import HeadCommon from "./partials/HeadCommon.astro";
-import HeadSEO from "../layouts/partials/HeadSEO.astro";
-import Header from "../components/Header/Header.astro";
-import PageContent from "../components/PageContent.astro";
-import LeftSidebar from "../components/LeftSidebar.astro";
-import * as CONFIG from "../config";
-import "../styles/main.css";
-import Copyright from "../components/Copyright.astro";
+import HeadCommon from './partials/HeadCommon.astro';
+import HeadSEO from '../layouts/partials/HeadSEO.astro';
+import Header from '../components/Header/Header.astro';
+import PageContent from '../components/PageContent.astro';
+import LeftSidebar from '../components/LeftSidebar.astro';
+import * as CONFIG from '../config';
+import '../styles/main.css';
+import Copyright from '../components/Copyright.astro';
 const { content = {} } = Astro.props;
 const currentPage = Astro.url.pathname;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
@@ -14,22 +14,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 <script>
   // Swiper Element
-  import { register } from "swiper/element/bundle";
-  document.addEventListener("astro:page-load", () => {
+  import { register } from 'swiper/element/bundle';
+  document.addEventListener('astro:page-load', () => {
     register();
   });
 </script>
 
-<html dir={content.dir ?? "ltr"} lang={content.lang ?? "en-us"} class="initial">
+<html dir={content.dir ?? 'ltr'} lang={content.lang ?? 'en-us'} class="initial">
   <head>
     <HeadCommon />
     <HeadSEO content={content} canonicalURL={canonicalURL} />
     <title>
-      {
-        content.title
-          ? `${content.title} 🚀 ${CONFIG.SITE.title}`
-          : CONFIG.SITE.title
-      }
+      {content.title ? `${content.title} 🚀 ${CONFIG.SITE.title}` : CONFIG.SITE.title}
     </title>
   </head>
 
@@ -60,9 +56,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
           class="flex my-auto items-center mx-auto"
           title={`Proudly made in Poland by spoko.space`}
         >
-          <div class="text-xxs md:text-xs mr-1 mt-0.5 whitespace-nowrap">
-            createdy by
-          </div>
+          <div class="text-xxs md:text-xs mr-1 mt-0.5 whitespace-nowrap">createdy by</div>
           <img
             class="h-4 md:h-5 w-min"
             src="/spoko.space.svg"

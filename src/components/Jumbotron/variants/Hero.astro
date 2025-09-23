@@ -8,46 +8,38 @@ interface Props {
   backgroundClass?: string;
 }
 
-const {
-  title = "",
-  image,
-  description,
-  info,
-  backgroundClass
-} = Astro.props;
-
+const { title = '', image, description, info, backgroundClass } = Astro.props;
 ---
 
 <div class={`relative w-full ${backgroundClass}`}>
-  {image && (
-    <div class="absolute inset-0 w-full h-full">
-      <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-transparent opacity-90 z-1" />
-      <img
-        class="w-full h-full object-cover"
-        src={image}
-        alt={title}
-      />
-    </div>
-  )}
-  
+  {
+    image && (
+      <div class="absolute inset-0 w-full h-full">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-transparent opacity-90 z-1" />
+        <img class="w-full h-full object-cover" src={image} alt={title} />
+      </div>
+    )
+  }
+
   <div class="xl:container mx-auto px-3.5 md:px-8 py-8 h-56 sm:h-72 md:max-h-72 items-center flex">
     <header class="relative z-10 text-white">
       <h1
         class="font-headlight text-3xl sm:text-4xl md:text-5xl xl:text-6xl mt-1 line-clamp-3 leading-tight"
         set:html={title}
       />
-      {description && (
-        <div
-          class="mb-1 line-clamp-3 text-base sm:text-lg leading-none mt-4"
-          set:html={description}
-        />
-      )}
-      {info && (
-        <div
-          class="font-medium mb-4 line-clamp-1 text-base sm:text-lg mt-2"
-          set:html={info}
-        />
-      )}
+      {
+        description && (
+          <div
+            class="mb-1 line-clamp-3 text-base sm:text-lg leading-none mt-4"
+            set:html={description}
+          />
+        )
+      }
+      {
+        info && (
+          <div class="font-medium mb-4 line-clamp-1 text-base sm:text-lg mt-2" set:html={info} />
+        )
+      }
     </header>
   </div>
 </div>

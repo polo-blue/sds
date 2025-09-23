@@ -7,18 +7,19 @@ const props = defineProps({
     type: Object as PropType<Model>,
     required: true,
   },
-})
-
+});
 </script>
 <template>
-  <strong class="product-model" :data-pagefind-filter="`model:${props.carModel.name}`">{{ props.carModel.name }}</strong>
+  <strong class="product-model" :data-pagefind-filter="`model:${props.carModel.name}`">{{
+    props.carModel.name
+  }}</strong>
 </template>
-<style >
+<style>
 .product-model:not(:last-child) {
   @apply mr-1;
 
   &:after {
-    content: ','
+    content: ',';
   }
 }
 </style>

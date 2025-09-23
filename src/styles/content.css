@@ -1,52 +1,53 @@
 .content {
   .main-section {
-    &>h1,
-    &>h2,
-    &>h3,
-    &>h4,
-    &>h5,
-    &>h6 {
+    & > h1,
+    & > h2,
+    & > h3,
+    & > h4,
+    & > h5,
+    & > h6 {
       margin-top: 1.77rem;
     }
-    &>h1 {
+    & > h1 {
       font-size: 22pt;
       font-weight: 400;
     }
-    &>h2 {
+    & > h2 {
       font-size: 17pt;
       font-weight: 500;
     }
-    &>h3 {
+    & > h3 {
       font-size: 15pt;
     }
-    &>h4 {
+    & > h4 {
       font-size: 13pt;
     }
 
-    &>ul {
-      @apply list-disc pl-5
+    & > ul {
+      @apply list-disc pl-5;
     }
   }
 
-  &>h1, 
-  &>h2,
-  &>h3,
-  &>h4,
-  &>h5 {
-      font-weight: bold;
-      @apply font-textbold;
+  & > h1,
+  & > h2,
+  & > h3,
+  & > h4,
+  & > h5 {
+    font-weight: bold;
+    @apply font-textbold;
   }
 
   code {
-    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
-      Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family:
+      'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+      'Courier New', monospace;
   }
 
   .component-preview {
     @apply bg-blue-medium bg-opacity-5 px-4 py-4 mx-0 flex items-center overflow-x-auto sm:(p-8);
     gap: 1rem;
     border-radius: 0.33rem;
-    border: 1px solid theme("colors.slate.200");
+    border: 1px solid theme('colors.slate.200');
     resize: both;
   }
 
@@ -63,7 +64,8 @@ table {
     @apply border;
   }
 
-  td, th {
+  td,
+  th {
     @apply px-4 py-2;
   }
 

@@ -11,31 +11,40 @@ interface FormattedNumbers {
   dash: string;
 }
 
-export default function useFormatProductNumber(productNumber: string | null): { formattedNumbers: FormattedNumbers | null } {
+export default function useFormatProductNumber(productNumber: string | null): {
+  formattedNumbers: FormattedNumbers | null;
+} {
   if (!productNumber) return { formattedNumbers: null };
 
   const formatProductNumber = (number: string, separator: string): string => {
     let formatted = number;
 
     if (isLetter(number[0]) && !isLetter(number[1]) && number.length === 9) {
-      formatted = formatted.replace(LIQUIDS_PATTERN, `$1${separator}$2${separator}$3${separator}$4`);
+      formatted = formatted.replace(
+        LIQUIDS_PATTERN,
+        `$1${separator}$2${separator}$3${separator}$4`
+      );
     } else if (number.length >= 13) {
-      formatted = formatted.replace(WHEELS_EMBLEMS_PATTERN, `$1${separator}$2${separator}$3${separator}$4${separator}$5`);
+      formatted = formatted.replace(
+        WHEELS_EMBLEMS_PATTERN,
+        `$1${separator}$2${separator}$3${separator}$4${separator}$5`
+      );
     } else if (number.length > 12) {
-      formatted = formatted.replace(ACCESSORIES_MATS_PATTERN, `$1${separator}$2${separator}$3${separator}$4${separator}$5`);
+      formatted = formatted.replace(
+        ACCESSORIES_MATS_PATTERN,
+        `$1${separator}$2${separator}$3${separator}$4${separator}$5`
+      );
     } else {
       formatted = formatted.replace(OTHER_PARTS_PATTERN, `$1${separator}`);
     }
 
-    return formatted
-      .replace(' ', separator)
-      .replace(/[^a-zA-Z0-9]$/, ''); // Remove the end trailing separator
+    return formatted.replace(' ', separator).replace(/[^a-zA-Z0-9]$/, ''); // Remove the end trailing separator
   };
 
   const formattedNumbers: FormattedNumbers = {
     standard: formatProductNumber(productNumber, '\u00A0'),
     dot: formatProductNumber(productNumber, '.'),
-    dash: formatProductNumber(productNumber, '-')
+    dash: formatProductNumber(productNumber, '-'),
   };
 
   return { formattedNumbers };

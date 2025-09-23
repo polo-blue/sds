@@ -8,11 +8,7 @@ interface Props {
   };
 }
 
-const { 
-  productNumber,
-  tooltipClasses = '',
-  texts 
-} = Astro.props;
+const { productNumber, tooltipClasses = '', texts } = Astro.props;
 
 // SVG icon as data URL for mask
 const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
@@ -20,18 +16,17 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
 )}")`;
 ---
 
-<button 
-  aria-label={texts.copy} 
-  class="btn-copy has-tooltip" 
+<button
+  aria-label={texts.copy}
+  class="btn-copy has-tooltip"
   data-copy-text={productNumber}
   data-category={Astro.url.pathname.split('/')[1] || ''}
 >
-  <span 
-    class:list={["tooltip rounded-full btn-copy-text", tooltipClasses]}
+  <span
+    class:list={['tooltip rounded-full btn-copy-text', tooltipClasses]}
     data-text={texts.copy}
-    data-copied-text={texts.copied}
-  />
-  <span class="copy-icon" role="img" aria-hidden="true" />
+    data-copied-text={texts.copied}></span>
+  <span class="copy-icon" role="img" aria-hidden="true"></span>
 </button>
 
 <script>
@@ -85,7 +80,7 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
         productCode: this.copyText,
         category: this.category,
         pageUrl: window.location.pathname,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
     }
 
@@ -109,10 +104,10 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
       textArea.value = this.copyText;
       textArea.style.position = 'fixed';
       textArea.style.opacity = '0';
-      
+
       document.body.appendChild(textArea);
       textArea.select();
-      
+
       try {
         document.execCommand('copy');
       } catch (err) {

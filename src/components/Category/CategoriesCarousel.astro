@@ -1,100 +1,100 @@
 ---
 const { activeCategorySlug, locale, class: className } = Astro.props;
 
-import { getTranslatedLink } from "@utils/text/getTranslatedLink"
-import { getMainCategoryList } from "@utils/category/getMainCategoryList"
-import { Image } from 'astro:assets'
+import { getTranslatedLink } from '@utils/text/getTranslatedLink';
+import { getMainCategoryList } from '@utils/category/getMainCategoryList';
+import { Image } from 'astro:assets';
 
-const categories = await getMainCategoryList()
+const categories = await getMainCategoryList();
 const imgDomain = 'https://api.polo.blue/img/';
 
-const activeIndex = activeCategorySlug && categories ? categories.map(a => a.slug).findIndex(e => e === activeCategorySlug) : 0
+const activeIndex =
+  activeCategorySlug && categories
+    ? categories.map(a => a.slug).findIndex(e => e === activeCategorySlug)
+    : 0;
 ---
+
 <!-- <div class={`cat-menu ${className ? className : ''}`} 
   data-pagefind-ignore
   itemscope itemtype="https://schema.org/SiteNavigationElement"
   transition:persist={`catcarousel${activeIndex}`}
   transition:animate="none"
 > -->
-  <swiper-container 
-    class={`categories-carousel flex pb-1 sm:pb-0 bg-white cat-menu ${className ? className : ''}`}
-    data-pagefind-ignore
-    itemscope itemtype="https://schema.org/SiteNavigationElement"
-    transition:persist={`catcarousel${activeIndex}`}
-    transition:animate="none"
-    data-active={activeIndex}
-    initial-slide={activeIndex}
-    space-between="0"
-    slides-per-view="auto"
-    scrollbar="true"
-    draggable="true"
-    keyboard
-    free-mode
-    data-off-observer
-    run-callbacks-on-init="false"
-  >
-    {
-      categories.map((category, index) => (
-        <swiper-slide itemprop="hasPart" role="presentation"
-          class={`swiper-slide cats-slide group ${category.slug === activeCategorySlug ? 'active': ''}`}
-        >
-          <a href={getTranslatedLink(`/${category.slug}/`)}
-            class="carousel-item"
-          >
-            {
-              // itemprop="url" 
-              // role="menuitem"
-              // aria-label={ t(`cat.${category.slug}.name`) }
-            }
+<swiper-container
+  class={`categories-carousel flex pb-1 sm:pb-0 bg-white cat-menu ${className ? className : ''}`}
+  data-pagefind-ignore
+  itemscope
+  itemtype="https://schema.org/SiteNavigationElement"
+  transition:persist={`catcarousel${activeIndex}`}
+  transition:animate="none"
+  data-active={activeIndex}
+  initial-slide={activeIndex}
+  space-between="0"
+  slides-per-view="auto"
+  scrollbar="true"
+  draggable="true"
+  keyboard
+  free-mode
+  data-off-observer
+  run-callbacks-on-init="false"
+>
+  {
+    categories.map((category, index) => (
+      <swiper-slide
+        itemprop="hasPart"
+        role="presentation"
+        class={`swiper-slide cats-slide group ${category.slug === activeCategorySlug ? 'active' : ''}`}
+      >
+        <a href={getTranslatedLink(`/${category.slug}/`)} class="carousel-item">
+          {
+            // itemprop="url"
+            // role="menuitem"
+            // aria-label={ t(`cat.${category.slug}.name`) }
+          }
 
-              <Image 
-                src={`${imgDomain}${category.photo}`} 
-                alt={category.name}
-                height="70"
-                width="70"
-                format="avif"
-                loading="eager"
-                onerror="this.style.display='none';"
-                class="cats-img"
-              />
-              <div class="swiper-lazy-preloader"></div>
-   
-            <div class="cat-name"
-              // itemprop="name"
-            >
-              { category.name }
-            </div>
-          </a>
-        </swiper-slide>
-      ))
-    }
+          <Image
+            src={`${imgDomain}${category.photo}`}
+            alt={category.name}
+            height="70"
+            width="70"
+            format="avif"
+            loading="eager"
+            onerror="this.style.display='none';"
+            class="cats-img"
+          />
+          <div class="swiper-lazy-preloader" />
 
-  </swiper-container>
+          <div class="cat-name" itemprop="name">
+            {category.name}
+          </div>
+        </a>
+      </swiper-slide>
+    ))
+  }
+</swiper-container>
 <!-- </div> -->
 
-<style >
-.active {
-  @apply bg-blue-darker text-white bg-opacity-100;
+<style>
+  .active {
+    @apply bg-blue-darker text-white bg-opacity-100;
 
-  &:not(:hover) .cats-img {
-    filter: invert(100%);
-    /* // @apply filter-invert; */
-  }
-  
-}
-
-.categories-carousel {
-  @apply overflow-hidden;
-
-  &.swiper-initialized {
-    .img-preloader {
-      display: none;
+    &:not(:hover) .cats-img {
+      filter: invert(100%);
+      /* // @apply filter-invert; */
     }
   }
-}
 
-.swiper-slide {
-  @apply transition w-[calc(100%/3.55)] min-w-[calc(100%/3.55)] sm:w-35 sm:min-w-35 3xl:min-w-[calc(100%/12.5-4px)];
-}
+  .categories-carousel {
+    @apply overflow-hidden;
 
+    &.swiper-initialized {
+      .img-preloader {
+        display: none;
+      }
+    }
+  }
+
+  .swiper-slide {
+    @apply transition w-[calc(100%/3.55)] min-w-[calc(100%/3.55)] sm:w-35 sm:min-w-35 3xl:min-w-[calc(100%/12.5-4px)];
+  }
 </style>

@@ -3,98 +3,95 @@ import CategorySidebarToggler from './CategorySidebarToggler.vue';
 import CategoryViewToggler from './CategoryViewToggler.astro';
 import { Icon } from 'astro-icon/components';
 
-const { 
-  category, 
-  subcategory, 
-  subtitle, 
-  subsubtitle, 
-  titleSmall, 
-  locale, 
-  showViewToggler, 
-  viewerLabels 
+const {
+  category,
+  subcategory,
+  subtitle,
+  subsubtitle,
+  titleSmall,
+  locale,
+  showViewToggler,
+  viewerLabels,
 } = Astro.props;
 
 const baseURL = '';
 ---
 
-<div 
+<div
   class="flex flex-nowrap items-center pr-3 sm:pb-3 sm:pt-4 md:pl-4 relative z-10-off bg-neutral-lightest md:bg-white"
   transition:name="category-details"
   transition:animate="fade"
 >
-<CategorySidebarToggler class="category-sidebar-toggler w-12 md:w-8" data-state="desktop">
-  <div class="desktop-icons hidden md:block">
-    <!-- Desktop icons container -->
-    <Icon 
-      name="ant-design:menu-fold-outlined" 
-      class="toggler-btn w-6 expanded-icon" 
-      aria-hidden="true"
-    />
-    <Icon 
-      name="ant-design:menu-unfold-outlined" 
-      class="toggler-btn w-6 collapsed-icon hidden" 
-      aria-hidden="true"
-    />
-  </div>
-  <!-- Mobile icon in separate container -->
-  <div class="mobile-icon block md:hidden">
-    <Icon 
-      name="ant-design:menu-outlined" 
-      class="toggler-btn w-6" 
-      aria-hidden="true"
-    />
-  </div>
-</CategorySidebarToggler>
-
+  <CategorySidebarToggler class="category-sidebar-toggler w-12 md:w-8" data-state="desktop">
+    <div class="desktop-icons hidden md:block">
+      <!-- Desktop icons container -->
+      <Icon
+        name="ant-design:menu-fold-outlined"
+        class="toggler-btn w-6 expanded-icon"
+        aria-hidden="true"
+      />
+      <Icon
+        name="ant-design:menu-unfold-outlined"
+        class="toggler-btn w-6 collapsed-icon hidden"
+        aria-hidden="true"
+      />
+    </div>
+    <!-- Mobile icon in separate container -->
+    <div class="mobile-icon block md:hidden">
+      <Icon name="ant-design:menu-outlined" class="toggler-btn w-6" aria-hidden="true" />
+    </div>
+  </CategorySidebarToggler>
 
   <div class="overflow-x-auto overflow-y-hidden flex max-w-full items-center">
-    {subtitle ? (
-      <>
-        <a class="text-lg font-vw-headregular whitespace-nowrap block" href={`${baseURL}/${category.slug}/`}>
+    {
+      subtitle ? (
+        <>
+          <a
+            class="text-lg font-vw-headregular whitespace-nowrap block"
+            href={`${baseURL}/${category.slug}/`}
+          >
+            {category.name}
+            {titleSmall && <small>{titleSmall}</small>}
+          </a>
+          <span class="text-neutral-lighter text-lg inline-block px-1 font-headlight">/</span>
+          {!subsubtitle ? (
+            <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
+              {subtitle} <span class="sr-only"> catalog</span>
+            </h1>
+          ) : (
+            <>
+              <div class="text-lg py-2.5 sm:py-0 whitespace-nowrap">
+                <a href={`${baseURL}/${category.slug}/${subcategory.slug}/`}>{subtitle}</a>
+              </div>
+              <span class="text-neutral-lighter text-lg inline-block px-1 font-headlight">/</span>
+              <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
+                {subsubtitle} <span class="sr-only"> catalog</span>
+              </h1>
+            </>
+          )}
+        </>
+      ) : (
+        <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap">
           {category.name}
           {titleSmall && <small>{titleSmall}</small>}
-        </a>
-        <span class="text-neutral-lighter text-lg inline-block px-1 font-headlight">/</span>
-        {!subsubtitle ? (
-          <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
-            {subtitle} <span class="sr-only"> catalog</span>
-          </h1>
-        ) : (
-          <>
-            <div class="text-lg py-2.5 sm:py-0 whitespace-nowrap">
-              <a href={`${baseURL}/${category.slug}/${subcategory.slug}/`}>
-                {subtitle}
-              </a>
-            </div>
-            <span class="text-neutral-lighter text-lg inline-block px-1 font-headlight">/</span>
-            <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
-              {subsubtitle} <span class="sr-only"> catalog</span>
-            </h1>
-          </>
-        )}
-      </>
-    ) : (
-      <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap">
-        {category.name}
-        {titleSmall && <small>{titleSmall}</small>}
-        <span class="sr-only"> catalog</span>
-      </h1>
-    )}
+          <span class="sr-only"> catalog</span>
+        </h1>
+      )
+    }
   </div>
 
-  {showViewToggler && (
-    <CategoryViewToggler 
-      {...viewerLabels}  
-      class="hidden lg:flex items-center gap-2 ml-auto" 
-    />
-  )}
+  {
+    showViewToggler && (
+      <CategoryViewToggler {...viewerLabels} class="hidden lg:flex items-center gap-2 ml-auto" />
+    )
+  }
 </div>
 
 <script>
   function initializeSidebar() {
     const sidebar = document.getElementById('sidebar');
     const savedState = localStorage.getItem('sidebarState') || 'open';
-    
+
     if (sidebar) {
       sidebar.classList.toggle('collapsed', savedState === 'closed');
       updateTogglers(savedState === 'closed');
@@ -105,18 +102,18 @@ const baseURL = '';
     document.querySelectorAll('.category-sidebar-toggler').forEach(toggler => {
       const expandedIcon = toggler.querySelector('.expanded-icon');
       const collapsedIcon = toggler.querySelector('.collapsed-icon');
-      
+
       if (expandedIcon && collapsedIcon) {
         expandedIcon.classList.toggle('hidden', isCollapsed);
         collapsedIcon.classList.toggle('hidden', !isCollapsed);
       }
     });
   }
-  
+
   function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-  
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
     if (sidebar) {
       if (isMobile) {
         const isShown = sidebar.classList.toggle('show');
@@ -142,7 +139,7 @@ const baseURL = '';
     initializeSidebar();
     setupTogglers();
   });
-  
+
   // Preserve state during view transitions
   document.addEventListener('astro:before-swap', () => {
     const sidebarState = localStorage.getItem('sidebarState');
@@ -150,7 +147,7 @@ const baseURL = '';
       sessionStorage.setItem('tempSidebarState', sidebarState);
     }
   });
-  
+
   document.addEventListener('astro:after-swap', () => {
     const tempState = sessionStorage.getItem('tempSidebarState');
     if (tempState) {
@@ -160,7 +157,6 @@ const baseURL = '';
     }
   });
 </script>
-
 
 <style>
   .toggler-btn {

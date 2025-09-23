@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import type { PropType } from 'vue'
+import type { PropType } from 'vue';
 
 const props = defineProps({
   colors: {
-    type: Array as PropType<{id: number, slug: string, name: string}[]>,
+    type: Array as PropType<{ id: number; slug: string; name: string }[]>,
     default: null,
     required: true,
   },
@@ -19,24 +19,28 @@ const props = defineProps({
   filterName: {
     type: String,
     required: false,
-    default: 'Color'
-  }
-})
-
+    default: 'Color',
+  },
+});
 </script>
 
 <template>
-  <span v-for="(color, index) in colors" :key="index" class="product-color" :data-pagefind-filter="filterName">
-    {{  color.name }}
+  <span
+    v-for="(color, index) in colors"
+    :key="index"
+    class="product-color"
+    :data-pagefind-filter="filterName"
+  >
+    {{ color.name }}
   </span>
 </template>
 
-<style >
+<style>
 .product-color:not(:last-child) {
   @apply mr-1;
 
   &:after {
-    content: ','
+    content: ',';
   }
 }
 </style>

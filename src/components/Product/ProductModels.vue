@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { PropType } from 'vue'
+import type { PropType } from 'vue';
 
 const props = defineProps({
   modelIds: {
@@ -7,16 +7,12 @@ const props = defineProps({
     default: () => [],
     required: true,
   },
-})
-
+});
 </script>
 
 <template>
   <div inline-flex flex-wrap max-w-max>
-    <span v-for="(modelId, index) in modelIds"
-      :key="index"
-      class="product-model block"
-    >
+    <span v-for="(modelId, index) in modelIds" :key="index" class="product-model block">
       <ProductModel :id="modelId" />
     </span>
   </div>
@@ -27,7 +23,7 @@ const props = defineProps({
   @apply mr-1;
 
   &:after {
-    content: ','
+    content: ',';
   }
 }
 </style>
