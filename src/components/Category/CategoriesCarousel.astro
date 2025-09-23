@@ -5,7 +5,6 @@ import { getTranslatedLink } from "@utils/text/getTranslatedLink"
 import { getMainCategoryList } from "@utils/category/getMainCategoryList"
 import { Image } from 'astro:assets'
 
-import i18next, { t } from "i18next";
 const categories = await getMainCategoryList()
 const imgDomain = 'https://api.polo.blue/img/';
 
@@ -50,7 +49,7 @@ const activeIndex = activeCategorySlug && categories ? categories.map(a => a.slu
 
               <Image 
                 src={`${imgDomain}${category.photo}`} 
-                alt={t(`cat.${category.slug}.desc`).split('. ', 1)[0]}
+                alt={category.name}
                 height="70"
                 width="70"
                 format="avif"
@@ -63,7 +62,7 @@ const activeIndex = activeCategorySlug && categories ? categories.map(a => a.slu
             <div class="cat-name"
               // itemprop="name"
             >
-              { t(`cat.${category.slug}.name`) }
+              { category.name }
             </div>
           </a>
         </swiper-slide>

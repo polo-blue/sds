@@ -27,7 +27,6 @@ import { getProductUrl } from "@utils/product/getProductUrl";
 import { getShopProductUrl } from "@utils/product/getShopProductUrl";
 import { getProductTranslation } from "@utils/product/getProductTranslation";
 import { getImageUrl } from '@utils/getImageUrl';
-import i18next, { t } from "i18next";
 import { ProductImage, ProductNumber, removeSemicolon, getPriceFormatted } from "spoko-design-system";
 
 // Użycie productObject jeśli przekazane, inaczej pobranie produktu na podstawie productId
@@ -40,18 +39,14 @@ const thumb = product ? (
     : await getImageUrl(product.photo || "", `'ProductLink' ${product.number}`)
 ) : "";
 
-// Tłumaczenie nazwy produktu jeśli dostępne
-const productTranslation = i18next.exists(`parts.${product?.number}.name`)
-  ? null
-  : productId ? await getProductTranslation(productId, product?.number || "") : null;
+// Product translation removed - using English only
+const productTranslation = productId ? await getProductTranslation(productId, product?.number || "") : null;
  
-// const productName = product ? (
-//   isShopProduct
-//     ? (locale === "pl" ? product.name_pl : product.name_en)
-//     : productTranslation?.name || t(`parts.${product.number}.name`)
-// ) : "";
-
-const productName = product.name || 'NO NAME';
+const productName = product ? (
+  isShopProduct
+    ? product.name_en || product.name
+    : productTranslation?.name || product.name
+) : 'NO NAME';
 
 const nameFormatted = removeSemicolon(productName.toString());
 ---

@@ -171,7 +171,10 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
           let match;
           while ((match = classRegex.exec(code)) !== null) {
             match[1].split(/\s+/).forEach(cls => {
-              if (cls) result.add(cls);
+              // Only add classes that don't look like malformed icon names
+              if (cls && !cls.match(/^(lucide|simple-icons)-\w+-[A-Z]/) && !cls.includes('Grouping')) {
+                result.add(cls);
+              }
             });
           }
 
@@ -180,7 +183,9 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
             const dynamicClassRegex = /class:\w+\s*=\s*["'`]([^"'`]+)["'`]/g;
             while ((match = dynamicClassRegex.exec(code)) !== null) {
               match[1].split(/\s+/).forEach(cls => {
-                if (cls) result.add(cls);
+                if (cls && !cls.match(/^(lucide|simple-icons)-\w+-[A-Z]/) && !cls.includes('Grouping')) {
+                  result.add(cls);
+                }
               });
             }
           }

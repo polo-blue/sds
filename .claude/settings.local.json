@@ -5,7 +5,17 @@
       "Bash(npm run dev:*)",
       "Bash(tasklist)",
       "Bash(findstr:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(npm install:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm i:*)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm dev:*)",
+      "Bash(node:*)",
+      "WebFetch(domain:polo.blue)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(pnpm run:*)"
     ],
     "deny": [],
     "ask": []

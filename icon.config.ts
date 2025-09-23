@@ -235,6 +235,7 @@ export const iconConfig: IconConfig = {
     ],
 
     "simple-icons": [
+      "astro",
       "ebay",
       "allegro",
       "volkswagen",
@@ -300,6 +301,7 @@ export const iconConfig: IconConfig = {
 
     'vscode-icons': [
       'file-type-astro',
+      'file-type-unocss',
       'file-type-vue',
       'file-type-typescript',
       'file-type-node',

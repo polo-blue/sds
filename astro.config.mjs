@@ -3,7 +3,6 @@ import { iconConfig } from './icon.config';
 import vue from "@astrojs/vue";
 import mdx from '@astrojs/mdx';
 import UnoCSS from '@unocss/astro';
-import astroI18next from "astro-i18next";
 import icon from "astro-icon";
 import sitemap from "@astrojs/sitemap";
 import pagefind from "astro-pagefind";
@@ -28,7 +27,6 @@ export default defineConfig({
     // Enable Vue to support Vue3 components
     vue(), 
     mdx(), 
-    astroI18next(), 
     AstroPWA({
       mode: 'production',
       base: '/',

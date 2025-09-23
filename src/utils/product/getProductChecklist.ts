@@ -1,4 +1,3 @@
-import { t } from "i18next";
 
 export const getProductCheckList = (productDetails) => {
     if (!productDetails || !productDetails.length) {
@@ -11,7 +10,7 @@ export const getProductCheckList = (productDetails) => {
         return null;
     }
 
-    return list.map(detail => t(`detail.value.${detail.value}`));
+    return list.map(detail => detail.value || 'Detail');
 }
 
 export default getProductCheckList;
