@@ -1,3 +1,9 @@
+## [1.1.16](https://github.com/polo-blue/sds/compare/v1.1.15...v1.1.16) (2025-09-23)
+
+### Bug Fixes
+
+* apply prettier formatting to resolve CI formatting issues ([a95d274](https://github.com/polo-blue/sds/commit/a95d2740358fa6941055f8957a40936a3175fa3e))
+
 ## [1.1.15](https://github.com/polo-blue/sds/compare/v1.1.14...v1.1.15) (2025-09-23)
 
 ### Bug Fixes
