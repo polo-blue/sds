@@ -79,9 +79,9 @@ export interface Replacement {
 }
 
 export interface Color {
-  id: Number;
-  slug: String;
-  name?: String;
+  id: number;
+  slug: string;
+  name?: string;
 }
 
 export interface DetailList {
@@ -189,27 +189,27 @@ export interface Product2FullSearch {
 }
 
 export interface Link {
-  path: String;
-  name: String;
+  path: string;
+  name: string;
 }
 export interface EngineType {
-  id: Number;
-  type: String;
+  id: number;
+  type: string;
 }
 
 export interface Model {
-  id: Number;
-  slug: String;
-  sort: Number;
-  name: String;
+  id: number;
+  slug: string;
+  sort: number;
+  name: string;
 }
 
 export interface Material {
-  id: Number;
-  name: String;
-  slug: String;
-  sort: Number | null;
-  value?: String | null;
+  id: number;
+  name: string;
+  slug: string;
+  sort: number | null;
+  value?: string | null;
 }
 
 export interface ProductImage {

@@ -1,5 +1,5 @@
 ---
-const { activeCategorySlug } = Astro.props;
+const { activeCategorySlug, class: className } = Astro.props;
 
 import { getTranslatedLink } from '@utils/text/getTranslatedLink';
 import { getMainCategoryList } from '@utils/category/getMainCategoryList';
@@ -39,7 +39,7 @@ const activeIndex =
   run-callbacks-on-init="false"
 >
   {
-    categories.map((category, index) => (
+    categories.map((category) => (
       <swiper-slide
         itemprop="hasPart"
         role="presentation"
