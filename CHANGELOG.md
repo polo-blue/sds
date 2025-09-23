@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/polo-blue/sds/compare/v1.1.0...v1.1.1) (2025-09-23)
+
+### Bug Fixes
+
+* update SonarCloud workflow to use non-deprecated action ([0523ea3](https://github.com/polo-blue/sds/commit/0523ea3e4e236a4bb2d972b5bb9090df33d72c50))
+
 ## [1.1.0](https://github.com/polo-blue/sds/compare/v1.0.1...v1.1.0) (2025-09-23)
 
 ### Features
