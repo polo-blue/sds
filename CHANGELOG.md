@@ -1,3 +1,9 @@
+## [1.1.12](https://github.com/polo-blue/sds/compare/v1.1.11...v1.1.12) (2025-09-23)
+
+### Bug Fixes
+
+* restore normal console usage and add browser globals to ESLint config ([b8863af](https://github.com/polo-blue/sds/commit/b8863af8ec11266c8d612ea28129423a51d0a2d7))
+
 ## [1.1.11](https://github.com/polo-blue/sds/compare/v1.1.10...v1.1.11) (2025-09-23)
 
 ### Bug Fixes
