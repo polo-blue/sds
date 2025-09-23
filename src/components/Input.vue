@@ -85,14 +85,14 @@ const labelClass = computed(() => {
 });
 
 // Event handlers
-const handleInput = (event: Event) => {
-  const target = event.target as HTMLInputElement | HTMLTextAreaElement;
+const handleInput = (event: globalThis.Event) => {
+  const target = event.target as globalThis.HTMLInputElement | globalThis.HTMLTextAreaElement;
   emit('update:modelValue', target.value);
   emit('input', event);
 };
 
-const handleFocus = (event: FocusEvent) => emit('focus', event);
-const handleBlur = (event: FocusEvent) => emit('blur', event);
+const handleFocus = (event: globalThis.FocusEvent) => emit('focus', event);
+const handleBlur = (event: globalThis.FocusEvent) => emit('blur', event);
 </script>
 
 <template>
