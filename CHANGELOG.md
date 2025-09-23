@@ -1,3 +1,9 @@
+## [1.1.13](https://github.com/polo-blue/sds/compare/v1.1.12...v1.1.13) (2025-09-23)
+
+### Bug Fixes
+
+* apply prettier formatting to ProductDetails.vue ([4b4c508](https://github.com/polo-blue/sds/commit/4b4c508ea86c050bc8af398484469f172cdea5b8))
+
 ## [1.1.12](https://github.com/polo-blue/sds/compare/v1.1.11...v1.1.12) (2025-09-23)
 
 ### Bug Fixes
