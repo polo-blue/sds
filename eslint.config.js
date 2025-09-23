@@ -28,21 +28,17 @@ export default [
   },
 
   // Vue files
+  ...vue.configs['flat/recommended'],
   {
     files: ['**/*.vue'],
     languageOptions: {
-      parser: vue.parser,
       parserOptions: {
         parser: typescriptParser,
         ecmaVersion: 'latest',
         sourceType: 'module',
       },
     },
-    plugins: {
-      vue,
-    },
     rules: {
-      ...vue.configs.recommended.rules,
       'vue/multi-word-component-names': 'off',
       'vue/no-unused-vars': 'warn',
     },
