@@ -7,7 +7,7 @@ interface Props {
   locale: string;
   index: number;
   bigTile?: boolean;
-  loading?: "eager" | "lazy";
+  loading?: 'eager' | 'lazy';
   isShopProduct?: boolean;
 }
 
@@ -17,80 +17,101 @@ const {
   bigTile,
   locale,
   index,
-  loading = "lazy",
+  loading = 'lazy',
   isShopProduct = false,
 } = Astro.props;
 
 import { getProductById } from '@utils/product/getProductById';
 import { getShopProductById } from '@utils/product/getShopProductById';
-import { getProductUrl } from "@utils/product/getProductUrl";
-import { getShopProductUrl } from "@utils/product/getShopProductUrl";
-import { getProductTranslation } from "@utils/product/getProductTranslation";
+import { getProductUrl } from '@utils/product/getProductUrl';
+import { getShopProductUrl } from '@utils/product/getShopProductUrl';
+import { getProductTranslation } from '@utils/product/getProductTranslation';
 import { getImageUrl } from '@utils/getImageUrl';
-import { ProductImage, ProductNumber, removeSemicolon, getPriceFormatted } from "spoko-design-system";
+import {
+  ProductImage,
+  ProductNumber,
+  removeSemicolon,
+  getPriceFormatted,
+} from 'spoko-design-system';
 
 // Użycie productObject jeśli przekazane, inaczej pobranie produktu na podstawie productId
-const product = productObject || (productId ? (isShopProduct ? await getShopProductById(productId) : await getProductById(productId)) : null);
+const product =
+  productObject ||
+  (productId
+    ? isShopProduct
+      ? await getShopProductById(productId)
+      : await getProductById(productId)
+    : null);
 
 // Określenie URL miniatury produktu
-const thumb = product ? (
-  isShopProduct
-    ? await getImageUrl(product.images?.[0]?.path || "", "SHOP")
-    : await getImageUrl(product.photo || "", `'ProductLink' ${product.number}`)
-) : "";
+const thumb = product
+  ? isShopProduct
+    ? await getImageUrl(product.images?.[0]?.path || '', 'SHOP')
+    : await getImageUrl(product.photo || '', `'ProductLink' ${product.number}`)
+  : '';
 
 // Product translation removed - using English only
-const productTranslation = productId ? await getProductTranslation(productId, product?.number || "") : null;
- 
-const productName = product ? (
-  isShopProduct
+const productTranslation = productId
+  ? await getProductTranslation(productId, product?.number || '')
+  : null;
+
+const productName = product
+  ? isShopProduct
     ? product.name_en || product.name
     : productTranslation?.name || product.name
-) : 'NO NAME';
+  : 'NO NAME';
 
 const nameFormatted = removeSemicolon(productName.toString());
 ---
 
-{product && (
-  <div class={bigTile ? 'product-link--big-tile' : 'product-thumb--plp product-thumb--carousel'}>
-    {product.photo !== null && thumb ? (
-      <ProductImage
-        imagesApiUrl="https://api.polo.blue"
-        imageObject={{
-          src: thumb,
-          alt: productName,
-          height: '180',
-          width: '240',
-          loading
-        }}
-      />
-    ) : (
-      <img src="/1x1.png" class="bg-neutral-lightest/70" alt={productName} />
-    )}
-  </div>
+{
+  product && (
+    <>
+      <div
+        class={bigTile ? 'product-link--big-tile' : 'product-thumb--plp product-thumb--carousel'}
+      >
+        {product.photo !== null && thumb ? (
+          <ProductImage
+            imagesApiUrl="https://api.polo.blue"
+            imageObject={{
+              src: thumb,
+              alt: productName,
+              height: '180',
+              width: '240',
+              loading,
+            }}
+          />
+        ) : (
+          <img src="/1x1.png" class="bg-neutral-lightest/70" alt={productName} />
+        )}
+      </div>
 
-  <div class={bigTile ? '' : 'sm:pl-4'}>
-    {product.price_pln && (
-      <p class="block mb-2 font-600 font-headbold text-5">
-        {getPriceFormatted(product)}
-      </p>
-    )}
+      <div class={bigTile ? '' : 'sm:pl-4'}>
+        {product.price_pln && (
+          <p class="block mb-2 font-600 font-headbold text-5">{getPriceFormatted(product)}</p>
+        )}
 
-    <a 
-      class="product-link--url"
-      href={isShopProduct ? getShopProductUrl(product.slug, locale) : getProductUrl(product.number, locale)}
-      itemprop="url"
-      title={product.number}
-      set:html={nameFormatted}
-    />
+        <a
+          class="product-link--url"
+          href={
+            isShopProduct
+              ? getShopProductUrl(product.slug, locale)
+              : getProductUrl(product.number, locale)
+          }
+          itemprop="url"
+          title={product.number}
+          set:html={nameFormatted}
+        />
 
-    <ProductNumber productNumber={product.number} copyDisabled={true} />
-    
-    {index !== null && (
-      <>
-        <meta itemprop="position" content={index.toString()} />
-        <meta itemprop="name" content={nameFormatted} />
-      </>
-    )}
-  </div>
-)}
+        <ProductNumber productNumber={product.number} copyDisabled={true} />
+
+        {index !== null && (
+          <>
+            <meta itemprop="position" content={index.toString()} />
+            <meta itemprop="name" content={nameFormatted} />
+          </>
+        )}
+      </div>
+    </>
+  )
+}

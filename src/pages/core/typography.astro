@@ -1,49 +1,49 @@
 ---
-import MainLayout from '../../layouts/MainLayout.astro'
-import { typography } from '../../../uno-config/theme/typography'
+import MainLayout from '../../layouts/MainLayout.astro';
+import { typography } from '../../../uno-config/theme/typography';
 
-const fonts = Object.entries(typography.fontFamily)
-const loremText = "Lorem ipsum dolor sit amet, consectetur adipiscing"
+const fonts = Object.entries(typography.fontFamily);
+const loremText = 'Lorem ipsum dolor sit amet, consectetur adipiscing';
 ---
 
 <MainLayout>
-    <div class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
-        <h1 class="text-4xl font-bold text-gray-900 mb-8">Font Family Preview</h1>
-        
-        <!-- Font Preview Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {fonts.map(([name, family]) => (
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
-                    <!-- Font Sample -->
-                    <div class={`font-${name} text-3xl mb-4 min-h-[120px] flex items-center`}>
-                        {loremText}
-                    </div>
-                    
-                    <!-- Font Info -->
-                    <div class="border-t pt-4">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-lg font-medium text-gray-900">{name}</span>
-                            <span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-600">font-{name}</span>
-                        </div>
-                        <code class="text-sm text-gray-500 block overflow-x-auto whitespace-nowrap">
-                            {family.join(', ')}
-                        </code>
-                    </div>
-                </div>
-            ))}
-        </div>
+  <div class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+    <h1 class="text-4xl font-bold text-gray-900 mb-8">Font Family Preview</h1>
 
-        <!-- Font Configuration Code -->
-        <div class="bg-gray-900 rounded-lg overflow-hidden">
-            <div class="bg-gray-800 px-4 py-2 text-gray-400">
-                Font Configuration
+    <!-- Font Preview Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      {
+        fonts.map(([name, family]) => (
+          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+            <div class={`font-${name} text-3xl mb-4 min-h-[120px] flex items-center`}>
+              {loremText}
             </div>
-            <pre class="p-4 overflow-x-auto">
+
+            <div class="border-t pt-4">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-lg font-medium text-gray-900">{name}</span>
+                <span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-600">
+                  font-{name}
+                </span>
+              </div>
+              <code class="text-sm text-gray-500 block overflow-x-auto whitespace-nowrap">
+                {family.join(', ')}
+              </code>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Font Configuration Code -->
+    <div class="bg-gray-900 rounded-lg overflow-hidden">
+      <div class="bg-gray-800 px-4 py-2 text-gray-400">Font Configuration</div>
+      <pre
+        class="p-4 overflow-x-auto">
                 <code class="text-gray-200 text-sm">
 {fonts.map(([name, family]) => `font-${name}:\n${family.join(', ')}
 `).join('\n')}</code>
             </pre>
-        </div>
     </div>
+  </div>
 </MainLayout>
-
