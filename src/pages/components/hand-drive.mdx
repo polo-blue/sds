@@ -6,7 +6,7 @@ import HandDrive from '../../components/HandDrive.astro'
 
 
 # HandDrive
-RHD (right-hand drive) and LHD (left-hand drive) badges.
+Universal RHD (right-hand drive) and LHD (left-hand drive) component with API-first design.
 - https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic
 
 #### Import:
@@ -15,24 +15,91 @@ RHD (right-hand drive) and LHD (left-hand drive) badges.
 import HandDrive from 'spoko-design-system/src/components/HandDrive.astro'
 ```
 
+## Props
 
-## RHD
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `handDrive` | `'lhd' \| 'rhd'` | Yes | - | Hand drive type |
+| `text` | `string` | No | - | Display text from API |
+| `class` | `string` | No | - | CSS classes for styling |
+| `biggerText` | `boolean` | No | `false` | Use larger text size |
+| `title` | `string` | No | - | Override tooltip text |
 
+## Examples
+
+### LHD (Left-Hand Drive)
 <div class="component-preview">
-     <HandDrive handDrive={0}  />
+     <HandDrive handDrive="lhd" text="Left-Hand Drive" />
 </div>
 
 ```js
-     <HandDrive handDrive={0} />
+<HandDrive handDrive="lhd" text="Left-Hand Drive" />
 ```
 
-
-
-## LHD
+### RHD (Right-Hand Drive)
 <div class="component-preview">
-     <HandDrive handDrive={1}  />
+     <HandDrive handDrive="rhd" text="Right-Hand Drive" />
 </div>
 
 ```js
-     <HandDrive handDrive={1} />
+<HandDrive handDrive="rhd" text="Right-Hand Drive" />
 ```
+
+### Without Text
+<div class="component-preview">
+     <HandDrive handDrive="lhd" />
+</div>
+
+```js
+<HandDrive handDrive="lhd" />
+```
+
+### With Custom Styling
+<div class="component-preview">
+     <HandDrive handDrive="lhd" text="Left-Hand Drive" class="mb-4 border rounded p-2" biggerText={true} />
+</div>
+
+```js
+<HandDrive
+  handDrive="lhd"
+  text="Left-Hand Drive"
+  class="mb-4 border rounded p-2"
+  biggerText={true}
+/>
+```
+
+## API Integration
+
+The component is designed to work seamlessly with API data:
+
+```js
+// API Response Format
+{
+  "hand_drive": 1,                    // Original number (legacy)
+  "hand_drive_type": "lhd",          // Clean string value
+  "hand_drive_text": "Left-Hand Drive" // Translated text
+}
+
+// Component Usage
+<HandDrive
+  handDrive={partData.hand_drive_type}
+  text={partData.hand_drive_text}
+/>
+```
+
+### API Call Example
+```js
+const response = await fetch('/api/parts/6R106150282V?locale=en&with_translations=1');
+const partData = await response.json();
+
+// partData.hand_drive_type = "lhd"
+// partData.hand_drive_text = "Left-Hand Drive"
+```
+
+## Design Principles
+
+- **Universal**: No i18n dependencies, works across multiple projects
+- **API-first**: All data comes from consistent API endpoints
+- **Self-documenting**: 'lhd'/'rhd' values are clear in any language
+- **Type-safe**: Strong TypeScript support with string literals
+- **Clean**: No magic numbers or mixed value types

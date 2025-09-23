@@ -1,26 +1,52 @@
 ---
+// Universal HandDrive component - API-first, no i18n dependencies
+// Designed for multiple projects with consistent API data
 
-const {  class: className, handDrive, biggerText } = Astro.props;
-import { t } from "i18next";
+interface Props {
+  class?: string;
+  /** Hand drive type: 'lhd' | 'rhd' */
+  handDrive?: 'lhd' | 'rhd' | null;
+  /** Display text from API */
+  text?: string;
+  /** Larger text variant */
+  biggerText?: boolean;
+  /** Optional: Override title attribute */
+  title?: string;
+}
+
+const {
+  class: className,
+  handDrive,
+  text,
+  biggerText = false,
+  title
+} = Astro.props;
+
 import { Image } from 'astro:assets';
 import handDriveImage from "../assets/hand-drive.svg";
 
-const getHandDriveName  = (value: number) => {
-  if (value === 1)
-    return 'lhd'
-
-  else
-    return 'rhd'
+// Don't render if no valid hand drive specified
+if (!handDrive || (handDrive !== 'lhd' && handDrive !== 'rhd')) {
+  return null;
 }
 
-const handDriveName =  getHandDriveName(handDrive)
+// Use provided title or generate from type
+const titleText = title || handDrive.toUpperCase();
 ---
-<div title={handDriveName.toUpperCase()} class="flex items-center" class:list={className}>
-  <Image src={handDriveImage} alt="infoObject.product.hand_drive" width={48} height={34} class={handDriveName} />
-  <div data-pagefind-filter={`${t('part.sw-position')}:${handDriveName.toUpperCase()}`}
-    class={`ml-2 order-0 ${!biggerText ? 'text-xxs md:text-xs' : 'order-0'}`} 
-    set:html={t(`part.for-${handDriveName}`)} 
+
+<div title={titleText} class="flex items-center" class:list={className}>
+  <Image
+    src={handDriveImage}
+    alt={`${handDrive.toUpperCase()} hand drive`}
+    width={48}
+    height={34}
+    class={handDrive}
   />
+  {text && (
+    <div class={`ml-2 ${biggerText ? 'text-sm md:text-base' : 'text-xxs md:text-xs'}`}>
+      {text}
+    </div>
+  )}
 </div>
 
 <style>
