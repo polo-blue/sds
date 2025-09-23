@@ -1,3 +1,9 @@
+## [1.1.6](https://github.com/polo-blue/sds/compare/v1.1.5...v1.1.6) (2025-09-23)
+
+### Bug Fixes
+
+* apply prettier formatting to resolve code style issues ([d9247d2](https://github.com/polo-blue/sds/commit/d9247d2b8809f87ea35777329ba5146b308d809b))
+
 ## [1.1.5](https://github.com/polo-blue/sds/compare/v1.1.4...v1.1.5) (2025-09-23)
 
 ### Bug Fixes
