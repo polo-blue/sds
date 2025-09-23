@@ -1,3 +1,9 @@
+## [1.1.14](https://github.com/polo-blue/sds/compare/v1.1.13...v1.1.14) (2025-09-23)
+
+### Bug Fixes
+
+* use props.label in MainInput.vue template to resolve unused props error ([abd1e7b](https://github.com/polo-blue/sds/commit/abd1e7b724873b005d0cf5274af4aa189653c94a))
+
 ## [1.1.13](https://github.com/polo-blue/sds/compare/v1.1.12...v1.1.13) (2025-09-23)
 
 ### Bug Fixes
