@@ -1,4 +1,9 @@
-export const getPriceFormatted = (product: any) => {
+interface Product {
+  price_eur?: number;
+  price_pln?: number;
+}
+
+export const getPriceFormatted = (product: Product) => {
   // Default to EUR formatting for English-only design system
   if (product.price_eur) {
     return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(

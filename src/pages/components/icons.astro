@@ -6,12 +6,6 @@ import { iconConfig } from '../../../icon.config';
 const iconifyUrl = 'https://icon-sets.iconify.design/';
 const ICONS = iconConfig.include;
 
-type IconGroup = {
-  name: string;
-  icons: string[];
-  url: string;
-};
-
 const sortedIconCollections = Object.entries(ICONS)
   .sort(([a], [b]) => a.localeCompare(b))
   .map(([name, icons]) => ({

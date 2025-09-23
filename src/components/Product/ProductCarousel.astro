@@ -2,7 +2,7 @@
 import ProductLink from './ProductLink.astro';
 
 // Get the product directly from the prop on render
-const { locale, class: className, products, isShopProduct = false, ...rest } = Astro.props;
+const { locale, products, isShopProduct = false } = Astro.props;
 ---
 
 {

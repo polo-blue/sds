@@ -4,7 +4,7 @@ import { getApiCategories } from '@utils/api/getCategories';
 import { getSortedCategories } from '@utils/category/getSortedCategories';
 
 // Retrieve main categories:
-export const getMainCategoryList = async (locale: string = 'en'): Promise<CatObject[]> => {
+export const getMainCategoryList = async (): Promise<CatObject[]> => {
   // Fetch categories from API
   const categories = await getApiCategories();
 
