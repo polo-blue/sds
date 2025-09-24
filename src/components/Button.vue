@@ -66,7 +66,7 @@ const attrs = useAttrs();
     :href="props.href"
     :title="props.title ? props.title : null"
   >
-    <slot></slot>
+    <slot />
   </component>
 </template>
 

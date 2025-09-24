@@ -11,19 +11,19 @@ jobs:
     name: SonarCloud
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0  # Shallow clones should be disabled for better analysis
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '22'
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: '10.16.1'
+          version: '10.17.1'
 
       - name: Get pnpm store directory
         shell: bash

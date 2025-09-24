@@ -24,8 +24,15 @@ const settings = {
 </script>
 
 <template>
-  <span v-for="(prcode, index) in settings.prcodes" :key="index" class="not-last:mr-1">
-    <PrCode :prcode="prcode" v-if="!String(prcode).includes('+')" />
+  <span
+    v-for="(prcode, index) in settings.prcodes"
+    :key="index"
+    class="not-last:mr-1"
+  >
+    <PrCode
+      v-if="!String(prcode).includes('+')"
+      :prcode="prcode"
+    />
     <span v-else>
       <PrCode
         v-for="(splittedCode, index2) in String(prcode).split('+')"

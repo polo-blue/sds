@@ -4,6 +4,7 @@ import { PropType } from 'vue';
 const props = defineProps({
   lang: {
     type: String,
+    default: 'en',
   },
   translations: {
     type: Object as PropType<{
@@ -11,12 +12,16 @@ const props = defineProps({
       title: string | null;
       name: string | null;
     } | null>,
+    default: null,
   },
 });
 </script>
 
 <template>
-  <div data-pagefind-ignore v-if="props.translations !== null && props.translations.uri">
+  <div
+    v-if="props.translations !== null && props.translations.uri"
+    data-pagefind-ignore
+  >
     <a
       aria-label="Change language"
       type="button"

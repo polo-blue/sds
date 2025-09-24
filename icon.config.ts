@@ -301,6 +301,7 @@ export const iconConfig: IconConfig = {
 
     'vscode-icons': [
       'file-type-astro',
+      'file-type-light-astro',
       'file-type-unocss',
       'file-type-vue',
       'file-type-typescript',
@@ -317,7 +318,8 @@ export const iconConfig: IconConfig = {
       'module-building-blocks',
       'layouts-array-1',
       'archive-box',
-      'donation-charity-donate-box'
+      'donation-charity-donate-box',
+      'coding-files-network-folder'
     ]
   },
   collections: {

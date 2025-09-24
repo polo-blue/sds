@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useClipboard } from '@vueuse/core';
+import type { PropType } from 'vue';
 
 const props = defineProps({
   productNumber: {
@@ -15,22 +16,29 @@ const props = defineProps({
   texts: {
     type: Object as PropType<{ copy: string; copied: string }>,
     required: true,
-    default: {
+    default: () => ({
       copy: 'copy',
       copied: 'copied',
-    },
+    }),
   },
 });
 const source = props.productNumber;
-const { copy, copied, isSupported } = useClipboard({ source, legacy: true });
+const { copy, copied } = useClipboard({ source, legacy: true });
 </script>
 
 <template>
-  <button :aria-label="texts.copy" class="btn-copy has-tooltip" @click="copy()">
+  <button
+    :aria-label="texts.copy"
+    class="btn-copy has-tooltip"
+    @click="copy()"
+  >
     <span
       :class="`tooltip rounded-full btn-copy-text ${tooltipClasses}`"
       :data-text="!copied ? texts.copy : texts.copied"
     />
-    <span i-ph-copy-simple-light class="leading-none w-full h-full" />
+    <span
+      i-ph-copy-simple-light
+      class="leading-none w-full h-full"
+    />
   </button>
 </template>

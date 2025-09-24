@@ -15,12 +15,15 @@ const props = withDefaults(
 </script>
 
 <template>
-  <ul v-if="engines.length" class="engine-types">
+  <ul
+    v-if="props.engines.length"
+    class="engine-types"
+  >
     <li
-      v-for="(engine, index) in engines"
+      v-for="(engine, index) in props.engines"
       :key="engine.id"
       class="engine-type"
-      :class="{ 'with-comma': index !== engines.length - 1 }"
+      :class="{ 'with-comma': index !== props.engines.length - 1 }"
     >
       {{ engine.name }}
     </li>

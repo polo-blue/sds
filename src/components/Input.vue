@@ -85,14 +85,14 @@ const labelClass = computed(() => {
 });
 
 // Event handlers
-const handleInput = (event: Event) => {
-  const target = event.target as HTMLInputElement | HTMLTextAreaElement;
+const handleInput = (event: globalThis.Event) => {
+  const target = event.target as globalThis.HTMLInputElement | globalThis.HTMLTextAreaElement;
   emit('update:modelValue', target.value);
   emit('input', event);
 };
 
-const handleFocus = (event: FocusEvent) => emit('focus', event);
-const handleBlur = (event: FocusEvent) => emit('blur', event);
+const handleFocus = (event: globalThis.FocusEvent) => emit('focus', event);
+const handleBlur = (event: globalThis.FocusEvent) => emit('blur', event);
 </script>
 
 <template>
@@ -106,37 +106,50 @@ const handleBlur = (event: FocusEvent) => emit('blur', event);
       :class="inputClass + ' peer'"
       :placeholder="placeholder"
       :value="modelValue"
+      v-bind="attrs"
       @input="handleInput"
       @focus="handleFocus"
       @blur="handleBlur"
-      v-bind="attrs"
-    ></textarea>
+    />
 
     <input
       v-else
-      :type="type"
       :id="id"
+      :type="type"
       :name="name || id"
       :required="required"
       :class="inputClass + ' peer'"
       :placeholder="placeholder"
       :value="modelValue"
+      v-bind="attrs"
       @input="handleInput"
       @focus="handleFocus"
       @blur="handleBlur"
-      v-bind="attrs"
-    />
+    >
 
-    <label :for="id" :class="labelClass" style="transform-origin: top left">
+    <label
+      :for="id"
+      :class="labelClass"
+      style="transform-origin: top left"
+    >
       {{ label }}
-      <span v-if="required" class="text-red-500 ml-1">*</span>
+      <span
+        v-if="required"
+        class="text-red-500 ml-1"
+      >*</span>
     </label>
 
-    <div v-if="error && typeof error === 'string'" class="input-error-message">
+    <div
+      v-if="error && typeof error === 'string'"
+      class="input-error-message"
+    >
       {{ error }}
     </div>
 
-    <div v-if="success && typeof success === 'string'" class="input-success-message">
+    <div
+      v-if="success && typeof success === 'string'"
+      class="input-success-message"
+    >
       {{ success }}
     </div>
   </div>
