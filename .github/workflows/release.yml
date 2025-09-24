@@ -32,22 +32,11 @@ jobs:
           node-version: 22
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10.17.1
-          run_install: false
+      - name: Install pnpm
+        run: npm install -g pnpm@10.17.1
 
-      - name: Verify and fix pnpm installation
-        run: |
-          echo "Current PATH: $PATH"
-          if ! command -v pnpm &> /dev/null; then
-            echo "pnpm not found in PATH, installing manually..."
-            npm install -g pnpm@10.17.1
-            export PATH="$PATH:$(npm config get prefix)/bin"
-          fi
-          which pnpm
-          pnpm --version
+      - name: Verify pnpm
+        run: pnpm --version
 
       - name: Get pnpm store directory
         shell: bash
