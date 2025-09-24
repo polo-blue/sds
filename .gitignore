@@ -1,6 +1,7 @@
 # build output
 dist/
 .output/
+.astro/
 
 # dependencies
 node_modules/
@@ -10,13 +11,37 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-
+*.log
 
 # environment variables
 .env
+.env.local
 .env.production
 
-# macOS-specific files
+# testing
+coverage/
+.nyc_output/
+
+# IDE files (keep shared .vscode config, ignore personal settings)
+.vscode/settings.local.json
+.idea/
+*.swp
+*.swo
+
+# OS files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# Temporary files
+*.tmp
+*.temp
 
 *storybook.log

@@ -105,7 +105,7 @@ const groupedItems = computed(() => {
   const linkGroups = new Map<string, GroupedLink>();
 
   // Process all elements
-  props.items.forEach(item => {
+  for (const item of props.items) {
     // If it's a link (blog, youtube, vimeo)
     if (isLink(item.id)) {
       // Add a link to the relevant group
@@ -125,12 +125,12 @@ const groupedItems = computed(() => {
       // If it's not a link, add it normally to the results
       result.push(item);
     }
-  });
+  }
 
   // Add all link groups at the end
-  linkGroups.forEach(group => {
+  for (const group of linkGroups.values()) {
     result.push(group);
-  });
+  }
 
   return result;
 });

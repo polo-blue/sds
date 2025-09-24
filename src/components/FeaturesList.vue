@@ -3,12 +3,12 @@ import { PropType } from 'vue';
 
 const props = defineProps({
   items: {
-    type: Object as PropType<String[] | null>,
+    type: Object as PropType<string[] | null>,
     default: null,
     required: true,
   },
   caption: {
-    type: String as PropType<String | null>,
+    type: String as PropType<string | null>,
     default: null,
     required: false,
   },

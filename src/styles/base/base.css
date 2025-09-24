@@ -29,6 +29,13 @@
   --clr-accent-300: hsl(358, 72%, 65%);
   --clr-accent-400: hsl(358, 72%, 50%);
   --clr-accent-500: hsl(358, 72%, 35%);
+
+  /* Swiper styles */
+  /* // --swiper-navigation-color: #0099da; */
+  --swiper-navigation-size: 22px;
+  --swiper-scrollbar-drag-bg-color: var(--clr-primary-400);
+  --swiper-scrollbar-size: 1px;
+  --swiper-scrollbar-bottom: 0px;
 }
 
 * {
@@ -103,14 +110,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Swiper styles */
-:root {
-  /* // --swiper-navigation-color: #0099da; */
-  --swiper-navigation-size: 22px;
-  --swiper-scrollbar-drag-bg-color: var(--clr-primary-400);
-  --swiper-scrollbar-size: 1px;
-  --swiper-scrollbar-bottom: 0px;
-}
 
 .swiper-horizontal {
   & > .swiper-scrollbar {

@@ -5,7 +5,7 @@ const props = defineProps<{
 
 const theads = Object.keys(Object.values(props.data)[0]);
 
-const capitalizeFirstLetter = (text: String) => {
+const capitalizeFirstLetter = (text: string) => {
   return text[0].toUpperCase() + text.slice(1);
 };
 </script>

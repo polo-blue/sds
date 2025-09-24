@@ -1,5 +1,5 @@
 export const getProductCheckList = productDetails => {
-  if (!productDetails || !productDetails.length) {
+  if (!productDetails?.length) {
     return null;
   }
 

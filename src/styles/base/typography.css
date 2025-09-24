@@ -15,7 +15,7 @@
 }
 
 .font-vw-textbold {
-  font-family: 'vw_textbold';
+  font-family: 'vw_textbold', sans-serif;
   font-display: fallback;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .font-vw-headbold {
-  font-family: 'vw_headbold' !important;
+  font-family: 'vw_headbold', sans-serif !important;
   font-display: fallback;
 }
 

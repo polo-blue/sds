@@ -1,5 +1,5 @@
 // shortcuts/buttons.ts
-import { BUTTON_STYLES, TRANSITIONS, LAYOUT, COLORS } from './constants'
+import { BUTTON_STYLES, TRANSITIONS, LAYOUT } from './constants'
 
 const { base, sizes, variants, hover } = BUTTON_STYLES
 
