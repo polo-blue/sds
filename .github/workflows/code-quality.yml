@@ -24,6 +24,12 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: '10.17.1'
+          run_install: false
+
+      - name: Verify pnpm installation
+        run: |
+          which pnpm
+          pnpm --version
 
       - name: Get pnpm store directory
         shell: bash
@@ -43,6 +49,9 @@ jobs:
 
       - name: Check Prettier formatting
         run: pnpm run format:check
+
+      - name: Run ESLint
+        run: pnpm run lint
 
       - name: Type check
         run: pnpm run check
