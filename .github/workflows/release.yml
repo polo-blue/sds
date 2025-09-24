@@ -32,10 +32,21 @@ jobs:
           node-version: 22
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Enable and setup pnpm via corepack
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.17.1
+          run_install: false
+
+      - name: Verify and fix pnpm installation
         run: |
-          corepack enable
-          corepack prepare pnpm@10.17.1 --activate
+          echo "Current PATH: $PATH"
+          if ! command -v pnpm &> /dev/null; then
+            echo "pnpm not found in PATH, installing manually..."
+            npm install -g pnpm@10.17.1
+            export PATH="$PATH:$(npm config get prefix)/bin"
+          fi
+          which pnpm
           pnpm --version
 
       - name: Get pnpm store directory
