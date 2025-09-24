@@ -32,23 +32,10 @@ jobs:
           node-version: 22
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install pnpm directly
+      - name: Enable and setup pnpm via corepack
         run: |
-          echo "Installing pnpm directly via npm..."
-          npm install -g pnpm@10.17.1
-          echo "pnpm installed, verifying..."
-          which pnpm
-          pnpm --version
-          echo "Adding npm global bin to PATH..."
-          NPM_PREFIX=$(npm config get prefix)
-          echo "$NPM_PREFIX/bin" >> $GITHUB_PATH
-          echo "PATH updated for subsequent steps"
-
-      - name: Verify pnpm after PATH update
-        run: |
-          echo "Current PATH: $PATH"
-          echo "Checking for pnpm..."
-          which pnpm
+          corepack enable
+          corepack prepare pnpm@10.17.1 --activate
           pnpm --version
 
       - name: Get pnpm store directory
