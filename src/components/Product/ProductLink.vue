@@ -34,8 +34,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ProductNumber } from 'spoko-design-system';
-import { removeSemicolon } from 'spoko-design-system';
+import { ProductNumber, removeSemicolon } from 'spoko-design-system';
 
 interface Props {
   productName: string;

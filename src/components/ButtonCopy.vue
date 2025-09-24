@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { useClipboard } from '@vueuse/core';
-// import { Icon } from "@iconify/vue";
 
 const props = defineProps({
   productNumber: {
@@ -14,7 +13,7 @@ const props = defineProps({
     default: '',
   },
   texts: {
-    type: Object as PropType<{ copy: String; copied: String }>,
+    type: Object as PropType<{ copy: string; copied: string }>,
     required: true,
     default: {
       copy: 'copy',

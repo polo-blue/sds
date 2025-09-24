@@ -5,7 +5,7 @@ export const getShorterDescription = (
   limit = MAX_DESCRIPTION_LENGTH
 ) => {
   function cutString(s: string, n: number) {
-    const text = s.replace(/(\n)/g, ' ');
+    const text = s.replaceAll('\n', ' ');
     const cut = text.indexOf('. ', n);
     return cut === -1 ? text : `${text.substring(0, cut)}.`;
   }

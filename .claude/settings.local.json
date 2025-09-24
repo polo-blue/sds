@@ -17,7 +17,15 @@
       "Bash(git push:*)",
       "Bash(pnpm run:*)",
       "Bash(git stash:*)",
-      "Bash(git pull:*)"
+      "Bash(git pull:*)",
+      "Bash(where sonar-scanner)",
+      "Bash(npx tsc:*)",
+      "Bash(npx tsx:*)",
+      "Bash(for interface in Breadcrumb SubCategory Category CatObject CatLevels CatInfo Link Replacement DetailList ImportantDetail Detail DetailObject Image ImageType ImageApi ImageObject ProductFile Product MaterialsObject Product2FullSearch ProductImage EngineType Model Material Position Hreflang ResponsiveImage Color)",
+      "Bash(do echo \"=== $interface ===\")",
+      "Bash(rg:*)",
+      "Bash(done)",
+      "Bash(git checkout:*)"
     ],
     "deny": [],
     "ask": []

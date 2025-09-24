@@ -18,12 +18,10 @@ export const theme = {
   container,
 };
 
-export {
-  colors,
-  typography,
-  breakpoints,
-  dimensions,
-  effects,
-  gridTemplates,
-  container,
-};
+export { colors } from './colors';
+export { typography } from './typography';
+export { breakpoints } from './breakpoints';
+export { dimensions } from './dimensions';
+export { effects } from './effects';
+export { gridTemplates } from './grid';
+export { container } from './container';
