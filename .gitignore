@@ -22,8 +22,8 @@ pnpm-debug.log*
 coverage/
 .nyc_output/
 
-# IDE files
-.vscode/
+# IDE files (keep shared .vscode config, ignore personal settings)
+.vscode/settings.local.json
 .idea/
 *.swp
 *.swo
