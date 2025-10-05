@@ -1,9 +1,5 @@
 <template>
-  <a
-    :href="href"
-    class="category-link"
-    :class="{ active: active }"
-  >
+  <a :href="href" class="category-link" :class="{ active: active }">
     {{ text }}
   </a>
 </template>

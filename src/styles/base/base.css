@@ -110,7 +110,6 @@ html {
   scroll-behavior: smooth;
 }
 
-
 .swiper-horizontal {
   & > .swiper-scrollbar {
     height: 1px;

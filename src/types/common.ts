@@ -35,4 +35,3 @@ export interface Position {
   sort: number;
   name: string;
 }
-

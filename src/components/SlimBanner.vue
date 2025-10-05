@@ -15,24 +15,22 @@ const toggleVisibility = () => {
 </script>
 
 <template>
-  <div
-    v-if="isShow"
-    data-pagefind-ignore
-    class="slimbanner"
-  >
+  <div v-if="isShow" data-pagefind-ignore class="slimbanner">
     <span
       class="inline-block text-4xl w-6 h-3.5 min-w-[1.25rem] mr-3 bg-gradient-to-b stops-[#0057b7_50%,50%,#ffd700_100%]"
     />
-    <span class="leading-none"><span
-                                 data-text="We stand with our friends and colleagues in Ukraine. To support Ukraine in their time of need visit "
-                               />
+    <span class="leading-none"
+      ><span
+        data-text="We stand with our friends and colleagues in Ukraine. To support Ukraine in their time of need visit "
+      />
       <a
         href="https://polo.blue/support-ukraine/"
         target="_blank"
         rel="noopener"
         title="Support Ukraine"
         class="underline underline-offset-2 hover:text-blue-wrc"
-      >this page</a>.
+        >this page</a
+      >.
     </span>
 
     <button

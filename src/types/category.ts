@@ -3,7 +3,6 @@ export interface Breadcrumb {
   path: string;
 }
 
-
 export interface SubCategory {
   id: number;
   name: string;
@@ -46,7 +45,6 @@ export interface CatObject {
   children: SubCategory[];
   seoTitle?: string;
 }
-
 
 export interface Link {
   path: string;

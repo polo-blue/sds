@@ -77,7 +77,6 @@ export interface Product {
   updated_at: string;
 }
 
-
 export interface ProductImage {
   title: string;
   alt: string;

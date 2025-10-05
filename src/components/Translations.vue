@@ -18,10 +18,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div
-    v-if="props.translations !== null && props.translations.uri"
-    data-pagefind-ignore
-  >
+  <div v-if="props.translations !== null && props.translations.uri" data-pagefind-ignore>
     <a
       aria-label="Change language"
       type="button"
