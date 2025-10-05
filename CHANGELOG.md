@@ -1,3 +1,9 @@
+## [1.3.0](https://github.com/polo-blue/sds/compare/v1.2.2...v1.3.0) (2025-10-05)
+
+### Features
+
+* add Claude Code GitHub Action workflow ([eba488f](https://github.com/polo-blue/sds/commit/eba488fe781ebb3e7676dc7e6dfd30cf3130798a))
+
 ## [1.2.2](https://github.com/polo-blue/sds/compare/v1.2.1...v1.2.2) (2025-10-05)
 
 ## [1.2.1](https://github.com/polo-blue/sds/compare/v1.2.0...v1.2.1) (2025-10-05)
