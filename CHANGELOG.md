@@ -1,3 +1,28 @@
+## [1.2.0](https://github.com/polo-blue/sds/compare/v1.1.17...v1.2.0) (2025-10-05)
+
+### Features
+
+* update icons and improve homepage layout ([d67ebc7](https://github.com/polo-blue/sds/commit/d67ebc7a0d9ab7f715f98893c9c13f3780e3e05b))
+
+### Bug Fixes
+
+* apply enhanced pnpm setup to release workflow ([f633630](https://github.com/polo-blue/sds/commit/f633630a504c9babfb26db455d49d806ec0ff208))
+* correct GitHub Actions deploy workflow YAML syntax ([4cd8e12](https://github.com/polo-blue/sds/commit/4cd8e1281a16899ca758f93c8492cce632a29110))
+* disable Jekyll processing for Astro GitHub Pages ([474f08b](https://github.com/polo-blue/sds/commit/474f08b25c0f3364136a54331ff830814fa2a4de))
+* enhance pnpm setup with fallback installation ([6266f19](https://github.com/polo-blue/sds/commit/6266f1966fdd96946012355230dcd37b5889833f))
+* improve pnpm PATH handling in release workflow ([e3c15de](https://github.com/polo-blue/sds/commit/e3c15de7df68df4fd22aa522f7247c1b8f3babaa))
+* improve Vue components formatting and fix key issues ([b971bf2](https://github.com/polo-blue/sds/commit/b971bf2541fcf572a733618ebedfe423d7d02009))
+* refine gitignore to preserve team VS Code settings ([6c98b10](https://github.com/polo-blue/sds/commit/6c98b10f031c2d11ea312bbacb5337a8cb61a61e))
+* resolve pnpm executable error in code-quality workflow ([5a43ab8](https://github.com/polo-blue/sds/commit/5a43ab818412f058ee6fcd5fbc589109fae85301))
+* resolve pnpm issues in deploy and release workflows ([464e29e](https://github.com/polo-blue/sds/commit/464e29ed728109450b70d987aac1e33d7cb4bb5b))
+* resolve SonarCloud pnpm executable error ([8569495](https://github.com/polo-blue/sds/commit/85694952b80e51a480f3b76f91c9301460613bae))
+* revert to enhanced pnpm setup in release workflow ([61d398e](https://github.com/polo-blue/sds/commit/61d398ea1736aee3bf5d734bb2a0119ae8a65ab9))
+* simplify pnpm installation across all workflows ([863c77c](https://github.com/polo-blue/sds/commit/863c77ccc22cb6924385bb22a5de7576bd400dee))
+* support badge objects from API ([d1fffc4](https://github.com/polo-blue/sds/commit/d1fffc4a04fce373ca4518dd22ebd22a11de4e4a))
+* use corepack for pnpm setup in release workflow ([e08a090](https://github.com/polo-blue/sds/commit/e08a090de316ce5040c43b0f328db9a08922fd63))
+* use direct pnpm installation in release workflow ([2e47c51](https://github.com/polo-blue/sds/commit/2e47c51e0f0b9356d92b9bca81aba4c7ad11cd7b))
+* use pnpm/action-setup for proper pnpm installation in release workflow ([3b24b69](https://github.com/polo-blue/sds/commit/3b24b69db681ac2380e93a71f2d7bdcc0d939e2a))
+
 ## [1.1.17](https://github.com/polo-blue/sds/compare/v1.1.16...v1.1.17) (2025-09-23)
 
 ## [1.1.16](https://github.com/polo-blue/sds/compare/v1.1.15...v1.1.16) (2025-09-23)
