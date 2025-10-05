@@ -2,19 +2,22 @@
 const props = defineProps({
   badge: {
     type: String,
-    required: true,
+    required: false,
     default: '',
   },
   class: {
     type: String,
-    required: true,
+    required: false,
     default: 'bg-gray',
   },
 });
 </script>
 
 <template>
-  <div class="badge" :class="props.class">
+  <div
+    class="badge"
+    :class="props.class"
+  >
     {{ props.badge }}
   </div>
 </template>
