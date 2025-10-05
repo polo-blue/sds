@@ -1,3 +1,9 @@
+## [1.2.1](https://github.com/polo-blue/sds/compare/v1.2.0...v1.2.1) (2025-10-05)
+
+### Bug Fixes
+
+* use pnpm/action-setup in all workflows for proper pnpm installation ([e4d8686](https://github.com/polo-blue/sds/commit/e4d868688214097350ac0a0bc9524660f8892013))
+
 ## [1.2.0](https://github.com/polo-blue/sds/compare/v1.1.17...v1.2.0) (2025-10-05)
 
 ### Features
