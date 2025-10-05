@@ -26,52 +26,17 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Debug initial state
-        run: |
-          echo "=== Debug Info ==="
-          echo "Node version: $(node --version)"
-          echo "NPM version: $(npm --version)"
-          echo "PATH: $PATH"
-          echo "Which npm: $(which npm)"
-          echo "Checking for pnpm..."
-          if command -v pnpm &> /dev/null; then
-            echo "pnpm found: $(which pnpm)"
-            echo "pnpm version: $(pnpm --version)"
-          else
-            echo "pnpm not found"
-          fi
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.17.1
 
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
           node-version: 22
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Install pnpm
-        run: |
-          echo "Installing pnpm via npm..."
-          npm install -g pnpm@10.17.1
-          echo "pnpm installed successfully"
-
-      - name: Verify pnpm
-        run: |
-          echo "Verifying pnpm installation..."
-          which pnpm
-          pnpm --version
-          echo "pnpm verification complete"
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - name: Setup pnpm cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
