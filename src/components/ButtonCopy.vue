@@ -27,11 +27,18 @@ const { copy, copied } = useClipboard({ source, legacy: true });
 </script>
 
 <template>
-  <button :aria-label="texts.copy" class="btn-copy has-tooltip" @click="copy()">
+  <button
+    :aria-label="texts.copy"
+    class="btn-copy has-tooltip"
+    @click="copy()"
+  >
     <span
       :class="`tooltip rounded-full btn-copy-text ${tooltipClasses}`"
       :data-text="!copied ? texts.copy : texts.copied"
     />
-    <span i-ph-copy-simple-light class="leading-none w-full h-full" />
+    <span
+      i-ph-copy-simple-light
+      class="leading-none w-full h-full"
+    />
   </button>
 </template>

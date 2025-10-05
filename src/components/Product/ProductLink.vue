@@ -1,16 +1,27 @@
 <template>
-  <div class="product-link" itemscope itemtype="https://schema.org/Product">
+  <div
+    class="product-link"
+    itemscope
+    itemtype="https://schema.org/Product"
+  >
     <div
       :class="[bigTile ? 'product-link--big-tile' : 'product-thumb--plp product-thumb--carousel']"
     >
       <!-- Slot na ProductImage z Astro -->
       <slot name="image">
-        <img src="/1x1.png" class="bg-neutral-lightest/70" :alt="productName" />
+        <img
+          src="/1x1.png"
+          class="bg-neutral-lightest/70"
+          :alt="productName"
+        >
       </slot>
     </div>
 
     <div :class="[bigTile ? '' : 'sm:pl-4']">
-      <p v-if="price" class="block mb-2 font-600 font-headbold text-5">
+      <p
+        v-if="price"
+        class="block mb-2 font-600 font-headbold text-5"
+      >
         {{ price }}
       </p>
 
@@ -22,11 +33,20 @@
         v-html="nameFormatted"
       />
 
-      <ProductNumber :product-number="productNumber" :copy-disabled="true" />
+      <ProductNumber
+        :product-number="productNumber"
+        :copy-disabled="true"
+      />
 
       <template v-if="index !== null">
-        <meta itemprop="position" :content="index.toString()" />
-        <meta itemprop="name" :content="nameFormatted" />
+        <meta
+          itemprop="position"
+          :content="index.toString()"
+        >
+        <meta
+          itemprop="name"
+          :content="nameFormatted"
+        >
       </template>
     </div>
   </div>

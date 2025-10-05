@@ -16,11 +16,18 @@ const props = defineProps({
 </script>
 
 <template>
-  <h2 v-if="props.caption" class="features-list-caption">
+  <h2
+    v-if="props.caption"
+    class="features-list-caption"
+  >
     {{ props.caption }}
   </h2>
   <ul class="features-list-ul">
-    <li v-for="(item, index) in props.items" :key="index" class="features-list-item">
+    <li
+      v-for="(item, index) in props.items"
+      :key="index"
+      class="features-list-item"
+    >
       {{ item }}
     </li>
   </ul>

@@ -21,7 +21,10 @@ const props = defineProps({
 </script>
 
 <template>
-  <component :is="props.as" :class="props.class">
+  <component
+    :is="props.as"
+    :class="props.class"
+  >
     {{ props.number }}
   </component>
 </template>
