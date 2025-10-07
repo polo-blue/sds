@@ -92,6 +92,7 @@ const validatedItems = computed(() => {
           class="details-table-header"
         />
 
+        <!-- Links Array -->
         <td
           v-if="isLinksArray(row)"
           class="details-table-cell"
@@ -120,6 +121,7 @@ const validatedItems = computed(() => {
           </ul>
         </td>
 
+        <!-- Generic String Array -->
         <td
           v-else-if="isGenericArray(row)"
           class="details-table-cell"
@@ -136,13 +138,16 @@ const validatedItems = computed(() => {
           </ul>
         </td>
 
+        <!-- HTML Value -->
         <td
           v-else-if="isHtmlValue(row.value)"
           class="details-table-cell"
           v-html="row.value"
         />
 
+        <!-- Slot or Default Value -->
         <slot
+          v-else
           :name="row.id"
         >
           <td class="details-table-cell">
