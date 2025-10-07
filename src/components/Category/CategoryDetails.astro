@@ -14,10 +14,15 @@ const {
   locale,
 } = Astro.props;
 
-const localePrefix = locale && locale !== 'en' ? `/${locale}` : '';
-const categoryPath = category?.path || `${localePrefix}/${category.slug}`;
-const subcategoryPath =
-  subcategory?.path || `${localePrefix}/${category.slug}/${subcategory?.slug}`;
+// Use paths directly from API - they already include locale prefixes
+// Ensure paths always start with /
+const ensureLeadingSlash = (path: string) => path?.startsWith('/') ? path : `/${path}`;
+const categoryPath = category?.path
+  ? ensureLeadingSlash(category.path)
+  : `/${category.slug}/`;
+const subcategoryPath = subcategory?.path
+  ? ensureLeadingSlash(subcategory.path)
+  : `/${category.slug}/${subcategory?.slug}/`;
 ---
 
 <div
