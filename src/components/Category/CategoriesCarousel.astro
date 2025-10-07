@@ -45,7 +45,10 @@ const activeIndex =
         role="presentation"
         class={`swiper-slide cats-slide group ${category.slug === activeCategorySlug ? 'active' : ''}`}
       >
-        <a href={getTranslatedLink(`/${category.slug}/`)} class="carousel-item">
+        <a
+          href={getTranslatedLink(`/${category.slug}/`)}
+          class="carousel-item"
+        >
           {
             // itemprop="url"
             // role="menuitem"
@@ -64,7 +67,10 @@ const activeIndex =
           />
           <div class="swiper-lazy-preloader" />
 
-          <div class="cat-name" itemprop="name">
+          <div
+            class="cat-name"
+            itemprop="name"
+          >
             {category.name}
           </div>
         </a>

@@ -64,25 +64,55 @@ const commonProps = {
 
 {
   variant === 'default' && (
-    <DefaultVariant {...commonProps} small={small}>
-      <slot name="intro" slot="intro" />
-      <slot name="subtitle" slot="subtitle" />
-      <slot name="cta-content" slot="cta-content" />
+    <DefaultVariant
+      {...commonProps}
+      small={small}
+    >
+      <slot
+        name="intro"
+        slot="intro"
+      />
+      <slot
+        name="subtitle"
+        slot="subtitle"
+      />
+      <slot
+        name="cta-content"
+        slot="cta-content"
+      />
     </DefaultVariant>
   )
 }
 
-{variant === 'hero' && <HeroVariant {...commonProps} description={description} info={info} />}
+{
+  variant === 'hero' && (
+    <HeroVariant
+      {...commonProps}
+      description={description}
+      info={info}
+    />
+  )
+}
 
 {
   variant === 'post' && (
-    <PostVariant {...commonProps} author={author} date={date} categories={categories} />
+    <PostVariant
+      {...commonProps}
+      author={author}
+      date={date}
+      categories={categories}
+    />
   )
 }
 
 {
   variant === 'post-split' && (
-    <PostSplitVariant {...commonProps} author={author} date={date} categories={categories} />
+    <PostSplitVariant
+      {...commonProps}
+      author={author}
+      date={date}
+      categories={categories}
+    />
   )
 }
 

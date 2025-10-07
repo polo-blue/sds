@@ -24,7 +24,10 @@ const hasDescriptionSlotContent = Astro.slots.has('description');
   >
     <div class="flex-shrink-0 hidden md:block">
       <slot name="icon">
-        <span i-ph:sparkle-thin class="mr-1 text-8 md:text-10 text-brand-secondary"></span>
+        <span
+          i-ph:sparkle-thin
+          class="mr-1 text-8 md:text-10 text-brand-secondary"
+        ></span>
       </slot>
     </div>
     <div class="flex-1 text-center md:text-left">

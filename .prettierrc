@@ -8,6 +8,7 @@
   "bracketSpacing": true,
   "arrowParens": "avoid",
   "endOfLine": "lf",
+  "singleAttributePerLine": true,
   "plugins": ["prettier-plugin-astro"],
   "overrides": [
     {

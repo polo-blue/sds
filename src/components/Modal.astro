@@ -17,9 +17,16 @@ import Button from '../components/Button.vue';
   }
 </style>
 
-<Button primary onclick={`window.${id}.showModal()`}>{open}</Button>
+<Button
+  primary
+  onclick={`window.${id}.showModal()`}
+  >{open}</Button
+>
 
-<dialog id={id} class="p-6">
+<dialog
+  id={id}
+  class="p-6"
+>
   <slot name="main" />
   <form method="dialog">
     <slot name="close" />

@@ -38,10 +38,13 @@ const isHtmlValue = (value: unknown): boolean => {
 
 // Function for specifying header text
 const getHeaderText = (row: TableItem) => {
-  return row.label || row.id
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
+  return (
+    row.label ||
+    row.id
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ')
+  );
 };
 
 // Function to determine the icon class for a link type
@@ -77,8 +80,8 @@ const validatedItems = computed(() => {
       </slot>
     </caption>
     <colgroup>
-      <col class="details-table-col">
-      <col class="details-table-col">
+      <col class="details-table-col" />
+      <col class="details-table-col" />
     </colgroup>
     <tbody>
       <tr

@@ -23,12 +23,21 @@ const { product, nameFormatted, price, url, index, bigTile } = Astro.props;
     title={product.number}
     set:html={nameFormatted}
   />
-  <ProductNumber productNumber={product.number} copyDisabled={true} />
+  <ProductNumber
+    productNumber={product.number}
+    copyDisabled={true}
+  />
   {
     index !== null && (
       <>
-        <meta itemprop="position" content={index} />
-        <meta itemprop="name" content={nameFormatted} />
+        <meta
+          itemprop="position"
+          content={index}
+        />
+        <meta
+          itemprop="name"
+          content={nameFormatted}
+        />
       </>
     )
   }

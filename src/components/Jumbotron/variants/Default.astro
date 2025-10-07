@@ -28,7 +28,10 @@ const {
     hasIntroContent ? (
       <slot name="intro" />
     ) : (
-      <h1 class="jumbotron-title-default" set:html={title} />
+      <h1
+        class="jumbotron-title-default"
+        set:html={title}
+      />
     )
   }
 

@@ -13,7 +13,7 @@
           src="/1x1.png"
           class="bg-neutral-lightest/70"
           :alt="productName"
-        >
+        />
       </slot>
     </div>
 
@@ -42,11 +42,11 @@
         <meta
           itemprop="position"
           :content="index.toString()"
-        >
+        />
         <meta
           itemprop="name"
           :content="nameFormatted"
-        >
+        />
       </template>
     </div>
   </div>

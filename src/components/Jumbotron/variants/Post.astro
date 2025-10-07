@@ -41,7 +41,10 @@ const {
       {
         hasCategories && (
           <div class="order-1">
-            <PostCategories categories={categories} lang={lang} />
+            <PostCategories
+              categories={categories}
+              lang={lang}
+            />
           </div>
         )
       }
@@ -50,7 +53,10 @@ const {
         hasMetadata && (
           <div class="order-3 flex items-center text-gray-100">
             {author && (
-              <span class="text-sm" title={author.firstName}>
+              <span
+                class="text-sm"
+                title={author.firstName}
+              >
                 {author.name}
               </span>
             )}
@@ -63,6 +69,10 @@ const {
   </div>
 
   <div class="featured-image-overlay">
-    <img src={image} alt={title} class="w-full h-full object-cover block max-w-full" />
+    <img
+      src={image}
+      alt={title}
+      class="w-full h-full object-cover block max-w-full"
+    />
   </div>
 </header>

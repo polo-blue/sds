@@ -59,8 +59,16 @@ const navItems = [
               title={description}
               class="flex w-full flex-wrap bg-white rounded-md hover:-translate-y-1 hover:shadow-lg transition-all flex-1 items-center py-10 px-4 md:(flex-col w-auto flex-nowrap text-center py-16)"
             >
-              <Headline as="h2" textSize="2xl" underline={false}>
-                <Icon name={icon} aria-hidden="true" class="text-blue-400 mr-2 text-4xl" />
+              <Headline
+                as="h2"
+                textSize="2xl"
+                underline={false}
+              >
+                <Icon
+                  name={icon}
+                  aria-hidden="true"
+                  class="text-blue-400 mr-2 text-4xl"
+                />
                 {title}
               </Headline>
               <p class="text-slate-500 w-full">{description}</p>
@@ -73,7 +81,12 @@ const navItems = [
     <!-- Features Section -->
     <section class="py-16 px-4 max-w-5xl mx-auto">
       <div class="text-center mb-12">
-        <Headline as="h2" textSize="3xl" underline="center" class="text-gray-900 mb-6">
+        <Headline
+          as="h2"
+          textSize="3xl"
+          underline="center"
+          class="text-gray-900 mb-6"
+        >
           Why Spoko Design System?
         </Headline>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -102,7 +115,8 @@ const navItems = [
               href="https://astro.build/"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-blue-600 hover:text-blue-800 underline transition-colors">Astro</a
+              class="text-blue-600 hover:text-blue-800 underline transition-colors"
+              >Astro</a
             > for lightning-fast performance and seamless integration with modern frameworks.
           </p>
         </div>
@@ -146,7 +160,8 @@ const navItems = [
               href="https://unocss.dev/"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-blue-600 hover:text-blue-800 underline transition-colors">UnoCSS</a
+              class="text-blue-600 hover:text-blue-800 underline transition-colors"
+              >UnoCSS</a
             > for flexible, maintainable styling and consistent design tokens.
           </p>
         </div>
@@ -170,7 +185,8 @@ const navItems = [
               href="https://vuejs.org/"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-blue-600 hover:text-blue-800 underline transition-colors">Vue 3</a
+              class="text-blue-600 hover:text-blue-800 underline transition-colors"
+              >Vue 3</a
             > component integration with TypeScript support for interactive elements.
           </p>
         </div>
@@ -233,7 +249,12 @@ const navItems = [
       <div class="grid lg:grid-cols-2 gap-8 md:gap-12">
         <!-- Download Section -->
         <div class="text-center">
-          <Headline underline as="h2" class="text-gray-900 mb-8" textSize="3xl">
+          <Headline
+            underline
+            as="h2"
+            class="text-gray-900 mb-8"
+            textSize="3xl"
+          >
             <Icon
               name="streamline-freehand-color:archive-box"
               aria-hidden="true"
@@ -262,7 +283,10 @@ const navItems = [
               rel="noopener noreferrer"
               class="flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg transition-colors"
             >
-              <Icon name="vscode-icons:file-type-npm" class="text-3xl" />
+              <Icon
+                name="vscode-icons:file-type-npm"
+                class="text-3xl"
+              />
               <span class="font-semibold">npm Package</span>
             </a>
             <a
@@ -271,7 +295,10 @@ const navItems = [
               rel="noopener noreferrer"
               class="flex items-center gap-3 bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-lg transition-colors"
             >
-              <Icon name="mdi:github" class="text-2xl" />
+              <Icon
+                name="mdi:github"
+                class="text-2xl"
+              />
               <span class="font-semibold">Source Code</span>
             </a>
           </div>
@@ -283,7 +310,12 @@ const navItems = [
 
         <!-- Examples Section -->
         <div class="text-center">
-          <Headline underline as="h2" class="text-gray-900 mb-8" textSize="3xl">
+          <Headline
+            underline
+            as="h2"
+            class="text-gray-900 mb-8"
+            textSize="3xl"
+          >
             <Icon
               name="streamline-freehand-color:coding-files-network-folder"
               aria-hidden="true"
@@ -306,7 +338,10 @@ const navItems = [
                 </h4>
                 <p class="text-sm text-gray-600">Car parts catalog</p>
               </div>
-              <Icon name="lucide:link" class="text-gray-400 group-hover:text-blue-400" />
+              <Icon
+                name="lucide:link"
+                class="text-gray-400 group-hover:text-blue-400"
+              />
             </a>
 
             <a
@@ -319,7 +354,10 @@ const navItems = [
                 <h4 class="font-semibold text-gray-900 group-hover:text-blue-600">polo.blue</h4>
                 <p class="text-sm text-gray-600">Polo 6R DIY workshop & guides</p>
               </div>
-              <Icon name="lucide:link" class="text-gray-400 group-hover:text-blue-400" />
+              <Icon
+                name="lucide:link"
+                class="text-gray-400 group-hover:text-blue-400"
+              />
             </a>
 
             <a
@@ -334,7 +372,10 @@ const navItems = [
                 </h4>
                 <p class="text-sm text-gray-600">Used car parts marketplace</p>
               </div>
-              <Icon name="lucide:link" class="text-gray-400 group-hover:text-blue-400" />
+              <Icon
+                name="lucide:link"
+                class="text-gray-400 group-hover:text-blue-400"
+              />
             </a>
 
             <a
@@ -347,7 +388,10 @@ const navItems = [
                 <h4 class="font-semibold text-gray-900 group-hover:text-blue-600">polo6r.pl</h4>
                 <p class="text-sm text-gray-600">Polo V Manual</p>
               </div>
-              <Icon name="lucide:link" class="text-gray-400 group-hover:text-blue-400" />
+              <Icon
+                name="lucide:link"
+                class="text-gray-400 group-hover:text-blue-400"
+              />
             </a>
           </div>
 

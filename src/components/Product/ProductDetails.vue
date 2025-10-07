@@ -116,8 +116,8 @@ const props = defineProps({
           <span
             v-else-if="
               detail.value !== undefined &&
-                detail.id === 'for-exterior-colour' &&
-                detail.isArrayValue
+              detail.id === 'for-exterior-colour' &&
+              detail.isArrayValue
             "
             class=""
           >

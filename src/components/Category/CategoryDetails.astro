@@ -14,7 +14,10 @@ const baseURL = '';
   transition:name="category-details"
   transition:animate="fade"
 >
-  <CategorySidebarToggler class="category-sidebar-toggler w-12 md:w-8" data-state="desktop">
+  <CategorySidebarToggler
+    class="category-sidebar-toggler w-12 md:w-8"
+    data-state="desktop"
+  >
     <div class="desktop-icons hidden md:block">
       <!-- Desktop icons container -->
       <Icon
@@ -30,7 +33,11 @@ const baseURL = '';
     </div>
     <!-- Mobile icon in separate container -->
     <div class="mobile-icon block md:hidden">
-      <Icon name="ant-design:menu-outlined" class="toggler-btn w-6" aria-hidden="true" />
+      <Icon
+        name="ant-design:menu-outlined"
+        class="toggler-btn w-6"
+        aria-hidden="true"
+      />
     </div>
   </CategorySidebarToggler>
 
@@ -74,7 +81,10 @@ const baseURL = '';
 
   {
     showViewToggler && (
-      <CategoryViewToggler {...viewerLabels} class="hidden lg:flex items-center gap-2 ml-auto" />
+      <CategoryViewToggler
+        {...viewerLabels}
+        class="hidden lg:flex items-center gap-2 ml-auto"
+      />
     )
   }
 </div>

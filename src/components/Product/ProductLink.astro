@@ -82,7 +82,11 @@ const nameFormatted = removeSemicolon(productName.toString());
             }}
           />
         ) : (
-          <img src="/1x1.png" class="bg-neutral-lightest/70" alt={productName} />
+          <img
+            src="/1x1.png"
+            class="bg-neutral-lightest/70"
+            alt={productName}
+          />
         )}
       </div>
 
@@ -103,12 +107,21 @@ const nameFormatted = removeSemicolon(productName.toString());
           set:html={nameFormatted}
         />
 
-        <ProductNumber productNumber={product.number} copyDisabled={true} />
+        <ProductNumber
+          productNumber={product.number}
+          copyDisabled={true}
+        />
 
         {index !== null && (
           <>
-            <meta itemprop="position" content={index.toString()} />
-            <meta itemprop="name" content={nameFormatted} />
+            <meta
+              itemprop="position"
+              content={index.toString()}
+            />
+            <meta
+              itemprop="name"
+              content={nameFormatted}
+            />
           </>
         )}
       </div>

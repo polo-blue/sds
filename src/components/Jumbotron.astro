@@ -6,7 +6,16 @@ const props = Astro.props as Props;
 ---
 
 <BaseJumbotron {...props}>
-  <slot name="intro" slot="intro" />
-  <slot name="subtitle" slot="subtitle" />
-  <slot name="cta-content" slot="cta-content" />
+  <slot
+    name="intro"
+    slot="intro"
+  />
+  <slot
+    name="subtitle"
+    slot="subtitle"
+  />
+  <slot
+    name="cta-content"
+    slot="cta-content"
+  />
 </BaseJumbotron>

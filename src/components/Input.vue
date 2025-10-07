@@ -125,7 +125,7 @@ const handleBlur = (event: globalThis.FocusEvent) => emit('blur', event);
       @input="handleInput"
       @focus="handleFocus"
       @blur="handleBlur"
-    >
+    />
 
     <label
       :for="id"
@@ -136,7 +136,8 @@ const handleBlur = (event: globalThis.FocusEvent) => emit('blur', event);
       <span
         v-if="required"
         class="text-red-500 ml-1"
-      >*</span>
+        >*</span
+      >
     </label>
 
     <div

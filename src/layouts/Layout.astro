@@ -9,10 +9,17 @@ const { content = {} } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
-<html dir={content.dir ?? 'ltr'} lang={content.lang ?? 'en-us'} class="initial">
+<html
+  dir={content.dir ?? 'ltr'}
+  lang={content.lang ?? 'en-us'}
+  class="initial"
+>
   <head>
     <HeadCommon />
-    <HeadSEO {content} canonicalURL={canonicalURL} />
+    <HeadSEO
+      {content}
+      canonicalURL={canonicalURL}
+    />
     <title>
       {content.title ? `${content.title} 🚀 ${CONFIG.SITE.title}` : CONFIG.SITE.title}
     </title>

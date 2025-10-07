@@ -74,7 +74,7 @@ const isLast = (index: number) => {
         <meta
           itemprop="position"
           content="1"
-        >
+        />
       </li>
       <li
         v-for="(crumb, index) in breadcrumbs"
@@ -87,7 +87,8 @@ const isLast = (index: number) => {
         <span
           v-if="index > 0 || props.showHome"
           class="text-gray-400 px-1 py-4.25 sm:py-1"
-        >/</span>
+          >/</span
+        >
 
         <a
           v-if="!isLast(index)"
@@ -99,7 +100,8 @@ const isLast = (index: number) => {
           <strong
             class="font-normal"
             itemprop="name"
-          >{{ crumb.name }}</strong>
+            >{{ crumb.name }}</strong
+          >
         </a>
         <a
           v-else
@@ -116,14 +118,15 @@ const isLast = (index: number) => {
             <b
               v-if="productNumber"
               class="hidden sm:inline font-normal ml-1"
-            >&nbsp;{{ productNumber }}</b>
+              >&nbsp;{{ productNumber }}</b
+            >
           </span>
         </a>
 
         <meta
           itemprop="position"
           :content="String(props.showHome ? index + 2 : index + 1)"
-        >
+        />
       </li>
     </ul>
   </nav>
