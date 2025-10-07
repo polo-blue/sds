@@ -1,3 +1,9 @@
+## [1.3.4](https://github.com/polo-blue/sds/compare/v1.3.3...v1.3.4) (2025-10-07)
+
+### Bug Fixes
+
+* resolve Prettier parsing errors in CategoryDetails component ([75b309f](https://github.com/polo-blue/sds/commit/75b309f94dd77fe9cdf941f0f21ec1ec63e34dfc))
+
 ## [1.3.3](https://github.com/polo-blue/sds/compare/v1.3.2...v1.3.3) (2025-10-07)
 
 ### Bug Fixes
