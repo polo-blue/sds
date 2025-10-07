@@ -1,3 +1,9 @@
+## [1.3.5](https://github.com/polo-blue/sds/compare/v1.3.4...v1.3.5) (2025-10-07)
+
+### Bug Fixes
+
+* remove unused baseURL variable ([c0259f7](https://github.com/polo-blue/sds/commit/c0259f7c9ed0367c18e0c2dbfa34903d28abe49c))
+
 ## [1.3.4](https://github.com/polo-blue/sds/compare/v1.3.3...v1.3.4) (2025-10-07)
 
 ### Bug Fixes
