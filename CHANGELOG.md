@@ -1,3 +1,9 @@
+## [1.3.3](https://github.com/polo-blue/sds/compare/v1.3.2...v1.3.3) (2025-10-07)
+
+### Bug Fixes
+
+* prevent double rendering of links array with slot fallback ([ac7ec23](https://github.com/polo-blue/sds/commit/ac7ec2349b2098912ed27a303a7502c9a1c63678))
+
 ## [1.3.2](https://github.com/polo-blue/sds/compare/v1.3.1...v1.3.2) (2025-10-07)
 
 ## [1.3.1](https://github.com/polo-blue/sds/compare/v1.3.0...v1.3.1) (2025-10-05)
