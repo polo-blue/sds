@@ -3,10 +3,14 @@ import CategorySidebarToggler from './CategorySidebarToggler.vue';
 import CategoryViewToggler from './CategoryViewToggler.astro';
 import { Icon } from 'astro-icon/components';
 
-const { category, subcategory, subtitle, subsubtitle, titleSmall, showViewToggler, viewerLabels } =
+const { category, subcategory, subtitle, subsubtitle, titleSmall, showViewToggler, viewerLabels, locale } =
   Astro.props;
 
 const baseURL = '';
+
+// Build proper category links with locale support
+const categoryPath = category?.path || `${locale && locale !== 'en' ? `/${locale}` : ''}/${category.slug}`;
+const subcategoryPath = subcategory?.path || `${locale && locale !== 'en' ? `/${locale}` : ''}/${category.slug}/${subcategory?.slug}`;
 ---
 
 <div
@@ -47,7 +51,7 @@ const baseURL = '';
         <>
           <a
             class="text-lg font-vw-headregular whitespace-nowrap block"
-            href={`${baseURL}/${category.slug}/`}
+            href={categoryPath}
           >
             {category.name}
             {titleSmall && <small>{titleSmall}</small>}
@@ -60,7 +64,7 @@ const baseURL = '';
           ) : (
             <>
               <div class="text-lg py-2.5 sm:py-0 whitespace-nowrap">
-                <a href={`${baseURL}/${category.slug}/${subcategory.slug}/`}>{subtitle}</a>
+                <a href={subcategoryPath}>{subtitle}</a>
               </div>
               <span class="text-neutral-lighter text-lg inline-block px-1 font-headlight">/</span>
               <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
