@@ -3,14 +3,22 @@ import CategorySidebarToggler from './CategorySidebarToggler.vue';
 import CategoryViewToggler from './CategoryViewToggler.astro';
 import { Icon } from 'astro-icon/components';
 
-const { category, subcategory, subtitle, subsubtitle, titleSmall, showViewToggler, viewerLabels, locale } =
-  Astro.props;
+const {
+  category,
+  subcategory,
+  subtitle,
+  subsubtitle,
+  titleSmall,
+  showViewToggler,
+  viewerLabels,
+  locale,
+} = Astro.props;
 
 const baseURL = '';
-
-// Build proper category links with locale support
-const categoryPath = category?.path || `${locale && locale !== 'en' ? `/${locale}` : ''}/${category.slug}`;
-const subcategoryPath = subcategory?.path || `${locale && locale !== 'en' ? `/${locale}` : ''}/${category.slug}/${subcategory?.slug}`;
+const localePrefix = locale && locale !== 'en' ? `/${locale}` : '';
+const categoryPath = category?.path || `${localePrefix}/${category.slug}`;
+const subcategoryPath =
+  subcategory?.path || `${localePrefix}/${category.slug}/${subcategory?.slug}`;
 ---
 
 <div
@@ -23,7 +31,6 @@ const subcategoryPath = subcategory?.path || `${locale && locale !== 'en' ? `/${
     data-state="desktop"
   >
     <div class="desktop-icons hidden md:block">
-      <!-- Desktop icons container -->
       <Icon
         name="ant-design:menu-fold-outlined"
         class="toggler-btn w-6 expanded-icon"
@@ -35,7 +42,6 @@ const subcategoryPath = subcategory?.path || `${locale && locale !== 'en' ? `/${
         aria-hidden="true"
       />
     </div>
-    <!-- Mobile icon in separate container -->
     <div class="mobile-icon block md:hidden">
       <Icon
         name="ant-design:menu-outlined"
