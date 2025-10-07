@@ -1,3 +1,9 @@
+## [1.3.6](https://github.com/polo-blue/sds/compare/v1.3.5...v1.3.6) (2025-10-07)
+
+### Bug Fixes
+
+* update CategoryDetails component ([1583a65](https://github.com/polo-blue/sds/commit/1583a65c10e7f38e1edfce79ac3bb90ab62fb29b))
+
 ## [1.3.5](https://github.com/polo-blue/sds/compare/v1.3.4...v1.3.5) (2025-10-07)
 
 ### Bug Fixes
