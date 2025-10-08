@@ -1,3 +1,9 @@
+## [1.3.7](https://github.com/polo-blue/sds/compare/v1.3.6...v1.3.7) (2025-10-08)
+
+### Bug Fixes
+
+* simplify CategoryDetails to use API paths directly ([28831c9](https://github.com/polo-blue/sds/commit/28831c9284c5e9ff484f7e51947cec95b2f41427))
+
 ## [1.3.6](https://github.com/polo-blue/sds/compare/v1.3.5...v1.3.6) (2025-10-07)
 
 ### Bug Fixes
