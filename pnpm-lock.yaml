@@ -44,7 +44,7 @@ importers:
         version: 1.2.2
       '@iconify-json/carbon':
         specifier: ^1.2.13
-        version: 1.2.13
+        version: 1.2.14
       '@iconify-json/circle-flags':
         specifier: ^1.2.8
         version: 1.2.8
@@ -1097,8 +1097,8 @@ packages:
   '@iconify-json/bx@1.2.2':
     resolution: {integrity: sha512-hZVx6LMEkYckScdRdUuQWcmv8Lm2au6Cnf799TLoR6YgiAfFvaJ4M5ElwcnExvCu8ntsS7jW89r0W5LwBAfZXQ==}
 
-  '@iconify-json/carbon@1.2.13':
-    resolution: {integrity: sha512-vXrFFKkfYaZSwf4WfnRQJQMnpEzxlPlupwZZlS1WvOAuNnWahsUudHycaMpoBzDqBfniH4KQ2b5qnw0VMKoJug==}
+  '@iconify-json/carbon@1.2.14':
+    resolution: {integrity: sha512-33u6uGiYJ79Dfp72peT+PBMcjxzi+NyJLpqYRX8pnw0zchsUW7Us2xecgvkWgD83KYcbe6hufyWlHFU9y7fb/Q==}
 
   '@iconify-json/circle-flags@1.2.8':
     resolution: {integrity: sha512-Wt4K8+fJM3ZLYA59P8HEund4bQLvJzuL+v74qFtF0tgqS9hu0p3NoqO788soQdsLbINs26cQBCmWCKm6q2u9UQ==}
@@ -2660,8 +2660,8 @@ packages:
     resolution: {integrity: sha512-yCEafptTtb4bk7GLEQoM8KVJpxAfdBJYaXyzQEgQQQgYrZiDp8SJmGKlYza6CYjEDNstAdNdKA3UuoULlEbS6w==}
     engines: {node: '>=12.13'}
 
-  core-js-compat@3.45.1:
-    resolution: {integrity: sha512-tqTt5T4PzsMIZ430XGviK4vzYSoeNJ6CXODi6c/voxOT6IZqBht5/EKaSNnYiEjjRYxjVz7DQIsOsY0XNi8PIA==}
+  core-js-compat@3.46.0:
+    resolution: {integrity: sha512-p9hObIIEENxSV8xIu+V68JjSeARg6UVMG5mR+JEUguG3sI6MsiS1njz2jHmyJDvA+8jX/sytkBHup6kxhM9law==}
 
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
@@ -6798,7 +6798,7 @@ snapshots:
       babel-plugin-polyfill-corejs2: 0.4.14(@babel/core@7.28.4)
       babel-plugin-polyfill-corejs3: 0.13.0(@babel/core@7.28.4)
       babel-plugin-polyfill-regenerator: 0.6.5(@babel/core@7.28.4)
-      core-js-compat: 3.45.1
+      core-js-compat: 3.46.0
       semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
@@ -7012,7 +7012,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/carbon@1.2.13':
+  '@iconify-json/carbon@1.2.14':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -8746,7 +8746,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.28.4
       '@babel/helper-define-polyfill-provider': 0.6.5(@babel/core@7.28.4)
-      core-js-compat: 3.45.1
+      core-js-compat: 3.46.0
     transitivePeerDependencies:
       - supports-color
 
@@ -9070,7 +9070,7 @@ snapshots:
     dependencies:
       is-what: 4.1.16
 
-  core-js-compat@3.45.1:
+  core-js-compat@3.46.0:
     dependencies:
       browserslist: 4.26.3
 
