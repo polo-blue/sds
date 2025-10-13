@@ -116,7 +116,7 @@ importers:
         version: 1.2.3
       '@iconify-json/vscode-icons':
         specifier: ^1.2.30
-        version: 1.2.30
+        version: 1.2.32
       '@iconify/json':
         specifier: ^2.2.392
         version: 2.2.392
@@ -1169,8 +1169,8 @@ packages:
   '@iconify-json/uil@1.2.3':
     resolution: {integrity: sha512-if91+UBhDQc6glPsIaXecGIcXnbQZfEO4Gdv89TV2xQ+V5e9GWbY5rNl2fsKZd8COsRQ5lRQAKimVQVL0CZZVg==}
 
-  '@iconify-json/vscode-icons@1.2.30':
-    resolution: {integrity: sha512-dlTOc8w4a8/QNumZzMve+APJa6xQVXPZwo8qBk/MaYfY42NPrQT83QXkbTWKDkuEu/xgHPXvKZZBL7Yy12vYQw==}
+  '@iconify-json/vscode-icons@1.2.32':
+    resolution: {integrity: sha512-UzZmL6hF02YGu/qEbpskEVnstlNJG+c+0PNzNYTIBf/dXylWHLUVufhOXqAzuGRjkUZ2q7rPpOEwLUPkhkFHUA==}
 
   '@iconify/json@2.2.392':
     resolution: {integrity: sha512-WkkQIDpmgetgvIn1jso6XKY3S5Pf9L6QD1J2RNLeiF+jzdouyayoRm2LLxe4dmnp9i3Cbf8w7oRuaVlhwK8Xtg==}
@@ -2660,8 +2660,8 @@ packages:
     resolution: {integrity: sha512-yCEafptTtb4bk7GLEQoM8KVJpxAfdBJYaXyzQEgQQQgYrZiDp8SJmGKlYza6CYjEDNstAdNdKA3UuoULlEbS6w==}
     engines: {node: '>=12.13'}
 
-  core-js-compat@3.45.1:
-    resolution: {integrity: sha512-tqTt5T4PzsMIZ430XGviK4vzYSoeNJ6CXODi6c/voxOT6IZqBht5/EKaSNnYiEjjRYxjVz7DQIsOsY0XNi8PIA==}
+  core-js-compat@3.46.0:
+    resolution: {integrity: sha512-p9hObIIEENxSV8xIu+V68JjSeARg6UVMG5mR+JEUguG3sI6MsiS1njz2jHmyJDvA+8jX/sytkBHup6kxhM9law==}
 
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
@@ -6798,7 +6798,7 @@ snapshots:
       babel-plugin-polyfill-corejs2: 0.4.14(@babel/core@7.28.4)
       babel-plugin-polyfill-corejs3: 0.13.0(@babel/core@7.28.4)
       babel-plugin-polyfill-regenerator: 0.6.5(@babel/core@7.28.4)
-      core-js-compat: 3.45.1
+      core-js-compat: 3.46.0
       semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
@@ -7108,7 +7108,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/vscode-icons@1.2.30':
+  '@iconify-json/vscode-icons@1.2.32':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -8746,7 +8746,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.28.4
       '@babel/helper-define-polyfill-provider': 0.6.5(@babel/core@7.28.4)
-      core-js-compat: 3.45.1
+      core-js-compat: 3.46.0
     transitivePeerDependencies:
       - supports-color
 
@@ -9070,7 +9070,7 @@ snapshots:
     dependencies:
       is-what: 4.1.16
 
-  core-js-compat@3.45.1:
+  core-js-compat@3.46.0:
     dependencies:
       browserslist: 4.26.3
 
