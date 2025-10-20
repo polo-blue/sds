@@ -1,3 +1,9 @@
+## [1.4.0](https://github.com/polo-blue/sds/compare/v1.3.7...v1.4.0) (2025-10-20)
+
+### Features
+
+* enhance components with flexible layouts and click-to-copy functionality ([3dfa718](https://github.com/polo-blue/sds/commit/3dfa718f7f4355c0beed4032e84d01a2c2c4a547))
+
 ## [1.3.7](https://github.com/polo-blue/sds/compare/v1.3.6...v1.3.7) (2025-10-08)
 
 ### Bug Fixes
