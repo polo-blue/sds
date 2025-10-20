@@ -5,6 +5,17 @@ layout: ../../layouts/MainLayout.astro
 import MainColors from '../../components/MainColors.vue';
 
 <h1>Colors</h1>
-<p>Base colors.</p>
+<p>Base colors for the design system.</p>
 
-<MainColors class="mt-8" />
+## How to use
+
+Click on any element to copy values to your clipboard:
+
+- **Color swatch** - Click the large color box to copy the hex value
+- **Hex button** - Click to copy the hex color code (e.g., `#0040c5`)
+- **text- button** - Click to copy the text color class (e.g., `text-brand-primary`)
+- **bg- button** - Click to copy the background color class (e.g., `bg-brand-primary`)
+
+A green checkmark (✓) will appear when copied successfully.
+
+<MainColors class="mt-8" client:load />

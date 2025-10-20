@@ -6,27 +6,252 @@ import SlimBanner from '../../components/SlimBanner.vue'
 
 # SlimBanner
 
-SlimBanner - solidarity with Ukraine.
+A flexible banner component for announcements, alerts, or calls to action. Supports custom messages, links, icons, and toggle states.
+
+## Basic Example (Ukraine Solidarity)
 
 <div class="component-preview">
   <SlimBanner
     class="w-full drop-shadow"
     client:load
+    message="We stand with our friends and colleagues in Ukraine. To support Ukraine in their time of need visit"
+    linkText="this page"
+    linkUrl="https://polo.blue/support-ukraine/"
+    linkTitle="Support Ukraine"
+    showIcon
     showCloseButton
-    transition:name="slim-banner"
-    transition:persist
-    
+    toggleMessage="RUSSIA IS A TERRORIST STATE"
   />
 </div>
 
-```js
+```astro
 <SlimBanner
   class="w-full drop-shadow"
   client:load
+  message="We stand with our friends and colleagues in Ukraine. To support Ukraine in their time of need visit"
+  linkText="this page"
+  linkUrl="https://polo.blue/support-ukraine/"
+  linkTitle="Support Ukraine"
+  showIcon
   showCloseButton
-  transition:name="slim-banner"
-  transition:persist
+  toggleMessage="RUSSIA IS A TERRORIST STATE"
 />
+```
+
+## Simple Announcement
+
+<div class="component-preview">
+  <SlimBanner
+    class="w-full drop-shadow"
+    client:load
+    message="🎉 New features are now available!"
+    linkText="Learn more"
+    linkUrl="/updates"
+    showCloseButton={false}
+  />
+</div>
+
+```astro
+<SlimBanner
+  message="🎉 New features are now available!"
+  linkText="Learn more"
+  linkUrl="/updates"
+  showCloseButton={false}
+/>
+```
+
+## Custom Message with Link
+
+<div class="component-preview">
+  <SlimBanner
+    class="w-full drop-shadow"
+    client:load
+    message="Limited time offer! Get 50% off all products. "
+    linkText="Shop now"
+    linkUrl="/shop"
+    linkTitle="Visit our shop"
+    showCloseButton={false}
+  />
+</div>
+
+```astro
+<SlimBanner
+  message="Limited time offer! Get 50% off all products. "
+  linkText="Shop now"
+  linkUrl="/shop"
+  linkTitle="Visit our shop"
+  showCloseButton={false}
+/>
+```
+
+## With Toggle State
+
+<div class="component-preview">
+  <SlimBanner
+    class="w-full drop-shadow"
+    client:load
+    message="Join us at the annual car meet this weekend!"
+    linkText="See the lineup"
+    linkUrl="/events"
+    showCloseButton
+    toggleMessage="🏁 TORQUE IS EVERYTHING"
+    toggleBgClass="bg-red-700"
+    toggleTextClass="text-white"
+  />
+</div>
+
+```astro
+<SlimBanner
+  message="Join us at the annual car meet this weekend!"
+  linkText="See the lineup"
+  linkUrl="/events"
+  showCloseButton
+  toggleMessage="🏁 TORQUE IS EVERYTHING"
+  toggleBgClass="bg-red-700"
+  toggleTextClass="text-white"
+/>
+```
+
+## Message Only (No Link)
+
+<div class="component-preview">
+  <SlimBanner
+    class="w-full drop-shadow"
+    client:load
+    message="Scheduled maintenance: The site will be down on Sunday, 3-5 AM EST."
+    linkUrl=""
+    showCloseButton={false}
+  />
+</div>
+
+```astro
+<SlimBanner
+  message="Scheduled maintenance: The site will be down on Sunday, 3-5 AM EST."
+  linkUrl=""
+  showCloseButton={false}
+/>
+```
+
+## Persistent Banner (LocalStorage)
+
+Close the banner permanently using localStorage. It will stay hidden even after page refresh.
+
+<div class="component-preview">
+  <SlimBanner
+    class="w-full drop-shadow"
+    client:load
+    message="🍪 This website uses cookies to enhance your experience."
+    linkText="Learn more"
+    linkUrl="/privacy"
+    showCloseButton
+    persistClose
+    storageKey="cookie-banner-closed"
+    expirationDays={90}
+  />
+</div>
+
+```astro
+<SlimBanner
+  message="🍪 This website uses cookies to enhance your experience."
+  linkText="Learn more"
+  linkUrl="/privacy"
+  showCloseButton
+  persistClose
+  storageKey="cookie-banner-closed"
+  expirationDays={90}
+/>
+```
+
+**Note:** Once you close this banner, it won't show again for 90 days (or until you clear localStorage).
+
+## Persistent with No Expiration
+
+<div class="component-preview">
+  <SlimBanner
+    class="w-full drop-shadow"
+    client:load
+    message="📢 Important: This is a one-time announcement."
+    linkUrl=""
+    showCloseButton
+    persistClose
+    storageKey="announcement-dismissed"
+    expirationDays={0}
+  />
+</div>
+
+```astro
+<SlimBanner
+  message="📢 Important: This is a one-time announcement."
+  linkUrl=""
+  showCloseButton
+  persistClose
+  storageKey="announcement-dismissed"
+  expirationDays={0}
+/>
+```
+
+**Tip:** Set `expirationDays={0}` to hide the banner forever once closed.
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `message` | String | Ukraine message | Main banner message text |
+| `linkText` | String | `'this page'` | Text for the link |
+| `linkUrl` | String | Ukraine URL | URL for the link (set to empty string for no link) |
+| `linkTitle` | String | `''` | Title attribute for the link |
+| `toggleMessage` | String | `''` | Message to show when close button is clicked (enables toggle) |
+| `toggleBgClass` | String | `'bg-black'` | Background class for toggle state |
+| `toggleTextClass` | String | `'text-white'` | Text color class for toggle state |
+| `showCloseButton` | Boolean | `true` | Show close/toggle button |
+| `closeButtonAriaLabel` | String | `'Toggle'` | Aria label for close button |
+| `showIcon` | Boolean | `false` | Show icon (Ukraine flag by default) |
+| `iconClass` | String | Ukraine flag CSS | Custom CSS class for icon |
+| `persistClose` | Boolean | `false` | Save close state to localStorage |
+| `storageKey` | String | `'slimbanner-closed'` | localStorage key for persistence |
+| `expirationDays` | Number | `30` | Days until localStorage expires (0 = never) |
+
+## Slots
+
+| Slot | Description |
+|------|-------------|
+| `default` | Override the entire message content |
+| `icon` | Override the icon/flag |
+| `toggle` | Override the toggle state content |
+
+## Using Slots
+
+```astro
+<SlimBanner client:load>
+  <strong slot="default">Custom content</strong> with <em>HTML markup</em>
+</SlimBanner>
+```
+
+## LocalStorage Management
+
+When using `persistClose={true}`, the close state is saved to localStorage. Here's how to manage it:
+
+### Clear specific banner:
+```javascript
+localStorage.removeItem('cookie-banner-closed');
+```
+
+### Clear all banners:
+```javascript
+// If using default key
+localStorage.removeItem('slimbanner-closed');
+
+// Or clear all by pattern
+Object.keys(localStorage)
+  .filter(key => key.includes('banner'))
+  .forEach(key => localStorage.removeItem(key));
+```
+
+### Check if banner is closed:
+```javascript
+const data = JSON.parse(localStorage.getItem('cookie-banner-closed'));
+console.log('Banner closed:', data?.closed);
+console.log('Expires at:', new Date(data?.expires));
 ```
 
 ## uno.config.ts / shortcuts

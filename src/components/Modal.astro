@@ -1,11 +1,40 @@
 ---
-const { id, open } = Astro.props;
 import Button from '../components/Button.vue';
+
+interface Props {
+  id: string;
+  open?: string;
+  title?: string;
+  maxWidth?: string;
+  showXButton?: boolean;
+  showTrigger?: boolean;
+
+  // Action buttons
+  showActions?: boolean;
+  cancelText?: string;
+  confirmText?: string;
+  confirmPrimary?: boolean;
+}
+
+const {
+  id,
+  open = 'Open modal',
+  title,
+  maxWidth = '600px',
+  showXButton = true,
+  showTrigger = true,
+  showActions = false,
+  cancelText = 'Cancel',
+  confirmText = 'Confirm',
+  confirmPrimary = true,
+} = Astro.props;
 ---
 
-<style>
+<style define:vars={{ maxWidth }}>
   dialog {
-    @apply fixed top-0 left-0 right-0 bottom-0;
+    @apply fixed top-0 left-0 right-0 bottom-0 rounded-lg shadow-xl;
+    max-width: var(--maxWidth);
+    width: calc(100% - 2rem);
 
     &::backdrop {
       @apply bg-slate-medium/50 fixed;
@@ -15,20 +44,111 @@ import Button from '../components/Button.vue';
       left: 0px;
     }
   }
+
+  .modal-header {
+    @apply relative pb-4 mb-4 border-b border-gray-300;
+  }
+
+  .modal-close-x {
+    @apply absolute top-0 right-0 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-200 transition-colors cursor-pointer border-0 bg-transparent;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 2px;
+      background-color: #666;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+
+    &:hover::before,
+    &:hover::after {
+      background-color: #000;
+    }
+  }
+
+  .modal-content {
+    @apply mb-4;
+  }
+
+  .modal-actions {
+    @apply flex gap-3 justify-end pt-4 border-t border-gray-300;
+  }
 </style>
 
-<Button
-  primary
-  onclick={`window.${id}.showModal()`}
-  >{open}</Button
->
+{showTrigger && (
+  <Button
+    primary
+    onclick={`window.${id}.showModal()`}
+    >{open}</Button
+  >
+)}
 
 <dialog
   id={id}
   class="p-6"
 >
-  <slot name="main" />
-  <form method="dialog">
-    <slot name="close" />
-  </form>
+  <div class="modal-header">
+    {title && <h2 class="text-2xl font-bold pr-8">{title}</h2>}
+    <slot name="header" />
+
+    {showXButton && (
+      <form method="dialog" class="inline">
+        <button
+          class="modal-close-x"
+          aria-label="Close"
+          type="submit"
+        />
+      </form>
+    )}
+  </div>
+
+  <div class="modal-content">
+    <slot name="main" />
+    <slot />
+  </div>
+
+  {showActions && (
+    <div class="modal-actions">
+      <slot name="actions">
+        <form method="dialog" class="contents">
+          <Button>{cancelText}</Button>
+        </form>
+        <Button primary={confirmPrimary} onclick={`document.getElementById('${id}').dispatchEvent(new CustomEvent('confirm', { detail: { id: '${id}' } }))`}>
+          {confirmText}
+        </Button>
+      </slot>
+    </div>
+  )}
+
+  {!showActions && (
+    <form method="dialog">
+      <slot name="close" />
+    </form>
+  )}
 </dialog>
+
+<script define:vars={{ id }}>
+  // Close on backdrop click
+  const dialog = document.getElementById(id);
+  dialog?.addEventListener('click', (e) => {
+    if (e.target === dialog) {
+      dialog.close();
+    }
+  });
+
+  // Close on Escape key
+  dialog?.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      dialog.close();
+    }
+  });
+</script>

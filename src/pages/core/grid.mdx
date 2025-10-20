@@ -87,3 +87,107 @@ Template inspired by [Kevin Powell](https://www.youtube.com/kevinpowell)
   </section>
 </main>
 ```
+
+## Full-width variants
+
+Additional utility classes for more flexible full-width layouts.
+
+### Full-width with Flexbox
+
+Use `.full-width-flex` when you need flexbox layout across the full width instead of grid.
+
+<div class="component-preview" style="display: block">
+<main class="flow content-grid bg-white pt-8">
+  <h2>Full-width Flexbox Example</h2>
+  <p>The section below uses flexbox for horizontal layout across the full width.</p>
+
+  <section class="full-width-flex bg-primary text-white section-padding justify-center gap-8">
+    <div class="text-center">
+      <h3 class="text-2xl font-bold">Feature 1</h3>
+      <p>Flexbox layout</p>
+    </div>
+    <div class="text-center">
+      <h3 class="text-2xl font-bold">Feature 2</h3>
+      <p>Full width span</p>
+    </div>
+    <div class="text-center">
+      <h3 class="text-2xl font-bold">Feature 3</h3>
+      <p>Easy alignment</p>
+    </div>
+  </section>
+
+  <p>Back to regular content width.</p>
+</main>
+</div>
+
+```html
+<section class="full-width-flex bg-primary text-white section-padding justify-center gap-8">
+  <div class="text-center">
+    <h3 class="text-2xl font-bold">Feature 1</h3>
+    <p>Flexbox layout</p>
+  </div>
+  <div class="text-center">
+    <h3 class="text-2xl font-bold">Feature 2</h3>
+    <p>Full width span</p>
+  </div>
+  <div class="text-center">
+    <h3 class="text-2xl font-bold">Feature 3</h3>
+    <p>Easy alignment</p>
+  </div>
+</section>
+```
+
+### Full-width Uncontained
+
+Use `.full-width-uncontained` when you want a full-width section where children also span the full width (not constrained to content area).
+
+<div class="component-preview" style="display: block">
+<main class="flow content-grid bg-white pt-8">
+  <h2>Full-width Uncontained Example</h2>
+  <p>The section below has a full-width background and its children span the full width too.</p>
+
+  <section class="full-width-uncontained bg-gray-100 section-padding">
+    <h3 class="bg-primary text-white py-4 text-center">This heading spans the entire width</h3>
+    <p class="bg-blue-100 py-4 text-center">This paragraph also spans the entire width</p>
+  </section>
+
+  <p>Back to regular content width.</p>
+</main>
+</div>
+
+```html
+<section class="full-width-uncontained bg-gray-100 section-padding">
+  <h3 class="bg-primary text-white py-4 text-center">This heading spans the entire width</h3>
+  <p class="bg-blue-100 py-4 text-center">This paragraph also spans the entire width</p>
+</section>
+```
+
+### Full-width Block
+
+Use `.full-width-block` for simple block-level full-width containers without grid or flex layout.
+
+<div class="component-preview" style="display: block">
+<main class="flow content-grid bg-white pt-8">
+  <h2>Full-width Block Example</h2>
+  <p>The image below is wrapped in a full-width-block container.</p>
+
+  <div class="full-width-block bg-gray-200">
+    <img src="https://unsplash.it/1600/300" alt="Full width example" style="width: 100%; display: block;" />
+  </div>
+
+  <p>Back to regular content width.</p>
+</main>
+</div>
+
+```html
+<div class="full-width-block bg-gray-200">
+  <img src="https://unsplash.it/1600/300" alt="Full width example" style="width: 100%; display: block;" />
+</div>
+```
+
+### Comparison
+
+- **`.full-width`** - Grid layout with children constrained to content area (default behavior)
+- **`.full-width-flex`** - Flexbox layout across full width
+- **`.full-width-uncontained`** - Grid layout with children spanning full width
+- **`.full-width-block`** - Simple block container at full width

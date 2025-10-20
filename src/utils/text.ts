@@ -1,10 +1,12 @@
 export const text2paragraphs = (text: string, firstLineBottomMargin: boolean = false) => {
-  // return '<p class="mb-2">' + text.split(/[\n\r]+/g).join('</p><p>') + '</p>'
+  // Normalize line endings: convert \r\n to \n, then remove any remaining \r
+  const normalizedText = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+
   let out =
     '<p' +
-    (firstLineBottomMargin ? 'class="mb-3"' : '') +
+    (firstLineBottomMargin ? ' class="mb-3"' : '') +
     '>' +
-    text.split('\n').join('</p><p>') +
+    normalizedText.split('\n').join('</p><p>') +
     '</p>';
   return out.split('<p></p><p>').join('<p class="mt-3">');
 };

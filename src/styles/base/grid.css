@@ -29,6 +29,28 @@
     display: grid;
     grid-template-columns: inherit;
   }
+
+  /* Variant: full-width with flexbox layout instead of grid */
+  > .full-width-flex {
+    grid-column: full-width;
+    display: flex;
+  }
+
+  /* Variant: full-width container where children span the full width (not constrained to content area) */
+  > .full-width-uncontained {
+    grid-column: full-width;
+    display: grid;
+    grid-template-columns: inherit;
+
+    > * {
+      grid-column: full-width;
+    }
+  }
+
+  /* Variant: full-width block (no grid/flex on container, children flow naturally at full width) */
+  > .full-width-block {
+    grid-column: full-width;
+  }
 }
 
 img.full-width {

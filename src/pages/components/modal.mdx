@@ -9,56 +9,204 @@ import { Icon } from 'astro-icon/components';
 
 # Modal
 
-Native modal window based on `<dialog>` tag with `::backdrop` CSS pseudo-element (pure CSS3 modal window).
-#
-**Documentation:**
+Native modal window based on `<dialog>` tag with `::backdrop` CSS pseudo-element. Features built-in X close button, action buttons, and flexible configuration.
 
+**Documentation:**
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
 - https://developer.mozilla.org/en-US/docs/Web/CSS/::backdrop
 
-## Modal window
-
+## Basic Modal with Title and X Button
 
 <div class="component-preview">
-     <Modal id="dialog" open="Open modal">
-          <main slot="main">
-               <p>Some extra content you would like here</p>
-               <hr />
-          </main>
-          <Button primary slot="close" class="mt-4">Close</Button>
+     <Modal id="dialog1" open="Open modal" title="Modal Title">
+          <p>This modal has a title and built-in X close button in the top-right corner.</p>
+          <p>You can also close by clicking the backdrop or pressing Escape.</p>
      </Modal>
 </div>
 
-```js
-<Modal id="dialog" open="Open modal">
-    <main slot="main">
-        <p>Some extra content you would like here</p>
-        <hr />
-        <img width="60" height="80" src="/assets/logo.svg" alt="Astro logo">
-    </main>
-    <Button primary slot="close" class="mt-4">Close</Button>
+```astro
+<Modal id="dialog1" open="Open modal" title="Modal Title">
+    <p>This modal has a title and built-in X close button in the top-right corner.</p>
+    <p>You can also close by clicking the backdrop or pressing Escape.</p>
 </Modal>
 ```
 
-## Modal with different close button
+## Modal with Action Buttons
 
 <div class="component-preview">
-     <Modal id="dialog2" open="Open modal">
-          <main slot="main">
-               <p>Some extra content you would like here</p>
-          </main>
-     <Button primary slot="close" class="mt-4"><Icon name="octicon:x-24" /></Button>
+     <Modal
+          id="dialog2"
+          open="Delete Item"
+          title="Confirm Delete"
+          showActions
+          cancelText="Cancel"
+          confirmText="Delete"
+     >
+          <p>Are you sure you want to delete this item? This action cannot be undone.</p>
      </Modal>
 </div>
 
-```js
-<Modal id="dialog2" open="Open modal">
-    <main slot="main">
-        <p>Some extra content you would like here</p>
-        <img width="60" height="80" src="/assets/logo.svg" alt="Astro logo">
-    </main>
+```astro
+<Modal
+     id="dialog2"
+     open="Delete Item"
+     title="Confirm Delete"
+     showActions
+     cancelText="Cancel"
+     confirmText="Delete"
+>
+     <p>Are you sure you want to delete this item? This action cannot be undone.</p>
+</Modal>
+```
+
+## Modal with Custom Actions
+
+<div class="component-preview">
+     <Modal
+          id="dialog3"
+          open="Save Changes"
+          title="Save Document"
+          showActions
+     >
+          <p>Would you like to save your changes before closing?</p>
+
+          <div slot="actions" class="flex gap-3 justify-end">
+               <form method="dialog" class="contents">
+                    <Button>Don't Save</Button>
+               </form>
+               <form method="dialog" class="contents">
+                    <Button primary>Save</Button>
+               </form>
+          </div>
+     </Modal>
+</div>
+
+```astro
+<Modal
+     id="dialog3"
+     open="Save Changes"
+     title="Save Document"
+     showActions
+>
+     <p>Would you like to save your changes before closing?</p>
+
+     <div slot="actions" class="flex gap-3 justify-end">
+          <form method="dialog" class="contents">
+               <Button>Don't Save</Button>
+          </form>
+          <form method="dialog" class="contents">
+               <Button primary>Save</Button>
+          </form>
+     </div>
+</Modal>
+```
+
+## Modal with Custom Width
+
+<div class="component-preview">
+     <Modal
+          id="dialog4"
+          open="Wide Modal"
+          title="Large Content"
+          maxWidth="900px"
+     >
+          <p>This modal is wider than the default. Useful for forms or detailed content.</p>
+          <div class="grid grid-cols-2 gap-4 mt-4">
+               <div class="p-4 bg-gray-100 rounded">Column 1</div>
+               <div class="p-4 bg-gray-100 rounded">Column 2</div>
+          </div>
+     </Modal>
+</div>
+
+```astro
+<Modal
+     id="dialog4"
+     open="Wide Modal"
+     title="Large Content"
+     maxWidth="900px"
+>
+     <p>This modal is wider than the default. Useful for forms or detailed content.</p>
+</Modal>
+```
+
+## Modal without X Button (Legacy Style)
+
+<div class="component-preview">
+     <Modal id="dialog5" open="Open modal" title="Custom Close" showXButton={false}>
+          <p>This modal doesn't have the X button.</p>
+          <p>You need to provide your own close button.</p>
+          <Button primary slot="close" class="mt-4">Close Modal</Button>
+     </Modal>
+</div>
+
+```astro
+<Modal id="dialog5" open="Open modal" title="Custom Close" showXButton={false}>
+     <p>This modal doesn't have the X button.</p>
+     <Button primary slot="close" class="mt-4">Close Modal</Button>
+</Modal>
+```
+
+## Modal with Custom Close Button (Icon)
+
+<div class="component-preview">
+     <Modal id="dialog6" open="Open modal" title="Icon Close" showXButton={false}>
+          <p>Some extra content you would like here</p>
+          <Button primary slot="close" class="mt-4"><Icon name="octicon:x-24" /></Button>
+     </Modal>
+</div>
+
+```astro
+<Modal id="dialog6" open="Open modal" title="Icon Close" showXButton={false}>
+     <p>Some extra content you would like here</p>
      <Button primary slot="close" class="mt-4"><Icon name="octicon:x-24" /></Button>
 </Modal>
 ```
+
+## Handling Confirm Events
+
+You can listen for the `confirm` event when using action buttons:
+
+```javascript
+document.getElementById('dialog2').addEventListener('confirm', (e) => {
+     console.log('Confirmed!', e.detail);
+     // Perform your action here
+     document.getElementById('dialog2').close();
+});
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `id` | string | required | Unique identifier for the modal |
+| `open` | string | `'Open modal'` | Text for the trigger button |
+| `title` | string | `undefined` | Modal title (shown in header) |
+| `maxWidth` | string | `'600px'` | Maximum width of the modal |
+| `showXButton` | boolean | `true` | Show X close button in top-right |
+| `showTrigger` | boolean | `true` | Show the trigger button |
+| `showActions` | boolean | `false` | Show action buttons footer |
+| `cancelText` | string | `'Cancel'` | Text for cancel button |
+| `confirmText` | string | `'Confirm'` | Text for confirm button |
+| `confirmPrimary` | boolean | `true` | Make confirm button primary style |
+
+## Slots
+
+| Slot | Description |
+|------|-------------|
+| `default` | Main modal content (alias for `main` slot) |
+| `main` | Main modal content |
+| `header` | Custom header content (replaces title) |
+| `actions` | Custom action buttons (when `showActions` is true) |
+| `close` | Custom close button (when `showActions` is false) |
+
+## Features
+
+- ✅ Built-in X close button in top-right corner
+- ✅ Click backdrop to close
+- ✅ Press Escape to close
+- ✅ Built-in action buttons (Cancel/Confirm)
+- ✅ Customizable width
+- ✅ TypeScript support
+- ✅ Fully accessible with ARIA labels
 
 
