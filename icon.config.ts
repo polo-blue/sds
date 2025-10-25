@@ -125,7 +125,10 @@ export const iconConfig: IconConfig = {
       "car",
       "credit-card",
       "barcode",
-      "qr"
+      "qr",
+      "left-arrow-alt",
+      "right-arrow-alt",
+      "arrow-back"
     ],
 
     carbon: [
@@ -248,6 +251,8 @@ export const iconConfig: IconConfig = {
       "messenger",
       "instagram",
       "telegram",
+      "youtube",
+      "vimeo",
       "carrd"
     ],
 

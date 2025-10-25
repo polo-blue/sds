@@ -156,6 +156,12 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
       'origin-top-left',
       'transform-gpu',
 
+      // Dynamic icons from ProductDetailsList component
+      'i-lucide-book-text',
+      'i-lucide-link',
+      'i-simple-icons-youtube',
+      'i-simple-icons-vimeo',
+
       // All peer selectors from the list (needed for floating labels)
       ...peerSelectorClasses,
     ],
@@ -172,7 +178,8 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
           while ((match = classRegex.exec(code)) !== null) {
             match[1].split(/\s+/).forEach(cls => {
               // Only add classes that don't look like malformed icon names
-              if (cls && !cls.match(/^(lucide|simple-icons)-\w+-[A-Z]/) && !cls.includes('Grouping')) {
+              // Filter out patterns like i-lucide-link-Validate, i-simple-icons-youtube-case, etc.
+              if (cls && !cls.match(/^i-(lucide|simple-icons|mdi|ant-design|bi|bx|carbon|el|eos-icons|fluent|flowbite|la|octicon|uil|icon-park-outline|ph|ic|material-symbols-light|et|system-uicons|vscode-icons|streamline-freehand-color)-\w+-(case|return|if|const|Validate|items|validatedItems|Grouping|function|switch|default)/i) && !cls.includes('Grouping')) {
                 result.add(cls);
               }
             });
@@ -183,7 +190,7 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
             const dynamicClassRegex = /class:\w+\s*=\s*["'`]([^"'`]+)["'`]/g;
             while ((match = dynamicClassRegex.exec(code)) !== null) {
               match[1].split(/\s+/).forEach(cls => {
-                if (cls && !cls.match(/^(lucide|simple-icons)-\w+-[A-Z]/) && !cls.includes('Grouping')) {
+                if (cls && !cls.match(/^i-(lucide|simple-icons|mdi|ant-design|bi|bx|carbon|el|eos-icons|fluent|flowbite|la|octicon|uil|icon-park-outline|ph|ic|material-symbols-light|et|system-uicons|vscode-icons|streamline-freehand-color)-\w+-(case|return|if|const|Validate|items|validatedItems|Grouping|function|switch|default)/i) && !cls.includes('Grouping')) {
                   result.add(cls);
                 }
               });
