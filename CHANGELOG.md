@@ -1,3 +1,9 @@
+## [1.4.2](https://github.com/polo-blue/sds/compare/v1.4.1...v1.4.2) (2025-10-25)
+
+### Bug Fixes
+
+* resolve UnoCSS icon loading errors and add missing icons ([b5cb48f](https://github.com/polo-blue/sds/commit/b5cb48f06c03b616adce28efb36438411038574b))
+
 ## [1.4.1](https://github.com/polo-blue/sds/compare/v1.4.0...v1.4.1) (2025-10-20)
 
 ## [1.4.0](https://github.com/polo-blue/sds/compare/v1.3.7...v1.4.0) (2025-10-20)
