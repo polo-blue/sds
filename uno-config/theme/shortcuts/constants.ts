@@ -134,7 +134,7 @@ export const PRODUCT_STYLES = {
     container: `${aspectRatios['4/3']} ${LAYOUT.flex.alignCenter} mb-3 sm:mb-auto ${IMAGE_STYLES.overlay}`,
   },
   link: {
-    base: 'relative flex w-full bg-white after:(absolute bg-accent-light w-[calc(100%-1rem)] left-0 h-px top-[calc(100%-1px)] bottom-1 content-empty scale-x-0 transition-transform-300 origin-top-right) hover:after:(origin-top-left scale-x-100)',
+    base: 'relative flex w-full after:(absolute bg-accent-light w-[calc(100%-1rem)] left-0 h-px top-[calc(100%-1px)] bottom-1 content-empty scale-x-0 transition-transform-300 origin-top-right) hover:after:(origin-top-left scale-x-100)',
     url: 'font-light leading-none mb-2 pr-4 line-clamp-2 h-[2em]',
     urlOverlay: 'before:(content-empty absolute left-0 right-4 h-full top-0)',
     bigTile: `${aspectRatios['4/3']} ${LAYOUT.flex.center} mb-3 w-60 min-w-60 h-auto object-contain object-top bg-gray-50 relative ${IMAGE_STYLES.overlay}`,
