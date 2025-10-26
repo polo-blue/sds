@@ -1,0 +1,49 @@
+{
+  "includeCoAuthoredBy": false,
+  "permissions": {
+    "allow": [
+      "Bash(pnpm dev:*)",
+      "Bash(pnpm start:*)",
+      "Bash(pnpm build:*)",
+      "Bash(pnpm preview:*)",
+      "Bash(pnpm check:*)",
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm format:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ],
+    "deny": [
+      "Bash(pnpm semantic-release:*)",
+      "Bash(pnpm publish:*)",
+      "Bash(npm publish:*)",
+      "Bash(git push:*)"
+    ],
+    "ask": [
+      "Bash(rm:*)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm remove:*)",
+      "Bash(git branch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git merge:*)",
+      "Bash(git rebase:*)"
+    ]
+  },
+  "additionalInstructions": "## Project-Specific Instructions\n\n### Component Development\n- When creating new components, always export them from root `index.ts` (not from `src/`)\n- Use the path pattern: `export { default as Name } from './src/components/Name.vue'`\n- Add documentation page in `src/pages/components/` with `.mdx` extension\n- Update `src/config.ts` SIDEBAR array with navigation entry\n\n### UnoCSS Modifications\n- Never edit root `uno.config.ts` directly (it's just a wrapper)\n- Make theme changes in `uno-config/theme/` files\n- Add shortcuts to appropriate file in `uno-config/theme/shortcuts/`\n- When adding icons, update `icon.config.ts` include array\n\n### Commit Messages\n- This project uses semantic-release with conventional commits\n- Format: `<type>[scope]: <description>`\n- Types: feat (minor), fix (patch), docs (patch), chore (no release)\n- Breaking changes: Add `BREAKING CHANGE:` footer for major version\n- Examples:\n  - `feat(components): add new Modal component`\n  - `fix(Input): resolve floating label z-index issue`\n  - `docs: update Button examples`\n\n### Code Quality\n- Run `pnpm lint:fix` before committing\n- Run `pnpm format` to auto-format code\n- Run `pnpm check` for Astro type checking\n- Ensure components work in both contexts: as npm package and in docs site\n\n### Path Conventions\n- Use TypeScript path aliases: `@components/`, `@utils/`, `@types/`\n- In root `index.ts`, always use `./src/` prefix\n- Within `src/`, use aliases or relative paths\n\n### Testing Changes\n- Start dev server with `pnpm dev` (runs on port 1234)\n- Preview production build with `pnpm preview`\n- Check build output with `pnpm build`",
+  "customInstructions": {
+    "autoApprove": {
+      "patterns": [
+        "*.vue",
+        "*.astro",
+        "*.ts",
+        "*.js",
+        "*.mdx",
+        "src/**/*",
+        "uno-config/**/*"
+      ]
+    }
+  }
+}
