@@ -12,32 +12,32 @@ export const prcodesArray = ["PJ4", "CA2", "C4E", "2JZ"]
 export const tableItems = [
   {
     id: "number",
-    name: "Part number",
+    label: "Part number",
     value: "6R0071609GRU",
   },
   {
     id: "prcodes",
-    name: "PR-Codes",
+    label: "PR-Codes",
     value: ["PJ4", "CA2", "C4E", "2JZ"],
   },
   {
     id: "color",
-    name: "Color",
+    label: "Color",
     value: "Black",
   },
   {
     id: "position",
-    name: "Fitting position",
+    label: "Fitting position",
     value: "Front axle",
   },
   {
     id: "brake-disck-thicnkess",
-    name: "Brake disc thicknes",
+    label: "Brake disc thicknes",
     value: "22 mm",
   },
   {
     id: "weight",
-    name: "Weight",
+    label: "Weight",
     value: "5.185 kg"
   }
 ];
@@ -58,35 +58,35 @@ export const tableItems = [
 </div>
 
 ```ts
- const tableItems = [
+const tableItems = [
   {
     id: "number",
-    name: "Part number",
+    label: "Part number",
     value: "6R0071609GRU",
   },
   {
     id: "prcodes",
-    name: "PR-Codes",
+    label: "PR-Codes",
     value: ["PJ4", "CA2", "C4E"]
   },
   {
     id: "color",
-    name: "Color",
+    label: "Color",
     value: "Black",
   },
   {
     id: "position",
-    name: "Fitting position",
+    label: "Fitting position",
     value: "Front axle",
   },
   {
     id: "brake-disck-thicnkess",
-    name: "Brake disc thicknes",
+    label: "Brake disc thicknes",
     value: "22 mm",
   },
   {
     id: "weight",
-    name: "Weight",
+    label: "Weight",
     value: "5.185 kg"
   }
 ];
@@ -103,7 +103,7 @@ export const tableItems = [
   </td>
 </ProductDetailsList>
  ```
- ### Vue:
+### Vue:
 ```js
 <ProductDetailsList items={tableItems}>
   <template #number >
@@ -113,4 +113,85 @@ export const tableItems = [
     <ProductCodes as="td" prcodes={prcodesArray} />
   </template>
 </ProductDetailsList>
- ```
+```
+
+## Props
+
+### items
+Array of table items with the following structure:
+- `id` (string): Unique identifier for the row, also used for slot names
+- `label` (string): Display name for the table header
+- `value` (unknown): The value to display - can be string, number, boolean, string array, or Link array
+- `type` (optional string): Set to `'links'` for link arrays
+- `isGenericArray` (optional boolean): Set to `true` for generic string arrays
+
+### caption
+Optional string for the table caption.
+
+## Value Types
+
+The component supports multiple value types:
+
+### Link Arrays
+Use `type: 'links'` to display an array of links with icons:
+
+```ts
+{
+  id: "resources",
+  label: "Resources",
+  type: "links",
+  value: [
+    { type: "blog", url: "https://example.com/blog", anchor: "Blog Post" },
+    { type: "youtube", url: "https://youtube.com/watch", anchor: "Video Tutorial" },
+    { type: "vimeo", url: "https://vimeo.com/123", anchor: "Demo Video" }
+  ]
+}
+```
+
+Supported link types with icons:
+- `blog` - Book text icon
+- `youtube` - YouTube icon
+- `vimeo` - Vimeo icon
+- Default - Generic link icon
+
+### Generic String Arrays
+Use `isGenericArray: true` to display a bulleted list:
+
+```ts
+{
+  id: "position",
+  label: "Fitting position",
+  isGenericArray: true,
+  value: ["Front axle", "Rear axle"]
+}
+```
+
+### HTML Values
+The component automatically detects and renders HTML strings:
+
+```ts
+{
+  id: "description",
+  label: "Description",
+  value: "Compatible with <span class='font-bold'>multiple models</span>"
+}
+```
+
+### Simple Values
+Strings, numbers, and booleans are displayed as-is:
+
+```ts
+{
+  id: "weight",
+  label: "Weight",
+  value: "5.185 kg"
+}
+```
+
+## Slots
+
+### caption
+Override the default caption with custom content.
+
+### Row-specific slots
+Use the row's `id` as the slot name to override the default value rendering. The slot receives the entire row as slot props.
