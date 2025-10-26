@@ -46,7 +46,7 @@ export const LAYOUT = {
   },
   spacing: {
     topPadding: 'pt-24 sm:pt-14',
-    containerPadding: 'px-4',
+    containerPadding: 'px-4 2xl:px-10',
   },
   grid: {
     cols2: 'grid-cols-2',
