@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Running pre-commit checks..."
+
+# Run Astro build to catch MDX and component errors
+echo "🏗️  Building project..."
+pnpm run build
+
+if [ $? -eq 0 ]; then
+  echo "✅ Build successful! Proceeding with commit..."
+else
+  echo "❌ Build failed! Please fix errors before committing."
+  exit 1
+fi

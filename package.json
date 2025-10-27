@@ -26,7 +26,8 @@
     "format:check": "prettier --check \"src/**/*.{js,ts,jsx,tsx,vue,astro,json,css,md}\"",
     "lint": "eslint \"src/**/*.{js,ts,jsx,tsx,vue,astro}\"",
     "lint:fix": "eslint \"src/**/*.{js,ts,jsx,tsx,vue,astro}\" --fix",
-    "check": "astro check"
+    "check": "astro check",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -126,6 +127,7 @@
     "eslint": "^9.38.0",
     "eslint-plugin-astro": "^1.4.0",
     "eslint-plugin-vue": "^10.5.1",
+    "husky": "^9.1.7",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "semantic-release": "^25.0.1",
