@@ -24,11 +24,6 @@ const props = defineProps({
     required: false,
   },
 });
-
-// Generate variant class based on category
-const variantClass = props.prcode.variant_category
-  ? `btn-prcode--variant-${props.prcode.variant_category.toLowerCase()}`
-  : '';
 </script>
 
 <template>
@@ -36,9 +31,12 @@ const variantClass = props.prcode.variant_category
     <span
       data-pagefind-filter="PR-Code"
       class="btn-prcode"
-      :class="[variantClass, { 'btn-prcode--pdp': props.isPdp }]"
+      :class="[
+        prcode.variant_category ? `btn-prcode--variant-${prcode.variant_category.toLowerCase()}` : '',
+        { 'btn-prcode--pdp': isPdp }
+      ]"
     >
-      {{ props.prcode.code }}
+      {{ prcode.code }}
     </span>
 
     <!-- Dynamic Tooltip with description from API -->
