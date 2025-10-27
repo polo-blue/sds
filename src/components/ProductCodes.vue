@@ -27,29 +27,32 @@ const props = defineProps({
 <template>
   <span
     v-for="(prcode, index) in prcodes"
-    :key="prcode.id || index"
+    :key="prcode?.id || index"
     class="not-last:mr-1"
   >
-    <!-- Handle normal PR codes -->
-    <PrCode
-      v-if="!prcode.code.includes('+')"
-      :prcode="prcode"
-      :isPdp="isPdp"
-    />
-
-    <!-- Handle combined PR codes like "1KD+2JP" -->
-    <span v-else>
+    <!-- Skip invalid entries -->
+    <template v-if="prcode?.code">
+      <!-- Handle normal PR codes -->
       <PrCode
-        v-for="(code, idx) in prcode.code.split('+')"
-        :key="idx"
-        :prcode="{
-          code: code.trim(),
-          group: prcode.group,
-          description: null,
-          variant_category: prcode.variant_category
-        }"
+        v-if="!prcode.code.includes('+')"
+        :prcode="prcode"
         :isPdp="isPdp"
       />
-    </span>
+
+      <!-- Handle combined PR codes like "1KD+2JP" -->
+      <span v-else>
+        <PrCode
+          v-for="(code, idx) in prcode.code.split('+')"
+          :key="idx"
+          :prcode="{
+            code: code.trim(),
+            group: prcode.group,
+            description: null,
+            variant_category: prcode.variant_category
+          }"
+          :isPdp="isPdp"
+        />
+      </span>
+    </template>
   </span>
 </template>

@@ -7,7 +7,12 @@ import ProductDetailsList from '../../components/ProductDetailsList.vue'
 import ProductNumber from "../../components/Product/ProductNumber.astro"
 import ProductCodes from '../../components/ProductCodes.vue'
 
-export const prcodesArray = ["PJ4", "CA2", "C4E", "2JZ"]
+export const prcodesArray = [
+  { code: "PJ4", group: "BAV", description: "Disk brakes example" },
+  { code: "CA2", group: "STF", description: "Standard equipment" },
+  { code: "C4E", group: "AAU", description: "Air conditioning" },
+  { code: "2JZ", group: "STF", description: "Standard bumpers (e.g. Polo 6R Bluemotion)", variant_category: "BLUEMOTION" }
+]
 
 export const tableItems = [
   {
@@ -18,7 +23,7 @@ export const tableItems = [
   {
     id: "prcodes",
     label: "PR-Codes",
-    value: ["PJ4", "CA2", "C4E", "2JZ"],
+    value: prcodesArray,
   },
   {
     id: "color",
@@ -58,6 +63,12 @@ export const tableItems = [
 </div>
 
 ```ts
+const prcodesArray = [
+  { code: "PJ4", group: "BAV", description: "Disk brakes example" },
+  { code: "CA2", group: "STF", description: "Standard equipment" },
+  { code: "C4E", group: "AAU", description: "Air conditioning" }
+]
+
 const tableItems = [
   {
     id: "number",
@@ -67,7 +78,7 @@ const tableItems = [
   {
     id: "prcodes",
     label: "PR-Codes",
-    value: ["PJ4", "CA2", "C4E"]
+    value: prcodesArray
   },
   {
     id: "color",
