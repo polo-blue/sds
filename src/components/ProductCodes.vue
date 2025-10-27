@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import type { PropType } from 'vue';
-import { computed } from 'vue';
 import PrCode from './PrCode.vue';
 
 interface PrCodeObject {
@@ -23,16 +22,11 @@ const props = defineProps({
     required: false,
   },
 });
-
-// Sort PR codes by code
-const sortedCodes = computed(() => {
-  return [...props.prcodes].sort((a, b) => a.code.localeCompare(b.code));
-});
 </script>
 
 <template>
   <span
-    v-for="(prcode, index) in sortedCodes"
+    v-for="(prcode, index) in prcodes"
     :key="prcode.id || index"
     class="not-last:mr-1"
   >
