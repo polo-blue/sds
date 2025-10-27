@@ -6,16 +6,16 @@ interface InputProps {
   name?: string;
   label: string;
   variant?: 'filled' | 'standard';
-  type?: string;
-  modelValue?: string | number;
+  type?: string; // HTMLInputElement['type'] | 'textarea'
+  modelValue?: string | number; // For v-model compatibility
   required?: boolean;
-  rows?: number;
+  rows?: number; // rows for textarea
   placeholder?: string;
   error?: string | boolean;
   success?: string | boolean;
-  size?: 'sm' | 'md' | 'lg';
-  class?: string;
-  [key: string]: any;
+  size?: 'sm' | 'md' | 'lg'; // Size prop
+  class?: string; // additional classes
+  [key: string]: any; // To allow additional props
 }
 
 const props = withDefaults(defineProps<InputProps>(), {
@@ -26,11 +26,11 @@ const props = withDefaults(defineProps<InputProps>(), {
   modelValue: '',
   required: false,
   rows: 3,
-  placeholder: ' ', // space for "floating label"
+  placeholder: ' ', // space is important for "floating label"
   error: false,
   success: false,
   size: 'md',
-  class: '',
+  class: ''
 });
 
 const emit = defineEmits(['update:modelValue', 'input', 'focus', 'blur']);
@@ -38,72 +38,86 @@ const emit = defineEmits(['update:modelValue', 'input', 'focus', 'blur']);
 // Handle external attrs
 const attrs = useAttrs();
 
-// Compute wrapper class - uses existing shortcut
-const wrapperClass = computed(() => `input-wrapper-${props.variant}`);
+// Compute wrapper class
+const wrapperClass = computed(() => `relative input-wrapper-${props.variant}`);
 
-// Compute input classes - uses shortcuts
+// Compute input classes going back to direct arbitrary selectors
 const inputClass = computed(() => {
-  const classes = ['input-base', 'input-placeholder', `input-${props.variant}`];
-
-  // Add size class
+  // Base classes
+  const classes = ['input-base', `input-${props.variant}`];
+  
+  // Focus and placeholder behavior - using direct arbitrary selectors
+  classes.push('[&:focus~label]:text-blue-light');
+  classes.push('[&:focus~label]:dark:text-blue-lightest');
+  classes.push('[&:focus~label]:scale-75');
+  classes.push('[&:placeholder-shown~label]:scale-100');
+  classes.push('[&:placeholder-shown~label]:translate-y-0');
+  classes.push('[&:not(:placeholder-shown)~label]:scale-75');
+  
+  // Variant-specific behaviors
+  if (props.variant === 'standard') {
+    classes.push('[&:focus~label]:-translate-y-6');
+    classes.push('[&:focus~label]:start-0');
+    classes.push('[&:not(:placeholder-shown)~label]:-translate-y-6');
+  } else if (props.variant === 'filled') {
+    classes.push('[&:focus~label]:-translate-y-4');
+    classes.push('[&:not(:placeholder-shown)~label]:-translate-y-4');
+  }
+  
+  // Additional classes
   if (props.size) classes.push(`input-${props.size}`);
-
-  // Add textarea class if needed
   if (props.type === 'textarea') classes.push('input-textarea');
-
-  // Add status classes
   if (props.error) classes.push('input-error');
   else if (props.success) classes.push('input-success');
-
-  // Add custom classes
   if (props.class) classes.push(props.class);
-
+  
   return classes.join(' ');
 });
 
-// Compute label classes - using optimized shortcuts
+// Compute label classes - important: add -translate-y for initial state explicitly
 const labelClass = computed(() => {
-  const classes = [
-    // Base label style
-    'input-label-base',
-
-    // Position styling
-    `input-label-${props.variant}`,
-
-    // State styling - contains all transformations for the specific variant
-    `input-label-${props.variant}-state`,
-  ];
-
-  // Add size class
+  // Base classes
+  const classes = ['input-label-base', `input-label-${props.variant}`];
+  
+  // Explicitly add transform for initial state to ensure consistency
+  if (props.variant === 'standard') {
+    // Start in position and let focus/content move it
+    classes.push('translate-y-0');
+  } else if (props.variant === 'filled') {
+    // Start in position and let focus/content move it
+    classes.push('translate-y-0');
+  }
+  
+  // Additional classes
   if (props.size) classes.push(`input-label-${props.size}`);
-
-  // Add status classes
   if (props.error) classes.push('input-label-error');
   else if (props.success) classes.push('input-label-success');
-
+  
   return classes.join(' ');
 });
 
-// Event handlers
-const handleInput = (event: globalThis.Event) => {
-  const target = event.target as globalThis.HTMLInputElement | globalThis.HTMLTextAreaElement;
+// Emit modelValue on input change
+const handleInput = (event: Event) => {
+  const target = event.target as HTMLInputElement | HTMLTextAreaElement;
   emit('update:modelValue', target.value);
   emit('input', event);
 };
 
-const handleFocus = (event: globalThis.FocusEvent) => emit('focus', event);
-const handleBlur = (event: globalThis.FocusEvent) => emit('blur', event);
+// Forward focus and blur events
+const handleFocus = (event: FocusEvent) => emit('focus', event);
+const handleBlur = (event: FocusEvent) => emit('blur', event);
 </script>
 
 <template>
   <div :class="wrapperClass">
+    <!-- Textarea field -->
     <textarea
       v-if="type === 'textarea'"
       :id="id"
       :name="name || id"
       :rows="rows"
       :required="required"
-      :class="inputClass + ' peer'"
+      :class="inputClass"
       :placeholder="placeholder"
       :value="modelValue"
       v-bind="attrs"
@@ -111,44 +125,47 @@ const handleBlur = (event: globalThis.FocusEvent) => emit('blur', event);
       @focus="handleFocus"
       @blur="handleBlur"
     />
-
+    
+    <!-- Input field -->
     <input
       v-else
       :id="id"
       :type="type"
       :name="name || id"
       :required="required"
-      :class="inputClass + ' peer'"
+      :class="inputClass"
       :placeholder="placeholder"
       :value="modelValue"
       v-bind="attrs"
       @input="handleInput"
       @focus="handleFocus"
       @blur="handleBlur"
-    />
-
+    >
+    
+    <!-- Label with guaranteed correct transform origin -->
     <label
       :for="id"
       :class="labelClass"
-      style="transform-origin: top left"
+      style="transform-origin: top left;"
     >
       {{ label }}
       <span
         v-if="required"
         class="text-red-500 ml-1"
-        >*</span
-      >
+      >*</span>
     </label>
-
-    <div
-      v-if="error && typeof error === 'string'"
+    
+    <!-- Error message -->
+    <div 
+      v-if="error && typeof error === 'string'" 
       class="input-error-message"
     >
       {{ error }}
     </div>
-
-    <div
-      v-if="success && typeof success === 'string'"
+    
+    <!-- Success message -->
+    <div 
+      v-if="success && typeof success === 'string'" 
       class="input-success-message"
     >
       {{ success }}

@@ -7,17 +7,16 @@ import ProductCodes from '../../components/ProductCodes.vue'
 
 # PR-Code
 
-PR Code are Production Codes for all of the installed equipment in the vehicle and is used by manufacturers including VW, Audi, Seat, Skoda, Porsche, Lamborghini etc. 
-PR Codes contain 3 characters comprising of letters and numbers. 
+PR Code are Production Codes for all of the installed equipment in the vehicle and is used by manufacturers including VW, Audi, Seat, Skoda, Porsche, Lamborghini etc.
+PR Codes contain 3 characters comprising of letters and numbers.
 
 PR codes are located on vehicle´s build sticker that is located on first pages of cars warranty booklet or there should be one in a trunk as well usually under the carpet or in spare tire area.
 
 They are important when purchasing spare parts as they provide information about the manufacturer, make, model, year of manufacture, and other vehicle details.
 
+## Single PR-Code
 
-
-## PR-Code
-Single PR-Code.
+Display a single PR code with tooltip showing description from API.
 
 ### import:
 
@@ -25,25 +24,92 @@ Single PR-Code.
 import PrCode from 'spoko-design-system/src/components/PrCode.vue'
 ```
 
-#
+### Basic Usage:
 
 <div class="component-preview">
-     <div class="bg-white p-6 w-full">
-          <PrCode prcode="2JP" />
-          <PrCode prcode="1ZJ" />
+     <div class="bg-white p-6 w-full flex gap-2">
+          <PrCode prcode={{ code: "2JP", group: "STF", description: "R-Line bumper", variant_category: "R_LINE" }} />
+          <PrCode prcode={{ code: "1ZJ", group: "BAV", description: "Disk brakes in front (Geomet D); 256x22mm (vented)" }} />
      </div>
 </div>
 
-```js
-     <PrCode prcode="2JP" />
-     <PrCode prcode="1ZJ" />
+```vue
+<PrCode :prcode="{
+  code: '2JP',
+  group: 'STF',
+  description: 'R-Line bumper',
+  variant_category: 'R_LINE'
+}" />
+
+<PrCode :prcode="{
+  code: '1ZJ',
+  group: 'BAV',
+  description: 'Disk brakes in front (Geomet D); 256x22mm (vented)'
+}" />
 ```
 
+### Special Edition Variants (Colored):
 
+PR codes for special editions are automatically color-coded based on their `variant_category`:
 
+<div class="component-preview">
+     <div class="bg-white p-6 w-full flex flex-wrap gap-3">
+          <div class="flex flex-col gap-1">
+               <small class="text-xs text-gray-500">GTI (Red)</small>
+               <PrCode prcode={{ code: "2JD", group: "STF", description: "Sports bumpers (e.g. Polo 6R/6C GTI)", variant_category: "GTI" }} />
+          </div>
+          <div class="flex flex-col gap-1">
+               <small class="text-xs text-gray-500">WRC (Blue)</small>
+               <PrCode prcode={{ code: "E5M", group: "AAU", description: "Polo WRC", variant_category: "WRC" }} />
+          </div>
+          <div class="flex flex-col gap-1">
+               <small class="text-xs text-gray-500">CROSS (Orange)</small>
+               <PrCode prcode={{ code: "2JK", group: "STF", description: "Sports bumpers (e.g. Polo 6R/6C Cross)", variant_category: "CROSS" }} />
+          </div>
+          <div class="flex flex-col gap-1">
+               <small class="text-xs text-gray-500">BlueGT</small>
+               <PrCode prcode={{ code: "2JE", group: "STF", description: "Partially painted bumpers (e.g. Polo 6R/6C BlueGT)", variant_category: "BLUEGT" }} />
+          </div>
+          <div class="flex flex-col gap-1">
+               <small class="text-xs text-gray-500">Bluemotion</small>
+               <PrCode prcode={{ code: "2JZ", group: "STF", description: "Standard bumpers (e.g. Polo 6R Bluemotion)", variant_category: "BLUEMOTION" }} />
+          </div>
+     </div>
+</div>
+
+```vue
+<!-- GTI - Red -->
+<PrCode :prcode="{ code: '2JD', group: 'STF', description: 'Sports bumpers (e.g. Polo 6R/6C GTI)', variant_category: 'GTI' }" />
+
+<!-- WRC - Blue -->
+<PrCode :prcode="{ code: 'E5M', group: 'AAU', description: 'Polo WRC', variant_category: 'WRC' }" />
+
+<!-- CROSS - Orange -->
+<PrCode :prcode="{ code: '2JK', group: 'STF', description: 'Sports bumpers (e.g. Polo 6R/6C Cross)', variant_category: 'CROSS' }" />
+
+<!-- BlueGT -->
+<PrCode :prcode="{ code: '2JE', group: 'STF', description: 'Partially painted bumpers (e.g. Polo 6R/6C BlueGT)', variant_category: 'BLUEGT' }" />
+
+<!-- Bluemotion -->
+<PrCode :prcode="{ code: '2JZ', group: 'STF', description: 'Standard bumpers (e.g. Polo 6R Bluemotion)', variant_category: 'BLUEMOTION' }" />
+```
+
+### Variant Categories:
+
+The following variant categories are supported with automatic color coding:
+
+| Category | Color | Description | Example Codes |
+|----------|-------|-------------|---------------|
+| `GTI` | Red | GTI Performance variants | 2JD, 1ZD, 1KV, 0NH, 1ZR |
+| `WRC` | Blue | WRC/R Street variants | E5M, 1KD, 1ZP, 2JQ, TA2 |
+| `CROSS` | Orange | Cross/Offroad variants | 2JK |
+| `BLUEGT` | Accent Dark | BlueGT variants | 2JE |
+| `BLUEMOTION` | Accent Light | Bluemotion eco variants | 2JZ, 7L6 |
+| `R_LINE` | Gray | R-Line styling | 2JP |
 
 ## PR-Codes List
-Component to display list of pr codes from array.
+
+Display multiple PR codes from an array of objects (from API response).
 
 ### import:
 
@@ -51,15 +117,93 @@ Component to display list of pr codes from array.
 import ProductCodes from 'spoko-design-system/src/components/ProductCodes.vue'
 ```
 
-#
+### Usage:
 
 <div class="component-preview">
      <div class="bg-white p-6 w-full">
-          <ProductCodes prcodes={["2JP", "1ZJ"]}  />
+          <ProductCodes prcodes={[
+               { code: "2JP", group: "STF", description: "R-Line bumper", variant_category: "R_LINE" },
+               { code: "1ZJ", group: "BAV", description: "Disk brakes in front (Geomet D); 256x22mm (vented)" },
+               { code: "2JD", group: "STF", description: "Sports bumpers (e.g. Polo 6R/6C GTI)", variant_category: "GTI" },
+          ]} />
      </div>
 </div>
 
-```js
-     <ProductCodes prcodes={["2JP", "1ZJ"]} />
+```vue
+<ProductCodes :prcodes="[
+  { code: '2JP', group: 'STF', description: 'R-Line bumper', variant_category: 'R_LINE' },
+  { code: '1ZJ', group: 'BAV', description: 'Disk brakes in front (Geomet D); 256x22mm (vented)' },
+  { code: '2JD', group: 'STF', description: 'Sports bumpers (e.g. Polo 6R/6C GTI)', variant_category: 'GTI' }
+]" />
 ```
 
+### With API Data:
+
+When using data from the API, pass the `pr_codes` array directly:
+
+```vue
+<ProductCodes
+  :prcodes="product.pr_codes"
+  :isPdp="true"
+/>
+```
+
+### API Response Structure:
+
+```json
+{
+  "pr_codes": [
+    {
+      "id": 1522,
+      "code": "1ZP",
+      "group": "BAV",
+      "description": "Disk brakes in front (Geomet D); 310x25mm (vented)",
+      "variant_category": "WRC"
+    },
+    {
+      "id": 2145,
+      "code": "2JD",
+      "group": "STF",
+      "description": "Sports bumpers (e.g. Polo 6R/6C GTI)",
+      "variant_category": "GTI"
+    }
+  ]
+}
+```
+
+## Props
+
+### PrCode Props:
+
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `prcode` | `Object` | Yes | - | PR code object with code, group, description, variant_category |
+| `prcode.code` | `String` | Yes | - | The 3-character PR code |
+| `prcode.group` | `String` | No | - | PR code group (e.g., "BAV", "STF") |
+| `prcode.description` | `String` | No | - | Description shown in tooltip |
+| `prcode.variant_category` | `String` | No | - | Category for semantic coloring (GTI, WRC, etc.) |
+| `isPdp` | `Boolean` | No | `false` | Product detail page styling |
+
+### ProductCodes Props:
+
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `prcodes` | `Array<Object>` | Yes | `[]` | Array of PR code objects |
+| `isPdp` | `Boolean` | No | `false` | Product detail page styling |
+
+## Features
+
+- ✅ **Dynamic Tooltips**: Shows description from API on hover
+- ✅ **Semantic Colors**: Automatic color coding for special editions (GTI, WRC, etc.)
+- ✅ **Dark Mode**: Supports dark mode with appropriate color adjustments
+- ✅ **Accessible**: Uses semantic HTML and proper ARIA attributes
+- ✅ **Search Friendly**: Includes `data-pagefind-filter` for search indexing
+- ✅ **Combination Support**: Handles combined PR codes like "1KD+2JP"
+- ✅ **Sorted Display**: Automatically sorts PR codes alphabetically
+
+## Notes
+
+- Hover over any PR code to see its full description
+- Colors are based on semantic variant categories, not hardcoded per code
+- The tooltip design matches the ProductEngine component style
+- All 14,000+ PR codes in the database have English descriptions
