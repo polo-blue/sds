@@ -1,3 +1,9 @@
+## [1.5.1](https://github.com/polo-blue/sds/compare/v1.5.0...v1.5.1) (2025-10-27)
+
+### Bug Fixes
+
+* remove deprecated Husky shebang for v10 compatibility ([c7addfb](https://github.com/polo-blue/sds/commit/c7addfb1834eb480ead83b3d275977b47683a94a))
+
 ## [1.5.0](https://github.com/polo-blue/sds/compare/v1.4.4...v1.5.0) (2025-10-27)
 
 ### Features
