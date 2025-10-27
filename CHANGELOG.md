@@ -1,3 +1,15 @@
+## [1.5.0](https://github.com/polo-blue/sds/compare/v1.4.4...v1.5.0) (2025-10-27)
+
+### Features
+
+* refactor PR code components with dynamic tooltips and semantic categories ([27a776c](https://github.com/polo-blue/sds/commit/27a776c3e306f12cd69de49c33cb80521dac0090))
+
+### Bug Fixes
+
+* remove client-side sorting and simplify PR code components ([73b9760](https://github.com/polo-blue/sds/commit/73b9760f91505cf3f62e7a3549bc090622c10c94))
+* remove computed variantClass and simplify PrCode component ([924aada](https://github.com/polo-blue/sds/commit/924aadae2699369eac850c9b18ba40f8f3193c91))
+* update MDX examples and add defensive checks to ProductCodes ([4d8db14](https://github.com/polo-blue/sds/commit/4d8db14c329131556191c6863b9b9e852599d428))
+
 ## [1.4.4](https://github.com/polo-blue/sds/compare/v1.4.3...v1.4.4) (2025-10-26)
 
 ### Bug Fixes
