@@ -1,12 +1,21 @@
 <script lang="ts" setup>
+import type { PropType } from 'vue';
+
 /*
-     VAG group (VW/Audi/Skoda/Seat/Porsche/Bentley/Lamborghini/Ducati/Cupra/Scania/MAN) manufacturer PR-Code
+    VAG group (VW/Audi/Skoda/Seat/Porsche/Bentley/Lamborghini/Ducati/Cupra/Scania/MAN) manufacturer PR-Code
 */
+
+interface PrCodeObject {
+  id?: number;
+  code: string;
+  group?: string;
+  description?: string;
+  variant_category?: string;
+}
 
 const props = defineProps({
   prcode: {
-    type: String,
-    default: null,
+    type: Object as PropType<PrCodeObject>,
     required: true,
   },
   isPdp: {
@@ -15,127 +24,102 @@ const props = defineProps({
     required: false,
   },
 });
+
+// Generate variant class based on category
+const variantClass = props.prcode.variant_category
+  ? `btn-prcode--variant-${props.prcode.variant_category.toLowerCase()}`
+  : '';
 </script>
 
 <template>
-  <span
-    data-pagefind-filter="PR-Code"
-    class="btn-prcode"
-    :class="`btn-prcode--${props.prcode} ${props.isPdp ? ' btn-prcode--pdp' : ''}`"
-  >
-    {{ props.prcode }}
+  <span class="relative has-tooltip inline-block">
+    <span
+      data-pagefind-filter="PR-Code"
+      class="btn-prcode"
+      :class="[variantClass, { 'btn-prcode--pdp': props.isPdp }]"
+    >
+      {{ props.prcode.code }}
+    </span>
+
+    <!-- Dynamic Tooltip with description from API -->
+    <div v-if="props.prcode.description" class="tooltip">
+      <div class="tooltip-content">
+        {{ props.prcode.description }}
+        <span v-if="props.prcode.group" class="tooltip-group">
+          ({{ props.prcode.group }})
+        </span>
+      </div>
+    </div>
   </span>
 </template>
 
-<style>
+<style scoped>
+/* Base PrCode Button Styles */
+.btn-prcode {
+  @apply inline-block relative cursor-default;
+}
+
 .btn-prcode--pdp {
   @apply mb-1;
 }
 
-.btn-prcode::before {
-  @apply rounded-2 shadow-sm py-0.5 px-2 bg-gray-100 whitespace-nowrap text-xs dark:text-black dark:bg-accent-light text-center z-50;
-  display: none;
-  position: absolute;
-  top: -10px;
-  transform: translateY(-50%) translateX(-50%);
-  left: 50%;
+/* Tooltip Styles - Similar to ProductEngine */
+.tooltip {
+  @apply invisible absolute left-1/2 -translate-x-1/2 bottom-full mb-2 z-50;
+  @apply px-3 py-1.5 rounded-lg shadow-lg whitespace-nowrap;
+  @apply bg-blue-darker text-white text-xs;
+  @apply pointer-events-none;
+  max-width: 300px;
+  white-space: normal;
 }
 
-.btn-prcode:hover::before {
-  display: block;
+.has-tooltip:hover .tooltip {
+  @apply visible;
 }
 
-.btn-prcode--2JK {
+.tooltip-content {
+  @apply relative;
+}
+
+.tooltip-group {
+  @apply ml-2 opacity-75 text-xs font-light;
+}
+
+/* Tooltip Arrow */
+.tooltip::after {
+  content: '';
+  @apply absolute left-1/2 -translate-x-1/2 top-full;
+  @apply border-4 border-transparent border-t-blue-darker;
+}
+
+/* Semantic Variant Category Colors */
+/* GTI - Red */
+.btn-prcode--variant-gti {
+  @apply text-red-600 dark:text-red-500;
+}
+
+/* WRC/R - Blue */
+.btn-prcode--variant-wrc {
+  @apply text-blue-600 dark:text-blue-500;
+}
+
+/* CROSS - Orange */
+.btn-prcode--variant-cross {
   color: #f3881d;
 }
 
-.btn-prcode--2JK::before {
-  content: 'CROSS';
+/* BlueGT - Accent Dark */
+.btn-prcode--variant-bluegt {
+  @apply text-accent-dark dark:text-accent-dark;
 }
 
-.btn-prcode--1LR::before,
-.btn-prcode--1ZG::before,
-.btn-prcode--1ZJ::before {
-  content: '⌀ 256 mm';
+/* Bluemotion - Accent Light */
+.btn-prcode--variant-bluemotion {
+  @apply text-accent-light dark:text-accent-light;
 }
 
-.btn-prcode--1KD::before,
-.btn-prcode--1ZP::before,
-.btn-prcode--1ZR::before {
-  content: '⌀ 310 mm';
-}
-
-.btn-prcode--1ZD::before,
-.btn-prcode--1ZC::before,
-.btn-prcode--1LN::before {
-  content: '⌀ 288 mm; LUCAS';
-}
-
-.btn-prcode--2JZ {
-  @apply text-accent-light;
-}
-
-.btn-prcode--2JZ::before {
-  content: 'Bluemotion';
-}
-
-.btn-prcode--7L6 {
-  @apply text-accent-light;
-}
-
-.btn-prcode--7L6::before {
-  content: 'Bluemotion (CFWA + start-stop)';
-}
-
-.btn-prcode--1KK::before,
-.btn-prcode--1KT::before,
-.btn-prcode--1KV::before,
-.btn-prcode--1LV::before,
-.btn-prcode--2EJ::before {
-  content: '⌀ 230 mm';
-}
-
-.btn-prcode--2JE {
-  @apply text-accent-dark;
-}
-
-.btn-prcode--2JE::before {
-  content: 'BlueGT';
-}
-
-.btn-prcode--2JP::before {
-  content: 'R-Line';
-}
-
-.btn-prcode--E5M,
-.btn-prcode--1KD,
-.btn-prcode--1ZP,
-.btn-prcode--2JQ,
-.btn-prcode--TA2 {
-  color: blue;
-}
-
-.btn-prcode--E5M::before,
-.btn-prcode--1KD::before,
-.btn-prcode--1ZP::before,
-.btn-prcode--2JQ::before,
-.btn-prcode--TA2::before {
-  content: 'R WRC Street';
-}
-
-.btn-prcode--1KV,
-.btn-prcode--1ZD,
-.btn-prcode--1ZR,
-.btn-prcode--0NH,
-.btn-prcode--2JD {
-  color: red;
-}
-
-.btn-prcode--1KV::before,
-.btn-prcode--1ZD::before,
-.btn-prcode--1ZR::before,
-.btn-prcode--0NH::before,
-.btn-prcode--2JD::before {
-  content: 'GTI';
+/* R-Line - Default styling with possible future customization */
+.btn-prcode--variant-r_line {
+  @apply text-gray-800 dark:text-gray-300;
 }
 </style>

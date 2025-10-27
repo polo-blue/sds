@@ -3,7 +3,7 @@ export const SITE = {
   description: 'The Astro design system which facilitates the development of websites.',
   defaultLanguage: 'en_US',
   twitter: '@spokospace',
-  github: 'spokospace',
+  github: 'polo-blue/sds',
   linkedin: 'szymonberski',
 };
 

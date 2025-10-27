@@ -1,3 +1,9 @@
+## [1.4.4](https://github.com/polo-blue/sds/compare/v1.4.3...v1.4.4) (2025-10-26)
+
+### Bug Fixes
+
+* resolve vite-plugin-pwa peer dependency warning and update theme constants ([502f684](https://github.com/polo-blue/sds/commit/502f6846c12ef600213559d304336691e8953dd0))
+
 ## [1.4.3](https://github.com/polo-blue/sds/compare/v1.4.2...v1.4.3) (2025-10-26)
 
 ## [1.4.2](https://github.com/polo-blue/sds/compare/v1.4.1...v1.4.2) (2025-10-25)
