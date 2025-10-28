@@ -22,6 +22,37 @@ const props = defineProps({
     required: false,
   },
 });
+
+// Static mapping of PR codes to variant categories
+// Based on database migration from PR_CODE_REFACTORING_2025_10_27.md
+const variantCategoryMap: Record<string, string> = {
+  // GTI
+  '2JD': 'GTI',
+  '1ZD': 'GTI',
+  '1KV': 'GTI',
+  '0NH': 'GTI',
+  '1ZR': 'GTI',
+  // WRC
+  'E5M': 'WRC',
+  '1KD': 'WRC',
+  '1ZP': 'WRC',
+  '2JQ': 'WRC',
+  'TA2': 'WRC',
+  // CROSS
+  '2JK': 'CROSS',
+  // BLUEGT
+  '2JE': 'BLUEGT',
+  // BLUEMOTION
+  '2JZ': 'BLUEMOTION',
+  '7L6': 'BLUEMOTION',
+  // R_LINE
+  '2JP': 'R_LINE',
+};
+
+// Get variant category for a code (check map, fallback to passed value)
+const getVariantCategory = (code: string, fallback?: string): string | undefined => {
+  return variantCategoryMap[code] || fallback;
+};
 </script>
 
 <template>
@@ -30,28 +61,29 @@ const props = defineProps({
     :key="prcode?.id || index"
     class="not-last:mr-1"
   >
-    <!-- Skip invalid entries -->
     <template v-if="prcode?.code">
-      <!-- Handle normal PR codes -->
       <PrCode
         v-if="!prcode.code.includes('+')"
         :prcode="prcode"
         :isPdp="isPdp"
       />
-
-      <!-- Handle combined PR codes like "1KD+2JP" -->
-      <span v-else>
-        <PrCode
-          v-for="(code, idx) in prcode.code.split('+')"
-          :key="idx"
-          :prcode="{
-            code: code.trim(),
-            group: prcode.group,
-            description: null,
-            variant_category: prcode.variant_category
-          }"
-          :isPdp="isPdp"
-        />
+      <span v-else class="inline-flex items-center gap-1">
+        <template v-for="(code, idx) in prcode.code.split('+')" :key="idx">
+          <span v-if="idx > 0" class="text-sm opacity-75 font-bold">+</span>
+          <span class="inline-flex items-center">
+            <span class="opacity-75">[</span>
+            <PrCode
+              :prcode="{
+                code: code.trim(),
+                group: prcode.group,
+                description: null,
+                variant_category: getVariantCategory(code.trim(), prcode.variant_category)
+              }"
+              :isPdp="isPdp"
+            />
+            <span class="opacity-75">]</span>
+          </span>
+        </template>
       </span>
     </template>
   </span>
