@@ -198,7 +198,7 @@ When using data from the API, pass the `pr_codes` array directly:
 - ✅ **Dark Mode**: Supports dark mode with appropriate color adjustments
 - ✅ **Accessible**: Uses semantic HTML and proper ARIA attributes
 - ✅ **Search Friendly**: Includes `data-pagefind-filter` for search indexing
-- ✅ **Combination Support**: Handles combined PR codes like "1AT+1ZR" with format `[1AT]+[1ZR]`
+- ✅ **Combination Support**: Handles combined PR codes like "1AT+1ZR"
 - ✅ **Individual Colors**: Each code in a combination gets its own color based on variant category
 - ✅ **Defensive**: Gracefully handles invalid or malformed data
 
@@ -206,7 +206,7 @@ When using data from the API, pass the `pr_codes` array directly:
 
 - Hover over any PR code to see its full description
 - Colors are based on semantic variant categories, not hardcoded per code
-- Combined codes are displayed as `[CODE]+[CODE]` with each code colored independently
+- Combined codes are displayed as `CODE+CODE` with each code colored independently
 - The component uses a static mapping for variant categories to ensure consistent coloring
 - The tooltip design matches the ProductEngine component style
 - All 14,000+ PR codes in the database have English descriptions

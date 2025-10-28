@@ -69,20 +69,16 @@ const getVariantCategory = (code: string, fallback?: string): string | undefined
       />
       <span v-else class="inline-flex items-center gap-1">
         <template v-for="(code, idx) in prcode.code.split('+')" :key="idx">
-          <span v-if="idx > 0" class="text-sm opacity-75 font-bold">+</span>
-          <span class="inline-flex items-center">
-            <span class="opacity-75">[</span>
-            <PrCode
-              :prcode="{
-                code: code.trim(),
-                group: prcode.group,
-                description: null,
-                variant_category: getVariantCategory(code.trim(), prcode.variant_category)
-              }"
-              :isPdp="isPdp"
-            />
-            <span class="opacity-75">]</span>
-          </span>
+          <span v-if="idx > 0" class="text-sm opacity-75">+</span>
+          <PrCode
+            :prcode="{
+              code: code.trim(),
+              group: prcode.group,
+              description: null,
+              variant_category: getVariantCategory(code.trim(), prcode.variant_category)
+            }"
+            :isPdp="isPdp"
+          />
         </template>
       </span>
     </template>
