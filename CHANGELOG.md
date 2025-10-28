@@ -1,3 +1,9 @@
+## [1.5.2](https://github.com/polo-blue/sds/compare/v1.5.1...v1.5.2) (2025-10-28)
+
+### Bug Fixes
+
+* improve combined PR code display and color handling ([e9bb13d](https://github.com/polo-blue/sds/commit/e9bb13d5500ba5ef0be527bf79b75e14fc49e6fe))
+
 ## [1.5.1](https://github.com/polo-blue/sds/compare/v1.5.0...v1.5.1) (2025-10-27)
 
 ### Bug Fixes
