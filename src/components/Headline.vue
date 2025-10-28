@@ -1,85 +1,90 @@
 <script setup lang="ts">
-import type { PropType } from 'vue';
+import { computed, useAttrs } from 'vue';
 
-const props = defineProps({
-  as: {
-    type: String as PropType<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'div' | 'span'>,
-    default: 'span',
-    required: true,
-  },
-  textSize: {
-    type: String as PropType<
-      | 'xs'
-      | 'sm'
-      | 'base'
-      | 'lg'
-      | 'xl'
-      | '2xl'
-      | '3xl'
-      | '4xl'
-      | '5xl'
-      | '6xl'
-      | '7xl'
-      | '8xl'
-      | '9xl'
-    >,
-    required: false,
-    default: null,
-  },
-  fontFamily: {
-    type: String as PropType<'head' | 'text' | 'novamono' | 'mono'>,
-    required: false,
-    default: 'head',
-  },
-  fontWeight: {
-    type: String as PropType<'light' | 'regular' | 'bold' | 'light-bold' | 'light-thin'>,
-    required: false,
-    default: 'regular',
-  },
-  underline: {
-    type: [Boolean, String] as PropType<boolean | 'center'>,
-    required: false,
-    default: false,
-  },
+const attrs = useAttrs();
+
+interface HeadlineProps {
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'div' | 'span';
+  class?: string;
+  fontFamily?: 'head' | 'text' | 'novamono' | 'mono';
+  fontWeight?: 'light' | 'regular' | 'bold' | 'light-bold' | 'light-thin';
+  underline?: boolean | 'center';
+  defaultSize?: string;
+  noFlexLayout?: boolean;
+  noMargin?: boolean;
+  noLeading?: boolean;
+}
+
+const props = withDefaults(defineProps<HeadlineProps>(), {
+  as: 'span',
+  class: '',
+  fontFamily: 'head',
+  fontWeight: 'regular',
+  underline: false,
+  defaultSize: 'text-inherit',
+  noFlexLayout: false,
+  noMargin: false,
+  noLeading: false,
 });
 
-// Generate the typography class based on font family and weight
-const getTypographyClass = (): string => {
-  const family = props.fontFamily;
-  const weight = props.fontWeight;
+const typographyClass = computed(() => {
+  const { fontFamily, fontWeight } = props;
 
-  // Handle special cases for mono fonts
-  if (family === 'novamono' || family === 'mono') {
-    return `font-${family}`;
+  if (fontFamily === 'novamono' || fontFamily === 'mono') {
+    return `font-${fontFamily}`;
   }
 
-  // For head family, generate specific classes
-  if (family === 'head') {
-    if (weight === 'light') return 'headline-light';
-    if (weight === 'bold') return 'headline-bold';
-    if (weight === 'light-bold') return 'headline-light-bold';
-    if (weight === 'light-thin') return 'headline-light-thin';
-    return 'headline'; // for regular weight
+  if (fontFamily === 'head') {
+    const weightMap = {
+      light: 'headline-light',
+      bold: 'headline-bold',
+      'light-bold': 'headline-light-bold',
+      'light-thin': 'headline-light-thin',
+      regular: 'headline',
+    };
+    return weightMap[fontWeight] || 'headline';
   }
 
-  // For text family, generate appropriate class
-  if (family === 'text') {
-    return `font-text${weight}`;
+  if (fontFamily === 'text') {
+    return `font-text${fontWeight}`;
   }
 
-  // Default fallback
   return 'headline';
-};
+});
 
-const typographyClass = getTypographyClass();
+const underlineClass = computed(() => {
+  if (props.underline === true) return 'headline--underline';
+  if (props.underline === 'center') return 'headline--underline-center';
+  return '';
+});
+
+const layoutClass = computed(() => {
+  // Centered underline needs block + text-center
+  if (props.underline === 'center') return 'block text-center';
+
+  // Default flex layout for icon alignment (unless disabled)
+  if (!props.noFlexLayout) {
+    return 'flex sm:block md:flex items-center';
+  }
+
+  return '';
+});
+
+const computedClasses = computed(() => {
+  const baseClasses = [];
+
+  // Conditionally add base classes
+  if (!props.noMargin) baseClasses.push('mb-2.5');
+  if (!props.noLeading) baseClasses.push('leading-none');
+
+  const sizeClasses = props.class || props.defaultSize;
+
+  return `${baseClasses.join(' ')} ${typographyClass.value} ${sizeClasses} ${underlineClass.value} ${layoutClass.value}`.trim();
+});
 </script>
 
 <template>
-  <component
-    :is="props.as"
-    class="mb-2.5 leading-none"
-    :class="`${typographyClass} ${props.textSize ? `text-${props.textSize}` : 'text-xl'} ${props.underline === true ? 'headline--underline' : ''} ${props.underline === 'center' ? 'headline--underline-center block text-center' : 'flex sm:block md:flex items-center'}`"
-  >
+  <component :is="as" :class="computedClasses" v-bind="attrs">
     <slot />
   </component>
 </template>
@@ -92,14 +97,14 @@ const typographyClass = getTypographyClass();
     @apply content-empty absolute left-0 bottom-0;
     height: 3px;
     width: 55px;
-    background-color: var(--clr-primary-400);
+    background-color: var(--headline-underline-accent, var(--clr-primary-400));
   }
 
   &:before {
     @apply content-empty absolute left-0 bottom-px h-px;
     width: 95%;
     max-width: 255px;
-    background-color: #64748b;
+    background-color: var(--headline-underline-base, #64748b);
   }
 }
 
@@ -110,7 +115,7 @@ const typographyClass = getTypographyClass();
     @apply content-empty absolute left-1/2 bottom-px h-px;
     width: 95%;
     max-width: 255px;
-    background-color: #64748b;
+    background-color: var(--headline-underline-base, #64748b);
     transform: translateX(-50%);
   }
 
@@ -118,7 +123,7 @@ const typographyClass = getTypographyClass();
     @apply content-empty absolute bottom-0;
     height: 3px;
     width: 55px;
-    background-color: var(--clr-primary-400);
+    background-color: var(--headline-underline-accent, var(--clr-primary-400));
     left: calc(50% - min(47.5%, 127.5px));
   }
 }

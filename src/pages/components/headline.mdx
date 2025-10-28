@@ -24,113 +24,313 @@ Thanks to this, I can make a header that always looks the same, regardless of wh
 import Headline from 'spoko-design-system/src/components/Headline.vue';
 ```
 
-### Settings
-supported parameters
-```js
-as: {
-        type: String as PropType<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'div' | 'span'>,
-        default: 'span',  
-        required: true,
-},
-textSize: {
-        type: String as PropType<'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl' | '9xl'>,
-        required: false,
-        default: null
+### Props
+
+```typescript
+interface HeadlineProps {
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'div' | 'span';
+  // default: 'span'
+
+  class?: string;
+  // default: ''
+  // Use any UnoCSS/Tailwind classes including responsive variants
+  // Examples: 'text-4xl', 'text-2xl md:text-4xl lg:text-6xl'
+
+  fontFamily?: 'head' | 'text' | 'novamono' | 'mono';
+  // default: 'head'
+
+  fontWeight?: 'light' | 'regular' | 'bold' | 'light-bold' | 'light-thin';
+  // default: 'regular'
+
+  underline?: boolean | 'center';
+  // default: false
+  // true: left-aligned underline, 'center': centered underline
+
+  defaultSize?: string;
+  // default: 'text-inherit'
+  // Used when no class prop is provided
+
+  noFlexLayout?: boolean;
+  // default: false
+  // Disables the default flex layout behavior
+
+  noMargin?: boolean;
+  // default: false
+  // Disables default mb-2.5 margin
+
+  noLeading?: boolean;
+  // default: false
+  // Disables default leading-none line height
+}
+```
+
+### HTML Attributes Support
+
+The component supports all standard HTML attributes via `v-bind="$attrs"`:
+
+```vue
+<Headline
+  as="h1"
+  class="text-4xl"
+  id="main-title"
+  data-section="hero"
+  aria-label="Main headline"
+>
+  Accessible Headline
+</Headline>
+```
+
+### CSS Custom Properties
+
+Customize underline colors using CSS variables:
+
+```css
+/* Override underline colors globally */
+:root {
+  --headline-underline-accent: #0066cc;  /* Main underline color */
+  --headline-underline-base: #999999;    /* Thin line color */
 }
 
+/* Or scope to specific headlines */
+.custom-headline {
+  --headline-underline-accent: #ff6600;
+  --headline-underline-base: #cccccc;
+}
 ```
 
 
 ## Examples
 
+### Basic Usage
+
 <div class="component-preview flex-wrap flex-col justify-start !items-start">
 <ul class="list-decimal list-outside">
-  <li class="px-4 pb-4"><Headline as="h1" font-family="head" font-weight="regular">Regular Headline</Headline></li>
-  <li class="px-4 pb-4"><Headline as="h2" font-family="head" font-weight="light">Light Headline</Headline></li>
-  <li class="px-4 pb-4"><Headline as="h2" font-family="head" font-weight="light">Light Headline</Headline></li>
-  <li class="px-4 pb-4"><Headline as="h3" font-family="head" font-weight="bold">Bold Headline</Headline></li>
-  <li class="px-4 pb-4"><Headline as="h4" font-family="head" font-weight="light-bold">Light Bold Headline</Headline></li>
-  <li class="px-4 pb-4"><Headline as="h5" font-family="head" font-weight="light-thin">Light Thin Headline</Headline></li>
-  <li class="px-4 pb-4"><Headline as="p" font-family="text" font-weight="light">Light Text Content</Headline></li>
-  <li class="px-4 pb-4"><Headline as="p" font-family="text" font-weight="bold">Bold Text Content</Headline></li>
-  <li class="px-4 pb-4"><Headline as="p" font-family="text" font-weight="light-bold">Light Bold Text Content</Headline></li>
-  <li class="px-4 pb-4"><Headline as="p" font-family="text" font-weight="light-thin">Light Thin Text Content</Headline></li>
-  <li class="px-4 pb-4"><Headline as="code" font-family="novamono">Nova Mono Code Text</Headline></li>
-  <li class="px-4 pb-4"><Headline as="code" font-family="mono">Mono Code Text</Headline></li>
-  <li class="px-4 pb-4"><Headline as="h1" font-family="head" font-weight="bold" text-size="4xl">Large Bold Headline</Headline></li>
-  <li class="px-4 pb-4"><Headline as="h2" font-family="head" font-weight="light-thin" text-size="3xl" underline>Underlined Light Thin Headline</Headline></li>
-  <li class="px-4 pb-4"><Headline as="h3" font-family="head" font-weight="bold" text-size="2xl">
+  <li class="px-4 pb-4"><Headline as="h1" font-family="head" font-weight="regular" class="text-xl">Regular Headline</Headline></li>
+  <li class="px-4 pb-4"><Headline as="h2" font-family="head" font-weight="light" class="text-lg">Light Headline</Headline></li>
+  <li class="px-4 pb-4"><Headline as="h3" font-family="head" font-weight="bold" class="text-2xl">Bold Headline</Headline></li>
+  <li class="px-4 pb-4"><Headline as="h4" font-family="head" font-weight="light-bold" class="text-base">Light Bold Headline</Headline></li>
+  <li class="px-4 pb-4"><Headline as="h5" font-family="head" font-weight="light-thin" class="text-sm">Light Thin Headline</Headline></li>
+  <li class="px-4 pb-4"><Headline as="p" font-family="text" class="text-base">Default Text (inherits size)</Headline></li>
+</ul>
+</div>
+
+### Responsive Typography
+
+<div class="component-preview flex-wrap flex-col justify-start !items-start">
+<ul class="list-decimal list-outside">
+  <li class="px-4 pb-4"><Headline as="h1" class="text-2xl md:text-4xl lg:text-6xl">Responsive Hero</Headline></li>
+  <li class="px-4 pb-4"><Headline as="h2" font-weight="bold" class="text-xl md:text-3xl lg:text-5xl">Bold Responsive</Headline></li>
+  <li class="px-4 pb-4"><Headline as="h3" class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">Multi-breakpoint</Headline></li>
+  <li class="px-4 pb-4"><Headline as="h2" font-weight="light-bold" class="text-lg md:text-2xl lg:text-4xl 3xl:text-6xl">Extra large screens</Headline></li>
+</ul>
+</div>
+
+### Font Families & Weights
+
+<div class="component-preview flex-wrap flex-col justify-start !items-start">
+<ul class="list-decimal list-outside">
+  <li class="px-4 pb-4"><Headline as="p" font-family="text" font-weight="light" class="text-base">Light Text</Headline></li>
+  <li class="px-4 pb-4"><Headline as="p" font-family="text" font-weight="bold" class="text-base">Bold Text</Headline></li>
+  <li class="px-4 pb-4"><Headline as="code" font-family="novamono" class="text-sm">Nova Mono Code</Headline></li>
+  <li class="px-4 pb-4"><Headline as="code" font-family="mono" class="text-sm">Mono Code</Headline></li>
+</ul>
+</div>
+
+### With Underline
+
+<div class="component-preview flex-wrap flex-col justify-start !items-start">
+<ul class="list-decimal list-outside">
+  <li class="px-4 pb-4"><Headline as="h2" font-weight="light-thin" class="text-3xl" underline>Underlined Headline</Headline></li>
+  <li class="px-4 pb-4"><Headline as="h2" font-weight="bold" class="text-2xl md:text-4xl" underline="center">Centered Underline</Headline></li>
+</ul>
+</div>
+
+### With Icons
+
+<div class="component-preview flex-wrap flex-col justify-start !items-start">
+<ul class="list-decimal list-outside">
+  <li class="px-4 pb-4"><Headline as="h3" font-weight="bold" class="text-2xl">
     <Icon name="ph:cat-thin" class="inline-block mr-4" />
     Headline with Icon
   </Headline></li>
-  <li class="px-4 pb-4"><Headline as="h1">Default Headline</Headline></li>
-  <li class="px-4 pb-4"><Headline as="h1" font-family="head" font-weight="light-bold" text-size="4xl" underline>
+  <li class="px-4 pb-4"><Headline as="h1" font-weight="light-bold" class="text-xl md:text-3xl lg:text-5xl" underline>
     <Icon name="ph:cat-thin" class="inline-block mr-4" />
-    Complete Example
+    Responsive with Icon & Underline
   </Headline></li>
 </ul>
 </div>
 
-```js
-/* 1 */
-<Headline as="h1" font-family="head" font-weight="regular">Regular Headline</Headline>
+## Code Examples
 
-/* 2 */
-<Headline as="h2" font-family="head" font-weight="light">Light Headline</Headline>
-
-/* 3 */
-<Headline as="h3" font-family="head" font-weight="bold">Bold Headline</Headline>
-
-/* 4 */
-<Headline as="h4" font-family="head" font-weight="light-bold">Light Bold Headline</Headline>
-
-/* 5 */
-<Headline as="h5" font-family="head" font-weight="light-thin">Light Thin Headline</Headline>
-
-/* 6 */
-<Headline as="p" font-family="text" font-weight="light">Light Text Content</Headline>
-
-/* 7 */
-<Headline as="p" font-family="text" font-weight="regular">Regular Text Content</Headline>
-
-/* 8 */
-<Headline as="p" font-family="text" font-weight="bold">Bold Text Content</Headline>
-
-/* 9 */
-<Headline as="p" font-family="text" font-weight="light-bold">Light Bold Text Content</Headline>
-
-/* 10 */
-<Headline as="p" font-family="text" font-weight="light-thin">Light Thin Text Content</Headline>
-
-/* 11 */
-<Headline as="code" font-family="novamono">Nova Mono Code Text</Headline>
-
-/* 12 */
-<Headline as="code" font-family="mono">Mono Code Text</Headline>
-
-/* 13 */
-<Headline as="h1" font-family="head" font-weight="bold" text-size="4xl">Large Bold Headline</Headline>
-
-/* 14 */
-<Headline as="h2" font-family="head" font-weight="light-thin" text-size="3xl" underline>Underlined Light Thin Headline</Headline>
-
-/* 15 */
-<Headline as="h3" font-family="head" font-weight="bold" text-size="2xl">
-  <Icon name="ph:cat-thin" class="inline-block mr-4 text-blue-wrc" />
-  Headline with Icon
-</Headline>
-
-/* 16 */
+### Basic Usage
+```vue
+<!-- Simple headline with defaults (inherits font size) -->
 <Headline as="h1">Default Headline</Headline>
 
-/* 17 */
-<Headline as="h1" font-family="head" font-weight="light-bold" text-size="4xl" underline>
-  <Icon name="ph:cat-thin" class="inline-block mr-4 text-blue-wrc" />
+<!-- With explicit size -->
+<Headline as="h1" class="text-xl">Regular Headline</Headline>
+
+<!-- Font family and weight -->
+<Headline as="h2" font-weight="light" class="text-lg">Light Headline</Headline>
+<Headline as="h3" font-weight="bold" class="text-2xl">Bold Headline</Headline>
+```
+
+### Responsive Typography
+```vue
+<!-- Hero headline - small on mobile, large on desktop -->
+<Headline as="h1" class="text-2xl md:text-4xl lg:text-6xl">
+  Responsive Hero
+</Headline>
+
+<!-- Progressive scaling across all breakpoints -->
+<Headline as="h2" class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
+  Multi-breakpoint Headline
+</Headline>
+
+<!-- Extra large screens support -->
+<Headline as="h2" font-weight="light-bold" class="text-lg md:text-2xl lg:text-4xl 3xl:text-6xl">
+  Scales up to 3xl breakpoint
+</Headline>
+```
+
+### Font Families
+```vue
+<!-- Heading font (default) -->
+<Headline as="h1" font-weight="regular" class="text-xl">
+  Regular Headline
+</Headline>
+
+<!-- Text font for body content -->
+<Headline as="p" font-family="text" font-weight="light" class="text-base">
+  Light Text Content
+</Headline>
+
+<!-- Monospace fonts -->
+<Headline as="code" font-family="novamono" class="text-sm">
+  Nova Mono Code
+</Headline>
+
+<Headline as="code" font-family="mono" class="text-sm">
+  Mono Code
+</Headline>
+```
+
+### With Underline
+```vue
+<!-- Left-aligned underline -->
+<Headline as="h2" class="text-3xl" underline>
+  Underlined Headline
+</Headline>
+
+<!-- Centered underline with responsive sizing -->
+<Headline as="h2" font-weight="bold" class="text-2xl md:text-4xl" underline="center">
+  Centered Underline
+</Headline>
+```
+
+### With Icons
+```vue
+<!-- Icon with responsive sizing -->
+<Headline as="h1" font-weight="light-bold" class="text-xl md:text-3xl lg:text-5xl" underline>
+  <Icon name="ph:cat-thin" class="inline-block mr-4" />
   Complete Example
 </Headline>
 
+<!-- Simple icon headline -->
+<Headline as="h3" font-weight="bold" class="text-2xl">
+  <Icon name="ph:cat-thin" class="inline-block mr-4" />
+  Headline with Icon
+</Headline>
+```
 
+### Custom Styling
+```vue
+<!-- Combine with any UnoCSS/Tailwind utilities -->
+<Headline as="h1" class="text-4xl md:text-6xl text-blue-600 dark:text-blue-400">
+  Colored Headline
+</Headline>
 
+<!-- Responsive colors and sizes -->
+<Headline
+  as="h2"
+  font-weight="bold"
+  class="text-2xl md:text-4xl text-slate-700 md:text-blue-600"
+>
+  Responsive Color & Size
+</Headline>
+```
+
+### Advanced Features
+
+#### Remove Default Spacing
+```vue
+<!-- No bottom margin -->
+<Headline as="h1" class="text-4xl" no-margin>
+  Headline without margin
+</Headline>
+
+<!-- No line height adjustment -->
+<Headline as="h2" class="text-2xl" no-leading>
+  Headline with normal line height
+</Headline>
+
+<!-- Remove both -->
+<Headline as="h3" class="text-xl" no-margin no-leading>
+  Fully custom spacing
+</Headline>
+```
+
+#### Disable Flex Layout
+```vue
+<!-- By default, headlines without underline use flex layout for icon alignment -->
+<!-- Disable it with noFlexLayout -->
+<Headline as="h2" class="text-2xl" no-flex-layout>
+  Block-level headline
+</Headline>
+```
+
+#### Custom Underline Colors
+```vue
+<!-- In your component or style tag -->
+<style>
+  .custom-underline-headline {
+    --headline-underline-accent: #ff6600;
+    --headline-underline-base: #cccccc;
+  }
+</style>
+
+<Headline
+  as="h1"
+  class="text-4xl custom-underline-headline"
+  underline
+>
+  Custom colored underline
+</Headline>
+```
+
+#### Accessibility Features
+```vue
+<!-- Add ARIA attributes for screen readers -->
+<Headline
+  as="h1"
+  class="text-4xl"
+  id="page-title"
+  role="heading"
+  aria-level="1"
+  aria-label="Welcome to our website"
+>
+  Welcome
+</Headline>
+
+<!-- Add data attributes for tracking or testing -->
+<Headline
+  as="h2"
+  class="text-2xl"
+  data-testid="section-heading"
+  data-analytics="hero-title"
+>
+  Section Title
+</Headline>
 ```
 
 

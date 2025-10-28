@@ -7,7 +7,7 @@ import { breakpoints } from './../breakpoints';
 
 export const jumbotronShortcuts = [
   // Default variant
-  ['jumbotron-header-base', 'relative mx-auto my-auto lg:w-full text-center py-8'],
+  ['jumbotron-header-base', 'relative mx-auto my-auto w-full text-center py-8'],
   ['jumbotron-container-small', 'md:min-h-xs sm:py-12 md:py-14 lg:py-16 xl:py-20'],
   ['jumbotron-container-large', 'md:min-h-md sm:py-16 md:py-20 lg:py-28 xl:py-32'],
   ['jumbotron-title-default', 'text-3xl headline-light text-white sm:(text-4xl pt-0) md:text-5xl lg:text-6xl'],
