@@ -21,6 +21,7 @@ export const colors = {
     // Secondary colors - accent palette
     accent: {
         light: '#0099da',
+        medium: '#0082d6',     // Medium accent blue
         default: '#0087c1',    // Default accent
         dark: '#006ea6',
         darker: '#00437a',
