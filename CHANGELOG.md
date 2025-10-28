@@ -1,3 +1,9 @@
+## [1.5.3](https://github.com/polo-blue/sds/compare/v1.5.2...v1.5.3) (2025-10-28)
+
+### Bug Fixes
+
+* remove brackets from combined PR code display ([aabb786](https://github.com/polo-blue/sds/commit/aabb78618f994dadac50605b708455ffbb5f21e5))
+
 ## [1.5.2](https://github.com/polo-blue/sds/compare/v1.5.1...v1.5.2) (2025-10-28)
 
 ### Bug Fixes
