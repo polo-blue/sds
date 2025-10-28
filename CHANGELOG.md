@@ -1,3 +1,9 @@
+## [1.6.0](https://github.com/polo-blue/sds/compare/v1.5.3...v1.6.0) (2025-10-28)
+
+### Features
+
+* add accent.medium color ([#0082d6](https://github.com/polo-blue/sds/issues/0082d6)) to theme palette ([0cb1f3b](https://github.com/polo-blue/sds/commit/0cb1f3b095a745a4991e5062af5ee5d5679297c7)), closes [#0099da](https://github.com/polo-blue/sds/issues/0099da) [#0087c1](https://github.com/polo-blue/sds/issues/0087c1)
+
 ## [1.5.3](https://github.com/polo-blue/sds/compare/v1.5.2...v1.5.3) (2025-10-28)
 
 ### Bug Fixes
