@@ -27,67 +27,29 @@ const props = defineProps({
 </script>
 
 <template>
-  <span class="relative has-tooltip inline-block">
-    <span
-      data-pagefind-filter="PR-Code"
-      class="btn-prcode"
-      :class="[
-        prcode.variant_category ? `btn-prcode--variant-${prcode.variant_category.toLowerCase()}` : '',
-        { 'btn-prcode--pdp': isPdp }
-      ]"
-    >
-      {{ prcode.code }}
-    </span>
-
-    <!-- Dynamic Tooltip with description from API -->
-    <div v-if="props.prcode.description" class="tooltip">
-      <div class="tooltip-content">
-        {{ props.prcode.description }}
-        <span v-if="props.prcode.group" class="tooltip-group">
-          ({{ props.prcode.group }})
-        </span>
-      </div>
-    </div>
+  <span
+    data-pagefind-filter="PR-Code"
+    class="btn-prcode"
+    :class="[
+      prcode.variant_category ? `btn-prcode--variant-${prcode.variant_category.toLowerCase()}` : '',
+      { 'btn-prcode--pdp': isPdp }
+    ]"
+    :data-tippy-content="prcode.description || undefined"
+  >
+    {{ prcode.code }}
   </span>
 </template>
 
 <style scoped>
-/* Base PrCode Button Styles */
+/* Base PrCode Styles */
 .btn-prcode {
-  @apply inline-block relative cursor-default;
+  @apply inline-block cursor-default;
+  @apply px-1.5 py-0.5;
+  @apply rounded;
 }
 
 .btn-prcode--pdp {
   @apply mb-1;
-}
-
-/* Tooltip Styles - Similar to ProductEngine */
-.tooltip {
-  @apply invisible absolute left-1/2 -translate-x-1/2 bottom-full mb-2 z-50;
-  @apply px-3 py-1.5 rounded-lg shadow-lg whitespace-nowrap;
-  @apply bg-blue-darker text-white text-xs;
-  @apply pointer-events-none;
-  max-width: 300px;
-  white-space: normal;
-}
-
-.has-tooltip:hover .tooltip {
-  @apply visible;
-}
-
-.tooltip-content {
-  @apply relative;
-}
-
-.tooltip-group {
-  @apply ml-2 opacity-75 text-xs font-light;
-}
-
-/* Tooltip Arrow */
-.tooltip::after {
-  content: '';
-  @apply absolute left-1/2 -translate-x-1/2 top-full;
-  @apply border-4 border-transparent border-t-blue-darker;
 }
 
 /* Semantic Variant Category Colors */

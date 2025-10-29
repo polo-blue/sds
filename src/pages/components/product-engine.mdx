@@ -1,0 +1,370 @@
+---
+title: "ProductEngine"
+layout: "../../layouts/MainLayout.astro"
+---
+import ProductEngine from '../../components/Product/ProductEngine.vue'
+import ProductEngines from '../../components/Product/ProductEngines.vue'
+
+# ProductEngine
+
+Engine codes with detailed tooltips showing specifications like power, displacement, dates, and more.
+
+## Single Engine Code
+
+Display a single engine code with tooltip showing detailed engine information.
+
+### import:
+
+```js
+import ProductEngine from 'spoko-design-system/src/components/Product/ProductEngine.vue'
+```
+
+### Basic Usage (New API Structure):
+
+<div class="component-preview">
+     <div class="bg-white p-6 w-full flex gap-2">
+          <ProductEngine client:load engine={{
+               code: "CAYA",
+               name: "1.6 TDI",
+               serie: { value: "EA189", label: "Seria silnika" },
+               power: { kw: 55, ps: 75, ps_label: "KM", label: "Moc" },
+               displacement: { value: 1598, label: "Pojemność" },
+               euro: { value: 5, label: "Norma Euro" }
+          }} />
+          <ProductEngine client:load engine={{
+               code: "CAYB",
+               name: "1.6 TDI",
+               serie: { value: "EA189", label: "Seria silnika" },
+               power: { kw: 66, ps: 90, ps_label: "KM", label: "Moc" },
+               displacement: { value: 1598, label: "Pojemność" },
+               euro: { value: 5, label: "Norma Euro" }
+          }} />
+     </div>
+</div>
+
+```vue
+<!-- New API structure (with built-in translations) -->
+<ProductEngine :engine="{
+  code: 'CAYA',
+  name: '1.6 TDI',
+  serie: { value: 'EA189', label: 'Seria silnika' },
+  power: { kw: 55, ps: 75, ps_label: 'KM', label: 'Moc' },
+  displacement: { value: 1598, label: 'Pojemność' },
+  euro: { value: 5, label: 'Norma Euro' }
+}" />
+
+<!-- Old API structure (backward compatible) -->
+<ProductEngine
+  :engine="{ code: 'CAYA', name: '1.6 TDI', kw: 55, ps: 75, cc: 1598, serie: 3, euro: 5 }"
+  :translations="{ power: 'Moc', cc: 'Pojemność', euro: 'Euro', horsepowerUnit: 'KM' }"
+/>
+```
+
+### Special Engine Variants (Colored):
+
+Engine codes for special editions are automatically color-coded:
+
+<div class="component-preview">
+     <div class="bg-white p-6 w-full flex flex-wrap gap-3">
+          <div class="flex flex-col gap-1">
+               <small class="text-xs text-gray-500">GTI Engine (Red)</small>
+               <ProductEngine client:load engine={{
+                    code: "CAVE",
+                    name: "1.4 TSI",
+                    power: { kw: 132, ps: 180, ps_label: "KM", label: "Moc" },
+                    displacement: { value: 1390, label: "Pojemność" },
+                    euro: { value: 5, label: "Norma Euro" }
+               }} />
+          </div>
+          <div class="flex flex-col gap-1">
+               <small class="text-xs text-gray-500">WRC Engine (Blue)</small>
+               <ProductEngine client:load engine={{
+                    code: "CDLJ",
+                    name: "1.6 TDI",
+                    power: { kw: 165, ps: 220, ps_label: "KM", label: "Moc" },
+                    displacement: { value: 1598, label: "Pojemność" },
+                    euro: { value: 6, label: "Norma Euro" }
+               }} />
+          </div>
+          <div class="flex flex-col gap-1">
+               <small class="text-xs text-gray-500">Special Blue</small>
+               <ProductEngine client:load engine={{
+                    code: "CPTA",
+                    name: "1.0 TSI",
+                    power: { kw: 70, ps: 95, ps_label: "KM", label: "Moc" },
+                    displacement: { value: 999, label: "Pojemność" },
+                    euro: { value: 6, label: "Norma Euro" }
+               }} />
+          </div>
+     </div>
+</div>
+
+```vue
+<!-- GTI Engine - Red -->
+<ProductEngine :engine="{
+  code: 'CAVE',
+  name: '1.4 TSI',
+  power: { kw: 132, ps: 180, ps_label: 'KM', label: 'Moc' },
+  displacement: { value: 1390, label: 'Pojemność' },
+  euro: { value: 5, label: 'Norma Euro' }
+}" />
+
+<!-- WRC Engine - Blue -->
+<ProductEngine :engine="{
+  code: 'CDLJ',
+  name: '1.6 TDI',
+  power: { kw: 165, ps: 220, ps_label: 'KM', label: 'Moc' },
+  displacement: { value: 1598, label: 'Pojemność' },
+  euro: { value: 6, label: 'Norma Euro' }
+}" />
+```
+
+## Engine List
+
+Display multiple engine codes from an array (from API response).
+
+### import:
+
+```js
+import ProductEngines from 'spoko-design-system/src/components/Product/ProductEngines.vue'
+```
+
+### Usage:
+
+<div class="component-preview">
+     <div class="bg-white p-6 w-full">
+          <ProductEngines client:load engines={[
+               {
+                    id: 13,
+                    code: "CAYA",
+                    name: "1.6 TDI",
+                    serie: { value: "EA189", label: "Seria silnika" },
+                    power: { kw: 55, ps: 75, ps_label: "KM", label: "Moc" },
+                    displacement: { value: 1598, label: "Pojemność" },
+                    euro: { value: 5, label: "Norma Euro" }
+               },
+               {
+                    id: 14,
+                    code: "CAYB",
+                    name: "1.6 TDI",
+                    serie: { value: "EA189", label: "Seria silnika" },
+                    power: { kw: 66, ps: 90, ps_label: "KM", label: "Moc" },
+                    displacement: { value: 1598, label: "Pojemność" },
+                    euro: { value: 5, label: "Norma Euro" }
+               },
+               {
+                    id: 15,
+                    code: "CAYC",
+                    name: "1.6 TDI",
+                    serie: { value: "EA189", label: "Seria silnika" },
+                    power: { kw: 77, ps: 105, ps_label: "KM", label: "Moc" },
+                    displacement: { value: 1598, label: "Pojemność" },
+                    euro: { value: 5, label: "Norma Euro" }
+               },
+          ]} />
+     </div>
+</div>
+
+```vue
+<ProductEngines :engines="[
+  {
+    id: 13,
+    code: 'CAYA',
+    name: '1.6 TDI',
+    serie: { value: 'EA189', label: 'Seria silnika' },
+    power: { kw: 55, ps: 75, ps_label: 'KM', label: 'Moc' },
+    displacement: { value: 1598, label: 'Pojemność' },
+    euro: { value: 5, label: 'Norma Euro' }
+  },
+  {
+    id: 14,
+    code: 'CAYB',
+    name: '1.6 TDI',
+    serie: { value: 'EA189', label: 'Seria silnika' },
+    power: { kw: 66, ps: 90, ps_label: 'KM', label: 'Moc' },
+    displacement: { value: 1598, label: 'Pojemność' },
+    euro: { value: 5, label: 'Norma Euro' }
+  }
+]" />
+```
+
+### With API Data:
+
+When using data from the API, pass the `part_engines` array directly. The component automatically extracts translations from the nested structure:
+
+```vue
+<ProductEngines
+  :engines="product.part_engines"
+  :isPdp="true"
+/>
+```
+
+**Note**: The new API structure includes labels and translations, so you no longer need to pass the `translations` prop. The component will use labels from the API (e.g., "Moc", "Pojemność", "KM").
+
+### API Response Structure:
+
+```json
+{
+  "part_engines": [
+    {
+      "id": 13,
+      "code": "CAYA",
+      "name": "1.6 TDI",
+      "info": null,
+      "serie": {
+        "value": "EA189",
+        "label": "Seria silnika"
+      },
+      "type": {
+        "value": "diesel",
+        "translated": "Diesel",
+        "label": "Typ paliwa"
+      },
+      "power": {
+        "kw": 55,
+        "ps": 75,
+        "ps_label": "KM",
+        "label": "Moc"
+      },
+      "date": {
+        "value": "03/2009–05/2010",
+        "label": "Data produkcji"
+      },
+      "displacement": {
+        "value": 1598,
+        "label": "Pojemność"
+      },
+      "compression_ratio": {
+        "value": "16,5:1",
+        "label": "Stopień sprężania"
+      },
+      "valves": {
+        "value": 16,
+        "label": "Zawory"
+      },
+      "euro": {
+        "value": 5,
+        "formatted": "Norma Euro 5",
+        "label": "Norma Euro"
+      }
+    },
+    {
+      "id": 14,
+      "code": "CAYB",
+      "name": "1.6 TDI",
+      "info": null,
+      "serie": {
+        "value": "EA189",
+        "label": "Seria silnika"
+      },
+      "type": {
+        "value": "diesel",
+        "translated": "Diesel",
+        "label": "Typ paliwa"
+      },
+      "power": {
+        "kw": 66,
+        "ps": 90,
+        "ps_label": "KM",
+        "label": "Moc"
+      },
+      "date": {
+        "value": "03/2009–03/2014",
+        "label": "Data produkcji"
+      },
+      "displacement": {
+        "value": 1598,
+        "label": "Pojemność"
+      },
+      "compression_ratio": {
+        "value": "16,5:1",
+        "label": "Stopień sprężania"
+      },
+      "valves": {
+        "value": 16,
+        "label": "Zawory"
+      },
+      "euro": {
+        "value": 5,
+        "formatted": "Norma Euro 5",
+        "label": "Norma Euro"
+      }
+    }
+  ]
+}
+```
+
+## Props
+
+### ProductEngine Props:
+
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `engine` | `Object` | Yes | - | Engine object with nested structure from API |
+| `engine.code` | `String` | Yes | - | Engine code (e.g., "CAYA") |
+| `engine.name` | `String` | No | - | Engine name (e.g., "1.6 TDI") |
+| `engine.info` | `String` | No | - | Additional info shown in header |
+| `engine.serie` | `Object` | No | - | Engine series object |
+| `engine.serie.value` | `String` | No | - | Series value (e.g., "EA189", "EA288") |
+| `engine.serie.label` | `String` | No | - | Series label (e.g., "Seria silnika") |
+| `engine.power` | `Object` | No | - | Power object with kw, ps, labels |
+| `engine.power.kw` | `Number` | No | - | Power in kilowatts |
+| `engine.power.ps` | `Number` | No | - | Power in horsepower |
+| `engine.power.ps_label` | `String` | No | - | Unit label (e.g., "KM", "PS") |
+| `engine.power.label` | `String` | No | - | Power label (e.g., "Moc") |
+| `engine.displacement` | `Object` | No | - | Displacement object |
+| `engine.displacement.value` | `Number` | No | - | Displacement in cm³ |
+| `engine.displacement.label` | `String` | No | - | Label (e.g., "Pojemność") |
+| `engine.euro` | `Object` | No | - | Euro standard object |
+| `engine.euro.value` | `Number` | No | - | Euro standard number |
+| `engine.euro.label` | `String` | No | - | Label (e.g., "Norma Euro") |
+| `engine.euro.formatted` | `String` | No | - | Formatted string (e.g., "Norma Euro 5") |
+| `showComma` | `Boolean` | No | `false` | Show comma after code (for lists) |
+| `translations` | `Object` | No | API labels | Fallback translations (used only with old API) |
+
+**Note**: The component supports both the new nested API structure (with built-in labels) and the old flat structure for backward compatibility.
+
+### ProductEngines Props:
+
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `engines` | `Array<Object>` | Yes | `[]` | Array of engine objects (new nested structure) |
+| `isPdp` | `Boolean` | No | `false` | Product detail page styling |
+| `translations` | `Object` | No | API labels | Fallback translations (used only with old API) |
+
+## Features
+
+- ✅ **Rich Tooltips**: Shows detailed engine specifications on hover (Tippy.js)
+- ✅ **API-Driven Translations**: Labels and units come directly from API
+- ✅ **Multi-language**: Supports Polish (KM), German (PS), English (HP)
+- ✅ **Two-Tone Design**: Dark blue header with light body for better hierarchy
+- ✅ **Semantic Colors**: Automatic color coding for special engines (GTI, WRC, etc.)
+- ✅ **Clean Layout**: Flexbox-based design with semantic CSS classes
+- ✅ **Smart Data**: Only shows relevant fields (power, displacement, euro)
+- ✅ **Auto-sorting**: Engines automatically sorted alphabetically by code
+- ✅ **SEO-Friendly**: Static HTML enhanced with client-side tooltips
+- ✅ **Backward Compatible**: Works with both new and old API structures
+- ✅ **Touch Friendly**: Works on mobile devices
+
+## Engine Color Coding
+
+Special engine codes are automatically color-coded:
+
+| Engine Codes | Color | Description |
+|--------------|-------|-------------|
+| CAVE, CTHE, DAJA, DAYB | Red | GTI Performance engines |
+| CDLJ | Blue | WRC/R Street engines |
+| CPTA, CZEA | Light Blue | Special blue engines |
+
+## Notes
+
+- Hover over any engine code to see full specifications in a detailed tooltip
+- Tooltips use Tippy.js with custom two-tone SDS theme
+- **New API structure**: Labels come from API (e.g., "Moc", "Pojemność", "KM")
+- **No manual translations needed**: The API provides all labels and units
+- The component automatically extracts series value from nested structure
+- Date field is not shown in tooltips (only power, displacement, and euro)
+- Missing data fields are gracefully hidden
+- Commas between engine codes are automatically handled in lists
+- **Backward compatible**: Still works with old flat API structure
+- Tooltip has dark blue header (#001e50) with light gray body (#f3f4f6)
