@@ -19,6 +19,8 @@ export { default as Headline } from './src/components/Headline.vue';
 export { default as Quote } from './src/components/Quote.vue';
 
 export { default as ProductEngineType } from './src/components/Product/ProductEngineType.vue';
+export { default as ProductEngine } from './src/components/Product/ProductEngine.vue';
+export { default as ProductEngines } from './src/components/Product/ProductEngines.vue';
 export { default as ProductButton } from './src/components/Product/ProductButton.vue';
 export { default as ProductColors } from './src/components/Product/ProductColors.vue';
 export { default as ProductDetailName } from './src/components/Product/ProductDetailName.vue';

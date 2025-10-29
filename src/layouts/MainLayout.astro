@@ -20,6 +20,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
   });
 </script>
 
+<script>
+  // Global Tooltips - Tippy.js
+  import '../scripts/tooltips.ts';
+</script>
+
 <html
   dir={content.dir ?? 'ltr'}
   lang={content.lang ?? 'en-us'}
