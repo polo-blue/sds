@@ -27,6 +27,68 @@ const navItems = [
     icon: 'streamline-freehand-color:layouts-array-1',
   },
 ];
+
+const features = [
+  {
+    title: 'Astro-Powered',
+    icon: 'vscode-icons:file-type-light-astro',
+    description:
+      'Built with <a href="https://astro.build/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline transition-colors">Astro</a> for lightning-fast performance and seamless integration with modern frameworks.',
+  },
+  {
+    title: 'Rich Components',
+    icon: 'streamline-freehand-color:data-transfer-document-module',
+    description:
+      '20+ production-ready components including buttons, modals, carousels, and specialized automotive elements.',
+  },
+  {
+    title: 'UnoCSS Styling',
+    icon: 'vscode-icons:file-type-unocss',
+    description:
+      'Atomic CSS approach with <a href="https://unocss.dev/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline transition-colors">UnoCSS</a> for flexible, maintainable styling and consistent design tokens.',
+  },
+  {
+    title: 'Vue Integration',
+    icon: 'vscode-icons:file-type-vue',
+    description:
+      'Seamless <a href="https://vuejs.org/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline transition-colors">Vue 3</a> component integration with TypeScript support for interactive elements.',
+  },
+  {
+    title: 'Design Patterns',
+    icon: 'streamline-freehand-color:design-process-drawing-board',
+    description:
+      'Proven patterns and layouts for common use cases, from landing pages to product catalogs.',
+  },
+  {
+    title: 'Developer Ready',
+    icon: 'streamline-freehand-color:app-window-source-code',
+    description:
+      'Complete documentation, TypeScript support, and easy npm installation for quick project setup.',
+  },
+];
+
+const exampleSites = [
+  {
+    url: 'https://catalog.polo.blue',
+    title: 'catalog.polo.blue',
+    description: 'Car parts catalog',
+  },
+  {
+    url: 'https://polo.blue',
+    title: 'polo.blue',
+    description: 'Polo 6R DIY workshop & guides',
+  },
+  {
+    url: 'https://sale.polo.blue/',
+    title: 'sale.polo.blue',
+    description: 'Used car parts marketplace',
+  },
+  {
+    url: 'https://polo6r.pl',
+    title: 'polo6r.pl',
+    description: 'Polo V Manual',
+  },
+];
 ---
 
 <Layout>
@@ -61,13 +123,13 @@ const navItems = [
             >
               <Headline
                 as="h2"
-                textSize="2xl"
+                class="text-3xl"
                 underline={false}
               >
                 <Icon
                   name={icon}
                   aria-hidden="true"
-                  class="text-blue-400 mr-2 text-4xl"
+                  class="text-blue-400 mr-3 text-4xl"
                 />
                 {title}
               </Headline>
@@ -83,9 +145,8 @@ const navItems = [
       <div class="text-center mb-12">
         <Headline
           as="h2"
-          textSize="3xl"
+          class="text-3xl md:text-4xl text-gray-900 mb-6"
           underline="center"
-          class="text-gray-900 mb-6"
         >
           Why Spoko Design System?
         </Headline>
@@ -96,140 +157,28 @@ const navItems = [
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
-          <Headline
-            as="h3"
-            textSize="xl"
-            underline={false}
-            class="mb-3 text-gray-900 flex items-center justify-center"
-          >
-            <Icon
-              name="vscode-icons:file-type-light-astro"
-              aria-hidden="true"
-              class="text-4xl text-blue-400 mr-3"
-            />
-            Astro-Powered
-          </Headline>
-          <p class="text-gray-600">
-            Built with <a
-              href="https://astro.build/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-blue-600 hover:text-blue-800 underline transition-colors"
-              >Astro</a
-            > for lightning-fast performance and seamless integration with modern frameworks.
-          </p>
-        </div>
-
-        <div class="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
-          <Headline
-            as="h3"
-            textSize="xl"
-            underline={false}
-            class="mb-3 text-gray-900 flex items-center justify-center"
-          >
-            <Icon
-              name="streamline-freehand-color:data-transfer-document-module"
-              aria-hidden="true"
-              class="text-4xl text-blue-400 mr-3"
-            />
-            Rich Components
-          </Headline>
-          <p class="text-gray-600">
-            20+ production-ready components including buttons, modals, carousels, and specialized
-            automotive elements.
-          </p>
-        </div>
-
-        <div class="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
-          <Headline
-            as="h3"
-            textSize="xl"
-            underline={false}
-            class="mb-3 text-gray-900 flex items-center justify-center"
-          >
-            <Icon
-              name="vscode-icons:file-type-unocss"
-              aria-hidden="true"
-              class="text-4xl text-blue-400 mr-3"
-            />
-            UnoCSS Styling
-          </Headline>
-          <p class="text-gray-600">
-            Atomic CSS approach with <a
-              href="https://unocss.dev/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-blue-600 hover:text-blue-800 underline transition-colors"
-              >UnoCSS</a
-            > for flexible, maintainable styling and consistent design tokens.
-          </p>
-        </div>
-
-        <div class="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
-          <Headline
-            as="h3"
-            textSize="xl"
-            underline={false}
-            class="mb-3 text-gray-900 flex items-center justify-center"
-          >
-            <Icon
-              name="vscode-icons:file-type-vue"
-              aria-hidden="true"
-              class="text-4xl text-blue-400 mr-3"
-            />
-            Vue Integration
-          </Headline>
-          <p class="text-gray-600">
-            Seamless <a
-              href="https://vuejs.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-blue-600 hover:text-blue-800 underline transition-colors"
-              >Vue 3</a
-            > component integration with TypeScript support for interactive elements.
-          </p>
-        </div>
-
-        <div class="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
-          <Headline
-            as="h3"
-            textSize="xl"
-            underline={false}
-            class="mb-3 text-gray-900 flex items-center justify-center"
-          >
-            <Icon
-              name="streamline-freehand-color:design-process-drawing-board"
-              aria-hidden="true"
-              class="text-4xl text-blue-400 mr-3"
-            />
-            Design Patterns
-          </Headline>
-          <p class="text-gray-600">
-            Proven patterns and layouts for common use cases, from landing pages to product
-            catalogs.
-          </p>
-        </div>
-
-        <div class="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
-          <Headline
-            as="h3"
-            textSize="xl"
-            underline={false}
-            class="mb-3 text-gray-900 flex items-center justify-center"
-          >
-            <Icon
-              name="streamline-freehand-color:app-window-source-code"
-              aria-hidden="true"
-              class="text-4xl text-blue-400 mr-3"
-            />
-            Developer Ready
-          </Headline>
-          <p class="text-gray-600">
-            Complete documentation, TypeScript support, and easy npm installation for quick project
-            setup.
-          </p>
-        </div>
+        {
+          features.map(({ title, icon, description }) => (
+            <div class="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
+              <Headline
+                as="h3"
+                class="text-2xl mb-3 text-gray-900 flex items-center justify-center"
+                underline={false}
+              >
+                <Icon
+                  name={icon}
+                  aria-hidden="true"
+                  class="text-4xl text-blue-400 mr-3"
+                />
+                {title}
+              </Headline>
+              <p
+                class="text-gray-600"
+                set:html={description}
+              />
+            </div>
+          ))
+        }
       </div>
     </section>
 
@@ -252,8 +201,7 @@ const navItems = [
           <Headline
             underline
             as="h2"
-            class="text-gray-900 mb-8"
-            textSize="3xl"
+            class="text-3xl text-gray-900 mb-8"
           >
             <Icon
               name="streamline-freehand-color:archive-box"
@@ -313,8 +261,7 @@ const navItems = [
           <Headline
             underline
             as="h2"
-            class="text-gray-900 mb-8"
-            textSize="3xl"
+            class="text-3xl text-gray-900 mb-8"
           >
             <Icon
               name="streamline-freehand-color:coding-files-network-folder"
@@ -326,73 +273,25 @@ const navItems = [
 
           <!-- Example Sites Grid -->
           <div class="grid gap-4 mb-6">
-            <a
-              href="https://catalog.polo.blue"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:border-blue-400 hover:shadow-md transition-all group"
-            >
-              <div class="text-left">
-                <h4 class="font-semibold text-gray-900 group-hover:text-blue-600">
-                  catalog.polo.blue
-                </h4>
-                <p class="text-sm text-gray-600">Car parts catalog</p>
-              </div>
-              <Icon
-                name="lucide:link"
-                class="text-gray-400 group-hover:text-blue-400"
-              />
-            </a>
-
-            <a
-              href="https://polo.blue"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:border-blue-400 hover:shadow-md transition-all group"
-            >
-              <div class="text-left">
-                <h4 class="font-semibold text-gray-900 group-hover:text-blue-600">polo.blue</h4>
-                <p class="text-sm text-gray-600">Polo 6R DIY workshop & guides</p>
-              </div>
-              <Icon
-                name="lucide:link"
-                class="text-gray-400 group-hover:text-blue-400"
-              />
-            </a>
-
-            <a
-              href="https://sale.polo.blue/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:border-blue-400 hover:shadow-md transition-all group"
-            >
-              <div class="text-left">
-                <h4 class="font-semibold text-gray-900 group-hover:text-blue-600">
-                  sale.polo.blue
-                </h4>
-                <p class="text-sm text-gray-600">Used car parts marketplace</p>
-              </div>
-              <Icon
-                name="lucide:link"
-                class="text-gray-400 group-hover:text-blue-400"
-              />
-            </a>
-
-            <a
-              href="https://polo6r.pl"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:border-blue-400 hover:shadow-md transition-all group"
-            >
-              <div class="text-left">
-                <h4 class="font-semibold text-gray-900 group-hover:text-blue-600">polo6r.pl</h4>
-                <p class="text-sm text-gray-600">Polo V Manual</p>
-              </div>
-              <Icon
-                name="lucide:link"
-                class="text-gray-400 group-hover:text-blue-400"
-              />
-            </a>
+            {
+              exampleSites.map(({ url, title, description }) => (
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:border-blue-400 hover:shadow-md transition-all group"
+                >
+                  <div class="text-left">
+                    <h4 class="font-semibold text-gray-900 group-hover:text-blue-600">{title}</h4>
+                    <p class="text-sm text-gray-600">{description}</p>
+                  </div>
+                  <Icon
+                    name="lucide:link"
+                    class="text-gray-400 group-hover:text-blue-400"
+                  />
+                </a>
+              ))
+            }
           </div>
 
           <p class="text-gray-600 text-sm">
