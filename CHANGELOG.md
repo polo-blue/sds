@@ -1,3 +1,9 @@
+## [1.9.0](https://github.com/polo-blue/sds/compare/v1.8.1...v1.9.0) (2025-10-29)
+
+### Features
+
+* **homepage:** refactor to use config-driven loops and responsive typography ([d97c659](https://github.com/polo-blue/sds/commit/d97c659e0e30d0a79234d8868371edac290608cf))
+
 ## [1.8.1](https://github.com/polo-blue/sds/compare/v1.8.0...v1.8.1) (2025-10-29)
 
 ### Bug Fixes
