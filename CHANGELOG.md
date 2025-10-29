@@ -1,3 +1,9 @@
+## [1.7.0](https://github.com/polo-blue/sds/compare/v1.6.0...v1.7.0) (2025-10-29)
+
+### Features
+
+* add Tippy.js tooltips with ProductEngine components and API-driven translations ([eb18a17](https://github.com/polo-blue/sds/commit/eb18a171a3e5d80889f64a645d82767898561764))
+
 ## [1.6.0](https://github.com/polo-blue/sds/compare/v1.5.3...v1.6.0) (2025-10-28)
 
 ### Features
