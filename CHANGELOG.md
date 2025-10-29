@@ -1,3 +1,9 @@
+## [1.8.1](https://github.com/polo-blue/sds/compare/v1.8.0...v1.8.1) (2025-10-29)
+
+### Bug Fixes
+
+* **UnoCSS:** restore shortcuts functionality by re-enabling default extractors ([a9021a1](https://github.com/polo-blue/sds/commit/a9021a1c47cc1de0210d099bb9d9f61a6672228b))
+
 ## [1.8.0](https://github.com/polo-blue/sds/compare/v1.7.0...v1.8.0) (2025-10-29)
 
 ### Features
