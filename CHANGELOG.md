@@ -1,3 +1,9 @@
+## [1.8.0](https://github.com/polo-blue/sds/compare/v1.7.0...v1.8.0) (2025-10-29)
+
+### Features
+
+* **Headline:** add responsive design support and advanced features ([254d5d3](https://github.com/polo-blue/sds/commit/254d5d30f8eff673a48343270f0f23eb39ab7f95))
+
 ## [1.7.0](https://github.com/polo-blue/sds/compare/v1.6.0...v1.7.0) (2025-10-29)
 
 ### Features
