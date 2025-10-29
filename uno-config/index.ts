@@ -165,8 +165,6 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
       // All peer selectors from the list (needed for floating labels)
       ...peerSelectorClasses,
     ],
-    // Disable default extractors to prevent false positives from JavaScript code
-    extractorDefault: false,
     // Optimized extractors for static Astro builds
     extractors: [
       {
