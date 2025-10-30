@@ -47,7 +47,7 @@ import { ProductEngine } from 'spoko-design-system'
                serie: { value: "EA189", label: "Seria silnika" },
                power: { kw: 55, ps: 75, ps_label: "KM", label: "Moc" },
                displacement: { value: 1598, label: "Pojemność" },
-               euro: { value: 5, label: "Norma Euro" }
+               euro: { value: 5, label: "Norma" }
           }} />
           <ProductEngine engine={{
                code: "CAYB",
@@ -55,7 +55,7 @@ import { ProductEngine } from 'spoko-design-system'
                serie: { value: "EA189", label: "Seria silnika" },
                power: { kw: 66, ps: 90, ps_label: "KM", label: "Moc" },
                displacement: { value: 1598, label: "Pojemność" },
-               euro: { value: 5, label: "Norma Euro" }
+               euro: { value: 5, label: "Norma" }
           }} />
      </div>
 </div>
@@ -95,7 +95,7 @@ Engine codes for special editions are automatically color-coded:
                     name: "1.4 TSI",
                     power: { kw: 132, ps: 180, ps_label: "KM", label: "Moc" },
                     displacement: { value: 1390, label: "Pojemność" },
-                    euro: { value: 5, label: "Norma Euro" }
+                    euro: { value: 5, label: "Norma " }
                }} />
           </div>
           <div class="flex flex-col gap-1">
@@ -105,7 +105,7 @@ Engine codes for special editions are automatically color-coded:
                     name: "1.6 TDI",
                     power: { kw: 165, ps: 220, ps_label: "KM", label: "Moc" },
                     displacement: { value: 1598, label: "Pojemność" },
-                    euro: { value: 6, label: "Norma Euro" }
+                    euro: { value: 6, label: "Norma " }
                }} />
           </div>
           <div class="flex flex-col gap-1">
@@ -115,7 +115,7 @@ Engine codes for special editions are automatically color-coded:
                     name: "1.0 TSI",
                     power: { kw: 70, ps: 95, ps_label: "KM", label: "Moc" },
                     displacement: { value: 999, label: "Pojemność" },
-                    euro: { value: 6, label: "Norma Euro" }
+                    euro: { value: 6, label: "Norma " }
                }} />
           </div>
      </div>
@@ -128,7 +128,7 @@ Engine codes for special editions are automatically color-coded:
   name: '1.4 TSI',
   power: { kw: 132, ps: 180, ps_label: 'KM', label: 'Moc' },
   displacement: { value: 1390, label: 'Pojemność' },
-  euro: { value: 5, label: 'Norma Euro' }
+  euro: { value: 5, label: 'Norma ' }
 }} />
 
 <!-- WRC Engine - Blue -->
@@ -137,7 +137,7 @@ Engine codes for special editions are automatically color-coded:
   name: '1.6 TDI',
   power: { kw: 165, ps: 220, ps_label: 'KM', label: 'Moc' },
   displacement: { value: 1598, label: 'Pojemność' },
-  euro: { value: 6, label: 'Norma Euro' }
+  euro: { value: 6, label: 'Norma ' }
 }} />
 ```
 
@@ -163,7 +163,7 @@ import { ProductEngines } from 'spoko-design-system'
                     serie: { value: "EA189", label: "Seria silnika" },
                     power: { kw: 55, ps: 75, ps_label: "KM", label: "Moc" },
                     displacement: { value: 1598, label: "Pojemność" },
-                    euro: { value: 5, label: "Norma Euro" }
+                    euro: { value: 5, label: "Norma " }
                },
                {
                     id: 14,
@@ -172,7 +172,7 @@ import { ProductEngines } from 'spoko-design-system'
                     serie: { value: "EA189", label: "Seria silnika" },
                     power: { kw: 66, ps: 90, ps_label: "KM", label: "Moc" },
                     displacement: { value: 1598, label: "Pojemność" },
-                    euro: { value: 5, label: "Norma Euro" }
+                    euro: { value: 5, label: "Norma " }
                },
                {
                     id: 15,
@@ -181,7 +181,7 @@ import { ProductEngines } from 'spoko-design-system'
                     serie: { value: "EA189", label: "Seria silnika" },
                     power: { kw: 77, ps: 105, ps_label: "KM", label: "Moc" },
                     displacement: { value: 1598, label: "Pojemność" },
-                    euro: { value: 5, label: "Norma Euro" }
+                    euro: { value: 5, label: "Norma " }
                },
           ]} />
      </div>
@@ -200,7 +200,7 @@ import { ProductEngines } from 'spoko-design-system';
     serie: { value: 'EA189', label: 'Seria silnika' },
     power: { kw: 55, ps: 75, ps_label: 'KM', label: 'Moc' },
     displacement: { value: 1598, label: 'Pojemność' },
-    euro: { value: 5, label: 'Norma Euro' }
+    euro: { value: 5, label: 'Norma ' }
   },
   {
     id: 14,
@@ -209,7 +209,7 @@ import { ProductEngines } from 'spoko-design-system';
     serie: { value: 'EA189', label: 'Seria silnika' },
     power: { kw: 66, ps: 90, ps_label: 'KM', label: 'Moc' },
     displacement: { value: 1598, label: 'Pojemność' },
-    euro: { value: 5, label: 'Norma Euro' }
+    euro: { value: 5, label: 'Norma ' }
   }
 ]} />
 ```
@@ -271,7 +271,7 @@ When using data from the API, pass the `part_engines` array directly. The compon
       "euro": {
         "value": 5,
         "formatted": "Norma Euro 5",
-        "label": "Norma Euro"
+        "label": "Norma "
       }
     },
     {
@@ -313,7 +313,7 @@ When using data from the API, pass the `part_engines` array directly. The compon
       "euro": {
         "value": 5,
         "formatted": "Norma Euro 5",
-        "label": "Norma Euro"
+        "label": "Norma "
       }
     }
   ]

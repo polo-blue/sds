@@ -19,16 +19,9 @@ const { engine, showComma = false, translations = {} } = Astro.props;
 
 // Generate tooltip content for data attribute
 const tooltipContent = getEngineTooltipContent(engine, translations);
-
-// Escape quotes for HTML attribute
-const tooltipContentEscaped = tooltipContent.replace(/"/g, '&quot;');
 ---
 
-<span
-  class="engine-code"
-  class:list={[`engine-code-${engine.code}`]}
-  data-tippy-content={tooltipContentEscaped}
->
+<span class="engine-code" class:list={[`engine-code-${engine.code}`]} data-tippy-content={tooltipContent}>
   {engine.code}{showComma && ','}
 </span>
 
