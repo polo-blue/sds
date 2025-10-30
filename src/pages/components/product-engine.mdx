@@ -2,28 +2,46 @@
 title: "ProductEngine"
 layout: "../../layouts/MainLayout.astro"
 ---
-import ProductEngine from '../../components/Product/ProductEngine.vue'
-import ProductEngines from '../../components/Product/ProductEngines.vue'
+import ProductEngine from '../../components/Product/ProductEngine.astro'
+import ProductEngines from '../../components/Product/ProductEngines.astro'
 
 # ProductEngine
 
 Engine codes with detailed tooltips showing specifications like power, displacement, dates, and more.
 
+**⚡ Performance-optimized**: Uses Tippy.js delegation pattern - one global script handles all tooltips efficiently.
+
+**🔍 SEO-friendly**: Engine codes rendered as static HTML (no client-side hydration required).
+
 ## Single Engine Code
 
 Display a single engine code with tooltip showing detailed engine information.
 
-### import:
+### Setup:
+
+**1. Import the component:**
 
 ```js
-import ProductEngine from 'spoko-design-system/src/components/Product/ProductEngine.vue'
+import { ProductEngine } from 'spoko-design-system'
+```
+
+**2. Initialize tooltips in your layout (once):**
+
+```astro
+---
+// In your layout file (e.g., Layout.astro)
+---
+<script>
+  import { initTooltips } from 'spoko-design-system';
+  initTooltips();
+</script>
 ```
 
 ### Basic Usage (New API Structure):
 
 <div class="component-preview">
      <div class="bg-white p-6 w-full flex gap-2">
-          <ProductEngine client:load engine={{
+          <ProductEngine engine={{
                code: "CAYA",
                name: "1.6 TDI",
                serie: { value: "EA189", label: "Seria silnika" },
@@ -31,7 +49,7 @@ import ProductEngine from 'spoko-design-system/src/components/Product/ProductEng
                displacement: { value: 1598, label: "Pojemność" },
                euro: { value: 5, label: "Norma Euro" }
           }} />
-          <ProductEngine client:load engine={{
+          <ProductEngine engine={{
                code: "CAYB",
                name: "1.6 TDI",
                serie: { value: "EA189", label: "Seria silnika" },
@@ -42,21 +60,25 @@ import ProductEngine from 'spoko-design-system/src/components/Product/ProductEng
      </div>
 </div>
 
-```vue
+```astro
+---
+import { ProductEngine } from 'spoko-design-system';
+---
+
 <!-- New API structure (with built-in translations) -->
-<ProductEngine :engine="{
+<ProductEngine engine={{
   code: 'CAYA',
   name: '1.6 TDI',
   serie: { value: 'EA189', label: 'Seria silnika' },
   power: { kw: 55, ps: 75, ps_label: 'KM', label: 'Moc' },
   displacement: { value: 1598, label: 'Pojemność' },
   euro: { value: 5, label: 'Norma Euro' }
-}" />
+}} />
 
 <!-- Old API structure (backward compatible) -->
 <ProductEngine
-  :engine="{ code: 'CAYA', name: '1.6 TDI', kw: 55, ps: 75, cc: 1598, serie: 3, euro: 5 }"
-  :translations="{ power: 'Moc', cc: 'Pojemność', euro: 'Euro', horsepowerUnit: 'KM' }"
+  engine={{ code: 'CAYA', name: '1.6 TDI', kw: 55, ps: 75, cc: 1598, serie: 3, euro: 5 }}
+  translations={{ power: 'Moc', cc: 'Pojemność', euro: 'Euro', horsepowerUnit: 'KM' }}
 />
 ```
 
@@ -68,7 +90,7 @@ Engine codes for special editions are automatically color-coded:
      <div class="bg-white p-6 w-full flex flex-wrap gap-3">
           <div class="flex flex-col gap-1">
                <small class="text-xs text-gray-500">GTI Engine (Red)</small>
-               <ProductEngine client:load engine={{
+               <ProductEngine engine={{
                     code: "CAVE",
                     name: "1.4 TSI",
                     power: { kw: 132, ps: 180, ps_label: "KM", label: "Moc" },
@@ -78,7 +100,7 @@ Engine codes for special editions are automatically color-coded:
           </div>
           <div class="flex flex-col gap-1">
                <small class="text-xs text-gray-500">WRC Engine (Blue)</small>
-               <ProductEngine client:load engine={{
+               <ProductEngine engine={{
                     code: "CDLJ",
                     name: "1.6 TDI",
                     power: { kw: 165, ps: 220, ps_label: "KM", label: "Moc" },
@@ -88,7 +110,7 @@ Engine codes for special editions are automatically color-coded:
           </div>
           <div class="flex flex-col gap-1">
                <small class="text-xs text-gray-500">Special Blue</small>
-               <ProductEngine client:load engine={{
+               <ProductEngine engine={{
                     code: "CPTA",
                     name: "1.0 TSI",
                     power: { kw: 70, ps: 95, ps_label: "KM", label: "Moc" },
@@ -99,41 +121,41 @@ Engine codes for special editions are automatically color-coded:
      </div>
 </div>
 
-```vue
+```astro
 <!-- GTI Engine - Red -->
-<ProductEngine :engine="{
+<ProductEngine engine={{
   code: 'CAVE',
   name: '1.4 TSI',
   power: { kw: 132, ps: 180, ps_label: 'KM', label: 'Moc' },
   displacement: { value: 1390, label: 'Pojemność' },
   euro: { value: 5, label: 'Norma Euro' }
-}" />
+}} />
 
 <!-- WRC Engine - Blue -->
-<ProductEngine :engine="{
+<ProductEngine engine={{
   code: 'CDLJ',
   name: '1.6 TDI',
   power: { kw: 165, ps: 220, ps_label: 'KM', label: 'Moc' },
   displacement: { value: 1598, label: 'Pojemność' },
   euro: { value: 6, label: 'Norma Euro' }
-}" />
+}} />
 ```
 
 ## Engine List
 
 Display multiple engine codes from an array (from API response).
 
-### import:
+### Import:
 
 ```js
-import ProductEngines from 'spoko-design-system/src/components/Product/ProductEngines.vue'
+import { ProductEngines } from 'spoko-design-system'
 ```
 
 ### Usage:
 
 <div class="component-preview">
      <div class="bg-white p-6 w-full">
-          <ProductEngines client:load engines={[
+          <ProductEngines engines={[
                {
                     id: 13,
                     code: "CAYA",
@@ -165,8 +187,12 @@ import ProductEngines from 'spoko-design-system/src/components/Product/ProductEn
      </div>
 </div>
 
-```vue
-<ProductEngines :engines="[
+```astro
+---
+import { ProductEngines } from 'spoko-design-system';
+---
+
+<ProductEngines engines={[
   {
     id: 13,
     code: 'CAYA',
@@ -185,17 +211,17 @@ import ProductEngines from 'spoko-design-system/src/components/Product/ProductEn
     displacement: { value: 1598, label: 'Pojemność' },
     euro: { value: 5, label: 'Norma Euro' }
   }
-]" />
+]} />
 ```
 
 ### With API Data:
 
 When using data from the API, pass the `part_engines` array directly. The component automatically extracts translations from the nested structure:
 
-```vue
+```astro
 <ProductEngines
-  :engines="product.part_engines"
-  :isPdp="true"
+  engines={product.part_engines}
+  isPdp={true}
 />
 ```
 
@@ -334,7 +360,9 @@ When using data from the API, pass the `part_engines` array directly. The compon
 
 ## Features
 
-- ✅ **Rich Tooltips**: Shows detailed engine specifications on hover (Tippy.js)
+- ✅ **Rich Tooltips**: Shows detailed engine specifications on hover (Tippy.js delegation)
+- ✅ **Performance Optimized**: One global script handles all tooltips efficiently
+- ✅ **SEO-Friendly**: Engine codes rendered as static HTML (no hydration)
 - ✅ **API-Driven Translations**: Labels and units come directly from API
 - ✅ **Multi-language**: Supports Polish (KM), German (PS), English (HP)
 - ✅ **Two-Tone Design**: Dark blue header with light body for better hierarchy
@@ -342,7 +370,6 @@ When using data from the API, pass the `part_engines` array directly. The compon
 - ✅ **Clean Layout**: Flexbox-based design with semantic CSS classes
 - ✅ **Smart Data**: Only shows relevant fields (power, displacement, euro)
 - ✅ **Auto-sorting**: Engines automatically sorted alphabetically by code
-- ✅ **SEO-Friendly**: Static HTML enhanced with client-side tooltips
 - ✅ **Backward Compatible**: Works with both new and old API structures
 - ✅ **Touch Friendly**: Works on mobile devices
 
@@ -358,8 +385,10 @@ Special engine codes are automatically color-coded:
 
 ## Notes
 
+- **Setup required**: Call `initTooltips()` once in your layout to enable tooltips
 - Hover over any engine code to see full specifications in a detailed tooltip
-- Tooltips use Tippy.js with custom two-tone SDS theme
+- Tooltips use Tippy.js delegation pattern (one global handler for all tooltips)
+- **Performance**: No client-side hydration needed - pure Astro components
 - **New API structure**: Labels come from API (e.g., "Moc", "Pojemność", "KM")
 - **No manual translations needed**: The API provides all labels and units
 - The component automatically extracts series value from nested structure
@@ -368,3 +397,18 @@ Special engine codes are automatically color-coded:
 - Commas between engine codes are automatically handled in lists
 - **Backward compatible**: Still works with old flat API structure
 - Tooltip has dark blue header (#001e50) with light gray body (#f3f4f6)
+
+## Migration from Vue to Astro
+
+If upgrading from the old Vue version:
+
+1. **Remove `client:load`** directive from all ProductEngine/ProductEngines usage
+2. **Add tooltip initialization** to your layout:
+   ```astro
+   <script>
+     import { initTooltips } from 'spoko-design-system';
+     initTooltips();
+   </script>
+   ```
+3. **Update imports** to use Astro components (automatically handled by package exports)
+4. **No other changes needed** - props and API structure remain the same
