@@ -12,6 +12,7 @@
       "require": "./index.ts"
     },
     "./styles/*": "./src/styles/*",
+    "./scripts/*": "./src/scripts/*",
     "./icons": "./icon.config.ts",
     "./icon-collections": "./icon.collections.ts",
     "./uno-config": "./uno-config/index.ts"

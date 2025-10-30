@@ -8,6 +8,8 @@
  */
 
 import { delegate } from 'tippy.js';
+import 'tippy.js/dist/tippy.css';
+import '../styles/tippy-theme.css';
 
 /**
  * Initialize tooltips with delegation pattern
