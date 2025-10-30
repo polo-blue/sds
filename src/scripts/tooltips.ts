@@ -1,46 +1,51 @@
-import tippy from 'tippy.js';
-import 'tippy.js/dist/tippy.css';
-import '../styles/tippy-theme.css';
-
 /**
- * Global Tooltip Initializer
- * Automatically enhances all elements with data-tippy-content attribute
- * Works with static HTML - perfect for SEO and Astro static pages
+ * Global tooltip delegation script for SDS
+ * Uses Tippy.js delegation pattern for performance
+ * Handles tooltips for:
+ * - Engine codes (.engine-code)
+ * - PR codes (.btn-prcode)
+ * - Any other elements with data-tippy-content
  */
 
-function initTooltips() {
-  // Destroy existing tooltips to avoid duplicates
-  document.querySelectorAll('[data-tippy-content]').forEach((el: any) => {
-    if (el._tippy) {
-      el._tippy.destroy();
-    }
-  });
+import { delegate } from 'tippy.js';
 
-  // Initialize tooltips for all elements with data-tippy-content
-  tippy('[data-tippy-content]', {
+/**
+ * Initialize tooltips with delegation pattern
+ * Call this once in your layout after page load
+ */
+export function initTooltips() {
+  // Delegate to body for all tooltip targets
+  delegate('body', {
+    target: '[data-tippy-content]', // Any element with data-tippy-content
+    allowHTML: true,
     theme: 'sds',
     placement: 'top',
     arrow: true,
     animation: 'shift-away',
     duration: [200, 150],
     maxWidth: 280,
-    allowHTML: true, // Allow HTML content for rich tooltips
+    // Only show tooltip if there's actual content
+    onShow(instance) {
+      const content = instance.props.content;
+      if (!content || content === '' || content === 'undefined') {
+        return false;
+      }
+    },
   });
 }
 
-// Initialize on page load
-if (typeof window !== 'undefined') {
-  // Initial load
-  document.addEventListener('DOMContentLoaded', () => {
-    initTooltips();
-    // Reinitialize after a short delay to catch Vue components
-    setTimeout(initTooltips, 100);
-  });
-
-  // Reinitialize on Astro page transitions (for View Transitions)
+// Auto-initialize on Astro page load (for View Transitions)
+if (typeof document !== 'undefined') {
   document.addEventListener('astro:page-load', () => {
     initTooltips();
-    // Reinitialize after a short delay to catch Vue components
-    setTimeout(initTooltips, 100);
   });
+
+  // Fallback for non-Astro or initial load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initTooltips();
+    });
+  } else {
+    initTooltips();
+  }
 }

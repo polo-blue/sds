@@ -19,8 +19,7 @@ export { default as Headline } from './src/components/Headline.vue';
 export { default as Quote } from './src/components/Quote.vue';
 
 export { default as ProductEngineType } from './src/components/Product/ProductEngineType.vue';
-export { default as ProductEngine } from './src/components/Product/ProductEngine.vue';
-export { default as ProductEngines } from './src/components/Product/ProductEngines.vue';
+// ProductEngine and ProductEngines are now Astro components (see Astro Components section below)
 export { default as ProductButton } from './src/components/Product/ProductButton.vue';
 export { default as ProductColors } from './src/components/Product/ProductColors.vue';
 export { default as ProductDetailName } from './src/components/Product/ProductDetailName.vue';
@@ -50,6 +49,8 @@ export { default as ButtonCopy } from './src/components/ButtonCopy.astro';
 export { default as CallToAction } from './src/components/Layout/CallToAction.astro';
 
 export { default as ProductImage } from './src/components/Product/ProductImage.astro';
+export { default as ProductEngine } from './src/components/Product/ProductEngine.astro';
+export { default as ProductEngines } from './src/components/Product/ProductEngines.astro';
 
 export { default as CategoryDetails } from './src/components/Category/CategoryDetails.astro';
 export { default as CategoryTile } from './src/components/Category/CategoryTile.astro';
@@ -58,6 +59,8 @@ export { default as CategoryTile } from './src/components/Category/CategoryTile.
 // Utils: Product
 export { default as getPriceFormatted } from './src/utils/product/getPriceFormatted';
 export { default as getProductChecklist } from './src/utils/product/getProductChecklist';
+export { getEngineTooltipContent } from './src/utils/product/getEngineTooltipContent';
+export type { Engine, EngineTranslations } from './src/utils/product/getEngineTooltipContent';
 
 // Utils: SEO
 export { default as getShorterDescription } from './src/utils/seo/getShorterDescription';
@@ -70,3 +73,6 @@ export { default as formatLocaleNumber } from './src/utils/text/formatLocaleNumb
 export { default as formatPad } from './src/utils/text/formatPad';
 export { default as getNumberFormatted } from './src/utils/text/getNumberFormatted';
 export { default as getTranslatedLink } from './src/utils/text/getTranslatedLink';
+
+// Scripts
+export { initTooltips } from './src/scripts/tooltips';

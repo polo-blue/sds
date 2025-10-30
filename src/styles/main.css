@@ -3,3 +3,7 @@
 @import 'base/grid';
 
 @import 'content.css';
+
+/* Tippy.js for tooltips (used by ProductEngine component) */
+@import 'tippy.js/dist/tippy.css';
+@import './tippy-theme.css';

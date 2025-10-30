@@ -1,0 +1,67 @@
+---
+import { getEngineTooltipContent } from '../../utils/product/getEngineTooltipContent';
+import type { Engine, EngineTranslations } from '../../utils/product/getEngineTooltipContent';
+
+/*
+  VAG group (VW/Audi/Skoda/Seat/Porsche/Bentley/Lamborghini/Ducati/Cupra/Scania/MAN) manufacturer Engine Code
+  Displays engine code with detailed tooltip showing: name, power, displacement, dates, etc.
+
+  SEO-friendly: Engine code is rendered in HTML, tooltips enhanced via delegation script
+*/
+
+interface Props {
+  engine: Engine;
+  showComma?: boolean;
+  translations?: EngineTranslations;
+}
+
+const { engine, showComma = false, translations = {} } = Astro.props;
+
+// Generate tooltip content for data attribute
+const tooltipContent = getEngineTooltipContent(engine, translations);
+
+// Escape quotes for HTML attribute
+const tooltipContentEscaped = tooltipContent.replace(/"/g, '&quot;');
+---
+
+<span
+  class="engine-code"
+  class:list={[`engine-code-${engine.code}`]}
+  data-tippy-content={tooltipContentEscaped}
+>
+  {engine.code}{showComma && ','}
+</span>
+
+<style>
+/* Engine Code Styles */
+.engine-code {
+  @apply inline-block mr-1;
+  @apply underline decoration-dotted underline-offset-4 py-0.5;
+  @apply decoration-neutral-light cursor-default;
+  @apply transition-colors duration-200;
+}
+
+.engine-code:hover {
+  @apply decoration-blue-darker dark:decoration-blue-light;
+}
+
+/* Semantic Engine Code Colors */
+/* GTI Engines - Red */
+.engine-code-CAVE,
+.engine-code-CTHE,
+.engine-code-DAJA,
+.engine-code-DAYB {
+  @apply text-red-600 dark:text-red-500;
+}
+
+/* WRC R Engine - Blue */
+.engine-code-CDLJ {
+  @apply text-blue-600 dark:text-blue-500;
+}
+
+/* Special Blue Engines */
+.engine-code-CPTA,
+.engine-code-CZEA {
+  @apply text-blue-700 dark:text-blue-600;
+}
+</style>

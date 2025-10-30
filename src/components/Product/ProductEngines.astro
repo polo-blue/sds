@@ -1,0 +1,43 @@
+---
+import ProductEngine from './ProductEngine.astro';
+import type { Engine, EngineTranslations } from '../../utils/product/getEngineTooltipContent';
+
+/*
+  ProductEngines wrapper component
+  Displays a list of engine codes with tooltips
+  SEO-friendly: All engine codes rendered in HTML, enhanced by global delegation script
+*/
+
+interface Props {
+  engines: Engine[];
+  isPdp?: boolean;
+  translations?: EngineTranslations;
+}
+
+const { engines = [], isPdp = false, translations = {} } = Astro.props;
+
+// Sort engines by code
+const sortedEngines = engines.length
+  ? [...engines].sort((a, b) => (a.code || '').localeCompare(b.code || ''))
+  : [];
+---
+
+{
+  sortedEngines.length > 0 && (
+    <div class="engines-list inline-flex flex-wrap items-center gap-x-0.5">
+      {sortedEngines.map((engine, index) => (
+        <ProductEngine
+          engine={engine}
+          showComma={index !== sortedEngines.length - 1}
+          translations={translations}
+        />
+      ))}
+    </div>
+  )
+}
+
+<style>
+.engines-list {
+  @apply leading-none;
+}
+</style>
