@@ -1,5 +1,17 @@
 echo "🔍 Running pre-commit checks..."
 
+# Check for merge conflict markers
+if ! git diff --cached --check; then
+  echo "❌ Found merge conflict markers!"
+  exit 1
+fi
+
+# Check for console.log (optional warning)
+if git diff --cached --name-only | xargs grep -n "console\\.log" 2>/dev/null; then
+  echo "⚠️  Warning: Found console.log statements"
+  echo "   Consider removing them before committing to production"
+fi
+
 # Run format check
 echo "🎨 Checking code formatting..."
 pnpm run format:check
