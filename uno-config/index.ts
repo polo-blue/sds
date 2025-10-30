@@ -207,7 +207,7 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
       presetAttributify(),
       presetIcons({
         scale: 1.2,
-        warn: true, // Show warnings for actual missing icons
+        warn: false, // Disabled to prevent false positives from JS code scanning
         prefix: 'i-',
         extraProperties: {
           'display': 'inline-block',

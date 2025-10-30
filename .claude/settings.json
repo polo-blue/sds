@@ -14,12 +14,12 @@
       "Bash(git log:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)"
+      "Bash(git push:*)"
     ],
     "deny": [
       "Bash(pnpm semantic-release:*)",
       "Bash(pnpm publish:*)",
       "Bash(npm publish:*)",
-      "Bash(git push:*)"
     ],
     "ask": [
       "Bash(rm:*)",

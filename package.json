@@ -52,7 +52,7 @@
     "spoko design system"
   ],
   "dependencies": {
-    "@algolia/client-search": "^5.41.0",
+    "@algolia/client-search": "^5.42.0",
     "@astrojs/mdx": "^4.3.9",
     "@astrojs/node": "^9.5.0",
     "@astrojs/sitemap": "^3.6.0",
@@ -145,7 +145,8 @@
     },
     "ignoredBuiltDependencies": [
       "esbuild",
-      "sharp"
+      "sharp",
+      "vue-demi"
     ]
   },
   "engines": {
