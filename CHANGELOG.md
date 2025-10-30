@@ -1,3 +1,9 @@
+## [1.10.0](https://github.com/polo-blue/sds/compare/v1.9.3...v1.10.0) (2025-10-30)
+
+### Features
+
+* add commitlint and common issue checks to pre-commit ([20a2378](https://github.com/polo-blue/sds/commit/20a237883bd45dac8d80682ac003c54d06177037))
+
 ## [1.9.3](https://github.com/polo-blue/sds/compare/v1.9.2...v1.9.3) (2025-10-30)
 
 ### Bug Fixes
