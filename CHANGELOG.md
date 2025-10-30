@@ -1,3 +1,32 @@
+## [1.9.1](https://github.com/polo-blue/sds/compare/v1.9.0...v1.9.1) (2025-10-30)
+
+### ⚠ BREAKING CHANGES
+
+* ProductEngine and ProductEngines are now Astro components
+
+Replace Vue components with Astro for better performance and SEO:
+- Convert ProductEngine.vue to ProductEngine.astro (SSR-friendly)
+- Convert ProductEngines.vue to ProductEngines.astro
+- Add getEngineTooltipContent utility for tooltip generation
+- Create global tooltip delegation script for performance
+- Add tippy.js CSS to main.css (tippy.css + tippy-theme.css)
+
+Benefits:
+- Engine codes now in HTML for SEO (no client-side hydration)
+- 1 global script handles all tooltips via delegation pattern
+- Tooltips created on-demand when hovered (not on mount)
+- Works for both engine codes and PR codes
+- Massive performance improvement on pages with many engines
+
+Migration:
+- Remove client:load directive from ProductEngines usage
+- Import and call initTooltips() in your layout
+- ProductEngine/ProductEngines now pure Astro (no Vue)
+
+### Code Refactoring
+
+* migrate ProductEngine from Vue to Astro with tooltip delegation ([b3589cc](https://github.com/polo-blue/sds/commit/b3589cc75da9cbf514bcffce2d06a8a36d67012e))
+
 ## [1.9.0](https://github.com/polo-blue/sds/compare/v1.8.1...v1.9.0) (2025-10-29)
 
 ### Features
