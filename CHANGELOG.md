@@ -1,3 +1,9 @@
+## [1.9.3](https://github.com/polo-blue/sds/compare/v1.9.2...v1.9.3) (2025-10-30)
+
+### Bug Fixes
+
+* auto-fix lint warnings and update eslint config ([dbead26](https://github.com/polo-blue/sds/commit/dbead26efdaaee60a9fc5764885ea4f4039040cc))
+
 ## [1.9.2](https://github.com/polo-blue/sds/compare/v1.9.1...v1.9.2) (2025-10-30)
 
 ### Bug Fixes
