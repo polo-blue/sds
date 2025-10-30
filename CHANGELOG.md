@@ -1,3 +1,9 @@
+## [1.11.0](https://github.com/polo-blue/sds/compare/v1.10.0...v1.11.0) (2025-10-30)
+
+### Features
+
+* **tooltips:** export scripts and bundle CSS with tooltips ([57bdcf8](https://github.com/polo-blue/sds/commit/57bdcf8750bc763c9a7fb2f928aecfaa17cf4a34))
+
 ## [1.10.0](https://github.com/polo-blue/sds/compare/v1.9.3...v1.10.0) (2025-10-30)
 
 ### Features
