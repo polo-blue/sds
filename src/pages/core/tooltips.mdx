@@ -1,0 +1,491 @@
+---
+title: "Tooltips"
+layout: "../../layouts/MainLayout.astro"
+---
+
+# Tooltips
+
+A complete tooltip system built on [Tippy.js](https://atomiks.github.io/tippyjs/) with custom SDS styling and automatic initialization.
+
+## Features
+
+- 🎨 **Custom SDS Theme** - Matches design system colors
+- ⚡ **Performance Optimized** - Delegation pattern handles thousands of tooltips efficiently
+- 🔄 **Astro View Transitions** - Automatic re-initialization on navigation
+- 🎯 **Simple API** - Just add a data attribute
+- 📦 **Bundled** - No need to install tippy.js separately in your project
+- 🔍 **SEO Friendly** - Content rendered in HTML, enhanced progressively
+
+## Installation
+
+### Step 1: Create a tooltip initialization script
+
+In your project, create a script file (e.g., `src/scripts/tooltips.ts`):
+
+```ts
+// src/scripts/tooltips.ts
+import 'spoko-design-system/scripts/tooltips';
+```
+
+That's it! This single import includes:
+- ✅ Tippy.js library
+- ✅ Base Tippy.js CSS
+- ✅ SDS custom theme CSS
+- ✅ Auto-initialization logic
+- ✅ Astro View Transitions support
+
+### Step 2: Import in your layout
+
+Add the script to your main layout's `<head>`:
+
+```astro
+---
+// src/layouts/BaseLayout.astro or HeadCommon.astro
+---
+
+<head>
+  <!-- ... other head elements -->
+  <script src="/src/scripts/tooltips.ts"></script>
+</head>
+```
+
+## Usage
+
+### Basic Tooltip
+
+Add the `data-tippy-content` attribute to any element:
+
+<div class="component-preview">
+  <div class="bg-white p-6 w-full">
+    <button
+      class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+      data-tippy-content="This is a basic tooltip">
+      Hover over me
+    </button>
+  </div>
+</div>
+
+```astro
+<button data-tippy-content="This is a basic tooltip">
+  Hover over me
+</button>
+```
+
+### HTML Content
+
+Tooltips support HTML content:
+
+<div class="component-preview">
+  <div class="bg-white p-6 w-full">
+    <span
+      class="underline decoration-dotted cursor-help"
+      data-tippy-content="<strong>Bold text</strong> and <em>italic text</em>">
+      HTML tooltip
+    </span>
+  </div>
+</div>
+
+```astro
+<span data-tippy-content="<strong>Bold text</strong> and <em>italic text</em>">
+  HTML tooltip
+</span>
+```
+
+### Structured Tooltips
+
+For complex tooltips with headers and multiple sections:
+
+<div class="component-preview">
+  <div class="bg-white p-6 w-full">
+    <span
+      class="underline decoration-dotted cursor-help text-blue-600"
+      data-tippy-content='<div class="tooltip-header"><strong>Product Details</strong></div><div class="tooltip-specs"><div class="tooltip-row"><span class="tooltip-label">SKU:</span><span class="tooltip-value">12345</span></div><div class="tooltip-row"><span class="tooltip-label">Weight:</span><span class="tooltip-value">2.5 kg</span></div></div>'>
+      Product Info
+    </span>
+  </div>
+</div>
+
+```astro
+<span data-tippy-content={`
+  <div class="tooltip-header">
+    <strong>Product Details</strong>
+  </div>
+  <div class="tooltip-specs">
+    <div class="tooltip-row">
+      <span class="tooltip-label">SKU:</span>
+      <span class="tooltip-value">12345</span>
+    </div>
+    <div class="tooltip-row">
+      <span class="tooltip-label">Weight:</span>
+      <span class="tooltip-value">2.5 kg</span>
+    </div>
+  </div>
+`}>
+  Product Info
+</span>
+```
+
+## Components with Built-in Tooltips
+
+These SDS components automatically include tooltips:
+
+### ProductEngine & ProductEngines
+
+Engine codes with detailed specification tooltips:
+
+```astro
+import { ProductEngines } from 'spoko-design-system';
+
+<ProductEngines engines={product.part_engines} />
+```
+
+See [ProductEngine documentation](/components/product-engine) for details.
+
+### ProductCodes
+
+PR codes with description tooltips (when available):
+
+```astro
+import { ProductCodes } from 'spoko-design-system';
+
+<ProductCodes prcodes={product.pr_codes} isPdp={true} />
+```
+
+## Styling
+
+### SDS Theme
+
+The default SDS theme uses these design tokens:
+
+| Property | Value | Token |
+|----------|-------|-------|
+| Background | `#f3f4f6` | `neutral-lightest` |
+| Text Color | `#1e293b` | `slate-darkest` |
+| Border | `#e5e7eb` | `neutral-lighter` |
+| Header Background | `#001e50` | `accent-deepBlue` |
+| Max Width | `280px` | - |
+| Border Radius | `0.5rem` | - |
+
+### Custom Styling
+
+To customize the tooltip appearance, override these CSS classes:
+
+```css
+/* Main tooltip box */
+.tippy-box[data-theme~='sds'] {
+  background-color: your-color !important;
+  color: your-text-color !important;
+}
+
+/* Tooltip content area */
+.tippy-box[data-theme~='sds'] .tippy-content {
+  padding: 0.5rem 0.75rem;
+}
+
+/* Structured tooltip header */
+.tippy-box[data-theme~='sds'] .tooltip-header {
+  background-color: your-header-color;
+  color: white;
+  padding: 0.375rem 0.5rem;
+}
+
+/* Tooltip specs rows */
+.tippy-box[data-theme~='sds'] .tooltip-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+}
+```
+
+### Available CSS Classes
+
+For structured tooltips:
+
+| Class | Purpose |
+|-------|---------|
+| `.tooltip-header` | Dark blue header section |
+| `.tooltip-specs` | Container for specification rows |
+| `.tooltip-row` | Single specification row |
+| `.tooltip-label` | Left-aligned label text |
+| `.tooltip-value` | Right-aligned value text |
+
+## Configuration
+
+The tooltip system uses these default settings:
+
+```ts
+{
+  target: '[data-tippy-content]',  // Target selector
+  allowHTML: true,                  // Allow HTML in content
+  theme: 'sds',                     // SDS custom theme
+  placement: 'top',                 // Default placement
+  arrow: true,                      // Show arrow
+  animation: 'shift-away',          // Animation style
+  duration: [200, 150],            // [show, hide] duration (ms)
+  maxWidth: 280,                    // Maximum width (px)
+}
+```
+
+To customize, you can create your own initialization:
+
+```ts
+// src/scripts/custom-tooltips.ts
+import { delegate } from 'tippy.js';
+import 'tippy.js/dist/tippy.css';
+import 'spoko-design-system/styles/tippy-theme.css';
+
+export function initCustomTooltips() {
+  delegate('body', {
+    target: '[data-tippy-content]',
+    allowHTML: true,
+    theme: 'sds',
+    placement: 'bottom',  // Changed from 'top'
+    maxWidth: 400,        // Wider tooltips
+    // ... other options
+  });
+}
+
+// Initialize
+if (typeof document !== 'undefined') {
+  document.addEventListener('astro:page-load', () => {
+    initCustomTooltips();
+  });
+}
+```
+
+## Technical Details
+
+### Delegation Pattern
+
+The tooltip system uses Tippy.js's delegation pattern:
+
+- **Single event listener** on `body` handles all tooltips
+- **No re-initialization needed** when DOM changes
+- **Efficient memory usage** - scales to thousands of tooltips
+- **Dynamic content support** - works with client-side rendering
+
+### How It Works
+
+1. One global event listener watches for mouseenter/focus on `[data-tippy-content]` elements
+2. Tooltip instance created on-demand when user hovers
+3. Instance destroyed when tooltip hides
+4. No memory leaks from orphaned instances
+
+### Astro View Transitions
+
+The system automatically handles Astro's View Transitions:
+
+```ts
+document.addEventListener('astro:page-load', () => {
+  initTooltips();
+});
+```
+
+This ensures tooltips work correctly after client-side navigation.
+
+## API Reference
+
+### initTooltips()
+
+Initializes the global tooltip delegation.
+
+**Import:**
+```ts
+import { initTooltips } from 'spoko-design-system';
+```
+
+**Usage:**
+```ts
+initTooltips();
+```
+
+**Note:** Usually not needed if you import `'spoko-design-system/scripts/tooltips'` which auto-initializes.
+
+### getEngineTooltipContent()
+
+Generates HTML content for engine tooltips.
+
+**Import:**
+```ts
+import { getEngineTooltipContent } from 'spoko-design-system';
+```
+
+**Usage:**
+```ts
+const tooltipHTML = getEngineTooltipContent(engine, translations);
+```
+
+**Parameters:**
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `engine` | `Engine` | Yes | Engine object with nested structure |
+| `translations` | `EngineTranslations` | No | Optional translation overrides |
+
+**Returns:** HTML string for tooltip content
+
+See [ProductEngine documentation](/components/product-engine) for `Engine` interface details.
+
+## Dependencies
+
+SDS includes `tippy.js` as a dependency. **Your project does not need to install it separately.**
+
+If you have `tippy.js` in your project's `package.json`, you can safely remove it:
+
+```bash
+pnpm remove tippy.js
+# or
+npm uninstall tippy.js
+```
+
+## Troubleshooting
+
+### Tooltips not showing
+
+**Check these items:**
+
+1. ✅ Script imported in layout: `<script src="/src/scripts/tooltips.ts"></script>`
+2. ✅ Elements have `data-tippy-content` attribute
+3. ✅ Content is not empty or "undefined"
+4. ✅ Hard refresh browser (Ctrl+Shift+R) to clear cache
+
+### Double tooltips or conflicts
+
+If you see duplicate tooltips:
+
+1. Only import the tooltip script **once** in your layout
+2. Don't call `initTooltips()` manually if using auto-initialization
+3. Remove any local `tippy.js` installations that might conflict
+
+### Tooltips not working after navigation
+
+If tooltips break after Astro View Transitions:
+
+1. Verify `astro:page-load` event listener is registered (included in SDS script)
+2. Check browser console for errors
+3. Make sure View Transitions are properly configured in Astro
+
+### Styling not applied
+
+1. Verify SDS theme CSS is imported (included in SDS tooltip script)
+2. Check CSS specificity - SDS uses `!important` for some properties
+3. Ensure your build process handles CSS imports from `node_modules`
+
+### Performance issues
+
+If you have thousands of tooltips and notice lag:
+
+1. The delegation pattern should handle this efficiently
+2. Check if you're calling `initTooltips()` multiple times
+3. Consider lazy-loading tooltip-heavy sections
+
+## Browser Support
+
+Tooltips work in all modern browsers:
+
+- ✅ Chrome/Edge (latest)
+- ✅ Firefox (latest)
+- ✅ Safari (latest)
+- ✅ Mobile browsers (iOS Safari, Chrome Android)
+
+**Note:** Requires JavaScript. Content is still visible if JS is disabled (progressive enhancement).
+
+## Examples
+
+### Product Specification
+
+```astro
+<dl>
+  <dt>Weight</dt>
+  <dd>
+    <span data-tippy-content="Includes packaging">
+      2.5 kg
+    </span>
+  </dd>
+</dl>
+```
+
+### Help Icons
+
+```astro
+<label>
+  Email
+  <span
+    class="inline-block ml-1 text-gray-400 cursor-help"
+    data-tippy-content="We'll never share your email">
+    ⓘ
+  </span>
+</label>
+```
+
+### Technical Terms
+
+```astro
+<p>
+  The part fits all
+  <abbr
+    data-tippy-content="Volkswagen Aktiengesellschaft Group"
+    class="cursor-help underline decoration-dotted">
+    VAG
+  </abbr>
+  vehicles from 2009-2014.
+</p>
+```
+
+## Best Practices
+
+### ✅ Do
+
+- Use semantic HTML with tooltips as enhancement
+- Keep tooltip content concise (< 50 words)
+- Use structured tooltips for multiple data points
+- Include proper ARIA labels when needed
+- Test on mobile devices
+
+### ❌ Don't
+
+- Put critical information only in tooltips
+- Use tooltips for large blocks of text
+- Nest interactive elements inside tooltips
+- Use tooltips on disabled elements
+- Initialize tooltips multiple times
+
+## Migration
+
+### From Direct Tippy.js
+
+If migrating from a direct Tippy.js implementation:
+
+1. **Remove** `tippy.js` from your `package.json`
+2. **Remove** local tooltip initialization code
+3. **Add** SDS tooltip script import
+4. **Update** elements to use `data-tippy-content`
+5. **Update** custom styles to target `.tippy-box[data-theme~='sds']`
+
+### From Old SDS Setup
+
+If you had the old setup with manual initialization:
+
+**Old way (remove this):**
+```astro
+<script>
+  import { initTooltips } from 'spoko-design-system';
+  initTooltips();
+</script>
+```
+
+**New way (use this):**
+```astro
+<script src="/src/scripts/tooltips.ts"></script>
+```
+
+```ts
+// src/scripts/tooltips.ts
+import 'spoko-design-system/scripts/tooltips';
+```
+
+## Related Documentation
+
+- [ProductEngine Component](/components/product-engine) - Engine codes with tooltips
+- [ProductCodes Component](/components/pr-code) - PR codes with tooltips
+- [Tippy.js Documentation](https://atomiks.github.io/tippyjs/) - Underlying library

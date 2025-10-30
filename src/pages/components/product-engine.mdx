@@ -25,17 +25,27 @@ Display a single engine code with tooltip showing detailed engine information.
 import { ProductEngine } from 'spoko-design-system'
 ```
 
-**2. Initialize tooltips in your layout (once):**
+**2. Initialize tooltips (one-time setup):**
+
+Create a tooltip script in your project:
+
+```ts
+// src/scripts/tooltips.ts
+import 'spoko-design-system/scripts/tooltips';
+```
+
+Then import it in your layout's `<head>`:
 
 ```astro
 ---
-// In your layout file (e.g., Layout.astro)
+// In your layout file (e.g., HeadCommon.astro)
 ---
-<script>
-  import { initTooltips } from 'spoko-design-system';
-  initTooltips();
-</script>
+<head>
+  <script src="/src/scripts/tooltips.ts"></script>
+</head>
 ```
+
+See [Tooltips documentation](/core/tooltips) for details.
 
 ### Basic Usage (New API Structure):
 
@@ -385,7 +395,7 @@ Special engine codes are automatically color-coded:
 
 ## Notes
 
-- **Setup required**: Call `initTooltips()` once in your layout to enable tooltips
+- **Setup required**: Import `'spoko-design-system/scripts/tooltips'` once in your layout (see [Tooltips docs](/core/tooltips))
 - Hover over any engine code to see full specifications in a detailed tooltip
 - Tooltips use Tippy.js delegation pattern (one global handler for all tooltips)
 - **Performance**: No client-side hydration needed - pure Astro components
@@ -403,12 +413,6 @@ Special engine codes are automatically color-coded:
 If upgrading from the old Vue version:
 
 1. **Remove `client:load`** directive from all ProductEngine/ProductEngines usage
-2. **Add tooltip initialization** to your layout:
-   ```astro
-   <script>
-     import { initTooltips } from 'spoko-design-system';
-     initTooltips();
-   </script>
-   ```
+2. **Set up tooltips** in your layout (see [Tooltips documentation](/core/tooltips))
 3. **Update imports** to use Astro components (automatically handled by package exports)
 4. **No other changes needed** - props and API structure remain the same
