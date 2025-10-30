@@ -51,6 +51,7 @@ export default [
     rules: {
       'vue/multi-word-component-names': 'off',
       'vue/no-unused-vars': 'warn',
+      'vue/no-required-prop-with-default': 'off', // Props with defaults can still be required in Vue 3
     },
   },
 

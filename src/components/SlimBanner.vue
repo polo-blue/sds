@@ -129,7 +129,7 @@ const closePermanently = () => {
 
       <span class="leading-none inline-flex">
         <slot>
-          <span :data-text="props.message"></span>
+          <span :data-text="props.message" />
           <a
             v-if="props.linkUrl"
             :href="props.linkUrl"
@@ -138,8 +138,8 @@ const closePermanently = () => {
             :title="props.linkTitle || props.linkText"
             class="underline underline-offset-2 hover:text-blue-wrc ml-1.5"
             :data-text="props.linkText"
-          ></a>
-          <span v-if="props.linkUrl" data-text="."></span>
+          />
+          <span v-if="props.linkUrl" data-text="." />
         </slot>
       </span>
 
