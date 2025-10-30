@@ -1,3 +1,9 @@
+## [1.9.2](https://github.com/polo-blue/sds/compare/v1.9.1...v1.9.2) (2025-10-30)
+
+### Bug Fixes
+
+* improve prettier config and add comprehensive pre-commit checks ([847641e](https://github.com/polo-blue/sds/commit/847641e17566fa85a1fa5466b87a7028ae3287bb))
+
 ## [1.9.1](https://github.com/polo-blue/sds/compare/v1.9.0...v1.9.1) (2025-10-30)
 
 ### ⚠ BREAKING CHANGES
