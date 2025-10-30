@@ -25,17 +25,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
   import '../scripts/tooltips.ts';
 </script>
 
-<html
-  dir={content.dir ?? 'ltr'}
-  lang={content.lang ?? 'en-us'}
-  class="initial"
->
+<html dir={content.dir ?? 'ltr'} lang={content.lang ?? 'en-us'} class="initial">
   <head>
     <HeadCommon />
-    <HeadSEO
-      content={content}
-      canonicalURL={canonicalURL}
-    />
+    <HeadSEO content={content} canonicalURL={canonicalURL} />
     <title>
       {content.title ? `${content.title} 🚀 ${CONFIG.SITE.title}` : CONFIG.SITE.title}
     </title>
@@ -48,18 +41,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
     <div class="flex bg-white z-10 mb-11 relative">
       <div class="sticky top-0 flex lg:(h-screen w-64) z-50">
-        <div
-          class="mr-auto"
-          transition:name="sidebar"
-        >
+        <div class="mr-auto" transition:name="sidebar">
           <LeftSidebar currentPage={currentPage} />
         </div>
       </div>
       <main class="pb-4 px-4 sm:px-8 col-auto sm:(pb-32) overflow-auto w-full">
-        <PageContent
-          content={content}
-          transition:name="content"
-        >
+        <PageContent content={content} transition:name="content">
           <slot />
         </PageContent>
       </main>

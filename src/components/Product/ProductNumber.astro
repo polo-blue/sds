@@ -15,9 +15,7 @@ const {
 const { formattedNumbers: formatted } = useFormatProductNumber(productNumber);
 
 // Define classes dynamically
-const classNames = ['product-number', big ? 'text-4.5' : 'number-big', customClass]
-  .filter(Boolean)
-  .join(' ');
+const classNames = ['product-number', big ? 'text-4.5' : 'number-big', customClass].filter(Boolean).join(' ');
 
 const trackingClass = small ? 'tracking-wide' : 'tracking-tight';
 
@@ -29,37 +27,19 @@ const FormattedWrapper = isPdp ? 'h3' : 'div';
 {
   productNumber && formatted && (
     <div class={classNames}>
-      <div
-        class={['p-number', small ? 'w-full' : ''].join(' ')}
-        itemprop="identifier"
-      >
-        <ProductWrapper
-          id={productNumber}
-          class="product-code"
-        >
+      <div class={['p-number', small ? 'w-full' : ''].join(' ')} itemprop="identifier">
+        <ProductWrapper id={productNumber} class="product-code">
           {productNumber}
         </ProductWrapper>
 
-        {big && (
-          <ButtonCopy
-            productNumber={productNumber}
-            texts={buttonTexts}
-            tooltipClasses=""
-          />
-        )}
+        {big && <ButtonCopy productNumber={productNumber} texts={buttonTexts} tooltipClasses="" />}
       </div>
 
       <div class={['code-formatted', trackingClass].join(' ')}>
-        <div
-          class="relative inset-0"
-          data-pagefind-ignore
-        >
+        <div class="relative inset-0" data-pagefind-ignore>
           {formatted.dot}
         </div>
-        <div
-          class="absolute inset-0"
-          data-pagefind-ignore
-        >
+        <div class="absolute inset-0" data-pagefind-ignore>
           {formatted.dash}
         </div>
         <FormattedWrapper class="number-secondary">{formatted.standard}</FormattedWrapper>

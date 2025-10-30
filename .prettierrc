@@ -3,13 +3,15 @@
   "singleQuote": true,
   "tabWidth": 2,
   "trailingComma": "es5",
-  "printWidth": 100,
+  "printWidth": 110,
   "useTabs": false,
   "bracketSpacing": true,
   "arrowParens": "avoid",
   "endOfLine": "lf",
-  "singleAttributePerLine": true,
-  "plugins": ["prettier-plugin-astro"],
+  "singleAttributePerLine": false,
+  "plugins": [
+    "prettier-plugin-astro"
+  ],
   "overrides": [
     {
       "files": "*.astro",
@@ -20,7 +22,9 @@
     {
       "files": "*.vue",
       "options": {
-        "parser": "vue"
+        "parser": "vue",
+        "vueIndentScriptAndStyle": false,
+        "htmlWhitespaceSensitivity": "ignore"
       }
     }
   ]

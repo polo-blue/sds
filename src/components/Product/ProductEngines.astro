@@ -14,7 +14,7 @@ interface Props {
   translations?: EngineTranslations;
 }
 
-const { engines = [], isPdp = false, translations = {} } = Astro.props;
+const { engines = [], translations = {} } = Astro.props;
 
 // Sort engines by code
 const sortedEngines = engines.length
@@ -37,7 +37,7 @@ const sortedEngines = engines.length
 }
 
 <style>
-.engines-list {
-  @apply leading-none;
-}
+  .engines-list {
+    @apply leading-none;
+  }
 </style>

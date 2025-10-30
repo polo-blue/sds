@@ -1,9 +1,6 @@
 const MAX_DESCRIPTION_LENGTH = 150;
 
-export const getShorterDescription = (
-  description: string | null,
-  limit = MAX_DESCRIPTION_LENGTH
-) => {
+export const getShorterDescription = (description: string | null, limit = MAX_DESCRIPTION_LENGTH) => {
   function cutString(s: string, n: number) {
     const text = s.replaceAll('\n', ' ');
     const cut = text.indexOf('. ', n);

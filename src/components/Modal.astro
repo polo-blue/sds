@@ -84,31 +84,26 @@ const {
   }
 </style>
 
-{showTrigger && (
-  <Button
-    primary
-    onclick={`window.${id}.showModal()`}
-    >{open}</Button
-  >
-)}
+{
+  showTrigger && (
+    <Button primary onclick={`window.${id}.showModal()`}>
+      {open}
+    </Button>
+  )
+}
 
-<dialog
-  id={id}
-  class="p-6"
->
+<dialog id={id} class="p-6">
   <div class="modal-header">
     {title && <h2 class="text-2xl font-bold pr-8">{title}</h2>}
     <slot name="header" />
 
-    {showXButton && (
-      <form method="dialog" class="inline">
-        <button
-          class="modal-close-x"
-          aria-label="Close"
-          type="submit"
-        />
-      </form>
-    )}
+    {
+      showXButton && (
+        <form method="dialog" class="inline">
+          <button class="modal-close-x" aria-label="Close" type="submit" />
+        </form>
+      )
+    }
   </div>
 
   <div class="modal-content">
@@ -116,37 +111,44 @@ const {
     <slot />
   </div>
 
-  {showActions && (
-    <div class="modal-actions">
-      <slot name="actions">
-        <form method="dialog" class="contents">
-          <Button>{cancelText}</Button>
-        </form>
-        <Button primary={confirmPrimary} onclick={`document.getElementById('${id}').dispatchEvent(new CustomEvent('confirm', { detail: { id: '${id}' } }))`}>
-          {confirmText}
-        </Button>
-      </slot>
-    </div>
-  )}
+  {
+    showActions && (
+      <div class="modal-actions">
+        <slot name="actions">
+          <form method="dialog" class="contents">
+            <Button>{cancelText}</Button>
+          </form>
+          <Button
+            primary={confirmPrimary}
+            onclick={`document.getElementById('${id}').dispatchEvent(new CustomEvent('confirm', { detail: { id: '${id}' } }))`}
+          >
+            {confirmText}
+          </Button>
+        </slot>
+      </div>
+    )
+  }
 
-  {!showActions && (
-    <form method="dialog">
-      <slot name="close" />
-    </form>
-  )}
+  {
+    !showActions && (
+      <form method="dialog">
+        <slot name="close" />
+      </form>
+    )
+  }
 </dialog>
 
 <script define:vars={{ id }}>
   // Close on backdrop click
   const dialog = document.getElementById(id);
-  dialog?.addEventListener('click', (e) => {
+  dialog?.addEventListener('click', e => {
     if (e.target === dialog) {
       dialog.close();
     }
   });
 
   // Close on Escape key
-  dialog?.addEventListener('keydown', (e) => {
+  dialog?.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
       dialog.close();
     }

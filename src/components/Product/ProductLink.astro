@@ -27,12 +27,7 @@ import { getProductUrl } from '@utils/product/getProductUrl';
 import { getShopProductUrl } from '@utils/product/getShopProductUrl';
 import { getProductTranslation } from '@utils/product/getProductTranslation';
 import { getImageUrl } from '@utils/getImageUrl';
-import {
-  ProductImage,
-  ProductNumber,
-  removeSemicolon,
-  getPriceFormatted,
-} from 'spoko-design-system';
+import { ProductImage, ProductNumber, removeSemicolon, getPriceFormatted } from 'spoko-design-system';
 
 // Użycie productObject jeśli przekazane, inaczej pobranie produktu na podstawie productId
 const product =
@@ -51,9 +46,7 @@ const thumb = product
   : '';
 
 // Product translation removed - using English only
-const productTranslation = productId
-  ? await getProductTranslation(productId, product?.number || '')
-  : null;
+const productTranslation = productId ? await getProductTranslation(productId, product?.number || '') : null;
 
 const productName = product
   ? isShopProduct
@@ -67,9 +60,7 @@ const nameFormatted = removeSemicolon(productName.toString());
 {
   product && (
     <>
-      <div
-        class={bigTile ? 'product-link--big-tile' : 'product-thumb--plp product-thumb--carousel'}
-      >
+      <div class={bigTile ? 'product-link--big-tile' : 'product-thumb--plp product-thumb--carousel'}>
         {product.photo !== null && thumb ? (
           <ProductImage
             imagesApiUrl="https://api.polo.blue"
@@ -82,11 +73,7 @@ const nameFormatted = removeSemicolon(productName.toString());
             }}
           />
         ) : (
-          <img
-            src="/1x1.png"
-            class="bg-neutral-lightest/70"
-            alt={productName}
-          />
+          <img src="/1x1.png" class="bg-neutral-lightest/70" alt={productName} />
         )}
       </div>
 
@@ -98,30 +85,19 @@ const nameFormatted = removeSemicolon(productName.toString());
         <a
           class="product-link--url"
           href={
-            isShopProduct
-              ? getShopProductUrl(product.slug, locale)
-              : getProductUrl(product.number, locale)
+            isShopProduct ? getShopProductUrl(product.slug, locale) : getProductUrl(product.number, locale)
           }
           itemprop="url"
           title={product.number}
           set:html={nameFormatted}
         />
 
-        <ProductNumber
-          productNumber={product.number}
-          copyDisabled={true}
-        />
+        <ProductNumber productNumber={product.number} copyDisabled={true} />
 
         {index !== null && (
           <>
-            <meta
-              itemprop="position"
-              content={index.toString()}
-            />
-            <meta
-              itemprop="name"
-              content={nameFormatted}
-            />
+            <meta itemprop="position" content={index.toString()} />
+            <meta itemprop="name" content={nameFormatted} />
           </>
         )}
       </div>

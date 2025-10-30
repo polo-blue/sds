@@ -20,10 +20,7 @@ const props = defineProps({
       :title="props.file.path"
       class="flex items-center hover:underline underline-offset-2 hover:underline-1"
     >
-      <div
-        i-system-uicons-document-justified
-        class="text-blue-lightest dark:text-accent-light"
-      />
+      <div i-system-uicons-document-justified class="text-blue-lightest dark:text-accent-light" />
       <span>{{ props.file.name }}</span>
     </a>
   </li>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+/* global Event, HTMLInputElement, HTMLTextAreaElement, FocusEvent */
 import { computed, useAttrs } from 'vue';
 
 interface InputProps {
@@ -30,7 +31,7 @@ const props = withDefaults(defineProps<InputProps>(), {
   error: false,
   success: false,
   size: 'md',
-  class: ''
+  class: '',
 });
 
 const emit = defineEmits(['update:modelValue', 'input', 'focus', 'blur']);
@@ -45,7 +46,7 @@ const wrapperClass = computed(() => `relative input-wrapper-${props.variant}`);
 const inputClass = computed(() => {
   // Base classes
   const classes = ['input-base', `input-${props.variant}`];
-  
+
   // Focus and placeholder behavior - using direct arbitrary selectors
   classes.push('[&:focus~label]:text-blue-light');
   classes.push('[&:focus~label]:dark:text-blue-lightest');
@@ -53,7 +54,7 @@ const inputClass = computed(() => {
   classes.push('[&:placeholder-shown~label]:scale-100');
   classes.push('[&:placeholder-shown~label]:translate-y-0');
   classes.push('[&:not(:placeholder-shown)~label]:scale-75');
-  
+
   // Variant-specific behaviors
   if (props.variant === 'standard') {
     classes.push('[&:focus~label]:-translate-y-6');
@@ -63,14 +64,14 @@ const inputClass = computed(() => {
     classes.push('[&:focus~label]:-translate-y-4');
     classes.push('[&:not(:placeholder-shown)~label]:-translate-y-4');
   }
-  
+
   // Additional classes
   if (props.size) classes.push(`input-${props.size}`);
   if (props.type === 'textarea') classes.push('input-textarea');
   if (props.error) classes.push('input-error');
   else if (props.success) classes.push('input-success');
   if (props.class) classes.push(props.class);
-  
+
   return classes.join(' ');
 });
 
@@ -78,7 +79,7 @@ const inputClass = computed(() => {
 const labelClass = computed(() => {
   // Base classes
   const classes = ['input-label-base', `input-label-${props.variant}`];
-  
+
   // Explicitly add transform for initial state to ensure consistency
   if (props.variant === 'standard') {
     // Start in position and let focus/content move it
@@ -87,12 +88,12 @@ const labelClass = computed(() => {
     // Start in position and let focus/content move it
     classes.push('translate-y-0');
   }
-  
+
   // Additional classes
   if (props.size) classes.push(`input-label-${props.size}`);
   if (props.error) classes.push('input-label-error');
   else if (props.success) classes.push('input-label-success');
-  
+
   return classes.join(' ');
 });
 
@@ -125,7 +126,7 @@ const handleBlur = (event: FocusEvent) => emit('blur', event);
       @focus="handleFocus"
       @blur="handleBlur"
     />
-    
+
     <!-- Input field -->
     <input
       v-else
@@ -140,34 +141,21 @@ const handleBlur = (event: FocusEvent) => emit('blur', event);
       @input="handleInput"
       @focus="handleFocus"
       @blur="handleBlur"
-    >
-    
+    />
+
     <!-- Label with guaranteed correct transform origin -->
-    <label
-      :for="id"
-      :class="labelClass"
-      style="transform-origin: top left;"
-    >
+    <label :for="id" :class="labelClass" style="transform-origin: top left">
       {{ label }}
-      <span
-        v-if="required"
-        class="text-red-500 ml-1"
-      >*</span>
+      <span v-if="required" class="text-red-500 ml-1">*</span>
     </label>
-    
+
     <!-- Error message -->
-    <div 
-      v-if="error && typeof error === 'string'" 
-      class="input-error-message"
-    >
+    <div v-if="error && typeof error === 'string'" class="input-error-message">
       {{ error }}
     </div>
-    
+
     <!-- Success message -->
-    <div 
-      v-if="success && typeof success === 'string'" 
-      class="input-success-message"
-    >
+    <div v-if="success && typeof success === 'string'" class="input-success-message">
       {{ success }}
     </div>
   </div>

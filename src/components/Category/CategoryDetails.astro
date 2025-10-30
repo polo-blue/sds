@@ -3,16 +3,8 @@ import CategorySidebarToggler from './CategorySidebarToggler.vue';
 import CategoryViewToggler from './CategoryViewToggler.astro';
 import { Icon } from 'astro-icon/components';
 
-const {
-  category,
-  subcategory,
-  subtitle,
-  subsubtitle,
-  titleSmall,
-  showViewToggler,
-  viewerLabels,
-  locale,
-} = Astro.props;
+const { category, subcategory, subtitle, subsubtitle, titleSmall, showViewToggler, viewerLabels } =
+  Astro.props;
 
 // Use paths directly from API - they already include locale and proper slashes
 const categoryPath = category?.path || `/${category.slug}/`;
@@ -24,16 +16,9 @@ const subcategoryPath = subcategory?.path || `/${category.slug}/${subcategory?.s
   transition:name="category-details"
   transition:animate="fade"
 >
-  <CategorySidebarToggler
-    class="category-sidebar-toggler w-12 md:w-8"
-    data-state="desktop"
-  >
+  <CategorySidebarToggler class="category-sidebar-toggler w-12 md:w-8" data-state="desktop">
     <div class="desktop-icons hidden md:block">
-      <Icon
-        name="ant-design:menu-fold-outlined"
-        class="toggler-btn w-6 expanded-icon"
-        aria-hidden="true"
-      />
+      <Icon name="ant-design:menu-fold-outlined" class="toggler-btn w-6 expanded-icon" aria-hidden="true" />
       <Icon
         name="ant-design:menu-unfold-outlined"
         class="toggler-btn w-6 collapsed-icon hidden"
@@ -41,11 +26,7 @@ const subcategoryPath = subcategory?.path || `/${category.slug}/${subcategory?.s
       />
     </div>
     <div class="mobile-icon block md:hidden">
-      <Icon
-        name="ant-design:menu-outlined"
-        class="toggler-btn w-6"
-        aria-hidden="true"
-      />
+      <Icon name="ant-design:menu-outlined" class="toggler-btn w-6" aria-hidden="true" />
     </div>
   </CategorySidebarToggler>
 
@@ -53,10 +34,7 @@ const subcategoryPath = subcategory?.path || `/${category.slug}/${subcategory?.s
     {
       subtitle ? (
         <>
-          <a
-            class="text-lg font-vw-headregular whitespace-nowrap block"
-            href={categoryPath}
-          >
+          <a class="text-lg font-vw-headregular whitespace-nowrap block" href={categoryPath}>
             {category.name}
             {titleSmall && <small>{titleSmall}</small>}
           </a>
@@ -89,10 +67,7 @@ const subcategoryPath = subcategory?.path || `/${category.slug}/${subcategory?.s
 
   {
     showViewToggler && (
-      <CategoryViewToggler
-        {...viewerLabels}
-        class="hidden lg:flex items-center gap-2 ml-auto"
-      />
+      <CategoryViewToggler {...viewerLabels} class="hidden lg:flex items-center gap-2 ml-auto" />
     )
   }
 </div>

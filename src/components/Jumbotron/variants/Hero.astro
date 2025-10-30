@@ -16,11 +16,7 @@ const { title = '', image, description, info, backgroundClass } = Astro.props;
     image && (
       <div class="absolute inset-0 w-full h-full">
         <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-transparent opacity-90 z-1" />
-        <img
-          class="w-full h-full object-cover"
-          src={image}
-          alt={title}
-        />
+        <img class="w-full h-full object-cover" src={image} alt={title} />
       </div>
     )
   }
@@ -33,20 +29,10 @@ const { title = '', image, description, info, backgroundClass } = Astro.props;
       />
       {
         description && (
-          <div
-            class="mb-1 line-clamp-3 text-base sm:text-lg leading-none mt-4"
-            set:html={description}
-          />
+          <div class="mb-1 line-clamp-3 text-base sm:text-lg leading-none mt-4" set:html={description} />
         )
       }
-      {
-        info && (
-          <div
-            class="font-medium mb-4 line-clamp-1 text-base sm:text-lg mt-2"
-            set:html={info}
-          />
-        )
-      }
+      {info && <div class="font-medium mb-4 line-clamp-1 text-base sm:text-lg mt-2" set:html={info} />}
     </header>
   </div>
 </div>

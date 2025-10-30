@@ -56,8 +56,7 @@ const features = [
   {
     title: 'Design Patterns',
     icon: 'streamline-freehand-color:design-process-drawing-board',
-    description:
-      'Proven patterns and layouts for common use cases, from landing pages to product catalogs.',
+    description: 'Proven patterns and layouts for common use cases, from landing pages to product catalogs.',
   },
   {
     title: 'Developer Ready',
@@ -100,13 +99,7 @@ const exampleSites = [
         set:html={SITE.description}
       />
 
-      <Button
-        slot="cta-content"
-        href="/core/introduction/"
-        title="Spoko Design System"
-        primary
-        rounded
-      >
+      <Button slot="cta-content" href="/core/introduction/" title="Spoko Design System" primary rounded>
         Read More
       </Button>
     </Jumbotron>
@@ -121,16 +114,8 @@ const exampleSites = [
               title={description}
               class="flex w-full flex-wrap bg-white rounded-md hover:-translate-y-1 hover:shadow-lg transition-all flex-1 items-center py-10 px-4 md:(flex-col w-auto flex-nowrap text-center py-16)"
             >
-              <Headline
-                as="h2"
-                class="text-3xl"
-                underline={false}
-              >
-                <Icon
-                  name={icon}
-                  aria-hidden="true"
-                  class="text-blue-400 mr-3 text-4xl"
-                />
+              <Headline as="h2" class="text-3xl" underline={false}>
+                <Icon name={icon} aria-hidden="true" class="text-blue-400 mr-3 text-4xl" />
                 {title}
               </Headline>
               <p class="text-slate-500 w-full">{description}</p>
@@ -143,16 +128,12 @@ const exampleSites = [
     <!-- Features Section -->
     <section class="py-16 px-4 max-w-5xl mx-auto">
       <div class="text-center mb-12">
-        <Headline
-          as="h2"
-          class="text-3xl md:text-4xl text-gray-900 mb-6"
-          underline="center"
-        >
+        <Headline as="h2" class="text-3xl md:text-4xl text-gray-900 mb-6" underline="center">
           Why Spoko Design System?
         </Headline>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          A modern, comprehensive design system built with Astro and Vue, featuring consistent
-          components and patterns for rapid development.
+          A modern, comprehensive design system built with Astro and Vue, featuring consistent components and
+          patterns for rapid development.
         </p>
       </div>
 
@@ -165,26 +146,17 @@ const exampleSites = [
                 class="text-2xl mb-3 text-gray-900 flex items-center justify-center"
                 underline={false}
               >
-                <Icon
-                  name={icon}
-                  aria-hidden="true"
-                  class="text-4xl text-blue-400 mr-3"
-                />
+                <Icon name={icon} aria-hidden="true" class="text-4xl text-blue-400 mr-3" />
                 {title}
               </Headline>
-              <p
-                class="text-gray-600"
-                set:html={description}
-              />
+              <p class="text-gray-600" set:html={description} />
             </div>
           ))
         }
       </div>
     </section>
 
-    <div
-      class="mt-12 py-20 bg-blue-darker bg-vw text-white flex items-center justify-center relative"
-    >
+    <div class="mt-12 py-20 bg-blue-darker bg-vw text-white flex items-center justify-center relative">
       <Quote>
         <blockquote>
           Well done is better than well said.
@@ -198,11 +170,7 @@ const exampleSites = [
       <div class="grid lg:grid-cols-2 gap-8 md:gap-12">
         <!-- Download Section -->
         <div class="text-center">
-          <Headline
-            underline
-            as="h2"
-            class="text-3xl text-gray-900 mb-8"
-          >
+          <Headline underline as="h2" class="text-3xl text-gray-900 mb-8">
             <Icon
               name="streamline-freehand-color:archive-box"
               aria-hidden="true"
@@ -231,10 +199,7 @@ const exampleSites = [
               rel="noopener noreferrer"
               class="flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg transition-colors"
             >
-              <Icon
-                name="vscode-icons:file-type-npm"
-                class="text-3xl"
-              />
+              <Icon name="vscode-icons:file-type-npm" class="text-3xl" />
               <span class="font-semibold">npm Package</span>
             </a>
             <a
@@ -243,10 +208,7 @@ const exampleSites = [
               rel="noopener noreferrer"
               class="flex items-center gap-3 bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-lg transition-colors"
             >
-              <Icon
-                name="mdi:github"
-                class="text-2xl"
-              />
+              <Icon name="mdi:github" class="text-2xl" />
               <span class="font-semibold">Source Code</span>
             </a>
           </div>
@@ -258,11 +220,7 @@ const exampleSites = [
 
         <!-- Examples Section -->
         <div class="text-center">
-          <Headline
-            underline
-            as="h2"
-            class="text-3xl text-gray-900 mb-8"
-          >
+          <Headline underline as="h2" class="text-3xl text-gray-900 mb-8">
             <Icon
               name="streamline-freehand-color:coding-files-network-folder"
               aria-hidden="true"
@@ -285,18 +243,13 @@ const exampleSites = [
                     <h4 class="font-semibold text-gray-900 group-hover:text-blue-600">{title}</h4>
                     <p class="text-sm text-gray-600">{description}</p>
                   </div>
-                  <Icon
-                    name="lucide:link"
-                    class="text-gray-400 group-hover:text-blue-400"
-                  />
+                  <Icon name="lucide:link" class="text-gray-400 group-hover:text-blue-400" />
                 </a>
               ))
             }
           </div>
 
-          <p class="text-gray-600 text-sm">
-            See the design system in action across different project types
-          </p>
+          <p class="text-gray-600 text-sm">See the design system in action across different project types</p>
         </div>
       </div>
     </section>

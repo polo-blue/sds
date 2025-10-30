@@ -13,7 +13,7 @@ interface PrCodeObject {
   variant_category?: string;
 }
 
-const props = defineProps({
+defineProps({
   prcode: {
     type: Object as PropType<PrCodeObject>,
     required: true,
@@ -32,7 +32,7 @@ const props = defineProps({
     class="btn-prcode"
     :class="[
       prcode.variant_category ? `btn-prcode--variant-${prcode.variant_category.toLowerCase()}` : '',
-      { 'btn-prcode--pdp': isPdp }
+      { 'btn-prcode--pdp': isPdp },
     ]"
     :data-tippy-content="prcode.description || undefined"
   >

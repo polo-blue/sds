@@ -1,11 +1,13 @@
 <script lang="ts" setup>
+/* global localStorage */
 import { ref, onMounted } from 'vue';
 
 const props = defineProps({
   // Primary state (visible by default)
   message: {
     type: String,
-    default: 'We stand with our friends and colleagues in Ukraine. To support Ukraine in their time of need visit',
+    default:
+      'We stand with our friends and colleagues in Ukraine. To support Ukraine in their time of need visit',
   },
   linkText: {
     type: String,
@@ -51,7 +53,8 @@ const props = defineProps({
   },
   iconClass: {
     type: String,
-    default: 'inline-block text-4xl w-6 h-3.5 min-w-[1.25rem] mr-3 bg-gradient-to-b stops-[#0057b7_50%,50%,#ffd700_100%]',
+    default:
+      'inline-block text-4xl w-6 h-3.5 min-w-[1.25rem] mr-3 bg-gradient-to-b stops-[#0057b7_50%,50%,#ffd700_100%]',
   },
 
   // LocalStorage persistence
@@ -90,7 +93,7 @@ onMounted(() => {
           // Still valid, keep hidden
           isHidden.value = true;
         }
-      } catch (e) {
+      } catch {
         // Invalid data, remove it
         localStorage.removeItem(props.storageKey);
       }
@@ -109,9 +112,8 @@ const closePermanently = () => {
     const data = {
       closed: true,
       timestamp: new Date().getTime(),
-      expires: props.expirationDays > 0
-        ? new Date().getTime() + (props.expirationDays * 24 * 60 * 60 * 1000)
-        : null,
+      expires:
+        props.expirationDays > 0 ? new Date().getTime() + props.expirationDays * 24 * 60 * 60 * 1000 : null,
     };
     localStorage.setItem(props.storageKey, JSON.stringify(data));
   }
@@ -120,16 +122,9 @@ const closePermanently = () => {
 
 <template>
   <template v-if="!isHidden">
-    <div
-      v-if="isShow"
-      data-pagefind-ignore
-      class="slimbanner"
-    >
+    <div v-if="isShow" data-pagefind-ignore class="slimbanner">
       <slot name="icon">
-        <span
-          v-if="props.showIcon"
-          :class="props.iconClass"
-        />
+        <span v-if="props.showIcon" :class="props.iconClass" />
       </slot>
 
       <span class="leading-none inline-flex">

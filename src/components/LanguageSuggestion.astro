@@ -8,13 +8,7 @@ interface Props {
   showIcon?: boolean;
 }
 
-const {
-  position = 'bottom',
-  className = '',
-  customPath,
-  dismissTimeout,
-  showIcon = true,
-} = Astro.props;
+const { position = 'bottom', className = '', customPath, dismissTimeout, showIcon = true } = Astro.props;
 
 const currentLocale = Astro.currentLocale;
 const preferredLocale = Astro.preferredLocale;
@@ -33,10 +27,7 @@ const targetPath = customPath
   ]}
   role="alert"
 >
-  <a
-    href={targetPath}
-    class="flex items-center gap-2 font-medium hover:underline"
-  >
+  <a href={targetPath} class="flex items-center gap-2 font-medium hover:underline">
     {showIcon && <span class="material-icons-outlined text-sm">translate</span>}
     {new Intl.DisplayNames([preferredLocale], { type: 'language' }).of(preferredLocale)}
   </a>
@@ -51,9 +42,7 @@ const targetPath = customPath
 
 <script define:vars={{ currentLocale, preferredLocale, dismissTimeout }}>
   const shouldShow =
-    preferredLocale &&
-    preferredLocale !== currentLocale &&
-    !localStorage.getItem('languageSuggestDenied');
+    preferredLocale && preferredLocale !== currentLocale && !localStorage.getItem('languageSuggestDenied');
 
   if (shouldShow) {
     const popup = document.getElementById('languageSuggestion');

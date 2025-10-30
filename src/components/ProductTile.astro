@@ -19,11 +19,7 @@ import ProductNumber from './Product/ProductNumber.astro';
             }}
           />
         ) : (
-          <img
-            src="/1x1.png"
-            class="bg-gray-100/70"
-            alt={productObject.name}
-          />
+          <img src="/1x1.png" class="bg-gray-100/70" alt={productObject.name} />
         )}
       </div>
 
@@ -45,14 +41,8 @@ import ProductNumber from './Product/ProductNumber.astro';
 
         {index !== null && (
           <>
-            <meta
-              itemprop="position"
-              content={String(index)}
-            />
-            <meta
-              itemprop="name"
-              content={productObject.name}
-            />
+            <meta itemprop="position" content={String(index)} />
+            <meta itemprop="name" content={productObject.name} />
           </>
         )}
       </div>

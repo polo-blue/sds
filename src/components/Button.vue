@@ -28,11 +28,7 @@ const props = defineProps<ButtonProps>();
 // Check if we should add a default mediumHover for tertiary
 const shouldAddDefaultMediumHover =
   props.tertiary ||
-  (props.tertiaryOutline &&
-    !props.whiteHover &&
-    !props.lightHover &&
-    !props.mediumHover &&
-    !props.darkHover);
+  (props.tertiaryOutline && !props.whiteHover && !props.lightHover && !props.mediumHover && !props.darkHover);
 
 const tag = props.href && props.href.length ? 'a' : 'button';
 const classes = {

@@ -10,7 +10,7 @@ interface PrCodeObject {
   variant_category?: string;
 }
 
-const props = defineProps({
+defineProps({
   prcodes: {
     type: Array as PropType<PrCodeObject[]>,
     default: () => [],
@@ -33,11 +33,11 @@ const variantCategoryMap: Record<string, string> = {
   '0NH': 'GTI',
   '1ZR': 'GTI',
   // WRC
-  'E5M': 'WRC',
+  E5M: 'WRC',
   '1KD': 'WRC',
   '1ZP': 'WRC',
   '2JQ': 'WRC',
-  'TA2': 'WRC',
+  TA2: 'WRC',
   // CROSS
   '2JK': 'CROSS',
   // BLUEGT
@@ -56,17 +56,9 @@ const getVariantCategory = (code: string, fallback?: string): string | undefined
 </script>
 
 <template>
-  <span
-    v-for="(prcode, index) in prcodes"
-    :key="prcode?.id || index"
-    class="not-last:mr-1"
-  >
+  <span v-for="(prcode, index) in prcodes" :key="prcode?.id || index" class="not-last:mr-1">
     <template v-if="prcode?.code">
-      <PrCode
-        v-if="!prcode.code.includes('+')"
-        :prcode="prcode"
-        :isPdp="isPdp"
-      />
+      <PrCode v-if="!prcode.code.includes('+')" :prcode="prcode" :isPdp="isPdp" />
       <span v-else class="inline-flex items-center gap-1">
         <template v-for="(code, idx) in prcode.code.split('+')" :key="idx">
           <span v-if="idx > 0" class="text-sm opacity-75">+</span>
@@ -75,7 +67,7 @@ const getVariantCategory = (code: string, fallback?: string): string | undefined
               code: code.trim(),
               group: prcode.group,
               description: null,
-              variant_category: getVariantCategory(code.trim(), prcode.variant_category)
+              variant_category: getVariantCategory(code.trim(), prcode.variant_category),
             }"
             :isPdp="isPdp"
           />

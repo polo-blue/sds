@@ -23,21 +23,10 @@ const { data } = Astro.props;
         class="py-2 outline-none cursor-pointer focus:underline text-xl font-500 relative items-center flex justify-between list-none
       after:(block duration-200 content-empty bg-[url(/arrow-bottom.svg)] bg-contain bg-center bg-no-repeat h-3 w-4 min-w-4 my-auto ml-4 opacity-60)"
       >
-        <h2
-          itemprop="name"
-          class="font-headbold"
-          set:html={data.question}
-        />
+        <h2 itemprop="name" class="font-headbold" set:html={data.question} />
       </summary>
-      <div
-        itemscope
-        itemprop="acceptedAnswer"
-        itemtype="https://schema.org/Answer"
-      >
-        <div
-          itemprop="text"
-          class="px-0 pb-4"
-        >
+      <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <div itemprop="text" class="px-0 pb-4">
           <Markdown content={data.answer} />
         </div>
       </div>

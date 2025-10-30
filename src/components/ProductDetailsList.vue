@@ -84,22 +84,11 @@ const validatedItems = computed(() => {
       <col class="details-table-col" />
     </colgroup>
     <tbody>
-      <tr
-        v-for="(row, index) in validatedItems"
-        :key="index"
-        class="details-table-row"
-      >
-        <ProductDetailName
-          as="th"
-          :text="getHeaderText(row)"
-          class="details-table-header"
-        />
+      <tr v-for="(row, index) in validatedItems" :key="index" class="details-table-row">
+        <ProductDetailName as="th" :text="getHeaderText(row)" class="details-table-header" />
 
         <!-- Links Array -->
-        <td
-          v-if="isLinksArray(row)"
-          class="details-table-cell"
-        >
+        <td v-if="isLinksArray(row)" class="details-table-cell">
           <ul class="list-none p-0 m-0">
             <li
               v-for="(link, linkIndex) in row.value as Link[]"
@@ -112,12 +101,7 @@ const validatedItems = computed(() => {
                   'leading-none inline-block mr-2 w-4 min-w-4 h-4 text-gray-400',
                 ]"
               />
-              <a
-                :href="link.url"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="link-primary"
-              >
+              <a :href="link.url" target="_blank" rel="noopener noreferrer" class="link-primary">
                 {{ link.anchor }}
               </a>
             </li>
@@ -125,10 +109,7 @@ const validatedItems = computed(() => {
         </td>
 
         <!-- Generic String Array -->
-        <td
-          v-else-if="isGenericArray(row)"
-          class="details-table-cell"
-        >
+        <td v-else-if="isGenericArray(row)" class="details-table-cell">
           <ul class="list-none p-0 m-0">
             <li
               v-for="(item, itemIndex) in row.value as string[]"
@@ -142,17 +123,10 @@ const validatedItems = computed(() => {
         </td>
 
         <!-- HTML Value -->
-        <td
-          v-else-if="isHtmlValue(row.value)"
-          class="details-table-cell"
-          v-html="row.value"
-        />
+        <td v-else-if="isHtmlValue(row.value)" class="details-table-cell" v-html="row.value" />
 
         <!-- Slot or Default Value -->
-        <slot
-          v-else
-          :name="row.id"
-        >
+        <slot v-else :name="row.id">
           <td class="details-table-cell">
             {{ row.value }}
           </td>

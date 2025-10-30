@@ -9,9 +9,7 @@ const categories = await getMainCategoryList();
 const imgDomain = 'https://api.polo.blue/img/';
 
 const activeIndex =
-  activeCategorySlug && categories
-    ? categories.map(a => a.slug).findIndex(e => e === activeCategorySlug)
-    : 0;
+  activeCategorySlug && categories ? categories.map(a => a.slug).findIndex(e => e === activeCategorySlug) : 0;
 ---
 
 <!-- <div class={`cat-menu ${className ? className : ''}`} 
@@ -45,10 +43,7 @@ const activeIndex =
         role="presentation"
         class={`swiper-slide cats-slide group ${category.slug === activeCategorySlug ? 'active' : ''}`}
       >
-        <a
-          href={getTranslatedLink(`/${category.slug}/`)}
-          class="carousel-item"
-        >
+        <a href={getTranslatedLink(`/${category.slug}/`)} class="carousel-item">
           {
             // itemprop="url"
             // role="menuitem"
@@ -67,10 +62,7 @@ const activeIndex =
           />
           <div class="swiper-lazy-preloader" />
 
-          <div
-            class="cat-name"
-            itemprop="name"
-          >
+          <div class="cat-name" itemprop="name">
             {category.name}
           </div>
         </a>

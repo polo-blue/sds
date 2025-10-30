@@ -81,10 +81,7 @@ function getSerieValue(engine: Engine): string {
   return serie === 3 ? 'EA288' : serie === 2 ? 'EA189' : `Serie ${serie}`;
 }
 
-export function getEngineTooltipContent(
-  engine: Engine,
-  translations: EngineTranslations = {}
-): string {
+export function getEngineTooltipContent(engine: Engine, translations: EngineTranslations = {}): string {
   const t = { ...defaultTranslations, ...translations };
 
   // Header section
@@ -155,9 +152,7 @@ export function getEngineTooltipContent(
     );
   }
 
-  const specsContent = rows.length
-    ? `<div class="tooltip-specs">${rows.join('')}</div>`
-    : '';
+  const specsContent = rows.length ? `<div class="tooltip-specs">${rows.join('')}</div>` : '';
 
   return header + specsContent;
 }

@@ -22,11 +22,7 @@ const prefix = locale === 'en' ? '' : `${locale}/`;
 const href = `/${prefix}${CategoryObject.slug}/`;
 ---
 
-<a
-  href={href}
-  class="carousel-item"
-  data-astro-prefetch
->
+<a href={href} class="carousel-item" data-astro-prefetch>
   <Image
     src={CategoryObject.photo}
     alt={CategoryObject.alt}
@@ -38,10 +34,7 @@ const href = `/${prefix}${CategoryObject.slug}/`;
     class="cats-img"
   />
   <div class="swiper-lazy-preloader"></div>
-  <div
-    class="cat-name"
-    itemprop="name"
-  >
+  <div class="cat-name" itemprop="name">
     {CategoryObject.name}
   </div>
 </a>

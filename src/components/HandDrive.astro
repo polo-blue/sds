@@ -28,11 +28,7 @@ if (!handDrive || (handDrive !== 'lhd' && handDrive !== 'rhd')) {
 const titleText = title || handDrive.toUpperCase();
 ---
 
-<div
-  title={titleText}
-  class="flex items-center"
-  class:list={className}
->
+<div title={titleText} class="flex items-center" class:list={className}>
   <Image
     src={handDriveImage}
     alt={`${handDrive.toUpperCase()} hand drive`}
@@ -40,13 +36,7 @@ const titleText = title || handDrive.toUpperCase();
     height={34}
     class={handDrive}
   />
-  {
-    text && (
-      <div class={`ml-2 ${biggerText ? 'text-sm md:text-base' : 'text-xxs md:text-xs'}`}>
-        {text}
-      </div>
-    )
-  }
+  {text && <div class={`ml-2 ${biggerText ? 'text-sm md:text-base' : 'text-xxs md:text-xs'}`}>{text}</div>}
 </div>
 
 <style>

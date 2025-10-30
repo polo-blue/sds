@@ -20,10 +20,7 @@ export default function useFormatProductNumber(productNumber: string | null): {
     let formatted = number;
 
     if (isLetter(number[0]) && !isLetter(number[1]) && number.length === 9) {
-      formatted = formatted.replace(
-        LIQUIDS_PATTERN,
-        `$1${separator}$2${separator}$3${separator}$4`
-      );
+      formatted = formatted.replace(LIQUIDS_PATTERN, `$1${separator}$2${separator}$3${separator}$4`);
     } else if (number.length >= 13) {
       formatted = formatted.replace(
         WHEELS_EMBLEMS_PATTERN,

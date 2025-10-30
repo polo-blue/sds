@@ -1,4 +1,5 @@
 <script setup lang="ts">
+/* global navigator, setTimeout */
 import { ref } from 'vue';
 import { colors } from './../../uno-config/theme/colors';
 
@@ -29,19 +30,12 @@ const getColorClass = (category: string, name: string) => {
 
 <template>
   <div class="flex flex-col space-y-12">
-    <div
-      v-for="[category, shades] in colorCategories"
-      :key="category"
-    >
+    <div v-for="[category, shades] in colorCategories" :key="category">
       <h3 class="capitalize text-xl font-bold mb-4">
         {{ category }}
       </h3>
       <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-x-6 gap-y-10">
-        <div
-          v-for="(value, name) in shades"
-          :key="name"
-          class="group relative"
-        >
+        <div v-for="(value, name) in shades" :key="name" class="group relative">
           <!-- Color Swatch -->
           <button
             class="w-full h-10 rounded-lg shadow-md transition-all duration-200 hover:shadow-xl hover:scale-105 cursor-pointer relative overflow-hidden"
@@ -73,14 +67,8 @@ const getColorClass = (category: string, name: string) => {
                 :title="`Copy hex: ${value}`"
                 @click="copyToClipboard(value, `${category}-${name}-hex`)"
               >
-                <span
-                  v-if="copiedItem === `${category}-${name}-hex`"
-                  class="text-green-600"
-                >✓</span>
-                <span
-                  v-else
-                  class="uppercase text-xs"
-                >{{ value }}</span>
+                <span v-if="copiedItem === `${category}-${name}-hex`" class="text-green-600">✓</span>
+                <span v-else class="uppercase text-xs">{{ value }}</span>
               </button>
 
               <!-- Copy Class Name (text-*) -->
@@ -89,10 +77,7 @@ const getColorClass = (category: string, name: string) => {
                 :title="`Copy class: text-${getColorClass(category, name)}`"
                 @click="copyToClipboard(`text-${getColorClass(category, name)}`, `${category}-${name}-class`)"
               >
-                <span
-                  v-if="copiedItem === `${category}-${name}-class`"
-                  class="text-green-600"
-                >✓</span>
+                <span v-if="copiedItem === `${category}-${name}-class`" class="text-green-600">✓</span>
                 <span v-else>text-</span>
               </button>
 
@@ -102,10 +87,7 @@ const getColorClass = (category: string, name: string) => {
                 :title="`Copy class: bg-${getColorClass(category, name)}`"
                 @click="copyToClipboard(`bg-${getColorClass(category, name)}`, `${category}-${name}-bg`)"
               >
-                <span
-                  v-if="copiedItem === `${category}-${name}-bg`"
-                  class="text-green-600"
-                >✓</span>
+                <span v-if="copiedItem === `${category}-${name}-bg`" class="text-green-600">✓</span>
                 <span v-else>bg-</span>
               </button>
             </div>

@@ -1,11 +1,27 @@
 echo "🔍 Running pre-commit checks..."
 
+# Run format check
+echo "🎨 Checking code formatting..."
+pnpm run format:check
+if [ $? -ne 0 ]; then
+  echo "❌ Format check failed! Run 'pnpm run format' to fix."
+  exit 1
+fi
+
+# Run linting
+echo "🔍 Running linter..."
+pnpm run lint
+if [ $? -ne 0 ]; then
+  echo "❌ Lint check failed! Run 'pnpm run lint:fix' to fix."
+  exit 1
+fi
+
 # Run Astro build to catch MDX and component errors
 echo "🏗️  Building project..."
 pnpm run build
 
 if [ $? -eq 0 ]; then
-  echo "✅ Build successful! Proceeding with commit..."
+  echo "✅ All checks passed! Proceeding with commit..."
 else
   echo "❌ Build failed! Please fix errors before committing."
   exit 1
