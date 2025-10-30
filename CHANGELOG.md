@@ -1,3 +1,9 @@
+## [1.11.1](https://github.com/polo-blue/sds/compare/v1.11.0...v1.11.1) (2025-10-30)
+
+### Bug Fixes
+
+* **ProductEngine:** remove manual quote escaping causing double-encoding ([dfa196d](https://github.com/polo-blue/sds/commit/dfa196d812cd40e1b476bd28d814d2b158449d3c))
+
 ## [1.11.0](https://github.com/polo-blue/sds/compare/v1.10.0...v1.11.0) (2025-10-30)
 
 ### Features
