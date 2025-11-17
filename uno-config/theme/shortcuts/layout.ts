@@ -71,5 +71,5 @@ export const layoutShortcuts = [
   ['colon-after', 'after:content-[":"]'],
   ['adsbygoogle', 'w-full text-center'],
   ['underline-on-hover', `${LAYOUT.position.relative} ${LAYOUT.flex.base} w-full ${COLORS.bgWhite} pb-1 after:absolute after:w-[calc(100%-1rem)] after:left-0 after:h-px after:top-[calc(100%-1px)] after:bottom-1 after:content-empty after:scale-x-0 after:transition-transform-300 after:origin-top-right hover:after:origin-top-left hover:after:scale-x-100`],
-  ['cat-link', `cursor-pointer text-accent-deepBlue ${COLORS.textNeutralLight} hover:(text-brand-secondary underline) uppercase py-2 md:py-0`],
+  ['cat-link', `${TYPOGRAPHY.headline.bold} cursor-pointer text-accent-deepBlue ${COLORS.textNeutralLight} hover:(text-brand-secondary underline) uppercase py-2 md:py-0`],
 ];
