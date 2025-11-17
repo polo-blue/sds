@@ -7,22 +7,18 @@ interface Props {
     desc: string;
     alt: string;
     name: string;
-    slug: string;
+    path: string;
     height?: number;
     width?: number;
     class?: string;
   };
-  locale?: string;
 }
 
-const { CategoryObject, locale = 'en' } = Astro.props;
-const { height = 70, width = 70 } = CategoryObject;
-
-const prefix = locale === 'en' ? '' : `${locale}/`;
-const href = `/${prefix}${CategoryObject.slug}/`;
+const { CategoryObject } = Astro.props;
+const { height = 70, width = 70, path } = CategoryObject;
 ---
 
-<a href={href} class="carousel-item" data-astro-prefetch>
+<a href={path} class="carousel-item" data-astro-prefetch>
   <Image
     src={CategoryObject.photo}
     alt={CategoryObject.alt}
