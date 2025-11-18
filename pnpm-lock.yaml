@@ -101,7 +101,7 @@ importers:
         version: 1.2.2
       '@iconify-json/simple-icons':
         specifier: ^1.2.58
-        version: 1.2.58
+        version: 1.2.59
       '@iconify-json/streamline':
         specifier: ^1.2.5
         version: 1.2.5
@@ -1267,8 +1267,8 @@ packages:
   '@iconify-json/ph@1.2.2':
     resolution: {integrity: sha512-PgkEZNtqa8hBGjHXQa4pMwZa93hmfu8FUSjs/nv4oUU6yLsgv+gh9nu28Kqi8Fz9CCVu4hj1MZs9/60J57IzFw==}
 
-  '@iconify-json/simple-icons@1.2.58':
-    resolution: {integrity: sha512-XtXEoRALqztdNc9ujYBj2tTCPKdIPKJBdLNDebFF46VV1aOAwTbAYMgNsK5GMCpTJupLCmpBWDn+gX5SpECorQ==}
+  '@iconify-json/simple-icons@1.2.59':
+    resolution: {integrity: sha512-fYx/InyQsWFW4wVxWka3CGDJ6m/fXoTqWBSl+oA3FBXO5RhPAb6S3Y5bRgCPnrYevErH8VjAL0TZevIqlN2PhQ==}
 
   '@iconify-json/streamline-emojis@1.2.4':
     resolution: {integrity: sha512-iNr9T9XuZVTyQPJO8ZlLxBzPkpi7qMl+z1l0C31vpEMqhPMelth3n7CeWQYtixdetDPdI81yeG4ROqjWpYJE6A==}
@@ -2811,8 +2811,8 @@ packages:
     resolution: {integrity: sha512-7Vv6asjS4gMOuILabD3l739tsaxFQmC+a7pLZm02zyvs8p977bL3zEgq3yDk5rn9B0PbYgIv++jmHcuUab4RhA==}
     engines: {node: '>=18'}
 
-  core-js-compat@3.46.0:
-    resolution: {integrity: sha512-p9hObIIEENxSV8xIu+V68JjSeARg6UVMG5mR+JEUguG3sI6MsiS1njz2jHmyJDvA+8jX/sytkBHup6kxhM9law==}
+  core-js-compat@3.47.0:
+    resolution: {integrity: sha512-IGfuznZ/n7Kp9+nypamBhvwdwLsW6KC8IOaURw2doAK5e98AG3acVLdh0woOnEqCfUtS+Vu882JE4k/DAm3ItQ==}
 
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
@@ -7109,7 +7109,7 @@ snapshots:
       babel-plugin-polyfill-corejs2: 0.4.14(@babel/core@7.28.5)
       babel-plugin-polyfill-corejs3: 0.13.0(@babel/core@7.28.5)
       babel-plugin-polyfill-regenerator: 0.6.5(@babel/core@7.28.5)
-      core-js-compat: 3.46.0
+      core-js-compat: 3.47.0
       semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
@@ -7523,7 +7523,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/simple-icons@1.2.58':
+  '@iconify-json/simple-icons@1.2.59':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -9203,7 +9203,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.28.5
       '@babel/helper-define-polyfill-provider': 0.6.5(@babel/core@7.28.5)
-      core-js-compat: 3.46.0
+      core-js-compat: 3.47.0
     transitivePeerDependencies:
       - supports-color
 
@@ -9546,7 +9546,7 @@ snapshots:
     dependencies:
       is-what: 5.5.0
 
-  core-js-compat@3.46.0:
+  core-js-compat@3.47.0:
     dependencies:
       browserslist: 4.28.0
 
