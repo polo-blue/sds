@@ -1,3 +1,9 @@
+## [1.11.4](https://github.com/polo-blue/sds/compare/v1.11.3...v1.11.4) (2025-11-19)
+
+### Bug Fixes
+
+* **sonar:** disable coverage requirements for design system ([8ce765b](https://github.com/polo-blue/sds/commit/8ce765bb55960a05f9e1f6ca29ef32e5d2d2cc63))
+
 ## [1.11.3](https://github.com/polo-blue/sds/compare/v1.11.2...v1.11.3) (2025-11-17)
 
 ## [1.11.2](https://github.com/polo-blue/sds/compare/v1.11.1...v1.11.2) (2025-10-30)
