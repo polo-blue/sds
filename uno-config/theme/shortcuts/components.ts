@@ -50,7 +50,7 @@ export const componentShortcuts = [
   ['carousel-big', 'shadow-[inset_0_10px_60px_-15px_rgba(0,0,0,0.1)] w-full h-full'],
 
   // PDP (Product Detail Page)
-  ['pdp-headline', 'text-2xl mb-4 sm:(font-normal mb-6 text-4xl) lg:pr-0 2xl:text-5xl font-headbold text-black font-bold pr-7 pt-0 leading-none'],
+  ['pdp-headline', 'text-2xl mb-4 pr-4 sm:(font-normal mb-6 text-4xl pr-5) lg:pr-0 2xl:(text-5xl pr-7) font-headbold text-black font-bold pt-0 leading-none'],
   ['pdp-detail-row', `text-sm mt-1 md:mt-4 mb-4 grid ${LAYOUT.grid.cols2} sm:(grid-cols-details-desktop grid-flow-col auto-cols-max) gap-4`],
   ['pdp-slider-thumb', 'block h-22.5 w-31 min-w-31 mb-2'],
 
