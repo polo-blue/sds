@@ -140,7 +140,7 @@ export const PRODUCT_STYLES = {
     bigTile: `${aspectRatios['4/3']} ${LAYOUT.flex.center} mb-3 w-60 min-w-60 h-auto object-contain object-top bg-gray-50 relative ${IMAGE_STYLES.overlay}`,
   },
   image: {
-    base: `${aspectRatios['4/3']} ${IMAGE_STYLES.base} ${IMAGE_STYLES.overlay}`,
+    base: `${aspectRatios['4/3']} ${IMAGE_STYLES.base} ${IMAGE_STYLES.overlay} w-full`,
     small: `${aspectRatios['4/3']} ${IMAGE_STYLES.base} ${IMAGE_STYLES.overlay} w-22 h-auto`,
     large: `${aspectRatios['4/3']} ${IMAGE_STYLES.base} ${IMAGE_STYLES.overlay} w-60 h-auto`,
   },
@@ -153,4 +153,5 @@ export const PRODUCT_STYLES = {
     medium: 'w-30 min-w-30',
     large: 'w-60 min-w-60',
   },
+
 } as const
