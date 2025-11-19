@@ -1,3 +1,9 @@
+## [1.11.5](https://github.com/polo-blue/sds/compare/v1.11.4...v1.11.5) (2025-11-19)
+
+### Bug Fixes
+
+* **ci:** prevent concurrent GitHub Pages deployments ([7691c41](https://github.com/polo-blue/sds/commit/7691c417006711b3ec7b47300bbcc81abd303d3e))
+
 ## [1.11.4](https://github.com/polo-blue/sds/compare/v1.11.3...v1.11.4) (2025-11-19)
 
 ### Bug Fixes
