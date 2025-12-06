@@ -1,3 +1,9 @@
+## [1.12.1](https://github.com/polo-blue/sds/compare/v1.12.0...v1.12.1) (2025-12-06)
+
+### Bug Fixes
+
+* **jumbotron:** add overflow-hidden and right alignment to split-image ([2545a89](https://github.com/polo-blue/sds/commit/2545a89bbc01bd262cbd4a56346ba3cca9ead619))
+
 ## [1.12.0](https://github.com/polo-blue/sds/compare/v1.11.5...v1.12.0) (2025-12-06)
 
 ### Features
