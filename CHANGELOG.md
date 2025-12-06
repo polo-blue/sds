@@ -1,3 +1,9 @@
+## [1.13.3](https://github.com/polo-blue/sds/compare/v1.13.2...v1.13.3) (2025-12-06)
+
+### Bug Fixes
+
+* **jumbotron:** remove xl:container from split-container ([9267b66](https://github.com/polo-blue/sds/commit/9267b6686cb4b00160a3ade4cfa26e81bc4f03ac))
+
 ## [1.13.2](https://github.com/polo-blue/sds/compare/v1.13.1...v1.13.2) (2025-12-06)
 
 ### Bug Fixes
