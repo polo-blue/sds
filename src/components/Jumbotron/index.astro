@@ -9,6 +9,8 @@ interface Props {
   variant?: 'default' | 'hero' | 'post' | 'post-split';
   title?: string;
   image?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   small?: boolean;
   description?: string;
   info?: string;
@@ -17,12 +19,15 @@ interface Props {
   categories?: Category[];
   backgroundClass?: string;
   lang?: string;
+  fullWidth?: boolean;
 }
 
 const {
   variant = 'default',
   title = '',
   image,
+  imageWidth,
+  imageHeight,
   small = false,
   description,
   info,
@@ -31,6 +36,7 @@ const {
   categories = [],
   backgroundClass = 'bg-blue-darker',
   lang = 'en',
+  fullWidth = false,
 } = Astro.props;
 
 // Helper (function to check if a slot has content)
@@ -78,7 +84,7 @@ const commonProps = {
 
 {
   variant === 'post-split' && (
-    <PostSplitVariant {...commonProps} author={author} date={date} categories={categories} />
+    <PostSplitVariant {...commonProps} author={author} date={date} categories={categories} imageWidth={imageWidth} imageHeight={imageHeight} fullWidth={fullWidth} />
   )
 }
 

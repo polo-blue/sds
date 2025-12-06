@@ -299,6 +299,33 @@ A two-column layout variant for posts where image and content need equal emphasi
 />
 ```
 
+### Post Split with Custom Image Dimensions
+You can customize image dimensions using `imageWidth` and `imageHeight` props. This is useful for category pages with different aspect ratios (e.g., 3:2 instead of default 16:9).
+
+```js
+<Jumbotron
+  variant="post-split"
+  title="Category Title"
+  image="path/to/image.jpg"
+  imageWidth={600}
+  imageHeight={400}
+/>
+```
+
+### Post Split Full Width
+Use `fullWidth` prop to make the jumbotron span the full viewport width, useful for archive/category pages.
+
+```js
+<Jumbotron
+  variant="post-split"
+  title="Full Width Category"
+  image="path/to/image.jpg"
+  imageWidth={600}
+  imageHeight={400}
+  fullWidth
+/>
+```
+
 ## Custom Intro Slot Example
 Shows how to fully customize the header section using the intro slot. Useful for complex layouts or custom styling.
 
@@ -347,6 +374,11 @@ Shows how to fully customize the header section using the intro slot. Useful for
 - `categories`: Array of category objects for post categorization
   - `name`: Category display name
   - `uri`: Category link URL
+
+### Post Split Props
+- `imageWidth`: Custom image width in pixels (default: 768)
+- `imageHeight`: Custom image height in pixels (default: 432)
+- `fullWidth`: When true, adds `full-width-block` class for full viewport width
 
 ### Slots
 - `intro`: Replaces the default title with custom content. Useful for complex headings or custom markup.

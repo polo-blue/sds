@@ -7,23 +7,29 @@ import { Image } from 'astro:assets';
 interface Props {
   title?: string;
   image?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   author?: Author;
   date?: string;
   categories?: Category[];
   hasMetadata: boolean;
   hasCategories: boolean;
   lang: string;
+  fullWidth?: boolean;
 }
 
 const {
   title = '',
   image,
+  imageWidth = 768,
+  imageHeight = 432,
   author,
   date,
   categories = [],
   hasMetadata,
   hasCategories,
   lang = 'en',
+  fullWidth = false,
 } = Astro.props;
 
 // Helper function to remove HTML tags
@@ -35,7 +41,7 @@ const stripHtml = (html: string) => {
 const cleanTitle = stripHtml(title);
 ---
 
-<div class="jumbotron-split-wrapper bg-blue-900 bg-vw">
+<div class:list={["jumbotron-split-wrapper bg-blue-900 bg-vw", { "full-width-block": fullWidth }]}>
   <div class="jumbotron-split-container">
     <header class="jumbotron-split-header">
       <div
@@ -76,8 +82,8 @@ const cleanTitle = stripHtml(title);
                 class="jumbotron-split-img"
                 src={image}
                 alt={cleanTitle}
-                width={768}
-                height={432}
+                width={imageWidth}
+                height={imageHeight}
                 loading="eager"
               />
             </div>
