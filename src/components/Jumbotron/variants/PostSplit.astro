@@ -16,6 +16,7 @@ interface Props {
   hasCategories: boolean;
   lang: string;
   fullWidth?: boolean;
+  align?: 'left' | 'center' | 'right';
 }
 
 const {
@@ -30,7 +31,16 @@ const {
   hasCategories,
   lang = 'en',
   fullWidth = false,
+  align = 'left',
 } = Astro.props;
+
+// Alignment class mapping
+const alignmentClasses = {
+  left: 'justify-start',
+  center: 'justify-center',
+  right: 'justify-end',
+};
+const alignmentClass = alignmentClasses[align];
 
 // Helper function to remove HTML tags
 const stripHtml = (html: string) => {
@@ -45,7 +55,10 @@ const cleanTitle = stripHtml(title);
   <div class="jumbotron-split-container">
     <header class="jumbotron-split-header">
       <div
-        class="heading flex flex-wrap text-white relative items-center justify-center mt-auto w-full z-[2]"
+        class:list={[
+          'heading flex flex-wrap text-white relative items-center mt-auto w-full z-[2]',
+          alignmentClass,
+        ]}
       >
         <div class="jumbotron-split-content">
           <h1 class="jumbotron-split-title" set:html={title} />

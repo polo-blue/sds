@@ -20,6 +20,7 @@ interface Props {
   backgroundClass?: string;
   lang?: string;
   fullWidth?: boolean;
+  align?: 'left' | 'center' | 'right';
 }
 
 const {
@@ -37,6 +38,7 @@ const {
   backgroundClass = 'bg-blue-darker',
   lang = 'en',
   fullWidth = false,
+  align = 'left',
 } = Astro.props;
 
 // Helper (function to check if a slot has content)
@@ -92,6 +94,7 @@ const commonProps = {
       imageWidth={imageWidth}
       imageHeight={imageHeight}
       fullWidth={fullWidth}
+      align={align}
     />
   )
 }
