@@ -326,6 +326,45 @@ Use `fullWidth` prop to make the jumbotron span the full viewport width, useful 
 />
 ```
 
+### Post Split with Text Alignment
+Use the `align` prop to control text alignment within the content area. Available options: `left` (default), `center`, `right`.
+
+<div class="component-preview pb-0 !block">
+    <Jumbotron
+      variant="post-split"
+      title="Left Aligned Content"
+      image="https://img.freepik.com/premium-photo/tranquil-scene-nature-beauty-tropical-rainforest-adventure-generated-by-artificial-intelligence_188544-83820.jpg?w=1200&h=675&f=webp"
+      align="left"
+    />
+</div>
+
+```js
+<Jumbotron
+  variant="post-split"
+  title="Left Aligned Content"
+  image="path/to/image.jpg"
+  align="left"
+/>
+```
+
+<div class="component-preview pb-0 !block">
+    <Jumbotron
+      variant="post-split"
+      title="Center Aligned Content"
+      image="https://img.freepik.com/premium-photo/tranquil-scene-nature-beauty-tropical-rainforest-adventure-generated-by-artificial-intelligence_188544-83820.jpg?w=1200&h=675&f=webp"
+      align="center"
+    />
+</div>
+
+```js
+<Jumbotron
+  variant="post-split"
+  title="Center Aligned Content"
+  image="path/to/image.jpg"
+  align="center"
+/>
+```
+
 ## Custom Intro Slot Example
 Shows how to fully customize the header section using the intro slot. Useful for complex layouts or custom styling.
 
@@ -379,6 +418,7 @@ Shows how to fully customize the header section using the intro slot. Useful for
 - `imageWidth`: Custom image width in pixels (default: 768)
 - `imageHeight`: Custom image height in pixels (default: 432)
 - `fullWidth`: When true, adds `full-width-block` class for full viewport width
+- `align`: Text alignment within content area ('left' | 'center' | 'right', default: 'left')
 
 ### Slots
 - `intro`: Replaces the default title with custom content. Useful for complex headings or custom markup.
