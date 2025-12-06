@@ -1,3 +1,9 @@
+## [1.13.0](https://github.com/polo-blue/sds/compare/v1.12.1...v1.13.0) (2025-12-06)
+
+### Features
+
+* **jumbotron:** add align prop to PostSplit variant ([b3bd696](https://github.com/polo-blue/sds/commit/b3bd6967fca48eea0ca11d225c320e210bcf749e))
+
 ## [1.12.1](https://github.com/polo-blue/sds/compare/v1.12.0...v1.12.1) (2025-12-06)
 
 ### Bug Fixes
