@@ -1,3 +1,9 @@
+## [1.13.2](https://github.com/polo-blue/sds/compare/v1.13.1...v1.13.2) (2025-12-06)
+
+### Bug Fixes
+
+* **jumbotron:** remove padding from split-container ([7f50a45](https://github.com/polo-blue/sds/commit/7f50a4580299b06ce7d37a6591b4efa874309ff2))
+
 ## [1.13.1](https://github.com/polo-blue/sds/compare/v1.13.0...v1.13.1) (2025-12-06)
 
 ### Bug Fixes
