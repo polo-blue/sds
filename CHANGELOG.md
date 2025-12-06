@@ -1,3 +1,9 @@
+## [1.12.0](https://github.com/polo-blue/sds/compare/v1.11.5...v1.12.0) (2025-12-06)
+
+### Features
+
+* **jumbotron:** add imageWidth, imageHeight and fullWidth props to post-split variant ([6d6ce17](https://github.com/polo-blue/sds/commit/6d6ce17ae7ce3ec444fbce3f4bda0aec57eb2d05))
+
 ## [1.11.5](https://github.com/polo-blue/sds/compare/v1.11.4...v1.11.5) (2025-11-19)
 
 ### Bug Fixes
