@@ -1,3 +1,9 @@
+## [1.13.1](https://github.com/polo-blue/sds/compare/v1.13.0...v1.13.1) (2025-12-06)
+
+### Bug Fixes
+
+* **jumbotron:** remove ml-auto from split-content and add align prop docs ([43b4924](https://github.com/polo-blue/sds/commit/43b49244843d3cd9bb202ead0330d7f76737c120))
+
 ## [1.13.0](https://github.com/polo-blue/sds/compare/v1.12.1...v1.13.0) (2025-12-06)
 
 ### Features
