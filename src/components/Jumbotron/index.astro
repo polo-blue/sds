@@ -84,7 +84,15 @@ const commonProps = {
 
 {
   variant === 'post-split' && (
-    <PostSplitVariant {...commonProps} author={author} date={date} categories={categories} imageWidth={imageWidth} imageHeight={imageHeight} fullWidth={fullWidth} />
+    <PostSplitVariant
+      {...commonProps}
+      author={author}
+      date={date}
+      categories={categories}
+      imageWidth={imageWidth}
+      imageHeight={imageHeight}
+      fullWidth={fullWidth}
+    />
   )
 }
 
