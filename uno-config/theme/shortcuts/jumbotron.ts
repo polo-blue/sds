@@ -52,7 +52,7 @@ export const jumbotronShortcuts = [
 
   // Post Split variant
   ['jumbotron-split-wrapper', 'w-full'],
-  ['jumbotron-split-container', 'xl:container mx-auto'],
+  ['jumbotron-split-container', 'mx-auto'],
   ['jumbotron-split-header', 'w-full justify-center text-white z-2 mt-auto md:(grid grid-cols-2) pb-4 mb-8'],
   ['jumbotron-split-content', 'pl-4 pr-8 py-5 xl:(py-0 pl-0) flex flex-wrap'],
   [
