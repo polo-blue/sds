@@ -27,12 +27,8 @@ const { title = '', image, description, info, backgroundClass } = Astro.props;
         class="font-headlight text-3xl sm:text-4xl md:text-5xl xl:text-6xl mt-1 line-clamp-3 leading-tight"
         set:html={title}
       />
-      {
-        description && (
-          <div class="mb-1 line-clamp-3 text-base sm:text-lg leading-none mt-4" set:html={description} />
-        )
-      }
-      {info && <div class="font-medium mb-4 line-clamp-1 text-base sm:text-lg mt-2" set:html={info} />}
+      {description && <div class="jumbotron-description mt-4" set:html={description} />}
+      {info && <div class="jumbotron-info" set:html={info} />}
     </header>
   </div>
 </div>
