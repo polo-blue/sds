@@ -14,7 +14,7 @@ A Jumbotron indicates a big box for calling extra attention to some special cont
 - [Responsive Behavior](#responsive-behavior)
 - [Variants](#variants)
   - [Default Variant](#default-variant-classic)
-  - [Small Variant](#small-variant)
+  - [Slim Variant](#slim-variant)
   - [Hero Variant](#hero-variant)
   - [Post Variant](#post-variant-full-overlay)
   - [Post Split Variant](#post-split-variant)
@@ -26,7 +26,7 @@ A Jumbotron indicates a big box for calling extra attention to some special cont
 - Use the `hero` variant for page headers with background images and important messaging
 - Use the `post` variant for blog posts and articles with full-width image overlays
 - Use the `post-split` variant when you need to display image alongside content
-- Consider using `small` prop for less important or secondary sections
+- Consider using `slim` prop for less important or secondary sections
 
 ## Responsive Behavior
 The component adapts to different screen sizes:
@@ -71,13 +71,13 @@ The default variant is ideal for primary content sections. It supports custom in
 </Jumbotron>
 ```
 
-## Small Variant
+## Slim Variant
 A more compact version of the default variant, useful for secondary content sections or when vertical space is limited.
 
 <div class="component-preview">
-    <Jumbotron 
+    <Jumbotron
       variant="default"
-      small
+      slim
       title={`Lorem ipsum dolor sit amet, <span class="text-accent-light">consectetur</span> adipiscing elit.`}
     >
         <p slot="subtitle"
@@ -87,9 +87,9 @@ A more compact version of the default variant, useful for secondary content sect
 </div>
 
 ```js
-<Jumbotron 
+<Jumbotron
   variant="default"
-  small
+  slim
   title={`Lorem ipsum dolor sit amet, <span class="text-accent-light">consectetur</span> adipiscing elit.`}
 >
     <p slot="subtitle"
@@ -355,6 +355,71 @@ Use the `imageClass` prop to control image dimensions with Tailwind/UnoCSS class
 />
 ```
 
+### Post Split Slim Version
+Use the `slim` prop to reduce vertical padding and image height. Useful for secondary content or when vertical space is limited.
+
+<div class="component-preview pb-0 !block">
+    <Jumbotron
+      variant="post-split"
+      title="Slim Post Split"
+      image="https://img.freepik.com/premium-photo/tranquil-scene-nature-beauty-tropical-rainforest-adventure-generated-by-artificial-intelligence_188544-83820.jpg?w=1200&h=675&f=webp"
+      slim
+    />
+</div>
+
+```js
+<Jumbotron
+  variant="post-split"
+  title="Slim Post Split"
+  image="path/to/image.jpg"
+  slim
+/>
+```
+
+### Post Split with Column Split Ratio
+Use the `split` prop to control the column width ratio between text and image on desktop. Available options: `equal` (default 50/50), `wide` (2/3 text + 1/3 image).
+
+<div class="component-preview pb-0 !block">
+    <Jumbotron
+      variant="post-split"
+      title="Wide Split (2/3 + 1/3)"
+      image="https://img.freepik.com/premium-photo/tranquil-scene-nature-beauty-tropical-rainforest-adventure-generated-by-artificial-intelligence_188544-83820.jpg?w=1200&h=675&f=webp"
+      split="wide"
+    />
+</div>
+
+```js
+<Jumbotron
+  variant="post-split"
+  title="Wide Split (2/3 + 1/3)"
+  image="path/to/image.jpg"
+  split="wide"
+/>
+```
+
+### Post Split Slim with Wide Split
+Combine `slim` and `split="wide"` for a compact layout with 2/3 + 1/3 column ratio.
+
+<div class="component-preview pb-0 !block">
+    <Jumbotron
+      variant="post-split"
+      title="Slim Wide Split"
+      image="https://img.freepik.com/premium-photo/tranquil-scene-nature-beauty-tropical-rainforest-adventure-generated-by-artificial-intelligence_188544-83820.jpg?w=1200&h=675&f=webp"
+      slim
+      split="wide"
+    />
+</div>
+
+```js
+<Jumbotron
+  variant="post-split"
+  title="Slim Wide Split"
+  image="path/to/image.jpg"
+  slim
+  split="wide"
+/>
+```
+
 ### Post Split with Text Alignment
 Use the `align` prop to control text alignment within the content area. Available options: `left` (default), `center`, `right`.
 
@@ -398,7 +463,7 @@ Use the `align` prop to control text alignment within the content area. Availabl
 Shows how to fully customize the header section using the intro slot. Useful for complex layouts or custom styling.
 
 <div class="component-preview">
-    <Jumbotron variant="default" small>
+    <Jumbotron variant="default" slim>
         <h2 slot="intro" class="text-3xl text-white sm:(text-3xl pt-0) md:text-4xl lg:text-5xl">
           Lorem ipsum dolor sit amet, <span class="text-accent-light">consectetur</span> adipiscing elit.
         </h2>
@@ -409,7 +474,7 @@ Shows how to fully customize the header section using the intro slot. Useful for
 </div>
 
 ```js
-<Jumbotron variant="default" small>
+<Jumbotron variant="default" slim>
     <h2 slot="intro" class="text-3xl text-white sm:(text-3xl pt-0) md:text-4xl lg:text-5xl">
       Lorem ipsum dolor sit amet, <span class="text-accent-light">consectetur</span> adipiscing elit.
     </h2>
@@ -428,9 +493,9 @@ Shows how to fully customize the header section using the intro slot. Useful for
   - default: 'default'
 - `title`: Main heading text. Supports HTML markup for styling.
 - `image`: Image URL (required for hero, post and post-split variants)
+- `slim`: Reduces vertical padding and height (works with default, hero, and post-split variants)
 
 ### Default & Hero Props
-- `small`: Reduces vertical padding (useful for secondary content)
 - `description`: Secondary text below title (hero variant only)
 - `info`: Additional information text (hero variant only)
 
@@ -450,6 +515,9 @@ Shows how to fully customize the header section using the intro slot. Useful for
 - `description`: Optional description text below the title
 - `fullWidth`: When true, adds `full-width-block` class for full viewport width
 - `align`: Text alignment within content area ('left' | 'center' | 'right', default: 'left')
+- `split`: Column width ratio on desktop ('equal' | 'wide', default: 'equal')
+  - `equal`: 50/50 split between text and image
+  - `wide`: 2/3 text + 1/3 image split
 
 ### Slots
 - `intro`: Replaces the default title with custom content. Useful for complex headings or custom markup.

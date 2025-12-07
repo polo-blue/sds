@@ -2,20 +2,20 @@
 // variants/Default.astro
 interface Props {
   title?: string;
-  small?: boolean;
+  slim?: boolean;
   hasIntroContent: boolean;
   hasSubtitleContent: boolean;
   hasCtaContent: boolean;
 }
 
-const { title = '', small = false, hasIntroContent, hasSubtitleContent, hasCtaContent } = Astro.props;
+const { title = '', slim = false, hasIntroContent, hasSubtitleContent, hasCtaContent } = Astro.props;
 ---
 
 <header
   class:list={[
     'flow content-grid', // globalne klasy
     'jumbotron-header-base bg-vw', // klasy bazowe i tło
-    small ? 'jumbotron-container-small' : 'jumbotron-container-large', // wariant rozmiaru
+    slim ? 'jumbotron-container-small' : 'jumbotron-container-large', // wariant rozmiaru
   ]}
 >
   {hasIntroContent ? <slot name="intro" /> : <h1 class="jumbotron-title-default" set:html={title} />}

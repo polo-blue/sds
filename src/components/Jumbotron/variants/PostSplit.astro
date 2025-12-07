@@ -19,6 +19,8 @@ interface Props {
   lang: string;
   fullWidth?: boolean;
   align?: 'left' | 'center' | 'right';
+  split?: 'equal' | 'wide';
+  slim?: boolean;
 }
 
 // Note: imageClass allows responsive image sizing via Tailwind/UnoCSS classes
@@ -39,7 +41,17 @@ const {
   lang = 'en',
   fullWidth = false,
   align = 'left',
+  split = 'equal',
+  slim = false,
 } = Astro.props;
+
+// Grid classes based on split prop
+// equal = 50/50, wide = 2/3 text + 1/3 image
+const splitClasses = {
+  equal: 'jumbotron-split-header',
+  wide: 'jumbotron-split-header jumbotron-split-header-wide',
+};
+const splitClass = splitClasses[split];
 
 // Alignment determines content and image position
 // align="left" = content left, image right (default)
@@ -68,9 +80,15 @@ const cleanTitle = stripHtml(title);
 
 <div class:list={['jumbotron-split-wrapper bg-blue-900 bg-vw', { 'full-width-block': fullWidth }]}>
   <div class="jumbotron-split-container">
-    <header class="jumbotron-split-header">
+    <header class:list={[splitClass, { 'jumbotron-split-header-slim': slim }]}>
       <div class="heading flex flex-wrap text-white relative items-center mt-auto w-full z-[2]">
-        <div class:list={['jumbotron-split-content', contentMarginClass]}>
+        <div
+          class:list={[
+            'jumbotron-split-content',
+            contentMarginClass,
+            { 'jumbotron-split-content-slim': slim },
+          ]}
+        >
           <h1 class="jumbotron-split-title" set:html={title} />
 
           {description && <p class="jumbotron-description order-3 w-full mt-0" set:html={description} />}
@@ -101,8 +119,14 @@ const cleanTitle = stripHtml(title);
 
       {
         image && (
-          <div class:list={['jumbotron-split-image-wrapper', imageWrapperClass]}>
-            <div class:list={['jumbotron-split-image', imageClass]}>
+          <div
+            class:list={[
+              'jumbotron-split-image-wrapper',
+              imageWrapperClass,
+              { 'jumbotron-split-image-wrapper-slim': slim },
+            ]}
+          >
+            <div class:list={['jumbotron-split-image', imageClass, { 'jumbotron-split-image-slim': slim }]}>
               <Image
                 class="jumbotron-split-img"
                 src={image}

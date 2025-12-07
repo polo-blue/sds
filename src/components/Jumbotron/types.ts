@@ -15,9 +15,9 @@ export interface Props {
   title?: string;
   image?: string;
   backgroundClass?: string;
+  slim?: boolean;
 
   // Default & Hero variant props
-  small?: boolean;
   description?: string;
   info?: string;
 
@@ -25,4 +25,7 @@ export interface Props {
   date?: string;
   author?: Author;
   categories?: Category[];
+
+  // Post Split variant props
+  split?: 'equal' | 'wide';
 }

@@ -6,13 +6,13 @@ interface Props {
   description?: string;
   info?: string;
   backgroundClass?: string;
-  small?: boolean;
+  slim?: boolean;
 }
 
-const { title = '', image, description, info, backgroundClass, small = false } = Astro.props;
+const { title = '', image, description, info, backgroundClass, slim = false } = Astro.props;
 
-// Height classes based on small prop
-const heightClass = small ? 'py-6 min-h-32' : 'py-8 h-56 sm:h-72 md:max-h-72';
+// Height classes based on slim prop
+const heightClass = slim ? 'py-6 min-h-32' : 'py-8 h-56 sm:h-72 md:max-h-72';
 ---
 
 <div class={`relative w-full ${backgroundClass}`}>

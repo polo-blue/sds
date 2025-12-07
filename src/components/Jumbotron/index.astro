@@ -12,7 +12,7 @@ interface Props {
   imageWidth?: number;
   imageHeight?: number;
   imageClass?: string;
-  small?: boolean;
+  slim?: boolean;
   description?: string;
   info?: string;
   date?: string;
@@ -22,6 +22,7 @@ interface Props {
   lang?: string;
   fullWidth?: boolean;
   align?: 'left' | 'center' | 'right';
+  split?: 'equal' | 'wide';
 }
 
 const {
@@ -31,7 +32,7 @@ const {
   imageWidth,
   imageHeight,
   imageClass,
-  small = false,
+  slim = false,
   description,
   info,
   date,
@@ -41,6 +42,7 @@ const {
   lang = 'en',
   fullWidth = false,
   align = 'left',
+  split = 'equal',
 } = Astro.props;
 
 // Helper (function to check if a slot has content)
@@ -74,7 +76,7 @@ const commonProps = {
 
 {
   variant === 'default' && (
-    <DefaultVariant {...commonProps} small={small}>
+    <DefaultVariant {...commonProps} slim={slim}>
       <slot name="intro" slot="intro" />
       <slot name="subtitle" slot="subtitle" />
       <slot name="cta-content" slot="cta-content" />
@@ -82,7 +84,7 @@ const commonProps = {
   )
 }
 
-{variant === 'hero' && <HeroVariant {...commonProps} description={description} info={info} small={small} />}
+{variant === 'hero' && <HeroVariant {...commonProps} description={description} info={info} slim={slim} />}
 
 {variant === 'post' && <PostVariant {...commonProps} author={author} date={date} categories={categories} />}
 
@@ -99,6 +101,8 @@ const commonProps = {
       imageClass={imageClass}
       fullWidth={fullWidth}
       align={align}
+      split={split}
+      slim={slim}
     />
   )
 }
