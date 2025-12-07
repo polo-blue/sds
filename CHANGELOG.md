@@ -1,3 +1,9 @@
+## [1.16.0](https://github.com/polo-blue/sds/compare/v1.15.0...v1.16.0) (2025-12-07)
+
+### Features
+
+* **Jumbotron:** add small prop to Hero variant ([70f9280](https://github.com/polo-blue/sds/commit/70f9280a4ed8d167cd3ae16ceaebb544a99de85e))
+
 ## [1.15.0](https://github.com/polo-blue/sds/compare/v1.14.2...v1.15.0) (2025-12-07)
 
 ### Features
