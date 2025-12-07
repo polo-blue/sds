@@ -1,3 +1,9 @@
+## [1.16.1](https://github.com/polo-blue/sds/compare/v1.16.0...v1.16.1) (2025-12-07)
+
+### Bug Fixes
+
+* **jumbotron:** restore original PostSplit padding and layout ([f4a7dea](https://github.com/polo-blue/sds/commit/f4a7dea75b5d10586f42a0d2cb0e5dade961d134))
+
 ## [1.16.0](https://github.com/polo-blue/sds/compare/v1.15.0...v1.16.0) (2025-12-07)
 
 ### Features
