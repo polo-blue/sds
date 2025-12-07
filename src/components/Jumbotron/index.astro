@@ -11,6 +11,7 @@ interface Props {
   image?: string;
   imageWidth?: number;
   imageHeight?: number;
+  imageClass?: string;
   small?: boolean;
   description?: string;
   info?: string;
@@ -29,6 +30,7 @@ const {
   image,
   imageWidth,
   imageHeight,
+  imageClass,
   small = false,
   description,
   info,
@@ -94,6 +96,7 @@ const commonProps = {
       description={description}
       imageWidth={imageWidth}
       imageHeight={imageHeight}
+      imageClass={imageClass}
       fullWidth={fullWidth}
       align={align}
     />

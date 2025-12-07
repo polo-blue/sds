@@ -326,6 +326,35 @@ Use `fullWidth` prop to make the jumbotron span the full viewport width, useful 
 />
 ```
 
+### Post Split with Responsive Image Sizing
+Use the `imageClass` prop to control image dimensions with Tailwind/UnoCSS classes. This allows responsive sizing at different breakpoints.
+
+```js
+// Limit image width on desktop
+<Jumbotron
+  variant="post-split"
+  title="Post with Custom Image Size"
+  image="path/to/image.jpg"
+  imageClass="max-w-100 lg:max-w-80"
+/>
+
+// Limit both width and height
+<Jumbotron
+  variant="post-split"
+  title="Category with Small Image"
+  image="path/to/image.jpg"
+  imageClass="max-w-75 max-h-50"
+/>
+
+// Different sizes at breakpoints
+<Jumbotron
+  variant="post-split"
+  title="Responsive Image"
+  image="path/to/image.jpg"
+  imageClass="max-w-full md:max-w-80 lg:max-w-100"
+/>
+```
+
 ### Post Split with Text Alignment
 Use the `align` prop to control text alignment within the content area. Available options: `left` (default), `center`, `right`.
 
@@ -417,6 +446,8 @@ Shows how to fully customize the header section using the intro slot. Useful for
 ### Post Split Props
 - `imageWidth`: Custom image width in pixels (default: 768)
 - `imageHeight`: Custom image height in pixels (default: 432)
+- `imageClass`: Tailwind/UnoCSS classes for responsive image sizing (e.g., `max-w-100 lg:max-w-80`)
+- `description`: Optional description text below the title
 - `fullWidth`: When true, adds `full-width-block` class for full viewport width
 - `align`: Text alignment within content area ('left' | 'center' | 'right', default: 'left')
 

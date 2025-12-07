@@ -61,6 +61,6 @@ export const jumbotronShortcuts = [
   ],
   ['jumbotron-split-meta', 'order-4 flex items-center text-gray-100'],
   ['jumbotron-split-image-wrapper', 'relative -mb-8 md:(mt-4 -ml-4 mr-4) xl:(ml-0 mr-0)'],
-  ['jumbotron-split-image', 'relative shadow-xl md:max-h-112 overflow-hidden md:ml-auto'],
+  ['jumbotron-split-image', 'relative shadow-xl overflow-hidden md:ml-auto'],
   ['jumbotron-split-img', 'object-cover'],
 ];

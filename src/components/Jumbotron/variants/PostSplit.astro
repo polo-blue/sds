@@ -10,6 +10,7 @@ interface Props {
   image?: string;
   imageWidth?: number;
   imageHeight?: number;
+  imageClass?: string;
   author?: Author;
   date?: string;
   categories?: Category[];
@@ -20,12 +21,16 @@ interface Props {
   align?: 'left' | 'center' | 'right';
 }
 
+// Note: imageClass allows responsive image sizing via Tailwind/UnoCSS classes
+// Example: imageClass="max-w-100 lg:max-w-80" for responsive max-width control
+
 const {
   title = '',
   description,
   image,
   imageWidth = 768,
   imageHeight = 432,
+  imageClass,
   author,
   date,
   categories = [],
@@ -94,7 +99,7 @@ const cleanTitle = stripHtml(title);
       {
         image && (
           <div class="jumbotron-split-image-wrapper">
-            <div class="jumbotron-split-image">
+            <div class:list={['jumbotron-split-image', imageClass]}>
               <Image
                 class="jumbotron-split-img"
                 src={image}
