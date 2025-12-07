@@ -1,3 +1,9 @@
+## [1.14.2](https://github.com/polo-blue/sds/compare/v1.14.1...v1.14.2) (2025-12-07)
+
+### Bug Fixes
+
+* **jumbotron:** make description margin conditional per variant ([6c8e59d](https://github.com/polo-blue/sds/commit/6c8e59d813aa512f210503f4ac9facfb3f9b23d6))
+
 ## [1.14.1](https://github.com/polo-blue/sds/compare/v1.14.0...v1.14.1) (2025-12-07)
 
 ### Bug Fixes
