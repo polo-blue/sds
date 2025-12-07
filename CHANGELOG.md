@@ -1,3 +1,9 @@
+## [1.14.0](https://github.com/polo-blue/sds/compare/v1.13.3...v1.14.0) (2025-12-07)
+
+### Features
+
+* **jumbotron:** add description prop to PostSplit variant ([e1dca7a](https://github.com/polo-blue/sds/commit/e1dca7adec632a06253012b8bbe3f04b2d0cca24))
+
 ## [1.13.3](https://github.com/polo-blue/sds/compare/v1.13.2...v1.13.3) (2025-12-06)
 
 ### Bug Fixes
