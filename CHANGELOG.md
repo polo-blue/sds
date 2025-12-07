@@ -1,3 +1,9 @@
+## [1.15.0](https://github.com/polo-blue/sds/compare/v1.14.2...v1.15.0) (2025-12-07)
+
+### Features
+
+* **Jumbotron:** add imageClass prop for responsive image sizing ([56d6392](https://github.com/polo-blue/sds/commit/56d6392721eb3bd7509d5b064cb00d4b81aa6d9c))
+
 ## [1.14.2](https://github.com/polo-blue/sds/compare/v1.14.1...v1.14.2) (2025-12-07)
 
 ### Bug Fixes
