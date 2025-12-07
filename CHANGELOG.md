@@ -1,3 +1,9 @@
+## [1.18.0](https://github.com/polo-blue/sds/compare/v1.17.0...v1.18.0) (2025-12-07)
+
+### Features
+
+* **icons:** add bi:arrow-right-short icon ([edf3039](https://github.com/polo-blue/sds/commit/edf30393b8594cd50848aa7b38e0a84d2cc43a87))
+
 ## [1.17.0](https://github.com/polo-blue/sds/compare/v1.16.2...v1.17.0) (2025-12-07)
 
 ### Features
