@@ -1,3 +1,9 @@
+## [1.17.0](https://github.com/polo-blue/sds/compare/v1.16.2...v1.17.0) (2025-12-07)
+
+### Features
+
+* **Jumbotron:** add split and slim props to PostSplit variant ([831969f](https://github.com/polo-blue/sds/commit/831969ff0a3bacdfde8eeb0d33b84d518bff836f))
+
 ## [1.16.2](https://github.com/polo-blue/sds/compare/v1.16.1...v1.16.2) (2025-12-07)
 
 ### Bug Fixes
