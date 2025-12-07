@@ -41,13 +41,21 @@ const {
   align = 'left',
 } = Astro.props;
 
-// Alignment class mapping
-const alignmentClasses = {
-  left: 'justify-start',
-  center: 'justify-center',
-  right: 'justify-end',
+// Alignment determines content and image position
+// align="left" = content left, image right (default)
+// align="center" = both centered
+// align="right" = content right, image left
+
+// Content wrapper margin classes
+const contentMarginClasses = {
+  left: 'mr-auto',
+  center: 'mx-auto text-center',
+  right: 'ml-auto text-right',
 };
-const alignmentClass = alignmentClasses[align];
+const contentMarginClass = contentMarginClasses[align];
+
+// Image is always aligned to the right
+const imageWrapperClass = 'ml-auto';
 
 // Helper function to remove HTML tags
 const stripHtml = (html: string) => {
@@ -61,13 +69,8 @@ const cleanTitle = stripHtml(title);
 <div class:list={['jumbotron-split-wrapper bg-blue-900 bg-vw', { 'full-width-block': fullWidth }]}>
   <div class="jumbotron-split-container">
     <header class="jumbotron-split-header">
-      <div
-        class:list={[
-          'heading flex flex-wrap text-white relative items-center mt-auto w-full z-[2]',
-          alignmentClass,
-        ]}
-      >
-        <div class="jumbotron-split-content">
+      <div class="heading flex flex-wrap text-white relative items-center mt-auto w-full z-[2]">
+        <div class:list={['jumbotron-split-content', contentMarginClass]}>
           <h1 class="jumbotron-split-title" set:html={title} />
 
           {description && <p class="jumbotron-description order-3 w-full mt-0" set:html={description} />}
@@ -98,7 +101,7 @@ const cleanTitle = stripHtml(title);
 
       {
         image && (
-          <div class="jumbotron-split-image-wrapper">
+          <div class:list={['jumbotron-split-image-wrapper', imageWrapperClass]}>
             <div class:list={['jumbotron-split-image', imageClass]}>
               <Image
                 class="jumbotron-split-img"
