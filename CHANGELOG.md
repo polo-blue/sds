@@ -1,3 +1,9 @@
+## [1.14.1](https://github.com/polo-blue/sds/compare/v1.14.0...v1.14.1) (2025-12-07)
+
+### Bug Fixes
+
+* **jumbotron:** fix description order in PostSplit variant ([679a45e](https://github.com/polo-blue/sds/commit/679a45e3b7be9e39dd65691edf61bc5564136881))
+
 ## [1.14.0](https://github.com/polo-blue/sds/compare/v1.13.3...v1.14.0) (2025-12-07)
 
 ### Features
