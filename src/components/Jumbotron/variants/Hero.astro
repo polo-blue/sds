@@ -6,9 +6,13 @@ interface Props {
   description?: string;
   info?: string;
   backgroundClass?: string;
+  small?: boolean;
 }
 
-const { title = '', image, description, info, backgroundClass } = Astro.props;
+const { title = '', image, description, info, backgroundClass, small = false } = Astro.props;
+
+// Height classes based on small prop
+const heightClass = small ? 'py-6 min-h-32' : 'py-8 h-56 sm:h-72 md:max-h-72';
 ---
 
 <div class={`relative w-full ${backgroundClass}`}>
@@ -21,7 +25,7 @@ const { title = '', image, description, info, backgroundClass } = Astro.props;
     )
   }
 
-  <div class="xl:container mx-auto px-3.5 md:px-8 py-8 h-56 sm:h-72 md:max-h-72 items-center flex">
+  <div class:list={['xl:container mx-auto px-3.5 md:px-8 items-center flex', heightClass]}>
     <header class="relative z-10 text-white">
       <h1
         class="font-headlight text-3xl sm:text-4xl md:text-5xl xl:text-6xl mt-1 line-clamp-3 leading-tight"

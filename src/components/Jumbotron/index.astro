@@ -82,7 +82,7 @@ const commonProps = {
   )
 }
 
-{variant === 'hero' && <HeroVariant {...commonProps} description={description} info={info} />}
+{variant === 'hero' && <HeroVariant {...commonProps} description={description} info={info} small={small} />}
 
 {variant === 'post' && <PostVariant {...commonProps} author={author} date={date} categories={categories} />}
 
