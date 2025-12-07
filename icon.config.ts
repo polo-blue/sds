@@ -102,6 +102,7 @@ export const iconConfig: IconConfig = {
     ],
 
     bi: [
+      "arrow-right-short",
       "credit-card",
       "emoji-smile",
       "envelope-open",
