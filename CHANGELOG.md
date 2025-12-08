@@ -1,3 +1,9 @@
+## [1.18.1](https://github.com/polo-blue/sds/compare/v1.18.0...v1.18.1) (2025-12-08)
+
+### Bug Fixes
+
+* correct case sensitivity in CallToAction export path ([9aeb7d3](https://github.com/polo-blue/sds/commit/9aeb7d3876430c68983d62fdafe476c9290d341b))
+
 ## [1.18.0](https://github.com/polo-blue/sds/compare/v1.17.0...v1.18.0) (2025-12-07)
 
 ### Features
