@@ -28,7 +28,7 @@ const heightClass = slim ? 'py-6 min-h-32' : 'py-8 h-56 sm:h-72 md:max-h-72';
   <div class:list={['xl:container mx-auto px-3.5 md:px-8 items-center flex', heightClass]}>
     <header class="relative z-10 text-white">
       <h1
-        class="font-headlight text-3xl sm:text-4xl md:text-5xl xl:text-6xl mt-1 line-clamp-3 leading-tight"
+        class="font-headlight text-7.5 sm:text-8 md:text-10 xl:text-12 mt-1 line-clamp-3 leading-tight"
         set:html={title}
       />
       {description && <div class="jumbotron-description mt-4" set:html={description} />}
@@ -36,3 +36,11 @@ const heightClass = slim ? 'py-6 min-h-32' : 'py-8 h-56 sm:h-72 md:max-h-72';
     </header>
   </div>
 </div>
+
+<style scoped>
+  .font-headlight {
+    b {
+      font-family: 'vw_headregular', sans-serif;
+    }
+  }
+</style>
