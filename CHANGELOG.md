@@ -1,3 +1,9 @@
+## [1.19.0](https://github.com/polo-blue/sds/compare/v1.18.1...v1.19.0) (2025-12-10)
+
+### Features
+
+* **Jumbotron:** update typography and add bold font styling ([f759405](https://github.com/polo-blue/sds/commit/f7594051ea024af5e404a7d4dd255c4f033d4323))
+
 ## [1.18.1](https://github.com/polo-blue/sds/compare/v1.18.0...v1.18.1) (2025-12-08)
 
 ### Bug Fixes
