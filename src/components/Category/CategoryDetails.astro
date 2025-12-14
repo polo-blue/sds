@@ -30,37 +30,65 @@ const subcategoryPath = subcategory?.path || `/${category.slug}/${subcategory?.s
     </div>
   </CategorySidebarToggler>
 
-  <div class="overflow-x-auto overflow-y-hidden flex max-w-full items-center">
+  <div
+    class="overflow-x-auto overflow-y-hidden flex max-w-full items-center"
+    itemscope
+    itemtype="https://schema.org/BreadcrumbList"
+  >
     {
       subtitle ? (
         <>
-          <a class="text-lg font-vw-headregular whitespace-nowrap block" href={categoryPath}>
-            {category.name}
-            {titleSmall && <small>{titleSmall}</small>}
-          </a>
+          <div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a
+              class="text-lg font-vw-headregular whitespace-nowrap block"
+              href={categoryPath}
+              itemprop="item"
+            >
+              <span itemprop="name">{category.name}</span>
+              {titleSmall && <small>{titleSmall}</small>}
+            </a>
+            <meta itemprop="position" content="1" />
+          </div>
           <span class="text-neutral-lighter text-lg inline-block px-1 font-headlight">/</span>
           {!subsubtitle ? (
-            <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
-              {subtitle} <span class="sr-only"> catalog</span>
-            </h1>
+            <div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
+                <span itemprop="name">{subtitle}</span> <span class="sr-only"> catalog</span>
+              </h1>
+              <meta itemprop="position" content="2" />
+            </div>
           ) : (
             <>
-              <div class="text-lg py-2.5 sm:py-0 whitespace-nowrap">
-                <a href={subcategoryPath}>{subtitle}</a>
+              <div
+                itemprop="itemListElement"
+                itemscope
+                itemtype="https://schema.org/ListItem"
+                class="text-lg py-2.5 sm:py-0 whitespace-nowrap"
+              >
+                <a href={subcategoryPath} itemprop="item">
+                  <span itemprop="name">{subtitle}</span>
+                </a>
+                <meta itemprop="position" content="2" />
               </div>
               <span class="text-neutral-lighter text-lg inline-block px-1 font-headlight">/</span>
-              <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
-                {subsubtitle} <span class="sr-only"> catalog</span>
-              </h1>
+              <div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
+                  <span itemprop="name">{subsubtitle}</span> <span class="sr-only"> catalog</span>
+                </h1>
+                <meta itemprop="position" content="3" />
+              </div>
             </>
           )}
         </>
       ) : (
-        <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap">
-          {category.name}
-          {titleSmall && <small>{titleSmall}</small>}
-          <span class="sr-only"> catalog</span>
-        </h1>
+        <div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap">
+            <span itemprop="name">{category.name}</span>
+            {titleSmall && <small>{titleSmall}</small>}
+            <span class="sr-only"> catalog</span>
+          </h1>
+          <meta itemprop="position" content="1" />
+        </div>
       )
     }
   </div>
