@@ -1,3 +1,9 @@
+## [1.20.0](https://github.com/polo-blue/sds/compare/v1.19.0...v1.20.0) (2025-12-14)
+
+### Features
+
+* **category:** add microdata and update dependencies ([f5eadf3](https://github.com/polo-blue/sds/commit/f5eadf370bec9e8ef9ad2934e714302cd3e5d24d))
+
 ## [1.19.0](https://github.com/polo-blue/sds/compare/v1.18.1...v1.19.0) (2025-12-10)
 
 ### Features
