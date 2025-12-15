@@ -1,3 +1,9 @@
+## [1.22.0](https://github.com/polo-blue/sds/compare/v1.21.1...v1.22.0) (2025-12-15)
+
+### Features
+
+* **category:** add withMicrodata prop to control Schema.org rendering ([95c96cd](https://github.com/polo-blue/sds/commit/95c96cd71ec15a233432abec2d0c0f109ccd8f5d))
+
 ## [1.21.1](https://github.com/polo-blue/sds/compare/v1.21.0...v1.21.1) (2025-12-15)
 
 ### Bug Fixes
