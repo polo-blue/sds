@@ -1,3 +1,9 @@
+## [1.21.1](https://github.com/polo-blue/sds/compare/v1.21.0...v1.21.1) (2025-12-15)
+
+### Bug Fixes
+
+* **category:** correct SiteNavigationElement microdata structure to expose URLs ([e73b18b](https://github.com/polo-blue/sds/commit/e73b18ba01e870234e3103b6658ff6893d831877))
+
 ## [1.21.0](https://github.com/polo-blue/sds/compare/v1.20.1...v1.21.0) (2025-12-15)
 
 ### Features
