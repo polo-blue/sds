@@ -12,13 +12,14 @@ if git diff --cached --name-only | xargs grep -n "console\\.log" 2>/dev/null; th
   echo "   Consider removing them before committing to production"
 fi
 
-# Run format check
-echo "🎨 Checking code formatting..."
-pnpm run format:check
-if [ $? -ne 0 ]; then
-  echo "❌ Format check failed! Run 'pnpm run format' to fix."
-  exit 1
-fi
+# Auto-format code
+echo "🎨 Auto-formatting code..."
+pnpm run format
+
+# Re-add formatted files to staging
+git add -u
+
+echo "✅ Code formatted successfully!"
 
 # Run linting
 echo "🔍 Running linter..."
