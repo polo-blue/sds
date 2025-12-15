@@ -1,3 +1,9 @@
+## [1.21.0](https://github.com/polo-blue/sds/compare/v1.20.1...v1.21.0) (2025-12-15)
+
+### Features
+
+* **category:** enhance CategoriesCarousel with Schema.org microdata ([903d81b](https://github.com/polo-blue/sds/commit/903d81b24c80d44f118e79c5496e9ea928b0e171))
+
 ## [1.20.1](https://github.com/polo-blue/sds/compare/v1.20.0...v1.20.1) (2025-12-15)
 
 ## [1.20.0](https://github.com/polo-blue/sds/compare/v1.19.0...v1.20.0) (2025-12-14)
