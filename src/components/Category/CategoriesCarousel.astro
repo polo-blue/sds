@@ -1,5 +1,5 @@
 ---
-const { activeCategorySlug, class: className } = Astro.props;
+const { activeCategorySlug, class: className, withMicrodata = true } = Astro.props;
 
 import { getTranslatedLink } from '@utils/text/getTranslatedLink';
 import { getMainCategoryList } from '@utils/category/getMainCategoryList';
@@ -10,6 +10,22 @@ const imgDomain = 'https://api.polo.blue/img/';
 
 const activeIndex =
   activeCategorySlug && categories ? categories.map(a => a.slug).findIndex(e => e === activeCategorySlug) : 0;
+
+// Microdata attributes - only added when withMicrodata is true
+const containerMicrodata = withMicrodata
+  ? {
+      itemscope: true,
+      itemtype: 'https://schema.org/SiteNavigationElement',
+    }
+  : {};
+
+const slideMicrodata = withMicrodata
+  ? {
+      itemprop: 'hasPart',
+      itemscope: true,
+      itemtype: 'https://schema.org/SiteNavigationElement',
+    }
+  : {};
 ---
 
 <!-- <div class={`cat-menu ${className ? className : ''}`} 
@@ -21,8 +37,7 @@ const activeIndex =
 <swiper-container
   class={`categories-carousel flex pb-1 sm:pb-0 bg-white cat-menu ${className ? className : ''}`}
   data-pagefind-ignore
-  itemscope
-  itemtype="https://schema.org/SiteNavigationElement"
+  {...containerMicrodata}
   transition:persist={`catcarousel${activeIndex}`}
   transition:animate="none"
   data-active={activeIndex}
@@ -39,13 +54,15 @@ const activeIndex =
   {
     categories.map(category => (
       <swiper-slide
-        itemprop="hasPart"
-        itemscope
-        itemtype="https://schema.org/SiteNavigationElement"
+        {...slideMicrodata}
         role="presentation"
         class={`swiper-slide cats-slide group ${category.slug === activeCategorySlug ? 'active' : ''}`}
       >
-        <a itemprop="url" href={getTranslatedLink(`/${category.slug}/`)} class="carousel-item">
+        <a
+          {...(withMicrodata ? { itemprop: 'url' } : {})}
+          href={getTranslatedLink(`/${category.slug}/`)}
+          class="carousel-item"
+        >
           <Image
             src={`${imgDomain}${category.photo}`}
             alt={category.name}
@@ -58,7 +75,7 @@ const activeIndex =
           />
           <div class="swiper-lazy-preloader" />
 
-          <div class="cat-name" itemprop="name">
+          <div class="cat-name" {...(withMicrodata ? { itemprop: 'name' } : {})}>
             {category.name}
           </div>
         </a>
