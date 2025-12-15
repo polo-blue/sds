@@ -40,16 +40,12 @@ const activeIndex =
     categories.map(category => (
       <swiper-slide
         itemprop="hasPart"
+        itemscope
+        itemtype="https://schema.org/WebPage"
         role="presentation"
         class={`swiper-slide cats-slide group ${category.slug === activeCategorySlug ? 'active' : ''}`}
       >
-        <a href={getTranslatedLink(`/${category.slug}/`)} class="carousel-item">
-          {
-            // itemprop="url"
-            // role="menuitem"
-            // aria-label={ t(`cat.${category.slug}.name`) }
-          }
-
+        <a itemprop="url" href={getTranslatedLink(`/${category.slug}/`)} class="carousel-item">
           <Image
             src={`${imgDomain}${category.photo}`}
             alt={category.name}
