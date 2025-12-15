@@ -18,9 +18,9 @@ const navItemsLeft = [
 ];
 ---
 
-<nav
+<header
   itemscope
-  itemtype="http://schema.org/WPHeader"
+  itemtype="https://schema.org/WPHeader"
   class:list={[
     className,
     'nav print-hidden mx-auto px-4 shadow-md relative flex items-center justify-between h-24 sm:h-14 flex-wrap sm:flex-nowrap pt-1 sm:pt-0',
@@ -30,7 +30,12 @@ const navItemsLeft = [
     <slot name="logo" />
 
     <div class="hidden sm:block sm:ml-6">
-      <div class="flex space-x-4" itemprop="hasPart">
+      <nav
+        class="flex space-x-4"
+        itemprop="hasPart"
+        itemscope
+        itemtype="https://schema.org/SiteNavigationElement"
+      >
         {
           navItemsLeft.map(({ title, description, url }) => (
             <a
@@ -43,7 +48,7 @@ const navItemsLeft = [
             </a>
           ))
         }
-      </div>
+      </nav>
     </div>
   </div>
 
@@ -51,17 +56,17 @@ const navItemsLeft = [
     <slot name="search" />
   </div>
 
-  <div
+  <nav
     class="flex items-center pr-0 sm:static sm:inset-auto ml-auto sm:ml-6 -mr-2 print:hidden order-3 sm:order-3 w-20 justify-end"
     itemprop="hasPart"
     itemscope
-    itemtype="http://schema.org/SiteNavigationElement"
+    itemtype="https://schema.org/SiteNavigationElement"
   >
     <a class="icon-btn mx-2" title="" aria-label="" href="#" itemprop="url" data-astro-reload>
       <Icon name="carbon:language" />
     </a>
-  </div>
-</nav>
+  </nav>
+</header>
 
 <style is:global>
   nav {
