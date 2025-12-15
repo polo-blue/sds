@@ -1,3 +1,5 @@
+## [1.20.1](https://github.com/polo-blue/sds/compare/v1.20.0...v1.20.1) (2025-12-15)
+
 ## [1.20.0](https://github.com/polo-blue/sds/compare/v1.19.0...v1.20.0) (2025-12-14)
 
 ### Features
