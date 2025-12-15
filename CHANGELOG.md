@@ -1,3 +1,9 @@
+## [1.23.1](https://github.com/polo-blue/sds/compare/v1.23.0...v1.23.1) (2025-12-15)
+
+### Bug Fixes
+
+* **header:** correct WPHeader microdata and improve semantics ([a37a26e](https://github.com/polo-blue/sds/commit/a37a26ef62a29e3e327076d715e2989102e4d60b))
+
 ## [1.23.0](https://github.com/polo-blue/sds/compare/v1.22.0...v1.23.0) (2025-12-15)
 
 ### Features
