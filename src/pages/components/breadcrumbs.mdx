@@ -102,6 +102,35 @@ https://schema.org/ListItem
 />
 ```
 
+## Props
+
+| Prop            | Type      | Default | Description                                                                 |
+| --------------- | --------- | ------- | --------------------------------------------------------------------------- |
+| `breadcrumbs`   | Array     | -       | Array of breadcrumb objects with `name` and `path` properties (required)    |
+| `showBack`      | Boolean   | `false` | Show back button                                                            |
+| `textBack`      | String    | `'Back'`| Text for back button title                                                  |
+| `showHome`      | Boolean   | `false` | Show home icon as first breadcrumb                                          |
+| `productNumber` | String    | `null`  | Product number to display after last breadcrumb (mobile hidden)             |
+| `withMicrodata` | Boolean   | `true`  | Include Schema.org BreadcrumbList microdata (set to `false` for duplicates) |
+
+## Microdata Control
+
+When rendering breadcrumbs multiple times on the same page (e.g., mobile and desktop versions), use `withMicrodata` to prevent duplicate Schema.org markup:
+
+```js
+<!-- Desktop version - WITH microdata (default) -->
+<Breadcrumbs
+  breadcrumbs={[...]}
+  class="hidden md:block"
+/>
+
+<!-- Mobile version - WITHOUT microdata -->
+<Breadcrumbs
+  breadcrumbs={[...]}
+  class="block md:hidden"
+  :withMicrodata="false"
+/>
+```
 
 ### Schema support:
 - https://developers.google.com/search/docs/appearance/structured-data/breadcrumb?hl=en

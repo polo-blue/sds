@@ -5,6 +5,7 @@ export interface Breadcrumb {
 }
 
 import type { PropType } from 'vue';
+import { computed } from 'vue';
 
 const props = defineProps({
   showBack: {
@@ -29,11 +30,36 @@ const props = defineProps({
     required: false,
     default: null,
   },
+  withMicrodata: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
 });
 
 const isLast = (index: number) => {
   return index === props.breadcrumbs.length - 1;
 };
+
+// Microdata attributes - only added when withMicrodata is true
+const listMicrodata = computed(() =>
+  props.withMicrodata
+    ? {
+        itemscope: true,
+        itemtype: 'https://schema.org/BreadcrumbList',
+      }
+    : {}
+);
+
+const listItemMicrodata = computed(() =>
+  props.withMicrodata
+    ? {
+        itemprop: 'itemListElement',
+        itemscope: true,
+        itemtype: 'https://schema.org/ListItem',
+      }
+    : {}
+);
 </script>
 
 <template>
@@ -45,28 +71,22 @@ const isLast = (index: number) => {
         </button>
       </li>
     </ul>
-    <ul
-      class="breadcrumbs-base overflow-x-auto overflow-y-hidden sm:mr-12"
-      itemscope
-      itemtype="https://schema.org/BreadcrumbList"
-    >
+    <ul class="breadcrumbs-base overflow-x-auto overflow-y-hidden sm:mr-12" v-bind="listMicrodata">
       <li v-if="props.showHome" class="breadcrumb-item">
         <a
           href="/"
           class="breadcrumb-link flex items-center px-3 sm:px-0 py-4.25 sm:py-1 hover:text-brand-secondary whitespace-nowrap translate-y-0 text-sm my-auto"
           :title="props.textBack"
-          itemprop="item"
+          v-bind="withMicrodata ? { itemprop: 'item' } : {}"
           i-carbon-home
         />
-        <meta itemprop="position" content="1" />
+        <meta v-if="withMicrodata" itemprop="position" content="1" />
       </li>
       <li
         v-for="(crumb, index) in breadcrumbs"
         :key="index"
         class="breadcrumb-item"
-        itemprop="itemListElement"
-        itemscope
-        itemtype="https://schema.org/ListItem"
+        v-bind="listItemMicrodata"
       >
         <span v-if="index > 0 || props.showHome" class="text-gray-400 px-1 py-4.25 sm:py-1">/</span>
 
@@ -74,25 +94,31 @@ const isLast = (index: number) => {
           v-if="!isLast(index)"
           :href="crumb.path"
           class="breadcrumb-link"
-          itemprop="item"
+          v-bind="withMicrodata ? { itemprop: 'item' } : {}"
           :title="`Polo 6R ${crumb.name}`"
         >
-          <strong class="font-normal" itemprop="name">{{ crumb.name }}</strong>
+          <strong class="font-normal" v-bind="withMicrodata ? { itemprop: 'name' } : {}">
+            {{ crumb.name }}
+          </strong>
         </a>
         <a
           v-else
           :href="crumb.path"
           class="breadcrumb-link breadcrumb-link-disabled"
           :title="`Polo 6R ${crumb.name} ${productNumber}`"
-          itemprop="item"
+          v-bind="withMicrodata ? { itemprop: 'item' } : {}"
         >
-          <span class="font-normal" itemprop="name">
+          <span class="font-normal" v-bind="withMicrodata ? { itemprop: 'name' } : {}">
             <span v-html="crumb.name" />
             <b v-if="productNumber" class="hidden sm:inline font-normal ml-1">&nbsp;{{ productNumber }}</b>
           </span>
         </a>
 
-        <meta itemprop="position" :content="String(props.showHome ? index + 2 : index + 1)" />
+        <meta
+          v-if="withMicrodata"
+          itemprop="position"
+          :content="String(props.showHome ? index + 2 : index + 1)"
+        />
       </li>
     </ul>
   </nav>
