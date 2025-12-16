@@ -61,6 +61,7 @@ export { default as getPriceFormatted } from './src/utils/product/getPriceFormat
 export { default as getProductChecklist } from './src/utils/product/getProductChecklist';
 export { getEngineTooltipContent } from './src/utils/product/getEngineTooltipContent';
 export type { Engine, EngineTranslations } from './src/utils/product/getEngineTooltipContent';
+export { default as useFormatProductNumber } from './src/utils/product/useFormatProductNumber';
 
 // Utils: SEO
 export { default as getShorterDescription } from './src/utils/seo/getShorterDescription';
