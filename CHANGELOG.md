@@ -1,3 +1,9 @@
+## [1.23.2](https://github.com/polo-blue/sds/compare/v1.23.1...v1.23.2) (2025-12-16)
+
+### Bug Fixes
+
+* **category:** add itemprop url to CategoryTile link ([1f4831d](https://github.com/polo-blue/sds/commit/1f4831de8551395509c74dac7fe7b883f5a2d4d7))
+
 ## [1.23.1](https://github.com/polo-blue/sds/compare/v1.23.0...v1.23.1) (2025-12-15)
 
 ### Bug Fixes
