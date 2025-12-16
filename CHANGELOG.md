@@ -1,3 +1,9 @@
+## [1.24.0](https://github.com/polo-blue/sds/compare/v1.23.2...v1.24.0) (2025-12-16)
+
+### Features
+
+* export useFormatProductNumber utility ([4e585e4](https://github.com/polo-blue/sds/commit/4e585e4bf500049f1ab8e325ae7a0daa6dd2ade6))
+
 ## [1.23.2](https://github.com/polo-blue/sds/compare/v1.23.1...v1.23.2) (2025-12-16)
 
 ### Bug Fixes
