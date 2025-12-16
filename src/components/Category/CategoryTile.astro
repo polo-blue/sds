@@ -18,19 +18,21 @@ const { CategoryObject } = Astro.props;
 const { height = 70, width = 70, path } = CategoryObject;
 ---
 
-<a href={path} class="carousel-item" data-astro-prefetch itemprop="url">
-  <Image
-    src={CategoryObject.photo}
-    alt={CategoryObject.alt}
-    height={height}
-    width={width}
-    format="avif"
-    loading="eager"
-    onerror="this.style.display='none';"
-    class="cats-img"
-  />
-  <div class="swiper-lazy-preloader"></div>
-  <div class="cat-name" itemprop="name">
-    {CategoryObject.name}
-  </div>
-</a>
+<span itemprop="name">
+  <a itemprop="url" href={path} class="carousel-item" data-astro-prefetch>
+    <Image
+      src={CategoryObject.photo}
+      alt={CategoryObject.alt}
+      height={height}
+      width={width}
+      format="avif"
+      loading="eager"
+      onerror="this.style.display='none';"
+      class="cats-img"
+    />
+    <div class="swiper-lazy-preloader"></div>
+    <div class="cat-name">
+      {CategoryObject.name}
+    </div>
+  </a>
+</span>
