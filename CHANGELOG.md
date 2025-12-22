@@ -1,3 +1,9 @@
+## [1.24.1](https://github.com/polo-blue/sds/compare/v1.24.0...v1.24.1) (2025-12-22)
+
+### Bug Fixes
+
+* **uno-config:** add circle-flags to safelist and Vue :class extractor ([672086a](https://github.com/polo-blue/sds/commit/672086a55b021eaa1ef30807068f7e1f645d39f2))
+
 ## [1.24.0](https://github.com/polo-blue/sds/compare/v1.23.2...v1.24.0) (2025-12-16)
 
 ### Features
