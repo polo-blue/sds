@@ -162,8 +162,15 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
       'i-simple-icons-youtube',
       'i-simple-icons-vimeo',
 
+      // Language flags for Translations component (dynamic Vue classes)
+      'i-circle-flags:en',
+      'i-circle-flags:pl',
+
       // All peer selectors from the list (needed for floating labels)
       ...peerSelectorClasses,
+
+      // Custom safelist from consumer config
+      ...(customConfig.safelist || []),
     ],
     // Optimized extractors for static Astro builds
     extractors: [
@@ -194,6 +201,31 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
                   result.add(cls);
                 }
               });
+            }
+          }
+
+          // For .vue files, extract from :class bindings (dynamic classes)
+          if (id && id.endsWith('.vue')) {
+            // Match :class="[...]" or :class="{...}" or :class="'...'"
+            const vueClassRegex = /:class=["'`]([^"'`]+)["'`]/g;
+            while ((match = vueClassRegex.exec(code)) !== null) {
+              // Extract class names from ternary expressions and string literals
+              const classContent = match[1];
+              // Match quoted strings inside the expression (e.g., 'i-circle-flags:en')
+              const quotedStrings = classContent.match(/['"]([^'"]+)['"]/g);
+              if (quotedStrings) {
+                quotedStrings.forEach(quoted => {
+                  const cls = quoted.replace(/['"]/g, '').trim();
+                  if (cls && !cls.includes('?') && !cls.includes(':') || cls.startsWith('i-')) {
+                    // Split by spaces in case multiple classes
+                    cls.split(/\s+/).forEach(c => {
+                      if (c && c.length > 1) {
+                        result.add(c);
+                      }
+                    });
+                  }
+                });
+              }
             }
           }
 
