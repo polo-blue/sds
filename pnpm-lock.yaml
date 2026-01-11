@@ -122,7 +122,7 @@ importers:
         version: 1.2.37
       '@iconify/json':
         specifier: ^2.2.418
-        version: 2.2.418
+        version: 2.2.427
       '@iconify/vue':
         specifier: ^5.0.0
         version: 5.0.0(vue@3.5.25(typescript@5.9.2))
@@ -1441,8 +1441,8 @@ packages:
   '@iconify-json/vscode-icons@1.2.37':
     resolution: {integrity: sha512-HLRdU6nZks4N8x3JYz6j+b3+hcUCvYvlTLwGzM3xyXfTJyDSA2cAdWcEXfoA4hQMJGA+zCDSPAWFelFptH5Kbw==}
 
-  '@iconify/json@2.2.418':
-    resolution: {integrity: sha512-vSIFcv+o9nvMY8qq4UdjtudA2/7h7hL1UIKurdUgvz/2lwT4aHJ7A7vCDtCi35JoL9UXaRChy6aaoVoPQc7i5g==}
+  '@iconify/json@2.2.427':
+    resolution: {integrity: sha512-QyFXZmAzOvYbDInKKpDgPJJNWB6oXKuAFxzRTXeIEzRP1q/E9GJidvyg5f/Tt3KE8gEP+RVD2793tUn1foFbcw==}
 
   '@iconify/tools@4.2.0':
     resolution: {integrity: sha512-WRxPva/ipxYkqZd1+CkEAQmd86dQmrwH0vwK89gmp2Kh2WyyVw57XbPng0NehP3x4V1LzLsXUneP1uMfTMZmUA==}
@@ -6176,6 +6176,7 @@ packages:
   whatwg-encoding@3.1.1:
     resolution: {integrity: sha512-6qN4hJdMwfYBtE3YBTTHhoeuUrDBPZmbQaxWAqSALV/MeEnR5z1xd8UKud2RAkFoPkmB+hli1TZSnyi84xz1vQ==}
     engines: {node: '>=18'}
+    deprecated: Use @exodus/bytes instead for a more spec-conformant and faster implementation
 
   whatwg-mimetype@4.0.0:
     resolution: {integrity: sha512-QaKxh0eNIi2mE9p2vEdzfagOKHCcj1pJ56EEHGQOVxp8r9/iszLUUV7v89x9O1p/T+NlTM5W7jW6+cz4Fq1YVg==}
@@ -7726,7 +7727,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify/json@2.2.418':
+  '@iconify/json@2.2.427':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 2.0.3
