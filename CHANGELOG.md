@@ -1,3 +1,9 @@
+## [1.24.2](https://github.com/polo-blue/sds/compare/v1.24.1...v1.24.2) (2026-01-13)
+
+### Bug Fixes
+
+* improve TypeScript types for Breadcrumbs and Jumbotron ([d671a1a](https://github.com/polo-blue/sds/commit/d671a1ab1851f7e0eb138863a7a9dd05be9bea8e))
+
 ## [1.24.1](https://github.com/polo-blue/sds/compare/v1.24.0...v1.24.1) (2025-12-22)
 
 ### Bug Fixes
