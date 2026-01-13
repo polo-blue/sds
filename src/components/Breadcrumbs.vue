@@ -1,40 +1,27 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+
 export interface Breadcrumb {
   name: string;
   path: string;
 }
 
-import type { PropType } from 'vue';
-import { computed } from 'vue';
+interface Props {
+  showBack?: boolean;
+  textBack?: string;
+  showHome?: boolean;
+  breadcrumbs: Breadcrumb[];
+  productNumber?: string;
+  withMicrodata?: boolean;
+  class?: string;
+}
 
-const props = defineProps({
-  showBack: {
-    type: Boolean,
-    required: false,
-  },
-  textBack: {
-    type: String,
-    required: false,
-    default: 'Back',
-  },
-  showHome: {
-    type: Boolean,
-    required: false,
-  },
-  breadcrumbs: {
-    type: Array as PropType<Breadcrumb[]>,
-    required: true,
-  },
-  productNumber: {
-    type: String,
-    required: false,
-    default: null,
-  },
-  withMicrodata: {
-    type: Boolean,
-    required: false,
-    default: true,
-  },
+const props = withDefaults(defineProps<Props>(), {
+  showBack: false,
+  textBack: 'Back',
+  showHome: false,
+  productNumber: undefined,
+  withMicrodata: true,
 });
 
 const isLast = (index: number) => {
