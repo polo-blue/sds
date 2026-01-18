@@ -13,7 +13,6 @@ interface Props {
   breadcrumbs: Breadcrumb[];
   productNumber?: string;
   withMicrodata?: boolean;
-  class?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
