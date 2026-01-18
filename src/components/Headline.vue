@@ -97,14 +97,14 @@ const computedClasses = computed(() => {
     @apply content-empty absolute left-0 bottom-0;
     height: 3px;
     width: 55px;
-    background-color: var(--headline-underline-accent, var(--clr-primary-400));
+    background-color: var(--headline-underline-accent, oklch(65% 0.143 238));
   }
 
   &:before {
     @apply content-empty absolute left-0 bottom-px h-px;
     width: 95%;
     max-width: 255px;
-    background-color: var(--headline-underline-base, #64748b);
+    background-color: var(--headline-underline-base, oklch(55% 0.041 257));
   }
 }
 
@@ -115,7 +115,7 @@ const computedClasses = computed(() => {
     @apply content-empty absolute left-1/2 bottom-px h-px;
     width: 95%;
     max-width: 255px;
-    background-color: var(--headline-underline-base, #64748b);
+    background-color: var(--headline-underline-base, oklch(55% 0.041 257));
     transform: translateX(-50%);
   }
 
@@ -123,7 +123,7 @@ const computedClasses = computed(() => {
     @apply content-empty absolute bottom-0;
     height: 3px;
     width: 55px;
-    background-color: var(--headline-underline-accent, var(--clr-primary-400));
+    background-color: var(--headline-underline-accent, oklch(65% 0.143 238));
     left: calc(50% - min(47.5%, 127.5px));
   }
 }

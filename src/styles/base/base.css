@@ -1,39 +1,10 @@
 :root {
   --color-scheme: light;
 
-  --clr-primary-400: hsl(198, 100%, 43%); /* {$blue}; */
-  --secondary: #64748b;
-  --tertiary: #001e50;
-
   --font-family: 'vw_textregular', 'system-ui', 'ui-sans-serif', sans-serif;
 
-  /* variables for future changes: */
-
-  /* font sies */
-  --fs-300: clamp(0.94rem, calc(0.92rem + 0.08vw), 0.98rem);
-  --fs-400: clamp(1.13rem, calc(1.06rem + 0.33vw), 1.31rem);
-  --fs-500: clamp(1.35rem, calc(1.21rem + 0.69vw), 1.75rem);
-  --fs-600: clamp(1.62rem, calc(1.37rem + 1.24vw), 2.33rem);
-  --fs-700: clamp(1.94rem, calc(1.54rem + 2.03vw), 3.11rem);
-  --fs-800: clamp(2.33rem, calc(1.7rem + 3.15vw), 4.14rem);
-  --fs-900: clamp(2.8rem, calc(1.85rem + 4.74vw), 5.52rem);
-
-  /* colors */
-  --clr-primary-300: rgb(53, 114, 227);
-  --clr-primary-400: hsl(198, 100%, 43%);
-  --clr-primary-500: hsl(219, 76%, 25%);
-  --clr-secondary-300: hsl(269, 75%, 55%);
-  --clr-secondary-400: hsl(269, 75%, 40%);
-  --clr-secondary-500: hsl(269, 75%, 25%);
-  --clr-accent-200: hsl(358, 85%, 80%);
-  --clr-accent-300: hsl(358, 72%, 65%);
-  --clr-accent-400: hsl(358, 72%, 50%);
-  --clr-accent-500: hsl(358, 72%, 35%);
-
   /* Swiper styles */
-  /* // --swiper-navigation-color: #0099da; */
   --swiper-navigation-size: 22px;
-  --swiper-scrollbar-drag-bg-color: var(--clr-primary-400);
   --swiper-scrollbar-size: 1px;
   --swiper-scrollbar-bottom: 0px;
 }
@@ -49,8 +20,8 @@ body {
   overflow-x: hidden;
 }
 
-/*  
-    Chrome 121 added support for scrollbar-width and scrollbar-color. 
+/*
+    Chrome 121 added support for scrollbar-width and scrollbar-color.
     If you have scrollbar-width it will disable the --webkit-scrollbar pseudo elements.
     https://developer.chrome.com/blog/new-in-chrome-121
     https://developer.chrome.com/docs/css-ui/scrollbar-styling
@@ -62,20 +33,20 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
+  @apply bg-black/10;
   border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 0;
-  background-color: var(--clr-primary-400);
+  @apply bg-accent-light;
 }
 
 /* Fallback to browsers without webkit-scrollbar support */
 @supports not selector(::-webkit-scrollbar) {
   * {
     scrollbar-width: thin;
-    scrollbar-color: var(--clr-primary-400) rgba(0, 0, 0, 0.1);
+    scrollbar-color: oklch(65% 0.143 238) oklch(0% 0 0 / 0.1);
   }
 }
 
@@ -83,19 +54,19 @@ body {
   outline: none !important;
 }
 
+/* Background gradients - keep in CSS (radial-gradient not supported in UnoCSS shortcuts) */
 .bg-spoko {
-  background: radial-gradient(circle at 50% 85%, #00437a 0%, #001e50 100%);
-  color: #fff;
-  width: 100%;
+  background: radial-gradient(circle at 50% 85%, oklch(38% 0.111 251) 0%, oklch(25% 0.099 259) 100%);
+  @apply text-white w-full;
 }
 
 .bg-vw {
-  background: radial-gradient(circle at 50% 85%, #00437a 0%, #001e50 100%);
-  color: #fff;
+  background: radial-gradient(circle at 50% 85%, oklch(38% 0.111 251) 0%, oklch(25% 0.099 259) 100%);
+  @apply text-white;
 }
 
 .bg-primary {
-  background: var(--clr-primary-500);
+  @apply bg-blue-medium;
 }
 
 .display-3 {
