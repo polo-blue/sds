@@ -1,3 +1,9 @@
+## [1.24.3](https://github.com/polo-blue/sds/compare/v1.24.2...v1.24.3) (2026-01-18)
+
+### Bug Fixes
+
+* **Breadcrumbs:** remove explicit class prop to restore Vue attribute fallthrough ([aeb614b](https://github.com/polo-blue/sds/commit/aeb614b703a39b812a60cf7c769f19f44a57d8e0))
+
 ## [1.24.2](https://github.com/polo-blue/sds/compare/v1.24.1...v1.24.2) (2026-01-13)
 
 ### Bug Fixes
