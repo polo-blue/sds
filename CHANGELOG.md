@@ -1,3 +1,18 @@
+## [1.25.0](https://github.com/polo-blue/sds/compare/v1.24.3...v1.25.0) (2026-01-18)
+
+### ⚠ BREAKING CHANGES
+
+* **colors:** Color values changed from HEX to OKLCH format. Projects using
+raw color values from theme may need to update. CSS variable --clr-* removed.
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+
+### Features
+
+* **colors:** migrate color system from HEX to OKLCH ([d95551a](https://github.com/polo-blue/sds/commit/d95551a4f9124bace33885dbd7aef5cd82235111))
+
 ## [1.24.3](https://github.com/polo-blue/sds/compare/v1.24.2...v1.24.3) (2026-01-18)
 
 ### Bug Fixes
