@@ -1,3 +1,9 @@
+## [1.25.1](https://github.com/polo-blue/sds/compare/v1.25.0...v1.25.1) (2026-01-19)
+
+### Bug Fixes
+
+* **CategoryDetails:** prevent horizontal page scroll on mobile ([e922d7f](https://github.com/polo-blue/sds/commit/e922d7f3876bea195bba47a4cfefb1efd73cae84))
+
 ## [1.25.0](https://github.com/polo-blue/sds/compare/v1.24.3...v1.25.0) (2026-01-18)
 
 ### ⚠ BREAKING CHANGES
