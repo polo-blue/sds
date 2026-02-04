@@ -120,6 +120,9 @@ const subcategoryPath = subcategory?.path || `/${category.slug}/${subcategory?.s
         expandedIcon.classList.toggle('hidden', isCollapsed);
         collapsedIcon.classList.toggle('hidden', !isCollapsed);
       }
+
+      // Update aria-expanded for accessibility
+      toggler.setAttribute('aria-expanded', !isCollapsed);
     });
   }
 
