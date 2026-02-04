@@ -1,3 +1,9 @@
+## [1.26.0](https://github.com/polo-blue/sds/compare/v1.25.1...v1.26.0) (2026-02-04)
+
+### Features
+
+* **a11y:** add aria-expanded to sidebar toggle button ([ae737e3](https://github.com/polo-blue/sds/commit/ae737e39d2fca57edca87171ea4d730c9cee33c3))
+
 ## [1.25.1](https://github.com/polo-blue/sds/compare/v1.25.0...v1.25.1) (2026-01-19)
 
 ### Bug Fixes
