@@ -101,18 +101,20 @@ const subcategoryPath = subcategory?.path || `/${category.slug}/${subcategory?.s
 </div>
 
 <script>
-  function initializeSidebar() {
-    const sidebar = document.getElementById('sidebar');
+  function applySidebarState(doc: Document) {
+    const sidebar = doc.getElementById('sidebar');
     const savedState = localStorage.getItem('sidebarState') || 'open';
+    const isCollapsed = savedState === 'closed';
 
     if (sidebar) {
-      sidebar.classList.toggle('collapsed', savedState === 'closed');
-      updateTogglers(savedState === 'closed');
+      sidebar.classList.toggle('collapsed', isCollapsed);
     }
+
+    updateTogglers(doc, isCollapsed);
   }
 
-  function updateTogglers(isCollapsed) {
-    document.querySelectorAll('.category-sidebar-toggler').forEach(toggler => {
+  function updateTogglers(doc: Document, isCollapsed: boolean) {
+    doc.querySelectorAll('.category-sidebar-toggler').forEach(toggler => {
       const expandedIcon = toggler.querySelector('.expanded-icon');
       const collapsedIcon = toggler.querySelector('.collapsed-icon');
 
@@ -121,8 +123,7 @@ const subcategoryPath = subcategory?.path || `/${category.slug}/${subcategory?.s
         collapsedIcon.classList.toggle('hidden', !isCollapsed);
       }
 
-      // Update aria-expanded for accessibility
-      toggler.setAttribute('aria-expanded', !isCollapsed);
+      toggler.setAttribute('aria-expanded', String(!isCollapsed));
     });
   }
 
@@ -138,7 +139,7 @@ const subcategoryPath = subcategory?.path || `/${category.slug}/${subcategory?.s
         const isCollapsed = sidebar.classList.toggle('collapsed');
         document.body.classList.remove('overflow-hidden');
         localStorage.setItem('sidebarState', isCollapsed ? 'closed' : 'open');
-        updateTogglers(isCollapsed);
+        updateTogglers(document, isCollapsed);
       }
     }
   }
@@ -150,27 +151,15 @@ const subcategoryPath = subcategory?.path || `/${category.slug}/${subcategory?.s
     });
   }
 
-  // Initialize on page load
+  // Initialize on page load (initial + after view transitions)
   document.addEventListener('astro:page-load', () => {
-    initializeSidebar();
+    applySidebarState(document);
     setupTogglers();
   });
 
-  // Preserve state during view transitions
-  document.addEventListener('astro:before-swap', () => {
-    const sidebarState = localStorage.getItem('sidebarState');
-    if (sidebarState) {
-      sessionStorage.setItem('tempSidebarState', sidebarState);
-    }
-  });
-
-  document.addEventListener('astro:after-swap', () => {
-    const tempState = sessionStorage.getItem('tempSidebarState');
-    if (tempState) {
-      localStorage.setItem('sidebarState', tempState);
-      sessionStorage.removeItem('tempSidebarState');
-      initializeSidebar();
-    }
+  // Apply sidebar state to incoming DOM BEFORE swap to prevent flash
+  document.addEventListener('astro:before-swap', e => {
+    applySidebarState(e.newDocument);
   });
 </script>
 
