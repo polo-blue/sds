@@ -1,3 +1,9 @@
+## [1.26.1](https://github.com/polo-blue/sds/compare/v1.26.0...v1.26.1) (2026-02-22)
+
+### Bug Fixes
+
+* **CategoryDetails:** prevent sidebar flash during view transitions ([597dceb](https://github.com/polo-blue/sds/commit/597dceb0b1e0dfc8b404d63f63bb75b4a236d191))
+
 ## [1.26.0](https://github.com/polo-blue/sds/compare/v1.25.1...v1.26.0) (2026-02-04)
 
 ### Features
