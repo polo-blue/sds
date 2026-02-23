@@ -1,3 +1,9 @@
+## [1.26.2](https://github.com/polo-blue/sds/compare/v1.26.1...v1.26.2) (2026-02-23)
+
+### Bug Fixes
+
+* **nav:** increase nav-link padding for better touch targets ([841d154](https://github.com/polo-blue/sds/commit/841d15400af0ebdbde14e9e03306a9e361266173))
+
 ## [1.26.1](https://github.com/polo-blue/sds/compare/v1.26.0...v1.26.1) (2026-02-22)
 
 ### Bug Fixes
