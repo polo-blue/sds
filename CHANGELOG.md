@@ -1,3 +1,9 @@
+## [1.26.4](https://github.com/polo-blue/sds/compare/v1.26.3...v1.26.4) (2026-02-23)
+
+### Bug Fixes
+
+* restore product-thumb--related, add product-thumb--tile ([#346](https://github.com/polo-blue/sds/issues/346)) ([18cd582](https://github.com/polo-blue/sds/commit/18cd58261a12b631d8de70c664d6fd7e8fc50056))
+
 ## [1.26.3](https://github.com/polo-blue/sds/compare/v1.26.2...v1.26.3) (2026-02-23)
 
 ## [1.26.2](https://github.com/polo-blue/sds/compare/v1.26.1...v1.26.2) (2026-02-23)
