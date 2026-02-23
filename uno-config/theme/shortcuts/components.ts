@@ -88,6 +88,7 @@ export const componentShortcuts = [
   ['pdp-slide', `h-full bg-gray-100 ${aspectRatios['4/3']} ${LAYOUT.position.relative} overflow-hidden border border-transparent`],
   ['product-link', PRODUCT_STYLES.link.base],
   ['number-big', 'text-3.75 mr-2 mt-2 mb-0 sm:mt-0'],
+  ['product-thumb--related', `w-22 min-w-22 xl:w-30 xl:min-w-30 h-auto ${IMAGE_STYLES.objectContain} object-top bg-gray-100 ${aspectRatios['4/3']} ${LAYOUT.position.relative}`],
   ['product-thumb--tile', `w-full h-auto ${IMAGE_STYLES.objectContain} object-top bg-gray-100 ${aspectRatios['4/3']} ${LAYOUT.position.relative}`],
   ['product-thumb--carousel', `w-60 min-w-60 sm:w-22 sm:min-w-22 xl:w-30 xl:min-w-30 h-auto ${IMAGE_STYLES.objectContain} object-top bg-gray-100 ${aspectRatios['4/3']} ${LAYOUT.position.relative}`],
 
