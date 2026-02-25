@@ -1,3 +1,13 @@
+## [1.27.0](https://github.com/polo-blue/sds/compare/v1.26.4...v1.27.0) (2026-02-25)
+
+### Features
+
+* add 2-column grid layout for view-list on 4xl screens ([5e692d0](https://github.com/polo-blue/sds/commit/5e692d0aa9d954fe4a714b193fc829ca8b139766))
+
+### Bug Fixes
+
+* add md:block to view-list shortcut ([d30a715](https://github.com/polo-blue/sds/commit/d30a715d38bb82f1ea65b4ad9e1c508fdf372621))
+
 ## [1.26.4](https://github.com/polo-blue/sds/compare/v1.26.3...v1.26.4) (2026-02-23)
 
 ### Bug Fixes
