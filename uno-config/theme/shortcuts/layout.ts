@@ -29,7 +29,7 @@ export const layoutShortcuts = [
 
   // View Toggles
   ['view-grid', 'lg:flex-wrap'],
-  ['view-list', 'lg:flex-col divide-y-1 divide-solid divide-neutral-lighter 4xl:(grid grid-cols-2 gap-14)'],
+  ['view-list', 'md:block lg:flex-col divide-y-1 divide-solid divide-neutral-lighter 4xl:(grid grid-cols-2 gap-14)'],
 
   // Containers
   ['products-container', 'products-wrapper'],
