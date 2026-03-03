@@ -1,3 +1,9 @@
+## [1.27.2](https://github.com/polo-blue/sds/compare/v1.27.1...v1.27.2) (2026-03-03)
+
+### Bug Fixes
+
+* change font-display from fallback to swap for all fonts ([874fa35](https://github.com/polo-blue/sds/commit/874fa35b05ccb65f55768f0bab4268fac77c92ca))
+
 ## [1.27.1](https://github.com/polo-blue/sds/compare/v1.27.0...v1.27.1) (2026-03-03)
 
 ### ⚠ BREAKING CHANGES
