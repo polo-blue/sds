@@ -8,10 +8,13 @@ productNumbers:
   - "N0385491"
 ---
 import ProductNumber from '../../components/Product/ProductNumber.astro'
+import ButtonCopy from '../../components/ButtonCopy.astro'
 
 # ProductNumber
 
-ProductNumber - with additional formatting adding spacing for Volkswagen product numbers + additional copy button for easier copying.
+ProductNumber - with additional formatting adding spacing for Volkswagen product numbers.
+
+Use the `after-number` slot to add a copy button or other actions next to the product number (e.g. on PDP pages).
 
 #
 <div class="component-preview">
@@ -35,14 +38,19 @@ ProductNumber - with additional formatting adding spacing for Volkswagen product
 />
 ```
 
+### With ButtonCopy (PDP usage)
+
 <div class="component-preview">
   <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 w-full bg-white p-y-5 px-4">
    {frontmatter.productNumbers.map((number, index) => (
       <ProductNumber
         big
+        isPdp
         productNumber={number}
         class="mb-2"
-      />
+      >
+        <ButtonCopy slot="after-number" productNumber={number} texts={{ copy: 'Copy', copied: 'Copied' }} />
+      </ProductNumber>
     ))}
   </div>
 </div>
