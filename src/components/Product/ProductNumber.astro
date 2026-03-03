@@ -1,15 +1,7 @@
 ---
-import ButtonCopy from '../ButtonCopy.astro';
 import useFormatProductNumber from '../../utils/product/useFormatProductNumber';
 
-const {
-  productNumber,
-  isPdp = false,
-  small = false,
-  big = false,
-  class: customClass = '',
-  buttonTexts = { copy: 'Copy', copied: 'Copied' },
-} = Astro.props;
+const { productNumber, isPdp = false, small = false, big = false, class: customClass = '' } = Astro.props;
 
 // Use formatted product number using a helper function
 const { formattedNumbers: formatted } = useFormatProductNumber(productNumber);
@@ -32,7 +24,7 @@ const FormattedWrapper = isPdp ? 'h3' : 'div';
           {productNumber}
         </ProductWrapper>
 
-        {big && <ButtonCopy productNumber={productNumber} texts={buttonTexts} tooltipClasses="" />}
+        <slot name="after-number" />
       </div>
 
       <div class={['code-formatted', trackingClass].join(' ')}>
