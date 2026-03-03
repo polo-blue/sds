@@ -1,3 +1,14 @@
+## [1.27.1](https://github.com/polo-blue/sds/compare/v1.27.0...v1.27.1) (2026-03-03)
+
+### ⚠ BREAKING CHANGES
+
+* ButtonCopy is no longer rendered automatically when `big` prop is set.
+Use the `after-number` slot to add ButtonCopy on PDP pages.
+
+### Code Refactoring
+
+* remove ButtonCopy from ProductNumber ([96c80b5](https://github.com/polo-blue/sds/commit/96c80b5ee1919b43418dfd27f43c2b2b78e33224))
+
 ## [1.27.0](https://github.com/polo-blue/sds/compare/v1.26.4...v1.27.0) (2026-02-25)
 
 ### Features
