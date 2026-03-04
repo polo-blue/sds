@@ -1,3 +1,9 @@
+## [1.28.0](https://github.com/polo-blue/sds/compare/v1.27.3...v1.28.0) (2026-03-04)
+
+### Features
+
+* **ProductDetailsList:** support individual link items in comprehensive ([459aae7](https://github.com/polo-blue/sds/commit/459aae745cc11c73ab4574cfa3d7f22f34ac7aed))
+
 ## [1.27.3](https://github.com/polo-blue/sds/compare/v1.27.2...v1.27.3) (2026-03-04)
 
 ### Bug Fixes
