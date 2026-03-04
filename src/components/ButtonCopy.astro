@@ -33,12 +33,11 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
   class ClipboardButton {
     private static readonly COPY_TIMEOUT = 2000;
     private static readonly ANALYTICS_EVENT = 'product_code_copy';
+    private readonly originalText: string;
+    private resetTimer: ReturnType<typeof setTimeout> | null = null;
 
     constructor(private button: HTMLButtonElement) {
-      this.init();
-    }
-
-    private init(): void {
+      this.originalText = this.tooltip?.dataset.text || 'Copy';
       this.button.addEventListener('click', () => this.handleCopy());
     }
 
@@ -52,10 +51,6 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
 
     private get category(): string {
       return this.button.dataset.category || '';
-    }
-
-    private get originalText(): string {
-      return this.tooltip.dataset.text || 'Copy';
     }
 
     private get copiedText(): string {
@@ -93,9 +88,11 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
     }
 
     private updateTooltip(): void {
+      if (this.resetTimer) clearTimeout(this.resetTimer);
       this.tooltip.dataset.text = this.copiedText;
-      setTimeout(() => {
+      this.resetTimer = setTimeout(() => {
         this.tooltip.dataset.text = this.originalText;
+        this.resetTimer = null;
       }, ClipboardButton.COPY_TIMEOUT);
     }
 
@@ -118,10 +115,11 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
     }
   }
 
-  // Initialize copy buttons on page load
+  // Initialize copy buttons on page load (skip already-initialized for View Transitions)
   document.addEventListener('astro:page-load', () => {
     document.querySelectorAll('.btn-copy').forEach(button => {
-      if (button instanceof HTMLButtonElement) {
+      if (button instanceof HTMLButtonElement && !button.dataset.copyInit) {
+        button.dataset.copyInit = '1';
         new ClipboardButton(button);
       }
     });
