@@ -10,7 +10,8 @@ interface Link {
 
 interface TableItem {
   id: string;
-  label: string; // Display name from API
+  label?: string; // Display name from API
+  name?: string; // Alternative display name (used by individual link items)
   value: unknown; // Can be string, number, boolean, string array, or Link array
   type?: string; // 'links' for link arrays
   isGenericArray?: boolean; // for generic string arrays (e.g., position)
@@ -21,9 +22,15 @@ const props = defineProps({
   caption: { type: String, default: null },
 });
 
-// Function to check if it's a links array from new API
+// Function to check if it's a links array (legacy grouped format)
 const isLinksArray = (item: TableItem) => {
   return item.type === 'links' && Array.isArray(item.value);
+};
+
+// Function to check if it's an individual link item
+// Backend sends: { id: 'blog', name: 'anchor', value: 'https://...', type: 'link' }
+const isIndividualLink = (item: TableItem) => {
+  return item.type === 'link' && typeof item.value === 'string';
 };
 
 // Function to check if it's a generic array (e.g., for position)
@@ -106,6 +113,21 @@ const validatedItems = computed(() => {
               </a>
             </li>
           </ul>
+        </td>
+
+        <!-- Individual Link (flat format: id=blog/youtube/vimeo, value=url, name=anchor) -->
+        <td v-else-if="isIndividualLink(row)" class="details-table-cell">
+          <div class="flex items-center">
+            <span
+              :class="[
+                getLinkIconClass(row.id),
+                'leading-none inline-block mr-2 w-4 min-w-4 h-4 text-gray-400',
+              ]"
+            />
+            <a :href="row.value as string" target="_blank" rel="noopener noreferrer" class="link-primary">
+              {{ row.name || row.label || row.id }}
+            </a>
+          </div>
         </td>
 
         <!-- Generic String Array -->
