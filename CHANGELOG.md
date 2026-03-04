@@ -1,3 +1,9 @@
+## [1.27.3](https://github.com/polo-blue/sds/compare/v1.27.2...v1.27.3) (2026-03-04)
+
+### Bug Fixes
+
+* **ButtonCopy:** prevent double-click race condition and View Transitions duplicate listeners ([3a3456d](https://github.com/polo-blue/sds/commit/3a3456d4a267330a2090801260ab0ccbea704a38))
+
 ## [1.27.2](https://github.com/polo-blue/sds/compare/v1.27.1...v1.27.2) (2026-03-03)
 
 ### Bug Fixes
