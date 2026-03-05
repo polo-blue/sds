@@ -64,6 +64,25 @@
   font-display: swap;
 }
 
+/* Fallback font metrics matching to reduce CLS on font swap */
+@font-face {
+  font-family: 'vw_headlight_fallback';
+  src: local('Segoe UI'), local('Roboto'), local('Helvetica Neue'), local('Arial');
+  ascent-override: 78.7%;
+  descent-override: 21.3%;
+  line-gap-override: 0%;
+  size-adjust: 105%;
+}
+
+@font-face {
+  font-family: 'vw_headregular_fallback';
+  src: local('Segoe UI'), local('Roboto'), local('Helvetica Neue'), local('Arial');
+  ascent-override: 78.7%;
+  descent-override: 21.3%;
+  line-gap-override: 21.9%;
+  size-adjust: 105%;
+}
+
 /* for some content which don't need to index in Google */
 [data-text]:before {
   content: attr(data-text);

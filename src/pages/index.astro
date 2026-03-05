@@ -95,7 +95,7 @@ const exampleSites = [
     <Jumbotron title={SITE.title}>
       <p
         slot="subtitle"
-        class="mt-3 text-base text-gray-200 sm:mt-5 text-lg md:text-xl lg:mx-0 md:mt-5"
+        class="mt-3 text-base text-gray-200 sm:mt-5 text-lg md:text-xl lg:mx-0 md:mt-5 leading-snug"
         set:html={SITE.description}
       />
 
@@ -112,10 +112,10 @@ const exampleSites = [
             <a
               href={url}
               title={description}
-              class="flex w-full flex-wrap bg-white rounded-md hover:-translate-y-1 hover:shadow-lg transition-all flex-1 items-center py-10 px-4 md:(flex-col w-auto flex-nowrap text-center py-16)"
+              class="flex w-full flex-wrap bg-white rounded-md hover:-translate-y-1 hover:shadow-lg transition-all flex-1 items-center py-10 px-4 min-h-24 md:(flex-col w-auto flex-nowrap text-center py-16 min-h-48)"
             >
               <Headline as="h2" class="text-3xl" underline={false}>
-                <Icon name={icon} aria-hidden="true" class="text-blue-400 mr-3 text-4xl" />
+                <Icon name={icon} aria-hidden="true" class="text-blue-400 mr-3 text-4xl w-10 h-10 shrink-0" />
                 {title}
               </Headline>
               <p class="text-slate-500 w-full">{description}</p>
@@ -140,13 +140,13 @@ const exampleSites = [
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {
           features.map(({ title, icon, description }) => (
-            <div class="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
+            <div class="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100 min-h-40">
               <Headline
                 as="h3"
                 class="text-2xl mb-3 text-gray-900 flex items-center justify-center"
                 underline={false}
               >
-                <Icon name={icon} aria-hidden="true" class="text-4xl text-blue-400 mr-3" />
+                <Icon name={icon} aria-hidden="true" class="text-4xl text-blue-400 mr-3 w-10 h-10 shrink-0" />
                 {title}
               </Headline>
               <p class="text-gray-600" set:html={description} />
