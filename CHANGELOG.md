@@ -1,3 +1,9 @@
+## [1.28.1](https://github.com/polo-blue/sds/compare/v1.28.0...v1.28.1) (2026-03-07)
+
+### Bug Fixes
+
+* **homepage:** reduce CLS with font preloading and layout stabilization ([32d08f5](https://github.com/polo-blue/sds/commit/32d08f5b84c8b17f209073eaab7e6030f9dc53f9))
+
 ## [1.28.0](https://github.com/polo-blue/sds/compare/v1.27.3...v1.28.0) (2026-03-04)
 
 ### Features
