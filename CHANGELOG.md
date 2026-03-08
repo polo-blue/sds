@@ -1,3 +1,18 @@
+## [1.28.2](https://github.com/polo-blue/sds/compare/v1.28.1...v1.28.2) (2026-03-08)
+
+### ⚠ BREAKING CHANGES
+
+* ButtonCopy, CategoryDetails, and LanguageSuggestion
+are no longer available from the barrel import. Use direct subpath
+imports instead:
+  import ButtonCopy from 'spoko-design-system/components/ButtonCopy.astro'
+  import CategoryDetails from 'spoko-design-system/components/Category/CategoryDetails.astro'
+  import LanguageSuggestion from 'spoko-design-system/components/LanguageSuggestion.astro'
+
+### Bug Fixes
+
+* remove Astro components with <script> tags from barrel file ([36f36c2](https://github.com/polo-blue/sds/commit/36f36c2316aeb0a6248f4fe62450d730e9f9dac8))
+
 ## [1.28.1](https://github.com/polo-blue/sds/compare/v1.28.0...v1.28.1) (2026-03-07)
 
 ### Bug Fixes
