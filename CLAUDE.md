@@ -52,6 +52,26 @@ export { default as Button } from './src/components/Button.vue';
 export { default as Button } from './components/Button.vue';
 ```
 
+### Astro Components with `<script>` Tags — Barrel File Restriction
+
+Astro components with `<script>` tags **MUST NOT** be exported from the barrel file (`index.ts`).
+When any consumer imports from the barrel, Astro hoists ALL `<script>` tags from ALL exported `.astro`
+components onto every page — even if the component is never rendered. This is a
+[known Astro limitation](https://github.com/withastro/astro/issues/6906).
+
+**Rule:** If an `.astro` component has a `<script>` tag, export it ONLY via subpath (`./components/*`):
+```typescript
+// ❌ DO NOT add to index.ts — script will load on ALL consumer pages
+export { default as ButtonCopy } from './src/components/ButtonCopy.astro';
+
+// ✅ Consumer uses direct subpath import instead
+import ButtonCopy from 'spoko-design-system/components/ButtonCopy.astro';
+```
+
+Components **without** `<script>` tags are safe in the barrel file.
+
+Currently excluded from barrel: **ButtonCopy**, **CategoryDetails**, **LanguageSuggestion**.
+
 ### UnoCSS Configuration System
 
 **Critical**: UnoCSS config is split across two locations:
@@ -198,10 +218,12 @@ On merge to `main`, GitHub Actions automatically:
    - Vue: `src/components/ComponentName.vue`
    - Astro: `src/components/ComponentName.astro`
 
-2. Export from root `index.ts`:
+2. Export from root `index.ts` (Vue components and Astro components **without** `<script>` tags):
    ```typescript
    export { default as ComponentName } from './src/components/ComponentName.vue';
    ```
+   **Important:** If the Astro component has a `<script>` tag, do **NOT** add it to `index.ts`.
+   It will be available via the wildcard subpath export `./components/*` automatically.
 
 3. Add documentation page in `src/pages/components/component-name.mdx`
 
