@@ -9,7 +9,6 @@ export { default as FlagPL } from './src/components/flags/FlagPL.vue';
 export { default as Badges } from './src/components/Badges.vue';
 export { default as SlimBanner } from './src/components/SlimBanner.vue';
 
-export { default as Jumbotron } from './src/components/Jumbotron.astro';
 export { default as Button } from './src/components/Button.vue';
 export { default as Breadcrumbs } from './src/components/Breadcrumbs.vue';
 export { default as ProductDetailsList } from './src/components/ProductDetailsList.vue';
@@ -29,10 +28,7 @@ export { default as ProductModel } from './src/components/Product/ProductModel.v
 export { default as ProductModels } from './src/components/Product/ProductModels.vue';
 export { default as ProductName } from './src/components/Product/ProductName.vue';
 export { default as ProductPositions } from './src/components/Product/ProductPositions.vue';
-export { default as ProductNumber } from './src/components/Product/ProductNumber.astro';
 export { default as ProductLink } from './src/components/Product/ProductLink.vue';
-// export { default as ProductCarousel } from './src/components/Product/ProductCarousel.astro';
-export { default as LanguageSuggestion } from './src/components/LanguageSuggestion.astro';
 export { default as Input } from './src/components/Input.vue';
 
 export { default as PostCategories } from './src/components/Post/PostCategories.vue';
@@ -40,20 +36,23 @@ export { default as CategorySidebarToggler } from './src/components/Category/Cat
 export { default as SubCategoryLink } from './src/components/Category/SubCategoryLink.vue';
 export { default as CategoryLink } from './src/components/Category/CategoryLink.vue';
 
-// Astro Components
-export { default as Copyright } from './src/components/Copyright.astro'; 
+// Astro Components (without <script> tags — safe in barrel)
+export { default as Jumbotron } from './src/components/Jumbotron.astro';
+export { default as Copyright } from './src/components/Copyright.astro';
 export { default as HandDrive } from './src/components/HandDrive.astro';
 export { default as Faq } from './src/components/Faq.astro';
 export { default as FaqItem } from './src/components/FaqItem.astro';
-export { default as ButtonCopy } from './src/components/ButtonCopy.astro';
 export { default as CallToAction } from './src/components/layout/CallToAction.astro';
-
+export { default as ProductNumber } from './src/components/Product/ProductNumber.astro';
 export { default as ProductImage } from './src/components/Product/ProductImage.astro';
 export { default as ProductEngine } from './src/components/Product/ProductEngine.astro';
 export { default as ProductEngines } from './src/components/Product/ProductEngines.astro';
-
-export { default as CategoryDetails } from './src/components/Category/CategoryDetails.astro';
 export { default as CategoryTile } from './src/components/Category/CategoryTile.astro';
+
+// Astro Components WITH <script> tags — NOT in barrel to prevent script hoisting.
+// Import directly: import ButtonCopy from 'spoko-design-system/components/ButtonCopy.astro'
+// See: https://github.com/withastro/astro/issues/6906
+// - ButtonCopy, CategoryDetails, LanguageSuggestion
 
 
 // Utils: Product
