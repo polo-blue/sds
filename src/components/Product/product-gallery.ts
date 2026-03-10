@@ -126,6 +126,17 @@ export function initProductGallery(root: HTMLElement) {
     scrollToSlide(slider, Math.min(totalSlides - 1, activeIndex + 1));
   });
 
+  // Keyboard navigation on main slider
+  slider.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      scrollToSlide(slider, Math.max(0, activeIndex - 1));
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      scrollToSlide(slider, Math.min(totalSlides - 1, activeIndex + 1));
+    }
+  });
+
   // ── Dialog (fullscreen lightbox) ──
 
   if (!dialog || !dialogSlider) return;
@@ -232,8 +243,10 @@ export function initProductGallery(root: HTMLElement) {
   // Keyboard navigation in dialog
   dialog.addEventListener('keydown', e => {
     if (e.key === 'ArrowLeft') {
+      e.preventDefault();
       scrollToSlide(dialogSlider!, Math.max(0, dialogActiveIndex - 1));
     } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
       scrollToSlide(dialogSlider!, Math.min(totalSlides - 1, dialogActiveIndex + 1));
     }
   });
