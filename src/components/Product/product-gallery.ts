@@ -270,8 +270,9 @@ export function initProductGallery(root: HTMLElement) {
     }
   });
 
-  // ── Drag on dialog thumbnails ──
+  // ── Drag-to-scroll on dialog slider + thumbnails ──
 
+  initDragScroll(dialogSlider);
   const dialogThumbsContainer = dialog.querySelector<HTMLElement>('[data-dialog-thumbs]');
   if (dialogThumbsContainer) initDragScroll(dialogThumbsContainer, true);
 
@@ -508,6 +509,10 @@ function initZoom(container: HTMLElement) {
   container.addEventListener('click', e => {
     // Ignore touch-generated clicks — mobile uses double-tap instead
     if (Date.now() - lastTouchTime < 500) return;
+
+    // Ignore clicks that are the end of a drag gesture (from parent slider)
+    const parentSlider = container.closest<HTMLElement>('[data-dialog-slider], [data-gallery-slider]');
+    if (parentSlider?.dataset.wasDragged === '1') return;
 
     if (isZoomed) {
       zoomOut();
