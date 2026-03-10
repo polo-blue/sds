@@ -182,6 +182,10 @@ export function initProductGallery(root: HTMLElement) {
   function openDialog(startIndex: number) {
     if (!dialog || !dialogSlider || dialog.open) return;
 
+    // Temporarily disable snap + smooth scroll so the dialog opens at the correct slide
+    dialogSlider.style.scrollSnapType = 'none';
+    dialogSlider.style.scrollBehavior = 'auto';
+
     dialog.showModal();
     savedOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
@@ -189,11 +193,17 @@ export function initProductGallery(root: HTMLElement) {
     // Preload full-res images around the starting slide
     preloadDialogImages(startIndex);
 
-    // Scroll to the clicked image (instant, no animation)
+    // Scroll to the clicked image instantly (must happen after layout)
     const targetSlide = dialogSlider.querySelector<HTMLElement>(`[data-index="${startIndex}"]`);
     if (targetSlide) {
       targetSlide.scrollIntoView({ behavior: 'auto', inline: 'center' });
     }
+
+    // Re-enable snap after scroll position is set
+    requestAnimationFrame(() => {
+      dialogSlider.style.scrollSnapType = '';
+      dialogSlider.style.scrollBehavior = '';
+    });
 
     dialogActiveIndex = startIndex;
     updateCounter(dialogCurrent, startIndex);
