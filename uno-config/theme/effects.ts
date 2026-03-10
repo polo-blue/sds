@@ -11,5 +11,6 @@ export const effects = {
     },
     cursor: {
       'zoom-in': 'zoom-in',
+      'zoom-out': 'zoom-out',
     },
   };

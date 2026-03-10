@@ -1,0 +1,322 @@
+---
+/**
+ * ProductGallery — scroll-snap based product image gallery
+ *
+ * Features:
+ * - Main slider with CSS scroll-snap (zero-JS layout)
+ * - Thumbnail strip synced via IntersectionObserver (desktop only)
+ * - Fullscreen dialog with zoom on click
+ * - Fraction counter (1/5)
+ * - Arrow navigation with hover reveal (desktop only)
+ *
+ * Subpath import (has <script> — must NOT go in barrel):
+ *   import ProductGallery from 'spoko-design-system/components/Product/ProductGallery.astro'
+ */
+
+interface GalleryImage {
+  src: string;
+  thumb?: string;
+  full?: string;
+  alt: string;
+}
+
+interface Props {
+  images: GalleryImage[];
+  aspectRatio?: string;
+  class?: string;
+  ariaLabel?: string;
+}
+
+const {
+  images = [],
+  aspectRatio = '4/3',
+  class: className,
+  ariaLabel = 'Product image gallery',
+} = Astro.props;
+const hasImages = images.length > 0;
+const total = images.length;
+---
+
+<div
+  class:list={['relative overflow-hidden drop-shadow-sm', className]}
+  data-product-gallery
+  role="region"
+  aria-roledescription="carousel"
+  aria-label={ariaLabel}
+>
+  {
+    hasImages ? (
+      <>
+        <div class="pg-main relative overflow-hidden bg-neutral-lightest">
+          <div
+            class="pg-slider flex overflow-x-auto overflow-y-hidden"
+            style={`aspect-ratio: ${aspectRatio}`}
+            data-gallery-slider
+            tabindex="0"
+            role="group"
+          >
+            {images.map((image, index) => (
+              <div
+                class="pg-slide w-full min-w-full overflow-hidden md:cursor-zoom-in"
+                role="button"
+                aria-roledescription="slide"
+                aria-label={`Open image ${index + 1} of ${total}: ${image.alt}`}
+                aria-haspopup="dialog"
+                data-index={index}
+                data-full={image.full || image.src}
+                tabindex="0"
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  decoding={index === 0 ? 'sync' : 'async'}
+                  class="w-full h-full object-cover"
+                  width="800"
+                  height="600"
+                />
+              </div>
+            ))}
+          </div>
+
+          <div
+            class="absolute bottom-0 left-0 z-10 px-3 py-0.5 text-sm leading-relaxed bg-neutral-lighter/70 sm:(px-4 py-1 text-base)"
+            data-gallery-counter
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            <span data-gallery-current>1</span>/{total}
+          </div>
+
+          <button
+            type="button"
+            class="pg-arrow hidden md:flex absolute top-1/2 left-0 z-10 w-10 h-10 items-center justify-center border-none bg-transparent text-primary-400 cursor-pointer drop-shadow-md"
+            data-gallery-prev
+            data-dir="prev"
+            aria-label="Previous image"
+            disabled
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              aria-hidden="true"
+            >
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="pg-arrow hidden md:flex absolute top-1/2 right-0 z-10 w-10 h-10 items-center justify-center border-none bg-transparent text-primary-400 cursor-pointer drop-shadow-md"
+            data-gallery-next
+            data-dir="next"
+            aria-label="Next image"
+            disabled={total <= 1}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              aria-hidden="true"
+            >
+              <polyline points="9 6 15 12 9 18" />
+            </svg>
+          </button>
+
+          <slot />
+        </div>
+
+        {total > 1 && (
+          <div
+            class="hidden md:flex gap-2 mt-3 pb-[3px] overflow-x-auto scrollbar-none"
+            data-gallery-thumbs
+            aria-label="Image thumbnails"
+          >
+            {images.map((image, index) => (
+              <button
+                type="button"
+                class:list={[
+                  'pg-thumb shrink-0 h-20 w-auto p-0 border-2 border-transparent rounded-sm cursor-pointer bg-transparent overflow-hidden',
+                  { 'is-active': index === 0 },
+                ]}
+                data-thumb-index={index}
+                aria-pressed={index === 0 ? 'true' : 'false'}
+                aria-label={`Image ${index + 1}: ${image.alt}`}
+              >
+                <img
+                  src={image.thumb || image.src}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  class="h-full w-auto object-cover block"
+                  width="160"
+                  height="120"
+                />
+              </button>
+            ))}
+          </div>
+        )}
+
+        <dialog
+          class="pg-dialog fixed inset-0 w-full h-full max-w-full max-h-full p-0 m-0 border-none bg-black/95 text-white z-1050"
+          data-gallery-dialog
+          aria-label="Full-screen image gallery"
+        >
+          <div class="flex items-center justify-between px-4 py-3 shrink-0">
+            <span class="text-sm text-neutral-200" data-dialog-counter aria-live="polite" aria-atomic="true">
+              <span data-dialog-current>1</span>/{total}
+            </span>
+            <button
+              type="button"
+              class="flex items-center justify-center w-10 h-10 border-none bg-transparent text-neutral-400 cursor-pointer hover:text-white transition-colors"
+              data-dialog-close
+              aria-label="Close gallery"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+
+          <div
+            class="pg-dialog-slider flex flex-1 min-h-0 overflow-x-auto overflow-y-hidden"
+            data-dialog-slider
+            tabindex="0"
+            role="group"
+          >
+            {images.map((image, index) => (
+              <div
+                class="pg-slide w-full min-w-full flex items-center justify-center"
+                role="group"
+                aria-roledescription="slide"
+                aria-label={`Image ${index + 1} of ${total}: ${image.alt}`}
+                data-index={index}
+              >
+                <div class="pg-zoom" data-zoom-container>
+                  <img
+                    src={image.full || image.src}
+                    alt={image.alt}
+                    loading="lazy"
+                    decoding="async"
+                    class="pg-zoom-img"
+                    width="1600"
+                    height="1200"
+                    data-zoom-img
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <button
+            type="button"
+            class="pg-dialog-arrow hidden md:flex absolute top-1/2 left-3 -translate-y-1/2 z-10 w-12 h-12 items-center justify-center border-none bg-black/45 text-neutral-400 cursor-pointer rounded transition-colors"
+            data-dialog-prev
+            aria-label="Previous image"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="28"
+              height="28"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              aria-hidden="true"
+            >
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="pg-dialog-arrow hidden md:flex absolute top-1/2 right-3 -translate-y-1/2 z-10 w-12 h-12 items-center justify-center border-none bg-black/45 text-neutral-400 cursor-pointer rounded transition-colors"
+            data-dialog-next
+            aria-label="Next image"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="28"
+              height="28"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              aria-hidden="true"
+            >
+              <polyline points="9 6 15 12 9 18" />
+            </svg>
+          </button>
+
+          {total > 1 && (
+            <div
+              class="flex shrink-0 gap-1 px-4 py-2 pb-3 justify-center overflow-x-auto scrollbar-none bg-black/80"
+              data-dialog-thumbs
+              aria-label="Image thumbnails"
+            >
+              {images.map((image, index) => (
+                <button
+                  type="button"
+                  class:list={[
+                    'pg-dialog-thumb shrink-0 h-15 w-auto p-0 border-2 border-transparent rounded-sm cursor-pointer bg-transparent overflow-hidden',
+                    { 'is-active': index === 0 },
+                  ]}
+                  data-thumb-index={index}
+                  aria-pressed={index === 0 ? 'true' : 'false'}
+                  aria-label={`Image ${index + 1}: ${image.alt}`}
+                >
+                  <img
+                    src={image.thumb || image.src}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    class="h-full w-auto object-cover block"
+                    width="100"
+                    height="75"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
+        </dialog>
+      </>
+    ) : (
+      <div
+        class="flex items-center justify-center bg-neutral-lightest text-neutral-500"
+        style={`aspect-ratio: ${aspectRatio}`}
+      >
+        <slot name="empty">
+          <p>No images available</p>
+        </slot>
+      </div>
+    )
+  }
+</div>
+
+<style>
+  @import './product-gallery.css';
+</style>
+
+<script>
+  import { initProductGallery } from './product-gallery.ts';
+
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll<HTMLElement>('[data-product-gallery]').forEach(el => {
+      if (el.dataset.galleryInit) return;
+      el.dataset.galleryInit = '1';
+      initProductGallery(el);
+    });
+  });
+</script>

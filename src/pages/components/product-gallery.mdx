@@ -1,0 +1,179 @@
+---
+title: "ProductGallery"
+layout: "../../layouts/MainLayout.astro"
+---
+import ProductGallery from '../../components/Product/ProductGallery.astro'
+
+# ProductGallery
+
+Scroll-snap based product image gallery with fullscreen dialog lightbox. Zero external dependencies — uses CSS scroll-snap, IntersectionObserver, and native `<dialog>`.
+
+**Import** (subpath — has `<script>`, must NOT go in barrel):
+```js
+import ProductGallery from 'spoko-design-system/components/Product/ProductGallery.astro'
+```
+
+## Features
+
+- **Slider** — CSS scroll-snap, swipe on mobile, mouse drag on desktop
+- **Thumbnails** — synced via IntersectionObserver, desktop only
+- **Counter** — fraction (`1/5`), always visible
+- **Arrows** — hover reveal animation, desktop only
+- **Dialog** — fullscreen lightbox with zoom (click/wheel/double-tap) + pan
+- **Keyboard** — ArrowLeft/Right in dialog, Escape to close
+
+## Basic usage
+
+<div class="component-preview">
+  <div class="max-w-xl mx-auto">
+    <ProductGallery
+      images={[
+        { src: "https://placehold.co/800x600/e2e8f0/475569?text=Image+1", thumb: "https://placehold.co/160x120/e2e8f0/475569?text=1", alt: "Product image 1" },
+        { src: "https://placehold.co/800x600/dbeafe/1e40af?text=Image+2", thumb: "https://placehold.co/160x120/dbeafe/1e40af?text=2", alt: "Product image 2" },
+        { src: "https://placehold.co/800x600/dcfce7/166534?text=Image+3", thumb: "https://placehold.co/160x120/dcfce7/166534?text=3", alt: "Product image 3" },
+        { src: "https://placehold.co/800x600/fef3c7/92400e?text=Image+4", thumb: "https://placehold.co/160x120/fef3c7/92400e?text=4", alt: "Product image 4" },
+        { src: "https://placehold.co/800x600/fce7f3/9d174d?text=Image+5", thumb: "https://placehold.co/160x120/fce7f3/9d174d?text=5", alt: "Product image 5" },
+      ]}
+    />
+  </div>
+</div>
+
+```astro
+<ProductGallery
+  images={[
+    { src: "/img/product-1.avif", thumb: "/img/product-1-thumb.avif", full: "/img/product-1-full.jpg", alt: "Product image 1" },
+    { src: "/img/product-2.avif", thumb: "/img/product-2-thumb.avif", full: "/img/product-2-full.jpg", alt: "Product image 2" },
+  ]}
+/>
+```
+
+## Many images (10)
+
+<div class="component-preview">
+  <div class="max-w-xl mx-auto">
+    <ProductGallery
+      images={[
+        { src: "https://placehold.co/800x600/e2e8f0/475569?text=1+of+10", thumb: "https://placehold.co/160x120/e2e8f0/475569?text=1", alt: "Image 1" },
+        { src: "https://placehold.co/800x600/dbeafe/1e40af?text=2+of+10", thumb: "https://placehold.co/160x120/dbeafe/1e40af?text=2", alt: "Image 2" },
+        { src: "https://placehold.co/800x600/dcfce7/166534?text=3+of+10", thumb: "https://placehold.co/160x120/dcfce7/166534?text=3", alt: "Image 3" },
+        { src: "https://placehold.co/800x600/fef3c7/92400e?text=4+of+10", thumb: "https://placehold.co/160x120/fef3c7/92400e?text=4", alt: "Image 4" },
+        { src: "https://placehold.co/800x600/fce7f3/9d174d?text=5+of+10", thumb: "https://placehold.co/160x120/fce7f3/9d174d?text=5", alt: "Image 5" },
+        { src: "https://placehold.co/800x600/e0e7ff/3730a3?text=6+of+10", thumb: "https://placehold.co/160x120/e0e7ff/3730a3?text=6", alt: "Image 6" },
+        { src: "https://placehold.co/800x600/ccfbf1/115e59?text=7+of+10", thumb: "https://placehold.co/160x120/ccfbf1/115e59?text=7", alt: "Image 7" },
+        { src: "https://placehold.co/800x600/fff7ed/9a3412?text=8+of+10", thumb: "https://placehold.co/160x120/fff7ed/9a3412?text=8", alt: "Image 8" },
+        { src: "https://placehold.co/800x600/fdf2f8/831843?text=9+of+10", thumb: "https://placehold.co/160x120/fdf2f8/831843?text=9", alt: "Image 9" },
+        { src: "https://placehold.co/800x600/f5f3ff/4c1d95?text=10+of+10", thumb: "https://placehold.co/160x120/f5f3ff/4c1d95?text=10", alt: "Image 10" },
+      ]}
+    />
+  </div>
+</div>
+
+## With badges slot
+
+<div class="component-preview">
+  <div class="max-w-xl mx-auto">
+    <ProductGallery
+      images={[
+        { src: "https://placehold.co/800x600/e2e8f0/475569?text=With+Badge", thumb: "https://placehold.co/160x120/e2e8f0/475569?text=1", alt: "Product with badge" },
+        { src: "https://placehold.co/800x600/dbeafe/1e40af?text=Image+2", thumb: "https://placehold.co/160x120/dbeafe/1e40af?text=2", alt: "Product image 2" },
+      ]}
+    >
+      <span style="position:absolute;top:8px;left:8px;z-index:10;background:#0099da;color:white;padding:2px 10px;border-radius:2px;font-size:0.75rem;">NEW</span>
+    </ProductGallery>
+  </div>
+</div>
+
+```astro
+<ProductGallery images={images}>
+  <Badges badges={product.badges} class="top-2" />
+</ProductGallery>
+```
+
+## Single image (no thumbnails)
+
+<div class="component-preview">
+  <div class="max-w-xl mx-auto">
+    <ProductGallery
+      images={[
+        { src: "https://placehold.co/800x600/e2e8f0/475569?text=Single+Image", alt: "Single product image" },
+      ]}
+    />
+  </div>
+</div>
+
+## No images (empty state)
+
+<div class="component-preview">
+  <div class="max-w-xl mx-auto">
+    <ProductGallery images={[]} />
+  </div>
+</div>
+
+## Custom aspect ratio
+
+<div class="component-preview">
+  <div class="max-w-xl mx-auto">
+    <ProductGallery
+      aspectRatio="16/9"
+      images={[
+        { src: "https://placehold.co/800x450/e2e8f0/475569?text=16:9", thumb: "https://placehold.co/160x90/e2e8f0/475569?text=1", alt: "Wide image 1" },
+        { src: "https://placehold.co/800x450/dbeafe/1e40af?text=16:9", thumb: "https://placehold.co/160x90/dbeafe/1e40af?text=2", alt: "Wide image 2" },
+      ]}
+    />
+  </div>
+</div>
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `images` | `GalleryImage[]` | `[]` | Array of image objects |
+| `aspectRatio` | `string` | `"4/3"` | CSS aspect-ratio for the slider |
+| `class` | `string` | — | Additional CSS class on root element |
+| `ariaLabel` | `string` | `"Product image gallery"` | Accessible label for the carousel region |
+
+### GalleryImage
+
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+| `src` | `string` | yes | Main image URL (used in slider) |
+| `thumb` | `string` | no | Thumbnail URL (falls back to `src`) |
+| `full` | `string` | no | Full resolution URL for dialog (falls back to `src`) |
+| `alt` | `string` | yes | Alt text for the image |
+
+### Slots
+
+| Slot | Description |
+|------|-------------|
+| default | Overlay content (e.g. badges), positioned inside the main slider area |
+| `empty` | Custom content when `images` is empty |
+
+## Integration examples
+
+### catalog.polo.blue
+```astro
+<ProductGallery
+  images={product.images.map((img, i) => ({
+    src: img.avif_1200 || img.webp_1200,
+    thumb: img.avif_320 || img.avif_640,
+    full: img.original || img.url,
+    alt: `${product.number} - ${product.name} [${i + 1}/${product.images.length}]`,
+  }))}
+>
+  <Badges badges={product.badges} class="top-2" />
+</ProductGallery>
+```
+
+### sale.polo.blue
+```astro
+<ProductGallery
+  images={images.map((img, i) => ({
+    src: `/photos/${img.path}`,
+    thumb: `/photos/${img.path}`,
+    full: optimizedImages[i].src,
+    alt: `${productNumber} - ${productTitle} [${i + 1}/${images.length}]`,
+  }))}
+>
+  <Badges badges={badges} class="top-2" />
+</ProductGallery>
+```

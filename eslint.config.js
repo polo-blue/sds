@@ -3,6 +3,7 @@ import typescript from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
 import vue from 'eslint-plugin-vue';
 import astro from 'eslint-plugin-astro';
+import globals from 'globals';
 
 export default [
   js.configs.recommended,
@@ -17,9 +18,7 @@ export default [
         sourceType: 'module',
       },
       globals: {
-        console: 'readonly',
-        window: 'readonly',
-        document: 'readonly',
+        ...globals.browser,
       },
     },
     plugins: {
@@ -27,6 +26,7 @@ export default [
     },
     rules: {
       ...typescript.configs.recommended.rules,
+      'no-undef': 'off', // TypeScript handles undefined-variable checks natively
       '@typescript-eslint/no-unused-vars': 'warn',
       '@typescript-eslint/no-explicit-any': 'warn',
     },
@@ -43,15 +43,14 @@ export default [
         sourceType: 'module',
       },
       globals: {
-        console: 'readonly',
-        window: 'readonly',
-        document: 'readonly',
+        ...globals.browser,
       },
     },
     rules: {
       'vue/multi-word-component-names': 'off',
       'vue/no-unused-vars': 'warn',
       'vue/no-required-prop-with-default': 'off', // Props with defaults can still be required in Vue 3
+      'no-redeclare': 'off', // TypeScript handles redeclare checks; avoids false positives on imported DOM types
     },
   },
 
