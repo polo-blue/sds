@@ -19,7 +19,6 @@ export default [
       },
       globals: {
         ...globals.browser,
-        NodeListOf: 'readonly',
       },
     },
     plugins: {
@@ -27,6 +26,7 @@ export default [
     },
     rules: {
       ...typescript.configs.recommended.rules,
+      'no-undef': 'off', // TypeScript handles undefined-variable checks natively
       '@typescript-eslint/no-unused-vars': 'warn',
       '@typescript-eslint/no-explicit-any': 'warn',
     },

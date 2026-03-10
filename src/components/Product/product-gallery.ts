@@ -39,11 +39,19 @@ export function initProductGallery(root: HTMLElement) {
   function createSlideObserver(container: HTMLElement, onActiveChange: (index: number) => void) {
     const observer = new IntersectionObserver(
       entries => {
+        let bestEntry: IntersectionObserverEntry | null = null;
         for (const entry of entries) {
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-            const index = Number((entry.target as HTMLElement).dataset.index);
-            if (!isNaN(index)) onActiveChange(index);
+          if (
+            entry.isIntersecting &&
+            entry.intersectionRatio >= 0.5 &&
+            (!bestEntry || entry.intersectionRatio > bestEntry.intersectionRatio)
+          ) {
+            bestEntry = entry;
           }
+        }
+        if (bestEntry) {
+          const index = Number((bestEntry.target as HTMLElement).dataset.index);
+          if (!isNaN(index)) onActiveChange(index);
         }
       },
       { root: container, threshold: 0.5 }
@@ -172,7 +180,7 @@ export function initProductGallery(root: HTMLElement) {
   }
 
   function openDialog(startIndex: number) {
-    if (!dialog || !dialogSlider) return;
+    if (!dialog || !dialogSlider || dialog.open) return;
 
     dialog.showModal();
     savedOverflow = document.body.style.overflow;
@@ -438,14 +446,18 @@ function initZoom(container: HTMLElement) {
 
   let isZoomed = false;
 
+  function clamp(value: number, min: number, max: number) {
+    return Math.min(Math.max(value, min), max);
+  }
+
   function zoomIn(clientX: number, clientY: number) {
     isZoomed = true;
     container.classList.add('is-zoomed');
 
     const rect = img.getBoundingClientRect();
-    // Set transform-origin to click point (relative to image)
-    const originX = ((clientX - rect.left) / rect.width) * 100;
-    const originY = ((clientY - rect.top) / rect.height) * 100;
+    // Set transform-origin to click point (relative to image), clamped to 0–100%
+    const originX = clamp(((clientX - rect.left) / rect.width) * 100, 0, 100);
+    const originY = clamp(((clientY - rect.top) / rect.height) * 100, 0, 100);
     img.style.transformOrigin = `${originX}% ${originY}%`;
     img.style.transform = `scale(${ZOOM_SCALE})`;
   }
@@ -460,9 +472,9 @@ function initZoom(container: HTMLElement) {
   // Mouse-move panning: move the transform-origin proportionally to cursor position
   function onMouseMove(e: MouseEvent) {
     if (!isZoomed) return;
-    const containerRect = container.getBoundingClientRect();
-    const x = ((e.clientX - containerRect.left) / containerRect.width) * 100;
-    const y = ((e.clientY - containerRect.top) / containerRect.height) * 100;
+    const rect = img.getBoundingClientRect();
+    const x = clamp(((e.clientX - rect.left) / rect.width) * 100, 0, 100);
+    const y = clamp(((e.clientY - rect.top) / rect.height) * 100, 0, 100);
     img.style.transformOrigin = `${x}% ${y}%`;
   }
 
