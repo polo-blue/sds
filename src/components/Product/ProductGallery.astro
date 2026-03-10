@@ -58,9 +58,10 @@ const total = images.length;
             {images.map((image, index) => (
               <div
                 class="pg-slide w-full min-w-full overflow-hidden md:cursor-zoom-in"
-                role="group"
+                role="button"
                 aria-roledescription="slide"
                 aria-label={`${index + 1} / ${total}`}
+                aria-haspopup="dialog"
                 data-index={index}
                 data-full={image.full || image.src}
                 tabindex="0"

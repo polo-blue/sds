@@ -83,7 +83,7 @@
   }
 }
 
-/* ── Zoom (native overflow scroll, no crop) ── */
+/* ── Zoom (transform-origin based, GPU-accelerated) ── */
 
 .pg-zoom {
   @apply flex items-center justify-center overflow-hidden cursor-zoom-in;
