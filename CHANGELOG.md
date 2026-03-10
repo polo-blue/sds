@@ -1,3 +1,18 @@
+## [1.29.0](https://github.com/polo-blue/sds/compare/v1.28.2...v1.29.0) (2026-03-10)
+
+### Features
+
+* add ProductGallery component with CSS scroll-snap slider and zoom ([6e4926b](https://github.com/polo-blue/sds/commit/6e4926b798c668fa22c52db6db79596b8f309195))
+
+### Bug Fixes
+
+* add cursor-zoom-out to UnoCSS theme ([890f281](https://github.com/polo-blue/sds/commit/890f281b4e64e3674ee7bb105c2d7f4f9d835343))
+* add keyboard navigation to main slider and reduce thumb scrollbar padding ([bbf949c](https://github.com/polo-blue/sds/commit/bbf949c62e224c07005394a65c38ceae6aea1756))
+* add prefers-reduced-motion and improve aria-labels with image.alt ([c47945b](https://github.com/polo-blue/sds/commit/c47945bc851607d8ad60b1a70412520146f767dc))
+* address all review comments on ProductGallery PR ([6134f50](https://github.com/polo-blue/sds/commit/6134f50d7539995003168f5d9d7b01a229114ac5))
+* address Copilot re-review comments ([0795a2c](https://github.com/polo-blue/sds/commit/0795a2cb100577c353613c28008dd83fba2638b7))
+* address Copilot re-review feedback on gallery and eslint config ([56edbb1](https://github.com/polo-blue/sds/commit/56edbb15e38609829897ffaee5c7165ef43e7a70))
+
 ## [1.28.2](https://github.com/polo-blue/sds/compare/v1.28.1...v1.28.2) (2026-03-08)
 
 ### ⚠ BREAKING CHANGES
