@@ -60,7 +60,7 @@ const total = images.length;
                 class="pg-slide w-full min-w-full overflow-hidden md:cursor-zoom-in"
                 role="button"
                 aria-roledescription="slide"
-                aria-label={`${index + 1} / ${total}`}
+                aria-label={`Open image ${index + 1} of ${total}: ${image.alt}`}
                 aria-haspopup="dialog"
                 data-index={index}
                 data-full={image.full || image.src}
@@ -146,7 +146,7 @@ const total = images.length;
                 ]}
                 data-thumb-index={index}
                 aria-pressed={index === 0 ? 'true' : 'false'}
-                aria-label={`Image ${index + 1}`}
+                aria-label={`Image ${index + 1}: ${image.alt}`}
               >
                 <img
                   src={image.thumb || image.src}
@@ -203,7 +203,7 @@ const total = images.length;
                 class="pg-slide w-full min-w-full flex items-center justify-center"
                 role="group"
                 aria-roledescription="slide"
-                aria-label={`${index + 1} / ${total}`}
+                aria-label={`Image ${index + 1} of ${total}: ${image.alt}`}
                 data-index={index}
               >
                 <div class="pg-zoom" data-zoom-container>
@@ -274,7 +274,7 @@ const total = images.length;
                   ]}
                   data-thumb-index={index}
                   aria-pressed={index === 0 ? 'true' : 'false'}
-                  aria-label={`Image ${index + 1}`}
+                  aria-label={`Image ${index + 1}: ${image.alt}`}
                 >
                   <img
                     src={image.thumb || image.src}

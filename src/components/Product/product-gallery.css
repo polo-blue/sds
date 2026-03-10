@@ -127,3 +127,17 @@
     @apply opacity-30 cursor-default;
   }
 }
+
+/* ── Reduced motion ── */
+
+@media (prefers-reduced-motion: reduce) {
+  .pg-slider,
+  .pg-dialog-slider {
+    scroll-behavior: auto;
+  }
+
+  .pg-arrow,
+  .pg-zoom-img {
+    transition: none;
+  }
+}
