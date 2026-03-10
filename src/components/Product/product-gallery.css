@@ -48,7 +48,8 @@
   }
 }
 
-.pg-main:hover {
+.pg-main:hover,
+.pg-main:focus-within {
   .pg-arrow[data-dir='prev']:not(:disabled) {
     transform: translate(50%, -50%);
   }

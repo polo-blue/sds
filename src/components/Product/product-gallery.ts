@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /**
  * ProductGallery — scroll-snap slider + dialog lightbox
  *
@@ -78,7 +77,7 @@ export function initProductGallery(root: HTMLElement) {
     buttons.forEach(btn => {
       const isActive = Number(btn.dataset.thumbIndex) === index;
       btn.classList.toggle('is-active', isActive);
-      btn.setAttribute('aria-selected', String(isActive));
+      btn.setAttribute('aria-pressed', String(isActive));
       // Scroll active thumb into view
       if (isActive) {
         btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
@@ -143,13 +142,20 @@ export function initProductGallery(root: HTMLElement) {
 
   let dialogObserver: IntersectionObserver | null = null;
   let dialogActiveIndex = 0;
+  let savedOverflow = '';
 
-  // Open dialog on slide click (but not after drag)
+  // Open dialog on slide click or Enter/Space (but not after drag)
   slides.forEach(slide => {
     slide.addEventListener('click', () => {
       // Skip if this click was the end of a drag gesture
       if (slider.dataset.wasDragged === '1') return;
       openDialog(Number(slide.dataset.index));
+    });
+    slide.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openDialog(Number(slide.dataset.index));
+      }
     });
   });
 
@@ -169,6 +175,7 @@ export function initProductGallery(root: HTMLElement) {
     if (!dialog || !dialogSlider) return;
 
     dialog.showModal();
+    savedOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
     // Preload full-res images around the starting slide
@@ -177,7 +184,7 @@ export function initProductGallery(root: HTMLElement) {
     // Scroll to the clicked image (instant, no animation)
     const targetSlide = dialogSlider.querySelector<HTMLElement>(`[data-index="${startIndex}"]`);
     if (targetSlide) {
-      targetSlide.scrollIntoView({ behavior: 'instant' as ScrollBehavior, inline: 'center' });
+      targetSlide.scrollIntoView({ behavior: 'auto', inline: 'center' });
     }
 
     dialogActiveIndex = startIndex;
@@ -197,9 +204,7 @@ export function initProductGallery(root: HTMLElement) {
     }
   }
 
-  function closeDialog() {
-    if (!dialog) return;
-
+  function teardownDialog() {
     // Reset all zoom states
     dialog.querySelectorAll<HTMLElement>('[data-zoom-container]').forEach(resetZoom);
 
@@ -209,12 +214,18 @@ export function initProductGallery(root: HTMLElement) {
       dialogObserver = null;
     }
 
-    dialog.close();
-    document.body.style.overflow = '';
+    document.body.style.overflow = savedOverflow;
 
     // Sync main slider to dialog position
     scrollToSlide(slider, dialogActiveIndex);
   }
+
+  function closeDialog() {
+    if (dialog.open) dialog.close();
+  }
+
+  // Runs on both explicit close and native Escape
+  dialog.addEventListener('close', teardownDialog);
 
   dialogClose?.addEventListener('click', closeDialog);
 
@@ -295,6 +306,11 @@ function initDragScroll(container: HTMLElement, freeScroll = false) {
     isDown = true;
     hasMoved = false;
     pointerId = e.pointerId;
+    try {
+      container.setPointerCapture(pointerId);
+    } catch {
+      /* pointer capture may not be supported */
+    }
     startX = e.clientX;
     scrollLeft = container.scrollLeft;
     lastX = e.clientX;
@@ -317,8 +333,6 @@ function initDragScroll(container: HTMLElement, freeScroll = false) {
     if (Math.abs(walk) > 5) {
       if (!hasMoved) {
         hasMoved = true;
-        // Capture pointer only when actual drag starts
-        container.setPointerCapture(pointerId!);
         container.style.scrollSnapType = 'none';
         container.style.scrollBehavior = 'auto';
         container.style.cursor = 'grabbing';
@@ -458,7 +472,27 @@ function initZoom(container: HTMLElement) {
     container.removeEventListener('mousemove', onMouseMove);
   });
 
+  // Track touch timestamps to avoid touch-generated clicks triggering zoom
+  let lastTouchTime = 0;
+  container.addEventListener(
+    'touchstart',
+    () => {
+      lastTouchTime = Date.now();
+    },
+    { passive: true }
+  );
+  container.addEventListener(
+    'touchend',
+    () => {
+      lastTouchTime = Date.now();
+    },
+    { passive: true }
+  );
+
   container.addEventListener('click', e => {
+    // Ignore touch-generated clicks — mobile uses double-tap instead
+    if (Date.now() - lastTouchTime < 500) return;
+
     if (isZoomed) {
       zoomOut();
     } else {

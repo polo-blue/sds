@@ -63,6 +63,7 @@ const total = images.length;
                 aria-label={`${index + 1} / ${total}`}
                 data-index={index}
                 data-full={image.full || image.src}
+                tabindex="0"
               >
                 <img
                   src={image.src}
@@ -88,7 +89,7 @@ const total = images.length;
 
           <button
             type="button"
-            class="pg-arrow hidden md:flex absolute top-50% left-0 z-10 w-10 h-10 items-center justify-center border-none bg-transparent text-primary-400 cursor-pointer drop-shadow-md"
+            class="pg-arrow hidden md:flex absolute top-1/2 left-0 z-10 w-10 h-10 items-center justify-center border-none bg-transparent text-primary-400 cursor-pointer drop-shadow-md"
             data-gallery-prev
             data-dir="prev"
             aria-label="Previous image"
@@ -108,7 +109,7 @@ const total = images.length;
           </button>
           <button
             type="button"
-            class="pg-arrow hidden md:flex absolute top-50% right-0 z-10 w-10 h-10 items-center justify-center border-none bg-transparent text-primary-400 cursor-pointer drop-shadow-md"
+            class="pg-arrow hidden md:flex absolute top-1/2 right-0 z-10 w-10 h-10 items-center justify-center border-none bg-transparent text-primary-400 cursor-pointer drop-shadow-md"
             data-gallery-next
             data-dir="next"
             aria-label="Next image"
@@ -133,7 +134,6 @@ const total = images.length;
           <div
             class="hidden md:flex gap-2 mt-3 pb-[3px] overflow-x-auto scrollbar-none"
             data-gallery-thumbs
-            role="tablist"
             aria-label="Image thumbnails"
           >
             {images.map((image, index) => (
@@ -144,8 +144,7 @@ const total = images.length;
                   { 'is-active': index === 0 },
                 ]}
                 data-thumb-index={index}
-                role="tab"
-                aria-selected={index === 0 ? 'true' : 'false'}
+                aria-pressed={index === 0 ? 'true' : 'false'}
                 aria-label={`Image ${index + 1}`}
               >
                 <img
@@ -210,8 +209,8 @@ const total = images.length;
                   <img
                     src={image.full || image.src}
                     alt={image.alt}
-                    loading={index === 0 ? 'eager' : 'lazy'}
-                    decoding={index === 0 ? 'sync' : 'async'}
+                    loading="lazy"
+                    decoding="async"
                     class="pg-zoom-img"
                     width="1600"
                     height="1200"
@@ -224,7 +223,7 @@ const total = images.length;
 
           <button
             type="button"
-            class="pg-dialog-arrow hidden md:flex absolute top-50% left-3 -translate-y-50% z-10 w-12 h-12 items-center justify-center border-none bg-black/45 text-neutral-400 cursor-pointer rounded transition-colors"
+            class="pg-dialog-arrow hidden md:flex absolute top-1/2 left-3 -translate-y-1/2 z-10 w-12 h-12 items-center justify-center border-none bg-black/45 text-neutral-400 cursor-pointer rounded transition-colors"
             data-dialog-prev
             aria-label="Previous image"
           >
@@ -242,7 +241,7 @@ const total = images.length;
           </button>
           <button
             type="button"
-            class="pg-dialog-arrow hidden md:flex absolute top-50% right-3 -translate-y-50% z-10 w-12 h-12 items-center justify-center border-none bg-black/45 text-neutral-400 cursor-pointer rounded transition-colors"
+            class="pg-dialog-arrow hidden md:flex absolute top-1/2 right-3 -translate-y-1/2 z-10 w-12 h-12 items-center justify-center border-none bg-black/45 text-neutral-400 cursor-pointer rounded transition-colors"
             data-dialog-next
             aria-label="Next image"
           >
@@ -263,7 +262,6 @@ const total = images.length;
             <div
               class="flex shrink-0 gap-1 px-4 py-2 pb-3 justify-center overflow-x-auto scrollbar-none bg-black/80"
               data-dialog-thumbs
-              role="tablist"
               aria-label="Image thumbnails"
             >
               {images.map((image, index) => (
@@ -274,8 +272,7 @@ const total = images.length;
                     { 'is-active': index === 0 },
                   ]}
                   data-thumb-index={index}
-                  role="tab"
-                  aria-selected={index === 0 ? 'true' : 'false'}
+                  aria-pressed={index === 0 ? 'true' : 'false'}
                   aria-label={`Image ${index + 1}`}
                 >
                   <img
