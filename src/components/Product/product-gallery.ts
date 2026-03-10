@@ -314,11 +314,6 @@ function initDragScroll(container: HTMLElement, freeScroll = false) {
     isDown = true;
     hasMoved = false;
     pointerId = e.pointerId;
-    try {
-      container.setPointerCapture(pointerId);
-    } catch {
-      /* pointer capture may not be supported */
-    }
     startX = e.clientX;
     scrollLeft = container.scrollLeft;
     lastX = e.clientX;
@@ -341,6 +336,15 @@ function initDragScroll(container: HTMLElement, freeScroll = false) {
     if (Math.abs(walk) > 5) {
       if (!hasMoved) {
         hasMoved = true;
+        // Set pointer capture only once drag threshold is exceeded,
+        // so simple clicks still reach child elements
+        if (pointerId !== null) {
+          try {
+            container.setPointerCapture(pointerId);
+          } catch {
+            /* pointer capture may not be supported */
+          }
+        }
         container.style.scrollSnapType = 'none';
         container.style.scrollBehavior = 'auto';
         container.style.cursor = 'grabbing';
