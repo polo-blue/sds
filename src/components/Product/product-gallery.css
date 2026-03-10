@@ -1,0 +1,128 @@
+/**
+ * ProductGallery — only styles that can't be expressed as UnoCSS utilities:
+ * scroll-snap, scrollbar hiding, arrow hover animation, interactive states.
+ */
+
+/* ── Scroll-snap base (slider + dialog slider) ── */
+
+.pg-slider,
+.pg-dialog-slider {
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  img {
+    -webkit-user-drag: none;
+  }
+}
+
+.pg-slide {
+  scroll-snap-align: center;
+}
+
+/* ── Arrow hover reveal animation ── */
+
+.pg-arrow {
+  transition:
+    transform 0.3s ease,
+    opacity 0.2s;
+  will-change: transform;
+
+  &[data-dir='prev'] {
+    transform: translate(-5rem, -50%);
+  }
+  &[data-dir='next'] {
+    transform: translate(5rem, -50%);
+  }
+
+  &:disabled {
+    @apply opacity-30 cursor-default;
+  }
+  &:hover:not(:disabled) {
+    color: var(--clr-primary-500, #0077b3);
+  }
+}
+
+.pg-main:hover {
+  .pg-arrow[data-dir='prev']:not(:disabled) {
+    transform: translate(50%, -50%);
+  }
+  .pg-arrow[data-dir='next']:not(:disabled) {
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* ── Thumbnail active state ── */
+
+.pg-thumb {
+  @apply opacity-60 transition-all duration-200;
+
+  &:hover {
+    @apply opacity-80;
+  }
+  &.is-active {
+    @apply opacity-100;
+    border-color: var(--clr-primary-400, #0099da);
+  }
+}
+
+/* ── Dialog ── */
+
+.pg-dialog {
+  &::backdrop {
+    background: rgb(0 0 0 / 0.95);
+  }
+  &[open] {
+    @apply flex flex-col;
+  }
+}
+
+/* ── Zoom (native overflow scroll, no crop) ── */
+
+.pg-zoom {
+  @apply flex items-center justify-center overflow-hidden cursor-zoom-in;
+  width: 100%;
+  height: 100%;
+
+  &.is-zoomed {
+    @apply cursor-zoom-out;
+  }
+}
+
+.pg-zoom-img {
+  @apply max-w-full max-h-full object-contain select-none;
+  -webkit-user-drag: none;
+  transform-origin: 0 0;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+/* ── Dialog thumbnail active state ── */
+
+.pg-dialog-thumb {
+  @apply opacity-50 transition-all duration-200;
+
+  &:hover {
+    @apply opacity-75;
+  }
+  &.is-active {
+    @apply opacity-100;
+    border-color: #fff;
+  }
+}
+
+/* ── Dialog arrow hover ── */
+
+.pg-dialog-arrow {
+  &:hover {
+    @apply text-white bg-black/65;
+  }
+  &:disabled {
+    @apply opacity-30 cursor-default;
+  }
+}
