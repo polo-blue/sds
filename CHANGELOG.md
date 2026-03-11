@@ -1,3 +1,16 @@
+## [1.30.0](https://github.com/polo-blue/sds/compare/v1.29.0...v1.30.0) (2026-03-11)
+
+### Features
+
+* add ProductGallery to sidebar navigation ([8503c88](https://github.com/polo-blue/sds/commit/8503c88da2eba1049f8344025679e0ff276e7406))
+
+### Bug Fixes
+
+* add drag-to-scroll in dialog and prevent zoom on drag ([c1ffee9](https://github.com/polo-blue/sds/commit/c1ffee93dacd42f24fe6f151e05e79dd5cc4015b))
+* clear drag timeout on re-entry, add window pointerup cleanup ([0f07629](https://github.com/polo-blue/sds/commit/0f07629f5bfbb56e59f0513df0d443da95e27556))
+* move setPointerCapture to drag threshold to restore click events ([21c8d1d](https://github.com/polo-blue/sds/commit/21c8d1de49f73ff77e37eb640654e9dc8719472f))
+* open dialog at correct slide by disabling snap during initial scroll ([9b520f0](https://github.com/polo-blue/sds/commit/9b520f09242a6275e326a7f3c6aa75edcdd3162c))
+
 ## [1.29.0](https://github.com/polo-blue/sds/compare/v1.28.2...v1.29.0) (2026-03-10)
 
 ### Features
