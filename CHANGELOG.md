@@ -1,3 +1,9 @@
+## [1.30.1](https://github.com/polo-blue/sds/compare/v1.30.0...v1.30.1) (2026-03-11)
+
+### Bug Fixes
+
+* **deps:** update unocss monorepo to v66.6.6 ([f69a7da](https://github.com/polo-blue/sds/commit/f69a7da9caf311fee8ce47311675ee7a3597ed61))
+
 ## [1.30.0](https://github.com/polo-blue/sds/compare/v1.29.0...v1.30.0) (2026-03-11)
 
 ### Features
