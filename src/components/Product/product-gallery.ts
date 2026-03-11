@@ -306,6 +306,7 @@ function initDragScroll(container: HTMLElement, freeScroll = false) {
   let lastX = 0;
   let lastTime = 0;
   let velocity = 0;
+  let resetTimer: ReturnType<typeof setTimeout> | null = null;
 
   function resetStyles() {
     container.style.cursor = '';
@@ -325,6 +326,10 @@ function initDragScroll(container: HTMLElement, freeScroll = false) {
     isDown = true;
     hasMoved = false;
     pointerId = e.pointerId;
+    if (resetTimer !== null) {
+      clearTimeout(resetTimer);
+      resetTimer = null;
+    }
     startX = e.clientX;
     scrollLeft = container.scrollLeft;
     lastX = e.clientX;
@@ -410,7 +415,10 @@ function initDragScroll(container: HTMLElement, freeScroll = false) {
 
       container.style.scrollBehavior = 'smooth';
       container.scrollLeft = targetIndex * w;
-      setTimeout(resetStyles, 350);
+      resetTimer = setTimeout(() => {
+        resetStyles();
+        resetTimer = null;
+      }, 350);
     }
   });
 
@@ -422,6 +430,16 @@ function initDragScroll(container: HTMLElement, freeScroll = false) {
 
   // Also reset on lostpointercapture as safety net
   container.addEventListener('lostpointercapture', () => {
+    if (isDown) {
+      isDown = false;
+      hasMoved = false;
+      resetStyles();
+    }
+  });
+
+  // Window-level cleanup for mouse released outside the slider
+  // (before pointer capture is acquired at the drag threshold)
+  window.addEventListener('pointerup', () => {
     if (isDown) {
       isDown = false;
       hasMoved = false;
