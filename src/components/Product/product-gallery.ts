@@ -182,6 +182,10 @@ export function initProductGallery(root: HTMLElement) {
   function openDialog(startIndex: number) {
     if (!dialog || !dialogSlider || dialog.open) return;
 
+    // Temporarily disable snap + smooth scroll so the dialog opens at the correct slide
+    dialogSlider.style.scrollSnapType = 'none';
+    dialogSlider.style.scrollBehavior = 'auto';
+
     dialog.showModal();
     savedOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
@@ -189,11 +193,17 @@ export function initProductGallery(root: HTMLElement) {
     // Preload full-res images around the starting slide
     preloadDialogImages(startIndex);
 
-    // Scroll to the clicked image (instant, no animation)
+    // Scroll to the clicked image instantly (must happen after layout)
     const targetSlide = dialogSlider.querySelector<HTMLElement>(`[data-index="${startIndex}"]`);
     if (targetSlide) {
       targetSlide.scrollIntoView({ behavior: 'auto', inline: 'center' });
     }
+
+    // Re-enable snap after scroll position is set
+    requestAnimationFrame(() => {
+      dialogSlider.style.scrollSnapType = '';
+      dialogSlider.style.scrollBehavior = '';
+    });
 
     dialogActiveIndex = startIndex;
     updateCounter(dialogCurrent, startIndex);
@@ -270,8 +280,9 @@ export function initProductGallery(root: HTMLElement) {
     }
   });
 
-  // ── Drag on dialog thumbnails ──
+  // ── Drag-to-scroll on dialog slider + thumbnails ──
 
+  initDragScroll(dialogSlider);
   const dialogThumbsContainer = dialog.querySelector<HTMLElement>('[data-dialog-thumbs]');
   if (dialogThumbsContainer) initDragScroll(dialogThumbsContainer, true);
 
@@ -295,6 +306,7 @@ function initDragScroll(container: HTMLElement, freeScroll = false) {
   let lastX = 0;
   let lastTime = 0;
   let velocity = 0;
+  let resetTimer: ReturnType<typeof setTimeout> | null = null;
 
   function resetStyles() {
     container.style.cursor = '';
@@ -314,10 +326,9 @@ function initDragScroll(container: HTMLElement, freeScroll = false) {
     isDown = true;
     hasMoved = false;
     pointerId = e.pointerId;
-    try {
-      container.setPointerCapture(pointerId);
-    } catch {
-      /* pointer capture may not be supported */
+    if (resetTimer !== null) {
+      clearTimeout(resetTimer);
+      resetTimer = null;
     }
     startX = e.clientX;
     scrollLeft = container.scrollLeft;
@@ -341,6 +352,15 @@ function initDragScroll(container: HTMLElement, freeScroll = false) {
     if (Math.abs(walk) > 5) {
       if (!hasMoved) {
         hasMoved = true;
+        // Set pointer capture only once drag threshold is exceeded,
+        // so simple clicks still reach child elements
+        if (pointerId !== null) {
+          try {
+            container.setPointerCapture(pointerId);
+          } catch {
+            /* pointer capture may not be supported */
+          }
+        }
         container.style.scrollSnapType = 'none';
         container.style.scrollBehavior = 'auto';
         container.style.cursor = 'grabbing';
@@ -395,7 +415,10 @@ function initDragScroll(container: HTMLElement, freeScroll = false) {
 
       container.style.scrollBehavior = 'smooth';
       container.scrollLeft = targetIndex * w;
-      setTimeout(resetStyles, 350);
+      resetTimer = setTimeout(() => {
+        resetStyles();
+        resetTimer = null;
+      }, 350);
     }
   });
 
@@ -407,6 +430,16 @@ function initDragScroll(container: HTMLElement, freeScroll = false) {
 
   // Also reset on lostpointercapture as safety net
   container.addEventListener('lostpointercapture', () => {
+    if (isDown) {
+      isDown = false;
+      hasMoved = false;
+      resetStyles();
+    }
+  });
+
+  // Window-level cleanup for mouse released outside the slider
+  // (before pointer capture is acquired at the drag threshold)
+  window.addEventListener('pointerup', () => {
     if (isDown) {
       isDown = false;
       hasMoved = false;
@@ -504,6 +537,10 @@ function initZoom(container: HTMLElement) {
   container.addEventListener('click', e => {
     // Ignore touch-generated clicks — mobile uses double-tap instead
     if (Date.now() - lastTouchTime < 500) return;
+
+    // Ignore clicks that are the end of a drag gesture (from parent slider)
+    const parentSlider = container.closest<HTMLElement>('[data-dialog-slider], [data-gallery-slider]');
+    if (parentSlider?.dataset.wasDragged === '1') return;
 
     if (isZoomed) {
       zoomOut();
