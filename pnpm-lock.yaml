@@ -68,7 +68,7 @@ importers:
         version: 1.2.7
       '@iconify-json/fluent':
         specifier: ^1.2.39
-        version: 1.2.39
+        version: 1.2.41
       '@iconify-json/fluent-emoji':
         specifier: 1.2.7
         version: 1.2.7
@@ -1399,8 +1399,8 @@ packages:
   '@iconify-json/fluent-emoji@1.2.7':
     resolution: {integrity: sha512-D8G6bKAyIsyxP1rzZtIWr/gg/fO4Rg1+DyCWlfqKK4h8W+4Em/Y0P6QYgJUQTlUcagzJvSyg+9OBv4hz4Hc/QA==}
 
-  '@iconify-json/fluent@1.2.39':
-    resolution: {integrity: sha512-nIvOPuNIqSqTr0vpPFdROsC/mnUfGyIgOSByy1RhXMcbP+tRjX1hQvm41MnJN/ztSwbH4iSgcT3lN/qO9PBPhQ==}
+  '@iconify-json/fluent@1.2.41':
+    resolution: {integrity: sha512-UbUFCJm7gICJuiDVZdo259L05TxAKbECJ/NBax/+N5CejWXJ0q/y++HNWLdJBkSfsZVYH9KtFZgwox36PC0/Wg==}
 
   '@iconify-json/ic@1.2.4':
     resolution: {integrity: sha512-pzPMmrZrBQuwT7nmtrYdkttun8KalRGgZPIL1Ny9KpF2zjRGIUPN+npTfuD3lrgO/OnSwAoJWuekQwBpt/Cqrw==}
@@ -7903,7 +7903,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/fluent@1.2.39':
+  '@iconify-json/fluent@1.2.41':
     dependencies:
       '@iconify/types': 2.0.0
 
