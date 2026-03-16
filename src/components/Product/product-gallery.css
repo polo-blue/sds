@@ -28,22 +28,15 @@
 /* ── Arrow hover reveal animation ── */
 
 .pg-arrow {
+  transform: translateY(-50%);
+  opacity: 0;
   transition:
-    transform 0.3s ease,
     opacity 0.2s,
     background-color 0.2s,
     color 0.2s;
-  will-change: transform;
-
-  &[data-dir='prev'] {
-    transform: translate(-5rem, -50%);
-  }
-  &[data-dir='next'] {
-    transform: translate(5rem, -50%);
-  }
 
   &:disabled {
-    @apply opacity-30 cursor-default;
+    @apply cursor-default;
   }
   &:hover:not(:disabled) {
     @apply bg-white/90 text-neutral-800;
@@ -52,11 +45,11 @@
 
 .pg-main:hover,
 .pg-main:focus-within {
-  .pg-arrow[data-dir='prev']:not(:disabled) {
-    transform: translate(0, -50%);
+  .pg-arrow:not(:disabled) {
+    opacity: 1;
   }
-  .pg-arrow[data-dir='next']:not(:disabled) {
-    transform: translate(0, -50%);
+  .pg-arrow:disabled {
+    opacity: 0.3;
   }
 }
 
