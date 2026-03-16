@@ -72,6 +72,25 @@ export function initProductGallery(root: HTMLElement) {
     updateArrows(prevBtn, nextBtn, index, totalSlides);
   });
 
+  // Explicit initial state sync — IntersectionObserver fires async and may miss
+  // the first slide if layout isn't ready or scroll position was restored by browser
+  function syncInitialState() {
+    const w = slider.clientWidth;
+    if (w === 0) return; // layout not ready, rAF will retry
+    const index = Math.round(slider.scrollLeft / w);
+    activeIndex = index;
+    updateCounter(counterCurrent, index);
+    updateThumbs(thumbButtons, index);
+    updateArrows(prevBtn, nextBtn, index, totalSlides);
+  }
+
+  // Try sync now, fallback to after layout
+  if (slider.clientWidth > 0) {
+    syncInitialState();
+  } else {
+    requestAnimationFrame(syncInitialState);
+  }
+
   // ── Counter ──
 
   function updateCounter(el: HTMLElement | null | undefined, index: number) {
