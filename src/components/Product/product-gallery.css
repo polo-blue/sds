@@ -30,7 +30,9 @@
 .pg-arrow {
   transition:
     transform 0.3s ease,
-    opacity 0.2s;
+    opacity 0.2s,
+    background-color 0.2s,
+    color 0.2s;
   will-change: transform;
 
   &[data-dir='prev'] {
@@ -44,17 +46,17 @@
     @apply opacity-30 cursor-default;
   }
   &:hover:not(:disabled) {
-    color: var(--clr-primary-500, #0077b3);
+    @apply bg-white/90 text-neutral-800;
   }
 }
 
 .pg-main:hover,
 .pg-main:focus-within {
   .pg-arrow[data-dir='prev']:not(:disabled) {
-    transform: translate(50%, -50%);
+    transform: translate(0, -50%);
   }
   .pg-arrow[data-dir='next']:not(:disabled) {
-    transform: translate(-50%, -50%);
+    transform: translate(0, -50%);
   }
 }
 
