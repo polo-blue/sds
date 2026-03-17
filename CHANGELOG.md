@@ -1,3 +1,9 @@
+## [1.34.5](https://github.com/polo-blue/sds/compare/v1.34.4...v1.34.5) (2026-03-17)
+
+### Bug Fixes
+
+* **ProductGallery:** dialog topbar as transparent overlay with hover reveal ([44eb728](https://github.com/polo-blue/sds/commit/44eb728330db7a588992e6de0eb80315b59a0535))
+
 ## [1.34.4](https://github.com/polo-blue/sds/compare/v1.34.3...v1.34.4) (2026-03-17)
 
 ### Bug Fixes
