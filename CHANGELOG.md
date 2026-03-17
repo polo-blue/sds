@@ -1,3 +1,9 @@
+## [1.34.6](https://github.com/polo-blue/sds/compare/v1.34.5...v1.34.6) (2026-03-17)
+
+### Bug Fixes
+
+* **ProductGallery:** use border-color instead of opacity for thumbnails ([1e4be46](https://github.com/polo-blue/sds/commit/1e4be4608c33969d8ab919d913bb352cccf3398a))
+
 ## [1.34.5](https://github.com/polo-blue/sds/compare/v1.34.4...v1.34.5) (2026-03-17)
 
 ### Bug Fixes
