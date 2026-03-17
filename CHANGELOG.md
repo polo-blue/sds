@@ -1,3 +1,9 @@
+## [1.34.2](https://github.com/polo-blue/sds/compare/v1.34.1...v1.34.2) (2026-03-17)
+
+### Bug Fixes
+
+* **ProductGallery:** improve dialog arrow and thumbnail visibility ([42a85d2](https://github.com/polo-blue/sds/commit/42a85d270202d62951497ca07f6b571d93a484a3))
+
 ## [1.34.1](https://github.com/polo-blue/sds/compare/v1.34.0...v1.34.1) (2026-03-17)
 
 ### Bug Fixes
