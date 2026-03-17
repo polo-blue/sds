@@ -1,3 +1,9 @@
+## [1.33.1](https://github.com/polo-blue/sds/compare/v1.33.0...v1.33.1) (2026-03-17)
+
+### Bug Fixes
+
+* **ProductGallery:** reduce gallery arrow buttons to 44px (w-11 h-11) ([771f427](https://github.com/polo-blue/sds/commit/771f427d2d30e3da2073afd61ead7f874079ff73))
+
 ## [1.33.0](https://github.com/polo-blue/sds/compare/v1.32.1...v1.33.0) (2026-03-17)
 
 ### Features
