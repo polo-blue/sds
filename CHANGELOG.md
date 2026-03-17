@@ -1,3 +1,9 @@
+## [1.34.3](https://github.com/polo-blue/sds/compare/v1.34.2...v1.34.3) (2026-03-17)
+
+### Bug Fixes
+
+* **ProductGallery:** constrain dialog image height to viewport (no vertical scroll) ([cc64848](https://github.com/polo-blue/sds/commit/cc64848ee16340a6785fc40746fe47210f7d26c6))
+
 ## [1.34.2](https://github.com/polo-blue/sds/compare/v1.34.1...v1.34.2) (2026-03-17)
 
 ### Bug Fixes
