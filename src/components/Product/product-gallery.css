@@ -35,7 +35,9 @@
 .pg-arrow,
 [data-gallery-counter] {
   opacity: 0;
-  transition: opacity 0.2s, transform 0.3s ease;
+  transition:
+    opacity 0.2s,
+    transform 0.3s ease;
 }
 
 .pg-arrow[data-dir='prev'] {

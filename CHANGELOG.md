@@ -1,3 +1,9 @@
+## [1.33.4](https://github.com/polo-blue/sds/compare/v1.33.3...v1.33.4) (2026-03-17)
+
+### Bug Fixes
+
+* **ProductGallery:** slide-in arrows from sides on hover ([eb25e43](https://github.com/polo-blue/sds/commit/eb25e435111b8fc3cec7328ea0444676084579f5))
+
 ## [1.33.3](https://github.com/polo-blue/sds/compare/v1.33.2...v1.33.3) (2026-03-17)
 
 ### Bug Fixes
