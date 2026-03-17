@@ -274,39 +274,35 @@ const total = images.length;
 
           <button
             type="button"
-            class="pg-dialog-arrow hidden md:flex absolute top-1/2 left-3 -translate-y-1/2 z-10 w-12 h-12 items-center justify-center border-none bg-black/45 text-neutral-400 cursor-pointer rounded transition-colors"
+            class="pg-dialog-arrow hidden md:flex absolute top-1/2 left-3 -translate-y-1/2 z-10 w-11 h-11 items-center justify-center border-none bg-black/45 text-neutral-400 cursor-pointer rounded-full transition-colors"
             data-dialog-prev
             aria-label="Previous image"
           >
-            <svg
-              viewBox="0 0 24 24"
-              width="28"
-              height="28"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-              aria-hidden="true"
-            >
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
+            {arrowStyle === 'chevron-bold' ? (
+              <svg viewBox="0 0 24 24" width={icon.size} height={icon.size} fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" width={icon.size} height={icon.size} fill="currentColor" aria-hidden="true">
+                <path d={icon.prev} />
+              </svg>
+            )}
           </button>
           <button
             type="button"
-            class="pg-dialog-arrow hidden md:flex absolute top-1/2 right-3 -translate-y-1/2 z-10 w-12 h-12 items-center justify-center border-none bg-black/45 text-neutral-400 cursor-pointer rounded transition-colors"
+            class="pg-dialog-arrow hidden md:flex absolute top-1/2 right-3 -translate-y-1/2 z-10 w-11 h-11 items-center justify-center border-none bg-black/45 text-neutral-400 cursor-pointer rounded-full transition-colors"
             data-dialog-next
             aria-label="Next image"
           >
-            <svg
-              viewBox="0 0 24 24"
-              width="28"
-              height="28"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-              aria-hidden="true"
-            >
-              <polyline points="9 6 15 12 9 18" />
-            </svg>
+            {arrowStyle === 'chevron-bold' ? (
+              <svg viewBox="0 0 24 24" width={icon.size} height={icon.size} fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="9 6 15 12 9 18" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" width={icon.size} height={icon.size} fill="currentColor" aria-hidden="true">
+                <path d={icon.next} />
+              </svg>
+            )}
           </button>
 
           {total > 1 && (
