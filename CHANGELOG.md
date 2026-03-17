@@ -1,3 +1,9 @@
+## [1.33.3](https://github.com/polo-blue/sds/compare/v1.33.2...v1.33.3) (2026-03-17)
+
+### Bug Fixes
+
+* **ProductGallery:** hide pagination counter until hover ([db3cedd](https://github.com/polo-blue/sds/commit/db3cedde7672d084858e43b8349e7ee9517e98d9))
+
 ## [1.33.2](https://github.com/polo-blue/sds/compare/v1.33.1...v1.33.2) (2026-03-17)
 
 ### Bug Fixes
