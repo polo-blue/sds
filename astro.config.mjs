@@ -78,7 +78,8 @@ export default defineConfig({
     }),
     icon(iconConfig), 
     metaTags(),
-    (await import("@playform/inline")).default(),
+    // @playform/inline disabled — strips responsive CSS utilities in Astro 6
+    // See: https://github.com/PlayForm/Inline/issues/404
     pagefind(), 
     sitemap()
   ]
