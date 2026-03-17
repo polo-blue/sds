@@ -1,3 +1,9 @@
+## [1.33.5](https://github.com/polo-blue/sds/compare/v1.33.4...v1.33.5) (2026-03-17)
+
+### Bug Fixes
+
+* **ProductGallery:** use arrowStyle chevrons in dialog navigation ([7720753](https://github.com/polo-blue/sds/commit/77207538b859cc6dc533eebcef196d0d416081a0))
+
 ## [1.33.4](https://github.com/polo-blue/sds/compare/v1.33.3...v1.33.4) (2026-03-17)
 
 ### Bug Fixes
