@@ -1,3 +1,9 @@
+## [1.34.8](https://github.com/polo-blue/sds/compare/v1.34.7...v1.34.8) (2026-03-17)
+
+### Bug Fixes
+
+* **ProductGallery:** remove fixed width/height on dialog zoom img to prevent overflow ([a24e4f5](https://github.com/polo-blue/sds/commit/a24e4f59deca0d04b854c3fd37676e495df46be4))
+
 ## [1.34.7](https://github.com/polo-blue/sds/compare/v1.34.6...v1.34.7) (2026-03-17)
 
 ### Bug Fixes
