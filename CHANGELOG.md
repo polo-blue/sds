@@ -1,3 +1,16 @@
+## [1.34.0](https://github.com/polo-blue/sds/compare/v1.33.5...v1.34.0) (2026-03-17)
+
+### ⚠ BREAKING CHANGES
+
+* **ProductGallery:** ProductGallery no longer self-initializes. Consumers must
+add their own <script> importing initProductGallery.
+
+Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
+
+### Features
+
+* **ProductGallery:** separate script from template for Astro 6 compat ([c1caf9d](https://github.com/polo-blue/sds/commit/c1caf9dcd4c98cd7d408014ca1354a651f1bd4bf))
+
 ## [1.33.5](https://github.com/polo-blue/sds/compare/v1.33.4...v1.33.5) (2026-03-17)
 
 ### Bug Fixes
