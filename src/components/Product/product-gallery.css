@@ -99,9 +99,10 @@
 }
 
 .pg-zoom-img {
-  @apply max-w-full max-h-full object-contain select-none;
+  @apply object-contain select-none;
+  max-width: 100%;
+  max-height: 100%;
   -webkit-user-drag: none;
-  transform-origin: 0 0;
   transition: transform 0.3s ease;
   will-change: transform;
 }
