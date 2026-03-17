@@ -1,3 +1,9 @@
+## [1.33.0](https://github.com/polo-blue/sds/compare/v1.32.1...v1.33.0) (2026-03-17)
+
+### Features
+
+* **ProductGallery:** add arrowStyle prop with chevron variants ([c38a93d](https://github.com/polo-blue/sds/commit/c38a93d41044ebdf232ee22c1d7b93a5a488ca02))
+
 ## [1.32.1](https://github.com/polo-blue/sds/compare/v1.32.0...v1.32.1) (2026-03-17)
 
 ### Bug Fixes
