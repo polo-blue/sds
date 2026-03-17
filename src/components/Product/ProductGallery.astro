@@ -13,6 +13,8 @@
  *   import ProductGallery from 'spoko-design-system/components/Product/ProductGallery.astro'
  */
 
+import './product-gallery.css';
+
 interface GalleryImage {
   src: string;
   thumb?: string;
@@ -304,10 +306,6 @@ const total = images.length;
     )
   }
 </div>
-
-<style>
-  @import './product-gallery.css';
-</style>
 
 <script>
   import { initProductGallery } from './product-gallery.ts';
