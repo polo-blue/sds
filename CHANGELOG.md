@@ -1,3 +1,9 @@
+## [1.32.1](https://github.com/polo-blue/sds/compare/v1.32.0...v1.32.1) (2026-03-17)
+
+### Bug Fixes
+
+* **ProductGallery:** reduce pagination counter height on desktop ([d337dfe](https://github.com/polo-blue/sds/commit/d337dfeafca87322bbe677d3e0c928f8336b2521))
+
 ## [1.32.0](https://github.com/polo-blue/sds/compare/v1.31.0...v1.32.0) (2026-03-17)
 
 ### Features
