@@ -1,3 +1,9 @@
+## [1.34.4](https://github.com/polo-blue/sds/compare/v1.34.3...v1.34.4) (2026-03-17)
+
+### Bug Fixes
+
+* **ProductGallery:** hide disabled dialog arrows, improve active visibility ([855d016](https://github.com/polo-blue/sds/commit/855d01609c13e17812c4c8f97f49cc29701580fb))
+
 ## [1.34.3](https://github.com/polo-blue/sds/compare/v1.34.2...v1.34.3) (2026-03-17)
 
 ### Bug Fixes
