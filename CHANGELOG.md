@@ -1,3 +1,22 @@
+## [1.31.0](https://github.com/polo-blue/sds/compare/v1.30.1...v1.31.0) (2026-03-17)
+
+### Features
+
+* upgrade to Astro 6 and update all dependencies ([41da8e9](https://github.com/polo-blue/sds/commit/41da8e900afacb7a6c97f54795c1d540ff852fb4))
+
+### Bug Fixes
+
+* add .nvmrc for Netlify to use Node 22 (required by Astro 6) ([d02994b](https://github.com/polo-blue/sds/commit/d02994b3f787fa26928d0f68b03724aeb09ce108))
+* **ProductGallery:** add explicit initial state sync on init ([370fac9](https://github.com/polo-blue/sds/commit/370fac94aaa308a34b42c03e9e17b104d03955d1))
+* add netlify.toml with NODE_VERSION=22 for Astro 6 ([623d36a](https://github.com/polo-blue/sds/commit/623d36a46f08baa6eb4d1493db94b8a4d4055fc3))
+* **ci:** align pnpm version in deploy workflow with package.json ([56dbed8](https://github.com/polo-blue/sds/commit/56dbed8aeb4afe3f69d0b8e97be9ad1089bead80))
+* **deps:** align unocss version in devDependencies to 66.6.6 ([40e3302](https://github.com/polo-blue/sds/commit/40e3302b447bc1ad01a5902251aa92549a3b718d))
+* disable @playform/inline — strips responsive CSS in Astro 6 ([aa9fbb6](https://github.com/polo-blue/sds/commit/aa9fbb6f1f566a982bf029127c131c8d029edc56))
+* **ProductGallery:** flatten CSS nesting for Astro scoped styles ([e01308d](https://github.com/polo-blue/sds/commit/e01308d398779877e8af73bed15362bbad222209))
+* move CSS import to frontmatter for Astro 6 compatibility ([0c42d62](https://github.com/polo-blue/sds/commit/0c42d629aa67ca2500e4600e0b2acc69e9f85b7d))
+* **ProductGallery:** unify arrow navigation style between gallery and zoom ([f6e99d3](https://github.com/polo-blue/sds/commit/f6e99d3e3318a2557e4c3c1d4f59f6cd10155803))
+* **ProductGallery:** use opacity instead of translate for arrow reveal ([9696f12](https://github.com/polo-blue/sds/commit/9696f1203294eceb26f172a25b00934c4ee4e762))
+
 ## [1.30.1](https://github.com/polo-blue/sds/compare/v1.30.0...v1.30.1) (2026-03-11)
 
 ### Bug Fixes
