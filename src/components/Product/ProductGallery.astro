@@ -250,13 +250,13 @@ const total = images.length;
           >
             {images.map((image, index) => (
               <div
-                class="pg-slide w-full min-w-full flex items-center justify-center"
+                class="pg-slide w-full min-w-full h-full flex items-center justify-center"
                 role="group"
                 aria-roledescription="slide"
                 aria-label={`Image ${index + 1} of ${total}: ${image.alt}`}
                 data-index={index}
               >
-                <div class="pg-zoom" data-zoom-container>
+                <div class="pg-zoom h-full" data-zoom-container>
                   <img
                     src={image.full || image.src}
                     alt={image.alt}
