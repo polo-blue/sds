@@ -1,3 +1,9 @@
+## [1.34.1](https://github.com/polo-blue/sds/compare/v1.34.0...v1.34.1) (2026-03-17)
+
+### Bug Fixes
+
+* set btn-navigation to 44px (h-11 w-11) ([b178474](https://github.com/polo-blue/sds/commit/b178474575a3624adc35cdb3d168a9c248bf3205))
+
 ## [1.34.0](https://github.com/polo-blue/sds/compare/v1.33.5...v1.34.0) (2026-03-17)
 
 ### ⚠ BREAKING CHANGES
