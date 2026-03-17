@@ -122,15 +122,15 @@
 /* ── Dialog arrow states ── */
 
 .pg-dialog-arrow {
-  @apply text-white/80 transition-colors;
+  @apply text-white/70 transition-colors;
 }
 
-.pg-dialog-arrow:hover {
+.pg-dialog-arrow:hover:not(:disabled) {
   @apply text-white bg-white/15;
 }
 
 .pg-dialog-arrow:disabled {
-  @apply text-white/20 cursor-default bg-transparent;
+  @apply hidden;
 }
 
 /* ── Reduced motion ── */
