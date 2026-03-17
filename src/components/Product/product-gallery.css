@@ -30,16 +30,22 @@
   scroll-snap-align: center;
 }
 
-/* ── Arrow positioning + hover reveal ── */
+/* ── Arrow + counter hover reveal ── */
 
-.pg-arrow {
-  transform: translateY(-50%);
+.pg-arrow,
+[data-gallery-counter] {
   opacity: 0;
   transition: opacity 0.2s;
 }
 
+.pg-arrow {
+  transform: translateY(-50%);
+}
+
 .pg-main:hover .pg-arrow:not(:disabled),
-.pg-main:focus-within .pg-arrow:not(:disabled) {
+.pg-main:focus-within .pg-arrow:not(:disabled),
+.pg-main:hover [data-gallery-counter],
+.pg-main:focus-within [data-gallery-counter] {
   opacity: 1;
 }
 
