@@ -30,33 +30,17 @@
   scroll-snap-align: center;
 }
 
-/* ── Arrow hover reveal animation ── */
+/* ── Arrow positioning + hover reveal ── */
 
 .pg-arrow {
   transform: translateY(-50%);
   opacity: 0;
-  transition:
-    opacity 0.2s,
-    background-color 0.2s,
-    color 0.2s;
-}
-
-.pg-arrow:disabled {
-  @apply cursor-default;
-}
-
-.pg-arrow:hover:not(:disabled) {
-  @apply bg-white/90 text-neutral-800;
+  transition: opacity 0.2s;
 }
 
 .pg-main:hover .pg-arrow:not(:disabled),
 .pg-main:focus-within .pg-arrow:not(:disabled) {
   opacity: 1;
-}
-
-.pg-main:hover .pg-arrow:disabled,
-.pg-main:focus-within .pg-arrow:disabled {
-  opacity: 0.3;
 }
 
 /* ── Thumbnail active state ── */
