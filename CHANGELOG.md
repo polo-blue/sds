@@ -1,3 +1,9 @@
+## [1.33.2](https://github.com/polo-blue/sds/compare/v1.33.1...v1.33.2) (2026-03-17)
+
+### Bug Fixes
+
+* **ProductGallery:** center pagination counter with rounded-full pill style ([c246fe9](https://github.com/polo-blue/sds/commit/c246fe9e4137376a6a18f37aa359eb36d5e27231))
+
 ## [1.33.1](https://github.com/polo-blue/sds/compare/v1.33.0...v1.33.1) (2026-03-17)
 
 ### Bug Fixes
