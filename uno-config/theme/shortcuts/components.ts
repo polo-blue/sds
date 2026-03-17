@@ -42,7 +42,7 @@ export const componentShortcuts = [
   ['nav-link', 'text-slate-light hover:bg-blue-darker hover:text-white px-3 py-3.5 md:py-2 rounded-full text-sm font-medium'],
   ['btn-navigation', `${COLORS.bgWhite} drop-shadow-md rounded-full border ${LAYOUT.flex.center} w-1/2 h-12 bottom-1 z-2 md:(bg-white/90 text-inherit hover:(text-accent-light bg-white))`],
   ['btn-navigation__active', 'border border-transparent md:(border-neutral-lighter focus:ring-0) font-medium text-white bg-blue-darker hover:bg-accent-darker focus:ring-2 focus:outline-none focus:ring-blue-300'],
-  ['btn-gallery-arrow', `${COLORS.bgWhite} bg-white/80 drop-shadow-sm rounded-full border border-neutral-lighter ${LAYOUT.flex.center} w-12 h-12 cursor-pointer text-neutral-600 hover:(text-accent-light bg-white) disabled:(hidden)`],
+  ['btn-gallery-arrow', `${COLORS.bgWhite} bg-white/80 drop-shadow-sm rounded-full border border-neutral-lighter ${LAYOUT.flex.center} w-11 h-11 cursor-pointer text-neutral-600 hover:(text-accent-light bg-white) disabled:(hidden)`],
 
   // Carousel
   ['carousel-tile', `${LAYOUT.flex.base} w-52 min-w-52 ml-1 lg:ml-1.5`],
