@@ -119,6 +119,18 @@
   border-color: #fff;
 }
 
+/* ── Dialog top bar hover reveal ── */
+
+.pg-dialog-topbar {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.pg-dialog:hover .pg-dialog-topbar,
+.pg-dialog:focus-within .pg-dialog-topbar {
+  opacity: 1;
+}
+
 /* ── Dialog arrow states ── */
 
 .pg-dialog-arrow {
