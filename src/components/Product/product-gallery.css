@@ -62,15 +62,15 @@
 /* ── Thumbnail active state ── */
 
 .pg-thumb {
-  @apply opacity-60 transition-all duration-200;
+  @apply transition-colors duration-200;
+  border-color: transparent;
 }
 
 .pg-thumb:hover {
-  @apply opacity-80;
+  border-color: var(--clr-primary-300, #3572e3);
 }
 
 .pg-thumb.is-active {
-  @apply opacity-100;
   border-color: var(--clr-primary-400, #0099da);
 }
 
@@ -107,16 +107,16 @@
 /* ── Dialog thumbnail active state ── */
 
 .pg-dialog-thumb {
-  @apply transition-all duration-200;
+  @apply transition-colors duration-200;
   border-color: transparent;
 }
 
 .pg-dialog-thumb:hover {
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: var(--clr-primary-300, #3572e3);
 }
 
 .pg-dialog-thumb.is-active {
-  border-color: #fff;
+  border-color: var(--clr-primary-400, #0099da);
 }
 
 /* ── Dialog top bar hover reveal ── */
