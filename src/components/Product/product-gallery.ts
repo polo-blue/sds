@@ -517,7 +517,8 @@ function initZoom(container: HTMLElement) {
   function zoomOut() {
     isZoomed = false;
     container.classList.remove('is-zoomed');
-    img.style.transform = 'scale(1)';
+    img.style.transform = '';
+    img.style.transformOrigin = '';
     container.removeEventListener('mousemove', onMouseMove);
   }
 
@@ -608,7 +609,10 @@ function initZoom(container: HTMLElement) {
 
 function resetZoom(container: HTMLElement) {
   const img = container.querySelector<HTMLImageElement>('[data-zoom-img]');
-  if (img) img.style.transform = '';
+  if (img) {
+    img.style.transform = '';
+    img.style.transformOrigin = '';
+  }
   container.classList.remove('is-zoomed');
   // Clean up mousemove listener if zoom was active
   zoomCleanups.get(container)?.();
