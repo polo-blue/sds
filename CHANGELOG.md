@@ -1,3 +1,11 @@
+## [1.34.7](https://github.com/polo-blue/sds/compare/v1.34.6...v1.34.7) (2026-03-17)
+
+### Bug Fixes
+
+* **ProductGallery:** clear transform-origin on zoom out and dialog close ([833fc60](https://github.com/polo-blue/sds/commit/833fc60fd23517427ebd41bf91915519a5fb73d6))
+* **ProductGallery:** prevent dialog overflow after View Transitions ([f794d17](https://github.com/polo-blue/sds/commit/f794d173ffe30a703d0f91dbdb76faa9e8b68c23))
+* **ProductGallery:** remove static transform-origin, use explicit max constraints on zoom img ([33658f3](https://github.com/polo-blue/sds/commit/33658f3430975864931a94c36e8befabe6382bf7))
+
 ## [1.34.6](https://github.com/polo-blue/sds/compare/v1.34.5...v1.34.6) (2026-03-17)
 
 ### Bug Fixes
