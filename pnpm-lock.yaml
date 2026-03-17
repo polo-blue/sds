@@ -164,7 +164,7 @@ importers:
         version: 1.1.5
       astro-meta-tags:
         specifier: ^0.4.0
-        version: 0.4.0(astro@5.18.1(@types/node@25.3.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@2.80.0)(terser@5.46.1)(typescript@5.9.2)(yaml@2.8.2))
+        version: 0.4.1(astro@5.18.1(@types/node@25.3.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@2.80.0)(terser@5.46.1)(typescript@5.9.2)(yaml@2.8.2))
       astro-navbar:
         specifier: ^2.4.0
         version: 2.4.0
@@ -2660,10 +2660,10 @@ packages:
   astro-icon@1.1.5:
     resolution: {integrity: sha512-CJYS5nWOw9jz4RpGWmzNQY7D0y2ZZacH7atL2K9DeJXJVaz7/5WrxeyIxO8KASk1jCM96Q4LjRx/F3R+InjJrw==}
 
-  astro-meta-tags@0.4.0:
-    resolution: {integrity: sha512-SWUyZbu0sgdkMYpG5J8mBH61oLTco2bZmixYHg6mqAgEFjc4P+urP+IG2TkfQxq4LEYnyyxcXxwnuSLleMIJ2Q==}
+  astro-meta-tags@0.4.1:
+    resolution: {integrity: sha512-sDwhUstpNnaMROAtMxbD7YoaEQey3Z8YHeAHjgLnbIoVBceC5y+xu67Q0pQxeAbgSE1CQTs6LHzbsENgjkv2lQ==}
     peerDependencies:
-      astro: ^4.0.0 || ^5.0.0-beta.0
+      astro: '>=4.0.0'
 
   astro-navbar@2.4.0:
     resolution: {integrity: sha512-UhQnU8lz3a0NKL5gTBXFwYg1CVzP/DNlw1z6qW7f9Q1j33oMHdjwX/TmC2/xkJTKeq4a2RxgaqeJ+6CxCxRELg==}
@@ -9321,7 +9321,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro-meta-tags@0.4.0(astro@5.18.1(@types/node@25.3.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@2.80.0)(terser@5.46.1)(typescript@5.9.2)(yaml@2.8.2)):
+  astro-meta-tags@0.4.1(astro@5.18.1(@types/node@25.3.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@2.80.0)(terser@5.46.1)(typescript@5.9.2)(yaml@2.8.2)):
     dependencies:
       astro: 5.18.1(@types/node@25.3.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@2.80.0)(terser@5.46.1)(typescript@5.9.2)(yaml@2.8.2)
 
