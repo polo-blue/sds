@@ -16,7 +16,8 @@
     "./icons": "./icon.config.ts",
     "./icon-collections": "./icon.collections.ts",
     "./uno-config": "./uno-config/index.ts",
-    "./components/*": "./src/components/*"
+    "./components/*": "./src/components/*",
+    "./scripts/product-gallery": "./src/components/Product/product-gallery.ts"
   },
   "scripts": {
     "dev": "astro dev",

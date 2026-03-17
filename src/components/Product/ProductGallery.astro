@@ -378,14 +378,7 @@ const total = images.length;
   }
 </div>
 
-<script>
-  import { initProductGallery } from './product-gallery.ts';
-
-  document.addEventListener('astro:page-load', () => {
-    document.querySelectorAll<HTMLElement>('[data-product-gallery]').forEach(el => {
-      if (el.dataset.galleryInit) return;
-      el.dataset.galleryInit = '1';
-      initProductGallery(el);
-    });
-  });
-</script>
+<!-- Script removed — consumer must initialize manually:
+  import { initProductGallery } from 'spoko-design-system/scripts/product-gallery';
+  See: https://sds.spoko.space/components/product-gallery/
+-->
