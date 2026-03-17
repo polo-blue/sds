@@ -107,26 +107,30 @@
 /* ── Dialog thumbnail active state ── */
 
 .pg-dialog-thumb {
-  @apply opacity-50 transition-all duration-200;
+  @apply transition-all duration-200;
+  border-color: transparent;
 }
 
 .pg-dialog-thumb:hover {
-  @apply opacity-75;
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .pg-dialog-thumb.is-active {
-  @apply opacity-100;
   border-color: #fff;
 }
 
-/* ── Dialog arrow hover ── */
+/* ── Dialog arrow states ── */
+
+.pg-dialog-arrow {
+  @apply text-white/80 transition-colors;
+}
 
 .pg-dialog-arrow:hover {
-  @apply text-white bg-black/65;
+  @apply text-white bg-white/15;
 }
 
 .pg-dialog-arrow:disabled {
-  @apply opacity-30 cursor-default;
+  @apply text-white/20 cursor-default bg-transparent;
 }
 
 /* ── Reduced motion ── */
