@@ -1,3 +1,9 @@
+## [1.34.9](https://github.com/polo-blue/sds/compare/v1.34.8...v1.34.9) (2026-03-18)
+
+### Bug Fixes
+
+* remove global scroll-behavior: smooth from html ([#390](https://github.com/polo-blue/sds/issues/390)) ([bdaeb4a](https://github.com/polo-blue/sds/commit/bdaeb4a45b703896e5ba3dc65f177174d89d3ff4))
+
 ## [1.34.8](https://github.com/polo-blue/sds/compare/v1.34.7...v1.34.8) (2026-03-17)
 
 ### Bug Fixes
