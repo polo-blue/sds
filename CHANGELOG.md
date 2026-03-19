@@ -1,3 +1,9 @@
+## [1.34.11](https://github.com/polo-blue/sds/compare/v1.34.10...v1.34.11) (2026-03-19)
+
+### Bug Fixes
+
+* prevent gallery thumbnail scrollIntoView from scrolling page ([#391](https://github.com/polo-blue/sds/issues/391)) ([d55fa92](https://github.com/polo-blue/sds/commit/d55fa92390324e5df561ecac30a56ae553b4dce7))
+
 ## [1.34.9](https://github.com/polo-blue/sds/compare/v1.34.8...v1.34.9) (2026-03-18)
 
 ### Bug Fixes
