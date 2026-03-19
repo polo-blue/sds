@@ -2,8 +2,8 @@
  * ProductGallery — only styles that can't be expressed as UnoCSS utilities:
  * scroll-snap, scrollbar hiding, arrow hover animation, interactive states.
  *
- * NOTE: Flat selectors only — no CSS nesting (&). Astro scoped styles +
- * @playform/inline do not flatten nested rules, causing issues in production.
+ * NOTE: Flat selectors only — no CSS nesting (&). Astro scoped styles
+ * do not flatten nested rules, causing issues in production.
  */
 
 /* ── Scroll-snap base (slider + dialog slider) ── */

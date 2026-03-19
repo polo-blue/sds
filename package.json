@@ -56,7 +56,6 @@
     "spoko design system"
   ],
   "dependencies": {
-    "@algolia/client-search": "^5.49.0",
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/node": "^9.5.4",
     "@astrojs/sitemap": "^3.7.0",
@@ -94,8 +93,6 @@
     "@iconify-json/vscode-icons": "^1.2.43",
     "@iconify/json": "^2.2.442",
     "@iconify/vue": "^5.0.0",
-    "@playform/compress": "^0.2.1",
-    "@playform/inline": "^0.1.2",
     "@unocss/astro": "66.6.6",
     "@unocss/preset-attributify": "66.6.6",
     "@unocss/preset-typography": "66.6.6",
