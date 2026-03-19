@@ -39,5 +39,23 @@ import { pwaInfo } from 'virtual:pwa-info';
   gtag('config', '');
 </script> -->
 
+<style is:inline>
+  body {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(65% 0.143 238) oklch(0% 0 0 / 0.1);
+    scrollbar-gutter: stable;
+  }
+  body::-webkit-scrollbar {
+    width: 5px;
+    height: 3px;
+  }
+  body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  body::-webkit-scrollbar-thumb {
+    background-color: oklch(65% 0.143 238);
+  }
+</style>
+
 <ClientRouter />
 {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
