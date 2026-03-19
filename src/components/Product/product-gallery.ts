@@ -106,8 +106,9 @@ export function initProductGallery(root: HTMLElement) {
       btn.classList.toggle('is-active', isActive);
       btn.setAttribute('aria-pressed', String(isActive));
       // Scroll active thumb into view within its own container only
-      const scrollContainer = btn.closest<HTMLElement>('[data-gallery-thumbs], [data-dialog-thumbs]');
-      if (isActive && scrollContainer) {
+      if (isActive) {
+        const scrollContainer = btn.closest<HTMLElement>('[data-gallery-thumbs], [data-dialog-thumbs]');
+        if (!scrollContainer) return;
         const containerRect = scrollContainer.getBoundingClientRect();
         const btnRect = btn.getBoundingClientRect();
         // Only scroll if button is outside the visible area of the thumbs container
