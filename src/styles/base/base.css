@@ -27,24 +27,24 @@ body {
     https://developer.chrome.com/docs/css-ui/scrollbar-styling
     https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar
 */
-::-webkit-scrollbar {
+body::-webkit-scrollbar {
   width: 5px;
   height: 3px;
 }
 
-::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track {
   @apply bg-black/10;
   border-radius: 0;
 }
 
-::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb {
   border-radius: 0;
   @apply bg-accent-light;
 }
 
 /* Fallback to browsers without webkit-scrollbar support */
 @supports not selector(::-webkit-scrollbar) {
-  * {
+  body {
     scrollbar-width: thin;
     scrollbar-color: oklch(65% 0.143 238) oklch(0% 0 0 / 0.1);
   }
