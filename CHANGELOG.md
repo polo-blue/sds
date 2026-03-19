@@ -1,3 +1,9 @@
+## [1.34.12](https://github.com/polo-blue/sds/compare/v1.34.11...v1.34.12) (2026-03-19)
+
+### Bug Fixes
+
+* scope scrollbar styles to body only ([#394](https://github.com/polo-blue/sds/issues/394)) ([32bed55](https://github.com/polo-blue/sds/commit/32bed55b58120b5eceb806a6af804f911b78cc59))
+
 ## [1.34.11](https://github.com/polo-blue/sds/compare/v1.34.10...v1.34.11) (2026-03-19)
 
 ### Bug Fixes
