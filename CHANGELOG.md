@@ -1,3 +1,10 @@
+## [1.34.14](https://github.com/polo-blue/sds/compare/v1.34.13...v1.34.14) (2026-03-19)
+
+### Bug Fixes
+
+* add border-width and border-style reset to preflight ([f90d747](https://github.com/polo-blue/sds/commit/f90d74773163b8fbb6b67d9bb285e931bff09cd9))
+* add border-width and border-style reset to preflight ([6372262](https://github.com/polo-blue/sds/commit/6372262fd8d4840c0b3871c690550d39e77a3e38))
+
 ## [1.34.12](https://github.com/polo-blue/sds/compare/v1.34.11...v1.34.12) (2026-03-19)
 
 ### Bug Fixes
