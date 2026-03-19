@@ -105,9 +105,22 @@ export function initProductGallery(root: HTMLElement) {
       const isActive = Number(btn.dataset.thumbIndex) === index;
       btn.classList.toggle('is-active', isActive);
       btn.setAttribute('aria-pressed', String(isActive));
-      // Scroll active thumb into view
-      if (isActive) {
-        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+      // Scroll active thumb into view within its container only
+      if (isActive && thumbsContainer) {
+        const containerRect = thumbsContainer.getBoundingClientRect();
+        const btnRect = btn.getBoundingClientRect();
+        // Only scroll if button is outside the visible area of the thumbs container
+        if (
+          btnRect.left < containerRect.left ||
+          btnRect.right > containerRect.right ||
+          btnRect.top < containerRect.top ||
+          btnRect.bottom > containerRect.bottom
+        ) {
+          thumbsContainer.scrollTo({
+            left: btn.offsetLeft - thumbsContainer.offsetLeft - containerRect.width / 2 + btnRect.width / 2,
+            behavior: 'smooth',
+          });
+        }
       }
     });
   }
