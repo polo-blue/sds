@@ -1,3 +1,13 @@
+## [1.34.15](https://github.com/polo-blue/sds/compare/v1.34.14...v1.34.15) (2026-03-22)
+
+### Bug Fixes
+
+* add flex-shrink-0 and bg to gallery slides to prevent bleed ([548c1ce](https://github.com/polo-blue/sds/commit/548c1cec35005040444dbefc696357abf3e10f19))
+* pixel-perfect slide widths via CSS variable (prevents subpixel bleed) ([d609b86](https://github.com/polo-blue/sds/commit/d609b86d40c2656741642a1f7d7f95513c9753ae))
+* prevent multi-slide skip on mobile swipe ([0e01c1c](https://github.com/polo-blue/sds/commit/0e01c1c4db02b60b0dd95a2b32fbca122f7313e9))
+* use object-contain instead of object-cover on gallery slides ([3b1fd5d](https://github.com/polo-blue/sds/commit/3b1fd5d0506b7d727f943b3229fa79b7638f8990))
+* use scroll-snap-align start to prevent subpixel slide bleed ([2ef6944](https://github.com/polo-blue/sds/commit/2ef69441a471dd7ae1134ed397926240187d9e25))
+
 ## [1.34.14](https://github.com/polo-blue/sds/compare/v1.34.13...v1.34.14) (2026-03-19)
 
 ### Bug Fixes
