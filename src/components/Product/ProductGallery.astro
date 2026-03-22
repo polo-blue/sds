@@ -82,7 +82,7 @@ const total = images.length;
           >
             {images.map((image, index) => (
               <div
-                class="pg-slide w-full min-w-full overflow-hidden md:cursor-zoom-in"
+                class="pg-slide w-full min-w-full flex-shrink-0 overflow-hidden md:cursor-zoom-in bg-neutral-lightest"
                 role="button"
                 aria-roledescription="slide"
                 aria-label={`Open image ${index + 1} of ${total}: ${image.alt}`}
