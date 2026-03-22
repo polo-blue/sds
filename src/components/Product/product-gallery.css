@@ -29,7 +29,7 @@
 }
 
 .pg-slide {
-  scroll-snap-align: center;
+  scroll-snap-align: start;
 }
 
 /* ── Arrow + counter hover reveal ── */
