@@ -30,6 +30,12 @@
 
 .pg-slide {
   scroll-snap-align: start;
+  flex: 0 0 auto;
+  /* Use viewport-relative width matching the scroll container
+     to avoid subpixel rounding issues with percentage widths.
+     JS sets --pg-slide-width on init for pixel-perfect slides. */
+  width: var(--pg-slide-width, 100%);
+  min-width: var(--pg-slide-width, 100%);
 }
 
 /* ── Arrow + counter hover reveal ── */

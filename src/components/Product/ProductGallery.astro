@@ -72,17 +72,19 @@ const total = images.length;
   {
     hasImages ? (
       <>
-        <div class="pg-main relative overflow-hidden bg-neutral-lightest">
+        <div
+          class="pg-main relative overflow-hidden bg-neutral-lightest"
+          style={`aspect-ratio: ${aspectRatio}`}
+        >
           <div
-            class="pg-slider flex overflow-x-auto overflow-y-hidden"
-            style={`aspect-ratio: ${aspectRatio}`}
+            class="pg-slider flex overflow-x-auto overflow-y-hidden w-full h-full"
             data-gallery-slider
             tabindex="0"
             role="group"
           >
             {images.map((image, index) => (
               <div
-                class="pg-slide w-full min-w-full flex-shrink-0 overflow-hidden md:cursor-zoom-in bg-neutral-lightest"
+                class="pg-slide overflow-hidden md:cursor-zoom-in bg-neutral-lightest"
                 role="button"
                 aria-roledescription="slide"
                 aria-label={`Open image ${index + 1} of ${total}: ${image.alt}`}
