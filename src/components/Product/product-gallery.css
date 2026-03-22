@@ -28,6 +28,7 @@
 }
 
 .pg-slide {
+  position: relative;
   scroll-snap-align: start;
   scroll-snap-stop: always;
   flex: 0 0 auto;
@@ -36,6 +37,19 @@
      JS sets --pg-slide-width on init for pixel-perfect slides. */
   width: var(--pg-slide-width, 100%);
   min-width: var(--pg-slide-width, 100%);
+}
+
+/* Transparent overlay to prevent context menu on images */
+.pg-slide::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  content: '';
+  background: transparent;
+  z-index: 2;
+  user-select: none;
 }
 
 /* ── Arrow + counter hover reveal ── */
