@@ -1,3 +1,9 @@
+## [1.34.16](https://github.com/polo-blue/sds/compare/v1.34.15...v1.34.16) (2026-03-22)
+
+### Bug Fixes
+
+* use pointer-events:none on gallery images instead of ::before overlay ([fb77b2e](https://github.com/polo-blue/sds/commit/fb77b2e5b5dabdcd11159d355058a51fc97601a0))
+
 ## [1.34.15](https://github.com/polo-blue/sds/compare/v1.34.14...v1.34.15) (2026-03-22)
 
 ### Bug Fixes
