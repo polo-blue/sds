@@ -72,6 +72,18 @@ export function initProductGallery(root: HTMLElement) {
     updateArrows(prevBtn, nextBtn, index, totalSlides);
   });
 
+  // Fix subpixel slide width: percentage-based widths can produce fractional
+  // pixels (e.g. 780.5px) causing 0.5px bleed of next slide.
+  // Set pixel-perfect width via CSS variable from clientWidth (integer).
+  function setSlideWidth() {
+    const w = slider.clientWidth;
+    if (w > 0) {
+      slider.style.setProperty('--pg-slide-width', `${w}px`);
+    }
+  }
+  setSlideWidth();
+  window.addEventListener('resize', setSlideWidth);
+
   // Explicit initial state sync — IntersectionObserver fires async and may miss
   // the first slide if layout isn't ready or scroll position was restored by browser
   function syncInitialState() {
