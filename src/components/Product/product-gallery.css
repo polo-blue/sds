@@ -12,7 +12,6 @@
 .pg-dialog-slider {
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   overflow-x: auto;
   overflow-y: hidden;
@@ -30,6 +29,7 @@
 
 .pg-slide {
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   flex: 0 0 auto;
   /* Use viewport-relative width matching the scroll container
      to avoid subpixel rounding issues with percentage widths.
