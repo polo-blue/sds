@@ -1,3 +1,9 @@
+## [1.34.17](https://github.com/polo-blue/sds/compare/v1.34.16...v1.34.17) (2026-03-23)
+
+### Bug Fixes
+
+* add gap to tooltip header to prevent badge overlap ([344f61c](https://github.com/polo-blue/sds/commit/344f61c7280489d89fff657c61a52438df906b37))
+
 ## [1.34.16](https://github.com/polo-blue/sds/compare/v1.34.15...v1.34.16) (2026-03-22)
 
 ### Bug Fixes
