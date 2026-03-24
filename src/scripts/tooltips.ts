@@ -195,7 +195,8 @@ function cleanup() {
   tooltipEl = null;
   arrowEl = null;
   contentEl = null;
-  initialized = false;
+  // Don't reset `initialized` — document.body persists across View Transitions,
+  // so existing event listeners continue to work on swapped content.
 }
 
 // Astro View Transitions support
