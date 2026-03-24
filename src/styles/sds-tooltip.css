@@ -15,12 +15,12 @@
   color: #1e293b; /* slate-darkest */
   font-size: 0.75rem;
   line-height: 1.5;
-  border-radius: 0.5rem;
+  border-radius: 2px;
   box-shadow:
-    0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
+    0 30px 90px -20px rgba(0, 0, 0, 0.3),
+    0 0 0 1px #eaecf0;
   max-width: 280px;
-  border: 1px solid #e5e7eb; /* neutral-lighter */
+  margin: 3px 0;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.15s ease-out;
@@ -42,10 +42,10 @@
 /* Arrow */
 .sds-tooltip-arrow {
   position: absolute;
-  width: 8px;
-  height: 8px;
-  background-color: #f3f4f6; /* neutral-lightest */
-  border: 1px solid #e5e7eb; /* neutral-lighter */
+  width: 13px;
+  height: 13px;
+  background-color: inherit;
+  border: 1px solid #eaecf0;
   transform: rotate(45deg);
 }
 
@@ -74,7 +74,7 @@
   padding: 0.5rem 0.75rem;
   color: #1e293b; /* slate-darkest */
   overflow: hidden;
-  border-radius: 0.5rem;
+  border-radius: 2px;
 }
 
 /* Remove padding for structured tooltips (with tooltip-header) */
@@ -94,7 +94,7 @@
   gap: 0.5rem;
   padding: 0.375rem 0.5rem;
   background-color: #001e50;
-  border-radius: 0.5rem 0.5rem 0 0;
+  border-radius: 2px 2px 0 0;
   color: white;
 }
 
