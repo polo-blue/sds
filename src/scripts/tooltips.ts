@@ -6,8 +6,9 @@
  * Handles tooltips for any element with [data-sds-tooltip] attribute.
  *
  * Supported attributes:
- * - data-sds-tooltip        — HTML content to display
- * - data-sds-tooltip-placement — placement override (default: 'top')
+ * - data-sds-tooltip             — HTML content to display
+ * - data-sds-tooltip-placement   — placement override (default: 'top')
+ * - data-sds-tooltip-interactive — allow hovering over tooltip (for clickable links)
  */
 
 import { computePosition, autoUpdate, offset, flip, shift, arrow, type Placement } from '@floating-ui/dom';
@@ -19,6 +20,7 @@ const ARROW_SIZE = 8;
 const SHIFT_PADDING = 5;
 const SHOW_DELAY = 80;
 const HIDE_DELAY = 60;
+const INTERACTIVE_HIDE_DELAY = 150;
 
 let tooltipEl: HTMLElement | null = null;
 let arrowEl: HTMLElement | null = null;
@@ -28,6 +30,7 @@ let currentTarget: HTMLElement | null = null;
 let showTimer: ReturnType<typeof setTimeout> | null = null;
 let hideTimer: ReturnType<typeof setTimeout> | null = null;
 let initialized = false;
+let isInteractive = false;
 
 const OPPOSITE_SIDE: Record<string, string> = {
   top: 'bottom',
@@ -125,6 +128,10 @@ export function showTooltip(target: HTMLElement) {
   tooltip.style.display = 'block';
   currentTarget = target;
 
+  // Interactive mode: allow hovering over tooltip for clickable content
+  isInteractive = target.hasAttribute('data-sds-tooltip-interactive');
+  tooltip.classList.toggle('sds-tooltip--interactive', isInteractive);
+
   // Start auto-updating position
   cleanupAutoUpdate?.();
   cleanupAutoUpdate = autoUpdate(target, tooltip, () => {
@@ -155,7 +162,18 @@ export function hideTooltip() {
 }
 
 function handleMouseEnter(e: Event) {
-  const target = (e.target as HTMLElement).closest?.(SELECTOR);
+  const el = e.target as HTMLElement;
+
+  // Hovering over the tooltip itself — cancel pending hide
+  if (isInteractive && tooltipEl && (el === tooltipEl || tooltipEl.contains(el))) {
+    if (hideTimer) {
+      clearTimeout(hideTimer);
+      hideTimer = null;
+    }
+    return;
+  }
+
+  const target = el.closest?.(SELECTOR);
   if (!(target instanceof HTMLElement)) return;
 
   if (hideTimer) {
@@ -171,7 +189,18 @@ function handleMouseEnter(e: Event) {
 }
 
 function handleMouseLeave(e: Event) {
-  const target = (e.target as HTMLElement).closest?.(SELECTOR);
+  const el = e.target as HTMLElement;
+
+  // Leaving the tooltip itself — schedule hide
+  if (isInteractive && tooltipEl && (el === tooltipEl || tooltipEl.contains(el))) {
+    hideTimer = setTimeout(() => {
+      hideTooltip();
+      hideTimer = null;
+    }, INTERACTIVE_HIDE_DELAY);
+    return;
+  }
+
+  const target = el.closest?.(SELECTOR);
   if (!(target instanceof HTMLElement)) return;
 
   if (showTimer) {
@@ -179,10 +208,11 @@ function handleMouseLeave(e: Event) {
     showTimer = null;
   }
 
+  const delay = isInteractive ? INTERACTIVE_HIDE_DELAY : HIDE_DELAY;
   hideTimer = setTimeout(() => {
     hideTooltip();
     hideTimer = null;
-  }, HIDE_DELAY);
+  }, delay);
 }
 
 function handleFocusIn(e: Event) {
