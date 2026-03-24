@@ -2,7 +2,7 @@
  * SDS Tooltip Engine
  * Powered by Floating UI — replaces tippy.js
  *
- * Uses event delegation on document.body for performance.
+ * Uses event delegation on document (capture phase) for performance.
  * Handles tooltips for any element with [data-sds-tooltip] attribute.
  *
  * Supported attributes:
@@ -203,10 +203,13 @@ export function initTooltips() {
   if (initialized) return;
   initialized = true;
 
-  document.body.addEventListener('mouseenter', handleMouseEnter, true);
-  document.body.addEventListener('mouseleave', handleMouseLeave, true);
-  document.body.addEventListener('focusin', handleFocusIn, true);
-  document.body.addEventListener('focusout', handleFocusOut, true);
+  // Use `document` instead of `document.body` — Astro View Transitions
+  // replace the <body> element during swap, which would lose listeners.
+  // `document` persists across navigations.
+  document.addEventListener('mouseenter', handleMouseEnter, true);
+  document.addEventListener('mouseleave', handleMouseLeave, true);
+  document.addEventListener('focusin', handleFocusIn, true);
+  document.addEventListener('focusout', handleFocusOut, true);
 }
 
 function cleanup() {
