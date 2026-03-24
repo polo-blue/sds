@@ -75,4 +75,4 @@ export { default as getNumberFormatted } from './src/utils/text/getNumberFormatt
 export { default as getTranslatedLink } from './src/utils/text/getTranslatedLink';
 
 // Scripts
-export { initTooltips } from './src/scripts/tooltips';
+export { initTooltips, showTooltip, hideTooltip } from './src/scripts/tooltips';

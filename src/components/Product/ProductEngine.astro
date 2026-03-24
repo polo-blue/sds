@@ -21,7 +21,7 @@ const { engine, showComma = false, translations = {} } = Astro.props;
 const tooltipContent = getEngineTooltipContent(engine, translations);
 ---
 
-<span class="engine-code" class:list={[`engine-code-${engine.code}`]} data-tippy-content={tooltipContent}>
+<span class="engine-code" class:list={[`engine-code-${engine.code}`]} data-sds-tooltip={tooltipContent}>
   {engine.code}{showComma && ','}
 </span>
 

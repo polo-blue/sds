@@ -34,7 +34,7 @@ defineProps({
       prcode.variant_category ? `btn-prcode--variant-${prcode.variant_category.toLowerCase()}` : '',
       { 'btn-prcode--pdp': isPdp },
     ]"
-    :data-tippy-content="prcode.description || undefined"
+    :data-sds-tooltip="prcode.description || undefined"
   >
     {{ prcode.code }}
   </span>
