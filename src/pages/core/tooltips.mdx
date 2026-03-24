@@ -5,7 +5,7 @@ layout: "../../layouts/MainLayout.astro"
 
 # Tooltips
 
-A complete tooltip system built on [Tippy.js](https://atomiks.github.io/tippyjs/) with custom SDS styling and automatic initialization.
+A complete tooltip system built on [Floating UI](https://floating-ui.com/) with custom SDS styling and automatic initialization.
 
 ## Features
 
@@ -13,8 +13,9 @@ A complete tooltip system built on [Tippy.js](https://atomiks.github.io/tippyjs/
 - ⚡ **Performance Optimized** - Delegation pattern handles thousands of tooltips efficiently
 - 🔄 **Astro View Transitions** - Automatic re-initialization on navigation
 - 🎯 **Simple API** - Just add a data attribute
-- 📦 **Bundled** - No need to install tippy.js separately in your project
+- 📦 **Bundled** - No need to install Floating UI separately in your project
 - 🔍 **SEO Friendly** - Content rendered in HTML, enhanced progressively
+- 🪶 **Lightweight** - ~3 KB gzip (Floating UI) vs ~14 KB (tippy.js + popper)
 
 ## Installation
 
@@ -28,9 +29,8 @@ import 'spoko-design-system/scripts/tooltips';
 ```
 
 That's it! This single import includes:
-- ✅ Tippy.js library
-- ✅ Base Tippy.js CSS
-- ✅ SDS custom theme CSS
+- ✅ Floating UI positioning engine
+- ✅ SDS tooltip CSS
 - ✅ Auto-initialization logic
 - ✅ Astro View Transitions support
 
@@ -53,20 +53,20 @@ Add the script to your main layout's `<head>`:
 
 ### Basic Tooltip
 
-Add the `data-tippy-content` attribute to any element:
+Add the `data-sds-tooltip` attribute to any element:
 
 <div class="component-preview">
   <div class="bg-white p-6 w-full">
     <button
       class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-      data-tippy-content="This is a basic tooltip">
+      data-sds-tooltip="This is a basic tooltip">
       Hover over me
     </button>
   </div>
 </div>
 
 ```astro
-<button data-tippy-content="This is a basic tooltip">
+<button data-sds-tooltip="This is a basic tooltip">
   Hover over me
 </button>
 ```
@@ -79,14 +79,14 @@ Tooltips support HTML content:
   <div class="bg-white p-6 w-full">
     <span
       class="underline decoration-dotted cursor-help"
-      data-tippy-content="<strong>Bold text</strong> and <em>italic text</em>">
+      data-sds-tooltip="<strong>Bold text</strong> and <em>italic text</em>">
       HTML tooltip
     </span>
   </div>
 </div>
 
 ```astro
-<span data-tippy-content="<strong>Bold text</strong> and <em>italic text</em>">
+<span data-sds-tooltip="<strong>Bold text</strong> and <em>italic text</em>">
   HTML tooltip
 </span>
 ```
@@ -99,14 +99,14 @@ For complex tooltips with headers and multiple sections:
   <div class="bg-white p-6 w-full">
     <span
       class="underline decoration-dotted cursor-help text-blue-600"
-      data-tippy-content='<div class="tooltip-header"><strong>Product Details</strong></div><div class="tooltip-specs"><div class="tooltip-row"><span class="tooltip-label">SKU:</span><span class="tooltip-value">12345</span></div><div class="tooltip-row"><span class="tooltip-label">Weight:</span><span class="tooltip-value">2.5 kg</span></div></div>'>
+      data-sds-tooltip='<div class="tooltip-header"><strong>Product Details</strong></div><div class="tooltip-specs"><div class="tooltip-row"><span class="tooltip-label">SKU:</span><span class="tooltip-value">12345</span></div><div class="tooltip-row"><span class="tooltip-label">Weight:</span><span class="tooltip-value">2.5 kg</span></div></div>'>
       Product Info
     </span>
   </div>
 </div>
 
 ```astro
-<span data-tippy-content={`
+<span data-sds-tooltip={`
   <div class="tooltip-header">
     <strong>Product Details</strong>
   </div>
@@ -124,6 +124,18 @@ For complex tooltips with headers and multiple sections:
   Product Info
 </span>
 ```
+
+### Custom Placement
+
+Override the default `top` placement per element:
+
+```astro
+<span data-sds-tooltip="Appears below" data-sds-tooltip-placement="bottom">
+  Bottom tooltip
+</span>
+```
+
+Supported placements: `top`, `bottom`, `left`, `right`, `top-start`, `top-end`, `bottom-start`, `bottom-end`, `left-start`, `left-end`, `right-start`, `right-end`.
 
 ## Components with Built-in Tooltips
 
@@ -172,25 +184,25 @@ To customize the tooltip appearance, override these CSS classes:
 
 ```css
 /* Main tooltip box */
-.tippy-box[data-theme~='sds'] {
-  background-color: your-color !important;
-  color: your-text-color !important;
+.sds-tooltip {
+  background-color: your-color;
+  color: your-text-color;
 }
 
 /* Tooltip content area */
-.tippy-box[data-theme~='sds'] .tippy-content {
+.sds-tooltip-content {
   padding: 0.5rem 0.75rem;
 }
 
 /* Structured tooltip header */
-.tippy-box[data-theme~='sds'] .tooltip-header {
+.sds-tooltip .tooltip-header {
   background-color: your-header-color;
   color: white;
   padding: 0.375rem 0.5rem;
 }
 
 /* Tooltip specs rows */
-.tippy-box[data-theme~='sds'] .tooltip-row {
+.sds-tooltip .tooltip-row {
   display: flex;
   justify-content: space-between;
   padding: 0.25rem 0;
@@ -215,61 +227,38 @@ The tooltip system uses these default settings:
 
 ```ts
 {
-  target: '[data-tippy-content]',  // Target selector
-  allowHTML: true,                  // Allow HTML in content
-  theme: 'sds',                     // SDS custom theme
-  placement: 'top',                 // Default placement
-  arrow: true,                      // Show arrow
-  animation: 'shift-away',          // Animation style
-  duration: [200, 150],            // [show, hide] duration (ms)
-  maxWidth: 280,                    // Maximum width (px)
+  selector: '[data-sds-tooltip]',  // Target selector
+  placement: 'top',                // Default placement
+  offset: 8,                       // Gap between trigger and tooltip (px)
+  maxWidth: 280,                   // Maximum width (px)
+  showDelay: 80,                   // Delay before showing (ms)
+  hideDelay: 60,                   // Delay before hiding (ms)
 }
 ```
 
-To customize, you can create your own initialization:
-
-```ts
-// src/scripts/custom-tooltips.ts
-import { delegate } from 'tippy.js';
-import 'tippy.js/dist/tippy.css';
-import 'spoko-design-system/styles/tippy-theme.css';
-
-export function initCustomTooltips() {
-  delegate('body', {
-    target: '[data-tippy-content]',
-    allowHTML: true,
-    theme: 'sds',
-    placement: 'bottom',  // Changed from 'top'
-    maxWidth: 400,        // Wider tooltips
-    // ... other options
-  });
-}
-
-// Initialize
-if (typeof document !== 'undefined') {
-  document.addEventListener('astro:page-load', () => {
-    initCustomTooltips();
-  });
-}
-```
+Floating UI middleware used:
+- `offset(8)` — gap between trigger and tooltip
+- `flip()` — flips placement when insufficient space
+- `shift({ padding: 5 })` — shifts along axis to stay in viewport
+- `arrow()` — positions the arrow element
 
 ## Technical Details
 
 ### Delegation Pattern
 
-The tooltip system uses Tippy.js's delegation pattern:
+The tooltip system uses event delegation:
 
 - **Single event listener** on `body` handles all tooltips
 - **No re-initialization needed** when DOM changes
-- **Efficient memory usage** - scales to thousands of tooltips
+- **Efficient memory usage** - one shared tooltip element reused for all triggers
 - **Dynamic content support** - works with client-side rendering
 
 ### How It Works
 
-1. One global event listener watches for mouseenter/focus on `[data-tippy-content]` elements
-2. Tooltip instance created on-demand when user hovers
-3. Instance destroyed when tooltip hides
-4. No memory leaks from orphaned instances
+1. Global event listeners on `body` (capture phase) watch for `mouseenter`/`mouseleave`/`focusin`/`focusout`
+2. When user hovers over a `[data-sds-tooltip]` element, a single shared tooltip element is positioned using Floating UI's `computePosition`
+3. `autoUpdate` keeps the tooltip position in sync during scroll/resize
+4. On mouse leave, tooltip fades out and cleanup runs
 
 ### Astro View Transitions
 
@@ -279,6 +268,10 @@ The system automatically handles Astro's View Transitions:
 document.addEventListener('astro:page-load', () => {
   initTooltips();
 });
+
+document.addEventListener('astro:before-swap', () => {
+  // Cleanup tooltip element before page swap
+});
 ```
 
 This ensures tooltips work correctly after client-side navigation.
@@ -287,7 +280,7 @@ This ensures tooltips work correctly after client-side navigation.
 
 ### initTooltips()
 
-Initializes the global tooltip delegation.
+Initializes the global tooltip delegation. Safe to call multiple times — only attaches listeners once.
 
 **Import:**
 ```ts
@@ -300,6 +293,26 @@ initTooltips();
 ```
 
 **Note:** Usually not needed if you import `'spoko-design-system/scripts/tooltips'` which auto-initializes.
+
+### showTooltip(target)
+
+Programmatically show tooltip on a target element.
+
+```ts
+import { showTooltip } from 'spoko-design-system/scripts/tooltips';
+
+showTooltip(document.querySelector('[data-sds-tooltip]'));
+```
+
+### hideTooltip()
+
+Programmatically hide the current tooltip.
+
+```ts
+import { hideTooltip } from 'spoko-design-system/scripts/tooltips';
+
+hideTooltip();
+```
 
 ### getEngineTooltipContent()
 
@@ -328,14 +341,12 @@ See [ProductEngine documentation](/components/product-engine) for `Engine` inter
 
 ## Dependencies
 
-SDS includes `tippy.js` as a dependency. **Your project does not need to install it separately.**
+SDS includes `@floating-ui/dom` as a dependency. **Your project does not need to install it separately.**
 
 If you have `tippy.js` in your project's `package.json`, you can safely remove it:
 
 ```bash
 pnpm remove tippy.js
-# or
-npm uninstall tippy.js
 ```
 
 ## Troubleshooting
@@ -345,7 +356,7 @@ npm uninstall tippy.js
 **Check these items:**
 
 1. ✅ Script imported in layout: `<script src="/src/scripts/tooltips.ts"></script>`
-2. ✅ Elements have `data-tippy-content` attribute
+2. ✅ Elements have `data-sds-tooltip` attribute
 3. ✅ Content is not empty or "undefined"
 4. ✅ Hard refresh browser (Ctrl+Shift+R) to clear cache
 
@@ -367,17 +378,9 @@ If tooltips break after Astro View Transitions:
 
 ### Styling not applied
 
-1. Verify SDS theme CSS is imported (included in SDS tooltip script)
-2. Check CSS specificity - SDS uses `!important` for some properties
+1. Verify SDS tooltip CSS is imported (included in SDS tooltip script)
+2. Check CSS specificity
 3. Ensure your build process handles CSS imports from `node_modules`
-
-### Performance issues
-
-If you have thousands of tooltips and notice lag:
-
-1. The delegation pattern should handle this efficiently
-2. Check if you're calling `initTooltips()` multiple times
-3. Consider lazy-loading tooltip-heavy sections
 
 ## Browser Support
 
@@ -398,7 +401,7 @@ Tooltips work in all modern browsers:
 <dl>
   <dt>Weight</dt>
   <dd>
-    <span data-tippy-content="Includes packaging">
+    <span data-sds-tooltip="Includes packaging">
       2.5 kg
     </span>
   </dd>
@@ -412,7 +415,7 @@ Tooltips work in all modern browsers:
   Email
   <span
     class="inline-block ml-1 text-gray-400 cursor-help"
-    data-tippy-content="We'll never share your email">
+    data-sds-tooltip="We'll never share your email">
     ⓘ
   </span>
 </label>
@@ -424,7 +427,7 @@ Tooltips work in all modern browsers:
 <p>
   The part fits all
   <abbr
-    data-tippy-content="Volkswagen Aktiengesellschaft Group"
+    data-sds-tooltip="Volkswagen Aktiengesellschaft Group"
     class="cursor-help underline decoration-dotted">
     VAG
   </abbr>
@@ -434,7 +437,7 @@ Tooltips work in all modern browsers:
 
 ## Best Practices
 
-### ✅ Do
+### Do
 
 - Use semantic HTML with tooltips as enhancement
 - Keep tooltip content concise (< 50 words)
@@ -442,50 +445,25 @@ Tooltips work in all modern browsers:
 - Include proper ARIA labels when needed
 - Test on mobile devices
 
-### ❌ Don't
+### Don't
 
 - Put critical information only in tooltips
 - Use tooltips for large blocks of text
-- Nest interactive elements inside tooltips
-- Use tooltips on disabled elements
+- Nest interactive elements inside hover tooltips (use click trigger instead)
 - Initialize tooltips multiple times
 
-## Migration
+## Migration from tippy.js
 
-### From Direct Tippy.js
-
-If migrating from a direct Tippy.js implementation:
+If migrating from a tippy.js implementation:
 
 1. **Remove** `tippy.js` from your `package.json`
-2. **Remove** local tooltip initialization code
-3. **Add** SDS tooltip script import
-4. **Update** elements to use `data-tippy-content`
-5. **Update** custom styles to target `.tippy-box[data-theme~='sds']`
-
-### From Old SDS Setup
-
-If you had the old setup with manual initialization:
-
-**Old way (remove this):**
-```astro
-<script>
-  import { initTooltips } from 'spoko-design-system';
-  initTooltips();
-</script>
-```
-
-**New way (use this):**
-```astro
-<script src="/src/scripts/tooltips.ts"></script>
-```
-
-```ts
-// src/scripts/tooltips.ts
-import 'spoko-design-system/scripts/tooltips';
-```
+2. **Update** SDS to latest version
+3. **Replace** `data-tippy-content` with `data-sds-tooltip` on all elements
+4. **Update** custom styles from `.tippy-box[data-theme~='sds']` to `.sds-tooltip`
+5. **Remove** any tippy.js imports or initialization code
 
 ## Related Documentation
 
 - [ProductEngine Component](/components/product-engine) - Engine codes with tooltips
 - [ProductCodes Component](/components/pr-code) - PR codes with tooltips
-- [Tippy.js Documentation](https://atomiks.github.io/tippyjs/) - Underlying library
+- [Floating UI Documentation](https://floating-ui.com/) - Positioning engine
