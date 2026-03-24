@@ -1,3 +1,9 @@
+## [1.35.1](https://github.com/polo-blue/sds/compare/v1.35.0...v1.35.1) (2026-03-24)
+
+### Bug Fixes
+
+* tooltip listeners lost after Astro View Transitions ([#409](https://github.com/polo-blue/sds/issues/409)) ([4fe9dd4](https://github.com/polo-blue/sds/commit/4fe9dd4d80a15edad47c277c233fb153072a2619))
+
 ## [1.35.0](https://github.com/polo-blue/sds/compare/v1.34.26...v1.35.0) (2026-03-24)
 
 ### ⚠ BREAKING CHANGES
