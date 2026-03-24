@@ -1,3 +1,9 @@
+## [1.36.0](https://github.com/polo-blue/sds/compare/v1.35.1...v1.36.0) (2026-03-24)
+
+### Features
+
+* add interactive tooltip mode ([#410](https://github.com/polo-blue/sds/issues/410)) ([473a586](https://github.com/polo-blue/sds/commit/473a5869a765af1b347b2e909f4019bacf3255fd))
+
 ## [1.35.1](https://github.com/polo-blue/sds/compare/v1.35.0...v1.35.1) (2026-03-24)
 
 ### Bug Fixes
