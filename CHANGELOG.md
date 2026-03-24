@@ -1,3 +1,32 @@
+## [1.35.0](https://github.com/polo-blue/sds/compare/v1.34.26...v1.35.0) (2026-03-24)
+
+### ⚠ BREAKING CHANGES
+
+* data-tippy-content attribute renamed to data-sds-tooltip.
+Consumers must update their templates and remove tippy.js dependency.
+
+Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
+
+* fix: prevent listener duplication on View Transitions, remove dead file
+
+- Don't reset `initialized` in cleanup() — document.body persists
+  across Astro View Transitions, so existing event listeners continue
+  to work on swapped content without re-attachment
+- Delete unused tippy-theme.css (replaced by sds-tooltip.css)
+
+Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
+
+* fix: validate data-sds-tooltip-placement attribute value
+
+Validate placement attribute against known Floating UI placements
+instead of casting directly. Falls back to 'top' for invalid values.
+
+Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
+
+### Features
+
+* replace tippy.js with Floating UI for tooltip system ([#408](https://github.com/polo-blue/sds/issues/408)) ([8ef2226](https://github.com/polo-blue/sds/commit/8ef2226fa3409a7925f0ac3a5cc7d783c6d51585))
+
 ## [1.34.17](https://github.com/polo-blue/sds/compare/v1.34.16...v1.34.17) (2026-03-23)
 
 ### Bug Fixes
