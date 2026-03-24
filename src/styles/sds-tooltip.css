@@ -30,6 +30,15 @@
   opacity: 1;
 }
 
+/* Interactive mode — allow hovering over tooltip for clickable content */
+.sds-tooltip--interactive {
+  pointer-events: auto;
+}
+
+.sds-tooltip--interactive a {
+  pointer-events: auto;
+}
+
 /* Arrow */
 .sds-tooltip-arrow {
   position: absolute;
