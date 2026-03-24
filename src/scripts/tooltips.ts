@@ -36,6 +36,26 @@ const OPPOSITE_SIDE: Record<string, string> = {
   left: 'right',
 };
 
+const VALID_PLACEMENTS = new Set<Placement>([
+  'top',
+  'top-start',
+  'top-end',
+  'bottom',
+  'bottom-start',
+  'bottom-end',
+  'left',
+  'left-start',
+  'left-end',
+  'right',
+  'right-start',
+  'right-end',
+]);
+
+function getPlacement(target: HTMLElement): Placement {
+  const attr = target.getAttribute('data-sds-tooltip-placement');
+  return attr && VALID_PLACEMENTS.has(attr as Placement) ? (attr as Placement) : 'top';
+}
+
 function getOrCreateTooltip(): {
   tooltip: HTMLElement;
   arrow: HTMLElement;
@@ -60,7 +80,7 @@ function getOrCreateTooltip(): {
 }
 
 function updatePosition(target: HTMLElement, tooltip: HTMLElement, arrowElement: HTMLElement) {
-  const placement = (target.getAttribute('data-sds-tooltip-placement') || 'top') as Placement;
+  const placement = getPlacement(target);
 
   computePosition(target, tooltip, {
     placement,
