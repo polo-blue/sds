@@ -35,6 +35,7 @@ defineProps({
       { 'btn-prcode--pdp': isPdp },
     ]"
     :data-sds-tooltip="prcode.description || undefined"
+    data-sds-tooltip-offset="12"
   >
     {{ prcode.code }}
   </span>
