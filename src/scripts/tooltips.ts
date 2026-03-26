@@ -144,6 +144,17 @@ export function showTooltip(target: HTMLElement) {
   });
 }
 
+/**
+ * Update tooltip content for a target element.
+ * If the tooltip is currently visible for this target, updates the displayed content immediately.
+ */
+export function updateTooltipContent(target: HTMLElement, html: string) {
+  target.setAttribute('data-sds-tooltip', html);
+  if (currentTarget === target && contentEl) {
+    contentEl.innerHTML = html;
+  }
+}
+
 export function hideTooltip() {
   if (!tooltipEl || !currentTarget) return;
 
