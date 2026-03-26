@@ -1,14 +1,13 @@
 ---
 interface Props {
   productNumber: string;
-  tooltipClasses?: string;
   texts: {
     copy: string;
     copied: string;
   };
 }
 
-const { productNumber, tooltipClasses = '', texts } = Astro.props;
+const { productNumber, texts } = Astro.props;
 
 // SVG icon as data URL for mask
 const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
@@ -18,31 +17,30 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
 
 <button
   aria-label={texts.copy}
-  class="btn-copy has-tooltip"
+  class="btn-copy"
   data-copy-text={productNumber}
   data-category={Astro.url.pathname.split('/')[1] || ''}
+  data-sds-tooltip={texts.copy}
+  data-copy-original-tooltip={texts.copy}
+  data-copy-copied-tooltip={texts.copied}
 >
-  <span
-    class:list={['tooltip rounded-full btn-copy-text', tooltipClasses]}
-    data-text={texts.copy}
-    data-copied-text={texts.copied}></span>
   <span class="copy-icon" role="img" aria-hidden="true"></span>
 </button>
 
 <script>
+  import { updateTooltipContent } from '../scripts/tooltips';
+
   class ClipboardButton {
     private static readonly COPY_TIMEOUT = 2000;
     private static readonly ANALYTICS_EVENT = 'product_code_copy';
     private readonly originalText: string;
+    private readonly copiedText: string;
     private resetTimer: ReturnType<typeof setTimeout> | null = null;
 
     constructor(private button: HTMLButtonElement) {
-      this.originalText = this.tooltip?.dataset.text || 'Copy';
+      this.originalText = button.dataset.copyOriginalTooltip || 'Copy';
+      this.copiedText = button.dataset.copyCopiedTooltip || 'Copied';
       this.button.addEventListener('click', () => this.handleCopy());
-    }
-
-    private get tooltip(): HTMLSpanElement {
-      return this.button.querySelector('.tooltip') as HTMLSpanElement;
     }
 
     private get copyText(): string {
@@ -51,10 +49,6 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
 
     private get category(): string {
       return this.button.dataset.category || '';
-    }
-
-    private get copiedText(): string {
-      return this.tooltip.dataset.copiedText || 'Copied';
     }
 
     private async handleCopy(): Promise<void> {
@@ -89,9 +83,9 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
 
     private updateTooltip(): void {
       if (this.resetTimer) clearTimeout(this.resetTimer);
-      this.tooltip.dataset.text = this.copiedText;
+      updateTooltipContent(this.button, this.copiedText);
       this.resetTimer = setTimeout(() => {
-        this.tooltip.dataset.text = this.originalText;
+        updateTooltipContent(this.button, this.originalText);
         this.resetTimer = null;
       }, ClipboardButton.COPY_TIMEOUT);
     }
@@ -149,18 +143,6 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
     .btn-copy {
       right: -1.25rem;
     }
-  }
-
-  .tooltip {
-    @apply invisible absolute -top-8 left-1/2 -translate-x-1/2 bg-neutral px-2 py-1 text-xs text-white opacity-0 transition-opacity;
-  }
-
-  .tooltip::before {
-    content: attr(data-text);
-  }
-
-  .has-tooltip:hover .tooltip {
-    @apply visible opacity-100;
   }
 
   .copy-icon {
