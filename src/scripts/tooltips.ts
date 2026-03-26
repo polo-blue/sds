@@ -8,6 +8,7 @@
  * Supported attributes:
  * - data-sds-tooltip             — HTML content to display
  * - data-sds-tooltip-placement   — placement override (default: 'top')
+ * - data-sds-tooltip-offset      — distance in px between trigger and tooltip (default: 8)
  * - data-sds-tooltip-interactive — allow hovering over tooltip (for clickable links)
  */
 
@@ -59,6 +60,13 @@ function getPlacement(target: HTMLElement): Placement {
   return attr && VALID_PLACEMENTS.has(attr as Placement) ? (attr as Placement) : 'top';
 }
 
+function getOffset(target: HTMLElement): number {
+  const attr = target.getAttribute('data-sds-tooltip-offset');
+  if (!attr) return OFFSET;
+  const val = parseInt(attr, 10);
+  return Number.isFinite(val) ? val : OFFSET;
+}
+
 function getOrCreateTooltip(): {
   tooltip: HTMLElement;
   arrow: HTMLElement;
@@ -84,10 +92,16 @@ function getOrCreateTooltip(): {
 
 function updatePosition(target: HTMLElement, tooltip: HTMLElement, arrowElement: HTMLElement) {
   const placement = getPlacement(target);
+  const offsetPx = getOffset(target);
 
   computePosition(target, tooltip, {
     placement,
-    middleware: [offset(OFFSET), flip(), shift({ padding: SHIFT_PADDING }), arrow({ element: arrowElement })],
+    middleware: [
+      offset(offsetPx),
+      flip(),
+      shift({ padding: SHIFT_PADDING }),
+      arrow({ element: arrowElement }),
+    ],
   }).then(({ x, y, placement: finalPlacement, middlewareData }) => {
     Object.assign(tooltip.style, {
       left: `${x}px`,
