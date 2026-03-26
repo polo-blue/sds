@@ -1,3 +1,9 @@
+## [1.37.0](https://github.com/polo-blue/sds/compare/v1.36.1...v1.37.0) (2026-03-26)
+
+### Features
+
+* add updateTooltipContent export and migrate ButtonCopy to SDS tooltip ([#414](https://github.com/polo-blue/sds/issues/414)) ([d6d7f28](https://github.com/polo-blue/sds/commit/d6d7f289c4d8a1ce28b7b00df9dad8d45612f20a))
+
 ## [1.36.1](https://github.com/polo-blue/sds/compare/v1.36.0...v1.36.1) (2026-03-24)
 
 ## [1.36.0](https://github.com/polo-blue/sds/compare/v1.35.1...v1.36.0) (2026-03-24)
