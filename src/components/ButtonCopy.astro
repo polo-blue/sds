@@ -84,8 +84,10 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
     private updateTooltip(): void {
       if (this.resetTimer) clearTimeout(this.resetTimer);
       updateTooltipContent(this.button, this.copiedText);
+      this.button.setAttribute('aria-label', this.copiedText);
       this.resetTimer = setTimeout(() => {
         updateTooltipContent(this.button, this.originalText);
+        this.button.setAttribute('aria-label', this.originalText);
         this.resetTimer = null;
       }, ClipboardButton.COPY_TIMEOUT);
     }
