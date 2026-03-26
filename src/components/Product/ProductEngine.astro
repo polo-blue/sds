@@ -30,12 +30,12 @@ const tooltipContent = getEngineTooltipContent(engine, translations);
   .engine-code {
     @apply inline-block mr-1;
     @apply underline decoration-dotted underline-offset-4 py-0.5;
-    @apply decoration-neutral-light cursor-default;
+    @apply decoration-neutral-light cursor-pointer;
     @apply transition-colors duration-200;
   }
 
   .engine-code:hover {
-    @apply decoration-blue-darker dark:decoration-blue-light;
+    @apply text-black decoration-blue-darker;
   }
 
   /* Semantic Engine Code Colors */
