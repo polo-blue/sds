@@ -95,7 +95,7 @@ importers:
         version: 1.2.5
       '@iconify-json/octicon':
         specifier: ^1.2.21
-        version: 1.2.21
+        version: 1.2.22
       '@iconify-json/ph':
         specifier: ^1.2.2
         version: 1.2.2
@@ -1403,8 +1403,8 @@ packages:
   '@iconify-json/noto-v1@1.2.5':
     resolution: {integrity: sha512-/DsVMius69Q0fRS53z7QK1TROSuar606jiIx+laXtdsYGMXpf6LtHBx6CGfoo3UHHb/XpBsw+1L1x3eyPqMuVA==}
 
-  '@iconify-json/octicon@1.2.21':
-    resolution: {integrity: sha512-iMW8IT7suHRKVcHnci9wHKY79LU9mQ4rCAcVgKQQsI5SHoBi0r6z0leOXrI/oRCGJDiJDy9cLqweF3C5wSnm0A==}
+  '@iconify-json/octicon@1.2.22':
+    resolution: {integrity: sha512-6m0IXGRR3ooNDXoQetk4JR8rijoXQGqSKPFsOYBFx7xMJeLgIo1dTRCY8P/4FJbIHUvWj/DfRzkFrPLAW8gHCQ==}
 
   '@iconify-json/ph@1.2.2':
     resolution: {integrity: sha512-PgkEZNtqa8hBGjHXQa4pMwZa93hmfu8FUSjs/nv4oUU6yLsgv+gh9nu28Kqi8Fz9CCVu4hj1MZs9/60J57IzFw==}
@@ -7929,7 +7929,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/octicon@1.2.21':
+  '@iconify-json/octicon@1.2.22':
     dependencies:
       '@iconify/types': 2.0.0
 
