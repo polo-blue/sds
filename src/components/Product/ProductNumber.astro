@@ -1,10 +1,17 @@
 ---
 import useFormatProductNumber from '../../utils/product/useFormatProductNumber';
 
-const { productNumber, isPdp = false, small = false, big = false, class: customClass = '' } = Astro.props;
+const {
+  productNumber,
+  numberFormatted,
+  isPdp = false,
+  small = false,
+  big = false,
+  class: customClass = '',
+} = Astro.props;
 
-// Use formatted product number using a helper function
-const { formattedNumbers: formatted } = useFormatProductNumber(productNumber);
+// Use API-provided number_formatted if available, otherwise compute client-side
+const formatted = numberFormatted ?? useFormatProductNumber(productNumber).formattedNumbers;
 
 // Define classes dynamically
 const classNames = ['product-number', big ? 'text-4.5' : 'number-big', customClass].filter(Boolean).join(' ');
