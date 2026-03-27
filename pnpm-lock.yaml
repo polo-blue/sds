@@ -228,7 +228,7 @@ importers:
         version: 5.18.1(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@2.80.0)(terser@5.46.1)(typescript@5.9.2)(yaml@2.8.2)
       conventional-changelog-conventionalcommits:
         specifier: ^9.1.0
-        version: 9.1.0
+        version: 9.3.0
       eslint:
         specifier: ^10.0.1
         version: 10.1.0(jiti@2.6.1)
@@ -3112,10 +3112,6 @@ packages:
 
   conventional-changelog-angular@8.3.0:
     resolution: {integrity: sha512-DOuBwYSqWzfwuRByY9O4oOIvDlkUCTDzfbOgcSbkY+imXXj+4tmrEFao3K+FxemClYfYnZzsvudbwrhje9VHDA==}
-    engines: {node: '>=18'}
-
-  conventional-changelog-conventionalcommits@9.1.0:
-    resolution: {integrity: sha512-MnbEysR8wWa8dAEvbj5xcBgJKQlX/m0lhS8DsyAAWDHdfs2faDJxTgzRYlRYpXSe7UiKrIIlB4TrBKU9q9DgkA==}
     engines: {node: '>=18'}
 
   conventional-changelog-conventionalcommits@9.3.0:
@@ -9832,10 +9828,6 @@ snapshots:
       compare-func: 2.0.0
 
   conventional-changelog-angular@8.3.0:
-    dependencies:
-      compare-func: 2.0.0
-
-  conventional-changelog-conventionalcommits@9.1.0:
     dependencies:
       compare-func: 2.0.0
 
