@@ -207,10 +207,13 @@ function handleMouseEnter(e: Event) {
   }
 
   if (showTimer) clearTimeout(showTimer);
+
+  // If tooltip is already visible (switching between targets), show immediately
+  const delay = currentTarget ? 0 : SHOW_DELAY;
   showTimer = setTimeout(() => {
     showTooltip(target);
     showTimer = null;
-  }, SHOW_DELAY);
+  }, delay);
 }
 
 function handleMouseLeave(e: Event) {
