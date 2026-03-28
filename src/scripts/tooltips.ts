@@ -198,13 +198,15 @@ function handleMouseEnter(e: Event) {
     return;
   }
 
-  const target = el.closest?.(SELECTOR);
-  if (!(target instanceof HTMLElement)) return;
+  const target = el.closest?.(SELECTOR) || (el.matches?.(SELECTOR) ? el : null);
 
-  if (hideTimer) {
+  // Cancel pending hide if we're entering a tooltip target or any of its ancestors/descendants
+  if (hideTimer && (target || el.querySelector?.(SELECTOR))) {
     clearTimeout(hideTimer);
     hideTimer = null;
   }
+
+  if (!(target instanceof HTMLElement)) return;
 
   if (showTimer) clearTimeout(showTimer);
 
