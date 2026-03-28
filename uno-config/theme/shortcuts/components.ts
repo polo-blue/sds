@@ -10,7 +10,7 @@ import {
 
 export const componentShortcuts = [
   // Product related
-  ['product-row', `${COLORS.bgWhite} ${LAYOUT.flex.wrap} odd:(pr-2.5 pl-3.5) even:(pl-2.5 pr-3.5) w-1/2 sm:(w-auto grid grid-cols-3 px-2) gap-x-1 gap-y-0 md:(${LAYOUT.grid.product} gap-x-4) justify-start content-start content-start place-content-start py-4 pb-6 sm:pb-4 border-b border-x border-neutral-lightest first:border-t hover:(outline outline-1 outline-neutral-light -outline-offset-1) ${TRANSITIONS.base}`],
+  ['product-row', `${COLORS.bgWhite} ${LAYOUT.flex.wrap} odd:(pr-2.5 pl-3.5) even:(pl-2.5 pr-3.5) w-1/2 sm:(w-auto grid grid-cols-3 px-2) gap-x-1 gap-y-0 md:(${LAYOUT.grid.product} gap-x-4) justify-start content-start content-start place-content-start py-4 pb-6 sm:pb-4 border-b border-neutral-lightest hover:(outline outline-1 outline-neutral-light -outline-offset-1) ${TRANSITIONS.base}`],
 
   ['product-row__photo', `${aspectRatios['4/3']} mb-2 sm:mb-0 ${IMAGE_STYLES.overlay} w-100 col-span-1 row-span-3 max-w-full text-left overflow-hidden ${LAYOUT.position.relative} ${COLORS.bgNeutralLightest} md:(col-span-1 row-span-1) box-content`],
   ['product-row__description', `${PRODUCT_STYLES.description.base} mt-2 ${PRODUCT_STYLES.description.md}`],
