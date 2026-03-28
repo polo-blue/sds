@@ -14,7 +14,7 @@ export const componentShortcuts = [
 
   ['product-row__photo', `${aspectRatios['4/3']} mb-2 sm:mb-0 ${IMAGE_STYLES.overlay} w-100 col-span-1 row-span-3 max-w-full text-left overflow-hidden ${LAYOUT.position.relative} ${COLORS.bgNeutralLightest} md:(col-span-1 row-span-1) box-content`],
   ['product-row__description', `${PRODUCT_STYLES.description.base} mt-2 ${PRODUCT_STYLES.description.md}`],
-  ['product-row__main', 'w-full sm:w-auto col-span-2 leading-none relative sm:pl-1 md:(pl-0 row-start-1 col-start-2 col-span-1)'],
+  ['product-row__main', 'w-full sm:w-auto col-span-2 leading-none sm:pl-1 md:(pl-0 row-start-1 col-start-2 col-span-1)'],
 
   // Product elements
   ['product-number',`font-novamono content-center flex flex-wrap flex-col content-start pr-5 ${COLORS.bgWhite}`],
