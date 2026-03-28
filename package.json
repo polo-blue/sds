@@ -1,6 +1,6 @@
 {
   "name": "spoko-design-system",
-  "version": "1.38.7",
+  "version": "1.38.8",
   "type": "module",
   "private": false,
   "main": "./index.ts",
