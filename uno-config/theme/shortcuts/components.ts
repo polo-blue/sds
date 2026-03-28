@@ -57,7 +57,7 @@ export const componentShortcuts = [
 
   // PLP (Product List Page)
   ['plp-name', `${LAYOUT.flex.alignCenter} leading-none font-headregular cursor-pointer sm:pr-6 md:pr-12`],
-  ['plp-desc', `hidden sm:block col-span-3 md:col-span-1 md:col-start-3 ${LAYOUT.position.relative} px-2 sm:px-0`],
+  ['plp-desc', `hidden sm:block col-span-3 md:col-span-1 md:col-start-3 px-2 sm:px-0`],
   ['plp-materials', 'text-xs md:text-sm text-slate-darkest dark:text-neutral-light leading-tight font-textlight md:font-textregular whitespace-normal md:whitespace-pre-wrap'],
   ['plp-b-desc', `pb-4 ${COLORS.bgWhite} text-base ${LAYOUT.flex.wrap} mt-6`],
   ['plp-icons', `${LAYOUT.position.absolute} top-0 -right-2 md:(top-0.5 right-0) w-12 bottom-auto ${LAYOUT.flex.justifyEnd} text-sm`],
