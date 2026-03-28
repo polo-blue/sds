@@ -29,11 +29,11 @@ export const layoutShortcuts = [
 
   // View Toggles
   ['view-grid', 'lg:flex-wrap'],
-  ['view-list', 'md:block lg:flex-col divide-y-1 divide-solid divide-neutral-lighter 4xl:(grid grid-cols-2 gap-14)'],
+  ['view-list', 'md:block lg:flex-col 4xl:(grid grid-cols-2 gap-14)'],
 
   // Containers
   ['products-container', 'products-wrapper'],
-  ['products-wrapper', `${LAYOUT.flex.wrap} ${COLORS.bgWhite} mb-4 w-full mb-auto md:(pl-4 px-2 -mt-3)`],
+  ['products-wrapper', `${LAYOUT.flex.wrap} ${COLORS.bgWhite} mb-4 w-full mb-auto`],
   ['product-list', 'sm:block products-wrapper'],
   ['products-grid', `${LAYOUT.flex.alignCenter} w-full flex-nowrap pr-4 md:grid grid-rows-1 overflow-hidden ${LAYOUT.grid.cols2} lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 max-h-[6rem]`],
   ['similar-products', `${LAYOUT.flex.center} space-y-4 gap-8 flex-wrap px-4 md:grid ${LAYOUT.grid.cols2} lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5`],

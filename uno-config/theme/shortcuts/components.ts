@@ -10,11 +10,11 @@ import {
 
 export const componentShortcuts = [
   // Product related
-  ['product-row', `${COLORS.bgWhite} ${LAYOUT.flex.wrap} odd:(pr-2.5 pl-3.5 sm:px-0) even:(pl-2.5 pr-3.5 sm:px-0) w-1/2 sm:(w-auto grid grid-cols-3) gap-x-1 gap-y-0 md:(${LAYOUT.grid.product} gap-x-4) justify-start content-start content-start place-content-start py-4 pb-6 sm:pb-4`],
+  ['product-row', `${COLORS.bgWhite} ${LAYOUT.flex.wrap} odd:(pr-2.5 pl-3.5 sm:px-0) even:(pl-2.5 pr-3.5 sm:px-0) w-1/2 sm:(w-full grid grid-cols-3) gap-x-1 gap-y-0 md:(${LAYOUT.grid.product} gap-x-4) justify-start content-start content-start place-content-start py-4 pb-6 sm:pb-4 border-0 border-b-1 border-b-neutral-lightest border-r-1 border-r-transparent hover:(border-r-neutral-light border-b-neutral-light) transition-border-color duration-100`],
 
   ['product-row__photo', `${aspectRatios['4/3']} mb-2 sm:mb-0 ${IMAGE_STYLES.overlay} w-100 col-span-1 row-span-3 max-w-full text-left overflow-hidden ${LAYOUT.position.relative} ${COLORS.bgNeutralLightest} md:(col-span-1 row-span-1) box-content`],
   ['product-row__description', `${PRODUCT_STYLES.description.base} mt-2 ${PRODUCT_STYLES.description.md}`],
-  ['product-row__main', 'w-full sm:w-auto col-span-2 leading-none relative sm:pl-1 md:(pl-0 row-start-1 col-start-2 col-span-1)'],
+  ['product-row__main', 'w-full sm:w-auto col-span-2 leading-none sm:pl-1 md:(pl-0 row-start-1 col-start-2 col-span-1)'],
 
   // Product elements
   ['product-number',`font-novamono content-center flex flex-wrap flex-col content-start pr-5 ${COLORS.bgWhite}`],
@@ -57,7 +57,7 @@ export const componentShortcuts = [
 
   // PLP (Product List Page)
   ['plp-name', `${LAYOUT.flex.alignCenter} leading-none font-headregular cursor-pointer sm:pr-6 md:pr-12`],
-  ['plp-desc', `hidden sm:block col-span-3 md:col-span-1 md:col-start-3 ${LAYOUT.position.relative} px-2 sm:px-0`],
+  ['plp-desc', `hidden sm:block col-span-3 md:col-span-1 md:col-start-3 px-2 sm:px-0`],
   ['plp-materials', 'text-xs md:text-sm text-slate-darkest dark:text-neutral-light leading-tight font-textlight md:font-textregular whitespace-normal md:whitespace-pre-wrap'],
   ['plp-b-desc', `pb-4 ${COLORS.bgWhite} text-base ${LAYOUT.flex.wrap} mt-6`],
   ['plp-icons', `${LAYOUT.position.absolute} top-0 -right-2 md:(top-0.5 right-0) w-12 bottom-auto ${LAYOUT.flex.justifyEnd} text-sm`],
