@@ -20,8 +20,8 @@ const OFFSET = 8;
 const ARROW_SIZE = 13;
 const SHIFT_PADDING = 5;
 const SHOW_DELAY = 80;
-const HIDE_DELAY = 60;
-const INTERACTIVE_HIDE_DELAY = 150;
+const HIDE_DELAY = 150;
+const INTERACTIVE_HIDE_DELAY = 250;
 
 let tooltipEl: HTMLElement | null = null;
 let arrowEl: HTMLElement | null = null;
