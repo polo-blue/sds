@@ -1,3 +1,24 @@
+## [1.38.1](https://github.com/polo-blue/sds/compare/v1.38.0...v1.38.1) (2026-04-13)
+
+### Bug Fixes
+
+* add outline style to hover state for product-row ([c2ea57f](https://github.com/polo-blue/sds/commit/c2ea57f3541df652da14be9244aad7160500bb12))
+* cancel hide timer when entering parent/child of tooltip target ([bc90dab](https://github.com/polo-blue/sds/commit/bc90dab7467ea0d2beeada5cf629953bc7acf328))
+* darken border-bottom on hover to match border-right ([f475622](https://github.com/polo-blue/sds/commit/f475622db8b35b298e142b51a66054782c3bd27f))
+* explicit border-0 reset, sm:w-full for consistent width ([336ed2b](https://github.com/polo-blue/sds/commit/336ed2b84a99d809688714ba8eb0704c5de20a92))
+* hover outline only, keep border-bottom unchanged ([e07fa4a](https://github.com/polo-blue/sds/commit/e07fa4a4c3a7e3c3b65bf2fb2e56ca5d4d8bf3f4))
+* increase hide delays (150/250ms) to prevent flicker between adjacent targets ([d8fbdce](https://github.com/polo-blue/sds/commit/d8fbdce4bd95c1d4a59318d26f9f3f8b28a45ed9))
+* instant tooltip switch between adjacent targets ([#432](https://github.com/polo-blue/sds/issues/432)) ([b9bb6f5](https://github.com/polo-blue/sds/commit/b9bb6f5c240b44dafbac3d49e8a5377cb05eaf1c))
+* match border-bottom color with outline on hover ([0d13fca](https://github.com/polo-blue/sds/commit/0d13fca9e3253cd37f5a30338d95b270c6535eea))
+* pre-allocate outline transparent, transition only color ([b9a9e11](https://github.com/polo-blue/sds/commit/b9a9e11876123e356384dfe732f49d8a3294553b))
+* reduce hover border-right to 1px ([bf6bd81](https://github.com/polo-blue/sds/commit/bf6bd817bf60ccf244921a1a094a84c2f7fba4f2))
+* remove px-2 and -mt-3 from products-wrapper, cards handle own padding ([536b465](https://github.com/polo-blue/sds/commit/536b4655cb192d5d8fa7d804574f457b6d1c6a5b))
+* remove px-2 from product-row, image flush to edge ([9acc74a](https://github.com/polo-blue/sds/commit/9acc74ad43ba6228fce7162b6032f71d176a18c3))
+* remove relative from plp-desc, fix manufacturer grid row ([f11df17](https://github.com/polo-blue/sds/commit/f11df17e92f3b532d8328633c031fc6cb084a5c3))
+* remove sm:px-0 from odd/even that overrode card padding ([b8902e0](https://github.com/polo-blue/sds/commit/b8902e03b83e305166df117f4e4347dfb90f7989))
+* restore sm:px-0 in odd/even to reset mobile padding on desktop ([7fd12f1](https://github.com/polo-blue/sds/commit/7fd12f1586b72d149a2d8b1974d5ba5fb7c4c8b7))
+* single border between cards, outline on hover ([7d0e281](https://github.com/polo-blue/sds/commit/7d0e281a207e6e66c3a73a230f8093f486597e90))
+
 ## [1.37.5](https://github.com/polo-blue/sds/compare/v1.37.4...v1.37.5) (2026-03-26)
 
 ## [1.37.4](https://github.com/polo-blue/sds/compare/v1.37.3...v1.37.4) (2026-03-26)
