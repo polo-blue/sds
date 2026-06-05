@@ -219,7 +219,8 @@ function handleMouseEnter(e: Event) {
 }
 
 function handleMouseLeave(e: Event) {
-  const el = e.target as HTMLElement;
+  const me = e as MouseEvent;
+  const el = me.target as HTMLElement;
 
   // Leaving the tooltip itself — schedule hide
   if (isInteractive && tooltipEl && (el === tooltipEl || tooltipEl.contains(el))) {
@@ -232,6 +233,10 @@ function handleMouseLeave(e: Event) {
 
   const target = el.closest?.(SELECTOR);
   if (!(target instanceof HTMLElement)) return;
+
+  // If cursor is moving to a child/parent within the same tooltip target, ignore
+  const related = me.relatedTarget as HTMLElement | null;
+  if (related && target.contains(related)) return;
 
   if (showTimer) {
     clearTimeout(showTimer);
