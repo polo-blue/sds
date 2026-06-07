@@ -19,6 +19,7 @@ export const SIDEBAR = [
   { text: 'Core', header: true },
   { text: 'Introduction', link: '/core/introduction/' },
   { text: 'Colors', link: '/core/colors/' },
+  { text: 'Palette Configurator', link: '/core/palette-configurator/' },
   { text: 'Typography', link: '/core/typography/' },
   { text: 'Shadows', link: '/core/shadows/' },
   { text: 'Grid', link: '/core/grid/' },
