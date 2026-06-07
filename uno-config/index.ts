@@ -309,3 +309,4 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
 export * from './theme';
 export * from './theme/shortcuts';
 export { generatePalette, defaultPalette, type PaletteInput } from './palette-generator';
+export { generateTokensCSS } from './token-exporter';

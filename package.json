@@ -11,6 +11,7 @@
       "import": "./index.ts",
       "require": "./index.ts"
     },
+    "./styles/tokens.css": "./src/styles/tokens.css",
     "./styles/*": "./src/styles/*",
     "./scripts/*": "./src/scripts/*",
     "./icons": "./icon.config.ts",
@@ -22,7 +23,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "pnpm build:tokens && astro build",
+    "build:tokens": "node --experimental-strip-types scripts/build-tokens.ts",
     "preview": "astro preview",
     "semantic-release": "semantic-release",
     "prepublishOnly": "pnpm run build",
