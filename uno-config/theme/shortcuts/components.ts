@@ -1,12 +1,14 @@
 // shortcuts/components.ts
-import { 
-  COLORS, 
-  IMAGE_STYLES, 
-  LAYOUT, 
+import {
+  COLORS,
+  IMAGE_STYLES,
+  LAYOUT,
   TRANSITIONS,
   PRODUCT_STYLES,
   aspectRatios
 } from './constants'
+
+const BADGE_STYLE = 'inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium max-w-fit whitespace-nowrap';
 
 export const componentShortcuts = [
   // Product related
@@ -72,6 +74,13 @@ export const componentShortcuts = [
 
   // Badges
   ['badge', 'px-1.5 py-px text-white text-xs mb-1 max-w-fit whitespace-nowrap'],
+  ['badge-primary', `${BADGE_STYLE} bg-brand-primary text-white`],
+  ['badge-secondary', `${BADGE_STYLE} bg-brand-secondary text-blue-darker`],
+  ['badge-success', `${BADGE_STYLE} bg-system-success/15 text-system-success`],
+  ['badge-error', `${BADGE_STYLE} bg-system-error/15 text-system-error`],
+  ['badge-warning', `${BADGE_STYLE} bg-system-warning/15 text-slate-dark`],
+  ['badge-info', `${BADGE_STYLE} bg-system-info/15 text-system-info`],
+  ['badge-neutral', `${BADGE_STYLE} bg-neutral-lighter text-neutral-darker`],
 
   // Details
   ['detail-name', 'text-gray-900 leading-tight font-textlight line-clamp-3 whitespace-normal md:(whitespace-pre-wrap line-clamp-9 font-textregular)'],
@@ -121,6 +130,13 @@ export const componentShortcuts = [
   ['details-table-cell', 'relative'],
   ['details-table-col', 'w-1/2 md:w-auto'],
   ['link-primary', 'leading-none text-brand-primary hover:text-accent-light hover:underline'],
+
+  // Generic table
+  ['table-base', 'w-full border-collapse text-sm'],
+  ['table-header', 'bg-neutral-lightest text-left font-medium text-slate-default px-4 py-3'],
+  ['table-row', 'border-b border-neutral-lighter hover:bg-neutral-lightest/50 transition-colors duration-100'],
+  ['table-cell', 'px-4 py-3 text-slate-default'],
+  ['table-striped', 'odd:bg-white even:bg-neutral-lightest/40'],
 
 
 ];

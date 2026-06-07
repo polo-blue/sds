@@ -3,9 +3,10 @@ import type { UserShortcuts } from 'unocss'
 import { buttonShortcuts } from './buttons';
 import { layoutShortcuts } from './layout';
 import { componentShortcuts } from './components';
+import { cardShortcuts } from './cards';
 import { productShortcuts } from './product';
 import { jumbotronShortcuts } from './jumbotron';
-import { inputShortcuts } from './inputs'; 
+import { inputShortcuts } from './inputs';
 
 const convertToShortcuts = (shortcuts: string[][]): UserShortcuts => {
   return Object.fromEntries(shortcuts.map(([name, value]) => [name, value]));
@@ -15,6 +16,7 @@ export const shortcuts: UserShortcuts = {
   ...convertToShortcuts(buttonShortcuts),
   ...convertToShortcuts(layoutShortcuts),
   ...convertToShortcuts(componentShortcuts),
+  ...convertToShortcuts(cardShortcuts),
   ...convertToShortcuts(productShortcuts),
   ...convertToShortcuts(jumbotronShortcuts),
   ...convertToShortcuts(inputShortcuts),
