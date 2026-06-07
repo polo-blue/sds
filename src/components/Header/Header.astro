@@ -1,21 +1,32 @@
 ---
 import { SITE } from '../../config';
 import SkipToContent from './SkipToContent.astro';
-import { MenuIcon } from 'astro-navbar';
 import Search from 'astro-pagefind/components/Search';
 ---
 
 <header class="p-3 bg-blue-medium bg-opacity-10 backdrop-blur-md border-b text-slate-900">
   <SkipToContent />
   <nav title="Top Navigation" class="mx-auto flex justify-between items-center px-4">
-    <div class="flex flex-nowrap">
-      <MenuIcon class="w-4 h-4 text-gray-800 lg:hidden mr-4" />
-      <a
-        class="text-2xl font-medium block font-textbold leading-none block my-auto text-blue-medium"
-        href="/"
+    <div class="flex items-center gap-2">
+      <button
+        type="button"
+        id="nav-drawer-trigger"
+        class="lg:hidden p-2 -ml-2 rounded-lg hover:bg-slate-100 transition-colors text-slate-700"
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="nav-drawer"
       >
-        SDS</a
-      >
+        <span class="sds-hamburger" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+      <a class="text-2xl font-medium block font-textbold leading-none my-auto text-blue-medium" href="/">
+        SDS
+      </a>
+
       <Search
         transition:persist
         transition:name="search-field"
@@ -28,6 +39,7 @@ import Search from 'astro-pagefind/components/Search';
         }}
       />
     </div>
+
     <div class="flex gap-2">
       {
         SITE.github && (
@@ -205,5 +217,36 @@ import Search from 'astro-pagefind/components/Search';
 
   .pagefind-ui .pagefind-ui__message {
     padding: 0.875rem 0;
+  }
+
+  /* Hamburger icon */
+  .sds-hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 20px;
+    pointer-events: none;
+  }
+
+  .sds-hamburger > span {
+    display: block;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transition:
+      transform 0.25s ease,
+      opacity 0.2s ease;
+  }
+
+  body.drawer-open .sds-hamburger > span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  body.drawer-open .sds-hamburger > span:nth-child(2) {
+    opacity: 0;
+  }
+
+  body.drawer-open .sds-hamburger > span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
   }
 </style>
