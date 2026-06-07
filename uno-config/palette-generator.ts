@@ -1,5 +1,5 @@
 import { parse, converter } from 'culori';
-import type { Colors } from './theme/colors';
+import type { Colors } from './theme/colors.ts';
 
 const toOklch = converter('oklch');
 const MAX_CHROMA = 0.37;

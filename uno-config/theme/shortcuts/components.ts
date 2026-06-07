@@ -6,7 +6,7 @@ import {
   TRANSITIONS,
   PRODUCT_STYLES,
   aspectRatios
-} from './constants'
+} from './constants.ts'
 
 const BADGE_STYLE = 'inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium max-w-fit whitespace-nowrap';
 

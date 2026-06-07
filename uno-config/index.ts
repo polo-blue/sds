@@ -16,9 +16,10 @@ import presetUno from '@unocss/preset-uno';             // Primary UnoCSS preset
 import presetTypography from '@unocss/preset-typography'; // Typography preset
 import presetWebFonts from '@unocss/preset-web-fonts';    // Web fonts preset
 
-import { shortcuts } from './theme/shortcuts';
-import { theme } from './theme';
-import { generatePalette, defaultPalette, type PaletteInput } from './palette-generator';
+import { shortcuts } from './theme/shortcuts/index.ts';
+import { theme } from './theme/index.ts';
+import { generatePalette, defaultPalette, type PaletteInput } from './palette-generator.ts';
+import { peerSelectorClasses, peerVariant } from './peer-variants.ts';
 
 // Static imports for all icon collections (prevents Vite module runner issues)
 import antDesignIcons from '@iconify-json/ant-design/icons.json';
@@ -48,25 +49,6 @@ import uilIcons from '@iconify-json/uil/icons.json';
 import vscodeIcons from '@iconify-json/vscode-icons/icons.json';
 import streamlineFreehandColorIcons from '@iconify-json/streamline-freehand-color/icons.json';
 
-// List of peer selectors we want to preserve during build
-const peerSelectorClasses = [
-  // Focus state classes
-  'peer-focus:text-blue-light',
-  'peer-focus:dark:text-blue-lightest',
-  'peer-focus:scale-75',
-  'peer-focus:-translate-y-6',
-  'peer-focus:-translate-y-4',
-  'peer-focus:start-0',
-  
-  // Placeholder shown classes
-  'peer-placeholder-shown:scale-100',
-  'peer-placeholder-shown:translate-y-0',
-  
-  // Not placeholder shown classes
-  'peer-not-placeholder-shown:scale-75',
-  'peer-not-placeholder-shown:-translate-y-6',
-  'peer-not-placeholder-shown:-translate-y-4',
-];
 
 interface CustomConfig extends Partial<UserConfig> {
   shortcuts?: UserShortcuts;
@@ -111,38 +93,7 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
       ...(restConfig.shortcuts || {})
     },
     theme: resolvedTheme,
-    // Enhanced variants to better handle peer selectors
-    variants: [
-      // Add specific peer variant support
-      (matcher) => {
-        if (!matcher.startsWith('peer-'))
-          return matcher;
-        
-        const peerVariant = matcher.slice(5);
-        const selectorMap = {
-          'focus:': (s) => `.peer:focus ~ ${s}`,
-          'hover:': (s) => `.peer:hover ~ ${s}`,
-          'placeholder-shown:': (s) => `.peer:placeholder-shown ~ ${s}`,
-          'not-placeholder-shown:': (s) => `.peer:not(:placeholder-shown) ~ ${s}`,
-        };
-        
-        // Check for nested variants like 'peer-focus:text-blue'
-        for (const [key, selectorFn] of Object.entries(selectorMap)) {
-          if (peerVariant.startsWith(key)) {
-            return {
-              matcher: peerVariant.slice(key.length),
-              selector: selectorFn,
-            };
-          }
-        }
-        
-        // Default peer handling
-        return {
-          matcher: peerVariant,
-          selector: (s) => `.peer:${peerVariant} ~ ${s}`,
-        };
-      },
-    ],
+    variants: [peerVariant],
     // Optimized safelist for static Astro builds
     safelist: [
       // Layout and grid classes that might be used dynamically
@@ -306,7 +257,7 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
   });
 }
 
-export * from './theme';
-export * from './theme/shortcuts';
-export { generatePalette, defaultPalette, type PaletteInput } from './palette-generator';
-export { generateTokensCSS } from './token-exporter';
+export * from './theme/index.ts';
+export * from './theme/shortcuts/index.ts';
+export { generatePalette, defaultPalette, type PaletteInput } from './palette-generator.ts';
+export { generateTokensCSS } from './token-exporter.ts';
