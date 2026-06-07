@@ -18,6 +18,7 @@ import presetWebFonts from '@unocss/preset-web-fonts';    // Web fonts preset
 
 import { shortcuts } from './theme/shortcuts';
 import { theme } from './theme';
+import { generatePalette, defaultPalette, type PaletteInput } from './palette-generator';
 
 // Static imports for all icon collections (prevents Vite module runner issues)
 import antDesignIcons from '@iconify-json/ant-design/icons.json';
@@ -70,6 +71,8 @@ const peerSelectorClasses = [
 interface CustomConfig extends Partial<UserConfig> {
   shortcuts?: UserShortcuts;
   theme?: Partial<typeof theme>;
+  /** Brand colors for palette generation. When provided, replaces the default blue palette. */
+  palette?: PaletteInput;
 }
 
 /**
@@ -83,6 +86,14 @@ interface CustomConfig extends Partial<UserConfig> {
  * @returns Complete UnoCSS configuration
  */
 export function createSdsConfig(customConfig: CustomConfig = {}) {
+  const { palette, ...restConfig } = customConfig;
+  const resolvedColors = palette ? generatePalette(palette) : defaultPalette;
+  const resolvedTheme = {
+    ...theme,
+    colors: resolvedColors,
+    ...(restConfig.theme || {}),
+  };
+
   return defineConfig({
     // Optimizations for static builds
     ...(process.env.NODE_ENV === 'production' && {
@@ -97,12 +108,9 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
     ],
     shortcuts: {
       ...shortcuts,
-      ...(customConfig.shortcuts || {})
+      ...(restConfig.shortcuts || {})
     },
-    theme: {
-      ...theme,
-      ...(customConfig.theme || {})
-    },
+    theme: resolvedTheme,
     // Enhanced variants to better handle peer selectors
     variants: [
       // Add specific peer variant support
@@ -294,9 +302,10 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
       }
     ],
 
-    ...customConfig
+    ...restConfig
   });
 }
 
 export * from './theme';
 export * from './theme/shortcuts';
+export { generatePalette, defaultPalette, type PaletteInput } from './palette-generator';
