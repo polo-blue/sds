@@ -358,3 +358,39 @@ Circle buttons are also available in outline variants.
         <Icon name="la:arrow-right" class="text-2xl" />
     </Button>
 ```
+
+## HTML Recipe
+
+All buttons use SDS shortcut classes directly — no JavaScript or Vue required.
+Size modifiers: `btn-normal` (default), `btn-sm` (medium), `btn-xs` (small).
+
+```html
+<!-- Solid variants -->
+<button class="btn-primary btn-normal">Primary</button>
+<button class="btn-secondary btn-normal">Secondary</button>
+<button class="btn-tertiary btn-normal">Tertiary</button>
+
+<!-- Outline variants -->
+<button class="btn-primary-outline btn-normal">Primary outline</button>
+<button class="btn-secondary-outline btn-normal">Secondary outline</button>
+<button class="btn-tertiary-outline btn-normal">Tertiary outline</button>
+
+<!-- Sizes -->
+<button class="btn-primary btn-normal">Large</button>
+<button class="btn-primary btn-sm">Medium</button>
+<button class="btn-primary btn-xs">Small</button>
+
+<!-- Rounded -->
+<button class="btn-primary btn-normal rounded-full">Rounded</button>
+
+<!-- Circle (icon-only) -->
+<button class="btn-primary btn-normal btn-circle">
+  <span class="i-la-arrow-right"></span>
+</button>
+
+<!-- Link rendered as <a> -->
+<a href="/path" class="btn-primary btn-normal">Link button</a>
+
+<!-- Tag / pill -->
+<button class="btn-tag">Tag label</button>
+```

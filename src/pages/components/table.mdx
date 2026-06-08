@@ -107,3 +107,99 @@ const tableDataSecondary = [
 
 <Table data={tableDataSecondary} />
 ```
+
+## Generic Table Classes
+
+Plain HTML table using SDS shortcut classes — no JavaScript required.
+
+<div class="component-preview">
+  <table class="table-base">
+    <thead>
+      <tr>
+        <th class="table-header">Name</th>
+        <th class="table-header">Email</th>
+        <th class="table-header">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-row">
+        <td class="table-cell">Lorem Ipsum</td>
+        <td class="table-cell">lorem@email.com</td>
+        <td class="table-cell"><span class="badge-success">Active</span></td>
+      </tr>
+      <tr class="table-row">
+        <td class="table-cell">Chuck Norris</td>
+        <td class="table-cell">chuck@email.com</td>
+        <td class="table-cell"><span class="badge-neutral">Inactive</span></td>
+      </tr>
+      <tr class="table-row">
+        <td class="table-cell">Ipsum Lorem</td>
+        <td class="table-cell">ipsum@email.com</td>
+        <td class="table-cell"><span class="badge-error">Suspended</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+```html
+<table class="table-base">
+  <thead>
+    <tr>
+      <th class="table-header">Name</th>
+      <th class="table-header">Email</th>
+      <th class="table-header">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-row">
+      <td class="table-cell">Lorem Ipsum</td>
+      <td class="table-cell">lorem@email.com</td>
+      <td class="table-cell"><span class="badge-success">Active</span></td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Striped rows
+
+Apply `table-striped` to `<tr>` elements for alternating row backgrounds.
+
+<div class="component-preview">
+  <table class="table-base">
+    <thead>
+      <tr>
+        <th class="table-header">Name</th>
+        <th class="table-header">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-striped">
+        <td class="table-cell">Lorem Ipsum</td>
+        <td class="table-cell">lorem@email.com</td>
+      </tr>
+      <tr class="table-striped">
+        <td class="table-cell">Chuck Norris</td>
+        <td class="table-cell">chuck@email.com</td>
+      </tr>
+      <tr class="table-striped">
+        <td class="table-cell">Ipsum Lorem</td>
+        <td class="table-cell">ipsum@email.com</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+```html
+<table class="table-base">
+  <tbody>
+    <tr class="table-striped">
+      <td class="table-cell">Lorem Ipsum</td>
+      <td class="table-cell">lorem@email.com</td>
+    </tr>
+    <tr class="table-striped">
+      <td class="table-cell">Chuck Norris</td>
+      <td class="table-cell">chuck@email.com</td>
+    </tr>
+  </tbody>
+</table>
+```

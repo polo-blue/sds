@@ -291,4 +291,98 @@ Skewed background with CSS & SVG.
 
 </div>
 
+## Generic Card Shortcuts
 
+Simple card layout using SDS shortcut classes — works in any HTML environment.
+
+<div class="component-preview">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+    <div class="card">
+      <img class="card-image" src="https://placehold.co/600x400" alt="Card image" />
+      <div class="card-body">
+        <h3 class="text-xl font-bold">Card title</h3>
+        <p class="text-slate-light text-sm">Card description text goes here. Add any content you need inside the body.</p>
+      </div>
+      <div class="card-footer">
+        <span class="text-sm text-slate-light">Footer info</span>
+        <a href="#" class="btn-tertiary btn-xs">Read more</a>
+      </div>
+    </div>
+    <div class="card-hover">
+      <img class="card-image" src="https://placehold.co/600x400" alt="Card image" />
+      <div class="card-body">
+        <h3 class="text-xl font-bold">Hover card</h3>
+        <p class="text-slate-light text-sm">This card scales on hover. Uses <code>card-hover</code> which composes from <code>card</code>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+```html
+<!-- Basic card -->
+<div class="card">
+  <img class="card-image" src="..." alt="..." />
+  <div class="card-body">
+    <h3 class="text-xl font-bold">Card title</h3>
+    <p class="text-slate-light text-sm">Description text.</p>
+  </div>
+  <div class="card-footer">
+    <span class="text-sm text-slate-light">Footer info</span>
+    <a href="#" class="btn-tertiary btn-xs">Read more</a>
+  </div>
+</div>
+
+<!-- Hover card (scales on hover) -->
+<div class="card-hover">
+  <img class="card-image" src="..." alt="..." />
+  <div class="card-body">
+    <h3 class="text-xl font-bold">Hover card</h3>
+    <p class="text-slate-light text-sm">Scales up on hover.</p>
+  </div>
+</div>
+```
+
+## Alerts
+
+Notification banners — pure CSS, no JavaScript.
+
+<div class="component-preview flex-col gap-3">
+  <div class="alert-info">
+    <span class="i-lucide-info text-lg shrink-0"></span>
+    <span>This is an informational message.</span>
+  </div>
+  <div class="alert-success">
+    <span class="i-lucide-check-circle text-lg shrink-0"></span>
+    <span>Operation completed successfully.</span>
+  </div>
+  <div class="alert-warning">
+    <span class="i-lucide-triangle-alert text-lg shrink-0"></span>
+    <span>Please review your input before continuing.</span>
+  </div>
+  <div class="alert-error">
+    <span class="i-lucide-x-circle text-lg shrink-0"></span>
+    <span>An error occurred. Please try again.</span>
+  </div>
+</div>
+
+```html
+<div class="alert-info">
+  <span class="i-lucide-info text-lg shrink-0"></span>
+  <span>This is an informational message.</span>
+</div>
+
+<div class="alert-success">
+  <span class="i-lucide-check-circle text-lg shrink-0"></span>
+  <span>Operation completed successfully.</span>
+</div>
+
+<div class="alert-warning">
+  <span class="i-lucide-triangle-alert text-lg shrink-0"></span>
+  <span>Please review your input before continuing.</span>
+</div>
+
+<div class="alert-error">
+  <span class="i-lucide-x-circle text-lg shrink-0"></span>
+  <span>An error occurred. Please try again.</span>
+</div>
+```
