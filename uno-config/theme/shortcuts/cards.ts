@@ -1,7 +1,7 @@
 const ALERT_BASE = 'flex items-start gap-3 px-4 py-3 rounded-lg text-sm border';
 
 export const cardShortcuts = [
-  ['card', 'bg-white dark:bg-slate-darker rounded-xl shadow-md overflow-hidden'],
+  ['card', 'bg-white dark:bg-slate-dark rounded-xl shadow-md overflow-hidden'],
   ['card-hover', 'card transition-all duration-300 hover:(scale-105 shadow-xl)'],
   ['card-body', 'p-5 flex flex-col gap-3'],
   ['card-footer', 'px-5 pb-5 flex items-center justify-between gap-3'],

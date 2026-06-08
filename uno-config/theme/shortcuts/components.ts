@@ -67,7 +67,7 @@ export const componentShortcuts = [
 
   // Miscellaneous
   ['flag-ua', 'inline-block text-4xl w-6 h-3.5 min-w-[1.25rem] mr-3 bg-gradient-to-b stops-[#0057b7_50%,50%,#ffd700_100%]'],
-  ['engine-info', `${LAYOUT.position.absolute} z-20 inline-block w-56 text-xs font-light text-slate-light ${TRANSITIONS.base} ${COLORS.bgWhite} border border-neutral-lighter rounded-lg shadow-sm dark:text-neutral-default dark:border-slate-default dark:bg-slate-darker bottom-full mb-2 invisible opacity-0 group-hover:(opacity-100 visible -left-full before:left-9) before:(absolute w-0 h-0 -bottom-3 border-l-transparent border-r-transparent border-t-neutral-lightest dark:border-t-slate-dark border-l-10 border-r-10 border-t-10 content-empty)`],
+  ['engine-info', `${LAYOUT.position.absolute} z-20 inline-block w-56 text-xs font-light text-slate-light ${TRANSITIONS.base} ${COLORS.bgWhite} border border-neutral-lighter rounded-lg shadow-sm dark:text-neutral-default dark:border-slate-default dark:bg-slate-dark bottom-full mb-2 invisible opacity-0 group-hover:(opacity-100 visible -left-full before:left-9) before:(absolute w-0 h-0 -bottom-3 border-l-transparent border-r-transparent border-t-neutral-lightest dark:border-t-slate-dark border-l-10 border-r-10 border-t-10 content-empty)`],
   ['engine-code', 'underline decoration-dotted underline-offset-4 py-0.5 decoration-neutral-light group-hover:(decoration-blue-lightest dark:decoration-accent-light)'],
   ['number-secondary', `block ${LAYOUT.position.absolute} inset-0 text-slate-light select-all ${COLORS.bgWhite} dark:bg-accent-deepBlue`],
   ['code-formatted', 'leading-none mt-0 relative text-xs'],
