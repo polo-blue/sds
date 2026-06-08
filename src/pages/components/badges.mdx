@@ -4,6 +4,7 @@ layout: "../../layouts/MainLayout.astro"
 
 ---
 import Badges from '../../components/Badges.vue'
+import ComponentPreview from '../../components/ComponentPreview.vue'
 
 # Product badges
 Extra product badges (labels).
@@ -60,7 +61,13 @@ Extra product badges (labels).
 
 Semantic status badges using SDS shortcut classes — no JavaScript required.
 
-<div class="component-preview flex-wrap gap-2">
+<ComponentPreview client:visible previewClass="flex-wrap gap-2" html={`<span class="badge-primary">Primary</span>
+<span class="badge-secondary">Secondary</span>
+<span class="badge-success">Success</span>
+<span class="badge-error">Error</span>
+<span class="badge-warning">Warning</span>
+<span class="badge-info">Info</span>
+<span class="badge-neutral">Neutral</span>`}>
   <span class="badge-primary">Primary</span>
   <span class="badge-secondary">Secondary</span>
   <span class="badge-success">Success</span>
@@ -68,14 +75,4 @@ Semantic status badges using SDS shortcut classes — no JavaScript required.
   <span class="badge-warning">Warning</span>
   <span class="badge-info">Info</span>
   <span class="badge-neutral">Neutral</span>
-</div>
-
-```html
-<span class="badge-primary">Primary</span>
-<span class="badge-secondary">Secondary</span>
-<span class="badge-success">Success</span>
-<span class="badge-error">Error</span>
-<span class="badge-warning">Warning</span>
-<span class="badge-info">Info</span>
-<span class="badge-neutral">Neutral</span>
-```
+</ComponentPreview>
