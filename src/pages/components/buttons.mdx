@@ -5,6 +5,7 @@ layout: "../../layouts/MainLayout.astro"
 import Button from '../../components/Button.vue'
 import ButtonCopy from '../../components/ButtonCopy.astro'
 import { Icon } from 'astro-icon/components';
+import PropsTable from '../../components/PropsTable.astro'
 
 # All buttons
 
@@ -394,3 +395,22 @@ Size modifiers: `btn-normal` (default), `btn-sm` (medium), `btn-xs` (small).
 <!-- Tag / pill -->
 <button class="btn-tag">Tag label</button>
 ```
+
+## Props Reference
+
+<PropsTable data={[
+  { name: 'primary', type: 'boolean', default: 'false', description: 'Primary solid button style' },
+  { name: 'secondary', type: 'boolean', default: 'false', description: 'Secondary solid button style' },
+  { name: 'tertiary', type: 'boolean', default: 'false', description: 'Tertiary / ghost button style' },
+  { name: 'primaryOutline', type: 'boolean', default: 'false', description: 'Primary outline variant' },
+  { name: 'secondaryOutline', type: 'boolean', default: 'false', description: 'Secondary outline variant' },
+  { name: 'tertiaryOutline', type: 'boolean', default: 'false', description: 'Tertiary outline variant' },
+  { name: 'text', type: 'boolean', default: 'false', description: 'Underline-on-hover text button' },
+  { name: 'tag', type: 'boolean', default: 'false', description: 'Pill-shaped tag button' },
+  { name: 'small', type: 'boolean', default: 'false', description: 'Extra-small size (btn-xs)' },
+  { name: 'medium', type: 'boolean', default: 'false', description: 'Medium size (btn-sm)' },
+  { name: 'rounded', type: 'boolean', default: 'false', description: 'Fully rounded corners' },
+  { name: 'circle', type: 'boolean', default: 'false', description: 'Equal width/height circle — for icon-only buttons' },
+  { name: 'href', type: 'string', default: 'undefined', description: 'Renders as <a> tag when provided' },
+  { name: 'title', type: 'string', default: 'undefined', description: 'Native title attribute' },
+]} />
