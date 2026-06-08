@@ -5,6 +5,7 @@ layout: "../../layouts/MainLayout.astro"
 
 ---
 import Breadcrumbs from '../../components/Breadcrumbs.vue'
+import PropsTable from '../../components/PropsTable.astro'
 
 # Breadcrumbs
 
@@ -104,14 +105,14 @@ https://schema.org/ListItem
 
 ## Props
 
-| Prop            | Type      | Default | Description                                                                 |
-| --------------- | --------- | ------- | --------------------------------------------------------------------------- |
-| `breadcrumbs`   | Array     | -       | Array of breadcrumb objects with `name` and `path` properties (required)    |
-| `showBack`      | Boolean   | `false` | Show back button                                                            |
-| `textBack`      | String    | `'Back'`| Text for back button title                                                  |
-| `showHome`      | Boolean   | `false` | Show home icon as first breadcrumb                                          |
-| `productNumber` | String    | `null`  | Product number to display after last breadcrumb (mobile hidden)             |
-| `withMicrodata` | Boolean   | `true`  | Include Schema.org BreadcrumbList microdata (set to `false` for duplicates) |
+<PropsTable data={[
+  { name: 'breadcrumbs', type: 'Array<{ name: string; path: string }>', required: true, description: 'Breadcrumb items — each needs name and path' },
+  { name: 'showBack', type: 'boolean', default: 'false', description: 'Show a back button before the breadcrumbs' },
+  { name: 'textBack', type: 'string', default: "'Back'", description: 'Label text for the back button' },
+  { name: 'showHome', type: 'boolean', default: 'false', description: 'Show home icon as first breadcrumb' },
+  { name: 'productNumber', type: 'string', default: 'null', description: 'Product number shown after last breadcrumb (hidden on mobile)' },
+  { name: 'withMicrodata', type: 'boolean', default: 'true', description: 'Include Schema.org BreadcrumbList markup — set false to avoid duplicates when rendering twice' },
+]} />
 
 ## Microdata Control
 

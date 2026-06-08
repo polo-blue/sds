@@ -3,6 +3,7 @@ title: Input
 layout: ../../layouts/MainLayout.astro
 ---
 import Input from '../../components/Input.vue';
+import PropsTable from '../../components/PropsTable.astro'
 
 # Floating Label Input
 <div class="component-preview">
@@ -342,21 +343,21 @@ const email = ref('');
 
 # Props Reference
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `id` | `string` | Random ID | Unique identifier for the input |
-| `name` | `string` | Same as id | Name attribute for the input field |
-| `label` | `string` | Required | Label text for the input |
-| `variant` | `'standard' \| 'filled'` | `'standard'` | Visual style variant |
-| `type` | `string` | `'text'` | Input type (all HTML types + 'textarea') |
-| `modelValue` | `string \| number` | `''` | Value for v-model binding |
-| `required` | `boolean` | `false` | Whether the field is required |
-| `rows` | `number` | `3` | Number of rows (for textarea only) |
-| `placeholder` | `string` | `' '` | Placeholder text (space for floating label) |
-| `error` | `string \| boolean` | `false` | Error state or message |
-| `success` | `string \| boolean` | `false` | Success state or message |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size of the input |
-| `class` | `string` | `''` | Additional CSS classes |
+<PropsTable data={[
+  { name: 'label', type: 'string', required: true, description: 'Label text for the floating label' },
+  { name: 'variant', type: "'standard' | 'filled'", default: "'standard'", description: 'Visual style variant' },
+  { name: 'id', type: 'string', default: 'random', description: 'Unique identifier; also used as name if name not set' },
+  { name: 'name', type: 'string', default: 'same as id', description: 'Name attribute for the input field' },
+  { name: 'type', type: 'string', default: "'text'", description: "Input type — all HTML types plus 'textarea'" },
+  { name: 'modelValue', type: 'string | number', default: "''", description: 'Value for v-model binding' },
+  { name: 'required', type: 'boolean', default: 'false', description: 'Adds required asterisk to label' },
+  { name: 'rows', type: 'number', default: '3', description: 'Number of rows (textarea only)' },
+  { name: 'placeholder', type: 'string', default: "' '", description: 'Space keeps floating label working; override with caution' },
+  { name: 'error', type: 'string | boolean', default: 'false', description: 'Error state — true for visual only, string to show message' },
+  { name: 'success', type: 'string | boolean', default: 'false', description: 'Success state — true for visual only, string to show message' },
+  { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Size of the input field' },
+  { name: 'class', type: 'string', default: "''", description: 'Additional CSS classes on the wrapper element' },
+]} />
 
 # Events
 
