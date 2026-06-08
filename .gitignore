@@ -2,6 +2,7 @@
 dist/
 .output/
 .astro/
+src/styles/sds.css
 
 # dependencies
 node_modules/
