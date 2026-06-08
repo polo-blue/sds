@@ -115,6 +115,10 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
       'origin-top-left',
       'transform-gpu',
 
+      // Dark mode toggle icons
+      'i-lucide-moon',
+      'i-lucide-sun',
+
       // Dynamic icons from ProductDetailsList component
       'i-lucide-book-text',
       'i-lucide-link',
@@ -194,7 +198,7 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
     ],
     // IMPORTANT: All of these presets are required for proper functioning
     presets: [
-      presetUno(),
+      presetUno({ dark: 'class' }),
       presetAttributify(),
       presetIcons({
         scale: 1.2,

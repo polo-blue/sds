@@ -10,12 +10,15 @@ const { currentPage } = Astro.props;
 const isActive = (link?: string) => (link ? currentPage.startsWith(link) : false);
 ---
 
-<nav class="w-64 px-4 pt-4 pb-10 overflow-y-auto h-full" aria-label="Documentation navigation">
+<nav
+  class="w-64 px-4 pt-4 pb-10 overflow-y-auto h-full bg-white dark:bg-slate-darkest"
+  aria-label="Documentation navigation"
+>
   <ul>
     {
       SIDEBAR.map(item =>
         item.header ? (
-          <h2 class="mt-5 mb-1 px-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <h2 class="mt-5 mb-1 px-2 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-neutral-light">
             {item.text}
           </h2>
         ) : (
@@ -25,8 +28,8 @@ const isActive = (link?: string) => (link ? currentPage.startsWith(link) : false
               class:list={[
                 'block py-1.5 px-3 rounded text-sm my-0.5 transition-colors border-l-2',
                 isActive(item.link)
-                  ? 'border-blue-medium text-slate-900 font-medium bg-blue-lightest/20'
-                  : 'border-transparent text-slate-500 hover:text-slate-900 hover:bg-slate-50',
+                  ? 'border-blue-medium text-slate-900 dark:text-neutral-lighter font-medium bg-blue-lightest/20 dark:bg-blue-medium/20'
+                  : 'border-transparent text-slate-500 dark:text-neutral-light hover:text-slate-900 dark:hover:text-neutral-lighter hover:bg-slate-50 dark:hover:bg-slate-dark',
               ]}
               aria-current={isActive(item.link) ? 'page' : undefined}
               data-drawer-close

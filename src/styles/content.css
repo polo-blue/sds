@@ -1,4 +1,6 @@
 .content {
+  @apply dark:text-neutral-lighter;
+
   .main-section {
     & > h1,
     & > h2,
@@ -54,6 +56,20 @@
   .astro-code {
     @apply mx-0 p-4;
     border-radius: 0.44rem;
+  }
+}
+
+/* Prose tables dark mode */
+html.dark table:not(.table-base) {
+  @apply bg-slate-dark border-slate-dark;
+
+  thead {
+    @apply bg-slate-darkest text-neutral-lighter;
+  }
+
+  td,
+  th {
+    @apply text-neutral-lighter;
   }
 }
 

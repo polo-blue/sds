@@ -4,14 +4,16 @@ import SkipToContent from './SkipToContent.astro';
 import Search from 'astro-pagefind/components/Search';
 ---
 
-<header class="p-3 bg-blue-medium bg-opacity-10 backdrop-blur-md border-b text-slate-900">
+<header
+  class="p-3 bg-blue-medium bg-opacity-10 dark:bg-slate-darkest dark:border-slate-dark backdrop-blur-md border-b text-slate-900 dark:text-neutral-lighter"
+>
   <SkipToContent />
   <nav title="Top Navigation" class="mx-auto flex justify-between items-center px-4">
     <div class="flex items-center gap-2">
       <button
         type="button"
         id="nav-drawer-trigger"
-        class="lg:hidden p-2 -ml-2 rounded-lg hover:bg-slate-100 transition-colors text-slate-700"
+        class="lg:hidden p-2 -ml-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-dark transition-colors text-slate-700 dark:text-neutral-light"
         aria-label="Open navigation"
         aria-expanded="false"
         aria-controls="nav-drawer"
@@ -23,7 +25,10 @@ import Search from 'astro-pagefind/components/Search';
         </span>
       </button>
 
-      <a class="text-2xl font-medium block font-textbold leading-none my-auto text-blue-medium" href="/">
+      <a
+        class="text-2xl font-medium block font-textbold leading-none my-auto text-blue-medium dark:text-blue-light"
+        href="/"
+      >
         SDS
       </a>
 
@@ -40,12 +45,21 @@ import Search from 'astro-pagefind/components/Search';
       />
     </div>
 
-    <div class="flex gap-2">
+    <div class="flex gap-2 items-center">
+      <button
+        type="button"
+        id="dark-mode-toggle"
+        class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-dark transition-colors text-slate-700 dark:text-neutral-light"
+        aria-label="Toggle dark mode"
+      >
+        <span class="i-lucide-moon text-xl dark:hidden" aria-hidden="true"></span>
+        <span class="i-lucide-sun text-xl hidden dark:inline-block" aria-hidden="true"></span>
+      </button>
       {
         SITE.github && (
           <a
             title="Github"
-            class="opacity-80 hover:opacity-100 hover:bg-slate-200 p-2 rounded-full transition-colors"
+            class="opacity-80 hover:opacity-100 hover:bg-slate-200 dark:hover:bg-slate-dark p-2 rounded-full transition-colors"
             href={'https://github.com/' + SITE.github}
           >
             <img class="h-7" src="/github.svg" alt="github logo" />
@@ -250,3 +264,13 @@ import Search from 'astro-pagefind/components/Search';
     transform: translateY(-7px) rotate(-45deg);
   }
 </style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const toggle = document.getElementById('dark-mode-toggle');
+    toggle?.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('sds-color-scheme', isDark ? 'dark' : 'light');
+    });
+  });
+</script>

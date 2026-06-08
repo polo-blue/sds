@@ -32,10 +32,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
     <title>
       {content.title ? `${content.title} 🚀 ${CONFIG.SITE.title}` : CONFIG.SITE.title}
     </title>
+    <script is:inline>
+      (function () {
+        var saved = localStorage.getItem('sds-color-scheme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
   </head>
 
-  <body class="bg-blue-50">
-    <div class="sticky top-0 z-20 w-full bg-white/70">
+  <body class="bg-blue-50 dark:bg-slate-darkest">
+    <div class="sticky top-0 z-20 w-full bg-white/70 dark:bg-slate-darkest/90">
       <Header />
     </div>
 
@@ -44,9 +53,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
       <LeftSidebar currentPage={currentPage} />
     </Drawer>
 
-    <div class="flex bg-white z-10 mb-11 relative">
+    <div class="flex bg-white dark:bg-slate-darkest z-10 mb-11 relative">
       <!-- Desktop sidebar -->
-      <div class="hidden lg:flex sticky top-0 h-screen w-64 shrink-0 border-r border-neutral-lightest">
+      <div
+        class="hidden lg:flex sticky top-0 h-screen w-64 shrink-0 border-r border-neutral-lightest dark:border-slate-dark"
+      >
         <LeftSidebar currentPage={currentPage} />
       </div>
 
