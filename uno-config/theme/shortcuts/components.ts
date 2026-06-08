@@ -80,7 +80,7 @@ export const componentShortcuts = [
   ['badge-error', `${BADGE_STYLE} bg-system-error/15 text-system-error`],
   ['badge-warning', `${BADGE_STYLE} bg-system-warning/15 text-slate-dark`],
   ['badge-info', `${BADGE_STYLE} bg-system-info/15 text-system-info`],
-  ['badge-neutral', `${BADGE_STYLE} bg-neutral-lighter text-neutral-darker`],
+  ['badge-neutral', `${BADGE_STYLE} bg-neutral-lighter text-neutral-darker dark:(bg-slate-dark text-neutral-lighter)`],
 
   // Details
   ['detail-name', 'text-gray-900 leading-tight font-textlight line-clamp-3 whitespace-normal md:(whitespace-pre-wrap line-clamp-9 font-textregular)'],
@@ -133,10 +133,10 @@ export const componentShortcuts = [
 
   // Generic table
   ['table-base', 'w-full border-collapse text-sm'],
-  ['table-header', 'bg-neutral-lightest text-left font-medium text-slate-default px-4 py-3'],
-  ['table-row', 'border-b border-neutral-lighter hover:bg-neutral-lightest/50 transition-colors duration-100'],
-  ['table-cell', 'px-4 py-3 text-slate-default'],
-  ['table-striped', 'odd:bg-white even:bg-neutral-lightest/40'],
+  ['table-header', 'bg-neutral-lightest text-left font-medium text-slate-default px-4 py-3 dark:(bg-slate-dark text-neutral-lighter)'],
+  ['table-row', 'border-b border-neutral-lighter hover:bg-neutral-lightest/50 transition-colors duration-100 dark:(border-slate-default hover:bg-slate-dark/50)'],
+  ['table-cell', 'px-4 py-3 text-slate-default dark:text-neutral-lighter'],
+  ['table-striped', 'odd:bg-white even:bg-neutral-lightest/40 dark:(odd:bg-slate-darkest even:bg-slate-dark/20)'],
 
 
 ];
