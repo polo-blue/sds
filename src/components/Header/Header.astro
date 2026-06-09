@@ -138,6 +138,22 @@ import Search from 'astro-pagefind/components/Search';
     @apply bg-white md:fixed shadow-lg rounded-b-lg border-t border-t-transparent overflow-auto top-17 md:max-w-[calc(100vw-10%)] max-h-[calc(100vh-10%)] gap-[30px];
   }
 
+  /* Dark mode: override Pagefind CSS variables and explicit white backgrounds */
+  html.dark .pagefind-ui {
+    --pagefind-ui-background: theme('colors.slate.darkest');
+    --pagefind-ui-text: theme('colors.neutral.lighter');
+    --pagefind-ui-border: theme('colors.slate.dark');
+    --pagefind-ui-tag: theme('colors.slate.dark');
+  }
+
+  html.dark .pagefind-ui .pagefind-ui__search-input {
+    @apply bg-slate-dark text-neutral-lighter placeholder:text-neutral-light;
+  }
+
+  html.dark .pagefind-ui .pagefind-ui__drawer {
+    @apply bg-slate-darkest text-neutral-lighter;
+  }
+
   .pagefind-ui .pagefind-ui__search-clear {
     height: 38px;
     top: 0;
