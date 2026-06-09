@@ -1,0 +1,159 @@
+---
+title: Drawer
+layout: ../../layouts/MainLayout.astro
+---
+import Drawer from '../../components/Drawer.astro'
+import PropsTable from '../../components/PropsTable.astro'
+
+# Drawer
+
+Slide-in side panel built on top of native `<dialog>` semantics. Used for mobile navigation in this docs site, but works as a general-purpose drawer for filters, settings, or off-canvas menus.
+
+The drawer is **CSS-driven** with a small script that handles open/close, focus management, body scroll lock, and the Escape key. No Vue or framework runtime required — just the `Drawer.astro` component (or copy the HTML recipe).
+
+## Live demo
+
+<div class="component-preview">
+  <button
+    type="button"
+    class="btn-primary btn-normal"
+    aria-controls="demo-drawer"
+    aria-expanded="false"
+  >
+    Open drawer
+  </button>
+
+  <Drawer id="demo-drawer" label="Demo drawer">
+    <div class="p-6 flex flex-col gap-4">
+      <h3 class="text-xl font-textbold">Drawer content</h3>
+      <p class="text-sm text-slate-default dark:text-neutral-lighter">
+        Press <kbd class="px-1.5 py-0.5 rounded border text-xs">Esc</kbd>, click the backdrop,
+        or use the close button to dismiss.
+      </p>
+      <ul class="flex flex-col gap-2 text-sm">
+        <li><a href="#" class="text-blue-medium hover:underline">Navigation item</a></li>
+        <li><a href="#" class="text-blue-medium hover:underline">Another item</a></li>
+        <li><a href="#" class="text-blue-medium hover:underline">Third item</a></li>
+      </ul>
+      <button type="button" class="btn-secondary btn-sm self-start" data-drawer-close>
+        Close
+      </button>
+    </div>
+  </Drawer>
+</div>
+
+```astro
+---
+import Drawer from 'spoko-design-system/components/Drawer.astro';
+---
+
+<button type="button" aria-controls="demo-drawer" aria-expanded="false">
+  Open drawer
+</button>
+
+<Drawer id="demo-drawer" label="Demo drawer">
+  <nav class="p-6">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <button type="button" data-drawer-close>Close</button>
+  </nav>
+</Drawer>
+```
+
+## Wiring triggers
+
+The drawer auto-discovers its trigger via the `aria-controls` attribute. Any element with `aria-controls="<drawer-id>"` opens the matching drawer on click. The script also manages `aria-expanded` for you.
+
+```html
+<!-- Trigger: any focusable element with aria-controls pointing at the drawer id -->
+<button type="button" aria-controls="nav-drawer" aria-expanded="false">
+  Open menu
+</button>
+
+<!-- Drawer with matching id -->
+<Drawer id="nav-drawer">…</Drawer>
+```
+
+## Closing the drawer
+
+Three built-in ways to close — no extra wiring needed:
+
+| Action | Behavior |
+| --- | --- |
+| Click backdrop | Closes drawer |
+| Press `Escape` | Closes drawer (when open) |
+| Click `[data-drawer-close]` | Closes drawer (use on any element inside the panel) |
+
+Add `data-drawer-close` to any close button, link, or icon inside the drawer:
+
+```html
+<Drawer id="nav-drawer">
+  <button type="button" data-drawer-close aria-label="Close menu">×</button>
+  <a href="/profile" data-drawer-close>Profile</a>
+</Drawer>
+```
+
+## Accessibility
+
+The drawer follows the [WAI-ARIA modal dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/):
+
+- Panel uses `role="dialog"` + `aria-modal="true"`
+- `aria-label` set from the `label` prop (defaults to `"Navigation"`)
+- Focus moves to the panel on open, and returns to the trigger on close
+- Body scroll is locked while open (`body.drawer-open { overflow: hidden }`)
+- `Escape` key dismisses the drawer
+
+**Always pass a descriptive `label`** when the drawer is not the main navigation — screen readers announce it as the dialog name.
+
+## HTML recipe
+
+The drawer is also available as a pure HTML + CSS pattern. Copy this into any framework or plain HTML page that loads the SDS stylesheet:
+
+```html
+<button type="button" aria-controls="my-drawer" aria-expanded="false">
+  Open
+</button>
+
+<div id="my-drawer" class="sds-drawer" hidden>
+  <div class="sds-drawer-backdrop" data-drawer-close></div>
+  <aside
+    class="sds-drawer-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-label="My drawer"
+    tabindex="-1"
+    data-drawer-panel
+  >
+    <!-- Drawer content here -->
+    <button type="button" data-drawer-close>Close</button>
+  </aside>
+</div>
+```
+
+You also need the open/close logic. If you're not using the Astro component, import the helper directly:
+
+```ts
+import { initDrawer } from 'spoko-design-system/src/scripts/drawer';
+
+initDrawer('my-drawer');
+```
+
+## Props
+
+<PropsTable data={[
+  { name: 'id', type: 'string', required: true, description: 'Unique id used by triggers (aria-controls) and the open/close script' },
+  { name: 'label', type: 'string', default: "'Navigation'", description: 'aria-label for the dialog — describes the drawer to screen readers' },
+]} />
+
+## Slot
+
+The default slot renders inside the slide-in panel. Style it however you want — the panel itself only provides the positioning, sizing, transition, and scroll container.
+
+```astro
+<Drawer id="filters" label="Product filters">
+  <div class="p-6 flex flex-col gap-4">
+    <h2 class="text-lg font-textbold">Filters</h2>
+    <!-- your form here -->
+  </div>
+</Drawer>
+```
