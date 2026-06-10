@@ -4,6 +4,7 @@ layout: "../../layouts/MainLayout.astro"
 ---
 import Modal from '../../components/Modal.astro'
 import Button from '../../components/Button.vue'
+import PropsTable from '../../components/PropsTable.astro'
 import { Icon } from 'astro-icon/components';
 
 
@@ -176,18 +177,18 @@ document.getElementById('dialog2').addEventListener('confirm', (e) => {
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `id` | string | required | Unique identifier for the modal |
-| `open` | string | `'Open modal'` | Text for the trigger button |
-| `title` | string | `undefined` | Modal title (shown in header) |
-| `maxWidth` | string | `'600px'` | Maximum width of the modal |
-| `showXButton` | boolean | `true` | Show X close button in top-right |
-| `showTrigger` | boolean | `true` | Show the trigger button |
-| `showActions` | boolean | `false` | Show action buttons footer |
-| `cancelText` | string | `'Cancel'` | Text for cancel button |
-| `confirmText` | string | `'Confirm'` | Text for confirm button |
-| `confirmPrimary` | boolean | `true` | Make confirm button primary style |
+<PropsTable data={[
+  { name: 'id', type: 'string', required: true, description: 'Unique identifier for the modal' },
+  { name: 'open', type: 'string', default: "'Open modal'", description: 'Text for the trigger button' },
+  { name: 'title', type: 'string', default: 'undefined', description: 'Modal title (shown in header)' },
+  { name: 'maxWidth', type: 'string', default: "'600px'", description: 'Maximum width of the modal' },
+  { name: 'showXButton', type: 'boolean', default: 'true', description: 'Show X close button in top-right' },
+  { name: 'showTrigger', type: 'boolean', default: 'true', description: 'Show the trigger button' },
+  { name: 'showActions', type: 'boolean', default: 'false', description: 'Show action buttons footer' },
+  { name: 'cancelText', type: 'string', default: "'Cancel'", description: 'Text for cancel button' },
+  { name: 'confirmText', type: 'string', default: "'Confirm'", description: 'Text for confirm button' },
+  { name: 'confirmPrimary', type: 'boolean', default: 'true', description: 'Make confirm button primary style' },
+]} />
 
 ## Slots
 

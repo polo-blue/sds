@@ -4,12 +4,15 @@ layout: "../../layouts/MainLayout.astro"
 ---
 import Button from '../../components/Button.vue';
 import Card from '../../components/Card.astro'
+import PropsTable from '../../components/PropsTable.astro'
 import { Icon } from 'astro-icon/components';
 import Image from '../../components/Image.astro'
 
 # Card
 
-Card - product link component which can be used for carousels, section with related products, recently added etc.
+Container component with image, body, and footer sections. Works for product cards, article previews, or any rectangular content with image + text layout. Available in plain and hover-scale variants.
+
+## Live Demo
 
 <div class="component-preview">
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full" itemscope itemtype="https://schema.org/ItemList">
@@ -386,3 +389,47 @@ Notification banners — pure CSS, no JavaScript.
   <span>An error occurred. Please try again.</span>
 </div>
 ```
+
+## Props
+
+<PropsTable data={[
+  { name: 'href', type: 'string', required: false, description: 'Link URL. If provided, wraps entire card in an anchor tag.' },
+  { name: 'imgSrc', type: 'string', required: false, description: 'Image source URL. Displays at the top of the card with object-fit coverage.' },
+  { name: 'imgAlt', type: 'string', required: false, description: 'Alt text for the card image. Important for accessibility.' },
+  { name: 'class', type: 'string', required: false, description: 'Additional CSS classes to apply to the card root element.' },
+]} />
+
+## Slot
+
+The card body accepts a default slot. Typically contains:
+- `<h5>` or `<h6>` title
+- `<p>` description text
+- `<div>` with price or metadata
+- `<Button>` or other interactive elements
+
+```astro
+<Card href="#" imgSrc="..." imgAlt="...">
+  <h5 class="mb-2 font-bold">Product Name</h5>
+  <p class="mb-3">Product description</p>
+  <div class="flex justify-between">
+    <span class="font-bold">€99.00</span>
+    <Button>View</Button>
+  </div>
+</Card>
+```
+
+## CSS Shortcuts
+
+For non-Vue/Astro projects, use these CSS shortcut classes:
+
+| Class | Purpose |
+| --- | --- |
+| `card` | Base card container with image, body, footer layout |
+| `card-hover` | Card that scales up on hover (extends `card`) |
+| `card-image` | Image container with object-fit coverage |
+| `card-body` | Content area with padding |
+| `card-footer` | Bottom section with flex layout |
+| `alert-info` | Information banner with icon area |
+| `alert-success` | Success notification banner |
+| `alert-warning` | Warning notification banner |
+| `alert-error` | Error notification banner |
