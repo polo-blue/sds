@@ -282,11 +282,17 @@ import Search from 'astro-pagefind/components/Search';
 </style>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
+  function setupDarkModeToggle() {
     const toggle = document.getElementById('dark-mode-toggle');
-    toggle?.addEventListener('click', () => {
-      const isDark = document.documentElement.classList.toggle('dark');
-      localStorage.setItem('sds-color-scheme', isDark ? 'dark' : 'light');
-    });
-  });
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('sds-color-scheme', isDark ? 'dark' : 'light');
+      });
+    }
+  }
+
+  document.addEventListener('astro:page-load', setupDarkModeToggle);
+  document.addEventListener('astro:after-swap', setupDarkModeToggle);
+  setupDarkModeToggle();
 </script>

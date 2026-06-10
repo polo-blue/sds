@@ -175,6 +175,18 @@ The drawer is **CSS-driven** with a small script that handles open/close, focus 
   </Drawer>
 </div>
 
+<style>
+  #right-drawer .sds-drawer-panel {
+    left: auto;
+    right: 0;
+    transform: translateX(100%);
+  }
+
+  #right-drawer.open .sds-drawer-panel {
+    transform: translateX(0);
+  }
+</style>
+
 ```astro
 ---
 import Drawer from 'spoko-design-system/components/Drawer.astro';
