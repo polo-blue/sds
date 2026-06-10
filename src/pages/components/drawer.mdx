@@ -23,21 +23,55 @@ The drawer is **CSS-driven** with a small script that handles open/close, focus 
     Open drawer
   </button>
 
-  <Drawer id="demo-drawer" label="Demo drawer">
-    <div class="p-6 flex flex-col gap-4">
-      <h3 class="text-xl font-textbold">Drawer content</h3>
-      <p class="text-sm text-slate-default dark:text-neutral-lighter">
-        Press <kbd class="px-1.5 py-0.5 rounded border text-xs">Esc</kbd>, click the backdrop,
-        or use the close button to dismiss.
-      </p>
-      <ul class="flex flex-col gap-2 text-sm">
-        <li><a href="#" class="text-blue-medium hover:underline">Navigation item</a></li>
-        <li><a href="#" class="text-blue-medium hover:underline">Another item</a></li>
-        <li><a href="#" class="text-blue-medium hover:underline">Third item</a></li>
-      </ul>
-      <button type="button" class="btn-secondary btn-sm self-start" data-drawer-close>
-        Close
-      </button>
+  <Drawer id="demo-drawer" label="Settings & Navigation">
+    <div class="p-6 flex flex-col gap-6">
+      <div>
+        <h3 class="text-xl font-textbold mb-4">Navigation</h3>
+        <ul class="flex flex-col gap-2">
+          <li><a href="#" class="text-blue-medium hover:underline text-sm" data-drawer-close>Dashboard</a></li>
+          <li><a href="#" class="text-blue-medium hover:underline text-sm" data-drawer-close>Products</a></li>
+          <li><a href="#" class="text-blue-medium hover:underline text-sm" data-drawer-close>Settings</a></li>
+          <li><a href="#" class="text-blue-medium hover:underline text-sm" data-drawer-close>Help</a></li>
+        </ul>
+      </div>
+
+      <hr class="border-slate-200 dark:border-slate-dark" />
+
+      <div>
+        <h3 class="text-lg font-textbold mb-3">Preferences</h3>
+        <div class="flex flex-col gap-3">
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="checkbox" class="w-4 h-4" checked />
+            <span class="text-sm">Enable notifications</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="checkbox" class="w-4 h-4" />
+            <span class="text-sm">Dark mode</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="checkbox" class="w-4 h-4" checked />
+            <span class="text-sm">Auto-save</span>
+          </label>
+        </div>
+      </div>
+
+      <hr class="border-slate-200 dark:border-slate-dark" />
+
+      <div>
+        <label class="text-sm font-textbold block mb-2">Theme</label>
+        <select class="w-full input-standard">
+          <option>Light</option>
+          <option>Dark</option>
+          <option>Auto</option>
+        </select>
+      </div>
+
+      <div class="flex gap-2 pt-4">
+        <button type="button" class="btn-primary btn-sm flex-1">Save</button>
+        <button type="button" class="btn-secondary btn-sm flex-1" data-drawer-close>
+          Close
+        </button>
+      </div>
     </div>
   </Drawer>
 </div>
@@ -144,6 +178,79 @@ initDrawer('my-drawer');
   { name: 'id', type: 'string', required: true, description: 'Unique id used by triggers (aria-controls) and the open/close script' },
   { name: 'label', type: 'string', default: "'Navigation'", description: 'aria-label for the dialog — describes the drawer to screen readers' },
 ]} />
+
+## Use Cases
+
+### Navigation Menu
+Typical mobile navigation with links. Close drawer on link click via `data-drawer-close`:
+
+```html
+<Drawer id="nav-drawer" label="Navigation">
+  <nav class="p-6 flex flex-col gap-2">
+    <a href="/" data-drawer-close class="text-blue-medium hover:underline">Home</a>
+    <a href="/about" data-drawer-close class="text-blue-medium hover:underline">About</a>
+    <a href="/products" data-drawer-close class="text-blue-medium hover:underline">Products</a>
+    <a href="/contact" data-drawer-close class="text-blue-medium hover:underline">Contact</a>
+  </nav>
+</Drawer>
+```
+
+### Filters Panel
+Form inputs for filtering product lists or search results:
+
+```html
+<Drawer id="filters" label="Product Filters">
+  <div class="p-6 flex flex-col gap-4">
+    <div>
+      <label class="block text-sm font-textbold mb-2">Price Range</label>
+      <input type="range" class="w-full" min="0" max="1000" />
+    </div>
+    
+    <div>
+      <label class="block text-sm font-textbold mb-2">Category</label>
+      <select class="w-full input-standard">
+        <option>All</option>
+        <option>Electronics</option>
+        <option>Clothing</option>
+      </select>
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <label class="flex gap-2 cursor-pointer">
+        <input type="checkbox" /> In Stock
+      </label>
+      <label class="flex gap-2 cursor-pointer">
+        <input type="checkbox" /> On Sale
+      </label>
+    </div>
+
+    <button class="btn-primary w-full" data-drawer-close>Apply Filters</button>
+  </div>
+</Drawer>
+```
+
+### Settings Panel
+User preferences and toggles:
+
+```html
+<Drawer id="settings" label="Settings">
+  <div class="p-6 flex flex-col gap-4">
+    <div class="flex items-center justify-between">
+      <span class="text-sm">Notifications</span>
+      <input type="checkbox" checked />
+    </div>
+    
+    <div class="flex items-center justify-between">
+      <span class="text-sm">Dark Mode</span>
+      <input type="checkbox" />
+    </div>
+
+    <hr class="border-slate-200" />
+
+    <button class="btn-secondary w-full" data-drawer-close>Close</button>
+  </div>
+</Drawer>
+```
 
 ## Slot
 
