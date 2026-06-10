@@ -13,6 +13,8 @@ The drawer is **CSS-driven** with a small script that handles open/close, focus 
 
 ## Live demo
 
+### Default (Medium, Left-aligned)
+
 <div class="component-preview">
   <button
     type="button"
@@ -76,6 +78,126 @@ The drawer is **CSS-driven** with a small script that handles open/close, focus 
   </Drawer>
 </div>
 
+### Small Width
+
+<div class="component-preview">
+  <button
+    type="button"
+    class="btn-primary btn-normal"
+    aria-controls="small-drawer"
+    aria-expanded="false"
+  >
+    Open small drawer
+  </button>
+
+  <Drawer id="small-drawer" label="Quick actions">
+    <div class="p-4 flex flex-col gap-4">
+      <h3 class="text-lg font-textbold">Quick Actions</h3>
+      <button class="btn-primary btn-sm w-full">Action 1</button>
+      <button class="btn-secondary btn-sm w-full">Action 2</button>
+      <button class="btn-secondary btn-sm w-full" data-drawer-close>Close</button>
+    </div>
+  </Drawer>
+</div>
+
+<style>
+  #small-drawer .sds-drawer-panel {
+    width: 14rem;
+  }
+</style>
+
+### Large Width
+
+<div class="component-preview">
+  <button
+    type="button"
+    class="btn-primary btn-normal"
+    aria-controls="large-drawer"
+    aria-expanded="false"
+  >
+    Open large drawer
+  </button>
+
+  <Drawer id="large-drawer" label="Detailed panel">
+    <div class="p-6 flex flex-col gap-6">
+      <div>
+        <h3 class="text-xl font-textbold mb-4">Order Details</h3>
+        <div class="space-y-3 text-sm">
+          <div class="flex justify-between">
+            <span class="text-slate-600 dark:text-neutral-light">Order ID:</span>
+            <span class="font-textbold">#12345</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-600 dark:text-neutral-light">Status:</span>
+            <span class="font-textbold text-green-600">Shipped</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-600 dark:text-neutral-light">Total:</span>
+            <span class="font-textbold">$299.99</span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="border-slate-200 dark:border-slate-dark" />
+
+      <div>
+        <h4 class="font-textbold mb-3">Items</h4>
+        <ul class="space-y-2 text-sm">
+          <li>Product A × 2 - $100.00</li>
+          <li>Product B × 1 - $199.99</li>
+        </ul>
+      </div>
+
+      <button type="button" class="btn-secondary w-full" data-drawer-close>
+        Close
+      </button>
+    </div>
+  </Drawer>
+</div>
+
+<style>
+  #large-drawer .sds-drawer-panel {
+    width: 24rem;
+  }
+</style>
+
+### Right-Aligned
+
+<div class="component-preview">
+  <button
+    type="button"
+    class="btn-primary btn-normal"
+    aria-controls="right-drawer"
+    aria-expanded="false"
+  >
+    Open right drawer
+  </button>
+
+  <Drawer id="right-drawer" label="Side panel">
+    <div class="p-6 flex flex-col gap-4">
+      <h3 class="text-xl font-textbold">Right Panel</h3>
+      <p class="text-sm text-slate-600 dark:text-neutral-light">
+        This drawer opens from the right edge. Useful for supplementary content, chat panels, or detail views.
+      </p>
+      <button type="button" class="btn-secondary w-full" data-drawer-close>
+        Close
+      </button>
+    </div>
+  </Drawer>
+</div>
+
+<style>
+  #right-drawer .sds-drawer-panel {
+    left: auto;
+    right: 0;
+    transform: translateX(100%);
+  }
+
+  #right-drawer.open .sds-drawer-panel {
+    transform: translateX(0);
+  }
+</style>
+
 ```astro
 ---
 import Drawer from 'spoko-design-system/components/Drawer.astro';
@@ -93,6 +215,47 @@ import Drawer from 'spoko-design-system/components/Drawer.astro';
   </nav>
 </Drawer>
 ```
+
+## Variants
+
+### Width Variants
+
+Customize drawer width by overriding the `.sds-drawer-panel` width via CSS:
+
+```css
+/* Small (narrow sidebar/quick actions) */
+#my-drawer .sds-drawer-panel {
+  width: 14rem; /* 224px */
+}
+
+/* Medium (default navigation) */
+#my-drawer .sds-drawer-panel {
+  width: 18rem; /* 288px */
+}
+
+/* Large (detailed panel with forms) */
+#my-drawer .sds-drawer-panel {
+  width: 24rem; /* 384px */
+}
+```
+
+### Position: Right Side
+
+Slide from the right edge by overriding positioning:
+
+```css
+#my-drawer .sds-drawer-panel {
+  left: auto;
+  right: 0;
+  transform: translateX(100%);
+}
+
+#my-drawer.open .sds-drawer-panel {
+  transform: translateX(0);
+}
+```
+
+Or use this HTML pattern directly if not using the Astro component.
 
 ## Wiring triggers
 
