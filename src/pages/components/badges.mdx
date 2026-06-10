@@ -5,9 +5,13 @@ layout: "../../layouts/MainLayout.astro"
 ---
 import Badges from '../../components/Badges.vue'
 import ComponentPreview from '../../components/ComponentPreview.vue'
+import PropsTable from '../../components/PropsTable.astro'
 
-# Product badges
-Extra product badges (labels).
+# Badges
+
+Flexible badge component for displaying product labels, tags, and status indicators. Supports both simple string arrays and complex badge objects with custom colors and metadata.
+
+## Live Demo
 
 ## Badges - GTI
 <div class="component-preview">
@@ -76,3 +80,37 @@ Semantic status badges using SDS shortcut classes — no JavaScript required.
   <span class="badge-info">Info</span>
   <span class="badge-neutral">Neutral</span>
 </ComponentPreview>
+
+## Props
+
+<PropsTable data={[
+  { name: 'badges', type: '(string | BadgeObject)[]', required: false, default: '[]', description: 'Array of badge labels (strings) or badge objects with slug, label, type, color, and priority properties.' },
+]} />
+
+## Badge Object Structure
+
+When using badge objects instead of simple strings:
+
+```typescript
+interface BadgeObject {
+  slug: string;           // Unique identifier
+  label: string;          // Display text
+  type?: string;          // Type indicator (optional)
+  color?: string;         // CSS class for color (e.g., "bg-red-600")
+  priority?: number;      // Sort priority (optional)
+}
+```
+
+## CSS Shortcuts
+
+Status badges using semantic CSS classes — no JavaScript required:
+
+| Class | Purpose |
+| --- | --- |
+| `badge-primary` | Primary/default badge style |
+| `badge-secondary` | Secondary badge style |
+| `badge-success` | Success/positive indicator |
+| `badge-error` | Error/danger indicator |
+| `badge-warning` | Warning/attention indicator |
+| `badge-info` | Information badge |
+| `badge-neutral` | Neutral/default badge |

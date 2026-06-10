@@ -5,6 +5,7 @@ layout: "../../layouts/MainLayout.astro"
 ---
 
 import Table from '../../components/Table.vue'
+import PropsTable from '../../components/PropsTable.astro'
 export const tableData = [
   {
     id: 1,
@@ -203,3 +204,21 @@ Apply `table-striped` to `<tr>` elements for alternating row backgrounds.
   </tbody>
 </table>
 ```
+
+## Props
+
+<PropsTable data={[
+  { name: 'data', type: 'object[]', required: true, description: 'Array of objects where each object represents a table row. Object keys become column headers.' },
+]} />
+
+## CSS Shortcuts
+
+For plain HTML tables, use these CSS classes:
+
+| Class | Purpose |
+| --- | --- |
+| `table-base` | Base table container with borders and styling |
+| `table-header` | Table header cell styling |
+| `table-row` | Standard table row |
+| `table-cell` | Table cell with padding and alignment |
+| `table-striped` | Alternating row backgrounds for readability |
