@@ -24,11 +24,104 @@ const tabs = computed<TabName[]>(() => {
 const activeTab = ref<TabName>(tabs.value[0] ?? 'html');
 
 const activeCode = computed<string>(() => {
-  const code = props[activeTab.value as 'html' | 'vue' | 'astro'];
+  const code = props[activeTab.value];
   return code?.trim() ?? '';
 });
 
-const { copy, copied } = useClipboard({ source: activeCode, legacy: true });
+function dedent(text: string): string {
+  const lines = text.replace(/^\n+|\n+$/g, '').split('\n');
+  const nonEmpty = lines.filter(l => l.trim());
+  if (!nonEmpty.length) return text;
+  const minIndent = Math.min(...nonEmpty.map(l => l.match(/^ */)![0].length));
+  return lines.map(l => l.slice(minIndent)).join('\n');
+}
+
+// Split top-level elements within already-dedented body by tracking tag depth.
+// Self-closing tags <Tag /> don't change depth. Returns a chunk per top-level element.
+function splitByElements(text: string): string[] {
+  const lines = text.split('\n');
+  const out: string[] = [];
+  let current: string[] = [];
+  let depth = 0;
+
+  const push = () => {
+    const joined = current.join('\n').trim();
+    if (joined) out.push(joined);
+    current = [];
+  };
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed) {
+      if (depth === 0) push();
+      else current.push(line);
+      continue;
+    }
+
+    // Count opening tags (excluding self-closing) and closing tags on this line
+    const opens = (trimmed.match(/<[A-Za-z][\w-]*(?:\s[^>]*)?(?<!\/)>/g) || []).length;
+    const closes = (trimmed.match(/<\/[A-Za-z][\w-]*>/g) || []).length;
+
+    current.push(line);
+    depth += opens - closes;
+
+    if (depth <= 0) {
+      depth = 0;
+      push();
+    }
+  }
+  push();
+  return out;
+}
+
+const chunks = computed<string[]>(() => {
+  let remaining = activeCode.value;
+  const result: string[] = [];
+
+  // 1. Astro frontmatter (---\n...\n---)
+  const fm = remaining.match(/^---\n[\s\S]*?\n---/);
+  if (fm) {
+    result.push(fm[0]);
+    remaining = remaining.slice(fm[0].length).replace(/^\n+/, '');
+  }
+
+  // 2. Vue SFC <script> block
+  const sc = remaining.match(/^<script[^>]*>[\s\S]*?<\/script>/);
+  if (sc) {
+    result.push(sc[0]);
+    remaining = remaining.slice(sc[0].length).replace(/^\n+/, '');
+  }
+
+  // 3. Unwrap <template>...</template> for per-element splitting
+  let body = remaining;
+  const tpl = remaining.match(/^<template[^>]*>([\s\S]*)<\/template>\s*$/);
+  if (tpl) {
+    body = dedent(tpl[1]);
+  }
+
+  result.push(...splitByElements(body));
+  return result.filter(Boolean);
+});
+
+const { copy: copyAll, copied: copiedAll } = useClipboard({ source: activeCode, legacy: true });
+
+const copiedChunkIdx = ref<number | null>(null);
+async function copyChunk(idx: number, text: string) {
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+  }
+  copiedChunkIdx.value = idx;
+  setTimeout(() => {
+    if (copiedChunkIdx.value === idx) copiedChunkIdx.value = null;
+  }, 1500);
+}
 </script>
 
 <template>
@@ -59,14 +152,30 @@ const { copy, copied } = useClipboard({ source: activeCode, legacy: true });
         </button>
         <button
           type="button"
-          aria-label="Copy code"
+          aria-label="Copy entire code block"
           class="ml-auto text-xs px-2.5 py-1 rounded border border-neutral-lighter bg-white hover:bg-neutral-lightest transition-colors text-slate-default leading-none"
-          @click="copy()"
+          @click="copyAll()"
         >
-          {{ copied ? '✓ Copied' : 'Copy' }}
+          {{ copiedAll ? '✓ Copied all' : 'Copy all' }}
         </button>
       </div>
+      <div v-if="chunks.length > 1" role="tabpanel" class="bg-gray-900 divide-y divide-gray-800">
+        <div v-for="(chunk, idx) in chunks" :key="idx" class="relative group">
+          <button
+            type="button"
+            aria-label="Copy snippet"
+            class="absolute top-2 right-2 z-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity text-xs px-2 py-1 rounded bg-gray-700 hover:bg-gray-600 text-gray-100 leading-none"
+            @click="copyChunk(idx, chunk)"
+          >
+            {{ copiedChunkIdx === idx ? '✓ Copied' : 'Copy' }}
+          </button>
+          <pre
+            class="p-4 pr-16 text-sm overflow-x-auto text-gray-100 m-0 leading-relaxed"
+          ><code class="font-mono">{{ chunk }}</code></pre>
+        </div>
+      </div>
       <pre
+        v-else
         role="tabpanel"
         class="p-4 text-sm overflow-x-auto bg-gray-900 text-gray-100 m-0 leading-relaxed"
       ><code class="font-mono">{{ activeCode }}</code></pre>

@@ -5,6 +5,7 @@ layout: "../../layouts/MainLayout.astro"
 ---
 
 import Quote from '../../components/Quote.vue'
+import PropsTable from '../../components/PropsTable.astro'
 
 
 # Quote
@@ -31,3 +32,14 @@ Simple Quote component with left border in primary color.
 ```html
 <Quote class="font-headlight text-center" text="Est adipisicing officia eiusmod consequat aliqua qui amet sunt magna in." />
 ```
+
+## Props
+
+<PropsTable data={[
+  { name: 'as', type: "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'div' | 'span'", default: "'div'", description: 'HTML element rendered as the quote container.' },
+  { name: 'text', type: 'string', default: "''", description: 'Quote text. Ignored if a default slot is provided.' },
+]} />
+
+## Slot
+
+The default slot replaces the `text` prop entirely — useful when you want to include inline formatting or links inside the quote.

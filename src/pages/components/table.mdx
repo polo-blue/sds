@@ -5,6 +5,7 @@ layout: "../../layouts/MainLayout.astro"
 ---
 
 import Table from '../../components/Table.vue'
+import ComponentPreview from '../../components/ComponentPreview.vue'
 import PropsTable from '../../components/PropsTable.astro'
 export const tableData = [
   {
@@ -44,76 +45,80 @@ export const tableDataSecondary = [
 
 Simple table based on JSON data object.
 
-<div class="component-preview">
-    <Table data={tableData}></Table>
-</div>
+<ComponentPreview client:visible
+  astro={`---
+import Table from 'spoko-design-system/components/Table.vue';
 
-## Code
-
-```ts
-const tableData = [
-  {
-    id: 1,
-    name: "Lorem Ipsum",
-    email: "lorem@email.com",
-  },
-  {
-    id: 2,
-    name: "Chuck Norris",
-    email: "ipsum@email.com",
-  },
-  {
-    id: 3,
-    name: "Ipsum Lorem",
-    email: "lorem@email.com",
-  }
+const data = [
+  { id: 1, name: 'Lorem Ipsum', email: 'lorem@email.com' },
+  { id: 2, name: 'Chuck Norris', email: 'ipsum@email.com' },
+  { id: 3, name: 'Ipsum Lorem', email: 'lorem@email.com' },
 ];
+---
+<Table data={data} client:visible />`}
+  vue={`<script setup>
+import Table from 'spoko-design-system/src/components/Table.vue';
 
-```
+const data = [
+  { id: 1, name: 'Lorem Ipsum', email: 'lorem@email.com' },
+  { id: 2, name: 'Chuck Norris', email: 'ipsum@email.com' },
+  { id: 3, name: 'Ipsum Lorem', email: 'lorem@email.com' },
+];
+</script>
 
-```html
-  <!-- Astro -->
+<template>
+  <Table :data="data" />
+</template>`}>
   <Table data={tableData} />
+</ComponentPreview>
 
-  <!-- Vue -->
-  <Table :data="tableData" />
-```
+## Without explicit id
 
-
-
-# Table
-
-<div class="component-preview">
-    <Table data={tableDataSecondary} />
-</div>
-
-## Code
-
-```ts
-const tableDataSecondary = [
-  {
-    name: "Lorem Ipsum",
-    email: "lorem@email.com",
-  },
-  {
-    name: "Chuck Norris",
-    email: "ipsum@email.com",
-  },
-  {
-    name: "Ipsum Lorem",
-    email: "lorem@email.com",
-  }
-];
-
-
-<Table data={tableDataSecondary} />
-```
+<ComponentPreview client:visible
+  astro={`<Table data={[
+  { name: 'Lorem Ipsum', email: 'lorem@email.com' },
+  { name: 'Chuck Norris', email: 'ipsum@email.com' },
+  { name: 'Ipsum Lorem', email: 'lorem@email.com' },
+]} client:visible />`}
+  vue={`<Table :data="[
+  { name: 'Lorem Ipsum', email: 'lorem@email.com' },
+  { name: 'Chuck Norris', email: 'ipsum@email.com' },
+  { name: 'Ipsum Lorem', email: 'lorem@email.com' },
+]" />`}>
+  <Table data={tableDataSecondary} />
+</ComponentPreview>
 
 ## Generic Table Classes
 
 Plain HTML table using SDS shortcut classes — no JavaScript required.
 
-<div class="component-preview">
+<ComponentPreview client:visible
+  html={`<table class="table-base">
+  <thead>
+    <tr>
+      <th class="table-header">Name</th>
+      <th class="table-header">Email</th>
+      <th class="table-header">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-row">
+      <td class="table-cell">Lorem Ipsum</td>
+      <td class="table-cell">lorem@email.com</td>
+      <td class="table-cell"><span class="badge-success">Active</span></td>
+    </tr>
+    <tr class="table-row">
+      <td class="table-cell">Chuck Norris</td>
+      <td class="table-cell">chuck@email.com</td>
+      <td class="table-cell"><span class="badge-neutral">Inactive</span></td>
+    </tr>
+    <tr class="table-row">
+      <td class="table-cell">Ipsum Lorem</td>
+      <td class="table-cell">ipsum@email.com</td>
+      <td class="table-cell"><span class="badge-error">Suspended</span></td>
+    </tr>
+  </tbody>
+</table>`}>
   <table class="table-base">
     <thead>
       <tr>
@@ -140,32 +145,35 @@ Plain HTML table using SDS shortcut classes — no JavaScript required.
       </tr>
     </tbody>
   </table>
-</div>
-
-```html
-<table class="table-base">
-  <thead>
-    <tr>
-      <th class="table-header">Name</th>
-      <th class="table-header">Email</th>
-      <th class="table-header">Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="table-row">
-      <td class="table-cell">Lorem Ipsum</td>
-      <td class="table-cell">lorem@email.com</td>
-      <td class="table-cell"><span class="badge-success">Active</span></td>
-    </tr>
-  </tbody>
-</table>
-```
+</ComponentPreview>
 
 ### Striped rows
 
 Apply `table-striped` to `<tr>` elements for alternating row backgrounds.
 
-<div class="component-preview">
+<ComponentPreview client:visible
+  html={`<table class="table-base">
+  <thead>
+    <tr>
+      <th class="table-header">Name</th>
+      <th class="table-header">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-striped">
+      <td class="table-cell">Lorem Ipsum</td>
+      <td class="table-cell">lorem@email.com</td>
+    </tr>
+    <tr class="table-striped">
+      <td class="table-cell">Chuck Norris</td>
+      <td class="table-cell">chuck@email.com</td>
+    </tr>
+    <tr class="table-striped">
+      <td class="table-cell">Ipsum Lorem</td>
+      <td class="table-cell">ipsum@email.com</td>
+    </tr>
+  </tbody>
+</table>`}>
   <table class="table-base">
     <thead>
       <tr>
@@ -188,22 +196,7 @@ Apply `table-striped` to `<tr>` elements for alternating row backgrounds.
       </tr>
     </tbody>
   </table>
-</div>
-
-```html
-<table class="table-base">
-  <tbody>
-    <tr class="table-striped">
-      <td class="table-cell">Lorem Ipsum</td>
-      <td class="table-cell">lorem@email.com</td>
-    </tr>
-    <tr class="table-striped">
-      <td class="table-cell">Chuck Norris</td>
-      <td class="table-cell">chuck@email.com</td>
-    </tr>
-  </tbody>
-</table>
-```
+</ComponentPreview>
 
 ## Props
 

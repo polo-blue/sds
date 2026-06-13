@@ -4,6 +4,7 @@ layout: "../../layouts/MainLayout.astro"
 ---
 import PrCode from '../../components/PrCode.vue'
 import ProductCodes from '../../components/ProductCodes.vue'
+import PropsTable from '../../components/PropsTable.astro'
 
 # PR-Code
 
@@ -173,23 +174,30 @@ When using data from the API, pass the `pr_codes` array directly:
 
 ## Props
 
-### PrCode Props:
+### PrCode
 
-| Prop | Type | Required | Default | Description |
-|------|------|----------|---------|-------------|
-| `prcode` | `Object` | Yes | - | PR code object with code, group, description, variant_category |
-| `prcode.code` | `String` | Yes | - | The 3-character PR code |
-| `prcode.group` | `String` | No | - | PR code group (e.g., "BAV", "STF") |
-| `prcode.description` | `String` | No | - | Description shown in tooltip |
-| `prcode.variant_category` | `String` | No | - | Category for semantic coloring (GTI, WRC, etc.) |
-| `isPdp` | `Boolean` | No | `false` | Product detail page styling |
+<PropsTable data={[
+  { name: 'prcode', type: 'PrCodeObject', required: true, description: 'PR code object — see shape below.' },
+  { name: 'isPdp', type: 'boolean', default: 'false', description: 'Product detail page styling.' },
+]} />
 
-### ProductCodes Props:
+### ProductCodes
 
-| Prop | Type | Required | Default | Description |
-|------|------|----------|---------|-------------|
-| `prcodes` | `Array<Object>` | Yes | `[]` | Array of PR code objects |
-| `isPdp` | `Boolean` | No | `false` | Product detail page styling |
+<PropsTable data={[
+  { name: 'prcodes', type: 'PrCodeObject[]', required: true, default: '[]', description: 'Array of PR code objects.' },
+  { name: 'isPdp', type: 'boolean', default: 'false', description: 'Product detail page styling.' },
+]} />
+
+### PrCodeObject shape
+
+```ts
+interface PrCodeObject {
+  code: string;              // The 3-character PR code (required)
+  group?: string;            // PR code group (e.g. "BAV", "STF")
+  description?: string;      // Tooltip description
+  variant_category?: 'GTI' | 'WRC' | 'CROSS' | 'BLUEGT' | 'BLUEMOTION' | 'R_LINE';
+}
+```
 
 ## Features
 

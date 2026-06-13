@@ -3,6 +3,7 @@ title: Drawer
 layout: ../../layouts/MainLayout.astro
 ---
 import Drawer from '../../components/Drawer.astro'
+import ComponentPreview from '../../components/ComponentPreview.vue'
 import PropsTable from '../../components/PropsTable.astro'
 
 # Drawer
@@ -15,7 +16,25 @@ The drawer is **CSS-driven** with a small script that handles open/close, focus 
 
 ### Default (Medium, Left-aligned)
 
-<div class="component-preview">
+<ComponentPreview client:visible
+  astro={`---
+import Drawer from 'spoko-design-system/components/Drawer.astro';
+---
+<button type="button" class="btn-primary btn-normal" aria-controls="demo-drawer" aria-expanded="false">
+  Open drawer
+</button>
+
+<Drawer id="demo-drawer" label="Settings & Navigation">
+  <div class="p-6 flex flex-col gap-6">
+    <h3 class="text-xl font-textbold mb-4">Navigation</h3>
+    <ul class="flex flex-col gap-2">
+      <li><a href="#" data-drawer-close>Dashboard</a></li>
+      <li><a href="#" data-drawer-close>Products</a></li>
+      <li><a href="#" data-drawer-close>Settings</a></li>
+    </ul>
+    <button type="button" class="btn-secondary btn-sm" data-drawer-close>Close</button>
+  </div>
+</Drawer>`}>
   <button
     type="button"
     class="btn-primary btn-normal"
@@ -76,11 +95,22 @@ The drawer is **CSS-driven** with a small script that handles open/close, focus 
       </div>
     </div>
   </Drawer>
-</div>
+</ComponentPreview>
 
 ### Small Width
 
-<div class="component-preview">
+<ComponentPreview client:visible
+  astro={`<button type="button" class="btn-primary btn-normal" aria-controls="small-drawer" aria-expanded="false">
+  Open small drawer
+</button>
+
+<Drawer id="small-drawer" label="Quick actions">
+  <div class="p-4 flex flex-col gap-4">
+    <h3 class="text-lg font-textbold">Quick Actions</h3>
+    <button class="btn-primary btn-sm w-full">Action 1</button>
+    <button class="btn-secondary btn-sm w-full" data-drawer-close>Close</button>
+  </div>
+</Drawer>`}>
   <button
     type="button"
     class="btn-primary btn-normal"
@@ -98,12 +128,23 @@ The drawer is **CSS-driven** with a small script that handles open/close, focus 
       <button class="btn-secondary btn-sm w-full" data-drawer-close>Close</button>
     </div>
   </Drawer>
-</div>
+</ComponentPreview>
 
 
 ### Large Width
 
-<div class="component-preview">
+<ComponentPreview client:visible
+  astro={`<button type="button" class="btn-primary btn-normal" aria-controls="large-drawer" aria-expanded="false">
+  Open large drawer
+</button>
+
+<Drawer id="large-drawer" label="Detailed panel">
+  <div class="p-6 flex flex-col gap-6">
+    <h3 class="text-xl font-textbold">Order Details</h3>
+    <!-- ... detailed content ... -->
+    <button type="button" class="btn-secondary w-full" data-drawer-close>Close</button>
+  </div>
+</Drawer>`}>
   <button
     type="button"
     class="btn-primary btn-normal"
@@ -148,11 +189,22 @@ The drawer is **CSS-driven** with a small script that handles open/close, focus 
       </button>
     </div>
   </Drawer>
-</div>
+</ComponentPreview>
 
 ### Right-Aligned
 
-<div class="component-preview">
+<ComponentPreview client:visible
+  astro={`<button type="button" class="btn-primary btn-normal" aria-controls="right-drawer" aria-expanded="false">
+  Open right drawer
+</button>
+
+<Drawer id="right-drawer" label="Side panel" position="right">
+  <div class="p-6 flex flex-col gap-4">
+    <h3 class="text-xl font-textbold">Right Panel</h3>
+    <p>This drawer opens from the right edge.</p>
+    <button type="button" class="btn-secondary w-full" data-drawer-close>Close</button>
+  </div>
+</Drawer>`}>
   <button
     type="button"
     class="btn-primary btn-normal"
@@ -162,7 +214,7 @@ The drawer is **CSS-driven** with a small script that handles open/close, focus 
     Open right drawer
   </button>
 
-  <Drawer id="right-drawer" label="Side panel">
+  <Drawer id="right-drawer" label="Side panel" position="right">
     <div class="p-6 flex flex-col gap-4">
       <h3 class="text-xl font-textbold">Right Panel</h3>
       <p class="text-sm text-slate-600 dark:text-neutral-light">
@@ -173,37 +225,7 @@ The drawer is **CSS-driven** with a small script that handles open/close, focus 
       </button>
     </div>
   </Drawer>
-</div>
-
-<style>
-  #right-drawer .sds-drawer-panel {
-    left: auto;
-    right: 0;
-    transform: translateX(100%);
-  }
-
-  #right-drawer.open .sds-drawer-panel {
-    transform: translateX(0);
-  }
-</style>
-
-```astro
----
-import Drawer from 'spoko-design-system/components/Drawer.astro';
----
-
-<button type="button" aria-controls="demo-drawer" aria-expanded="false">
-  Open drawer
-</button>
-
-<Drawer id="demo-drawer" label="Demo drawer">
-  <nav class="p-6">
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <button type="button" data-drawer-close>Close</button>
-  </nav>
-</Drawer>
-```
+</ComponentPreview>
 
 ## Variants
 
@@ -230,21 +252,13 @@ Customize drawer width by overriding the `.sds-drawer-panel` width via CSS:
 
 ### Position: Right Side
 
-Slide from the right edge by overriding positioning:
+Pass `position="right"` to slide from the right edge:
 
-```css
-#my-drawer .sds-drawer-panel {
-  left: auto;
-  right: 0;
-  transform: translateX(100%);
-}
-
-#my-drawer.open .sds-drawer-panel {
-  transform: translateX(0);
-}
+```astro
+<Drawer id="my-drawer" position="right">…</Drawer>
 ```
 
-Or use this HTML pattern directly if not using the Astro component.
+For plain HTML, set `data-position="right"` on the `.sds-drawer` element — the built-in stylesheet handles the rest.
 
 ## Wiring triggers
 
@@ -329,6 +343,7 @@ initDrawer('my-drawer');
 <PropsTable data={[
   { name: 'id', type: 'string', required: true, description: 'Unique id used by triggers (aria-controls) and the open/close script' },
   { name: 'label', type: 'string', default: "'Navigation'", description: 'aria-label for the dialog — describes the drawer to screen readers' },
+  { name: 'position', type: "'left' | 'right'", default: "'left'", description: 'Edge the drawer slides in from' },
 ]} />
 
 ## Use Cases

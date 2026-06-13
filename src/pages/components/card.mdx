@@ -4,6 +4,7 @@ layout: "../../layouts/MainLayout.astro"
 ---
 import Button from '../../components/Button.vue';
 import Card from '../../components/Card.astro'
+import ComponentPreview from '../../components/ComponentPreview.vue'
 import PropsTable from '../../components/PropsTable.astro'
 import { Icon } from 'astro-icon/components';
 import Image from '../../components/Image.astro'
@@ -14,85 +15,81 @@ Container component with image, body, and footer sections. Works for product car
 
 ## Live Demo
 
-<div class="component-preview">
+<ComponentPreview client:visible
+  astro={`---
+import Card from 'spoko-design-system/components/Card.astro';
+import Button from 'spoko-design-system/components/Button.vue';
+import { Icon } from 'astro-icon/components';
+---
+<Card href="https://google.com" imgAlt="Image Alt" imgSrc="https://placehold.co/826x620">
+  <h5 class="mb-2 text-2xl font-bold leading-none">Lorem Ipsum</h5>
+  <p class="mb-3 text-gray-700">Magna magna mollit esse incididunt deserunt eiusmod ad id ullamco cupidatat laborum enim nostrud.</p>
+  <div class="flex items-center justify-between my-4">
+    <span class="text-2xl font-bold">€599.00</span>
+  </div>
+  <Button tertiary small href="#">
+    Read more
+    <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl leading-none" />
+  </Button>
+</Card>`}
+  html={`<div class="bg-white border border-gray-200 rounded-lg shadow overflow-hidden">
+  <a href="#" class="aspect-ratio-video block relative">
+    <img src="https://placehold.co/826x620" alt="Image Alt" class="h-full w-full object-cover" />
+  </a>
+  <div class="p-5">
+    <h5 class="mb-2 text-2xl font-bold leading-none">Lorem Ipsum</h5>
+    <p class="mb-3 text-gray-700">Magna magna mollit esse incididunt deserunt eiusmod ad id ullamco cupidatat laborum enim nostrud.</p>
+    <div class="flex items-center justify-between my-4">
+      <span class="text-2xl font-bold">€599.00</span>
+    </div>
+    <a href="#" class="btn-tertiary btn-xs btn-medium-hover">
+      Read more
+      <span class="i-flowbite-arrow-right-outline ml-2 text-2xl leading-none"></span>
+    </a>
+  </div>
+</div>`}>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full" itemscope itemtype="https://schema.org/ItemList">
-    <Card href="https://google.com" imgAlt="Image Alt" imgSrc="https://placehold.co/826x620" >
-        <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 leading-none">Lorem Ipsum</h5>
-        </a>
-        <p class="mb-3 font-normal text-gray-700 ">
-          Magna magna mollit esse incididunt deserunt eiusmod ad id ullamco cupidatat laborum enim nostrud. Irure officia occaecat adipisicing amet labore et incididunt exercitation. Consequat aliqua excepteur duis dolore cupidatat.
-        </p>
-
-        <div class="flex items-center justify-between my-4">
-          <span class="text-2xl font-bold text-gray-900">€599.00</span>
-        </div>
-
-        <Button tertiary small href="#">
-          Read more
-          <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl leading-none" />
-        </Button>
+    <Card href="https://google.com" imgAlt="Image Alt" imgSrc="https://placehold.co/826x620">
+      <a href="#"><h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 leading-none">Lorem Ipsum</h5></a>
+      <p class="mb-3 font-normal text-gray-700">
+        Magna magna mollit esse incididunt deserunt eiusmod ad id ullamco cupidatat laborum enim nostrud. Irure officia occaecat adipisicing amet labore et incididunt exercitation.
+      </p>
+      <div class="flex items-center justify-between my-4">
+        <span class="text-2xl font-bold text-gray-900">€599.00</span>
+      </div>
+      <Button tertiary small href="#">
+        Read more
+        <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl leading-none" />
+      </Button>
     </Card>
-
-    <Card href="#" imgAlt="Image Alt" imgSrc="https://placehold.co/826x620" >
-        <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 leading-none">Lorem Ipsum</h5>
-        </a>
-        <p class="mb-3 font-normal text-gray-700 ">
-          Magna magna mollit esse incididunt deserunt eiusmod ad id ullamco cupidatat laborum enim nostrud. Irure officia occaecat adipisicing amet labore et incididunt exercitation. Consequat aliqua excepteur duis dolore cupidatat.
-        </p>
-
-        <div class="flex items-center justify-between my-4">
-          <span class="text-2xl font-bold text-gray-900 ">€599.00</span>
-        </div>
-
-        <Button tertiary small href="#">
-          Read more
-          <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl leading-none" />
-        </Button>
+    <Card href="#" imgAlt="Image Alt" imgSrc="https://placehold.co/826x620">
+      <a href="#"><h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 leading-none">Lorem Ipsum</h5></a>
+      <p class="mb-3 font-normal text-gray-700">
+        Magna magna mollit esse incididunt deserunt eiusmod ad id ullamco cupidatat laborum enim nostrud.
+      </p>
+      <div class="flex items-center justify-between my-4">
+        <span class="text-2xl font-bold text-gray-900">€599.00</span>
+      </div>
+      <Button tertiary small href="#">
+        Read more
+        <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl leading-none" />
+      </Button>
     </Card>
-
-    <Card href="#" imgAlt="Image Alt" imgSrc="https://placehold.co/826x620" >
-        <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900  leading-none">Lorem Ipsum</h5>
-        </a>
-        <p class="mb-3 font-normal text-gray-700 ">
-          Magna magna mollit esse incididunt deserunt eiusmod ad id ullamco cupidatat laborum enim nostrud. Irure officia occaecat adipisicing amet labore et incididunt exercitation. Consequat aliqua excepteur duis dolore cupidatat.
-        </p>
-
-        <div class="flex items-center justify-between my-4">
-          <span class="text-2xl font-bold text-gray-900 ">€599.00</span>
-        </div>
-
-        <Button tertiary small href="#">
-          Read more
-          <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl leading-none" />
-        </Button>
+    <Card href="#" imgAlt="Image Alt" imgSrc="https://placehold.co/826x620">
+      <a href="#"><h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 leading-none">Lorem Ipsum</h5></a>
+      <p class="mb-3 font-normal text-gray-700">
+        Magna magna mollit esse incididunt deserunt eiusmod ad id ullamco cupidatat laborum enim nostrud.
+      </p>
+      <div class="flex items-center justify-between my-4">
+        <span class="text-2xl font-bold text-gray-900">€599.00</span>
+      </div>
+      <Button tertiary small href="#">
+        Read more
+        <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl leading-none" />
+      </Button>
     </Card>
   </div>
-</div>
-
-```html
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full" itemscope itemtype="https://schema.org/ItemList">
-    <Card href="https://google.com" imgAlt="Image Alt" imgSrc="https://placehold.co/826x620" >
-        <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900  leading-none">Lorem Ipsum</h5>
-        </a>
-        <p class="mb-3 font-normal text-gray-700 ">
-          Magna magna mollit esse incididunt deserunt eiusmod ad id ullamco cupidatat laborum enim nostrud. Irure officia occaecat adipisicing amet labore et incididunt exercitation. Consequat aliqua excepteur duis dolore cupidatat.
-        </p>
-
-        <div class="flex items-center justify-between my-4">
-          <span class="text-2xl font-bold text-gray-900 ">€599.00</span>
-        </div>
-
-        <Button tertiary small href="#">
-          Read more
-          <Icon name="flowbite:arrow-right-outline" class="ml-2 text-2xl leading-none" />
-        </Button>
-    </Card>
-</div>
-```
+</ComponentPreview>
 
 ## Grid example
 
@@ -298,7 +295,26 @@ Skewed background with CSS & SVG.
 
 Simple card layout using SDS shortcut classes — works in any HTML environment.
 
-<div class="component-preview">
+<ComponentPreview client:visible
+  html={`<div class="card">
+  <img class="card-image" src="..." alt="..." />
+  <div class="card-body">
+    <h3 class="text-xl font-bold">Card title</h3>
+    <p class="text-slate-light text-sm">Description text.</p>
+  </div>
+  <div class="card-footer">
+    <span class="text-sm text-slate-light">Footer info</span>
+    <a href="#" class="btn-tertiary btn-xs">Read more</a>
+  </div>
+</div>
+
+<div class="card-hover">
+  <img class="card-image" src="..." alt="..." />
+  <div class="card-body">
+    <h3 class="text-xl font-bold">Hover card</h3>
+    <p class="text-slate-light text-sm">Scales up on hover.</p>
+  </div>
+</div>`}>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
     <div class="card">
       <img class="card-image" src="https://placehold.co/600x400" alt="Card image" />
@@ -319,57 +335,14 @@ Simple card layout using SDS shortcut classes — works in any HTML environment.
       </div>
     </div>
   </div>
-</div>
-
-```html
-<!-- Basic card -->
-<div class="card">
-  <img class="card-image" src="..." alt="..." />
-  <div class="card-body">
-    <h3 class="text-xl font-bold">Card title</h3>
-    <p class="text-slate-light text-sm">Description text.</p>
-  </div>
-  <div class="card-footer">
-    <span class="text-sm text-slate-light">Footer info</span>
-    <a href="#" class="btn-tertiary btn-xs">Read more</a>
-  </div>
-</div>
-
-<!-- Hover card (scales on hover) -->
-<div class="card-hover">
-  <img class="card-image" src="..." alt="..." />
-  <div class="card-body">
-    <h3 class="text-xl font-bold">Hover card</h3>
-    <p class="text-slate-light text-sm">Scales up on hover.</p>
-  </div>
-</div>
-```
+</ComponentPreview>
 
 ## Alerts
 
 Notification banners — pure CSS, no JavaScript.
 
-<div class="component-preview flex-col gap-3">
-  <div class="alert-info">
-    <span class="i-lucide-info text-lg shrink-0"></span>
-    <span>This is an informational message.</span>
-  </div>
-  <div class="alert-success">
-    <span class="i-lucide-check-circle text-lg shrink-0"></span>
-    <span>Operation completed successfully.</span>
-  </div>
-  <div class="alert-warning">
-    <span class="i-lucide-triangle-alert text-lg shrink-0"></span>
-    <span>Please review your input before continuing.</span>
-  </div>
-  <div class="alert-error">
-    <span class="i-lucide-x-circle text-lg shrink-0"></span>
-    <span>An error occurred. Please try again.</span>
-  </div>
-</div>
-
-```html
-<div class="alert-info">
+<ComponentPreview client:visible previewClass="flex-col gap-3"
+  html={`<div class="alert-info">
   <span class="i-lucide-info text-lg shrink-0"></span>
   <span>This is an informational message.</span>
 </div>
@@ -387,8 +360,24 @@ Notification banners — pure CSS, no JavaScript.
 <div class="alert-error">
   <span class="i-lucide-x-circle text-lg shrink-0"></span>
   <span>An error occurred. Please try again.</span>
-</div>
-```
+</div>`}>
+  <div class="alert-info">
+    <span class="i-lucide-info text-lg shrink-0"></span>
+    <span>This is an informational message.</span>
+  </div>
+  <div class="alert-success">
+    <span class="i-lucide-check-circle text-lg shrink-0"></span>
+    <span>Operation completed successfully.</span>
+  </div>
+  <div class="alert-warning">
+    <span class="i-lucide-triangle-alert text-lg shrink-0"></span>
+    <span>Please review your input before continuing.</span>
+  </div>
+  <div class="alert-error">
+    <span class="i-lucide-x-circle text-lg shrink-0"></span>
+    <span>An error occurred. Please try again.</span>
+  </div>
+</ComponentPreview>
 
 ## Props
 

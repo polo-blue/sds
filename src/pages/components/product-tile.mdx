@@ -3,6 +3,7 @@ title: "ProductTile"
 layout: "../../layouts/MainLayout.astro"
 ---
 import ProductTile from '../../components/ProductTile.astro'
+import PropsTable from '../../components/PropsTable.astro'
 
 export const productObject = {
   name: 'Combi-instrument MFA+',
@@ -48,4 +49,22 @@ export const productObject = {
 }
 
 <ProductTile productObject={productObject} />
+```
+
+## Props
+
+<PropsTable data={[
+  { name: 'productObject', type: 'ProductObject', required: true, description: 'Object describing the product — see shape below.' },
+  { name: 'index', type: 'number', required: false, description: 'Index within a list. When `1`, the inner `Image` is marked as hero (eager-loaded, Pagefind indexed).' },
+]} />
+
+### ProductObject shape
+
+```ts
+interface ProductObject {
+  name: string;        // Display name (becomes link text)
+  url: string;         // Product detail page URL
+  number: string;      // VW product number (rendered via ProductNumber)
+  photo: string | null; // Image URL — pass null to render a placeholder
+}
 ```

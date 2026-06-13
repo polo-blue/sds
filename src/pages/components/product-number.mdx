@@ -9,6 +9,7 @@ productNumbers:
 ---
 import ProductNumber from '../../components/Product/ProductNumber.astro'
 import ButtonCopy from '../../components/ButtonCopy.astro'
+import PropsTable from '../../components/PropsTable.astro'
 
 # ProductNumber
 
@@ -65,3 +66,20 @@ Use the `after-number` slot to add a copy button or other actions next to the pr
     ))}
   </div>
 </div>
+
+## Props
+
+<PropsTable data={[
+  { name: 'productNumber', type: 'string', required: true, description: 'Raw VW product number (e.g. `6R0920870F`).' },
+  { name: 'numberFormatted', type: '{ dot: string; dash: string; standard: string }', required: false, description: 'Pre-formatted number from API. Falls back to client-side formatting when omitted.' },
+  { name: 'isPdp', type: 'boolean', default: 'false', description: 'Uses `h2`/`h3` semantic wrappers for product detail page usage.' },
+  { name: 'big', type: 'boolean', default: 'false', description: 'Larger font size variant.' },
+  { name: 'small', type: 'boolean', default: 'false', description: 'Tighter letter spacing for compact layouts.' },
+  { name: 'class', type: 'string', required: false, description: 'Extra classes appended to the wrapper.' },
+]} />
+
+## Slots
+
+| Slot | Description |
+| --- | --- |
+| `after-number` | Renders next to the product number (typically a `ButtonCopy`) |

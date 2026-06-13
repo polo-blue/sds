@@ -14,52 +14,61 @@ Flexible badge component for displaying product labels, tags, and status indicat
 ## Live Demo
 
 ## Badges - GTI
-<div class="component-preview">
-    <div class="relative min-h-19">
-            <Badges badges={['GTI', 'Motorsport', 'Lorem Ipsum']} class="top-2" />
-    </div>
-</div>
 
-```js
-<div class="relative min-h-10">
+<ComponentPreview client:visible
+  astro={`---
+import Badges from 'spoko-design-system/components/Badges.vue';
+---
+<div class="relative min-h-19">
+  <Badges badges={['GTI', 'Motorsport', 'Lorem Ipsum']} class="top-2" client:visible />
+</div>`}
+  vue={`<script setup>
+import Badges from 'spoko-design-system/src/components/Badges.vue';
+</script>
+
+<template>
+  <div class="relative min-h-19">
+    <Badges :badges="['GTI', 'Motorsport', 'Lorem Ipsum']" class="top-2" />
+  </div>
+</template>`}>
+  <div class="relative min-h-19">
     <Badges badges={['GTI', 'Motorsport', 'Lorem Ipsum']} class="top-2" />
-</div>
-
-```
-
+  </div>
+</ComponentPreview>
 
 ## Badge on image
-<div class="component-preview">
-<div class="relative">
+
+<ComponentPreview client:visible
+  astro={`<div class="relative">
+  <img src="https://placehold.co/300x200" alt="image alt" />
+  <Badges badges={['Motorsport']} class="top-2" client:visible />
+</div>`}
+  vue={`<div class="relative">
+  <img src="https://placehold.co/300x200" alt="image alt" />
+  <Badges :badges="['Motorsport']" class="top-2" />
+</div>`}>
+  <div class="relative">
     <img src="https://placehold.co/300x200" alt="image alt" />
     <Badges badges={['Motorsport']} class="top-2" />
-</div>
-</div>
-
-```js
-<div class="relative">
-    <img src="https://placehold.co/300x200" alt="image alt" />
-    <Badges badges={['Motorsport']} class="top-2" />
-</div>
-
-```
-
+  </div>
+</ComponentPreview>
 
 ## Few badges on image
-<div class="component-preview">
-<div class="relative">
+
+<ComponentPreview client:visible
+  astro={`<div class="relative">
+  <img src="https://placehold.co/300x200" alt="image alt" />
+  <Badges badges={['Motorsport', 'Lorem ipsum', 'GTI']} class="top-2" client:visible />
+</div>`}
+  vue={`<div class="relative">
+  <img src="https://placehold.co/300x200" alt="image alt" />
+  <Badges :badges="['Motorsport', 'Lorem ipsum', 'GTI']" class="top-2" />
+</div>`}>
+  <div class="relative">
     <img src="https://placehold.co/300x200" alt="image alt" />
     <Badges badges={['Motorsport', 'Lorem ipsum', 'GTI']} class="top-2" />
-</div>
-</div>
-
-```js
-<div class="relative">
-    <img src="https://placehold.co/300x200" alt="image alt" />
-    <Badges badges={['Motorsport', 'Lorem ipsum', 'GTI']} class="top-2" />
-</div>
-
-```
+  </div>
+</ComponentPreview>
 
 ## Generic Badge Classes
 

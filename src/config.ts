@@ -41,6 +41,7 @@ export const SIDEBAR = [
   { text: 'Input', link: '/components/input/' },
   { text: 'Jumbotron', link: '/components/jumbotron/' },
   { text: 'Modal', link: '/components/modal/' },
+  { text: 'Navbar', link: '/components/navbar/' },
   { text: 'PostHeader', link: '/components/post-header/' },
   { text: 'PR-Code', link: '/components/pr-code/' },
   { text: 'Product Engine', link: '/components/product-engine/' },
@@ -49,6 +50,7 @@ export const SIDEBAR = [
   { text: 'Product Tile', link: '/components/product-tile/' },
   { text: 'Quote', link: '/components/quote/' },
   { text: 'Table', link: '/components/table/' },
+  { text: 'Toggle', link: '/components/toggle/' },
 
   { text: 'Extras', header: true },
   { text: 'Flags', link: '/components/flags/' },

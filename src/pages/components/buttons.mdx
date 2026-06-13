@@ -4,6 +4,7 @@ layout: "../../layouts/MainLayout.astro"
 ---
 import Button from '../../components/Button.vue'
 import ButtonCopy from '../../components/ButtonCopy.astro'
+import ComponentPreview from '../../components/ComponentPreview.vue'
 import { Icon } from 'astro-icon/components';
 import PropsTable from '../../components/PropsTable.astro'
 
@@ -13,26 +14,10 @@ This page is an example on how to document your button components, most of the c
 
 Find the code for this page in the `src/pages/components/buttons.md` file.
 
-<div class="component-preview flex-wrap">
-    <div class="flex w-full gap-4 items-center">
-        <Button primary>Primary</Button>
-        <Button secondary>Secondary</Button>
-        <Button tertiary>Tertiary</Button>
-        
-        <Button text medium>Text</Button>
-        <Button tag small>Tag Name</Button>
-    </div>
-    <div class="flex w-full gap-4 items-center">
-        <Button primary rounded>Primary</Button>
-        <Button secondary rounded>Secondary</Button>
-        <Button tertiary rounded>Tertiary</Button>
-        
-        <Button text medium rounded>Text</Button>
-        <Button tag small rounded>Tag Name</Button>
-    </div>
-</div>
-
-```js
+<ComponentPreview client:visible previewClass="flex-wrap"
+  astro={`---
+import Button from 'spoko-design-system/components/Button.vue';
+---
 <Button primary>Primary</Button>
 <Button secondary>Secondary</Button>
 <Button tertiary>Tertiary</Button>
@@ -43,326 +28,479 @@ Find the code for this page in the `src/pages/components/buttons.md` file.
 <Button secondary rounded>Secondary</Button>
 <Button tertiary rounded>Tertiary</Button>
 <Button text medium rounded>Text</Button>
-<Button tag small rounded>Tag Name</Button>
-```
+<Button tag small rounded>Tag Name</Button>`}
+  vue={`<script setup>
+import Button from 'spoko-design-system/src/components/Button.vue';
+</script>
+
+<template>
+  <Button primary>Primary</Button>
+  <Button secondary>Secondary</Button>
+  <Button tertiary>Tertiary</Button>
+  <Button text medium>Text</Button>
+  <Button tag small>Tag Name</Button>
+
+  <Button primary rounded>Primary</Button>
+  <Button secondary rounded>Secondary</Button>
+  <Button tertiary rounded>Tertiary</Button>
+  <Button text medium rounded>Text</Button>
+  <Button tag small rounded>Tag Name</Button>
+</template>`}
+  html={`<button class="btn-primary btn-normal">Primary</button>
+<button class="btn-secondary btn-normal">Secondary</button>
+<button class="btn-tertiary btn-normal btn-medium-hover">Tertiary</button>
+<button class="btn-text btn-sm">Text</button>
+<button class="btn-tag btn-xs">Tag Name</button>
+
+<button class="btn-primary btn-normal rounded-full">Primary</button>
+<button class="btn-secondary btn-normal rounded-full">Secondary</button>
+<button class="btn-tertiary btn-normal btn-medium-hover rounded-full">Tertiary</button>
+<button class="btn-text btn-sm rounded-full">Text</button>
+<button class="btn-tag btn-xs rounded-full">Tag Name</button>`}>
+  <div class="flex w-full gap-4 items-center">
+      <Button primary>Primary</Button>
+      <Button secondary>Secondary</Button>
+      <Button tertiary>Tertiary</Button>
+      <Button text medium>Text</Button>
+      <Button tag small>Tag Name</Button>
+  </div>
+  <div class="flex w-full gap-4 items-center">
+      <Button primary rounded>Primary</Button>
+      <Button secondary rounded>Secondary</Button>
+      <Button tertiary rounded>Tertiary</Button>
+      <Button text medium rounded>Text</Button>
+      <Button tag small rounded>Tag Name</Button>
+  </div>
+</ComponentPreview>
 
 ## Primary button `<button>`
 
 We use the primary button for main actions like saving a form or creating a new item.
 
-<div class="component-preview">
-    <Button primary>Primary</Button>
-    <Button primary medium>Primary</Button>
-    <Button primary small>Primary</Button>
-</div>
+<ComponentPreview client:visible
+  astro={`---
+import Button from 'spoko-design-system/components/Button.vue';
+---
+<Button primary>Primary</Button>
+<Button primary medium>Primary</Button>
+<Button primary small>Primary</Button>`}
+  vue={`<script setup>
+import Button from 'spoko-design-system/src/components/Button.vue';
+</script>
 
-```js
-    <Button primary>Primary</Button>
-    <Button primary medium>Primary</Button>
-    <Button primary small>Primary</Button>
-```
+<template>
+  <Button primary>Primary</Button>
+  <Button primary medium>Primary</Button>
+  <Button primary small>Primary</Button>
+</template>`}
+  html={`<button class="btn-primary btn-normal">Primary</button>
+<button class="btn-primary btn-sm">Primary</button>
+<button class="btn-primary btn-xs">Primary</button>`}>
+  <Button primary>Primary</Button>
+  <Button primary medium>Primary</Button>
+  <Button primary small>Primary</Button>
+</ComponentPreview>
 
 ## Secondary button
 
 Secondary buttons accompany primary buttons to provide additional actions.
 For example, cancel buttons are secondary buttons.
 
-<div class="component-preview">
-    <Button secondary>Secondary</Button>
-    <Button secondary medium>Secondary</Button>
-    <Button secondary small>Secondary</Button>
-</div>
+<ComponentPreview client:visible
+  astro={`---
+import Button from 'spoko-design-system/components/Button.vue';
+---
+<Button secondary>Secondary</Button>
+<Button secondary medium>Secondary</Button>
+<Button secondary small>Secondary</Button>`}
+  vue={`<script setup>
+import Button from 'spoko-design-system/src/components/Button.vue';
+</script>
 
-```js
-    <Button secondary>Secondary</Button>
-    <Button secondary medium>Secondary</Button>
-    <Button secondary small>Secondary</Button>
-```
+<template>
+  <Button secondary>Secondary</Button>
+  <Button secondary medium>Secondary</Button>
+  <Button secondary small>Secondary</Button>
+</template>`}
+  html={`<button class="btn-secondary btn-normal">Secondary</button>
+<button class="btn-secondary btn-sm">Secondary</button>
+<button class="btn-secondary btn-xs">Secondary</button>`}>
+  <Button secondary>Secondary</Button>
+  <Button secondary medium>Secondary</Button>
+  <Button secondary small>Secondary</Button>
+</ComponentPreview>
 
 ## Text button
 
 Text buttons are used for actions that do not require a primary or secondary button.
 
-<div class="component-preview">
-    <Button text>Text button</Button>
-    <Button text>Text button</Button>
-    <Button text>Text button</Button>
-</div>
+<ComponentPreview client:visible
+  astro={`---
+import Button from 'spoko-design-system/components/Button.vue';
+---
+<Button text>Text button</Button>`}
+  vue={`<script setup>
+import Button from 'spoko-design-system/src/components/Button.vue';
+</script>
 
-```js
-<Button text>Text button</Button>
-```
+<template>
+  <Button text>Text button</Button>
+</template>`}
+  html={`<button class="btn-text btn-normal">Text button</button>`}>
+  <Button text>Text button</Button>
+  <Button text>Text button</Button>
+  <Button text>Text button</Button>
+</ComponentPreview>
 
-## Link tertiary 
+## Link tertiary
 
-<div class="component-preview">
+<ComponentPreview client:visible
+  astro={`---
+import Button from 'spoko-design-system/components/Button.vue';
+---
+<Button tertiary>Tertiary</Button>
+<Button tertiary medium>Tertiary</Button>
+<Button tertiary small>Tertiary</Button>`}
+  vue={`<script setup>
+import Button from 'spoko-design-system/src/components/Button.vue';
+</script>
 
-    <Button tertiary>Tertiary</Button>
-    <Button tertiary medium>Tertiary</Button>
-    <Button tertiary small>Tertiary</Button>
-
-</div>
-
-```html
-    <Button tertiary>Tertiary</Button>
-    <Button tertiary medium>Tertiary</Button>
-    <Button tertiary small>Tertiary</Button>
-```
+<template>
+  <Button tertiary>Tertiary</Button>
+  <Button tertiary medium>Tertiary</Button>
+  <Button tertiary small>Tertiary</Button>
+</template>`}
+  html={`<button class="btn-tertiary btn-normal btn-medium-hover">Tertiary</button>
+<button class="btn-tertiary btn-sm btn-medium-hover">Tertiary</button>
+<button class="btn-tertiary btn-xs btn-medium-hover">Tertiary</button>`}>
+  <Button tertiary>Tertiary</Button>
+  <Button tertiary medium>Tertiary</Button>
+  <Button tertiary small>Tertiary</Button>
+</ComponentPreview>
 
 ## Tertiary with icon
-<div class="component-preview">
-    <Button tertiary href="#">
-        Read more
-        <Icon name="la:arrow-right" class="ml-2 text-2xl -my-1 -mr-1" />
-    </Button>
 
-    <Button tertiary href="#" medium>
-        Read more
-        <Icon name="la:arrow-right" class="ml-2 text-2xl -my-1 -mr-1" />
-    </Button>
+<ComponentPreview client:visible
+  astro={`---
+import Button from 'spoko-design-system/components/Button.vue';
+import { Icon } from 'astro-icon/components';
+---
+<Button tertiary href="#">
+  Read more
+  <Icon name="la:arrow-right" class="ml-2 text-2xl -my-1 -mr-1" />
+</Button>`}
+  vue={`<script setup>
+import Button from 'spoko-design-system/src/components/Button.vue';
+</script>
 
-    <Button tertiary href="#" small class="px-5">
-        Read more
-        <Icon name="la:arrow-right" class="ml-2 text-2xl -my-1 -mr-1" />
-    </Button>
-</div>
-
-```html
-    <Button tertiary href="#">
-        Read more
-        <Icon name="la:arrow-right" class="ml-2 text-2xl -my-1 -mr-1" />
-    </Button>
-
-    <Button tertiary href="#" medium>
-        Read more
-        <Icon name="la:arrow-right" class="ml-2 text-2xl -my-1 -mr-1" />
-    </Button>
-
-    <Button tertiary href="#" small class="px-5">
-        Read more
-        <Icon name="la:arrow-right" class="ml-2 text-2xl -my-1 -mr-1" />
-    </Button>
-
-```
+<template>
+  <!-- Vue uses UnoCSS icon classes (astro-icon is Astro-only) -->
+  <Button tertiary href="#">
+    Read more
+    <span class="i-la-arrow-right ml-2 text-2xl -my-1 -mr-1" />
+  </Button>
+</template>`}
+  html={`<a href="#" class="btn-tertiary btn-normal btn-medium-hover">
+  Read more
+  <span class="i-la-arrow-right ml-2 text-2xl -my-1 -mr-1"></span>
+</a>
+<a href="#" class="btn-tertiary btn-sm btn-medium-hover">
+  Read more
+  <span class="i-la-arrow-right ml-2 text-2xl -my-1 -mr-1"></span>
+</a>
+<a href="#" class="btn-tertiary btn-xs btn-medium-hover px-5">
+  Read more
+  <span class="i-la-arrow-right ml-2 text-2xl -my-1 -mr-1"></span>
+</a>`}>
+  <Button tertiary href="#">
+    Read more
+    <Icon name="la:arrow-right" class="ml-2 text-2xl -my-1 -mr-1" />
+  </Button>
+  <Button tertiary href="#" medium>
+    Read more
+    <Icon name="la:arrow-right" class="ml-2 text-2xl -my-1 -mr-1" />
+  </Button>
+  <Button tertiary href="#" small class="px-5">
+    Read more
+    <Icon name="la:arrow-right" class="ml-2 text-2xl -my-1 -mr-1" />
+  </Button>
+</ComponentPreview>
 
 ## Rounded button
 
-Rounded edges
+Rounded edges — add `rounded` prop, or `rounded-full` class for raw HTML.
 
-<div class="component-preview flex-wrap">
-    <div class="flex w-full gap-4 items-center">
-        <Button primary rounded>Primary</Button>
-        <Button secondary rounded>Secondary</Button>
-        <Button tertiary rounded>Tertiary</Button>
-        
-        <Button text rounded>Text</Button>
-        <Button tag rounded>Tag Name</Button>
-    </div>
-    <div class="flex w-full gap-4 items-center">
-        <Button primary medium rounded>Primary</Button>
-        <Button secondary medium rounded>Secondary</Button>
-        <Button tertiary medium rounded>Tertiary</Button>
-        
-        <Button text medium rounded>Text</Button>
-        <Button tag medium rounded>Tag Name</Button>
-    </div>
-    <div class="flex w-full gap-4 items-center">
-        <Button primary small rounded>Primary</Button>
-        <Button secondary small rounded>Secondary</Button>
-        <Button tertiary small rounded>Tertiary</Button>
-        
-        <Button text medium small rounded>Text</Button>
-        <Button tag small rounded>Tag Name</Button>
-    </div>
-</div>
-
-```js
+<ComponentPreview client:visible previewClass="flex-wrap"
+  astro={`---
+import Button from 'spoko-design-system/components/Button.vue';
+---
 <Button primary rounded>Primary</Button>
 <Button secondary rounded>Secondary</Button>
 <Button tertiary rounded>Tertiary</Button>
-<Button text medium rounded>Text</Button>
-<Button tag small rounded>Tag Name</Button>
+<Button text rounded>Text</Button>
+<Button tag rounded>Tag Name</Button>`}
+  vue={`<script setup>
+import Button from 'spoko-design-system/src/components/Button.vue';
+</script>
 
-<Button primary medium rounded>Primary</Button>
-<Button secondary medium rounded>Secondary</Button>
-<Button tertiary medium rounded>Tertiary</Button>
-<Button text medium medium rounded>Text</Button>
-<Button tag small medium rounded>Tag Name</Button>
-
-<Button primary small rounded>Primary</Button>
-<Button secondary small rounded>Secondary</Button>
-<Button tertiary small rounded>Tertiary</Button>
-<Button text medium small rounded>Text</Button>
-<Button tag small rounded>Tag Name</Button>
-```
+<template>
+  <Button primary rounded>Primary</Button>
+  <Button secondary rounded>Secondary</Button>
+  <Button tertiary rounded>Tertiary</Button>
+  <Button text rounded>Text</Button>
+  <Button tag rounded>Tag Name</Button>
+</template>`}
+  html={`<button class="btn-primary btn-normal rounded-full">Primary</button>
+<button class="btn-secondary btn-normal rounded-full">Secondary</button>
+<button class="btn-tertiary btn-normal btn-medium-hover rounded-full">Tertiary</button>
+<button class="btn-text btn-normal rounded-full">Text</button>
+<button class="btn-tag btn-normal rounded-full">Tag Name</button>`}>
+  <div class="flex w-full gap-4 items-center">
+      <Button primary rounded>Primary</Button>
+      <Button secondary rounded>Secondary</Button>
+      <Button tertiary rounded>Tertiary</Button>
+      <Button text rounded>Text</Button>
+      <Button tag rounded>Tag Name</Button>
+  </div>
+  <div class="flex w-full gap-4 items-center">
+      <Button primary medium rounded>Primary</Button>
+      <Button secondary medium rounded>Secondary</Button>
+      <Button tertiary medium rounded>Tertiary</Button>
+      <Button text medium rounded>Text</Button>
+      <Button tag medium rounded>Tag Name</Button>
+  </div>
+  <div class="flex w-full gap-4 items-center">
+      <Button primary small rounded>Primary</Button>
+      <Button secondary small rounded>Secondary</Button>
+      <Button tertiary small rounded>Tertiary</Button>
+      <Button text medium small rounded>Text</Button>
+      <Button tag small rounded>Tag Name</Button>
+  </div>
+</ComponentPreview>
 
 ## Outline button
 
-Text buttons are used for actions that do not require a primary or secondary button.
+Outlined variants of the three button styles.
 
-<div class="component-preview flex-wrap">
-    <Button primary-outline title="Title">Text button</Button>
-    <Button primary-outline rounded title="Title">Text button</Button>
+<ComponentPreview client:visible previewClass="flex-wrap"
+  astro={`---
+import Button from 'spoko-design-system/components/Button.vue';
+---
+<Button primary-outline title="Title">Text button</Button>
+<Button primary-outline rounded title="Title">Text button</Button>
 
-    <Button secondary-outline title="Title">Text button</Button>
-    <Button secondary-outline rounded title="Title">Text button</Button>
+<Button secondary-outline title="Title">Text button</Button>
+<Button secondary-outline rounded title="Title">Text button</Button>
 
-    <Button tertiary-outline title="Title">Text button</Button>
-    <Button tertiary-outline rounded title="Title">Text button</Button>
+<Button tertiary-outline title="Title">Text button</Button>
+<Button tertiary-outline rounded title="Title">Text button</Button>
 
-    <Button tertiary-outline title="Title" class="border-2">Text button</Button>
-</div>
+<Button tertiary-outline title="Title" class="border-2">Text button</Button>`}
+  vue={`<script setup>
+import Button from 'spoko-design-system/src/components/Button.vue';
+</script>
 
-```js
-    <Button primary-outline title="Title">Text button</Button>
-    <Button primary-outline rounded title="Title">Text button</Button>
+<template>
+  <Button primary-outline title="Title">Text button</Button>
+  <Button primary-outline rounded title="Title">Text button</Button>
 
-    <Button secondary-outline title="Title">Text button</Button>
-    <Button secondary-outline rounded title="Title">Text button</Button>
+  <Button secondary-outline title="Title">Text button</Button>
+  <Button secondary-outline rounded title="Title">Text button</Button>
 
-    <Button tertiary-outline title="Title">Text button</Button>
-    <Button tertiary-outline rounded title="Title">Text button</Button>
+  <Button tertiary-outline title="Title">Text button</Button>
+  <Button tertiary-outline rounded title="Title">Text button</Button>
 
-    <Button tertiary-outline title="Title" class="border-2">Text button</Button>
-```
+  <Button tertiary-outline title="Title" class="border-2">Text button</Button>
+</template>`}
+  html={`<button class="btn-primary-outline btn-normal" title="Title">Text button</button>
+<button class="btn-primary-outline btn-normal rounded-full" title="Title">Text button</button>
+
+<button class="btn-secondary-outline btn-normal" title="Title">Text button</button>
+<button class="btn-secondary-outline btn-normal rounded-full" title="Title">Text button</button>
+
+<button class="btn-tertiary-outline btn-normal btn-medium-hover" title="Title">Text button</button>
+<button class="btn-tertiary-outline btn-normal btn-medium-hover rounded-full" title="Title">Text button</button>
+
+<button class="btn-tertiary-outline btn-normal btn-medium-hover border-2" title="Title">Text button</button>`}>
+  <Button primary-outline title="Title">Text button</Button>
+  <Button primary-outline rounded title="Title">Text button</Button>
+
+  <Button secondary-outline title="Title">Text button</Button>
+  <Button secondary-outline rounded title="Title">Text button</Button>
+
+  <Button tertiary-outline title="Title">Text button</Button>
+  <Button tertiary-outline rounded title="Title">Text button</Button>
+
+  <Button tertiary-outline title="Title" class="border-2">Text button</Button>
+</ComponentPreview>
 
 ### Outline button - custom hover
 
-<div class="component-preview">
-    <Button tertiary-outline rounded light-hover title="Title">Text button</Button>
-    <Button tertiary-outline rounded medium-hover title="Title">Text button</Button>
-    <Button tertiary-outline rounded dark-hover title="Title">Text button</Button>
-    <Button tertiary-outline rounded white-hover title="Title">Text button</Button>
-</div>
+<ComponentPreview client:visible
+  astro={`---
+import Button from 'spoko-design-system/components/Button.vue';
+---
+<Button tertiary-outline rounded light-hover title="Title">Text button</Button>
+<Button tertiary-outline rounded medium-hover title="Title">Text button</Button>
+<Button tertiary-outline rounded dark-hover title="Title">Text button</Button>
+<Button tertiary-outline rounded white-hover title="Title">Text button</Button>`}
+  vue={`<script setup>
+import Button from 'spoko-design-system/src/components/Button.vue';
+</script>
 
-```js
-    <Button tertiary-outline rounded light-hover title="Title">Text button</Button>
-    <Button tertiary-outline rounded medium-hover title="Title">Text button</Button>
-    <Button tertiary-outline rounded dark-hover title="Title">Text button</Button>
-    <Button tertiary-outline rounded white-hover title="Title">Text button</Button>
-    
-```
+<template>
+  <Button tertiary-outline rounded light-hover title="Title">Text button</Button>
+  <Button tertiary-outline rounded medium-hover title="Title">Text button</Button>
+  <Button tertiary-outline rounded dark-hover title="Title">Text button</Button>
+  <Button tertiary-outline rounded white-hover title="Title">Text button</Button>
+</template>`}
+  html={`<button class="btn-tertiary-outline btn-normal btn-light-hover rounded-full" title="Title">Text button</button>
+<button class="btn-tertiary-outline btn-normal btn-medium-hover rounded-full" title="Title">Text button</button>
+<button class="btn-tertiary-outline btn-normal btn-dark-hover rounded-full" title="Title">Text button</button>
+<button class="btn-tertiary-outline btn-normal btn-white-hover rounded-full" title="Title">Text button</button>`}>
+  <Button tertiary-outline rounded light-hover title="Title">Text button</Button>
+  <Button tertiary-outline rounded medium-hover title="Title">Text button</Button>
+  <Button tertiary-outline rounded dark-hover title="Title">Text button</Button>
+  <Button tertiary-outline rounded white-hover title="Title">Text button</Button>
+</ComponentPreview>
 
 
 ## Link button `<a>`
 
-Text buttons are used for actions that do not require a primary or secondary button.
+Passing `href` renders the button as an `<a>` element — same styling, anchor semantics.
 
-<div class="component-preview">
-    <Button primary href="#" title="Title">Text button</Button>
-</div>
+<ComponentPreview client:visible
+  astro={`---
+import Button from 'spoko-design-system/components/Button.vue';
+---
+<Button primary href="#" title="Title">Text button</Button>`}
+  vue={`<script setup>
+import Button from 'spoko-design-system/src/components/Button.vue';
+</script>
 
-```js
-<Button primary href="#" title="Title">Text button</Button>
-```
+<template>
+  <Button primary href="#" title="Title">Text button</Button>
+</template>`}
+  html={`<a href="#" class="btn-primary btn-normal" title="Title">Text button</a>`}>
+  <Button primary href="#" title="Title">Text button</Button>
+</ComponentPreview>
 
 ## Circle button
 
 Circle buttons are perfect for icon-only actions, maintaining equal width and height.
 
-<div class="component-preview flex-wrap">
-    <div class="flex w-full gap-4 items-center">
-        <Button primary circle>
-            <Icon name="la:arrow-right" />
-        </Button>
-        <Button secondary circle>
-            <Icon name="la:arrow-right" />
-        </Button>
-        <Button tertiary circle>
-            <Icon name="la:arrow-right" />
-        </Button>
-    </div>
-    <div class="flex w-full gap-4 items-center">
-        <Button primary medium circle>
-            <Icon name="la:arrow-right" class="text-xl" />
-        </Button>
-        <Button secondary medium circle>
-            <Icon name="la:arrow-right" class="text-xl" />
-        </Button>
-        <Button tertiary medium circle>
-            <Icon name="la:arrow-right" class="text-xl" />
-        </Button>
-    </div>
-    <div class="flex w-full gap-4 items-center">
-        <Button primary small circle>
-            <Icon name="la:arrow-right" class="text-lg" />
-        </Button>
-        <Button secondary small circle>
-            <Icon name="la:arrow-right" class="text-lg" />
-        </Button>
-        <Button tertiary small circle>
-            <Icon name="la:arrow-right" class="text-lg" />
-        </Button>
-    </div>
-</div>
-
-```js
+<ComponentPreview client:visible previewClass="flex-wrap"
+  astro={`---
+import Button from 'spoko-design-system/components/Button.vue';
+import { Icon } from 'astro-icon/components';
+---
 <Button primary circle>
-    <Icon name="la:arrow-right" />
+  <Icon name="la:arrow-right" />
 </Button>
 <Button secondary circle>
-    <Icon name="la:arrow-right" />
+  <Icon name="la:arrow-right" />
 </Button>
 <Button tertiary circle>
-    <Icon name="la:arrow-right" />
-</Button>
+  <Icon name="la:arrow-right" />
+</Button>`}
+  vue={`<script setup>
+import Button from 'spoko-design-system/src/components/Button.vue';
+</script>
 
-<Button primary medium circle>
-    <Icon name="la:arrow-right" class="text-xl" />
-</Button>
-<Button secondary medium circle>
-    <Icon name="la:arrow-right" class="text-xl" />
-</Button>
-<Button tertiary medium circle>
-    <Icon name="la:arrow-right" class="text-xl" />
-</Button>
+<template>
+  <!-- Vue uses UnoCSS icon classes (astro-icon is Astro-only) -->
+  <Button primary circle>
+    <span class="i-la-arrow-right" />
+  </Button>
+  <Button secondary circle>
+    <span class="i-la-arrow-right" />
+  </Button>
+  <Button tertiary circle>
+    <span class="i-la-arrow-right" />
+  </Button>
+</template>`}
+  html={`<button class="btn-primary btn-normal btn-circle">
+  <span class="i-la-arrow-right"></span>
+</button>
+<button class="btn-secondary btn-normal btn-circle">
+  <span class="i-la-arrow-right"></span>
+</button>
+<button class="btn-tertiary btn-normal btn-medium-hover btn-circle">
+  <span class="i-la-arrow-right"></span>
+</button>
 
-
-
-<Button primary small circle>
-    <Icon name="la:arrow-right" class="text-lg" />
-</Button>
-<Button secondary small circle>
-    <Icon name="la:arrow-right" class="text-lg" />
-</Button>
-<Button tertiary small circle>
-    <Icon name="la:arrow-right" class="text-lg" />
-</Button>
-```
+<!-- Size modifiers: btn-sm (medium), btn-xs (small) -->
+<button class="btn-primary btn-sm btn-circle">
+  <span class="i-la-arrow-right text-xl"></span>
+</button>
+<button class="btn-primary btn-xs btn-circle">
+  <span class="i-la-arrow-right text-lg"></span>
+</button>`}>
+  <div class="flex w-full gap-4 items-center">
+      <Button primary circle><Icon name="la:arrow-right" /></Button>
+      <Button secondary circle><Icon name="la:arrow-right" /></Button>
+      <Button tertiary circle><Icon name="la:arrow-right" /></Button>
+  </div>
+  <div class="flex w-full gap-4 items-center">
+      <Button primary medium circle><Icon name="la:arrow-right" class="text-xl" /></Button>
+      <Button secondary medium circle><Icon name="la:arrow-right" class="text-xl" /></Button>
+      <Button tertiary medium circle><Icon name="la:arrow-right" class="text-xl" /></Button>
+  </div>
+  <div class="flex w-full gap-4 items-center">
+      <Button primary small circle><Icon name="la:arrow-right" class="text-lg" /></Button>
+      <Button secondary small circle><Icon name="la:arrow-right" class="text-lg" /></Button>
+      <Button tertiary small circle><Icon name="la:arrow-right" class="text-lg" /></Button>
+  </div>
+</ComponentPreview>
 
 ### Circle outline buttons
 
-Circle buttons are also available in outline variants.
+<ComponentPreview client:visible
+  astro={`---
+import Button from 'spoko-design-system/components/Button.vue';
+import { Icon } from 'astro-icon/components';
+---
+<Button primary-outline circle>
+  <Icon name="la:arrow-right" class="text-2xl" />
+</Button>
+<Button secondary-outline circle>
+  <Icon name="la:arrow-right" class="text-2xl" />
+</Button>
+<Button tertiary-outline circle>
+  <Icon name="la:arrow-right" class="text-2xl" />
+</Button>`}
+  vue={`<script setup>
+import Button from 'spoko-design-system/src/components/Button.vue';
+</script>
 
-<div class="component-preview">
-    <Button primary-outline circle>
-        <Icon name="la:arrow-right" class="text-2xl" />
-    </Button>
+<template>
+  <Button primary-outline circle>
+    <span class="i-la-arrow-right text-2xl" />
+  </Button>
+  <Button secondary-outline circle>
+    <span class="i-la-arrow-right text-2xl" />
+  </Button>
+  <Button tertiary-outline circle>
+    <span class="i-la-arrow-right text-2xl" />
+  </Button>
+</template>`}
+  html={`<button class="btn-primary-outline btn-normal btn-circle">
+  <span class="i-la-arrow-right text-2xl"></span>
+</button>
+<button class="btn-secondary-outline btn-normal btn-circle">
+  <span class="i-la-arrow-right text-2xl"></span>
+</button>
+<button class="btn-tertiary-outline btn-normal btn-medium-hover btn-circle">
+  <span class="i-la-arrow-right text-2xl"></span>
+</button>`}>
+  <Button primary-outline circle><Icon name="la:arrow-right" class="text-2xl" /></Button>
+  <Button secondary-outline circle><Icon name="la:arrow-right" class="text-2xl" /></Button>
+  <Button tertiary-outline circle><Icon name="la:arrow-right" class="text-2xl" /></Button>
+</ComponentPreview>
 
-    <Button secondary-outline circle>
-        <Icon name="la:arrow-right" class="text-2xl" />
-    </Button>
+## CSS Class Reference
 
-    <Button tertiary-outline circle>
-        <Icon name="la:arrow-right" class="text-2xl" />
-    </Button>
-</div>
-
-```js
-    <Button primary-outline circle>
-        <Icon name="la:arrow-right" class="text-2xl" />
-    </Button>
-    <Button secondary-outline circle>
-        <Icon name="la:arrow-right" class="text-2xl" />
-    </Button>
-    <Button tertiary-outline circle>
-        <Icon name="la:arrow-right" class="text-2xl" />
-    </Button>
-```
-
-## HTML Recipe
-
-All buttons use SDS shortcut classes directly — no JavaScript or Vue required.
+All variants in one place — copy any combination into plain HTML.
 Size modifiers: `btn-normal` (default), `btn-sm` (medium), `btn-xs` (small).
 
 ```html

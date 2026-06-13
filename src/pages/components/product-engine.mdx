@@ -4,6 +4,7 @@ layout: "../../layouts/MainLayout.astro"
 ---
 import ProductEngine from '../../components/Product/ProductEngine.astro'
 import ProductEngines from '../../components/Product/ProductEngines.astro'
+import PropsTable from '../../components/PropsTable.astro'
 
 # ProductEngine
 
@@ -332,41 +333,39 @@ When using data from the API, pass the `part_engines` array directly. The compon
 
 ## Props
 
-### ProductEngine Props:
+### ProductEngine
 
-| Prop | Type | Required | Default | Description |
-|------|------|----------|---------|-------------|
-| `engine` | `Object` | Yes | - | Engine object with nested structure from API |
-| `engine.code` | `String` | Yes | - | Engine code (e.g., "CAYA") |
-| `engine.name` | `String` | No | - | Engine name (e.g., "1.6 TDI") |
-| `engine.info` | `String` | No | - | Additional info shown in header |
-| `engine.serie` | `Object` | No | - | Engine series object |
-| `engine.serie.value` | `String` | No | - | Series value (e.g., "EA189", "EA288") |
-| `engine.serie.label` | `String` | No | - | Series label (e.g., "Seria silnika") |
-| `engine.power` | `Object` | No | - | Power object with kw, ps, labels |
-| `engine.power.kw` | `Number` | No | - | Power in kilowatts |
-| `engine.power.ps` | `Number` | No | - | Power in horsepower |
-| `engine.power.ps_label` | `String` | No | - | Unit label (e.g., "KM", "PS") |
-| `engine.power.label` | `String` | No | - | Power label (e.g., "Moc") |
-| `engine.displacement` | `Object` | No | - | Displacement object |
-| `engine.displacement.value` | `Number` | No | - | Displacement in cm³ |
-| `engine.displacement.label` | `String` | No | - | Label (e.g., "Pojemność") |
-| `engine.euro` | `Object` | No | - | Euro standard object |
-| `engine.euro.value` | `Number` | No | - | Euro standard number |
-| `engine.euro.label` | `String` | No | - | Label (e.g., "Norma Euro") |
-| `engine.euro.formatted` | `String` | No | - | Formatted string (e.g., "Norma Euro 5") |
-| `showComma` | `Boolean` | No | `false` | Show comma after code (for lists) |
-| `translations` | `Object` | No | API labels | Fallback translations (used only with old API) |
+<PropsTable data={[
+  { name: 'engine', type: 'EngineObject', required: true, description: 'Engine object with nested API structure — see shape below.' },
+  { name: 'showComma', type: 'boolean', default: 'false', description: 'Show comma after code (for inline lists).' },
+  { name: 'translations', type: 'object', required: false, description: 'Fallback translations (used only with old flat API).' },
+]} />
+
+### ProductEngines
+
+<PropsTable data={[
+  { name: 'engines', type: 'EngineObject[]', required: true, default: '[]', description: 'Array of engine objects (auto-sorted by code).' },
+  { name: 'isPdp', type: 'boolean', default: 'false', description: 'Product detail page styling.' },
+  { name: 'translations', type: 'object', required: false, description: 'Fallback translations (used only with old flat API).' },
+]} />
+
+### EngineObject shape
+
+```ts
+interface EngineObject {
+  code: string;                                       // Engine code (e.g. "CAYA") — required
+  name?: string;                                      // Engine name (e.g. "1.6 TDI")
+  info?: string;                                      // Additional info shown in header
+  serie?: { value: string; label: string };           // e.g. "EA189"
+  power?: { kw: number; ps: number; ps_label: string; label: string };
+  displacement?: { value: number; label: string };    // cm³
+  euro?: { value: number; label: string; formatted: string };
+  date?: { value: string; label: string };
+  // ... other API-provided spec fields
+}
+```
 
 **Note**: The component supports both the new nested API structure (with built-in labels) and the old flat structure for backward compatibility.
-
-### ProductEngines Props:
-
-| Prop | Type | Required | Default | Description |
-|------|------|----------|---------|-------------|
-| `engines` | `Array<Object>` | Yes | `[]` | Array of engine objects (new nested structure) |
-| `isPdp` | `Boolean` | No | `false` | Product detail page styling |
-| `translations` | `Object` | No | API labels | Fallback translations (used only with old API) |
 
 ## Features
 

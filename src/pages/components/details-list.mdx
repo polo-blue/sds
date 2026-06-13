@@ -6,6 +6,7 @@ layout: "../../layouts/MainLayout.astro"
 import ProductDetailsList from '../../components/ProductDetailsList.vue'
 import ProductNumber from "../../components/Product/ProductNumber.astro"
 import ProductCodes from '../../components/ProductCodes.vue'
+import PropsTable from '../../components/PropsTable.astro'
 
 export const prcodesArray = [
   { code: "PJ4", group: "BAV", description: "Disk brakes example" },
@@ -128,16 +129,22 @@ const tableItems = [
 
 ## Props
 
-### items
-Array of table items with the following structure:
-- `id` (string): Unique identifier for the row, also used for slot names
-- `label` (string): Display name for the table header
-- `value` (unknown): The value to display - can be string, number, boolean, string array, or Link array
-- `type` (optional string): Set to `'links'` for link arrays
-- `isGenericArray` (optional boolean): Set to `true` for generic string arrays
+<PropsTable data={[
+  { name: 'items', type: 'DetailItem[]', required: true, description: 'Rows for the table. Each item: { id, label, value, type?, isGenericArray? }.' },
+  { name: 'caption', type: 'string', required: false, description: 'Optional table caption.' },
+]} />
 
-### caption
-Optional string for the table caption.
+### DetailItem shape
+
+```ts
+interface DetailItem {
+  id: string;                   // Unique row id, also used as slot name
+  label: string;                // Header label for the row
+  value: string | number | boolean | string[] | LinkItem[];
+  type?: 'links';               // Use 'links' to render value as LinkItem[]
+  isGenericArray?: boolean;     // Render string[] as bulleted list
+}
+```
 
 ## Value Types
 

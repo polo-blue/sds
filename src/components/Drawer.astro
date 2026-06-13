@@ -2,11 +2,12 @@
 interface Props {
   id: string;
   label?: string;
+  position?: 'left' | 'right';
 }
-const { id, label = 'Navigation' } = Astro.props;
+const { id, label = 'Navigation', position = 'left' } = Astro.props;
 ---
 
-<div id={id} class="sds-drawer" hidden>
+<div id={id} class="sds-drawer" data-position={position} hidden>
   <div class="sds-drawer-backdrop" data-drawer-close></div>
   <aside
     class="sds-drawer-panel"
@@ -75,6 +76,16 @@ const { id, label = 'Navigation' } = Astro.props;
   }
 
   .sds-drawer.open .sds-drawer-panel {
+    transform: translateX(0);
+  }
+
+  .sds-drawer[data-position='right'] .sds-drawer-panel {
+    left: auto;
+    right: 0;
+    transform: translateX(100%);
+  }
+
+  .sds-drawer[data-position='right'].open .sds-drawer-panel {
     transform: translateX(0);
   }
 

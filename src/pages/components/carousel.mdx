@@ -4,10 +4,11 @@ layout: "../../layouts/MainLayout.astro"
 ---
 import Carousel from '../../components/Carousel.astro'
 import ProductCarousel from '../../components/ProductCarousel.astro'
+import PropsTable from '../../components/PropsTable.astro'
 
 # Carousel
 
-Carousel - modern carousel based on Swiper Element (Web Component)
+Carousel - modern carousel based on [Swiper Element](https://swiperjs.com/element) (Web Component)
 
 <div class="component-preview">
      <Carousel />
@@ -60,3 +61,28 @@ Find the code for this page in the `src/pages/components/carousel.mdx` file.
   </swiper-container>
 </div>
 ```
+
+## Props
+
+Both `Carousel` and `ProductCarousel` are zero-prop wrappers around `<swiper-container>`. They render a fixed demo set of slides — drop their markup into your own page and pass slides as children to customize.
+
+## Swiper Attributes
+
+Configure behavior via attributes on `<swiper-container>`. The full list lives in the [Swiper Element docs](https://swiperjs.com/swiper-api#parameters); the most useful ones are:
+
+| Attribute | Type | Description |
+| --- | --- | --- |
+| `slides-per-view` | `number \| 'auto'` | Number of visible slides (use `auto` for variable widths) |
+| `space-between` | `number` | Gap between slides in pixels |
+| `navigation` | `boolean` | Show prev/next arrows |
+| `pagination` | `boolean` | Show pagination dots |
+| `pagination-type` | `'bullets' \| 'fraction' \| 'progressbar'` | Pagination style |
+| `scrollbar` | `boolean` | Show draggable scrollbar |
+| `mousewheel-force-to-axis` | `boolean` | Lock mousewheel to scroll axis |
+| `grid-rows` | `number` | Number of slide rows in grid layout |
+
+## CSS Shortcuts
+
+| Class | Purpose |
+| --- | --- |
+| `carousel-product-tile` | Slide width sizing for product tiles inside `ProductCarousel` |

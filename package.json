@@ -18,7 +18,12 @@
     "./icon-collections": "./icon.collections.ts",
     "./uno-config": "./uno-config/index.ts",
     "./components/*": "./src/components/*",
-    "./scripts/product-gallery": "./src/components/Product/product-gallery.ts"
+    "./components/Product/product-gallery.css": "./src/components/Product/product-gallery.css",
+    "./scripts/product-gallery": "./src/components/Product/product-gallery.ts",
+    "./astro/*": "./src/astro/*",
+    "./vue/*": "./src/vue/*",
+    "./react/*": "./src/react/*",
+    "./utils/*": "./src/utils/*"
   },
   "scripts": {
     "dev": "astro dev",

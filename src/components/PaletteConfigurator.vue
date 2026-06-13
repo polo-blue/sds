@@ -1,12 +1,20 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import { useClipboard } from '@vueuse/core';
+import { computed } from 'vue';
+import { useClipboard, useLocalStorage } from '@vueuse/core';
 import { generatePalette } from '../../uno-config/palette-generator.ts';
 import type { PaletteInput } from '../../uno-config/palette-generator.ts';
 
-const primary = ref('#0040c5');
-const secondary = ref('#00b0f0');
-const accent = ref('');
+const STORAGE_KEY = 'sds-palette-config';
+const DEFAULTS = { primary: '#0040c5', secondary: '#00b0f0', accent: '' };
+
+const config = useLocalStorage(STORAGE_KEY, { ...DEFAULTS }, { mergeDefaults: true });
+const primary = computed({ get: () => config.value.primary, set: v => (config.value.primary = v) });
+const secondary = computed({ get: () => config.value.secondary, set: v => (config.value.secondary = v) });
+const accent = computed({ get: () => config.value.accent, set: v => (config.value.accent = v) });
+
+const resetToDefaults = () => {
+  config.value = { ...DEFAULTS };
+};
 
 const paletteInput = computed((): PaletteInput => {
   const input: PaletteInput = { primary: primary.value };
@@ -50,67 +58,93 @@ const copyConfig = () => copy(exportCode.value);
 
 <template>
   <div>
-    <div class="flex flex-wrap gap-6 mb-10">
-      <label class="flex flex-col gap-1.5">
-        <span class="text-sm font-medium">
-          Primary
-          <span class="text-red-500">*</span>
-        </span>
-        <div class="flex items-center gap-2">
-          <input
-            type="color"
-            v-model="primary"
-            aria-label="Primary color picker"
-            class="w-10 h-10 rounded cursor-pointer border-0 p-0"
-          />
-          <input
-            type="text"
-            v-model="primary"
-            aria-label="Primary color hex value"
-            class="font-mono text-sm border rounded px-2 py-1 w-24"
-          />
+    <section
+      class="mb-10 p-5 rounded-lg border border-slate-200 bg-slate-50/50 dark:bg-slate-darkest dark:border-slate-dark"
+    >
+      <header class="flex items-start justify-between gap-4 mb-4">
+        <div>
+          <h2
+            class="text-sm font-textbold uppercase tracking-widest text-slate-dark dark:text-neutral-lighter"
+          >
+            Brand Colors
+          </h2>
+          <p class="text-xs text-slate-default dark:text-neutral-light mt-1">
+            Choices persist in your browser via
+            <code class="font-mono">localStorage</code>
+            .
+          </p>
         </div>
-      </label>
-      <label class="flex flex-col gap-1.5">
-        <span class="text-sm font-medium">Secondary</span>
-        <div class="flex items-center gap-2">
-          <input
-            type="color"
-            v-model="secondary"
-            aria-label="Secondary color picker"
-            class="w-10 h-10 rounded cursor-pointer border-0 p-0"
-          />
-          <input
-            type="text"
-            v-model="secondary"
-            aria-label="Secondary color hex value"
-            placeholder="auto"
-            class="font-mono text-sm border rounded px-2 py-1 w-24"
-          />
-        </div>
-      </label>
-      <label class="flex flex-col gap-1.5">
-        <span class="text-sm font-medium">
-          Accent
-          <span class="text-xs text-gray-400">(optional)</span>
-        </span>
-        <div class="flex items-center gap-2">
-          <input
-            type="color"
-            v-model="accent"
-            aria-label="Accent color picker"
-            class="w-10 h-10 rounded cursor-pointer border-0 p-0"
-          />
-          <input
-            type="text"
-            v-model="accent"
-            aria-label="Accent color hex value"
-            placeholder="#..."
-            class="font-mono text-sm border rounded px-2 py-1 w-24"
-          />
-        </div>
-      </label>
-    </div>
+        <button
+          type="button"
+          @click="resetToDefaults"
+          class="text-xs px-3 py-1.5 rounded border border-slate-200 dark:border-slate-dark hover:bg-white dark:hover:bg-slate-dark transition-colors text-slate-dark dark:text-neutral-lighter"
+        >
+          Reset to defaults
+        </button>
+      </header>
+
+      <div class="flex flex-wrap gap-6">
+        <label class="flex flex-col gap-1.5">
+          <span class="text-sm font-textbold text-slate-dark dark:text-neutral-lighter">
+            Primary
+            <span class="text-red-500" aria-label="required">*</span>
+          </span>
+          <div class="flex items-center gap-2">
+            <input
+              type="color"
+              v-model="primary"
+              aria-label="Primary color picker"
+              class="w-10 h-10 rounded cursor-pointer border-0 p-0"
+            />
+            <input
+              type="text"
+              v-model="primary"
+              aria-label="Primary color hex value"
+              class="font-mono text-sm border border-slate-200 dark:border-slate-dark dark:bg-slate-darkest rounded px-2 py-1 w-24"
+            />
+          </div>
+        </label>
+        <label class="flex flex-col gap-1.5">
+          <span class="text-sm font-textbold text-slate-dark dark:text-neutral-lighter">Secondary</span>
+          <div class="flex items-center gap-2">
+            <input
+              type="color"
+              v-model="secondary"
+              aria-label="Secondary color picker"
+              class="w-10 h-10 rounded cursor-pointer border-0 p-0"
+            />
+            <input
+              type="text"
+              v-model="secondary"
+              aria-label="Secondary color hex value"
+              placeholder="auto"
+              class="font-mono text-sm border border-slate-200 dark:border-slate-dark dark:bg-slate-darkest rounded px-2 py-1 w-24"
+            />
+          </div>
+        </label>
+        <label class="flex flex-col gap-1.5">
+          <span class="text-sm font-textbold text-slate-dark dark:text-neutral-lighter">
+            Accent
+            <span class="text-xs text-slate-default dark:text-neutral-light font-normal">(optional)</span>
+          </span>
+          <div class="flex items-center gap-2">
+            <input
+              type="color"
+              v-model="accent"
+              aria-label="Accent color picker"
+              class="w-10 h-10 rounded cursor-pointer border-0 p-0"
+            />
+            <input
+              type="text"
+              v-model="accent"
+              aria-label="Accent color hex value"
+              placeholder="#..."
+              class="font-mono text-sm border border-slate-200 dark:border-slate-dark dark:bg-slate-darkest rounded px-2 py-1 w-24"
+            />
+          </div>
+        </label>
+      </div>
+    </section>
 
     <div v-if="!palette" class="mb-8 p-3 bg-red-50 border border-red-200 rounded text-sm text-red-700">
       Invalid color value — enter a valid hex, rgb, or oklch color.

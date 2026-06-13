@@ -3,6 +3,7 @@ title: "PostHeader"
 layout: "../../layouts/MainLayout.astro"
 ---
 import PostHeader from '../../components/PostHeader.astro'
+import PropsTable from '../../components/PropsTable.astro'
 export const author = { firstName: 'Szymon', name: 'CNK' } 
 export const categories = [{"name":"Tools & garage accessories","uri":"#"}, {"name":"Lorem Ipsum","uri":"#"}]
 export const date = "2023-07-13T01:35:03"
@@ -62,3 +63,14 @@ WordPress PostHeader - post top component for WordPress Single Post template dat
     />
   </div>
 ```
+
+## Props
+
+<PropsTable data={[
+  { name: 'title', type: 'string', required: true, description: 'Post title displayed as the main heading.' },
+  { name: 'image', type: 'string', required: false, description: 'Hero image URL displayed behind/above the title.' },
+  { name: 'lang', type: 'string', required: false, description: 'Language code used by date formatting (e.g. `en`, `pl`).' },
+  { name: 'date', type: 'string', required: false, description: 'ISO 8601 publication date (e.g. `2023-07-13T01:35:03`).' },
+  { name: 'author', type: '{ firstName: string; name: string }', required: false, description: 'Post author — `name` is displayed, `firstName` populates the title attribute.' },
+  { name: 'categories', type: '{ name: string; uri: string }[]', required: false, description: 'Category objects rendered as links above the title.' },
+]} />

@@ -1,5 +1,5 @@
 ---
-title: "FuckRussia"
+title: "Flags"
 layout: "../../layouts/MainLayout.astro"
 ---
 import FlagPL from '../../components/flags/FlagPL.vue'
@@ -48,3 +48,9 @@ Flags based on CSS (UnoCSS) classes only.
                 <Icon name="circle-flags:ua" class="shadow-md rounded-full" />
                 <Icon name="circle-flags:uk" class="shadow-md rounded-full" />
 ```
+
+## Props
+
+`FlagPL` and `FlagUA` are static CSS components and take no props. Size them by wrapping in a sized container or pass utility classes via `class`.
+
+For other flags, use the `circle-flags` icon collection via [`astro-icon`](https://github.com/natemoo-re/astro-icon) — `<Icon name="circle-flags:xx" />` where `xx` is the country code.

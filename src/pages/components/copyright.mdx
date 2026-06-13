@@ -3,10 +3,11 @@ title: "Copyright"
 layout: "../../layouts/MainLayout.astro"
 ---
 import Copyright from '../../components/Copyright.astro'
+import PropsTable from '../../components/PropsTable.astro'
 
 # Copyright
 
-Copyright component
+Three-slot footer bar for copyright text, attribution, or links. Slots are spaced with `justify-between` — useful for left/center/right footer layouts.
 <div class="component-preview">
        <Copyright class="w-full">
         <div slot="left-item">left item</div>
@@ -40,3 +41,17 @@ Copyright component
           <div slot="right-item">right item</div>
         </Copyright>
 ```
+
+## Props
+
+<PropsTable data={[
+  { name: 'class', type: 'string', required: false, description: 'Additional classes appended to the wrapper (e.g. positioning, width, z-index).' },
+]} />
+
+## Slots
+
+| Slot | Description |
+| --- | --- |
+| `left-item` | Left-aligned content (e.g. copyright notice) |
+| `middle-item` | Centered content (e.g. attribution or links) |
+| `right-item` | Right-aligned content (e.g. socials or year) |

@@ -5,6 +5,7 @@ layout: "../../layouts/MainLayout.astro"
 
 ---
 import Breadcrumbs from '../../components/Breadcrumbs.vue'
+import ComponentPreview from '../../components/ComponentPreview.vue'
 import PropsTable from '../../components/PropsTable.astro'
 
 # Breadcrumbs
@@ -23,85 +24,98 @@ https://schema.org/ListItem
 
 ## Show back
 
-<div class="component-preview">
-    <Breadcrumbs
-      breadcrumbs={ [ {"name": "Level1", "path": "#level2"}, {"name": "Level 2", "path": "#level2"}, {"name": "Level 3", "path": "#level3"} ] }
-      product-number="6R0XXXXXX"
-      class="py-1 order-0 px-1 max-w-full flex bg-white"
-      show-back
-      text-back="Back"
-    />
-</div>
+<ComponentPreview client:visible
+  astro={`---
+import Breadcrumbs from 'spoko-design-system/components/Breadcrumbs.vue';
 
-```js
+const trail = [
+  { name: 'Level 1', path: '/level1' },
+  { name: 'Level 2', path: '/level2' },
+  { name: 'Level 3', path: '/level3' },
+];
+---
 <Breadcrumbs
-  breadcrumbs={ 
-    [ 
-      {"name": "Level1", "path": "level1"},
-      {"name": "Level 2", "path": "level2"},
-      {"name": "Level 3", "path": "level3"}
-    ] 
-  }
-  product-number="6R0XXXXXX"
-  class="py-1 order-0 px-1 max-w-full flex bg-white"
-  show-back
-  text-back="Back"
-/>
-```
+  breadcrumbs={trail}
+  productNumber="6R0XXXXXX"
+  class="py-1 px-1 max-w-full flex bg-white"
+  showBack
+  textBack="Back"
+  client:visible
+/>`}
+  vue={`<script setup>
+import Breadcrumbs from 'spoko-design-system/src/components/Breadcrumbs.vue';
+
+const trail = [
+  { name: 'Level 1', path: '/level1' },
+  { name: 'Level 2', path: '/level2' },
+  { name: 'Level 3', path: '/level3' },
+];
+</script>
+
+<template>
+  <Breadcrumbs
+    :breadcrumbs="trail"
+    product-number="6R0XXXXXX"
+    class="py-1 px-1 max-w-full flex bg-white"
+    show-back
+    text-back="Back"
+  />
+</template>`}>
+  <Breadcrumbs
+    breadcrumbs={[{name: 'Level1', path: '#level1'}, {name: 'Level 2', path: '#level2'}, {name: 'Level 3', path: '#level3'}]}
+    product-number="6R0XXXXXX"
+    class="py-1 order-0 px-1 max-w-full flex bg-white"
+    show-back
+    text-back="Back"
+  />
+</ComponentPreview>
 
 
 ## Show home
 
-<div class="component-preview">
-    <Breadcrumbs
-      breadcrumbs={ [ {"name": "Level1", "path": "#level2"}, {"name": "Level 2", "path": "#level2"}, {"name": "Level 3", "path": "#level3"} ] }
-      product-number="6R0XXXXXX"
-      class="py-1 order-0 px-1 max-w-full flex bg-white"
-      show-home
-    />
-</div>
-
-```js
-<Breadcrumbs
-  breadcrumbs={ 
-    [ 
-      {"name": "Level1", "path": "level 1"},
-      {"name": "Level 2", "path": "level2"},
-      {"name": "Level 3", "path": "level3"}
-    ] 
-  }
+<ComponentPreview client:visible
+  astro={`<Breadcrumbs
+  breadcrumbs={trail}
+  productNumber="6R0XXXXXX"
+  class="py-1 px-1 max-w-full flex bg-white"
+  showHome
+  client:visible
+/>`}
+  vue={`<Breadcrumbs
+  :breadcrumbs="trail"
   product-number="6R0XXXXXX"
-  class="py-1 order-0 px-1 max-w-full flex bg-white"
+  class="py-1 px-1 max-w-full flex bg-white"
   show-home
-/>
-```
+/>`}>
+  <Breadcrumbs
+    breadcrumbs={[{name: 'Level1', path: '#level1'}, {name: 'Level 2', path: '#level2'}, {name: 'Level 3', path: '#level3'}]}
+    product-number="6R0XXXXXX"
+    class="py-1 order-0 px-1 max-w-full flex bg-white"
+    show-home
+  />
+</ComponentPreview>
 
 
 ## Simply
 
-<div class="component-preview">
-    <Breadcrumbs
-      breadcrumbs={ [ {"name": "Level1", "path": "#level2"}, {"name": "Level 2", "path": "#level2"}, {"name": "Level 3", "path": "#level3"} ] }
-      product-number="6R0XXXXXX"
-      class="py-1 order-0 px-1 max-w-full flex bg-white"
-    />
-</div>
-
-```js
-<Breadcrumbs
-  breadcrumbs={ 
-    [ 
-      {"name": "Level1", "path": "level 1"},
-      {"name": "Level 2", "path": "level2"},
-      {"name": "Level 3", "path": "level3"}
-    ] 
-  }
+<ComponentPreview client:visible
+  astro={`<Breadcrumbs
+  breadcrumbs={trail}
+  productNumber="6R0XXXXXX"
+  class="py-1 px-1 max-w-full flex bg-white"
+  client:visible
+/>`}
+  vue={`<Breadcrumbs
+  :breadcrumbs="trail"
   product-number="6R0XXXXXX"
-  class="py-1 order-0 px-1 max-w-full flex bg-white"
-  show-back
-  text-back="Back"
-/>
-```
+  class="py-1 px-1 max-w-full flex bg-white"
+/>`}>
+  <Breadcrumbs
+    breadcrumbs={[{name: 'Level1', path: '#level1'}, {name: 'Level 2', path: '#level2'}, {name: 'Level 3', path: '#level3'}]}
+    product-number="6R0XXXXXX"
+    class="py-1 order-0 px-1 max-w-full flex bg-white"
+  />
+</ComponentPreview>
 
 ## Props
 
