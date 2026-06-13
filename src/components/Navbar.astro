@@ -1,0 +1,119 @@
+---
+interface Props {
+  brand?: string;
+  brandHref?: string;
+  drawerId?: string;
+  sticky?: boolean;
+  class?: string;
+}
+
+const { brand, brandHref = '/', drawerId, sticky = false, class: className = '' } = Astro.props;
+
+const hasUtility = Astro.slots.has('utility');
+const hasLogo = Astro.slots.has('logo');
+const hasNav = Astro.slots.has('nav');
+const hasActions = Astro.slots.has('actions');
+const hasSearch = Astro.slots.has('search');
+
+const hamburgerClass = hasNav ? 'lg:hidden' : '';
+---
+
+<header
+  class:list={[
+    'sds-navbar w-full bg-white dark:bg-slate-darkest border-b border-slate-200 dark:border-slate-dark text-slate-900 dark:text-neutral-lighter',
+    sticky && 'sticky top-0 z-40 backdrop-blur-md bg-opacity-90 dark:bg-opacity-90',
+    className,
+  ]}
+>
+  {
+    hasUtility && (
+      <div class="sds-navbar-utility border-b border-slate-100 dark:border-slate-dark text-xs">
+        <div class="max-w-7xl mx-auto flex items-center justify-end gap-4 py-1.5 px-4">
+          <slot name="utility" />
+        </div>
+      </div>
+    )
+  }
+
+  <nav title="Top Navigation" class="max-w-7xl mx-auto flex items-center gap-4 px-4 py-3">
+    {
+      drawerId && (
+        <button
+          type="button"
+          class:list={[
+            'p-2 -ml-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-dark transition-colors',
+            hamburgerClass,
+          ]}
+          aria-label="Open navigation"
+          aria-expanded="false"
+          aria-controls={drawerId}
+        >
+          <span class="sds-hamburger" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </span>
+        </button>
+      )
+    }
+
+    <div class="flex items-center gap-2 shrink-0">
+      {
+        hasLogo ? (
+          <slot name="logo" />
+        ) : (
+          brand && (
+            <a
+              href={brandHref}
+              class="text-xl font-textbold leading-none text-blue-medium dark:text-blue-light"
+            >
+              {brand}
+            </a>
+          )
+        )
+      }
+    </div>
+
+    {
+      hasSearch && (
+        <div class="flex-1 hidden md:flex justify-center max-w-xl mx-auto">
+          <slot name="search" />
+        </div>
+      )
+    }
+
+    {
+      hasNav && (
+        <div class="hidden lg:flex items-center gap-1 flex-1 justify-center">
+          <slot name="nav" />
+        </div>
+      )
+    }
+
+    {
+      hasActions && (
+        <div class="flex items-center gap-2 ml-auto">
+          <slot name="actions" />
+        </div>
+      )
+    }
+  </nav>
+</header>
+
+<style is:global>
+  .sds-navbar a.sds-navbar-link {
+    @apply px-3 py-2 rounded-lg text-sm font-textbold text-slate-700 hover:bg-slate-100 hover:text-blue-medium transition-colors;
+  }
+
+  html.dark .sds-navbar a.sds-navbar-link {
+    @apply text-neutral-light hover:bg-slate-dark hover:text-blue-light;
+  }
+
+  .sds-navbar a.sds-navbar-link.active {
+    @apply text-blue-medium bg-blue-50;
+  }
+
+  html.dark .sds-navbar a.sds-navbar-link.active {
+    @apply text-blue-light bg-slate-dark;
+  }
+</style>
