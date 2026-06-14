@@ -378,7 +378,20 @@ const total = images.length;
   }
 </div>
 
-<!-- Script removed — consumer must initialize manually:
-  import { initProductGallery } from 'spoko-design-system/scripts/product-gallery';
-  See: https://sds.spoko.space/components/product-gallery/
--->
+<script>
+  // Auto-init every gallery on the page — matches the auto-discovery pattern
+  // used by Drawer.astro / Modal.astro. Idempotent: each element gets a flag so
+  // re-runs (HMR, view transitions) are no-ops.
+  import { initProductGallery } from './product-gallery.ts';
+
+  function bind() {
+    document.querySelectorAll<HTMLElement>('[data-product-gallery]').forEach(root => {
+      if (root.dataset.sdsGalleryBound === '1') return;
+      root.dataset.sdsGalleryBound = '1';
+      initProductGallery(root);
+    });
+  }
+
+  bind();
+  document.addEventListener('astro:after-swap', bind);
+</script>
