@@ -56,11 +56,11 @@
     "spoko design system"
   ],
   "dependencies": {
-    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/mdx": "^6.0.0",
     "@astrojs/node": "^9.5.4",
     "@astrojs/sitemap": "^3.7.0",
     "@astrojs/ts-plugin": "^1.10.6",
-    "@astrojs/vue": "^5.1.4",
+    "@astrojs/vue": "^6.0.0",
     "@docsearch/css": "^4.6.0",
     "@floating-ui/dom": "^1.7.6",
     "@floating-ui/vue": "^1.1.10",
