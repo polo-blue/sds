@@ -1,9 +1,10 @@
 // shortcuts/components.ts
-import { 
-  COLORS, 
-  IMAGE_STYLES, 
-  LAYOUT, 
+import {
+  COLORS,
+  IMAGE_STYLES,
+  LAYOUT,
   TRANSITIONS,
+  TOOLTIP_STYLES,
   PRODUCT_STYLES,
   aspectRatios
 } from './constants'
@@ -22,6 +23,8 @@ export const componentShortcuts = [
   ['p-number', `${LAYOUT.flex.base} leading-none relative`],
   ['tooltip', 'invisible absolute'],
   ['has-tooltip', 'hover:(visible z-50)'],
+  ['tooltip-box', TOOLTIP_STYLES.box],
+  ['tooltip-trigger', TOOLTIP_STYLES.trigger],
   ['product-code', 'text-blue-light mr-1 leading-none tracking-wide select-all'],
   ['product-info', 'text-slate-light text-xxs font-textlight leading-none mt-0.5 md:(mt-0 text-xs)'],
   ['product-date', 'inline-block text-xxs md:text-xs leading-none mt-1 md:(mt-4 mb-1) mr-2'],
@@ -93,7 +96,7 @@ export const componentShortcuts = [
   ['product-thumb--tile', `w-full h-auto ${IMAGE_STYLES.objectContain} object-top bg-gray-100 ${aspectRatios['4/3']} ${LAYOUT.position.relative}`],
   ['product-thumb--carousel', `w-60 min-w-60 sm:w-22 sm:min-w-22 xl:w-30 xl:min-w-30 h-auto ${IMAGE_STYLES.objectContain} object-top bg-gray-100 ${aspectRatios['4/3']} ${LAYOUT.position.relative}`],
 
-  
+
   // FeaturesList component
   ['features-list', 'mb-6'],
   ['features-list-item', 'leading-5 relative mb-2'],

@@ -105,9 +105,9 @@ export const BUTTON_STYLES = {
 // Common typography styles
 export const TYPOGRAPHY = {
   headline: {
-    base: 'font-headregular',        
+    base: 'font-headregular',
     bold: 'font-headbold',           // dedykowany font bold
-    light: 'font-headlight',         
+    light: 'font-headlight',
     lightBold: 'font-headlight font-bold',  // light font + CSS bold
     lightThin: 'font-headlight font-300 tracking-tight',  // light + thin + tracking
     // base: 'font-headregular',
@@ -115,9 +115,9 @@ export const TYPOGRAPHY = {
     // light: 'font-headlight font-300 tracking-tight',
   },
   text: {
-    light: 'font-textlight',         
-    regular: 'font-textregular',     
-    bold: 'font-textbold',           
+    light: 'font-textlight',
+    regular: 'font-textregular',
+    bold: 'font-textbold',
     lightBold: 'font-textlight font-bold',  // light font + CSS bold
     lightThin: 'font-textlight font-300 tracking-tight',  // light + th
     xs: 'text-3',
@@ -125,6 +125,12 @@ export const TYPOGRAPHY = {
     base: 'text-4',
     lg: 'text-4.5',
   },
+} as const
+
+// Tooltip styles
+export const TOOLTIP_STYLES = {
+  box: 'bg-neutral-lightest text-slate-darkest text-xs whitespace-nowrap',
+  trigger: 'underline decoration-dotted underline-offset-4 decoration-neutral-light cursor-default transition-colors duration-200 hover:decoration-blue-darker',
 } as const
 
 // Product specific styles (merged PRODUCT_STYLES and PRODUCT_CONSTANTS)
