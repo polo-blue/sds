@@ -1,56 +1,148 @@
-const _cleanups = new Map<string, () => void>();
+/**
+ * Drawer behavior — event-delegated, no per-instance setup needed.
+ * Drawers added to the DOM at any time (SSR, hydration, dynamic insert)
+ * Just Work as long as they expose `.sds-drawer[id]` + `[data-drawer-panel]`
+ * markup and the trigger uses `aria-controls="<drawer-id>"`.
+ *
+ * Provides:
+ *  - click trigger / click backdrop / click [data-drawer-close] to toggle
+ *  - Escape closes the topmost open drawer
+ *  - focus trap inside the open panel (Tab + Shift+Tab cycle)
+ *  - focus returns to the trigger on close
+ *  - body.drawer-open scroll lock while any drawer is open
+ *  - aria-expanded synced on the trigger
+ */
 
-export function initDrawer(drawerId: string): void {
-  _cleanups.get(drawerId)?.();
-  _cleanups.delete(drawerId);
+const FOCUSABLE =
+  'a[href], button:not([disabled]), textarea:not([disabled]), input:not([type="hidden"]):not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
-  const root = document.getElementById(drawerId);
-  if (!root) return;
+const _triggerFor = new WeakMap<HTMLElement, HTMLElement>();
+const _returnFocusFor = new WeakMap<HTMLElement, HTMLElement>();
+const _hideTimers = new WeakMap<HTMLElement, ReturnType<typeof setTimeout>>();
+let _bound = false;
+
+function open(root: HTMLElement, trigger?: HTMLElement | null): void {
+  const existing = _hideTimers.get(root);
+  if (existing) clearTimeout(existing);
+
+  root.removeAttribute('hidden');
+  void root.offsetWidth; // force reflow so CSS transition fires
+  root.classList.add('open');
+  document.body.classList.add('drawer-open');
+
+  if (trigger) {
+    _triggerFor.set(root, trigger);
+    trigger.setAttribute('aria-expanded', 'true');
+  }
+  _returnFocusFor.set(root, document.activeElement as HTMLElement);
 
   const panel = root.querySelector<HTMLElement>('[data-drawer-panel]');
-  const trigger = document.querySelector<HTMLElement>(`[aria-controls="${drawerId}"]`);
-  let returnFocus: HTMLElement | null = null;
-  let hideTimer: ReturnType<typeof setTimeout> | undefined;
+  panel?.focus({ preventScroll: true });
+}
 
-  function open() {
-    clearTimeout(hideTimer);
-    root!.removeAttribute('hidden');
-    void root!.offsetWidth; // force reflow so CSS transition fires
-    root!.classList.add('open');
-    document.body.classList.add('drawer-open');
-    trigger?.setAttribute('aria-expanded', 'true');
-    returnFocus = document.activeElement as HTMLElement;
-    panel?.focus({ preventScroll: true });
-  }
+function close(root: HTMLElement): void {
+  root.classList.remove('open');
 
-  function close() {
-    root!.classList.remove('open');
+  if (!document.querySelector('.sds-drawer.open')) {
     document.body.classList.remove('drawer-open');
-    trigger?.setAttribute('aria-expanded', 'false');
-    returnFocus?.focus({ preventScroll: true });
-    returnFocus = null;
-    // Wait for CSS transition to finish before hiding
-    const ms = (parseFloat(getComputedStyle(panel ?? root!).transitionDuration) || 0.3) * 1000 + 50;
-    hideTimer = setTimeout(() => {
-      if (!root!.classList.contains('open')) root!.setAttribute('hidden', '');
-    }, ms);
   }
 
-  const ac = new AbortController();
-  const { signal } = ac;
+  const trigger = _triggerFor.get(root);
+  trigger?.setAttribute('aria-expanded', 'false');
 
-  trigger?.addEventListener('click', open, { signal });
-  root.querySelectorAll('[data-drawer-close]').forEach(el => el.addEventListener('click', close, { signal }));
-  document.addEventListener(
-    'keydown',
-    e => {
-      if (e.key === 'Escape' && root!.classList.contains('open')) close();
-    },
-    { signal }
-  );
+  const returnTo = _returnFocusFor.get(root);
+  returnTo?.focus({ preventScroll: true });
+  _returnFocusFor.delete(root);
 
-  _cleanups.set(drawerId, () => {
-    ac.abort();
-    clearTimeout(hideTimer);
+  const panel = root.querySelector<HTMLElement>('[data-drawer-panel]');
+  const ms = (parseFloat(getComputedStyle(panel ?? root).transitionDuration) || 0.3) * 1000 + 50;
+  const t = setTimeout(() => {
+    if (!root.classList.contains('open')) root.setAttribute('hidden', '');
+  }, ms);
+  _hideTimers.set(root, t);
+}
+
+function findDrawerFor(target: EventTarget | null): HTMLElement | null {
+  if (!(target instanceof Element)) return null;
+  const trigger = target.closest<HTMLElement>('[aria-controls]');
+  if (!trigger) return null;
+  const id = trigger.getAttribute('aria-controls');
+  if (!id) return null;
+  const el = document.getElementById(id);
+  return el?.classList.contains('sds-drawer') ? el : null;
+}
+
+function bindGlobalListeners(): void {
+  if (_bound) return;
+  _bound = true;
+
+  // Trigger click — toggles open
+  document.addEventListener('click', e => {
+    const drawer = findDrawerFor(e.target);
+    if (drawer) {
+      e.preventDefault();
+      if (drawer.classList.contains('open')) close(drawer);
+      else open(drawer, (e.target as Element).closest<HTMLElement>('[aria-controls]'));
+      return;
+    }
+
+    // Close click — any [data-drawer-close] inside or referencing a drawer
+    if (!(e.target instanceof Element)) return;
+    const closer = e.target.closest('[data-drawer-close]');
+    if (closer) {
+      const parentDrawer = closer.closest<HTMLElement>('.sds-drawer.open');
+      if (parentDrawer) close(parentDrawer);
+    }
+  });
+
+  // Escape — close the topmost open drawer
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      const open = document.querySelectorAll<HTMLElement>('.sds-drawer.open');
+      const topmost = open[open.length - 1];
+      if (topmost) {
+        e.preventDefault();
+        close(topmost);
+      }
+      return;
+    }
+
+    // Focus trap — keep Tab inside the open panel
+    if (e.key === 'Tab') {
+      const opens = document.querySelectorAll<HTMLElement>('.sds-drawer.open');
+      const drawer = opens[opens.length - 1];
+      if (!drawer) return;
+      const panel = drawer.querySelector<HTMLElement>('[data-drawer-panel]');
+      if (!panel) return;
+      const focusable = Array.from(panel.querySelectorAll<HTMLElement>(FOCUSABLE)).filter(
+        el => !el.hasAttribute('disabled') && el.offsetParent !== null
+      );
+      if (!focusable.length) {
+        e.preventDefault();
+        panel.focus();
+        return;
+      }
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement as HTMLElement;
+      if (e.shiftKey && (active === first || active === panel)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   });
 }
+
+/**
+ * Public init — kept for back-compat with consumers that explicitly call it
+ * (e.g. polo.blue's wp-lightbox.ts). New code can simply render the markup;
+ * `bindGlobalListeners()` runs automatically on module import.
+ */
+export function initDrawer(_drawerId?: string): void {
+  bindGlobalListeners();
+}
+
+bindGlobalListeners();

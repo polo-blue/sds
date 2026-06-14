@@ -36,8 +36,12 @@ function dedent(text: string): string {
   return lines.map(l => l.slice(minIndent)).join('\n');
 }
 
-// Split top-level elements within already-dedented body by tracking tag depth.
-// Self-closing tags <Tag /> don't change depth. Returns a chunk per top-level element.
+// Split top-level elements while preserving multi-line opening tags.
+// A line that's just an attribute (no `<tag>` or `</tag>` or `/>`) never flushes
+// — otherwise every line of a wide <Component attr1 attr2 ... /> becomes a
+// separate copyable chunk. We only flush when depth returns to 0 AND the
+// current line actually terminates an element (close tag, self-close, or
+// stand-alone `/>` finishing a multi-line open).
 function splitByElements(text: string): string[] {
   const lines = text.split('\n');
   const out: string[] = [];
@@ -53,19 +57,25 @@ function splitByElements(text: string): string[] {
   for (const line of lines) {
     const trimmed = line.trim();
     if (!trimmed) {
-      if (depth === 0) push();
-      else current.push(line);
+      if (depth === 0 && current.length) push();
+      else if (current.length) current.push(line);
       continue;
     }
 
-    // Count opening tags (excluding self-closing) and closing tags on this line
-    const opens = (trimmed.match(/<[A-Za-z][\w-]*(?:\s[^>]*)?(?<!\/)>/g) || []).length;
-    const closes = (trimmed.match(/<\/[A-Za-z][\w-]*>/g) || []).length;
-
     current.push(line);
+
+    // Single-line opening tag like <Tag> or <Tag attr="x"> (not self-closing)
+    const opens = (trimmed.match(/<[A-Za-z][\w-]*(?:\s[^>]*)?(?<!\/)>/g) || []).length;
+    // Closing tag </Tag>
+    const closes = (trimmed.match(/<\/[A-Za-z][\w-]*>/g) || []).length;
     depth += opens - closes;
 
-    if (depth <= 0) {
+    // Does this line END an element on the page?
+    const isCompleteSelfClose = /<[A-Za-z][\w-]*(?:\s[^>]*)?\/>/.test(trimmed);
+    const isMultiLineSelfCloseTerminator = trimmed === '/>' || trimmed.endsWith('/>');
+    const terminates = closes > 0 || isCompleteSelfClose || isMultiLineSelfCloseTerminator;
+
+    if (depth <= 0 && terminates) {
       depth = 0;
       push();
     }
@@ -125,14 +135,17 @@ async function copyChunk(idx: number, text: string) {
 </script>
 
 <template>
-  <div>
+  <div class="my-6">
     <div class="component-preview" :class="previewClass">
       <slot />
     </div>
-    <div v-if="tabs.length" class="rounded-b border border-t-0 border-neutral-lighter overflow-hidden -mt-px">
+    <div
+      v-if="tabs.length"
+      class="rounded-b border border-t-0 border-neutral-lighter dark:border-slate-dark overflow-hidden -mt-px"
+    >
       <div
         role="tablist"
-        class="flex items-center bg-neutral-lightest px-3 gap-0.5 border-b border-neutral-lighter"
+        class="flex items-center bg-neutral-lightest dark:bg-slate-darkest px-3 gap-0.5 border-b border-neutral-lighter dark:border-slate-dark"
       >
         <button
           v-for="tab in tabs"
@@ -143,8 +156,8 @@ async function copyChunk(idx: number, text: string) {
           class="px-3 py-2 text-xs font-medium uppercase tracking-wide transition-colors"
           :class="
             activeTab === tab
-              ? 'text-blue-medium border-b-2 border-blue-medium -mb-px bg-white'
-              : 'text-slate-light hover:text-slate-default'
+              ? 'text-blue-medium dark:text-blue-ultralight border-b-2 border-blue-medium dark:border-blue-light -mb-px bg-white dark:bg-slate-dark'
+              : 'text-slate-light dark:text-neutral-light hover:text-slate-default dark:hover:text-neutral-lighter'
           "
           @click="activeTab = tab"
         >
@@ -153,7 +166,7 @@ async function copyChunk(idx: number, text: string) {
         <button
           type="button"
           aria-label="Copy entire code block"
-          class="ml-auto text-xs px-2.5 py-1 rounded border border-neutral-lighter bg-white hover:bg-neutral-lightest transition-colors text-slate-default leading-none"
+          class="ml-auto text-xs px-2.5 py-1 rounded border border-neutral-lighter dark:border-slate-dark bg-white dark:bg-slate-dark hover:bg-neutral-lightest dark:hover:bg-slate-darkest transition-colors text-slate-default dark:text-neutral-lighter leading-none"
           @click="copyAll()"
         >
           {{ copiedAll ? '✓ Copied all' : 'Copy all' }}

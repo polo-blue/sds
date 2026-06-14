@@ -3,11 +3,12 @@ interface Props {
   id: string;
   label?: string;
   position?: 'left' | 'right';
+  class?: string;
 }
-const { id, label = 'Navigation', position = 'left' } = Astro.props;
+const { id, label = 'Navigation', position = 'left', class: className = '' } = Astro.props;
 ---
 
-<div id={id} class="sds-drawer" data-position={position} hidden>
+<div id={id} class:list={['sds-drawer', className]} data-position={position} hidden>
   <div class="sds-drawer-backdrop" data-drawer-close></div>
   <aside
     class="sds-drawer-panel"
@@ -22,16 +23,8 @@ const { id, label = 'Navigation', position = 'left' } = Astro.props;
 </div>
 
 <script>
-  import { initDrawer } from '../scripts/drawer';
-
-  function setup() {
-    document.querySelectorAll<HTMLElement>('.sds-drawer[id]').forEach(el => {
-      initDrawer(el.id);
-    });
-  }
-
-  setup();
-  document.addEventListener('astro:after-swap', setup);
+  // Side-effect import — drawer behavior is event-delegated on document.
+  import '../scripts/drawer';
 </script>
 
 <style is:global>

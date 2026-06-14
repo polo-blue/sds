@@ -37,12 +37,14 @@ const { data } = Astro.props;
               )}
             </td>
             <td class="table-cell">
-              <code class="font-mono text-xs text-blue-medium">{prop.type}</code>
+              <code class="font-mono text-xs text-blue-medium dark:text-blue-light">{prop.type}</code>
             </td>
             <td class="table-cell">
-              <code class="font-mono text-xs text-slate-light">{prop.default ?? '—'}</code>
+              <code class="font-mono text-xs text-slate-default dark:text-neutral-light">
+                {prop.default ?? '—'}
+              </code>
             </td>
-            <td class="table-cell text-sm">{prop.description}</td>
+            <td class="table-cell text-sm text-slate-dark dark:text-neutral-lighter">{prop.description}</td>
           </tr>
         ))
       }

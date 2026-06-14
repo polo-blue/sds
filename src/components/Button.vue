@@ -14,7 +14,10 @@ interface ButtonProps {
   tag?: boolean;
   small?: boolean;
   medium?: boolean;
+  /** Legacy no-op — all SDS buttons are rounded by default via shortcut */
   rounded?: boolean;
+  /** Opt-out — forces sharp corners with `!rounded-none` */
+  sharp?: boolean;
   whiteHover?: boolean;
   lightHover?: boolean;
   mediumHover?: boolean;
@@ -31,6 +34,13 @@ const shouldAddDefaultMediumHover =
   (props.tertiaryOutline && !props.whiteHover && !props.lightHover && !props.mediumHover && !props.darkHover);
 
 const tag = props.href && props.href.length ? 'a' : 'button';
+
+// All SDS button shortcuts (btn-primary / -secondary / -tertiary / -text / -tag)
+// bake `rounded-full` into the base layout. Pass `:sharp="true"` to override.
+// `rounded` is kept as a back-compat no-op — Vue coerces missing boolean props
+// to false so we can't reliably detect explicit `false`, hence the separate
+// `sharp` prop for the opt-out.
+
 const classes = {
   'btn-primary': props.primary,
   'btn-primary-outline': props.primaryOutline,
@@ -43,7 +53,7 @@ const classes = {
   'btn-sm': props.medium,
   'btn-xs': props.small,
   'btn-normal': !props.small && !props.medium,
-  'rounded-full': props.rounded,
+  '!rounded-none': props.sharp,
   'btn-circle': props.circle,
   'btn-white-hover': props.whiteHover,
   'btn-light-hover': props.lightHover,

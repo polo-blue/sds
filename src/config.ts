@@ -1,6 +1,7 @@
 export const SITE = {
   title: 'Spoko Design System',
-  description: 'The Astro design system which facilitates the development of websites.',
+  description:
+    'Universal design system — CSS recipes + Vue, Astro and React wrappers, plus plain-HTML support via the prebuilt stylesheet.',
   defaultLanguage: 'en_US',
   twitter: '@spokospace',
   github: 'polo-blue/sds',
@@ -33,6 +34,7 @@ export const SIDEBAR = [
   { text: 'Copyright', link: '/components/copyright/' },
   { text: 'Details List', link: '/components/details-list/' },
   { text: 'Drawer', link: '/components/drawer/' },
+  { text: 'Menu Drawer', link: '/components/menu-drawer/' },
   { text: 'Features List', link: '/components/features-list/' },
   { text: 'HandDrive', link: '/components/hand-drive/' },
   { text: 'Headline', link: '/components/headline/' },

@@ -1,0 +1,395 @@
+---
+title: "Menu Drawer"
+layout: "../../layouts/MainLayout.astro"
+---
+import MenuDrawer from '../../components/MenuDrawer.astro'
+import ComponentPreview from '../../components/ComponentPreview.vue'
+import PropsTable from '../../components/PropsTable.astro'
+
+# Menu Drawer
+
+Opinionated off-canvas menu built on top of [Drawer](/components/drawer/).
+Drop one in with a single `<MenuDrawer>` tag and pass `primary` / `chips` /
+`helpCard` / `footer` props — the component renders the whole composition
+(brand header, primary nav with titles + subtitles, service chips, sticky
+help-card CTA, footer with language switcher + theme toggle + socials).
+
+Inherits all Drawer behavior: trigger via `aria-controls`, click-backdrop /
+Escape / `[data-drawer-close]` to close, focus management, `body.drawer-open`
+scroll lock.
+
+> `MenuDrawer.astro` is Astro-only (uses `<script>` via Drawer). Import via
+> subpath, not the barrel.
+
+## Full menu
+
+Mirrors the uper.pl-style blog menu — brand on top, three primary links with
+subtitles, popular-services chips, a help card pushed to the bottom by a
+flex spacer, and a footer with locales + theme toggle + socials.
+
+<ComponentPreview client:visible
+  astro={`---
+import MenuDrawer from 'spoko-design-system/components/MenuDrawer.astro';
+---
+<button type="button" class="btn-primary btn-normal" aria-controls="full-menu" aria-expanded="false">
+  Open menu
+</button>
+
+<MenuDrawer
+  id="full-menu"
+  label="Main menu"
+  brand={{ text: 'Studio', href: '/' }}
+  primary={[
+    { title: 'SEO Audit', sub: 'Find what is blocking your site', href: '/seo-audit/' },
+    { title: 'About', sub: 'Solo SEO freelancer',                href: '/about/' },
+    { title: 'Blog',    sub: 'Articles on SEO and ranking',      href: '/blog/' },
+  ]}
+  chips={{
+    title: 'Popular services',
+    items: [
+      { label: 'SXO Audit',         href: '/sxo-audit/' },
+      { label: 'Local SEO',         href: '/local-seo/' },
+      { label: 'Changelog',         href: '/changelog/' },
+    ],
+  }}
+  helpCard={{
+    title: 'Want more Google traffic?',
+    sub: 'Start with a free consultation.',
+    cta: { label: 'Get in touch', href: '/contact/' },
+  }}
+  footer={{
+    locales: [
+      { code: 'en', label: 'EN', href: '/blog/',    active: true },
+      { code: 'pl', label: 'PL', href: '/pl/blog/' },
+    ],
+    themeToggle: true,
+    socials: [
+      { label: 'Facebook', href: 'https://facebook.com',  iconPath: 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z' },
+      { label: 'LinkedIn', href: 'https://linkedin.com',  iconPath: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' },
+    ],
+  }}
+/>`}>
+  <button
+    type="button"
+    class="btn-primary btn-normal"
+    aria-controls="full-menu"
+    aria-expanded="false"
+  >
+    Open menu
+  </button>
+
+  <MenuDrawer
+    id="full-menu"
+    label="Main menu"
+    brand={{ text: 'Studio', href: '/' }}
+    primary={[
+      { title: 'SEO Audit', sub: 'Find what is blocking your site', href: '#seo' },
+      { title: 'About',     sub: 'Solo SEO freelancer',             href: '#about' },
+      { title: 'Blog',      sub: 'Articles on SEO and ranking',     href: '#blog' },
+    ]}
+    chips={{
+      title: 'Popular services',
+      items: [
+        { label: 'SXO Audit',  href: '#sxo' },
+        { label: 'Local SEO',  href: '#local' },
+        { label: 'Changelog',  href: '#changelog' },
+      ],
+    }}
+    helpCard={{
+      title: 'Want more Google traffic?',
+      sub: 'Start with a free consultation.',
+      cta: { label: 'Get in touch', href: '#contact' },
+    }}
+    footer={{
+      locales: [
+        { code: 'en', label: 'EN', href: '#en', active: true },
+        { code: 'pl', label: 'PL', href: '#pl' },
+      ],
+      themeToggle: true,
+      socials: [
+        { label: 'Facebook', href: 'https://facebook.com',  iconPath: 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z' },
+        { label: 'LinkedIn', href: 'https://linkedin.com',  iconPath: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' },
+      ],
+    }}
+  />
+</ComponentPreview>
+
+## Real-world reference — uper.pl/blog/
+
+The exact menu rendered on [uper.pl/blog/](https://uper.pl/blog/) in production
+— Polish copy, brand-correct social links, and the full footer with locale
+switcher + theme toggle + Facebook/LinkedIn. Brand uses `text` (rendered as
+brand-blue wordmark via `.sds-menu-brand-text`); production replaces it with
+a real logo via `logoSrc`. Shows that the whole composition is one
+`<MenuDrawer>` tag plus a config object.
+
+<ComponentPreview client:visible
+  astro={`<button type="button" class="btn-primary btn-normal" aria-controls="uper-menu" aria-expanded="false">
+  Otwórz menu
+</button>
+
+<MenuDrawer
+  id="uper-menu"
+  label="Nawigacja"
+  position="right"
+  brand={{ text: 'UPER', href: '/' }}
+  primary={[
+    { title: 'Audyt SEO', sub: 'Sprawdź co blokuje Twoją stronę', href: '/audyt-seo/' },
+    { title: 'O mnie',    sub: 'SEO freelancer, Bielsko-Biała',   href: '/o-mnie/' },
+    { title: 'Blog',      sub: 'Artykuły o SEO i pozycjonowaniu', href: '/blog/' },
+  ]}
+  chips={{
+    title: 'Popularne usługi',
+    items: [
+      { label: 'Audyt SXO',            href: '/audyt-sxo/' },
+      { label: 'Pozycjonowanie lokalne', href: '/pozycjonowanie-lokalne/' },
+      { label: 'Changelog',            href: '/changelog/' },
+    ],
+  }}
+  helpCard={{
+    title: 'Chcesz więcej klientów z Google?',
+    sub: 'Zacznij od bezpłatnej konsultacji.',
+    cta: { label: 'Napisz do mnie', href: '/kontakt/' },
+  }}
+  footer={{
+    locales: [
+      { code: 'pl', label: 'PL', href: '/blog/',    active: true },
+      { code: 'en', label: 'EN', href: '/en/blog/' },
+    ],
+    themeToggle: true,
+    socials: [
+      { label: 'Facebook', href: 'https://www.facebook.com/SuperUper',     iconPath: 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z' },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/company/uper-seo', iconPath: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' },
+    ],
+  }}
+/>`}>
+  <button
+    type="button"
+    class="btn-primary btn-normal"
+    aria-controls="uper-menu"
+    aria-expanded="false"
+  >
+    Otwórz menu
+  </button>
+
+  <MenuDrawer
+    id="uper-menu"
+    label="Nawigacja"
+    position="right"
+    brand={{ text: 'UPER', href: '/' }}
+    primary={[
+      { title: 'Audyt SEO', sub: 'Sprawdź co blokuje Twoją stronę', href: '#audyt-seo' },
+      { title: 'O mnie',    sub: 'SEO freelancer, Bielsko-Biała',   href: '#o-mnie' },
+      { title: 'Blog',      sub: 'Artykuły o SEO i pozycjonowaniu', href: '#blog' },
+    ]}
+    chips={{
+      title: 'Popularne usługi',
+      items: [
+        { label: 'Audyt SXO',              href: '#audyt-sxo' },
+        { label: 'Pozycjonowanie lokalne', href: '#pozycjonowanie-lokalne' },
+        { label: 'Changelog',              href: '#changelog' },
+      ],
+    }}
+    helpCard={{
+      title: 'Chcesz więcej klientów z Google?',
+      sub: 'Zacznij od bezpłatnej konsultacji.',
+      cta: { label: 'Napisz do mnie', href: '#kontakt' },
+    }}
+    footer={{
+      locales: [
+        { code: 'pl', label: 'PL', href: '#pl', active: true },
+        { code: 'en', label: 'EN', href: '#en' },
+      ],
+      themeToggle: true,
+      socials: [
+        { label: 'Facebook', href: 'https://www.facebook.com/SuperUper',        iconPath: 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z' },
+        { label: 'LinkedIn', href: 'https://www.linkedin.com/company/uper-seo', iconPath: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' },
+      ],
+    }}
+  />
+</ComponentPreview>
+
+## Minimal — only primary nav
+
+Skip every optional section. The flex spacer keeps the footer pinned to the
+bottom even when the body is short, so a single-section menu still looks
+intentional.
+
+<ComponentPreview client:visible
+  astro={`<button type="button" class="btn-primary btn-normal" aria-controls="minimal-menu" aria-expanded="false">
+  Open minimal menu
+</button>
+
+<MenuDrawer
+  id="minimal-menu"
+  brand={{ text: 'Studio' }}
+  primary={[
+    { title: 'Home',     href: '/' },
+    { title: 'Projects', href: '/projects/' },
+    { title: 'Contact',  href: '/contact/' },
+  ]}
+/>`}>
+  <button
+    type="button"
+    class="btn-primary btn-normal"
+    aria-controls="minimal-menu"
+    aria-expanded="false"
+  >
+    Open minimal menu
+  </button>
+
+  <MenuDrawer
+    id="minimal-menu"
+    brand={{ text: 'Studio' }}
+    primary={[
+      { title: 'Home',     href: '#home' },
+      { title: 'Projects', href: '#projects' },
+      { title: 'Contact',  href: '#contact' },
+    ]}
+  />
+</ComponentPreview>
+
+## Right-aligned
+
+Pass `position="right"` to slide in from the opposite edge. Everything else
+unchanged.
+
+<ComponentPreview client:visible
+  astro={`<button type="button" class="btn-primary btn-normal" aria-controls="right-menu" aria-expanded="false">
+  Open right menu
+</button>
+
+<MenuDrawer
+  id="right-menu"
+  position="right"
+  brand={{ text: 'Catalog' }}
+  primary={[
+    { title: 'Parts',     sub: '4,200+ entries',         href: '/parts/' },
+    { title: 'Gearboxes', sub: 'Family tree + versions', href: '/gearboxes/' },
+    { title: 'Sale',      sub: 'Used parts marketplace', href: '/sale/' },
+  ]}
+  footer={{
+    locales: [
+      { code: 'en', label: 'EN', href: '/',    active: true },
+      { code: 'pl', label: 'PL', href: '/pl/' },
+      { code: 'de', label: 'DE', href: '/de/' },
+    ],
+  }}
+/>`}>
+  <button
+    type="button"
+    class="btn-primary btn-normal"
+    aria-controls="right-menu"
+    aria-expanded="false"
+  >
+    Open right menu
+  </button>
+
+  <MenuDrawer
+    id="right-menu"
+    position="right"
+    brand={{ text: 'Catalog' }}
+    primary={[
+      { title: 'Parts',     sub: '4,200+ entries',         href: '#parts' },
+      { title: 'Gearboxes', sub: 'Family tree + versions', href: '#gearboxes' },
+      { title: 'Sale',      sub: 'Used parts marketplace', href: '#sale' },
+    ]}
+    footer={{
+      locales: [
+        { code: 'en', label: 'EN', href: '#en', active: true },
+        { code: 'pl', label: 'PL', href: '#pl' },
+        { code: 'de', label: 'DE', href: '#de' },
+      ],
+    }}
+  />
+</ComponentPreview>
+
+## Slot overrides
+
+Any section can be replaced by passing a named slot. Useful when the prop
+shape doesn't fit — e.g. brand needs an SVG logo, primary nav needs
+client-only icons, or the help card hosts a form.
+
+```astro
+<MenuDrawer id="custom" label="Custom menu">
+  <a slot="brand" href="/">
+    <MyCustomLogo class="h-8" />
+  </a>
+
+  <slot name="primary">
+    <a href="/" class="sds-menu-primary-link" data-drawer-close>
+      <div class="sds-menu-primary-text">
+        <span class="sds-menu-primary-title">Home</span>
+      </div>
+    </a>
+  </slot>
+
+  <div slot="help" class="sds-menu-help-card">
+    <NewsletterForm />
+  </div>
+
+  <div slot="footer-right">
+    <CustomSocialIcons />
+  </div>
+</MenuDrawer>
+```
+
+## Wiring the trigger
+
+The drawer is opened by ANY element with `aria-controls` pointing at its id
+(handled by the underlying [Drawer](/components/drawer/) script). Couples
+naturally with [Navbar](/components/navbar/)'s `drawerId` prop:
+
+```astro
+<Navbar brand="Studio" drawerId="main-menu">
+  <div slot="actions">
+    <button class="btn-primary btn-sm">Sign in</button>
+  </div>
+</Navbar>
+
+<MenuDrawer
+  id="main-menu"
+  brand={{ text: 'Studio' }}
+  primary={[...]}
+/>
+```
+
+## Props
+
+<PropsTable data={[
+  { name: 'id', type: 'string', required: true, description: 'Unique id used by triggers (aria-controls) and the open/close script' },
+  { name: 'label', type: 'string', default: "'Menu'", description: 'aria-label for the dialog — describes the menu to screen readers' },
+  { name: 'position', type: "'left' | 'right'", default: "'left'", description: 'Edge the drawer slides in from' },
+  { name: 'brand', type: '{ href?, logoSrc?, logoAlt?, text? }', default: 'undefined', description: 'Header brand mark. Pass `logoSrc` for an image or `text` for a wordmark. Omit to hide the header (close button still rendered).' },
+  { name: 'primary', type: 'PrimaryItem[]', default: '[]', description: 'Primary nav items — each `{ title, sub?, href }`. Renders title + subtitle + chevron arrow.' },
+  { name: 'chips', type: '{ title, items: { label, href }[] }', default: 'undefined', description: 'Optional service chips section under the primary nav.' },
+  { name: 'helpCard', type: '{ title, sub?, cta: { label, href } }', default: 'undefined', description: 'Optional help-card CTA pinned near the bottom by the flex spacer.' },
+  { name: 'footer', type: '{ locales?, themeToggle?, socials? }', default: 'undefined', description: 'Optional footer cluster. `locales[]` renders a segmented PL/EN-style switcher; `themeToggle` adds a sun/moon button wired to `html.dark`; `socials[]` accepts `{ label, href, iconPath? | iconSvg? }`.' },
+]} />
+
+## Slots
+
+| Slot | Replaces |
+| --- | --- |
+| `brand` | Header brand area (close button stays) |
+| `primary` | Primary nav links |
+| `chips` | Service chips section (title + chips) |
+| `middle` | Extra content between chips and the spacer |
+| `help` | Help card CTA |
+| `footer-left` | Footer left side (locales + theme toggle) |
+| `footer-right` | Footer right side (socials) |
+
+## CSS recipe classes
+
+| Class | Purpose |
+| --- | --- |
+| `sds-drawer-menu` | Marker on `.sds-drawer` — applies the 380px menu panel width + padding |
+| `sds-menu` | Vertical layout container inside the panel |
+| `sds-menu-header` / `sds-menu-brand` / `sds-menu-close` | Header row |
+| `sds-menu-primary` / `sds-menu-primary-link` / `sds-menu-primary-{title,sub,arrow}` | Primary nav anatomy |
+| `sds-menu-section` / `sds-menu-section-title` / `sds-menu-chips` / `sds-menu-chip` | Chips section |
+| `sds-menu-spacer` | Flex spacer pushing footer down |
+| `sds-menu-help-card` / `sds-menu-help-{text,title,sub,cta}` | Help card CTA |
+| `sds-menu-footer` / `sds-menu-footer-utility` / `sds-menu-footer-socials` | Footer row |
+| `sds-menu-lang` / `sds-menu-lang-btn` + `.is-active` | Segmented language switcher |
+| `sds-menu-theme-chip` | Dark mode toggle (wired by `data-sds-menu-theme-toggle`) |

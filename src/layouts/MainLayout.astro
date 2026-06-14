@@ -36,14 +36,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
       (function () {
         var saved = localStorage.getItem('sds-color-scheme');
         var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (saved === 'dark' || (!saved && prefersDark)) {
+        var isDark = saved === 'dark' || (!saved && prefersDark);
+        if (isDark) {
           document.documentElement.classList.add('dark');
         }
+        // Sets browser-default text color (caret, form controls, fallback text)
+        // synchronously so first paint is correct — no black→white flash.
+        document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
       })();
     </script>
   </head>
 
-  <body class="bg-blue-50 dark:bg-slate-darkest">
+  <body class="bg-blue-50 text-slate-darkest dark:bg-slate-darkest dark:text-neutral-lighter">
     <div class="sticky top-0 w-full bg-white/70 dark:bg-slate-darkest/90">
       <Header />
     </div>
