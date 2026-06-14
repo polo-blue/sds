@@ -31,12 +31,12 @@ flex spacer, and a footer with locales + theme toggle + socials.
   astro={`---
 import MenuDrawer from 'spoko-design-system/components/MenuDrawer.astro';
 ---
-<button type="button" class="btn-primary btn-normal" aria-controls="full-menu" aria-expanded="false">
+<button type="button" class="btn-primary btn-normal" aria-controls="demo-full-menu" aria-expanded="false">
   Open menu
 </button>
 
 <MenuDrawer
-  id="full-menu"
+  id="demo-full-menu"
   label="Main menu"
   brand={{ text: 'Studio', href: '/' }}
   primary={[
@@ -72,14 +72,14 @@ import MenuDrawer from 'spoko-design-system/components/MenuDrawer.astro';
   <button
     type="button"
     class="btn-primary btn-normal"
-    aria-controls="full-menu"
+    aria-controls="demo-full-menu"
     aria-expanded="false"
   >
     Open menu
   </button>
 
   <MenuDrawer
-    id="full-menu"
+    id="demo-full-menu"
     label="Main menu"
     brand={{ text: 'Studio', href: '/' }}
     primary={[
@@ -124,12 +124,12 @@ a real logo via `logoSrc`. Shows that the whole composition is one
 `<MenuDrawer>` tag plus a config object.
 
 <ComponentPreview client:visible
-  astro={`<button type="button" class="btn-primary btn-normal" aria-controls="uper-menu" aria-expanded="false">
+  astro={`<button type="button" class="btn-primary btn-normal" aria-controls="demo-uper-menu" aria-expanded="false">
   Otwórz menu
 </button>
 
 <MenuDrawer
-  id="uper-menu"
+  id="demo-uper-menu"
   label="Nawigacja"
   position="right"
   brand={{ text: 'UPER', href: '/' }}
@@ -166,14 +166,14 @@ a real logo via `logoSrc`. Shows that the whole composition is one
   <button
     type="button"
     class="btn-primary btn-normal"
-    aria-controls="uper-menu"
+    aria-controls="demo-uper-menu"
     aria-expanded="false"
   >
     Otwórz menu
   </button>
 
   <MenuDrawer
-    id="uper-menu"
+    id="demo-uper-menu"
     label="Nawigacja"
     position="right"
     brand={{ text: 'UPER', href: '/' }}
@@ -216,12 +216,12 @@ bottom even when the body is short, so a single-section menu still looks
 intentional.
 
 <ComponentPreview client:visible
-  astro={`<button type="button" class="btn-primary btn-normal" aria-controls="minimal-menu" aria-expanded="false">
+  astro={`<button type="button" class="btn-primary btn-normal" aria-controls="demo-minimal-menu" aria-expanded="false">
   Open minimal menu
 </button>
 
 <MenuDrawer
-  id="minimal-menu"
+  id="demo-minimal-menu"
   brand={{ text: 'Studio' }}
   primary={[
     { title: 'Home',     href: '/' },
@@ -232,14 +232,14 @@ intentional.
   <button
     type="button"
     class="btn-primary btn-normal"
-    aria-controls="minimal-menu"
+    aria-controls="demo-minimal-menu"
     aria-expanded="false"
   >
     Open minimal menu
   </button>
 
   <MenuDrawer
-    id="minimal-menu"
+    id="demo-minimal-menu"
     brand={{ text: 'Studio' }}
     primary={[
       { title: 'Home',     href: '#home' },
@@ -255,12 +255,12 @@ Pass `position="right"` to slide in from the opposite edge. Everything else
 unchanged.
 
 <ComponentPreview client:visible
-  astro={`<button type="button" class="btn-primary btn-normal" aria-controls="right-menu" aria-expanded="false">
+  astro={`<button type="button" class="btn-primary btn-normal" aria-controls="demo-right-menu" aria-expanded="false">
   Open right menu
 </button>
 
 <MenuDrawer
-  id="right-menu"
+  id="demo-right-menu"
   position="right"
   brand={{ text: 'Catalog' }}
   primary={[
@@ -279,14 +279,14 @@ unchanged.
   <button
     type="button"
     class="btn-primary btn-normal"
-    aria-controls="right-menu"
+    aria-controls="demo-right-menu"
     aria-expanded="false"
   >
     Open right menu
   </button>
 
   <MenuDrawer
-    id="right-menu"
+    id="demo-right-menu"
     position="right"
     brand={{ text: 'Catalog' }}
     primary={[

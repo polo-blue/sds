@@ -62,14 +62,25 @@ function close(root: HTMLElement): void {
   _hideTimers.set(root, t);
 }
 
+function findDrawerById(id: string): HTMLElement | null {
+  // Defensive: heading anchor IDs from rehype-slug can collide with drawer
+  // IDs (e.g. `<h2 id="full-menu">` next to `<Drawer id="full-menu">`).
+  // `document.getElementById` returns the first match — scan all matches and
+  // return the one that's actually a .sds-drawer.
+  const matches = document.querySelectorAll<HTMLElement>(`[id="${CSS.escape(id)}"]`);
+  for (const el of matches) {
+    if (el.classList.contains('sds-drawer')) return el;
+  }
+  return null;
+}
+
 function findDrawerFor(target: EventTarget | null): HTMLElement | null {
   if (!(target instanceof Element)) return null;
   const trigger = target.closest<HTMLElement>('[aria-controls]');
   if (!trigger) return null;
   const id = trigger.getAttribute('aria-controls');
   if (!id) return null;
-  const el = document.getElementById(id);
-  return el?.classList.contains('sds-drawer') ? el : null;
+  return findDrawerById(id);
 }
 
 function bindGlobalListeners(): void {
