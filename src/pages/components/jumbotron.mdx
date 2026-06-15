@@ -4,6 +4,7 @@ layout: "../../layouts/MainLayout.astro"
 ---
 import Jumbotron from '../../components/Jumbotron.astro'
 import Button from '../../components/Button.vue'
+import PropsTable from '../../components/PropsTable.astro'
 
 # Jumbotron
 
@@ -486,43 +487,51 @@ Shows how to fully customize the header section using the intro slot. Useful for
 </Jumbotron>
 ```
 
-## Component API
+## Props
 
-### Common Props
-- `variant`: Layout variant ('default' | 'hero' | 'post' | 'post-split')
-  - default: 'default'
-- `title`: Main heading text. Supports HTML markup for styling.
-- `image`: Image URL (required for hero, post and post-split variants)
-- `slim`: Reduces vertical padding and height (works with default, hero, and post-split variants)
+### Common
 
-### Default & Hero Props
-- `description`: Secondary text below title (hero variant only)
-- `info`: Additional information text (hero variant only)
+<PropsTable data={[
+  { name: 'variant', type: "'default' | 'hero' | 'post' | 'post-split'", default: "'default'", description: 'Layout variant.' },
+  { name: 'title', type: 'string', required: false, description: 'Main heading text. Supports inline HTML for styling.' },
+  { name: 'image', type: 'string', required: false, description: 'Image URL (required for hero, post, post-split variants).' },
+  { name: 'slim', type: 'boolean', default: 'false', description: 'Reduces vertical padding and height (default, hero, post-split variants).' },
+]} />
 
-### Post Variants Props
-- `date`: Publication date string
-- `author`: Author information object
-  - `firstName`: Author's first name (used in title attribute)
-  - `name`: Full author name (displayed)
-- `categories`: Array of category objects for post categorization
-  - `name`: Category display name
-  - `uri`: Category link URL
+### Default & Hero
 
-### Post Split Props
-- `imageWidth`: Custom image width in pixels (default: 768)
-- `imageHeight`: Custom image height in pixels (default: 432)
-- `imageClass`: Tailwind/UnoCSS classes for responsive image sizing (e.g., `max-w-100 lg:max-w-80`)
-- `description`: Optional description text below the title
-- `fullWidth`: When true, adds `full-width-block` class for full viewport width
-- `align`: Text alignment within content area ('left' | 'center' | 'right', default: 'left')
-- `split`: Column width ratio on desktop ('equal' | 'wide', default: 'equal')
-  - `equal`: 50/50 split between text and image
-  - `wide`: 2/3 text + 1/3 image split
+<PropsTable data={[
+  { name: 'description', type: 'string', required: false, description: 'Secondary text below the title (hero variant).' },
+  { name: 'info', type: 'string', required: false, description: 'Additional info text (hero variant).' },
+]} />
 
-### Slots
-- `intro`: Replaces the default title with custom content. Useful for complex headings or custom markup.
-- `subtitle`: Additional content below the title. Supports markdown and HTML.
-- `cta-content`: Call to action content (buttons, links etc.) - wrapped in centered container.
+### Post variants
+
+<PropsTable data={[
+  { name: 'date', type: 'string', required: false, description: 'Publication date string.' },
+  { name: 'author', type: '{ firstName: string; name: string }', required: false, description: 'Author info — firstName goes to title attribute, name is displayed.' },
+  { name: 'categories', type: '{ name: string; uri: string }[]', required: false, description: 'Category objects for post categorization.' },
+]} />
+
+### Post Split
+
+<PropsTable data={[
+  { name: 'imageWidth', type: 'number', default: '768', description: 'Image width in pixels.' },
+  { name: 'imageHeight', type: 'number', default: '432', description: 'Image height in pixels.' },
+  { name: 'imageClass', type: 'string', required: false, description: 'Utility classes for responsive image sizing (e.g. `max-w-100 lg:max-w-80`).' },
+  { name: 'description', type: 'string', required: false, description: 'Optional description below the title.' },
+  { name: 'fullWidth', type: 'boolean', default: 'false', description: 'Adds `full-width-block` class for full viewport width.' },
+  { name: 'align', type: "'left' | 'center' | 'right'", default: "'left'", description: 'Text alignment within content area.' },
+  { name: 'split', type: "'equal' | 'wide'", default: "'equal'", description: "Column ratio: 'equal' = 50/50, 'wide' = 2/3 text + 1/3 image." },
+]} />
+
+## Slots
+
+| Slot | Description |
+| --- | --- |
+| `intro` | Replaces the default title with custom content (complex headings or markup) |
+| `subtitle` | Additional content below the title (supports markdown and HTML) |
+| `cta-content` | Call to action content (buttons, links) — wrapped in a centered container |
 
 ## Accessibility
 - Use semantic HTML markup in slots

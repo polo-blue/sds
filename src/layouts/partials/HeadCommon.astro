@@ -45,15 +45,20 @@ import { pwaInfo } from 'virtual:pwa-info';
     scrollbar-color: oklch(65% 0.143 238) oklch(0% 0 0 / 0.1);
     scrollbar-gutter: stable;
   }
-  body::-webkit-scrollbar {
+  /* Apply to every scroll container — body, sidebar, drawer panels, code blocks, etc. */
+  *::-webkit-scrollbar {
     width: 5px;
     height: 3px;
   }
-  body::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
+  *::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.08);
   }
-  body::-webkit-scrollbar-thumb {
+  *::-webkit-scrollbar-thumb {
     background-color: oklch(65% 0.143 238);
+    border-radius: 3px;
+  }
+  html.dark *::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.08);
   }
 </style>
 

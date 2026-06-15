@@ -6,7 +6,7 @@ import {
   TYPOGRAPHY,
   TRANSITIONS,
   aspectRatios 
-} from './constants'
+} from './constants.ts'
 
 // Generate image shortcuts dynamically
 const imageShortcuts = Object.entries(aspectRatios).map(([ratio, aspect]) => [

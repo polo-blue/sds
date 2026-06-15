@@ -3,308 +3,278 @@ title: Input
 layout: ../../layouts/MainLayout.astro
 ---
 import Input from '../../components/Input.vue';
+import ComponentPreview from '../../components/ComponentPreview.vue'
+import PropsTable from '../../components/PropsTable.astro'
 
 # Floating Label Input
-<div class="component-preview">
-    <div class="bg-white grid items-end w-full gap-6 md:grid-cols-3 px-4 py-6">
-        <Input
-        id="name-filled"
-        label="Floating filled"
-        variant="filled"
-        />
-        <Input
-        id="email-standard" 
-            label="Floating standard"
-            variant="standard"
-        />
-    </div>
-</div>
-    
-```js
-// Filled variant
-<Input
-  id="name-filled"
-  label="Floating filled"
-  variant="filled"
-/>
 
-// Standard variant
-<Input
-  id="email-standard" 
-  label="Floating standard"
-  variant="standard"
-/>
-```
+<ComponentPreview client:visible
+  astro={`---
+import Input from 'spoko-design-system/components/Input.vue';
+---
+<Input id="name-filled" label="Floating filled" variant="filled" client:visible />
+
+<Input id="email-standard" label="Floating standard" variant="standard" client:visible />`}
+  vue={`<script setup>
+import Input from 'spoko-design-system/src/components/Input.vue';
+</script>
+
+<template>
+  <Input id="name-filled" label="Floating filled" variant="filled" />
+
+  <Input id="email-standard" label="Floating standard" variant="standard" />
+</template>`}
+  html={`<div class="input-wrapper-filled">
+  <input id="name-filled" type="text" placeholder=" "
+    class="peer input-base input-filled input-md" />
+  <label for="name-filled"
+    class="input-label-base input-label-filled input-label-md input-label-filled-state">
+    Floating filled
+  </label>
+</div>
+
+<div class="input-wrapper-standard">
+  <input id="email-standard" type="text" placeholder=" "
+    class="peer input-base input-standard input-md" />
+  <label for="email-standard"
+    class="input-label-base input-label-standard input-label-md input-label-standard-state">
+    Floating standard
+  </label>
+</div>`}>
+  <div class="bg-white grid items-end w-full gap-6 md:grid-cols-3 px-4 py-6">
+    <Input id="name-filled" label="Floating filled" variant="filled" />
+    <Input id="email-standard" label="Floating standard" variant="standard" />
+  </div>
+</ComponentPreview>
 
 
 # Floating Textarea
-<div class="component-preview">
-    <div class="bg-white grid items-end w-full gap-6 md:grid-cols-3 px-4 py-6">
-        <Input
-        id="name-filled"
-        label="Floating filled"
-        variant="filled"
-        
-        type="textarea"
-        />
-        <Input
-        id="email-standard" 
-            label="Floating standard"
-            variant="standard"
-            type="textarea"
-        />
-    </div>
-</div>
-    
-```js
-// Filled variant
-<Input
-  id="name-filled"
-  label="Floating filled"
-  variant="filled"
-  type="textarea"
-/>
 
-// Standard variant
-<Input
-  id="email-standard" 
-  label="Floating standard"
-  variant="standard"
-  type="textarea"
-/>
-```
+<ComponentPreview client:visible
+  astro={`---
+import Input from 'spoko-design-system/components/Input.vue';
+---
+<Input id="ta-filled" label="Floating filled" variant="filled" type="textarea" client:visible />
+
+<Input id="ta-standard" label="Floating standard" variant="standard" type="textarea" client:visible />`}
+  vue={`<script setup>
+import Input from 'spoko-design-system/src/components/Input.vue';
+</script>
+
+<template>
+  <Input id="ta-filled" label="Floating filled" variant="filled" type="textarea" />
+
+  <Input id="ta-standard" label="Floating standard" variant="standard" type="textarea" />
+</template>`}
+  html={`<div class="input-wrapper-filled">
+  <textarea id="ta-filled" rows="3" placeholder=" "
+    class="peer input-base input-filled input-md input-textarea"></textarea>
+  <label for="ta-filled"
+    class="input-label-base input-label-filled input-label-md input-label-filled-state">
+    Floating filled
+  </label>
+</div>
+
+<div class="input-wrapper-standard">
+  <textarea id="ta-standard" rows="3" placeholder=" "
+    class="peer input-base input-standard input-md input-textarea"></textarea>
+  <label for="ta-standard"
+    class="input-label-base input-label-standard input-label-md input-label-standard-state">
+    Floating standard
+  </label>
+</div>`}>
+  <div class="bg-white grid items-end w-full gap-6 md:grid-cols-3 px-4 py-6">
+    <Input id="name-filled-ta" label="Floating filled" variant="filled" type="textarea" />
+    <Input id="email-standard-ta" label="Floating standard" variant="standard" type="textarea" />
+  </div>
+</ComponentPreview>
 
 # Input with Error State
-The Input component supports error states to provide validation feedback to users. You can pass a string as the error prop to display a specific error message.
+The Input component supports error states to provide validation feedback to users. You can pass a string as the error prop to display a specific error message. Pass `true` for visual-only error state without a message.
 
-<div class="component-preview">
-    <div class="bg-white grid items-end w-full gap-6 md:grid-cols-2 px-4 py-6">
-        <Input
-            id="error-filled"
-            label="With error"
-            variant="filled"
-            error="This field is required"
-        />
-        <Input
-            id="error-standard" 
-            label="With error"
-            variant="standard"
-            error="Please enter a valid email"
-        />
-    </div>
+<ComponentPreview client:visible
+  astro={`<Input id="error-filled" label="With error" variant="filled" error="This field is required" client:visible />
+
+<Input id="error-standard" label="With error" variant="standard" error="Please enter a valid email" client:visible />
+
+<Input label="Username" error={true} client:visible />`}
+  vue={`<Input id="error-filled" label="With error" variant="filled" error="This field is required" />
+
+<Input id="error-standard" label="With error" variant="standard" error="Please enter a valid email" />
+
+<Input label="Username" :error="true" />`}
+  html={`<div class="input-wrapper-filled">
+  <input id="error-filled" type="text" placeholder=" "
+    class="peer input-base input-filled input-md input-error" />
+  <label for="error-filled"
+    class="input-label-base input-label-filled input-label-md input-label-filled-state input-label-error">
+    With error
+  </label>
+  <div class="input-error-message">This field is required</div>
 </div>
-    
-```js
-// Error with filled variant
-<Input
-  id="error-filled"
-  label="With error"
-  variant="filled"
-  error="This field is required"
-/>
 
-// Error with standard variant
-<Input
-  id="error-standard" 
-  label="With error"
-  variant="standard"
-  error="Please enter a valid email"
-/>
-```
-
-You can also pass a boolean `true` to indicate an error state without a message:
-
-```js
-<Input
-  label="Username"
-  error={true}
-/>
-```
+<div class="input-wrapper-standard">
+  <input id="error-standard" type="text" placeholder=" "
+    class="peer input-base input-standard input-md input-error" />
+  <label for="error-standard"
+    class="input-label-base input-label-standard input-label-md input-label-standard-state input-label-error">
+    With error
+  </label>
+  <div class="input-error-message">Please enter a valid email</div>
+</div>`}>
+  <div class="bg-white grid items-end w-full gap-6 md:grid-cols-2 px-4 py-6">
+    <Input id="error-filled" label="With error" variant="filled" error="This field is required" />
+    <Input id="error-standard" label="With error" variant="standard" error="Please enter a valid email" />
+  </div>
+</ComponentPreview>
 
 # Input with Success State
-Similar to errors, you can indicate a successful validation state using the success prop:
+Similar to errors, you can indicate a successful validation state using the `success` prop.
 
-<div class="component-preview">
-    <div class="bg-white grid items-end w-full gap-6 md:grid-cols-2 px-4 py-6">
-        <Input
-            id="success-filled"
-            label="With success"
-            variant="filled"
-            success="Username is available"
-        />
-        <Input
-            id="success-standard" 
-            label="With success"
-            variant="standard"
-            success={true}
-        />
-    </div>
+<ComponentPreview client:visible
+  astro={`<Input id="success-filled" label="With success" variant="filled" success="Username is available" client:visible />
+
+<Input id="success-standard" label="With success" variant="standard" success={true} client:visible />`}
+  vue={`<Input id="success-filled" label="With success" variant="filled" success="Username is available" />
+
+<Input id="success-standard" label="With success" variant="standard" :success="true" />`}
+  html={`<div class="input-wrapper-filled">
+  <input id="success-filled" type="text" placeholder=" "
+    class="peer input-base input-filled input-md input-success" />
+  <label for="success-filled"
+    class="input-label-base input-label-filled input-label-md input-label-filled-state input-label-success">
+    With success
+  </label>
+  <div class="input-success-message">Username is available</div>
 </div>
-    
-```js
-// Success with message
-<Input
-  id="success-filled"
-  label="With success"
-  variant="filled"
-  success="Username is available"
-/>
 
-// Success without message
-<Input
-  id="success-standard" 
-  label="With success"
-  variant="standard"
-  success={true}
-/>
-```
+<div class="input-wrapper-standard">
+  <input id="success-standard" type="text" placeholder=" "
+    class="peer input-base input-standard input-md input-success" />
+  <label for="success-standard"
+    class="input-label-base input-label-standard input-label-md input-label-standard-state input-label-success">
+    With success
+  </label>
+</div>`}>
+  <div class="bg-white grid items-end w-full gap-6 md:grid-cols-2 px-4 py-6">
+    <Input id="success-filled" label="With success" variant="filled" success="Username is available" />
+    <Input id="success-standard" label="With success" variant="standard" success={true} />
+  </div>
+</ComponentPreview>
 
 # Input Sizes
 The Input component supports different sizes: `sm`, `md` (default), and `lg`.
 
-<div class="component-preview">
-    <div class="bg-white grid items-end w-full gap-6 px-4 py-6">
-        <Input
-            id="small-input"
-            label="Small input"
-            variant="filled"
-            size="sm"
-        />
-        <Input
-            id="medium-input" 
-            label="Medium input (default)"
-            variant="filled"
-            size="md"
-        />
-        <Input
-            id="large-input" 
-            label="Large input"
-            variant="filled"
-            size="lg"
-        />
-    </div>
+<ComponentPreview client:visible
+  astro={`<Input id="small-input" label="Small input" variant="filled" size="sm" client:visible />
+
+<Input id="medium-input" label="Medium input (default)" variant="filled" size="md" client:visible />
+
+<Input id="large-input" label="Large input" variant="filled" size="lg" client:visible />`}
+  vue={`<Input id="small-input" label="Small input" variant="filled" size="sm" />
+
+<Input id="medium-input" label="Medium input (default)" variant="filled" size="md" />
+
+<Input id="large-input" label="Large input" variant="filled" size="lg" />`}
+  html={`<div class="input-wrapper-filled">
+  <input id="small-input" type="text" placeholder=" "
+    class="peer input-base input-filled input-sm" />
+  <label for="small-input"
+    class="input-label-base input-label-filled input-label-sm input-label-filled-state">
+    Small input
+  </label>
 </div>
-    
-```js
-// Small input
-<Input
-  id="small-input"
-  label="Small input"
-  variant="filled"
-  size="sm"
-/>
 
-// Medium input (default)
-<Input
-  id="medium-input" 
-  label="Medium input (default)"
-  variant="filled"
-  size="md"
-/>
+<div class="input-wrapper-filled">
+  <input id="medium-input" type="text" placeholder=" "
+    class="peer input-base input-filled input-md" />
+  <label for="medium-input"
+    class="input-label-base input-label-filled input-label-md input-label-filled-state">
+    Medium input (default)
+  </label>
+</div>
 
-// Large input
-<Input
-  id="large-input" 
-  label="Large input"
-  variant="filled"
-  size="lg"
-/>
-```
+<div class="input-wrapper-filled">
+  <input id="large-input" type="text" placeholder=" "
+    class="peer input-base input-filled input-lg" />
+  <label for="large-input"
+    class="input-label-base input-label-filled input-label-lg input-label-filled-state">
+    Large input
+  </label>
+</div>`}>
+  <div class="bg-white grid items-end w-full gap-6 px-4 py-6">
+    <Input id="small-input" label="Small input" variant="filled" size="sm" />
+    <Input id="medium-input" label="Medium input (default)" variant="filled" size="md" />
+    <Input id="large-input" label="Large input" variant="filled" size="lg" />
+  </div>
+</ComponentPreview>
 
 # Required Input
-You can mark an input as required, which will add a red asterisk to the label:
+You can mark an input as required, which will add a red asterisk to the label.
 
-<div class="component-preview">
-    <div class="bg-white grid items-end w-full gap-6 md:grid-cols-2 px-4 py-6">
-        <Input
-            id="required-filled"
-            label="Required field"
-            variant="filled"
-            required
-        />
-        <Input
-            id="required-standard" 
-            label="Required field"
-            variant="standard"
-            required
-        />
-    </div>
-</div>
-    
-```js
-<Input
-  id="required-filled"
-  label="Required field"
-  variant="filled"
-  required
-/>
-```
+<ComponentPreview client:visible
+  astro={`<Input id="required-filled" label="Required field" variant="filled" required client:visible />
+
+<Input id="required-standard" label="Required field" variant="standard" required client:visible />`}
+  vue={`<Input id="required-filled" label="Required field" variant="filled" required />
+
+<Input id="required-standard" label="Required field" variant="standard" required />`}
+  html={`<div class="input-wrapper-filled">
+  <input id="required-filled" type="text" placeholder=" " required
+    class="peer input-base input-filled input-md" />
+  <label for="required-filled"
+    class="input-label-base input-label-filled input-label-md input-label-filled-state">
+    Required field<span class="text-red-500 ml-1">*</span>
+  </label>
+</div>`}>
+  <div class="bg-white grid items-end w-full gap-6 md:grid-cols-2 px-4 py-6">
+    <Input id="required-filled" label="Required field" variant="filled" required />
+    <Input id="required-standard" label="Required field" variant="standard" required />
+  </div>
+</ComponentPreview>
 
 # Input Types
-The Input component supports all standard HTML input types, plus a special `textarea` type:
+The Input component supports all standard HTML input types, plus a special `textarea` type.
 
-<div class="component-preview">
-    <div class="bg-white grid items-end w-full gap-6 md:grid-cols-2 px-4 py-6">
-        <Input
-            id="email-input"
-            label="Email"
-            type="email"
-            variant="filled"
-        />
-        <Input
-            id="password-input" 
-            label="Password"
-            type="password"
-            variant="standard"
-        />
-        <Input
-            id="number-input" 
-            label="Age"
-            type="number"
-            variant="filled"
-        />
-        <Input
-            id="date-input" 
-            label="Date"
-            type="date"
-            variant="standard"
-        />
-    </div>
+<ComponentPreview client:visible
+  astro={`<Input id="email-input" label="Email" type="email" variant="filled" client:visible />
+
+<Input id="password-input" label="Password" type="password" variant="standard" client:visible />
+
+<Input id="number-input" label="Age" type="number" variant="filled" client:visible />
+
+<Input id="date-input" label="Date" type="date" variant="standard" client:visible />`}
+  vue={`<Input id="email-input" label="Email" type="email" variant="filled" />
+
+<Input id="password-input" label="Password" type="password" variant="standard" />
+
+<Input id="number-input" label="Age" type="number" variant="filled" />
+
+<Input id="date-input" label="Date" type="date" variant="standard" />`}
+  html={`<div class="input-wrapper-filled">
+  <input id="email-input" type="email" placeholder=" "
+    class="peer input-base input-filled input-md" />
+  <label for="email-input"
+    class="input-label-base input-label-filled input-label-md input-label-filled-state">
+    Email
+  </label>
 </div>
-    
-```js
-// Email input
-<Input
-  id="email-input"
-  label="Email"
-  type="email"
-  variant="filled"
-/>
 
-// Password input
-<Input
-  id="password-input" 
-  label="Password"
-  type="password"
-  variant="standard"
-/>
-
-// Number input
-<Input
-  id="number-input" 
-  label="Age"
-  type="number"
-  variant="filled"
-/>
-
-// Date input
-<Input
-  id="date-input" 
-  label="Date"
-  type="date"
-  variant="standard"
-/>
-```
+<div class="input-wrapper-standard">
+  <input id="password-input" type="password" placeholder=" "
+    class="peer input-base input-standard input-md" />
+  <label for="password-input"
+    class="input-label-base input-label-standard input-label-md input-label-standard-state">
+    Password
+  </label>
+</div>`}>
+  <div class="bg-white grid items-end w-full gap-6 md:grid-cols-2 px-4 py-6">
+    <Input id="email-input" label="Email" type="email" variant="filled" />
+    <Input id="password-input" label="Password" type="password" variant="standard" />
+    <Input id="number-input" label="Age" type="number" variant="filled" />
+    <Input id="date-input" label="Date" type="date" variant="standard" />
+  </div>
+</ComponentPreview>
 
 # Using with v-model
 The Input component fully supports Vue's v-model for two-way binding:
@@ -342,21 +312,21 @@ const email = ref('');
 
 # Props Reference
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `id` | `string` | Random ID | Unique identifier for the input |
-| `name` | `string` | Same as id | Name attribute for the input field |
-| `label` | `string` | Required | Label text for the input |
-| `variant` | `'standard' \| 'filled'` | `'standard'` | Visual style variant |
-| `type` | `string` | `'text'` | Input type (all HTML types + 'textarea') |
-| `modelValue` | `string \| number` | `''` | Value for v-model binding |
-| `required` | `boolean` | `false` | Whether the field is required |
-| `rows` | `number` | `3` | Number of rows (for textarea only) |
-| `placeholder` | `string` | `' '` | Placeholder text (space for floating label) |
-| `error` | `string \| boolean` | `false` | Error state or message |
-| `success` | `string \| boolean` | `false` | Success state or message |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size of the input |
-| `class` | `string` | `''` | Additional CSS classes |
+<PropsTable data={[
+  { name: 'label', type: 'string', required: true, description: 'Label text for the floating label' },
+  { name: 'variant', type: "'standard' | 'filled'", default: "'standard'", description: 'Visual style variant' },
+  { name: 'id', type: 'string', default: 'random', description: 'Unique identifier; also used as name if name not set' },
+  { name: 'name', type: 'string', default: 'same as id', description: 'Name attribute for the input field' },
+  { name: 'type', type: 'string', default: "'text'", description: "Input type — all HTML types plus 'textarea'" },
+  { name: 'modelValue', type: 'string | number', default: "''", description: 'Value for v-model binding' },
+  { name: 'required', type: 'boolean', default: 'false', description: 'Adds required asterisk to label' },
+  { name: 'rows', type: 'number', default: '3', description: 'Number of rows (textarea only)' },
+  { name: 'placeholder', type: 'string', default: "' '", description: 'Space keeps floating label working; override with caution' },
+  { name: 'error', type: 'string | boolean', default: 'false', description: 'Error state — true for visual only, string to show message' },
+  { name: 'success', type: 'string | boolean', default: 'false', description: 'Success state — true for visual only, string to show message' },
+  { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Size of the input field' },
+  { name: 'class', type: 'string', default: "''", description: 'Additional CSS classes on the wrapper element' },
+]} />
 
 # Events
 

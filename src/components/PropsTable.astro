@@ -1,0 +1,53 @@
+---
+interface PropDefinition {
+  name: string;
+  type: string;
+  default?: string;
+  required?: boolean;
+  description: string;
+}
+
+interface Props {
+  data: PropDefinition[];
+}
+
+const { data } = Astro.props;
+---
+
+<div class="overflow-x-auto">
+  <table class="table-base">
+    <thead>
+      <tr>
+        <th class="table-header">Prop</th>
+        <th class="table-header">Type</th>
+        <th class="table-header">Default</th>
+        <th class="table-header">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        data.map(prop => (
+          <tr class="table-row">
+            <td class="table-cell">
+              <code class="font-mono text-xs">{prop.name}</code>
+              {prop.required && (
+                <span class="text-system-error text-xs ml-1" title="required">
+                  *
+                </span>
+              )}
+            </td>
+            <td class="table-cell">
+              <code class="font-mono text-xs text-blue-medium dark:text-blue-light">{prop.type}</code>
+            </td>
+            <td class="table-cell">
+              <code class="font-mono text-xs text-slate-default dark:text-neutral-light">
+                {prop.default ?? '—'}
+              </code>
+            </td>
+            <td class="table-cell text-sm text-slate-dark dark:text-neutral-lighter">{prop.description}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,12 +1,14 @@
 // shortcuts/components.ts
-import { 
-  COLORS, 
-  IMAGE_STYLES, 
-  LAYOUT, 
+import {
+  COLORS,
+  IMAGE_STYLES,
+  LAYOUT,
   TRANSITIONS,
   PRODUCT_STYLES,
   aspectRatios
-} from './constants'
+} from './constants.ts'
+
+const BADGE_STYLE = 'inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium max-w-fit whitespace-nowrap';
 
 export const componentShortcuts = [
   // Product related
@@ -65,13 +67,20 @@ export const componentShortcuts = [
 
   // Miscellaneous
   ['flag-ua', 'inline-block text-4xl w-6 h-3.5 min-w-[1.25rem] mr-3 bg-gradient-to-b stops-[#0057b7_50%,50%,#ffd700_100%]'],
-  ['engine-info', `${LAYOUT.position.absolute} z-20 inline-block w-56 text-xs font-light text-slate-light ${TRANSITIONS.base} ${COLORS.bgWhite} border border-neutral-lighter rounded-lg shadow-sm dark:text-neutral-default dark:border-slate-default dark:bg-slate-darker bottom-full mb-2 invisible opacity-0 group-hover:(opacity-100 visible -left-full before:left-9) before:(absolute w-0 h-0 -bottom-3 border-l-transparent border-r-transparent border-t-neutral-lightest dark:border-t-slate-dark border-l-10 border-r-10 border-t-10 content-empty)`],
+  ['engine-info', `${LAYOUT.position.absolute} z-20 inline-block w-56 text-xs font-light text-slate-light ${TRANSITIONS.base} ${COLORS.bgWhite} border border-neutral-lighter rounded-lg shadow-sm dark:text-neutral-default dark:border-slate-default dark:bg-slate-dark bottom-full mb-2 invisible opacity-0 group-hover:(opacity-100 visible -left-full before:left-9) before:(absolute w-0 h-0 -bottom-3 border-l-transparent border-r-transparent border-t-neutral-lightest dark:border-t-slate-dark border-l-10 border-r-10 border-t-10 content-empty)`],
   ['engine-code', 'underline decoration-dotted underline-offset-4 py-0.5 decoration-neutral-light group-hover:(decoration-blue-lightest dark:decoration-accent-light)'],
   ['number-secondary', `block ${LAYOUT.position.absolute} inset-0 text-slate-light select-all ${COLORS.bgWhite} dark:bg-accent-deepBlue`],
   ['code-formatted', 'leading-none mt-0 relative text-xs'],
 
   // Badges
   ['badge', 'px-1.5 py-px text-white text-xs mb-1 max-w-fit whitespace-nowrap'],
+  ['badge-primary', `${BADGE_STYLE} bg-brand-primary text-white`],
+  ['badge-secondary', `${BADGE_STYLE} bg-brand-secondary text-blue-darker`],
+  ['badge-success', `${BADGE_STYLE} bg-system-success/15 text-system-success`],
+  ['badge-error', `${BADGE_STYLE} bg-system-error/15 text-system-error`],
+  ['badge-warning', `${BADGE_STYLE} bg-system-warning/15 text-slate-dark`],
+  ['badge-info', `${BADGE_STYLE} bg-system-info/15 text-system-info`],
+  ['badge-neutral', `${BADGE_STYLE} bg-neutral-lighter text-neutral-darker dark:(bg-slate-dark text-neutral-lighter)`],
 
   // Details
   ['detail-name', 'text-gray-900 leading-tight font-textlight line-clamp-3 whitespace-normal md:(whitespace-pre-wrap line-clamp-9 font-textregular)'],
@@ -121,6 +130,13 @@ export const componentShortcuts = [
   ['details-table-cell', 'relative'],
   ['details-table-col', 'w-1/2 md:w-auto'],
   ['link-primary', 'leading-none text-brand-primary hover:text-accent-light hover:underline'],
+
+  // Generic table
+  ['table-base', 'w-full border-collapse text-sm'],
+  ['table-header', 'bg-neutral-lightest text-left font-medium text-slate-default px-4 py-3 dark:(bg-slate-dark text-neutral-lighter)'],
+  ['table-row', 'border-b border-neutral-lighter hover:bg-neutral-lightest/50 transition-colors duration-100 dark:(border-slate-default hover:bg-slate-dark/50)'],
+  ['table-cell', 'px-4 py-3 text-slate-default dark:text-neutral-lighter'],
+  ['table-striped', 'odd:bg-white even:bg-neutral-lightest/40 dark:(odd:bg-slate-darkest even:bg-slate-dark/20)'],
 
 
 ];

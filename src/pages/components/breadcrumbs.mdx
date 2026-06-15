@@ -5,6 +5,8 @@ layout: "../../layouts/MainLayout.astro"
 
 ---
 import Breadcrumbs from '../../components/Breadcrumbs.vue'
+import ComponentPreview from '../../components/ComponentPreview.vue'
+import PropsTable from '../../components/PropsTable.astro'
 
 # Breadcrumbs
 
@@ -22,96 +24,109 @@ https://schema.org/ListItem
 
 ## Show back
 
-<div class="component-preview">
-    <Breadcrumbs
-      breadcrumbs={ [ {"name": "Level1", "path": "#level2"}, {"name": "Level 2", "path": "#level2"}, {"name": "Level 3", "path": "#level3"} ] }
-      product-number="6R0XXXXXX"
-      class="py-1 order-0 px-1 max-w-full flex bg-white"
-      show-back
-      text-back="Back"
-    />
-</div>
+<ComponentPreview client:visible
+  astro={`---
+import Breadcrumbs from 'spoko-design-system/components/Breadcrumbs.vue';
 
-```js
+const trail = [
+  { name: 'Level 1', path: '/level1' },
+  { name: 'Level 2', path: '/level2' },
+  { name: 'Level 3', path: '/level3' },
+];
+---
 <Breadcrumbs
-  breadcrumbs={ 
-    [ 
-      {"name": "Level1", "path": "level1"},
-      {"name": "Level 2", "path": "level2"},
-      {"name": "Level 3", "path": "level3"}
-    ] 
-  }
-  product-number="6R0XXXXXX"
-  class="py-1 order-0 px-1 max-w-full flex bg-white"
-  show-back
-  text-back="Back"
-/>
-```
+  breadcrumbs={trail}
+  productNumber="6R0XXXXXX"
+  class="py-1 px-1 max-w-full flex bg-white"
+  showBack
+  textBack="Back"
+  client:visible
+/>`}
+  vue={`<script setup>
+import Breadcrumbs from 'spoko-design-system/src/components/Breadcrumbs.vue';
+
+const trail = [
+  { name: 'Level 1', path: '/level1' },
+  { name: 'Level 2', path: '/level2' },
+  { name: 'Level 3', path: '/level3' },
+];
+</script>
+
+<template>
+  <Breadcrumbs
+    :breadcrumbs="trail"
+    product-number="6R0XXXXXX"
+    class="py-1 px-1 max-w-full flex bg-white"
+    show-back
+    text-back="Back"
+  />
+</template>`}>
+  <Breadcrumbs
+    breadcrumbs={[{name: 'Level1', path: '#level1'}, {name: 'Level 2', path: '#level2'}, {name: 'Level 3', path: '#level3'}]}
+    product-number="6R0XXXXXX"
+    class="py-1 order-0 px-1 max-w-full flex bg-white"
+    show-back
+    text-back="Back"
+  />
+</ComponentPreview>
 
 
 ## Show home
 
-<div class="component-preview">
-    <Breadcrumbs
-      breadcrumbs={ [ {"name": "Level1", "path": "#level2"}, {"name": "Level 2", "path": "#level2"}, {"name": "Level 3", "path": "#level3"} ] }
-      product-number="6R0XXXXXX"
-      class="py-1 order-0 px-1 max-w-full flex bg-white"
-      show-home
-    />
-</div>
-
-```js
-<Breadcrumbs
-  breadcrumbs={ 
-    [ 
-      {"name": "Level1", "path": "level 1"},
-      {"name": "Level 2", "path": "level2"},
-      {"name": "Level 3", "path": "level3"}
-    ] 
-  }
+<ComponentPreview client:visible
+  astro={`<Breadcrumbs
+  breadcrumbs={trail}
+  productNumber="6R0XXXXXX"
+  class="py-1 px-1 max-w-full flex bg-white"
+  showHome
+  client:visible
+/>`}
+  vue={`<Breadcrumbs
+  :breadcrumbs="trail"
   product-number="6R0XXXXXX"
-  class="py-1 order-0 px-1 max-w-full flex bg-white"
+  class="py-1 px-1 max-w-full flex bg-white"
   show-home
-/>
-```
+/>`}>
+  <Breadcrumbs
+    breadcrumbs={[{name: 'Level1', path: '#level1'}, {name: 'Level 2', path: '#level2'}, {name: 'Level 3', path: '#level3'}]}
+    product-number="6R0XXXXXX"
+    class="py-1 order-0 px-1 max-w-full flex bg-white"
+    show-home
+  />
+</ComponentPreview>
 
 
 ## Simply
 
-<div class="component-preview">
-    <Breadcrumbs
-      breadcrumbs={ [ {"name": "Level1", "path": "#level2"}, {"name": "Level 2", "path": "#level2"}, {"name": "Level 3", "path": "#level3"} ] }
-      product-number="6R0XXXXXX"
-      class="py-1 order-0 px-1 max-w-full flex bg-white"
-    />
-</div>
-
-```js
-<Breadcrumbs
-  breadcrumbs={ 
-    [ 
-      {"name": "Level1", "path": "level 1"},
-      {"name": "Level 2", "path": "level2"},
-      {"name": "Level 3", "path": "level3"}
-    ] 
-  }
+<ComponentPreview client:visible
+  astro={`<Breadcrumbs
+  breadcrumbs={trail}
+  productNumber="6R0XXXXXX"
+  class="py-1 px-1 max-w-full flex bg-white"
+  client:visible
+/>`}
+  vue={`<Breadcrumbs
+  :breadcrumbs="trail"
   product-number="6R0XXXXXX"
-  class="py-1 order-0 px-1 max-w-full flex bg-white"
-  show-back
-  text-back="Back"
-/>
-```
+  class="py-1 px-1 max-w-full flex bg-white"
+/>`}>
+  <Breadcrumbs
+    breadcrumbs={[{name: 'Level1', path: '#level1'}, {name: 'Level 2', path: '#level2'}, {name: 'Level 3', path: '#level3'}]}
+    product-number="6R0XXXXXX"
+    class="py-1 order-0 px-1 max-w-full flex bg-white"
+  />
+</ComponentPreview>
 
 ## Props
 
-| Prop            | Type      | Default | Description                                                                 |
-| --------------- | --------- | ------- | --------------------------------------------------------------------------- |
-| `breadcrumbs`   | Array     | -       | Array of breadcrumb objects with `name` and `path` properties (required)    |
-| `showBack`      | Boolean   | `false` | Show back button                                                            |
-| `textBack`      | String    | `'Back'`| Text for back button title                                                  |
-| `showHome`      | Boolean   | `false` | Show home icon as first breadcrumb                                          |
-| `productNumber` | String    | `null`  | Product number to display after last breadcrumb (mobile hidden)             |
-| `withMicrodata` | Boolean   | `true`  | Include Schema.org BreadcrumbList microdata (set to `false` for duplicates) |
+<PropsTable data={[
+  { name: 'breadcrumbs', type: 'Array<{ name: string; path: string }>', required: true, description: 'Breadcrumb items — each needs name and path' },
+  { name: 'showBack', type: 'boolean', default: 'false', description: 'Show a back button before the breadcrumbs' },
+  { name: 'textBack', type: 'string', default: "'Back'", description: 'Label text for the back button' },
+  { name: 'showHome', type: 'boolean', default: 'false', description: 'Show home icon as first breadcrumb' },
+  { name: 'productNumber', type: 'string', default: 'null', description: 'Product number shown after last breadcrumb (hidden on mobile)' },
+  { name: 'withMicrodata', type: 'boolean', default: 'true', description: 'Include Schema.org BreadcrumbList markup — set false to avoid duplicates when rendering twice' },
+]} />
 
 ## Microdata Control
 

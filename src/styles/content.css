@@ -1,4 +1,6 @@
 .content {
+  @apply dark:text-neutral-lighter;
+
   .main-section {
     & > h1,
     & > h2,
@@ -47,7 +49,7 @@
     @apply bg-blue-medium bg-opacity-5 px-4 py-4 mx-0 flex items-center overflow-x-auto sm:(p-8);
     gap: 1rem;
     border-radius: 0.33rem;
-    border: 1px solid theme('colors.slate.200');
+    border: 1px solid theme('colors.slate.300');
     resize: both;
   }
 
@@ -57,7 +59,29 @@
   }
 }
 
-table {
+/* Dark mode override — MUST live outside .content { } nesting, otherwise
+   it compiles to `.content html.dark .component-preview` which never matches. */
+html.dark .content .component-preview {
+  border: 1px solid theme('colors.slate.dark');
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Prose tables dark mode */
+html.dark table:not(.table-base) {
+  @apply bg-slate-dark border-slate-dark;
+
+  thead {
+    @apply bg-slate-darkest text-neutral-lighter;
+  }
+
+  td,
+  th {
+    @apply text-neutral-lighter;
+  }
+}
+
+/* Prose tables from markdown — excluded when table-base shortcut is used */
+table:not(.table-base) {
   @apply table-auto text-left border bg-white shadow-md;
 
   tr {

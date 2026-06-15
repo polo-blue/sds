@@ -1,0 +1,62 @@
+/* SDS Design Tokens — auto-generated, do not edit manually */
+/* Run: pnpm build:tokens to regenerate */
+
+:root {
+  /* brand */
+  --color-brand-primary: oklch(44% 0.213 263);
+  --color-brand-secondary: oklch(71% 0.149 234);
+
+  /* blue */
+  --color-blue-ultralight: oklch(93% 0.032 256);
+  --color-blue-lightest: oklch(62% 0.188 260);
+  --color-blue-light: oklch(57% 0.237 260);
+  --color-blue-default: oklch(51% 0.206 260);
+  --color-blue-medium: oklch(34% 0.139 261);
+  --color-blue-darker: oklch(25% 0.099 259);
+  --color-blue-darkest: oklch(17% 0.058 256);
+  --color-blue-wrc: oklch(38% 0.261 264);
+
+  /* accent */
+  --color-accent-light: oklch(65% 0.143 238);
+  --color-accent-medium: oklch(59% 0.158 248);
+  --color-accent-default: oklch(59% 0.13 238);
+  --color-accent-dark: oklch(51% 0.121 241);
+  --color-accent-darker: oklch(38% 0.111 251);
+  --color-accent-deepBlue: oklch(22% 0.051 261);
+
+  /* neutral */
+  --color-neutral-lightest: oklch(97% 0.003 265);
+  --color-neutral-lighter: oklch(93% 0.006 265);
+  --color-neutral-light: oklch(79% 0.016 261);
+  --color-neutral-default: oklch(71% 0.019 261);
+  --color-neutral-dark: oklch(56% 0.018 233);
+  --color-neutral-darker: oklch(45% 0.026 257);
+
+  /* slate */
+  --color-slate-light: oklch(55% 0.041 257);
+  --color-slate-default: oklch(45% 0.037 257);
+  --color-slate-dark: oklch(37% 0.039 257);
+  --color-slate-darkest: oklch(28% 0.037 260);
+
+  /* state */
+  --color-state-overlay: oklch(0% 0 0 / 0.06);
+  --color-state-disabled: oklch(0% 0 0 / 0.12);
+
+  /* system */
+  --color-success: oklch(70% 0.149 163);
+  --color-warning: oklch(84% 0.164 84);
+  --color-error: oklch(64% 0.208 25);
+  --color-info: oklch(62% 0.188 260);
+
+  /* typography */
+  --font-family-sans: vw_textregular, system-ui, ui-sans-serif;
+  --font-family-novamono: Nova Mono;
+  --font-family-mono: Nova Mono;
+  --font-family-headlight: vw_headlight, vw_headlight_fallback, system-ui;
+  --font-family-headregular: vw_headregular, vw_headregular_fallback, system-ui;
+  --font-family-headbold: vw_headbold;
+  --font-family-textlight: vw_textlight;
+  --font-family-textregular: vw_textregular;
+  --font-family-textbold: vw_textbold;
+  --font-size-xxs: 0.625rem;
+}

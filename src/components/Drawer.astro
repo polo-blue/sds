@@ -1,0 +1,88 @@
+---
+interface Props {
+  id: string;
+  label?: string;
+  position?: 'left' | 'right';
+  class?: string;
+}
+const { id, label = 'Navigation', position = 'left', class: className = '' } = Astro.props;
+---
+
+<div id={id} class:list={['sds-drawer', className]} data-position={position} hidden>
+  <div class="sds-drawer-backdrop" data-drawer-close></div>
+  <aside
+    class="sds-drawer-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-label={label}
+    tabindex="-1"
+    data-drawer-panel
+  >
+    <slot />
+  </aside>
+</div>
+
+<script>
+  // Side-effect import — drawer behavior is event-delegated on document.
+  import '../scripts/drawer';
+</script>
+
+<style is:global>
+  .sds-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .sds-drawer.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .sds-drawer-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgb(0 0 0 / 0.5);
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .sds-drawer-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18rem;
+    height: 100%;
+    background: white;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+    z-index: 10;
+  }
+
+  .sds-drawer-panel:focus {
+    outline: none;
+  }
+
+  .sds-drawer.open .sds-drawer-panel {
+    transform: translateX(0);
+  }
+
+  .sds-drawer[data-position='right'] .sds-drawer-panel {
+    left: auto;
+    right: 0;
+    transform: translateX(100%);
+  }
+
+  .sds-drawer[data-position='right'].open .sds-drawer-panel {
+    transform: translateX(0);
+  }
+
+  body.drawer-open {
+    overflow: hidden;
+  }
+</style>

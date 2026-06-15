@@ -1,53 +1,44 @@
 ---
 import { SIDEBAR } from '../config';
-import { Astronav, MenuItems } from 'astro-navbar';
+
+interface Props {
+  currentPage: string;
+}
+
 const { currentPage } = Astro.props;
-const currentPageMatch = currentPage.slice(1);
 
-const isCurrentPage = item => {
-  if (item.link) {
-    return item.link.includes(currentPageMatch);
-  }
-  return false;
-};
-
-const getLinkClasses = link => {
-  const baseClasses =
-    'block py-1.5 px-6  my-1 transition-colors border-l hover:border-slate-400 text-slate-500 hover:text-slate-900';
-
-  if (isCurrentPage(link)) {
-    return baseClasses + ' border-slate-500 text-slate-900';
-  } else {
-    return baseClasses;
-  }
-};
+const isActive = (link?: string) => (link ? currentPage.startsWith(link) : false);
 ---
 
-<Astronav>
-  <MenuItems
-    class="hidden z-20 bg-blue-gray-100 w-64 h-full overflow-y-auto px-4 border-r pb-3 absolute lg:(relative bg-blue-lightest bg-opacity-5 flex)"
-  >
-    <ul class="mt-0 mb-auto">
-      {
-        SIDEBAR.map(item =>
-          item.header ? (
-            <h2 class="mt-4 font-semibold text-slate-700">{item.text}</h2>
-          ) : (
-            <li class={getLinkClasses(item)}>
-              <a href={item.link}>{item.text}</a>
-            </li>
-          )
+<nav
+  class="w-64 px-4 pt-4 pb-10 overflow-y-auto h-full bg-white dark:bg-slate-darkest"
+  aria-label="Documentation navigation"
+>
+  <ul>
+    {
+      SIDEBAR.map(item =>
+        item.header ? (
+          <h2 class="mt-5 mb-1 px-2 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-neutral-light">
+            {item.text}
+          </h2>
+        ) : (
+          <li>
+            <a
+              href={item.link}
+              class:list={[
+                'block py-1.5 px-3 rounded text-sm my-0.5 transition-colors border-l-2',
+                isActive(item.link)
+                  ? 'border-blue-medium text-slate-900 dark:text-neutral-lighter font-medium bg-blue-lightest/20 dark:bg-blue-medium/20'
+                  : 'border-transparent text-slate-500 dark:text-neutral-light hover:text-slate-900 dark:hover:text-neutral-lighter hover:bg-slate-50 dark:hover:bg-slate-dark',
+              ]}
+              aria-current={isActive(item.link) ? 'page' : undefined}
+              data-drawer-close
+            >
+              {item.text}
+            </a>
+          </li>
         )
-      }
-    </ul>
-  </MenuItems>
-</Astronav>
-
-<script is:inline>
-  window.addEventListener('DOMContentLoaded', () => {
-    var target = document.querySelector('[aria-current="page"]');
-    if (target && target.offsetTop > window.innerHeight - 100) {
-      document.querySelector('.nav-groups').scrollTop = target.offsetTop;
+      )
     }
-  });
-</script>
+  </ul>
+</nav>

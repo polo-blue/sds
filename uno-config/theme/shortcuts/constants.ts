@@ -71,7 +71,7 @@ export const TRANSITIONS = {
 // Button base styles
 export const BUTTON_STYLES = {
   base: {
-    layout: 'inline-flex items-center justify-center',
+    layout: 'inline-flex items-center justify-center rounded-full',
     text: 'text-base font-medium text-center leading-4.5',
     transition: 'transition-all duration-200 ease-in-out',
   },

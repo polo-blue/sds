@@ -3,6 +3,7 @@ title: "SlimBanner"
 layout: "../../layouts/MainLayout.astro"
 ---
 import SlimBanner from '../../components/SlimBanner.vue'
+import PropsTable from '../../components/PropsTable.astro'
 
 # SlimBanner
 
@@ -194,22 +195,22 @@ Close the banner permanently using localStorage. It will stay hidden even after 
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `message` | String | Ukraine message | Main banner message text |
-| `linkText` | String | `'this page'` | Text for the link |
-| `linkUrl` | String | Ukraine URL | URL for the link (set to empty string for no link) |
-| `linkTitle` | String | `''` | Title attribute for the link |
-| `toggleMessage` | String | `''` | Message to show when close button is clicked (enables toggle) |
-| `toggleBgClass` | String | `'bg-black'` | Background class for toggle state |
-| `toggleTextClass` | String | `'text-white'` | Text color class for toggle state |
-| `showCloseButton` | Boolean | `true` | Show close/toggle button |
-| `closeButtonAriaLabel` | String | `'Toggle'` | Aria label for close button |
-| `showIcon` | Boolean | `false` | Show icon (Ukraine flag by default) |
-| `iconClass` | String | Ukraine flag CSS | Custom CSS class for icon |
-| `persistClose` | Boolean | `false` | Save close state to localStorage |
-| `storageKey` | String | `'slimbanner-closed'` | localStorage key for persistence |
-| `expirationDays` | Number | `30` | Days until localStorage expires (0 = never) |
+<PropsTable data={[
+  { name: 'message', type: 'string', default: 'Ukraine message', description: 'Main banner message text' },
+  { name: 'linkText', type: 'string', default: "'this page'", description: 'Text for the link' },
+  { name: 'linkUrl', type: 'string', default: 'Ukraine URL', description: 'URL for the link (set to empty string for no link)' },
+  { name: 'linkTitle', type: 'string', default: "''", description: 'Title attribute for the link' },
+  { name: 'toggleMessage', type: 'string', default: "''", description: 'Message to show when close button is clicked (enables toggle)' },
+  { name: 'toggleBgClass', type: 'string', default: "'bg-black'", description: 'Background class for toggle state' },
+  { name: 'toggleTextClass', type: 'string', default: "'text-white'", description: 'Text color class for toggle state' },
+  { name: 'showCloseButton', type: 'boolean', default: 'true', description: 'Show close/toggle button' },
+  { name: 'closeButtonAriaLabel', type: 'string', default: "'Toggle'", description: 'Aria label for close button' },
+  { name: 'showIcon', type: 'boolean', default: 'false', description: 'Show icon (Ukraine flag by default)' },
+  { name: 'iconClass', type: 'string', default: 'Ukraine flag CSS', description: 'Custom CSS class for icon' },
+  { name: 'persistClose', type: 'boolean', default: 'false', description: 'Save close state to localStorage' },
+  { name: 'storageKey', type: 'string', default: "'slimbanner-closed'", description: 'localStorage key for persistence' },
+  { name: 'expirationDays', type: 'number', default: '30', description: 'Days until localStorage expires (0 = never)' },
+]} />
 
 ## Slots
 

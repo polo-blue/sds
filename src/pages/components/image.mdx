@@ -1,8 +1,9 @@
 ---
-title: "Jumbotron"
+title: "Image"
 layout: "../../layouts/MainLayout.astro"
 ---
 import Image from '../../components/Image.astro'
+import PropsTable from '../../components/PropsTable.astro'
 
 # Image
 
@@ -512,3 +513,33 @@ It is good to have all the images in the same ratio so that they look fairly uni
   />
 </div>
 ```
+
+## Props
+
+<PropsTable data={[
+  { name: 'imageObject', type: 'ImageObject', required: true, description: 'Single object holding image source, dimensions, alt text, and optional metadata.' },
+]} />
+
+### ImageObject shape
+
+```ts
+interface ImageObject {
+  src: string;             // Image URL or imported asset
+  alt: string;             // Alt text (required for a11y)
+  width: string | number;  // Original width in px
+  height: string | number; // Original height in px
+  class?: string;          // Extra classes appended to the <img>
+  index?: number;          // When 1, marks as hero (eager load + Pagefind index)
+  srcset?: number[];       // Widths for responsive image generation
+}
+```
+
+## CSS Shortcuts
+
+Wrap the `<Image>` in a sized container with one of these classes. The container drives ratio and size — the image is `object-cover`, `100%`.
+
+| Class | Purpose |
+| --- | --- |
+| `img--small` / `img--medium` / `img--large` | Preset container size |
+| `img--1/1`, `img--4/3`, `img--3/4`, `img--2/3` | Aspect ratio |
+| `img--overlay` | Light grey overlay for product images on white background |

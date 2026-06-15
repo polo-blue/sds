@@ -1,0 +1,315 @@
+---
+title: "Navbar"
+layout: "../../layouts/MainLayout.astro"
+---
+import Navbar from '../../components/Navbar.astro'
+import Drawer from '../../components/Drawer.astro'
+import ComponentPreview from '../../components/ComponentPreview.vue'
+import PropsTable from '../../components/PropsTable.astro'
+
+# Navbar
+
+Top-of-page navigation component. Slot-driven so it can express any of the patterns
+shown below — from a minimal three-control bar to a two-row marketing header with a
+utility strip.
+
+> `Navbar.astro` is Astro-only (uses slots). Import via subpath, not the barrel.
+
+## Pattern 1 — Utility strip + minimal main row
+
+Two-row layout. A thin top strip carries contact/socials/locale/theme controls,
+and the main row is reduced to brand + a single CTA. All primary navigation lives
+inside the linked drawer, so the hamburger is always visible.
+
+<ComponentPreview client:visible
+  astro={`---
+import Navbar from 'spoko-design-system/components/Navbar.astro';
+import Drawer from 'spoko-design-system/components/Drawer.astro';
+---
+<Navbar brand="Studio" drawerId="nav-pattern-1">
+  <div slot="utility" class="flex items-center gap-3">
+    <a href="#" class="hover:underline">+48 600 000 000</a>
+    <span class="text-slate-300">·</span>
+    <a href="#" class="hover:underline">hello@studio.io</a>
+    <span class="text-slate-300">·</span>
+    <div class="flex items-center gap-2">
+      <a href="#" class="hover:underline">IG</a>
+      <a href="#" class="hover:underline">LI</a>
+    </div>
+    <span class="text-slate-300">·</span>
+    <div class="flex items-center gap-2">
+      <a href="#" class="hover:underline font-textbold">EN</a>
+      <a href="#" class="hover:underline">PL</a>
+    </div>
+  </div>
+  <div slot="actions" class="flex items-center gap-2">
+    <a href="#" class="btn-primary btn-sm">Book a call</a>
+  </div>
+</Navbar>
+
+<Drawer id="nav-pattern-1" label="Studio menu">
+  <nav class="p-6 flex flex-col gap-2">
+    <a href="#" class="sds-navbar-link" data-drawer-close>Work</a>
+    <a href="#" class="sds-navbar-link" data-drawer-close>Services</a>
+    <a href="#" class="sds-navbar-link" data-drawer-close>Studio</a>
+    <a href="#" class="sds-navbar-link" data-drawer-close>Journal</a>
+  </nav>
+</Drawer>`}>
+  <Navbar brand="Studio" drawerId="nav-pattern-1">
+    <div slot="utility" class="flex items-center gap-3">
+      <a href="#" class="hover:underline">+48 600 000 000</a>
+      <span class="text-slate-300">·</span>
+      <a href="#" class="hover:underline">hello@studio.io</a>
+      <span class="text-slate-300">·</span>
+      <div class="flex items-center gap-2">
+        <a href="#" class="hover:underline">IG</a>
+        <a href="#" class="hover:underline">LI</a>
+      </div>
+      <span class="text-slate-300">·</span>
+      <div class="flex items-center gap-2">
+        <a href="#" class="hover:underline font-textbold">EN</a>
+        <a href="#" class="hover:underline">PL</a>
+      </div>
+    </div>
+    <div slot="actions" class="flex items-center gap-2">
+      <a href="#" class="btn-primary btn-sm">Book a call</a>
+    </div>
+  </Navbar>
+
+  <Drawer id="nav-pattern-1" label="Studio menu">
+    <nav class="p-6 flex flex-col gap-2">
+      <a href="#" class="sds-navbar-link" data-drawer-close>Work</a>
+      <a href="#" class="sds-navbar-link" data-drawer-close>Services</a>
+      <a href="#" class="sds-navbar-link" data-drawer-close>Studio</a>
+      <a href="#" class="sds-navbar-link" data-drawer-close>Journal</a>
+    </nav>
+  </Drawer>
+</ComponentPreview>
+
+## Pattern 2 — Search-led with inline socials and CMS nav
+
+Single dense row. Brand on the left, a prominent search input takes the middle,
+and the right cluster combines social icons, primary nav links (typically pulled
+from a CMS) and a locale switcher. The hamburger only appears below `lg`.
+
+<ComponentPreview client:visible
+  astro={`<Navbar brand="Journal" drawerId="nav-pattern-2">
+  <input
+    slot="search"
+    type="search"
+    placeholder="Search articles…"
+    class="w-full px-4 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-blue-medium dark:bg-slate-dark dark:border-slate-dark"
+  />
+  <div slot="nav" class="flex items-center gap-1">
+    <a href="#" class="sds-navbar-link">Guides</a>
+    <a href="#" class="sds-navbar-link">Reviews</a>
+    <a href="#" class="sds-navbar-link">About</a>
+  </div>
+  <div slot="actions" class="flex items-center gap-1">
+    <a href="#" aria-label="Facebook" class="p-2 rounded-full hover:bg-slate-100"><span class="i-lucide-facebook text-lg" /></a>
+    <a href="#" aria-label="Instagram" class="p-2 rounded-full hover:bg-slate-100"><span class="i-lucide-instagram text-lg" /></a>
+    <a href="#" aria-label="YouTube" class="p-2 rounded-full hover:bg-slate-100"><span class="i-lucide-youtube text-lg" /></a>
+    <span class="text-slate-300 mx-1">|</span>
+    <a href="#" class="text-xs px-2 py-1 hover:underline font-textbold">PL</a>
+    <a href="#" class="text-xs px-2 py-1 hover:underline">EN</a>
+  </div>
+</Navbar>`}>
+  <Navbar brand="Journal" drawerId="nav-pattern-2">
+    <input
+      slot="search"
+      type="search"
+      placeholder="Search articles…"
+      class="w-full px-4 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-blue-medium dark:bg-slate-dark dark:border-slate-dark"
+    />
+    <div slot="nav" class="flex items-center gap-1">
+      <a href="#" class="sds-navbar-link">Guides</a>
+      <a href="#" class="sds-navbar-link">Reviews</a>
+      <a href="#" class="sds-navbar-link">About</a>
+    </div>
+    <div slot="actions" class="flex items-center gap-1">
+      <a href="#" aria-label="Facebook" class="p-2 rounded-full hover:bg-slate-100"><span class="i-lucide-facebook text-lg" /></a>
+      <a href="#" aria-label="Instagram" class="p-2 rounded-full hover:bg-slate-100"><span class="i-lucide-instagram text-lg" /></a>
+      <a href="#" aria-label="YouTube" class="p-2 rounded-full hover:bg-slate-100"><span class="i-lucide-youtube text-lg" /></a>
+      <span class="text-slate-300 mx-1">|</span>
+      <a href="#" class="text-xs px-2 py-1 hover:underline font-textbold">PL</a>
+      <a href="#" class="text-xs px-2 py-1 hover:underline">EN</a>
+    </div>
+  </Navbar>
+</ComponentPreview>
+
+## Pattern 3 — Cross-property switcher
+
+Catalog-style nav where the inline links don't go to internal sections but to
+**sister properties** (journal, marketplace, docs). Stacked brand on the left,
+search button next to it, locale switcher anchors the right end.
+
+<ComponentPreview client:visible
+  astro={`<Navbar drawerId="nav-pattern-3">
+  <a slot="logo" href="/" class="flex items-center gap-2 leading-tight">
+    <span class="w-8 h-8 rounded bg-blue-medium text-white grid place-items-center font-textbold">▣</span>
+    <span class="flex flex-col">
+      <span class="font-textbold text-lg leading-none">catalog</span>
+      <span class="text-xs text-slate-500 leading-none">brand.app</span>
+    </span>
+  </a>
+  <button slot="search" type="button" class="w-full text-left px-4 py-2 rounded-lg border border-slate-200 text-sm text-slate-500 hover:border-blue-medium dark:bg-slate-dark dark:border-slate-dark">
+    Search the catalog…
+  </button>
+  <div slot="nav" class="flex items-center gap-1">
+    <a href="#" class="sds-navbar-link">Journal</a>
+    <a href="#" class="sds-navbar-link">Marketplace</a>
+    <a href="#" class="sds-navbar-link">Docs</a>
+  </div>
+  <div slot="actions" class="flex items-center gap-1">
+    <a href="#" class="text-xs px-2 py-1 hover:underline font-textbold">EN</a>
+    <a href="#" class="text-xs px-2 py-1 hover:underline">PL</a>
+    <a href="#" class="text-xs px-2 py-1 hover:underline">DE</a>
+  </div>
+</Navbar>`}>
+  <Navbar drawerId="nav-pattern-3">
+    <a slot="logo" href="/" class="flex items-center gap-2 leading-tight">
+      <span class="w-8 h-8 rounded bg-blue-medium text-white grid place-items-center font-textbold">▣</span>
+      <span class="flex flex-col">
+        <span class="font-textbold text-lg leading-none">catalog</span>
+        <span class="text-xs text-slate-500 leading-none">brand.app</span>
+      </span>
+    </a>
+    <button slot="search" type="button" class="w-full text-left px-4 py-2 rounded-lg border border-slate-200 text-sm text-slate-500 hover:border-blue-medium dark:bg-slate-dark dark:border-slate-dark">
+      Search the catalog…
+    </button>
+    <div slot="nav" class="flex items-center gap-1">
+      <a href="#" class="sds-navbar-link">Journal</a>
+      <a href="#" class="sds-navbar-link">Marketplace</a>
+      <a href="#" class="sds-navbar-link">Docs</a>
+    </div>
+    <div slot="actions" class="flex items-center gap-1">
+      <a href="#" class="text-xs px-2 py-1 hover:underline font-textbold">EN</a>
+      <a href="#" class="text-xs px-2 py-1 hover:underline">PL</a>
+      <a href="#" class="text-xs px-2 py-1 hover:underline">DE</a>
+    </div>
+  </Navbar>
+</ComponentPreview>
+
+## Pattern 4 — Three-control minimal
+
+Landing-page bar reduced to three controls: search icon, gradient CTA pill, and a
+labeled hamburger that opens the full menu. No inline nav, no locale switcher
+(locale moves into the drawer). Hamburger is always visible.
+
+<ComponentPreview client:visible
+  astro={`<Navbar brand="App" drawerId="nav-pattern-4">
+  <div slot="actions" class="flex items-center gap-2">
+    <button type="button" aria-label="Search" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-dark">
+      <span class="i-lucide-search text-lg" />
+    </button>
+    <a href="#" class="px-5 py-2 rounded-full text-sm font-textbold text-white bg-gradient-to-r from-blue-medium to-blue-darker hover:opacity-90 transition-opacity">
+      Contact
+    </a>
+  </div>
+</Navbar>
+
+<Drawer id="nav-pattern-4" label="App menu">
+  <nav class="p-6 flex flex-col gap-2">
+    <a href="#" class="sds-navbar-link" data-drawer-close>Home</a>
+    <a href="#" class="sds-navbar-link" data-drawer-close>Features</a>
+    <a href="#" class="sds-navbar-link" data-drawer-close>Pricing</a>
+    <a href="#" class="sds-navbar-link" data-drawer-close>Docs</a>
+    <hr class="my-2 border-slate-200" />
+    <a href="#" class="text-xs px-3 py-1 hover:underline">PL</a>
+    <a href="#" class="text-xs px-3 py-1 hover:underline">EN</a>
+  </nav>
+</Drawer>`}>
+  <Navbar brand="App" drawerId="nav-pattern-4">
+    <div slot="actions" class="flex items-center gap-2">
+      <button type="button" aria-label="Search" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-dark">
+        <span class="i-lucide-search text-lg" />
+      </button>
+      <a href="#" class="px-5 py-2 rounded-full text-sm font-textbold text-white bg-gradient-to-r from-blue-medium to-blue-darker hover:opacity-90 transition-opacity">
+        Contact
+      </a>
+    </div>
+  </Navbar>
+
+  <Drawer id="nav-pattern-4" label="App menu">
+    <nav class="p-6 flex flex-col gap-2">
+      <a href="#" class="sds-navbar-link" data-drawer-close>Home</a>
+      <a href="#" class="sds-navbar-link" data-drawer-close>Features</a>
+      <a href="#" class="sds-navbar-link" data-drawer-close>Pricing</a>
+      <a href="#" class="sds-navbar-link" data-drawer-close>Docs</a>
+      <hr class="my-2 border-slate-200" />
+      <a href="#" class="text-xs px-3 py-1 hover:underline">PL</a>
+      <a href="#" class="text-xs px-3 py-1 hover:underline">EN</a>
+    </nav>
+  </Drawer>
+</ComponentPreview>
+
+## Sticky
+
+Any of the patterns above accepts `sticky` to pin to the top with a backdrop blur.
+
+<ComponentPreview client:visible
+  astro={`<Navbar brand="App" sticky>
+  <div slot="nav" class="flex items-center gap-1">
+    <a href="#" class="sds-navbar-link">Home</a>
+    <a href="#" class="sds-navbar-link">Docs</a>
+  </div>
+  <div slot="actions" class="flex items-center gap-2">
+    <button class="btn-primary btn-sm">Get started</button>
+  </div>
+</Navbar>`}>
+  <Navbar brand="App" sticky>
+    <div slot="nav" class="flex items-center gap-1">
+      <a href="#" class="sds-navbar-link">Home</a>
+      <a href="#" class="sds-navbar-link">Docs</a>
+    </div>
+    <div slot="actions" class="flex items-center gap-2">
+      <button class="btn-primary btn-sm">Get started</button>
+    </div>
+  </Navbar>
+</ComponentPreview>
+
+## Composition matrix
+
+The four patterns above are produced purely by which slots you fill — no `variant`
+prop, no layout switch.
+
+| Pattern | `logo` | `utility` | `search` | `nav` | `actions` | Hamburger |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 — Utility strip | brand prop | ✅ contact + lang | — | — (drawer only) | single CTA | always |
+| 2 — Search-led | brand prop | — | ✅ input | ✅ CMS links | socials + lang | mobile only |
+| 3 — Cross-property | ✅ stacked mark | — | ✅ button | ✅ sister sites | lang | mobile only |
+| 4 — Three-control | brand prop | — | — (icon in actions) | — | search + CTA | always |
+
+The hamburger visibility flips automatically: if the `nav` slot is empty the
+hamburger stays visible at every breakpoint (it's the only way to navigate);
+if `nav` is populated, the hamburger hides above `lg` because the inline nav
+takes over.
+
+## Props
+
+<PropsTable data={[
+  { name: 'brand', type: 'string', default: 'undefined', description: 'Text shown as a brand mark when no `logo` slot is used' },
+  { name: 'brandHref', type: 'string', default: "'/'", description: 'Link target for the text brand' },
+  { name: 'drawerId', type: 'string', default: 'undefined', description: 'When set, renders a hamburger button wired to the matching Drawer via aria-controls. Visibility flips based on whether the `nav` slot is filled.' },
+  { name: 'sticky', type: 'boolean', default: 'false', description: 'Pin the navbar to the top of the viewport with backdrop blur' },
+  { name: 'class', type: 'string', default: "''", description: 'Extra classes appended to the root `<header>`' },
+]} />
+
+## Slots
+
+| Slot | Purpose |
+| --- | --- |
+| `logo` | Custom logo markup (image, SVG, stacked wordmark). Falls back to `brand` text if absent. |
+| `utility` | Optional thin top bar — contact info, socials, secondary lang switcher. Activates two-row layout. |
+| `search` | Centered search input or button. Hidden below `md`. |
+| `nav` | Primary navigation links. Hidden below `lg` — surface them inside the linked Drawer instead. |
+| `actions` | Right-aligned cluster — language switcher, CTAs, icon buttons, dark-mode toggle. |
+
+## CSS recipe classes
+
+| Class | Purpose |
+| --- | --- |
+| `sds-navbar` | Root container — applied automatically by `Navbar.astro` |
+| `sds-navbar-utility` | Top thin utility bar wrapper |
+| `sds-navbar-link` | Primary nav link styling (hover + active state) |
+| `sds-hamburger` | Animated three-bar hamburger (rotates to X when drawer is open) |

@@ -1,6 +1,6 @@
 // shortcuts/jumbotron.ts
 // import { COLORS, LAYOUT, TRANSITIONS, IMAGE_STYLES } from './constants'
-import { breakpoints } from './../breakpoints';
+import { breakpoints } from './../breakpoints.ts';
 
 export const jumbotronShortcuts = [
   // Default variant

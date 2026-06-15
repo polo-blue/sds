@@ -1,10 +1,10 @@
 // uno-config/theme/container.ts
-import { breakpoints } from './breakpoints';
+import { breakpoints } from './breakpoints.ts';
 
 export const container = {
   center: true,
   padding: {
-     DEFAULT: '1rem' // 16px for all breakpoints.
+    DEFAULT: '1rem', // 16px for all breakpoints.
     // sm: '1rem',
     // md: '2rem',
     // lg: '3rem',

@@ -1,6 +1,7 @@
 export const SITE = {
   title: 'Spoko Design System',
-  description: 'The Astro design system which facilitates the development of websites.',
+  description:
+    'Universal design system — CSS recipes + Vue, Astro and React wrappers, plus plain-HTML support via the prebuilt stylesheet.',
   defaultLanguage: 'en_US',
   twitter: '@spokospace',
   github: 'polo-blue/sds',
@@ -19,6 +20,7 @@ export const SIDEBAR = [
   { text: 'Core', header: true },
   { text: 'Introduction', link: '/core/introduction/' },
   { text: 'Colors', link: '/core/colors/' },
+  { text: 'Palette Configurator', link: '/core/palette-configurator/' },
   { text: 'Typography', link: '/core/typography/' },
   { text: 'Shadows', link: '/core/shadows/' },
   { text: 'Grid', link: '/core/grid/' },
@@ -31,6 +33,8 @@ export const SIDEBAR = [
   { text: 'Carousel', link: '/components/carousel/' },
   { text: 'Copyright', link: '/components/copyright/' },
   { text: 'Details List', link: '/components/details-list/' },
+  { text: 'Drawer', link: '/components/drawer/' },
+  { text: 'Menu Drawer', link: '/components/menu-drawer/' },
   { text: 'Features List', link: '/components/features-list/' },
   { text: 'HandDrive', link: '/components/hand-drive/' },
   { text: 'Headline', link: '/components/headline/' },
@@ -39,6 +43,7 @@ export const SIDEBAR = [
   { text: 'Input', link: '/components/input/' },
   { text: 'Jumbotron', link: '/components/jumbotron/' },
   { text: 'Modal', link: '/components/modal/' },
+  { text: 'Navbar', link: '/components/navbar/' },
   { text: 'PostHeader', link: '/components/post-header/' },
   { text: 'PR-Code', link: '/components/pr-code/' },
   { text: 'Product Engine', link: '/components/product-engine/' },
@@ -47,6 +52,7 @@ export const SIDEBAR = [
   { text: 'Product Tile', link: '/components/product-tile/' },
   { text: 'Quote', link: '/components/quote/' },
   { text: 'Table', link: '/components/table/' },
+  { text: 'Toggle', link: '/components/toggle/' },
 
   { text: 'Extras', header: true },
   { text: 'Flags', link: '/components/flags/' },

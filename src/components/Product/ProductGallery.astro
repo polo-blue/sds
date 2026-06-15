@@ -378,7 +378,10 @@ const total = images.length;
   }
 </div>
 
-<!-- Script removed — consumer must initialize manually:
-  import { initProductGallery } from 'spoko-design-system/scripts/product-gallery';
+<!-- No auto-init <script> here — adding one breaks cross-project Astro
+  builds in consumers (Astro 6 virtual-module metadata error). Consumers
+  initialize manually:
+    import { initProductGallery } from 'spoko-design-system/scripts/product-gallery';
+    document.querySelectorAll('[data-product-gallery]').forEach(initProductGallery);
   See: https://sds.spoko.space/components/product-gallery/
 -->

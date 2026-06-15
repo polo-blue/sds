@@ -4,6 +4,7 @@ layout: "../../layouts/MainLayout.astro"
 ---
 import Headline from '../../components/Headline.vue'
 import { Icon } from 'astro-icon/components';
+import PropsTable from '../../components/PropsTable.astro'
 
 
 # Headline
@@ -26,43 +27,17 @@ import Headline from 'spoko-design-system/src/components/Headline.vue';
 
 ### Props
 
-```typescript
-interface HeadlineProps {
-  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'div' | 'span';
-  // default: 'span'
-
-  class?: string;
-  // default: ''
-  // Use any UnoCSS/Tailwind classes including responsive variants
-  // Examples: 'text-4xl', 'text-2xl md:text-4xl lg:text-6xl'
-
-  fontFamily?: 'head' | 'text' | 'novamono' | 'mono';
-  // default: 'head'
-
-  fontWeight?: 'light' | 'regular' | 'bold' | 'light-bold' | 'light-thin';
-  // default: 'regular'
-
-  underline?: boolean | 'center';
-  // default: false
-  // true: left-aligned underline, 'center': centered underline
-
-  defaultSize?: string;
-  // default: 'text-inherit'
-  // Used when no class prop is provided
-
-  noFlexLayout?: boolean;
-  // default: false
-  // Disables the default flex layout behavior
-
-  noMargin?: boolean;
-  // default: false
-  // Disables default mb-2.5 margin
-
-  noLeading?: boolean;
-  // default: false
-  // Disables default leading-none line height
-}
-```
+<PropsTable data={[
+  { name: 'as', type: "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'div' | 'span'", default: "'span'", description: 'HTML element rendered as the headline container.' },
+  { name: 'class', type: 'string', default: "''", description: 'UnoCSS/Tailwind classes, including responsive variants (e.g. `text-2xl md:text-4xl`).' },
+  { name: 'fontFamily', type: "'head' | 'text' | 'novamono' | 'mono'", default: "'head'", description: 'Font family applied to the headline.' },
+  { name: 'fontWeight', type: "'light' | 'regular' | 'bold' | 'light-bold' | 'light-thin'", default: "'regular'", description: 'Font weight variant.' },
+  { name: 'underline', type: "boolean | 'center'", default: 'false', description: '`true` = left-aligned underline; `center` = centered underline.' },
+  { name: 'defaultSize', type: 'string', default: "'text-inherit'", description: 'Fallback font-size class when no `class` prop is provided.' },
+  { name: 'noFlexLayout', type: 'boolean', default: 'false', description: 'Disables the default flex layout (used for icon alignment).' },
+  { name: 'noMargin', type: 'boolean', default: 'false', description: 'Disables default `mb-2.5` bottom margin.' },
+  { name: 'noLeading', type: 'boolean', default: 'false', description: 'Disables default `leading-none` line height.' },
+]} />
 
 ### HTML Attributes Support
 

@@ -4,6 +4,7 @@ layout: "../../layouts/MainLayout.astro"
 ---
 
 import FeaturesList from '../../components/FeaturesList.vue'
+import PropsTable from '../../components/PropsTable.astro'
 
 export const items = [
   "do ad dolor exercitation dolor eu eiusmod commodo dolor aliqua deserunt aliquip reprehenderit minim. Lorem fugiat deserunt reprehenderit non velit dolore voluptate nostrud aliquip consectetur minim. Labore dolore anim excepteur sit nostrud deserunt eu occaecat.",
@@ -36,3 +37,18 @@ export const items = [
 ```html
 <FeaturesList :items="items" caption="Main features" />
  ```
+
+## Props
+
+<PropsTable data={[
+  { name: 'items', type: 'string[]', required: true, description: 'Array of feature descriptions rendered as list items.' },
+  { name: 'caption', type: 'string | null', default: 'null', description: 'Optional heading rendered above the list.' },
+]} />
+
+## CSS Shortcuts
+
+| Class | Purpose |
+| --- | --- |
+| `features-list-caption` | Heading style above the list |
+| `features-list-ul` | The `<ul>` container styling |
+| `features-list-item` | Individual `<li>` row styling |

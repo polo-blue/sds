@@ -1,0 +1,433 @@
+---
+title: Drawer
+layout: ../../layouts/MainLayout.astro
+---
+import Drawer from '../../components/Drawer.astro'
+import ComponentPreview from '../../components/ComponentPreview.vue'
+import PropsTable from '../../components/PropsTable.astro'
+
+# Drawer
+
+Slide-in side panel built on top of native `<dialog>` semantics. Used for mobile navigation in this docs site, but works as a general-purpose drawer for filters, settings, or off-canvas menus.
+
+The drawer is **CSS-driven** with a small script that handles open/close, focus management, body scroll lock, and the Escape key. No Vue or framework runtime required — just the `Drawer.astro` component (or copy the HTML recipe).
+
+## Live demo
+
+### Default (Medium, Left-aligned)
+
+<ComponentPreview client:visible
+  astro={`---
+import Drawer from 'spoko-design-system/components/Drawer.astro';
+---
+<button type="button" class="btn-primary btn-normal" aria-controls="demo-drawer" aria-expanded="false">
+  Open drawer
+</button>
+
+<Drawer id="demo-drawer" label="Settings & Navigation">
+  <div class="p-6 flex flex-col gap-6">
+    <h3 class="text-xl font-textbold mb-4">Navigation</h3>
+    <ul class="flex flex-col gap-2">
+      <li><a href="#" data-drawer-close>Dashboard</a></li>
+      <li><a href="#" data-drawer-close>Products</a></li>
+      <li><a href="#" data-drawer-close>Settings</a></li>
+    </ul>
+    <button type="button" class="btn-secondary btn-sm" data-drawer-close>Close</button>
+  </div>
+</Drawer>`}>
+  <button
+    type="button"
+    class="btn-primary btn-normal"
+    aria-controls="demo-drawer"
+    aria-expanded="false"
+  >
+    Open drawer
+  </button>
+
+  <Drawer id="demo-drawer" label="Settings & Navigation">
+    <div class="p-6 flex flex-col gap-6">
+      <div>
+        <h3 class="text-xl font-textbold mb-4">Navigation</h3>
+        <ul class="flex flex-col gap-2">
+          <li><a href="#" class="text-blue-medium hover:underline text-sm" data-drawer-close>Dashboard</a></li>
+          <li><a href="#" class="text-blue-medium hover:underline text-sm" data-drawer-close>Products</a></li>
+          <li><a href="#" class="text-blue-medium hover:underline text-sm" data-drawer-close>Settings</a></li>
+          <li><a href="#" class="text-blue-medium hover:underline text-sm" data-drawer-close>Help</a></li>
+        </ul>
+      </div>
+
+      <hr class="border-slate-200 dark:border-slate-dark" />
+
+      <div>
+        <h3 class="text-lg font-textbold mb-3">Preferences</h3>
+        <div class="flex flex-col gap-3">
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="checkbox" class="w-4 h-4" checked />
+            <span class="text-sm">Enable notifications</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="checkbox" class="w-4 h-4" />
+            <span class="text-sm">Dark mode</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="checkbox" class="w-4 h-4" checked />
+            <span class="text-sm">Auto-save</span>
+          </label>
+        </div>
+      </div>
+
+      <hr class="border-slate-200 dark:border-slate-dark" />
+
+      <div>
+        <label class="text-sm font-textbold block mb-2">Theme</label>
+        <select class="w-full input-standard">
+          <option>Light</option>
+          <option>Dark</option>
+          <option>Auto</option>
+        </select>
+      </div>
+
+      <div class="flex gap-2 pt-4">
+        <button type="button" class="btn-primary btn-sm flex-1">Save</button>
+        <button type="button" class="btn-secondary btn-sm flex-1" data-drawer-close>
+          Close
+        </button>
+      </div>
+    </div>
+  </Drawer>
+</ComponentPreview>
+
+### Small Width
+
+<ComponentPreview client:visible
+  astro={`<button type="button" class="btn-primary btn-normal" aria-controls="small-drawer" aria-expanded="false">
+  Open small drawer
+</button>
+
+<Drawer id="small-drawer" label="Quick actions">
+  <div class="p-4 flex flex-col gap-4">
+    <h3 class="text-lg font-textbold">Quick Actions</h3>
+    <button class="btn-primary btn-sm w-full">Action 1</button>
+    <button class="btn-secondary btn-sm w-full" data-drawer-close>Close</button>
+  </div>
+</Drawer>`}>
+  <button
+    type="button"
+    class="btn-primary btn-normal"
+    aria-controls="small-drawer"
+    aria-expanded="false"
+  >
+    Open small drawer
+  </button>
+
+  <Drawer id="small-drawer" label="Quick actions">
+    <div class="p-4 flex flex-col gap-4">
+      <h3 class="text-lg font-textbold">Quick Actions</h3>
+      <button class="btn-primary btn-sm w-full">Action 1</button>
+      <button class="btn-secondary btn-sm w-full">Action 2</button>
+      <button class="btn-secondary btn-sm w-full" data-drawer-close>Close</button>
+    </div>
+  </Drawer>
+</ComponentPreview>
+
+
+### Large Width
+
+<ComponentPreview client:visible
+  astro={`<button type="button" class="btn-primary btn-normal" aria-controls="large-drawer" aria-expanded="false">
+  Open large drawer
+</button>
+
+<Drawer id="large-drawer" label="Detailed panel">
+  <div class="p-6 flex flex-col gap-6">
+    <h3 class="text-xl font-textbold">Order Details</h3>
+    <!-- ... detailed content ... -->
+    <button type="button" class="btn-secondary w-full" data-drawer-close>Close</button>
+  </div>
+</Drawer>`}>
+  <button
+    type="button"
+    class="btn-primary btn-normal"
+    aria-controls="large-drawer"
+    aria-expanded="false"
+  >
+    Open large drawer
+  </button>
+
+  <Drawer id="large-drawer" label="Detailed panel">
+    <div class="p-6 flex flex-col gap-6">
+      <div>
+        <h3 class="text-xl font-textbold mb-4">Order Details</h3>
+        <div class="space-y-3 text-sm">
+          <div class="flex justify-between">
+            <span class="text-slate-600 dark:text-neutral-light">Order ID:</span>
+            <span class="font-textbold">#12345</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-600 dark:text-neutral-light">Status:</span>
+            <span class="font-textbold text-green-600">Shipped</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-600 dark:text-neutral-light">Total:</span>
+            <span class="font-textbold">$299.99</span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="border-slate-200 dark:border-slate-dark" />
+
+      <div>
+        <h4 class="font-textbold mb-3">Items</h4>
+        <ul class="space-y-2 text-sm">
+          <li>Product A × 2 - $100.00</li>
+          <li>Product B × 1 - $199.99</li>
+        </ul>
+      </div>
+
+      <button type="button" class="btn-secondary w-full" data-drawer-close>
+        Close
+      </button>
+    </div>
+  </Drawer>
+</ComponentPreview>
+
+### Right-Aligned
+
+<ComponentPreview client:visible
+  astro={`<button type="button" class="btn-primary btn-normal" aria-controls="right-drawer" aria-expanded="false">
+  Open right drawer
+</button>
+
+<Drawer id="right-drawer" label="Side panel" position="right">
+  <div class="p-6 flex flex-col gap-4">
+    <h3 class="text-xl font-textbold">Right Panel</h3>
+    <p>This drawer opens from the right edge.</p>
+    <button type="button" class="btn-secondary w-full" data-drawer-close>Close</button>
+  </div>
+</Drawer>`}>
+  <button
+    type="button"
+    class="btn-primary btn-normal"
+    aria-controls="right-drawer"
+    aria-expanded="false"
+  >
+    Open right drawer
+  </button>
+
+  <Drawer id="right-drawer" label="Side panel" position="right">
+    <div class="p-6 flex flex-col gap-4">
+      <h3 class="text-xl font-textbold">Right Panel</h3>
+      <p class="text-sm text-slate-600 dark:text-neutral-light">
+        This drawer opens from the right edge. Useful for supplementary content, chat panels, or detail views.
+      </p>
+      <button type="button" class="btn-secondary w-full" data-drawer-close>
+        Close
+      </button>
+    </div>
+  </Drawer>
+</ComponentPreview>
+
+## Variants
+
+### Width Variants
+
+Customize drawer width by overriding the `.sds-drawer-panel` width via CSS:
+
+```css
+/* Small (narrow sidebar/quick actions) */
+#my-drawer .sds-drawer-panel {
+  width: 14rem; /* 224px */
+}
+
+/* Medium (default navigation) */
+#my-drawer .sds-drawer-panel {
+  width: 18rem; /* 288px */
+}
+
+/* Large (detailed panel with forms) */
+#my-drawer .sds-drawer-panel {
+  width: 24rem; /* 384px */
+}
+```
+
+### Position: Right Side
+
+Pass `position="right"` to slide from the right edge:
+
+```astro
+<Drawer id="my-drawer" position="right">…</Drawer>
+```
+
+For plain HTML, set `data-position="right"` on the `.sds-drawer` element — the built-in stylesheet handles the rest.
+
+## Wiring triggers
+
+The drawer auto-discovers its trigger via the `aria-controls` attribute. Any element with `aria-controls="<drawer-id>"` opens the matching drawer on click. The script also manages `aria-expanded` for you.
+
+```html
+<!-- Trigger: any focusable element with aria-controls pointing at the drawer id -->
+<button type="button" aria-controls="nav-drawer" aria-expanded="false">
+  Open menu
+</button>
+
+<!-- Drawer with matching id -->
+<Drawer id="nav-drawer">…</Drawer>
+```
+
+## Closing the drawer
+
+Three built-in ways to close — no extra wiring needed:
+
+| Action | Behavior |
+| --- | --- |
+| Click backdrop | Closes drawer |
+| Press `Escape` | Closes drawer (when open) |
+| Click `[data-drawer-close]` | Closes drawer (use on any element inside the panel) |
+
+Add `data-drawer-close` to any close button, link, or icon inside the drawer:
+
+```html
+<Drawer id="nav-drawer">
+  <button type="button" data-drawer-close aria-label="Close menu">×</button>
+  <a href="/profile" data-drawer-close>Profile</a>
+</Drawer>
+```
+
+## Accessibility
+
+The drawer follows the [WAI-ARIA modal dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/):
+
+- Panel uses `role="dialog"` + `aria-modal="true"`
+- `aria-label` set from the `label` prop (defaults to `"Navigation"`)
+- Focus moves to the panel on open, and returns to the trigger on close
+- Body scroll is locked while open (`body.drawer-open { overflow: hidden }`)
+- `Escape` key dismisses the drawer
+
+**Always pass a descriptive `label`** when the drawer is not the main navigation — screen readers announce it as the dialog name.
+
+## HTML recipe
+
+The drawer is also available as a pure HTML + CSS pattern. Copy this into any framework or plain HTML page that loads the SDS stylesheet:
+
+```html
+<button type="button" aria-controls="my-drawer" aria-expanded="false">
+  Open
+</button>
+
+<div id="my-drawer" class="sds-drawer" hidden>
+  <div class="sds-drawer-backdrop" data-drawer-close></div>
+  <aside
+    class="sds-drawer-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-label="My drawer"
+    tabindex="-1"
+    data-drawer-panel
+  >
+    <!-- Drawer content here -->
+    <button type="button" data-drawer-close>Close</button>
+  </aside>
+</div>
+```
+
+You also need the open/close logic. If you're not using the Astro component, import the helper directly:
+
+```ts
+import { initDrawer } from 'spoko-design-system/src/scripts/drawer';
+
+initDrawer('my-drawer');
+```
+
+## Props
+
+<PropsTable data={[
+  { name: 'id', type: 'string', required: true, description: 'Unique id used by triggers (aria-controls) and the open/close script' },
+  { name: 'label', type: 'string', default: "'Navigation'", description: 'aria-label for the dialog — describes the drawer to screen readers' },
+  { name: 'position', type: "'left' | 'right'", default: "'left'", description: 'Edge the drawer slides in from' },
+]} />
+
+## Use Cases
+
+### Navigation Menu
+Typical mobile navigation with links. Close drawer on link click via `data-drawer-close`:
+
+```html
+<Drawer id="nav-drawer" label="Navigation">
+  <nav class="p-6 flex flex-col gap-2">
+    <a href="/" data-drawer-close class="text-blue-medium hover:underline">Home</a>
+    <a href="/about" data-drawer-close class="text-blue-medium hover:underline">About</a>
+    <a href="/products" data-drawer-close class="text-blue-medium hover:underline">Products</a>
+    <a href="/contact" data-drawer-close class="text-blue-medium hover:underline">Contact</a>
+  </nav>
+</Drawer>
+```
+
+### Filters Panel
+Form inputs for filtering product lists or search results:
+
+```html
+<Drawer id="filters" label="Product Filters">
+  <div class="p-6 flex flex-col gap-4">
+    <div>
+      <label class="block text-sm font-textbold mb-2">Price Range</label>
+      <input type="range" class="w-full" min="0" max="1000" />
+    </div>
+    
+    <div>
+      <label class="block text-sm font-textbold mb-2">Category</label>
+      <select class="w-full input-standard">
+        <option>All</option>
+        <option>Electronics</option>
+        <option>Clothing</option>
+      </select>
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <label class="flex gap-2 cursor-pointer">
+        <input type="checkbox" /> In Stock
+      </label>
+      <label class="flex gap-2 cursor-pointer">
+        <input type="checkbox" /> On Sale
+      </label>
+    </div>
+
+    <button class="btn-primary w-full" data-drawer-close>Apply Filters</button>
+  </div>
+</Drawer>
+```
+
+### Settings Panel
+User preferences and toggles:
+
+```html
+<Drawer id="settings" label="Settings">
+  <div class="p-6 flex flex-col gap-4">
+    <div class="flex items-center justify-between">
+      <span class="text-sm">Notifications</span>
+      <input type="checkbox" checked />
+    </div>
+    
+    <div class="flex items-center justify-between">
+      <span class="text-sm">Dark Mode</span>
+      <input type="checkbox" />
+    </div>
+
+    <hr class="border-slate-200" />
+
+    <button class="btn-secondary w-full" data-drawer-close>Close</button>
+  </div>
+</Drawer>
+```
+
+## Slot
+
+The default slot renders inside the slide-in panel. Style it however you want — the panel itself only provides the positioning, sizing, transition, and scroll container.
+
+```astro
+<Drawer id="filters" label="Product filters">
+  <div class="p-6 flex flex-col gap-4">
+    <h2 class="text-lg font-textbold">Filters</h2>
+    <!-- your form here -->
+  </div>
+</Drawer>
+```
