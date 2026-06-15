@@ -21,7 +21,10 @@ export default defineConfig({
   },
   image: {
     service: sharpImageService(),
-    domains: ["placehold.co", "api.polo.blue", "polo.blue", "media.istockphoto.com", "freepik.com", "img.freepik.com", "polo6r.pl"]
+    domains: ["placehold.co", "api.polo.blue", "polo.blue", "media.istockphoto.com", "freepik.com", "img.freepik.com", "polo6r.pl"],
+    // Astro 6 disabled SVG processing by default; restore Astro 5 behavior
+    // since placehold.co (used in docs demos) returns SVG without an extension.
+    dangerouslyProcessSVG: true,
   },
   integrations: [
     // Enable Vue to support Vue3 components
