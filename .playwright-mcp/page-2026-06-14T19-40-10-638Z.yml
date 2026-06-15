@@ -1,0 +1,280 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e3]:
+    - link "Skip to Content" [ref=e4] [cursor=pointer]:
+      - /url: "#article"
+    - navigation "Top Navigation" [ref=e5]:
+      - generic [ref=e6]:
+        - button "Open navigation" [ref=e7] [cursor=pointer]
+        - link "SDS" [ref=e8] [cursor=pointer]:
+          - /url: /
+        - button "Open search" [ref=e9] [cursor=pointer]:
+          - generic [ref=e11]: Search docs…
+      - generic [ref=e12]:
+        - button "Toggle dark mode" [ref=e13] [cursor=pointer]
+        - link "github logo" [ref=e15] [cursor=pointer]:
+          - /url: https://github.com/polo-blue/sds
+          - img "github logo" [ref=e16]
+        - link "linkedin logo" [ref=e17] [cursor=pointer]:
+          - /url: https://linkedin.com/in/szymonberski
+          - img "linkedin logo" [ref=e18]
+  - main [ref=e20]:
+    - article [ref=e21]:
+      - generic [ref=e22]:
+        - heading "ProductGallery" [level=1] [ref=e23]
+        - paragraph [ref=e24]:
+          - text: Scroll-snap based product image gallery with fullscreen dialog lightbox. Zero external dependencies — uses CSS scroll-snap, IntersectionObserver, and native
+          - code [ref=e25]: <dialog>
+          - text: .
+        - paragraph [ref=e26]:
+          - strong [ref=e27]: Import
+          - text: (subpath — has
+          - code [ref=e28]: <script>
+          - text: ", must NOT go in barrel):"
+        - code [ref=e30]:
+          - generic [ref=e31]: import ProductGallery from 'spoko-design-system/components/Product/ProductGallery.astro'
+        - heading "Features" [level=2] [ref=e32]
+        - list [ref=e33]:
+          - listitem [ref=e34]:
+            - strong [ref=e35]: Slider
+            - text: — CSS scroll-snap, swipe on mobile, mouse drag on desktop
+          - listitem [ref=e36]:
+            - strong [ref=e37]: Thumbnails
+            - text: — synced via IntersectionObserver, desktop only
+          - listitem [ref=e38]:
+            - strong [ref=e39]: Counter
+            - text: — fraction (
+            - code [ref=e40]: 1/5
+            - text: ), always visible
+          - listitem [ref=e41]:
+            - strong [ref=e42]: Arrows
+            - text: — hover reveal animation, desktop only
+          - listitem [ref=e43]:
+            - strong [ref=e44]: Dialog
+            - text: — fullscreen lightbox with zoom (click/wheel/double-tap) + pan
+          - listitem [ref=e45]:
+            - strong [ref=e46]: Keyboard
+            - text: — ArrowLeft/Right in dialog, Escape to close
+        - heading "Basic usage" [level=2] [ref=e47]
+        - region "Product image gallery" [ref=e50]:
+          - generic [ref=e51]:
+            - group [ref=e52]:
+              - 'button "Open image 1 of 5: Product image 1" [ref=e53]':
+                - img "Product image 1"
+              - 'button "Open image 2 of 5: Product image 2" [ref=e54]':
+                - img "Product image 2"
+              - 'button "Open image 3 of 5: Product image 3" [ref=e55]':
+                - img "Product image 3"
+              - 'button "Open image 4 of 5: Product image 4" [ref=e56]':
+                - img "Product image 4"
+              - 'button "Open image 5 of 5: Product image 5" [ref=e57]':
+                - img "Product image 5"
+            - generic [ref=e58]: 1/5
+            - button "Next image" [ref=e59] [cursor=pointer]:
+              - img [ref=e60]
+          - generic "Image thumbnails" [ref=e62]:
+            - 'button "Image 1: Product image 1" [pressed] [ref=e63] [cursor=pointer]'
+            - 'button "Image 2: Product image 2" [ref=e64] [cursor=pointer]'
+            - 'button "Image 3: Product image 3" [ref=e65] [cursor=pointer]'
+            - 'button "Image 4: Product image 4" [ref=e66] [cursor=pointer]'
+            - 'button "Image 5: Product image 5" [ref=e67] [cursor=pointer]'
+        - code [ref=e69]:
+          - generic [ref=e70]: <ProductGallery
+          - generic [ref=e71]: "images={["
+          - generic [ref=e72]: "{ src: \"/img/product-1.avif\", thumb: \"/img/product-1-thumb.avif\", full: \"/img/product-1-full.jpg\", alt: \"Product image 1\" },"
+          - generic [ref=e73]: "{ src: \"/img/product-2.avif\", thumb: \"/img/product-2-thumb.avif\", full: \"/img/product-2-full.jpg\", alt: \"Product image 2\" },"
+          - generic [ref=e74]: "]}"
+          - generic [ref=e75]: />
+        - heading "Many images (10)" [level=2] [ref=e76]
+        - region "Product image gallery" [ref=e79]:
+          - generic [ref=e80]:
+            - group [ref=e81]:
+              - 'button "Open image 1 of 10: Image 1" [ref=e82]':
+                - img "Image 1"
+              - 'button "Open image 2 of 10: Image 2" [ref=e83]':
+                - img "Image 2"
+              - 'button "Open image 3 of 10: Image 3" [ref=e84]':
+                - img "Image 3"
+              - 'button "Open image 4 of 10: Image 4" [ref=e85]':
+                - img "Image 4"
+              - 'button "Open image 5 of 10: Image 5" [ref=e86]':
+                - img "Image 5"
+              - 'button "Open image 6 of 10: Image 6" [ref=e87]':
+                - img "Image 6"
+              - 'button "Open image 7 of 10: Image 7" [ref=e88]':
+                - img "Image 7"
+              - 'button "Open image 8 of 10: Image 8" [ref=e89]':
+                - img "Image 8"
+              - 'button "Open image 9 of 10: Image 9" [ref=e90]':
+                - img "Image 9"
+              - 'button "Open image 10 of 10: Image 10" [ref=e91]':
+                - img "Image 10"
+            - generic [ref=e92]: 1/10
+            - button "Next image" [ref=e93] [cursor=pointer]:
+              - img [ref=e94]
+          - generic "Image thumbnails" [ref=e96]:
+            - 'button "Image 1: Image 1" [pressed] [ref=e97] [cursor=pointer]'
+            - 'button "Image 2: Image 2" [ref=e98] [cursor=pointer]'
+            - 'button "Image 3: Image 3" [ref=e99] [cursor=pointer]'
+            - 'button "Image 4: Image 4" [ref=e100] [cursor=pointer]'
+            - 'button "Image 5: Image 5" [ref=e101] [cursor=pointer]'
+            - 'button "Image 6: Image 6" [ref=e102] [cursor=pointer]'
+            - 'button "Image 7: Image 7" [ref=e103] [cursor=pointer]'
+            - 'button "Image 8: Image 8" [ref=e104] [cursor=pointer]'
+            - 'button "Image 9: Image 9" [ref=e105] [cursor=pointer]'
+            - 'button "Image 10: Image 10" [ref=e106] [cursor=pointer]'
+        - heading "With badges slot" [level=2] [ref=e107]
+        - region "Product image gallery" [ref=e110]:
+          - generic [ref=e111]:
+            - group [ref=e112]:
+              - 'button "Open image 1 of 2: Product with badge" [ref=e113]':
+                - img "Product with badge"
+              - 'button "Open image 2 of 2: Product image 2" [ref=e114]':
+                - img "Product image 2"
+            - generic [ref=e115]: 1/2
+            - button "Next image" [ref=e116] [cursor=pointer]:
+              - img [ref=e117]
+            - generic [ref=e119]: NEW
+          - generic "Image thumbnails" [ref=e120]:
+            - 'button "Image 1: Product with badge" [pressed] [ref=e121] [cursor=pointer]'
+            - 'button "Image 2: Product image 2" [ref=e122] [cursor=pointer]'
+        - code [ref=e124]:
+          - generic [ref=e125]: "<ProductGallery images={images}>"
+          - generic [ref=e126]: "<Badges badges={product.badges} class=\"top-2\" />"
+          - generic [ref=e127]: </ProductGallery>
+        - heading "Single image (no thumbnails)" [level=2] [ref=e128]
+        - region "Product image gallery" [ref=e131]:
+          - generic [ref=e132]:
+            - group [ref=e133]:
+              - 'button "Open image 1 of 1: Single product image" [ref=e134]':
+                - img "Single product image"
+            - generic [ref=e135]: 1/1
+        - heading "No images (empty state)" [level=2] [ref=e136]
+        - region "Product image gallery" [ref=e139]:
+          - paragraph [ref=e141]: No images available
+        - heading "Custom aspect ratio" [level=2] [ref=e142]
+        - region "Product image gallery" [ref=e145]:
+          - generic [ref=e146]:
+            - group [ref=e147]:
+              - 'button "Open image 1 of 2: Wide image 1" [ref=e148]':
+                - img "Wide image 1"
+              - 'button "Open image 2 of 2: Wide image 2" [ref=e149]':
+                - img "Wide image 2"
+            - generic [ref=e150]: 1/2
+            - button "Next image" [ref=e151] [cursor=pointer]:
+              - img [ref=e152]
+          - generic "Image thumbnails" [ref=e154]:
+            - 'button "Image 1: Wide image 1" [pressed] [ref=e155] [cursor=pointer]'
+            - 'button "Image 2: Wide image 2" [ref=e156] [cursor=pointer]'
+        - heading "Props" [level=2] [ref=e157]
+        - table [ref=e159]:
+          - rowgroup [ref=e160]:
+            - row "Prop Type Default Description" [ref=e161]:
+              - columnheader "Prop" [ref=e162]
+              - columnheader "Type" [ref=e163]
+              - columnheader "Default" [ref=e164]
+              - columnheader "Description" [ref=e165]
+          - rowgroup [ref=e166]:
+            - row "images GalleryImage[] [] Array of image objects." [ref=e167]:
+              - cell "images" [ref=e168]:
+                - code [ref=e169]: images
+              - cell "GalleryImage[]" [ref=e170]:
+                - code [ref=e171]: GalleryImage[]
+              - cell "[]" [ref=e172]:
+                - code [ref=e173]: "[]"
+              - cell "Array of image objects." [ref=e174]
+            - 'row "aspectRatio string ''4/3'' CSS `aspect-ratio` for the slider." [ref=e175]':
+              - cell "aspectRatio" [ref=e176]:
+                - code [ref=e177]: aspectRatio
+              - cell "string" [ref=e178]:
+                - code [ref=e179]: string
+              - cell "'4/3'" [ref=e180]:
+                - code [ref=e181]: "'4/3'"
+              - 'cell "CSS `aspect-ratio` for the slider." [ref=e182]'
+            - row "class string — Additional CSS class on root element." [ref=e183]:
+              - cell "class" [ref=e184]:
+                - code [ref=e185]: class
+              - cell "string" [ref=e186]:
+                - code [ref=e187]: string
+              - cell "—" [ref=e188]:
+                - code [ref=e189]: —
+              - cell "Additional CSS class on root element." [ref=e190]
+            - row "ariaLabel string 'Product image gallery' Accessible label for the carousel region." [ref=e191]:
+              - cell "ariaLabel" [ref=e192]:
+                - code [ref=e193]: ariaLabel
+              - cell "string" [ref=e194]:
+                - code [ref=e195]: string
+              - cell "'Product image gallery'" [ref=e196]:
+                - code [ref=e197]: "'Product image gallery'"
+              - cell "Accessible label for the carousel region." [ref=e198]
+        - heading "GalleryImage shape" [level=3] [ref=e199]
+        - code [ref=e201]:
+          - generic [ref=e202]: "interface GalleryImage {"
+          - generic [ref=e203]: "src: string; // Main image URL (used in slider) — required"
+          - generic [ref=e204]: "thumb?: string; // Thumbnail URL (falls back to `src`)"
+          - generic [ref=e205]: "full?: string; // Full-res URL for dialog lightbox (falls back to `src`)"
+          - generic [ref=e206]: "alt: string; // Alt text — required"
+          - generic [ref=e207]: "}"
+        - heading "Slots" [level=2] [ref=e208]
+        - table [ref=e209]:
+          - rowgroup [ref=e210]:
+            - row "Slot Description" [ref=e211]:
+              - columnheader "Slot" [ref=e212]
+              - columnheader "Description" [ref=e213]
+          - rowgroup [ref=e214]:
+            - row "default Overlay content (e.g. badges) positioned inside the main slider area" [ref=e215]:
+              - cell "default" [ref=e216]:
+                - code [ref=e217]: default
+              - cell "Overlay content (e.g. badges) positioned inside the main slider area" [ref=e218]
+            - row "empty Custom content when images is empty" [ref=e219]:
+              - cell "empty" [ref=e220]:
+                - code [ref=e221]: empty
+              - cell "Custom content when images is empty" [ref=e222]:
+                - text: Custom content when
+                - code [ref=e223]: images
+                - text: is empty
+        - heading "Integration examples" [level=2] [ref=e224]
+        - heading "catalog.polo.blue" [level=3] [ref=e225]
+        - code [ref=e227]:
+          - generic [ref=e228]: <ProductGallery
+          - generic [ref=e229]: "images={product.images.map((img, i) => ({"
+          - generic [ref=e230]: "src: img.avif_1200 || img.webp_1200,"
+          - generic [ref=e231]: "thumb: img.avif_320 || img.avif_640,"
+          - generic [ref=e232]: "full: img.original || img.url,"
+          - generic [ref=e233]: "alt: `${product.number} - ${product.name} [${i + 1}/${product.images.length}]`,"
+          - generic [ref=e234]: "}))}"
+          - generic [ref=e235]: ">"
+          - generic [ref=e236]: "<Badges badges={product.badges} class=\"top-2\" />"
+          - generic [ref=e237]: </ProductGallery>
+        - heading "sale.polo.blue" [level=3] [ref=e238]
+        - code [ref=e240]:
+          - generic [ref=e241]: <ProductGallery
+          - generic [ref=e242]: "images={images.map((img, i) => ({"
+          - generic [ref=e243]: "src: `/photos/${img.path}`,"
+          - generic [ref=e244]: "thumb: `/photos/${img.path}`,"
+          - generic [ref=e245]: "full: optimizedImages[i].src,"
+          - generic [ref=e246]: "alt: `${productNumber} - ${productTitle} [${i + 1}/${images.length}]`,"
+          - generic [ref=e247]: "}))}"
+          - generic [ref=e248]: ">"
+          - generic [ref=e249]: "<Badges badges={badges} class=\"top-2\" />"
+          - generic [ref=e250]: </ProductGallery>
+  - contentinfo:
+    - link "createdy by Modern Websites" [ref=e252] [cursor=pointer]:
+      - /url: https://spoko.space
+      - generic [ref=e253]: createdy by
+      - img "Modern Websites" [ref=e254]
+  - generic [ref=e257]:
+    - button "Menu" [ref=e258]:
+      - img [ref=e260]
+      - generic: Menu
+    - button "Inspect" [ref=e264]:
+      - img [ref=e266]
+      - generic: Inspect
+    - button "Audit" [ref=e268]:
+      - img [ref=e270]
+      - generic: Audit
+    - button "Meta tags" [ref=e273]:
+      - img [ref=e275]
+      - generic: Meta tags
+    - button "Settings" [ref=e280]:
+      - img [ref=e282]
+      - generic: Settings

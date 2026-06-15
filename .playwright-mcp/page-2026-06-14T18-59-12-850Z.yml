@@ -1,0 +1,506 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e3]:
+    - link "Skip to Content" [ref=e4] [cursor=pointer]:
+      - /url: "#article"
+    - navigation "Top Navigation" [ref=e5]:
+      - generic [ref=e6]:
+        - link "SDS" [ref=e7] [cursor=pointer]:
+          - /url: /
+        - button "Open search" [ref=e8] [cursor=pointer]:
+          - generic [ref=e10]: Search docs…
+          - generic [ref=e11]:
+            - generic [ref=e12]: Ctrl
+            - generic [ref=e13]: K
+      - generic [ref=e14]:
+        - button "Toggle dark mode" [ref=e15] [cursor=pointer]
+        - link "github logo" [ref=e17] [cursor=pointer]:
+          - /url: https://github.com/polo-blue/sds
+          - img "github logo" [ref=e18]
+        - link "linkedin logo" [ref=e19] [cursor=pointer]:
+          - /url: https://linkedin.com/in/szymonberski
+          - img "linkedin logo" [ref=e20]
+  - generic [ref=e21]:
+    - navigation "Documentation navigation" [ref=e23]:
+      - list [ref=e24]:
+        - heading "Core" [level=2] [ref=e25]
+        - listitem [ref=e26]:
+          - link "Introduction" [ref=e27] [cursor=pointer]:
+            - /url: /core/introduction/
+        - listitem [ref=e28]:
+          - link "Colors" [ref=e29] [cursor=pointer]:
+            - /url: /core/colors/
+        - listitem [ref=e30]:
+          - link "Palette Configurator" [ref=e31] [cursor=pointer]:
+            - /url: /core/palette-configurator/
+        - listitem [ref=e32]:
+          - link "Typography" [ref=e33] [cursor=pointer]:
+            - /url: /core/typography/
+        - listitem [ref=e34]:
+          - link "Shadows" [ref=e35] [cursor=pointer]:
+            - /url: /core/shadows/
+        - listitem [ref=e36]:
+          - link "Grid" [ref=e37] [cursor=pointer]:
+            - /url: /core/grid/
+        - heading "Components" [level=2] [ref=e38]
+        - listitem [ref=e39]:
+          - link "Badges" [ref=e40] [cursor=pointer]:
+            - /url: /components/badges/
+        - listitem [ref=e41]:
+          - link "Breadcrumbs" [ref=e42] [cursor=pointer]:
+            - /url: /components/breadcrumbs/
+        - listitem [ref=e43]:
+          - link "Buttons" [ref=e44] [cursor=pointer]:
+            - /url: /components/buttons/
+        - listitem [ref=e45]:
+          - link "Card" [ref=e46] [cursor=pointer]:
+            - /url: /components/card/
+        - listitem [ref=e47]:
+          - link "Carousel" [ref=e48] [cursor=pointer]:
+            - /url: /components/carousel/
+        - listitem [ref=e49]:
+          - link "Copyright" [ref=e50] [cursor=pointer]:
+            - /url: /components/copyright/
+        - listitem [ref=e51]:
+          - link "Details List" [ref=e52] [cursor=pointer]:
+            - /url: /components/details-list/
+        - listitem [ref=e53]:
+          - link "Drawer" [ref=e54] [cursor=pointer]:
+            - /url: /components/drawer/
+        - listitem [ref=e55]:
+          - link "Menu Drawer" [ref=e56] [cursor=pointer]:
+            - /url: /components/menu-drawer/
+        - listitem [ref=e57]:
+          - link "Features List" [ref=e58] [cursor=pointer]:
+            - /url: /components/features-list/
+        - listitem [ref=e59]:
+          - link "HandDrive" [ref=e60] [cursor=pointer]:
+            - /url: /components/hand-drive/
+        - listitem [ref=e61]:
+          - link "Headline" [ref=e62] [cursor=pointer]:
+            - /url: /components/headline/
+        - listitem [ref=e63]:
+          - link "Icons" [ref=e64] [cursor=pointer]:
+            - /url: /components/icons/
+        - listitem [ref=e65]:
+          - link "Image" [ref=e66] [cursor=pointer]:
+            - /url: /components/image/
+        - listitem [ref=e67]:
+          - link "Input" [ref=e68] [cursor=pointer]:
+            - /url: /components/input/
+        - listitem [ref=e69]:
+          - link "Jumbotron" [ref=e70] [cursor=pointer]:
+            - /url: /components/jumbotron/
+        - listitem [ref=e71]:
+          - link "Modal" [ref=e72] [cursor=pointer]:
+            - /url: /components/modal/
+        - listitem [ref=e73]:
+          - link "Navbar" [ref=e74] [cursor=pointer]:
+            - /url: /components/navbar/
+        - listitem [ref=e75]:
+          - link "PostHeader" [ref=e76] [cursor=pointer]:
+            - /url: /components/post-header/
+        - listitem [ref=e77]:
+          - link "PR-Code" [ref=e78] [cursor=pointer]:
+            - /url: /components/pr-code/
+        - listitem [ref=e79]:
+          - link "Product Engine" [ref=e80] [cursor=pointer]:
+            - /url: /components/product-engine/
+        - listitem [ref=e81]:
+          - link "Product Gallery" [ref=e82] [cursor=pointer]:
+            - /url: /components/product-gallery/
+        - listitem [ref=e83]:
+          - link "Product Number" [ref=e84] [cursor=pointer]:
+            - /url: /components/product-number/
+        - listitem [ref=e85]:
+          - link "Product Tile" [ref=e86] [cursor=pointer]:
+            - /url: /components/product-tile/
+        - listitem [ref=e87]:
+          - link "Quote" [ref=e88] [cursor=pointer]:
+            - /url: /components/quote/
+        - listitem [ref=e89]:
+          - link "Table" [ref=e90] [cursor=pointer]:
+            - /url: /components/table/
+        - listitem [ref=e91]:
+          - link "Toggle" [ref=e92] [cursor=pointer]:
+            - /url: /components/toggle/
+        - heading "Extras" [level=2] [ref=e93]
+        - listitem [ref=e94]:
+          - link "Flags" [ref=e95] [cursor=pointer]:
+            - /url: /components/flags/
+        - listitem [ref=e96]:
+          - link "SlimBanner" [ref=e97] [cursor=pointer]:
+            - /url: /components/slimbanner/
+        - listitem [ref=e98]:
+          - link "FuckRussia" [ref=e99] [cursor=pointer]:
+            - /url: /components/fuck-russia/
+        - heading "Patterns" [level=2] [ref=e100]
+        - listitem [ref=e101]:
+          - link "Introduction" [ref=e102] [cursor=pointer]:
+            - /url: /patterns/introduction/
+    - main [ref=e103]:
+      - article [ref=e104]:
+        - generic [ref=e105]:
+          - heading "Menu Drawer" [level=1] [ref=e106]
+          - paragraph [ref=e107]:
+            - text: Opinionated off-canvas menu built on top of
+            - link "Drawer" [ref=e108] [cursor=pointer]:
+              - /url: /components/drawer/
+            - text: . Drop one in with a single
+            - code [ref=e109]: <MenuDrawer>
+            - text: tag and pass
+            - code [ref=e110]: primary
+            - text: /
+            - code [ref=e111]: chips
+            - text: /
+            - code [ref=e112]: helpCard
+            - text: /
+            - code [ref=e113]: footer
+            - text: props — the component renders the whole composition (brand header, primary nav with titles + subtitles, service chips, sticky help-card CTA, footer with language switcher + theme toggle + socials).
+          - paragraph [ref=e114]:
+            - text: "Inherits all Drawer behavior: trigger via"
+            - code [ref=e115]: aria-controls
+            - text: ", click-backdrop / Escape /"
+            - code [ref=e116]: "[data-drawer-close]"
+            - text: to close, focus management,
+            - code [ref=e117]: body.drawer-open
+            - text: scroll lock.
+          - blockquote [ref=e118]:
+            - paragraph [ref=e119]:
+              - code [ref=e120]: MenuDrawer.astro
+              - text: is Astro-only (uses
+              - code [ref=e121]: <script>
+              - text: via Drawer). Import via subpath, not the barrel.
+          - heading "Full menu" [level=2] [ref=e122]
+          - paragraph [ref=e123]: Mirrors the uper.pl-style blog menu — brand on top, three primary links with subtitles, popular-services chips, a help card pushed to the bottom by a flex spacer, and a footer with locales + theme toggle + socials.
+          - generic [ref=e125]:
+            - button "Open menu" [ref=e128] [cursor=pointer]:
+              - paragraph [ref=e129]: Open menu
+            - generic [ref=e130]:
+              - tablist [ref=e131]:
+                - tab "astro" [selected] [ref=e132] [cursor=pointer]
+                - button "Copy entire code block" [ref=e133] [cursor=pointer]: Copy all
+              - tabpanel [ref=e134]:
+                - generic [ref=e135]:
+                  - button "Copy snippet" [ref=e136] [cursor=pointer]: Copy
+                  - code [ref=e138]: "--- import MenuDrawer from 'spoko-design-system/components/MenuDrawer.astro'; ---"
+                - generic [ref=e139]:
+                  - button "Copy snippet" [ref=e140] [cursor=pointer]: Copy
+                  - code [ref=e142]: <button type="button" class="btn-primary btn-normal" aria-controls="full-menu" aria-expanded="false"> Open menu </button>
+                - generic [ref=e143]:
+                  - button "Copy snippet" [ref=e144] [cursor=pointer]: Copy
+                  - code [ref=e146]: "<MenuDrawer id=\"full-menu\" label=\"Main menu\" brand={{ text: 'Studio', href: '/' }} primary={[ { title: 'SEO Audit', sub: 'Find what is blocking your site', href: '/seo-audit/' }, { title: 'About', sub: 'Solo SEO freelancer', href: '/about/' }, { title: 'Blog', sub: 'Articles on SEO and ranking', href: '/blog/' }, ]} chips={{ title: 'Popular services', items: [ { label: 'SXO Audit', href: '/sxo-audit/' }, { label: 'Local SEO', href: '/local-seo/' }, { label: 'Changelog', href: '/changelog/' }, ], }} helpCard={{ title: 'Want more Google traffic?', sub: 'Start with a free consultation.', cta: { label: 'Get in touch', href: '/contact/' }, }} footer={{ locales: [ { code: 'en', label: 'EN', href: '/blog/', active: true }, { code: 'pl', label: 'PL', href: '/pl/blog/' }, ], themeToggle: true, socials: [ { label: 'Facebook', href: 'https://facebook.com', iconPath: 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z' }, { label: 'LinkedIn', href: 'https://linkedin.com', iconPath: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' }, ], }} />"
+          - heading "Real-world reference — uper.pl/blog/" [level=2] [ref=e147]
+          - paragraph [ref=e148]:
+            - text: The exact menu rendered on
+            - link "uper.pl/blog/" [ref=e149] [cursor=pointer]:
+              - /url: https://uper.pl/blog/
+            - text: in production — Polish copy, brand-correct social links, and the full footer with locale switcher + theme toggle + Facebook/LinkedIn. Brand uses
+            - code [ref=e150]: text
+            - text: (rendered as brand-blue wordmark via
+            - code [ref=e151]: .sds-menu-brand-text
+            - text: ); production replaces it with a real logo via
+            - code [ref=e152]: logoSrc
+            - text: . Shows that the whole composition is one
+            - code [ref=e153]: <MenuDrawer>
+            - text: tag plus a config object.
+          - generic [ref=e155]:
+            - button "Otwórz menu" [ref=e158] [cursor=pointer]:
+              - paragraph [ref=e159]: Otwórz menu
+            - generic [ref=e160]:
+              - tablist [ref=e161]:
+                - tab "astro" [selected] [ref=e162] [cursor=pointer]
+                - button "Copy entire code block" [ref=e163] [cursor=pointer]: Copy all
+              - tabpanel [ref=e164]:
+                - generic [ref=e165]:
+                  - button "Copy snippet" [ref=e166] [cursor=pointer]: Copy
+                  - code [ref=e168]: <button type="button" class="btn-primary btn-normal" aria-controls="uper-menu" aria-expanded="false"> Otwórz menu </button>
+                - generic [ref=e169]:
+                  - button "Copy snippet" [ref=e170] [cursor=pointer]: Copy
+                  - code [ref=e172]: "<MenuDrawer id=\"uper-menu\" label=\"Nawigacja\" position=\"right\" brand={{ text: 'UPER', href: '/' }} primary={[ { title: 'Audyt SEO', sub: 'Sprawdź co blokuje Twoją stronę', href: '/audyt-seo/' }, { title: 'O mnie', sub: 'SEO freelancer, Bielsko-Biała', href: '/o-mnie/' }, { title: 'Blog', sub: 'Artykuły o SEO i pozycjonowaniu', href: '/blog/' }, ]} chips={{ title: 'Popularne usługi', items: [ { label: 'Audyt SXO', href: '/audyt-sxo/' }, { label: 'Pozycjonowanie lokalne', href: '/pozycjonowanie-lokalne/' }, { label: 'Changelog', href: '/changelog/' }, ], }} helpCard={{ title: 'Chcesz więcej klientów z Google?', sub: 'Zacznij od bezpłatnej konsultacji.', cta: { label: 'Napisz do mnie', href: '/kontakt/' }, }} footer={{ locales: [ { code: 'pl', label: 'PL', href: '/blog/', active: true }, { code: 'en', label: 'EN', href: '/en/blog/' }, ], themeToggle: true, socials: [ { label: 'Facebook', href: 'https://www.facebook.com/SuperUper', iconPath: 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z' }, { label: 'LinkedIn', href: 'https://www.linkedin.com/company/uper-seo', iconPath: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' }, ], }} />"
+          - heading "Minimal — only primary nav" [level=2] [ref=e173]
+          - paragraph [ref=e174]: Skip every optional section. The flex spacer keeps the footer pinned to the bottom even when the body is short, so a single-section menu still looks intentional.
+          - generic [ref=e176]:
+            - button "Open minimal menu" [ref=e179] [cursor=pointer]:
+              - paragraph [ref=e180]: Open minimal menu
+            - generic [ref=e181]:
+              - tablist [ref=e182]:
+                - tab "astro" [selected] [ref=e183] [cursor=pointer]
+                - button "Copy entire code block" [ref=e184] [cursor=pointer]: Copy all
+              - tabpanel [ref=e185]:
+                - generic [ref=e186]:
+                  - button "Copy snippet" [ref=e187] [cursor=pointer]: Copy
+                  - code [ref=e189]: <button type="button" class="btn-primary btn-normal" aria-controls="minimal-menu" aria-expanded="false"> Open minimal menu </button>
+                - generic [ref=e190]:
+                  - button "Copy snippet" [ref=e191] [cursor=pointer]: Copy
+                  - code [ref=e193]: "<MenuDrawer id=\"minimal-menu\" brand={{ text: 'Studio' }} primary={[ { title: 'Home', href: '/' }, { title: 'Projects', href: '/projects/' }, { title: 'Contact', href: '/contact/' }, ]} />"
+          - heading "Right-aligned" [level=2] [ref=e194]
+          - paragraph [ref=e195]:
+            - text: Pass
+            - code [ref=e196]: position="right"
+            - text: to slide in from the opposite edge. Everything else unchanged.
+          - generic [ref=e198]:
+            - button "Open right menu" [ref=e201] [cursor=pointer]:
+              - paragraph [ref=e202]: Open right menu
+            - generic [ref=e203]:
+              - tablist [ref=e204]:
+                - tab "astro" [selected] [ref=e205] [cursor=pointer]
+                - button "Copy entire code block" [ref=e206] [cursor=pointer]: Copy all
+              - tabpanel [ref=e207]:
+                - generic [ref=e208]:
+                  - button "Copy snippet" [ref=e209] [cursor=pointer]: Copy
+                  - code [ref=e211]: <button type="button" class="btn-primary btn-normal" aria-controls="right-menu" aria-expanded="false"> Open right menu </button>
+                - generic [ref=e212]:
+                  - button "Copy snippet" [ref=e213] [cursor=pointer]: Copy
+                  - code [ref=e215]: "<MenuDrawer id=\"right-menu\" position=\"right\" brand={{ text: 'Catalog' }} primary={[ { title: 'Parts', sub: '4,200+ entries', href: '/parts/' }, { title: 'Gearboxes', sub: 'Family tree + versions', href: '/gearboxes/' }, { title: 'Sale', sub: 'Used parts marketplace', href: '/sale/' }, ]} footer={{ locales: [ { code: 'en', label: 'EN', href: '/', active: true }, { code: 'pl', label: 'PL', href: '/pl/' }, { code: 'de', label: 'DE', href: '/de/' }, ], }} />"
+          - heading "Slot overrides" [level=2] [ref=e216]
+          - paragraph [ref=e217]: Any section can be replaced by passing a named slot. Useful when the prop shape doesn’t fit — e.g. brand needs an SVG logo, primary nav needs client-only icons, or the help card hosts a form.
+          - code [ref=e219]:
+            - generic [ref=e220]: <MenuDrawer id="custom" label="Custom menu">
+            - generic [ref=e221]: <a slot="brand" href="/">
+            - generic [ref=e222]: <MyCustomLogo class="h-8" />
+            - generic [ref=e223]: </a>
+            - generic [ref=e224]: <slot name="primary">
+            - generic [ref=e225]: <a href="/" class="sds-menu-primary-link" data-drawer-close>
+            - generic [ref=e226]: <div class="sds-menu-primary-text">
+            - generic [ref=e227]: <span class="sds-menu-primary-title">Home</span>
+            - generic [ref=e228]: </div>
+            - generic [ref=e229]: </a>
+            - generic [ref=e230]: </slot>
+            - generic [ref=e231]: <div slot="help" class="sds-menu-help-card">
+            - generic [ref=e232]: <NewsletterForm />
+            - generic [ref=e233]: </div>
+            - generic [ref=e234]: <div slot="footer-right">
+            - generic [ref=e235]: <CustomSocialIcons />
+            - generic [ref=e236]: </div>
+            - generic [ref=e237]: </MenuDrawer>
+          - heading "Wiring the trigger" [level=2] [ref=e238]
+          - paragraph [ref=e239]:
+            - text: The drawer is opened by ANY element with
+            - code [ref=e240]: aria-controls
+            - text: pointing at its id (handled by the underlying
+            - link "Drawer" [ref=e241] [cursor=pointer]:
+              - /url: /components/drawer/
+            - text: script). Couples naturally with
+            - link "Navbar" [ref=e242] [cursor=pointer]:
+              - /url: /components/navbar/
+            - text: ’s
+            - code [ref=e243]: drawerId
+            - text: "prop:"
+          - code [ref=e245]:
+            - generic [ref=e246]: <Navbar brand="Studio" drawerId="main-menu">
+            - generic [ref=e247]: <div slot="actions">
+            - generic [ref=e248]: <button class="btn-primary btn-sm">Sign in</button>
+            - generic [ref=e249]: </div>
+            - generic [ref=e250]: </Navbar>
+            - generic [ref=e251]: <MenuDrawer
+            - generic [ref=e252]: id="main-menu"
+            - generic [ref=e253]: "brand={{ text: 'Studio' }}"
+            - generic [ref=e254]: "primary={[...]}"
+            - generic [ref=e255]: />
+          - heading "Props" [level=2] [ref=e256]
+          - table [ref=e258]:
+            - rowgroup [ref=e259]:
+              - row "Prop Type Default Description" [ref=e260]:
+                - columnheader "Prop" [ref=e261]
+                - columnheader "Type" [ref=e262]
+                - columnheader "Default" [ref=e263]
+                - columnheader "Description" [ref=e264]
+            - rowgroup [ref=e265]:
+              - row "id * string — Unique id used by triggers (aria-controls) and the open/close script" [ref=e266]:
+                - cell "id *" [ref=e267]:
+                  - code [ref=e268]: id
+                  - text: "*"
+                - cell "string" [ref=e269]:
+                  - code [ref=e270]: string
+                - cell "—" [ref=e271]:
+                  - code [ref=e272]: —
+                - cell "Unique id used by triggers (aria-controls) and the open/close script" [ref=e273]
+              - row "label string 'Menu' aria-label for the dialog — describes the menu to screen readers" [ref=e274]:
+                - cell "label" [ref=e275]:
+                  - code [ref=e276]: label
+                - cell "string" [ref=e277]:
+                  - code [ref=e278]: string
+                - cell "'Menu'" [ref=e279]:
+                  - code [ref=e280]: "'Menu'"
+                - cell "aria-label for the dialog — describes the menu to screen readers" [ref=e281]
+              - row "position 'left' | 'right' 'left' Edge the drawer slides in from" [ref=e282]:
+                - cell "position" [ref=e283]:
+                  - code [ref=e284]: position
+                - cell "'left' | 'right'" [ref=e285]:
+                  - code [ref=e286]: "'left' | 'right'"
+                - cell "'left'" [ref=e287]:
+                  - code [ref=e288]: "'left'"
+                - cell "Edge the drawer slides in from" [ref=e289]
+              - 'row "brand { href?, logoSrc?, logoAlt?, text? } undefined Header brand mark. Pass `logoSrc` for an image or `text` for a wordmark. Omit to hide the header (close button still rendered)." [ref=e290]':
+                - cell "brand" [ref=e291]:
+                  - code [ref=e292]: brand
+                - 'cell "{ href?, logoSrc?, logoAlt?, text? }" [ref=e293]':
+                  - code [ref=e294]: "{ href?, logoSrc?, logoAlt?, text? }"
+                - cell "undefined" [ref=e295]:
+                  - code [ref=e296]: undefined
+                - 'cell "Header brand mark. Pass `logoSrc` for an image or `text` for a wordmark. Omit to hide the header (close button still rendered)." [ref=e297]'
+              - 'row "primary PrimaryItem[] [] Primary nav items — each `{ title, sub?, href }`. Renders title + subtitle + chevron arrow." [ref=e298]':
+                - cell "primary" [ref=e299]:
+                  - code [ref=e300]: primary
+                - cell "PrimaryItem[]" [ref=e301]:
+                  - code [ref=e302]: PrimaryItem[]
+                - cell "[]" [ref=e303]:
+                  - code [ref=e304]: "[]"
+                - 'cell "Primary nav items — each `{ title, sub?, href }`. Renders title + subtitle + chevron arrow." [ref=e305]'
+              - 'row "chips { title, items: { label, href }[] } undefined Optional service chips section under the primary nav." [ref=e306]':
+                - cell "chips" [ref=e307]:
+                  - code [ref=e308]: chips
+                - 'cell "{ title, items: { label, href }[] }" [ref=e309]':
+                  - code [ref=e310]: "{ title, items: { label, href }[] }"
+                - cell "undefined" [ref=e311]:
+                  - code [ref=e312]: undefined
+                - cell "Optional service chips section under the primary nav." [ref=e313]
+              - 'row "helpCard { title, sub?, cta: { label, href } } undefined Optional help-card CTA pinned near the bottom by the flex spacer." [ref=e314]':
+                - cell "helpCard" [ref=e315]:
+                  - code [ref=e316]: helpCard
+                - 'cell "{ title, sub?, cta: { label, href } }" [ref=e317]':
+                  - code [ref=e318]: "{ title, sub?, cta: { label, href } }"
+                - cell "undefined" [ref=e319]:
+                  - code [ref=e320]: undefined
+                - cell "Optional help-card CTA pinned near the bottom by the flex spacer." [ref=e321]
+              - 'row "footer { locales?, themeToggle?, socials? } undefined Optional footer cluster. `locales[]` renders a segmented PL/EN-style switcher; `themeToggle` adds a sun/moon button wired to `html.dark`; `socials[]` accepts `{ label, href, iconPath? | iconSvg? }`." [ref=e322]':
+                - cell "footer" [ref=e323]:
+                  - code [ref=e324]: footer
+                - 'cell "{ locales?, themeToggle?, socials? }" [ref=e325]':
+                  - code [ref=e326]: "{ locales?, themeToggle?, socials? }"
+                - cell "undefined" [ref=e327]:
+                  - code [ref=e328]: undefined
+                - 'cell "Optional footer cluster. `locales[]` renders a segmented PL/EN-style switcher; `themeToggle` adds a sun/moon button wired to `html.dark`; `socials[]` accepts `{ label, href, iconPath? | iconSvg? }`." [ref=e329]'
+          - heading "Slots" [level=2] [ref=e330]
+          - table [ref=e331]:
+            - rowgroup [ref=e332]:
+              - row "Slot Replaces" [ref=e333]:
+                - columnheader "Slot" [ref=e334]
+                - columnheader "Replaces" [ref=e335]
+            - rowgroup [ref=e336]:
+              - row "brand Header brand area (close button stays)" [ref=e337]:
+                - cell "brand" [ref=e338]:
+                  - code [ref=e339]: brand
+                - cell "Header brand area (close button stays)" [ref=e340]
+              - row "primary Primary nav links" [ref=e341]:
+                - cell "primary" [ref=e342]:
+                  - code [ref=e343]: primary
+                - cell "Primary nav links" [ref=e344]
+              - row "chips Service chips section (title + chips)" [ref=e345]:
+                - cell "chips" [ref=e346]:
+                  - code [ref=e347]: chips
+                - cell "Service chips section (title + chips)" [ref=e348]
+              - row "middle Extra content between chips and the spacer" [ref=e349]:
+                - cell "middle" [ref=e350]:
+                  - code [ref=e351]: middle
+                - cell "Extra content between chips and the spacer" [ref=e352]
+              - row "help Help card CTA" [ref=e353]:
+                - cell "help" [ref=e354]:
+                  - code [ref=e355]: help
+                - cell "Help card CTA" [ref=e356]
+              - row "footer-left Footer left side (locales + theme toggle)" [ref=e357]:
+                - cell "footer-left" [ref=e358]:
+                  - code [ref=e359]: footer-left
+                - cell "Footer left side (locales + theme toggle)" [ref=e360]
+              - row "footer-right Footer right side (socials)" [ref=e361]:
+                - cell "footer-right" [ref=e362]:
+                  - code [ref=e363]: footer-right
+                - cell "Footer right side (socials)" [ref=e364]
+          - heading "CSS recipe classes" [level=2] [ref=e365]
+          - table [ref=e366]:
+            - rowgroup [ref=e367]:
+              - row "Class Purpose" [ref=e368]:
+                - columnheader "Class" [ref=e369]
+                - columnheader "Purpose" [ref=e370]
+            - rowgroup [ref=e371]:
+              - row "sds-drawer-menu Marker on .sds-drawer — applies the 380px menu panel width + padding" [ref=e372]:
+                - cell "sds-drawer-menu" [ref=e373]:
+                  - code [ref=e374]: sds-drawer-menu
+                - cell "Marker on .sds-drawer — applies the 380px menu panel width + padding" [ref=e375]:
+                  - text: Marker on
+                  - code [ref=e376]: .sds-drawer
+                  - text: — applies the 380px menu panel width + padding
+              - row "sds-menu Vertical layout container inside the panel" [ref=e377]:
+                - cell "sds-menu" [ref=e378]:
+                  - code [ref=e379]: sds-menu
+                - cell "Vertical layout container inside the panel" [ref=e380]
+              - row "sds-menu-header / sds-menu-brand / sds-menu-close Header row" [ref=e381]:
+                - cell "sds-menu-header / sds-menu-brand / sds-menu-close" [ref=e382]:
+                  - code [ref=e383]: sds-menu-header
+                  - text: /
+                  - code [ref=e384]: sds-menu-brand
+                  - text: /
+                  - code [ref=e385]: sds-menu-close
+                - cell "Header row" [ref=e386]
+              - 'row "sds-menu-primary / sds-menu-primary-link / sds-menu-primary-{title,sub,arrow} Primary nav anatomy" [ref=e387]':
+                - 'cell "sds-menu-primary / sds-menu-primary-link / sds-menu-primary-{title,sub,arrow}" [ref=e388]':
+                  - code [ref=e389]: sds-menu-primary
+                  - text: /
+                  - code [ref=e390]: sds-menu-primary-link
+                  - text: /
+                  - code [ref=e391]: "sds-menu-primary-{title,sub,arrow}"
+                - cell "Primary nav anatomy" [ref=e392]
+              - row "sds-menu-section / sds-menu-section-title / sds-menu-chips / sds-menu-chip Chips section" [ref=e393]:
+                - cell "sds-menu-section / sds-menu-section-title / sds-menu-chips / sds-menu-chip" [ref=e394]:
+                  - code [ref=e395]: sds-menu-section
+                  - text: /
+                  - code [ref=e396]: sds-menu-section-title
+                  - text: /
+                  - code [ref=e397]: sds-menu-chips
+                  - text: /
+                  - code [ref=e398]: sds-menu-chip
+                - cell "Chips section" [ref=e399]
+              - row "sds-menu-spacer Flex spacer pushing footer down" [ref=e400]:
+                - cell "sds-menu-spacer" [ref=e401]:
+                  - code [ref=e402]: sds-menu-spacer
+                - cell "Flex spacer pushing footer down" [ref=e403]
+              - 'row "sds-menu-help-card / sds-menu-help-{text,title,sub,cta} Help card CTA" [ref=e404]':
+                - 'cell "sds-menu-help-card / sds-menu-help-{text,title,sub,cta}" [ref=e405]':
+                  - code [ref=e406]: sds-menu-help-card
+                  - text: /
+                  - code [ref=e407]: "sds-menu-help-{text,title,sub,cta}"
+                - cell "Help card CTA" [ref=e408]
+              - row "sds-menu-footer / sds-menu-footer-utility / sds-menu-footer-socials Footer row" [ref=e409]:
+                - cell "sds-menu-footer / sds-menu-footer-utility / sds-menu-footer-socials" [ref=e410]:
+                  - code [ref=e411]: sds-menu-footer
+                  - text: /
+                  - code [ref=e412]: sds-menu-footer-utility
+                  - text: /
+                  - code [ref=e413]: sds-menu-footer-socials
+                - cell "Footer row" [ref=e414]
+              - row "sds-menu-lang / sds-menu-lang-btn + .is-active Segmented language switcher" [ref=e415]:
+                - cell "sds-menu-lang / sds-menu-lang-btn + .is-active" [ref=e416]:
+                  - code [ref=e417]: sds-menu-lang
+                  - text: /
+                  - code [ref=e418]: sds-menu-lang-btn
+                  - text: +
+                  - code [ref=e419]: .is-active
+                - cell "Segmented language switcher" [ref=e420]
+              - row "sds-menu-theme-chip Dark mode toggle (wired by data-sds-menu-theme-toggle)" [ref=e421]:
+                - cell "sds-menu-theme-chip" [ref=e422]:
+                  - code [ref=e423]: sds-menu-theme-chip
+                - cell "Dark mode toggle (wired by data-sds-menu-theme-toggle)" [ref=e424]:
+                  - text: Dark mode toggle (wired by
+                  - code [ref=e425]: data-sds-menu-theme-toggle
+                  - text: )
+  - contentinfo:
+    - link "createdy by Modern Websites" [ref=e427] [cursor=pointer]:
+      - /url: https://spoko.space
+      - generic [ref=e428]: createdy by
+      - img "Modern Websites" [ref=e429]
+  - generic [ref=e432]:
+    - button "Menu" [ref=e433]:
+      - img [ref=e435]
+      - generic: Menu
+    - button "Inspect" [ref=e439]:
+      - img [ref=e441]
+      - generic: Inspect
+    - button "Audit" [ref=e443]:
+      - img [ref=e445]
+      - generic: Audit
+    - button "Meta tags" [ref=e448]:
+      - img [ref=e450]
+      - generic: Meta tags
+    - button "Settings" [ref=e455]:
+      - img [ref=e457]
+      - generic: Settings
