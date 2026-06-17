@@ -1,3 +1,9 @@
+## [1.39.3](https://github.com/polo-blue/sds/compare/v1.39.2...v1.39.3) (2026-06-17)
+
+### Bug Fixes
+
+* **Header:** repair navbar dark-mode toggle (duplicate listeners) ([#468](https://github.com/polo-blue/sds/issues/468)) ([8e915c3](https://github.com/polo-blue/sds/commit/8e915c3452b670d3280fde19c0410412f2208e33)), closes [#dark-mode-toggle](https://github.com/polo-blue/sds/issues/dark-mode-toggle)
+
 ## [1.39.2](https://github.com/polo-blue/sds/compare/v1.39.1...v1.39.2) (2026-06-17)
 
 ## [1.39.1](https://github.com/polo-blue/sds/compare/v1.39.0...v1.39.1) (2026-06-17)
