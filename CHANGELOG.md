@@ -1,3 +1,14 @@
+## [1.39.0](https://github.com/polo-blue/sds/compare/v1.38.1...v1.39.0) (2026-06-17)
+
+### Features
+
+* design system overhaul — Navbar, Toggle, MenuDrawer, Search modal, universal split scaffolding ([#456](https://github.com/polo-blue/sds/issues/456)) ([8bce7e8](https://github.com/polo-blue/sds/commit/8bce7e8326a10c15c2b3fbfccce23417e29fe9d0)), closes [#440](https://github.com/polo-blue/sds/issues/440) [#442](https://github.com/polo-blue/sds/issues/442)
+
+### Bug Fixes
+
+* replace freepik urls with placehold.co to prevent netlify build failures ([#439](https://github.com/polo-blue/sds/issues/439)) ([3b2aeb2](https://github.com/polo-blue/sds/commit/3b2aeb287dba7c6fd2928338e06f9f56cb614d37))
+* **ci:** unblock main CI after Astro 6 upgrade ([#460](https://github.com/polo-blue/sds/issues/460)) ([41e24fb](https://github.com/polo-blue/sds/commit/41e24fb33cf63e33f46fec0063bfd425eebd38af))
+
 ## [1.38.1](https://github.com/polo-blue/sds/compare/v1.38.0...v1.38.1) (2026-04-13)
 
 ### Bug Fixes
