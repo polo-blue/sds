@@ -135,11 +135,16 @@ import SearchModal from './SearchModal.vue';
 <script>
   function setupDarkModeToggle() {
     const toggle = document.getElementById('dark-mode-toggle');
-    if (toggle) {
+    if (toggle && toggle.dataset.bound !== '1') {
+      toggle.dataset.bound = '1';
       toggle.addEventListener('click', () => {
         const isDark = document.documentElement.classList.toggle('dark');
         document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
-        localStorage.setItem('sds-color-scheme', isDark ? 'dark' : 'light');
+        try {
+          localStorage.setItem('sds-color-scheme', isDark ? 'dark' : 'light');
+        } catch {
+          /* localStorage may be unavailable */
+        }
       });
     }
   }
