@@ -39,6 +39,7 @@
     "lint": "eslint \"src/**/*.{js,ts,jsx,tsx,vue,astro}\"",
     "lint:fix": "eslint \"src/**/*.{js,ts,jsx,tsx,vue,astro}\" --fix",
     "check": "astro check",
+    "test:e2e": "playwright test",
     "prepare": "husky"
   },
   "repository": {
@@ -127,6 +128,7 @@
     "@commitlint/cli": "^21.0.2",
     "@commitlint/config-conventional": "^21.0.2",
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.50.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/culori": "^4.0.1",

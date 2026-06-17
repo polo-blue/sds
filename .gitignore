@@ -22,6 +22,10 @@ pnpm-debug.log*
 # testing
 coverage/
 .nyc_output/
+test-results/
+playwright-report/
+blob-report/
+.playwright/
 
 # IDE files (keep shared .vscode config, ignore personal settings)
 .vscode/settings.local.json
