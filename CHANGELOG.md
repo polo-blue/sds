@@ -1,3 +1,9 @@
+## [1.39.1](https://github.com/polo-blue/sds/compare/v1.39.0...v1.39.1) (2026-06-17)
+
+### Bug Fixes
+
+* **release:** republish 1.39.0 after npm publish 403 ([#466](https://github.com/polo-blue/sds/issues/466)) ([849193a](https://github.com/polo-blue/sds/commit/849193a67d4c4016d92982730b001e7cb7cf5cab))
+
 ## [1.39.0](https://github.com/polo-blue/sds/compare/v1.38.1...v1.39.0) (2026-06-17)
 
 ### Features
