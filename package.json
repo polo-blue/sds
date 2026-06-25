@@ -65,11 +65,11 @@
     "spoko design system"
   ],
   "dependencies": {
-    "@astrojs/mdx": "^6.0.3",
-    "@astrojs/node": "^10.1.4",
+    "@astrojs/mdx": "^7.0.0",
+    "@astrojs/node": "^11.0.0",
     "@astrojs/sitemap": "^3.7.3",
     "@astrojs/ts-plugin": "^1.10.9",
-    "@astrojs/vue": "^6.0.1",
+    "@astrojs/vue": "^7.0.0",
     "@docsearch/css": "^4.6.3",
     "@floating-ui/dom": "^1.7.6",
     "@floating-ui/vue": "^2.0.0",
@@ -140,7 +140,7 @@
     "@vitejs/plugin-vue": "^6.0.7",
     "@vue/compiler-sfc": "^3.5.38",
     "@vue/eslint-config-typescript": "^14.8.0",
-    "astro": "^6.4.6",
+    "astro": "^7.0.2",
     "conventional-changelog-conventionalcommits": "^9.3.1",
     "eslint": "^10.5.0",
     "eslint-plugin-astro": "^1.7.0",
