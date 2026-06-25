@@ -36,7 +36,7 @@ const trail = [
 ---
 <Breadcrumbs
   breadcrumbs={trail}
-  productNumber="6R0XXXXXX"
+  suffix="6R0XXXXXX"
   class="py-1 px-1 max-w-full flex bg-white"
   showBack
   textBack="Back"
@@ -55,7 +55,7 @@ const trail = [
 <template>
   <Breadcrumbs
     :breadcrumbs="trail"
-    product-number="6R0XXXXXX"
+    suffix="6R0XXXXXX"
     class="py-1 px-1 max-w-full flex bg-white"
     show-back
     text-back="Back"
@@ -63,7 +63,7 @@ const trail = [
 </template>`}>
   <Breadcrumbs
     breadcrumbs={[{name: 'Level1', path: '#level1'}, {name: 'Level 2', path: '#level2'}, {name: 'Level 3', path: '#level3'}]}
-    product-number="6R0XXXXXX"
+    suffix="6R0XXXXXX"
     class="py-1 order-0 px-1 max-w-full flex bg-white"
     show-back
     text-back="Back"
@@ -76,20 +76,20 @@ const trail = [
 <ComponentPreview client:visible
   astro={`<Breadcrumbs
   breadcrumbs={trail}
-  productNumber="6R0XXXXXX"
+  suffix="6R0XXXXXX"
   class="py-1 px-1 max-w-full flex bg-white"
   showHome
   client:visible
 />`}
   vue={`<Breadcrumbs
   :breadcrumbs="trail"
-  product-number="6R0XXXXXX"
+  suffix="6R0XXXXXX"
   class="py-1 px-1 max-w-full flex bg-white"
   show-home
 />`}>
   <Breadcrumbs
     breadcrumbs={[{name: 'Level1', path: '#level1'}, {name: 'Level 2', path: '#level2'}, {name: 'Level 3', path: '#level3'}]}
-    product-number="6R0XXXXXX"
+    suffix="6R0XXXXXX"
     class="py-1 order-0 px-1 max-w-full flex bg-white"
     show-home
   />
@@ -101,18 +101,48 @@ const trail = [
 <ComponentPreview client:visible
   astro={`<Breadcrumbs
   breadcrumbs={trail}
-  productNumber="6R0XXXXXX"
+  suffix="6R0XXXXXX"
   class="py-1 px-1 max-w-full flex bg-white"
   client:visible
 />`}
   vue={`<Breadcrumbs
   :breadcrumbs="trail"
-  product-number="6R0XXXXXX"
+  suffix="6R0XXXXXX"
   class="py-1 px-1 max-w-full flex bg-white"
 />`}>
   <Breadcrumbs
     breadcrumbs={[{name: 'Level1', path: '#level1'}, {name: 'Level 2', path: '#level2'}, {name: 'Level 3', path: '#level3'}]}
-    product-number="6R0XXXXXX"
+    suffix="6R0XXXXXX"
+    class="py-1 order-0 px-1 max-w-full flex bg-white"
+  />
+</ComponentPreview>
+
+## Hide parts on mobile
+
+Use `hideOnMobile` to hide selected parts below the `sm` breakpoint (640px); they
+reappear from `sm` up. Accepted parts: `'suffix'`, `'home'`, `'separators'`, `'trail'`.
+It defaults to `['suffix']`, so pass `[]` to show everything on mobile, or list more
+parts to hide. Resize the preview below to see the suffix and separators come and go.
+
+<ComponentPreview client:visible
+  astro={`<Breadcrumbs
+  breadcrumbs={trail}
+  suffix="6R0XXXXXX"
+  hideOnMobile={['suffix', 'separators']}
+  class="py-1 px-1 max-w-full flex bg-white"
+  client:visible
+/>`}
+  vue={`<Breadcrumbs
+  :breadcrumbs="trail"
+  suffix="6R0XXXXXX"
+  :hide-on-mobile="['suffix', 'separators']"
+  class="py-1 px-1 max-w-full flex bg-white"
+/>`}>
+  <Breadcrumbs
+    breadcrumbs={[{name: 'Level1', path: '#level1'}, {name: 'Level 2', path: '#level2'}, {name: 'Level 3', path: '#level3'}]}
+    suffix="6R0XXXXXX"
+    hideOnMobile={['suffix', 'separators']}
+    showHome
     class="py-1 order-0 px-1 max-w-full flex bg-white"
   />
 </ComponentPreview>
@@ -124,7 +154,9 @@ const trail = [
   { name: 'showBack', type: 'boolean', default: 'false', description: 'Show a back button before the breadcrumbs' },
   { name: 'textBack', type: 'string', default: "'Back'", description: 'Label text for the back button' },
   { name: 'showHome', type: 'boolean', default: 'false', description: 'Show home icon as first breadcrumb' },
-  { name: 'productNumber', type: 'string', default: 'null', description: 'Product number shown after last breadcrumb (hidden on mobile)' },
+  { name: 'suffix', type: 'string', default: 'null', description: 'Text appended after the last breadcrumb — e.g. a product number' },
+  { name: 'titlePrefix', type: 'string', default: "''", description: 'Optional prefix prepended to each link title attribute — e.g. a brand name' },
+  { name: 'hideOnMobile', type: "Array<'suffix' | 'home' | 'separators' | 'trail'>", default: "['suffix']", description: 'Parts hidden below the sm breakpoint (restored from sm up). Defaults to hiding the suffix; pass [] to show everything on mobile' },
   { name: 'withMicrodata', type: 'boolean', default: 'true', description: 'Include Schema.org BreadcrumbList markup — set false to avoid duplicates when rendering twice' },
 ]} />
 
