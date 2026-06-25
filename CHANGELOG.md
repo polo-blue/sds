@@ -1,3 +1,15 @@
+## [1.40.0](https://github.com/polo-blue/sds/compare/v1.39.3...v1.40.0) (2026-06-25)
+
+### ⚠ BREAKING CHANGES
+
+* **Breadcrumbs:** the Breadcrumbs prop `productNumber` is renamed to `suffix`,
+and the hard-coded `Polo 6R` link-title prefix is removed (use `titlePrefix`).
+Consumers must update usages and bump spoko-design-system to ^2.0.0.
+
+### Features
+
+* **Breadcrumbs:** universal props (suffix/titlePrefix/hideOnMobile) ([#471](https://github.com/polo-blue/sds/issues/471)) ([8a23dac](https://github.com/polo-blue/sds/commit/8a23dacc55cd8e8248c7c3365990cb5c8df509a3))
+
 ## [1.39.3](https://github.com/polo-blue/sds/compare/v1.39.2...v1.39.3) (2026-06-17)
 
 ### Bug Fixes
