@@ -154,7 +154,7 @@ parts to hide. Resize the preview below to see the suffix and separators come an
   { name: 'showBack', type: 'boolean', default: 'false', description: 'Show a back button before the breadcrumbs' },
   { name: 'textBack', type: 'string', default: "'Back'", description: 'Label text for the back button' },
   { name: 'showHome', type: 'boolean', default: 'false', description: 'Show home icon as first breadcrumb' },
-  { name: 'suffix', type: 'string', default: 'null', description: 'Text appended after the last breadcrumb — e.g. a product number' },
+  { name: 'suffix', type: 'string', default: 'undefined', description: 'Text appended after the last breadcrumb — e.g. a product number' },
   { name: 'titlePrefix', type: 'string', default: "''", description: 'Optional prefix prepended to each link title attribute — e.g. a brand name' },
   { name: 'hideOnMobile', type: "Array<'suffix' | 'home' | 'separators' | 'trail'>", default: "['suffix']", description: 'Parts hidden below the sm breakpoint (restored from sm up). Defaults to hiding the suffix; pass [] to show everything on mobile' },
   { name: 'withMicrodata', type: 'boolean', default: 'true', description: 'Include Schema.org BreadcrumbList markup — set false to avoid duplicates when rendering twice' },
