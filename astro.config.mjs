@@ -19,6 +19,12 @@ export default defineConfig({
   server: {
     port: 1234
   },
+  vite: {
+    // Vite 8 changed the default CSS minifier to lightningcss, which is stricter
+    // than esbuild and rejects some of our UnoCSS-generated CSS with
+    // "Unexpected token Colon". Restore the esbuild CSS minifier we built with.
+    build: { cssMinify: 'esbuild' },
+  },
   image: {
     service: sharpImageService(),
     domains: ["placehold.co", "api.polo.blue", "polo.blue", "media.istockphoto.com", "freepik.com", "img.freepik.com", "polo6r.pl"],
