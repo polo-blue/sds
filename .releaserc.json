@@ -49,6 +49,10 @@
   "analyzeCommits": {
     "releaseRules": [
       {
+        "breaking": true,
+        "release": "major"
+      },
+      {
         "type": "feat",
         "release": "minor"
       },
@@ -83,10 +87,6 @@
       {
         "type": "chore",
         "release": false
-      },
-      {
-        "scope": "BREAKING CHANGE",
-        "release": "major"
       }
     ]
   }
