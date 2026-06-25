@@ -1,3 +1,16 @@
+## [2.0.0](https://github.com/polo-blue/sds/compare/v1.40.0...v2.0.0) (2026-06-25)
+
+### ⚠ BREAKING CHANGES
+
+* the Breadcrumbs prop `productNumber` is renamed to `suffix`
+and the hard-coded `Polo 6R` link-title prefix is removed (use `titlePrefix`).
+This first shipped in 1.40.0, which a release-config bug mis-versioned as a
+minor; 1.40.0 is deprecated in favour of 2.0.0. See MIGRATION-BREADCRUMBS.md.
+
+### Bug Fixes
+
+* upgrade to Astro 7 (Vite 8/rolldown) and correct release config ([#472](https://github.com/polo-blue/sds/issues/472)) ([77b6e26](https://github.com/polo-blue/sds/commit/77b6e269573800e7cd376be6f19d95439175f279))
+
 ## [1.40.0](https://github.com/polo-blue/sds/compare/v1.39.3...v1.40.0) (2026-06-25)
 
 ### ⚠ BREAKING CHANGES
