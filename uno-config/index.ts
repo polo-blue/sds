@@ -16,19 +16,32 @@ import presetUno from '@unocss/preset-uno';             // Primary UnoCSS preset
 import presetTypography from '@unocss/preset-typography'; // Typography preset
 import presetWebFonts from '@unocss/preset-web-fonts';    // Web fonts preset
 
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
+import { loadCollectionFromFS } from '@iconify/utils/lib/loader/fs';
+
 import { shortcuts } from './theme/shortcuts/index.ts';
 import { theme } from './theme/index.ts';
 import { generatePalette, defaultPalette, type PaletteInput } from './palette-generator.ts';
 import { peerSelectorClasses, peerVariant } from './peer-variants.ts';
 
-// Icon collections are loaded lazily via dynamic import (see `iconCollections`
-// in the presetIcons config below). They are deliberately NOT statically
-// imported: static imports inline every collection's `icons.json` (hundreds of
-// MB across 26 collections) into this single module. On Vite 8's module runner
-// that produces an inline sourcemap larger than V8's max string length
-// (0x1fffffe8 ≈ 536M chars), which crashes the build under Astro 7. Each loader
-// must use a literal specifier so the bundler can statically resolve the chunk.
+// Icon collections are loaded from disk via loadCollectionFromFS anchored at
+// this file's own directory. This lets Node's module resolution walk up the
+// tree and find @iconify-json/* regardless of whether SDS is the root project
+// or a nested dep under strict pnpm — without going through the Vite module
+// runner (which closes before icons are resolved during consumer builds).
+// Static imports are deliberately avoided: inlining 26 collection JSONs into
+// this module produces a sourcemap > V8's max string length on Vite 8 / Astro 7.
+const _thisDir = dirname(fileURLToPath(import.meta.url));
+const fromFS = (name: string) => () => loadCollectionFromFS(name, false, '@iconify-json', _thisDir);
 
+const ICON_COLLECTIONS = [
+  'ant-design', 'bi', 'bx', 'carbon', 'circle-flags', 'ei', 'el',
+  'eos-icons', 'et', 'flowbite', 'fluent', 'fluent-emoji', 'ic',
+  'icon-park-outline', 'la', 'lucide', 'material-symbols-light', 'mdi',
+  'noto-v1', 'octicon', 'ph', 'simple-icons', 'system-uicons', 'uil',
+  'vscode-icons', 'streamline-freehand-color',
+] as const;
 
 interface CustomConfig extends Partial<UserConfig> {
   shortcuts?: UserShortcuts;
@@ -188,38 +201,7 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
           'display': 'inline-block',
           'vertical-align': 'middle',
         },
-        // Lazy async loaders: each collection resolves to its own dynamic-import
-        // chunk instead of being inlined into this module (see the import note
-        // at the top of the file). Specifiers must be string literals so the
-        // bundler can statically resolve each chunk.
-        collections: {
-          'ant-design': () => import('@iconify-json/ant-design/icons.json').then((m) => m.default),
-          'bi': () => import('@iconify-json/bi/icons.json').then((m) => m.default),
-          'bx': () => import('@iconify-json/bx/icons.json').then((m) => m.default),
-          'carbon': () => import('@iconify-json/carbon/icons.json').then((m) => m.default),
-          'circle-flags': () => import('@iconify-json/circle-flags/icons.json').then((m) => m.default),
-          'ei': () => import('@iconify-json/ei/icons.json').then((m) => m.default),
-          'el': () => import('@iconify-json/el/icons.json').then((m) => m.default),
-          'eos-icons': () => import('@iconify-json/eos-icons/icons.json').then((m) => m.default),
-          'et': () => import('@iconify-json/et/icons.json').then((m) => m.default),
-          'flowbite': () => import('@iconify-json/flowbite/icons.json').then((m) => m.default),
-          'fluent': () => import('@iconify-json/fluent/icons.json').then((m) => m.default),
-          'fluent-emoji': () => import('@iconify-json/fluent-emoji/icons.json').then((m) => m.default),
-          'ic': () => import('@iconify-json/ic/icons.json').then((m) => m.default),
-          'icon-park-outline': () => import('@iconify-json/icon-park-outline/icons.json').then((m) => m.default),
-          'la': () => import('@iconify-json/la/icons.json').then((m) => m.default),
-          'lucide': () => import('@iconify-json/lucide/icons.json').then((m) => m.default),
-          'material-symbols-light': () => import('@iconify-json/material-symbols-light/icons.json').then((m) => m.default),
-          'mdi': () => import('@iconify-json/mdi/icons.json').then((m) => m.default),
-          'noto-v1': () => import('@iconify-json/noto-v1/icons.json').then((m) => m.default),
-          'octicon': () => import('@iconify-json/octicon/icons.json').then((m) => m.default),
-          'ph': () => import('@iconify-json/ph/icons.json').then((m) => m.default),
-          'simple-icons': () => import('@iconify-json/simple-icons/icons.json').then((m) => m.default),
-          'system-uicons': () => import('@iconify-json/system-uicons/icons.json').then((m) => m.default),
-          'uil': () => import('@iconify-json/uil/icons.json').then((m) => m.default),
-          'vscode-icons': () => import('@iconify-json/vscode-icons/icons.json').then((m) => m.default),
-          'streamline-freehand-color': () => import('@iconify-json/streamline-freehand-color/icons.json').then((m) => m.default),
-        }
+        collections: Object.fromEntries(ICON_COLLECTIONS.map((n) => [n, fromFS(n)]))
       }),
       presetTypography(),
       presetWebFonts({

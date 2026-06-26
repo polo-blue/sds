@@ -102,6 +102,7 @@
     "@iconify-json/uil": "^1.2.3",
     "@iconify-json/vscode-icons": "^1.2.57",
     "@iconify/json": "^2.2.486",
+    "@iconify/utils": "^2.3.0",
     "@iconify/vue": "^5.0.1",
     "@unocss/astro": "66.7.2",
     "@unocss/preset-attributify": "66.7.2",
