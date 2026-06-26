@@ -1,3 +1,9 @@
+## [2.0.1](https://github.com/polo-blue/sds/compare/v2.0.0...v2.0.1) (2026-06-26)
+
+### Bug Fixes
+
+* **uno-config:** load icon collections from disk via loadCollectionFromFS ([#473](https://github.com/polo-blue/sds/issues/473)) ([cfbd892](https://github.com/polo-blue/sds/commit/cfbd8923dab1692c67b9272ce9e4e77cb6980755))
+
 ## [2.0.0](https://github.com/polo-blue/sds/compare/v1.40.0...v2.0.0) (2026-06-25)
 
 ### ⚠ BREAKING CHANGES
