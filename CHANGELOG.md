@@ -1,3 +1,9 @@
+## [2.0.2](https://github.com/polo-blue/sds/compare/v2.0.1...v2.0.2) (2026-09-01)
+
+### Bug Fixes
+
+* **deps:** align UnoCSS to 66.9.1 ([#478](https://github.com/polo-blue/sds/issues/478)) ([1e2e252](https://github.com/polo-blue/sds/commit/1e2e2521357fad20680dcf9a541ad075b54b8139))
+
 ## [2.0.1](https://github.com/polo-blue/sds/compare/v2.0.0...v2.0.1) (2026-06-26)
 
 ### Bug Fixes
