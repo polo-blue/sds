@@ -122,7 +122,7 @@ importers:
         version: 1.2.57
       '@iconify/json':
         specifier: ^2.2.486
-        version: 2.2.486
+        version: 2.2.528
       '@iconify/utils':
         specifier: ^2.3.0
         version: 2.3.0
@@ -1449,8 +1449,8 @@ packages:
   '@iconify-json/vscode-icons@1.2.57':
     resolution: {integrity: sha512-J8KQRntAuOqSA2W5sUJm6MFDulDSTAb5sQ/qI52rHFw6TPkDaxoaq7u9to/ExYYFwmD/F381J9Gn75OGHp4Gmw==}
 
-  '@iconify/json@2.2.486':
-    resolution: {integrity: sha512-ybeEhKPvniErZvczHk0p3xZgG/uAYT2Lo9YwkJr57cr6lr7xq8ezVWzzoAGaxZnsxSF54cyYmyPT/QIi9cc9Uw==}
+  '@iconify/json@2.2.528':
+    resolution: {integrity: sha512-XBcNrOtymLJn322k772F8erMRqMIzrvVjSvylyEnZc3brEnRuDppqHodpbCgJJeY56YnibXh/Y/fLED6Mhpq5g==}
 
   '@iconify/tools@4.2.0':
     resolution: {integrity: sha512-WRxPva/ipxYkqZd1+CkEAQmd86dQmrwH0vwK89gmp2Kh2WyyVw57XbPng0NehP3x4V1LzLsXUneP1uMfTMZmUA==}
@@ -2810,6 +2810,11 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
 
+  baseline-browser-mapping@2.11.23:
+    resolution: {integrity: sha512-le521dGVfxM7yRX0EikCoSz+rOK+hHzdDt/E7mG1jOJB/6WAAUuwVroLwaB7ApaUsz5Q0kFlDXLSA9MheUIfRQ==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
   bcp-47@2.1.0:
     resolution: {integrity: sha512-9IIS3UPrvIa1Ej+lVDdDwO7zLehjqsaByECw0bu2RRGP73jALm6FYbzI5gWbgHLvNdkvfXB5YrSbocZdOS0c0w==}
 
@@ -2828,11 +2833,11 @@ packages:
   bottleneck@2.19.5:
     resolution: {integrity: sha512-VHiNCbI1lKdl44tGrhNfU3lup0Tj/ZBMJB5/2ZbNXRCPuRCO7ed2mgcK4r17y+KB2EfuYuRaVlwNbAeaWGSpbw==}
 
-  brace-expansion@1.1.18:
-    resolution: {integrity: sha512-Edep/X9fGqVNmzKBVsDYIOtD+z1tuezV70LBjdCst9Tqu76lsnvRiZ6oTic1n+/BIwX6QDGAO94PN4N2SADvtw==}
+  brace-expansion@1.1.21:
+    resolution: {integrity: sha512-9zeA+KLZNNzglF2TPKRQEDyx6Yby7daAkuy8MiPzpXPsYDWi/DRM8jmwUDxokQjYqBpv5DgPiwD4h4ZZSy1Ujw==}
 
-  brace-expansion@2.1.4:
-    resolution: {integrity: sha512-hGfVzPxthbf3+2yjg/RBs60cB0FhqBS/zvdV/4wn4/BmN0bNMMHPc4V/BbFieqf1TKAGGAHnY4eSjajCl0f2Xg==}
+  brace-expansion@2.1.7:
+    resolution: {integrity: sha512-uZbew1NqdmPDTMJ8ah1y+b+9QEJrfkXFk3RcTQw3X0jW/xRUvFKsg1CfQdSYGdTbXZWExtU3J3ccxtnfw1Fi0g==}
 
   brace-expansion@5.0.4:
     resolution: {integrity: sha512-h+DEnpVvxmfVefa4jFbCf5HdH5YMDXRsmKflpf1pILZWRFlTbJpxeU55nJl4Smt5HQaGzg1o6RHFPJaOqnmBDg==}
@@ -2848,6 +2853,11 @@ packages:
 
   browserslist@4.28.8:
     resolution: {integrity: sha512-V2NpofLblG64mfOtSgDhOJESZEGogzDMBv/q+W6oc4LXWP/q75eOXoOaaOu1EOadB9U4Bwx/e0yzbvwKH8zalA==}
+    engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
+    hasBin: true
+
+  browserslist@4.28.9:
+    resolution: {integrity: sha512-EWazOblFYUvlGZcfGhPUPmYh3nikUxBVb+y9MJun5f3hBi812X+8MSQTujLBtgK3cf51fJWbWfOjyeO954d+Eg==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
 
@@ -3264,6 +3274,9 @@ packages:
 
   electron-to-chromium@1.5.415:
     resolution: {integrity: sha512-958V+Kbhtgz+SxXeEVKBjrlKRBIDAYvUJfwhjxMZ5S6ut9jAl7l9ZKBkBrvjyjZE36PabLUo2L8kEeV5O4vgJg==}
+
+  electron-to-chromium@1.5.428:
+    resolution: {integrity: sha512-1JxbaFJj1bRKurj1uY3l4xxpU9kOUAUjcIgApj0qu1Pao5GhoIWI8iL0BeMYJ2njig1hBx0A7eKD9VGjH9wlHw==}
 
   emoji-regex@10.6.0:
     resolution: {integrity: sha512-toUI84YS5YmxW219erniWD0CIVOo46xGKColeNQRgOzDorgBi1v4D71/OFzgD9GO2UGKIv1C3Sp8DAn0+j5w7A==}
@@ -4765,6 +4778,10 @@ packages:
     resolution: {integrity: sha512-D9UOmYG3UH1V+ENW56t5QXBwJw1YEY18ruVeus89Rw+SyIgjPkCO84bRzO3uNIYosJbNwiabWVn48o3uJLjxFQ==}
     engines: {node: '>=18'}
 
+  node-releases@2.0.55:
+    resolution: {integrity: sha512-mIrE/Cw9y+9Au6dS5vDKDhQza9YvG6w+ZrS6X+ZzA7yFW/soAeaups4Qzn1bL6g5FVy8WtP79+0j82oPIbqRjQ==}
+    engines: {node: '>=18'}
+
   normalize-package-data@6.0.2:
     resolution: {integrity: sha512-V6gygoYb/5EmNI+MEGrWkC+e6+Rr7mTmfHrxDbLzxQogBkgzo76rkok0Am6thgSF7Mv2nLOajAJj5vDJZEFn7g==}
     engines: {node: ^16.14.0 || >=18.0.0}
@@ -6105,6 +6122,12 @@ packages:
 
   update-browserslist-db@1.3.1:
     resolution: {integrity: sha512-ZZ61DsRsOnakl74HAmp3oSN4aXUmEWXf+i/yv0h7tIBfICc3VdrFErQKUUKPgu3AMsTUMbcongALEN4l6GSUrQ==}
+    hasBin: true
+    peerDependencies:
+      browserslist: '>= 4.21.0'
+
+  update-browserslist-db@1.3.3:
+    resolution: {integrity: sha512-pJ2sYawQS0R/WI928Gj5GlPhTGzbMelq0+4INtSYNDV9ErKJcX6xjGWkoG/VnB3dpUm00zALaqkrUD77pO5TDQ==}
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
@@ -7845,7 +7868,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify/json@2.2.486':
+  '@iconify/json@2.2.528':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 2.0.3
@@ -9461,6 +9484,8 @@ snapshots:
 
   baseline-browser-mapping@2.11.19: {}
 
+  baseline-browser-mapping@2.11.23: {}
+
   bcp-47@2.1.0:
     dependencies:
       is-alphabetical: 2.0.1
@@ -9477,12 +9502,12 @@ snapshots:
 
   bottleneck@2.19.5: {}
 
-  brace-expansion@1.1.18:
+  brace-expansion@1.1.21:
     dependencies:
       balanced-match: 1.0.2
       concat-map: 0.0.1
 
-  brace-expansion@2.1.4:
+  brace-expansion@2.1.7:
     dependencies:
       balanced-match: 1.0.2
 
@@ -9505,6 +9530,14 @@ snapshots:
       electron-to-chromium: 1.5.415
       node-releases: 2.0.53
       update-browserslist-db: 1.3.1(browserslist@4.28.8)
+
+  browserslist@4.28.9:
+    dependencies:
+      baseline-browser-mapping: 2.11.23
+      caniuse-lite: 1.0.30001810
+      electron-to-chromium: 1.5.428
+      node-releases: 2.0.55
+      update-browserslist-db: 1.3.3(browserslist@4.28.9)
 
   buffer-crc32@0.2.13: {}
 
@@ -9706,7 +9739,7 @@ snapshots:
 
   core-js-compat@3.50.0:
     dependencies:
-      browserslist: 4.28.8
+      browserslist: 4.28.9
 
   core-util-is@1.0.3: {}
 
@@ -9897,6 +9930,8 @@ snapshots:
       jake: 10.9.4
 
   electron-to-chromium@1.5.415: {}
+
+  electron-to-chromium@1.5.428: {}
 
   emoji-regex@10.6.0: {}
 
@@ -11743,11 +11778,11 @@ snapshots:
 
   minimatch@3.1.5:
     dependencies:
-      brace-expansion: 1.1.18
+      brace-expansion: 1.1.21
 
   minimatch@5.1.9:
     dependencies:
-      brace-expansion: 2.1.4
+      brace-expansion: 2.1.7
 
   minimist@1.2.8: {}
 
@@ -11800,6 +11835,8 @@ snapshots:
   node-mock-http@1.0.4: {}
 
   node-releases@2.0.53: {}
+
+  node-releases@2.0.55: {}
 
   normalize-package-data@6.0.2:
     dependencies:
@@ -13281,6 +13318,12 @@ snapshots:
   update-browserslist-db@1.3.1(browserslist@4.28.8):
     dependencies:
       browserslist: 4.28.8
+      escalade: 3.2.0
+      picocolors: 1.1.1
+
+  update-browserslist-db@1.3.3(browserslist@4.28.9):
+    dependencies:
+      browserslist: 4.28.9
       escalade: 3.2.0
       picocolors: 1.1.1
 
