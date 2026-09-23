@@ -1,3 +1,9 @@
+## [2.1.0](https://github.com/polo-blue/sds/compare/v2.0.2...v2.1.0) (2026-09-23)
+
+### Features
+
+* **typography:** register the VW faces as two weight-variant families ([#482](https://github.com/polo-blue/sds/issues/482)) ([cf4d362](https://github.com/polo-blue/sds/commit/cf4d362edeeb2ed407643fd229c577c4ef706a12))
+
 ## [2.0.2](https://github.com/polo-blue/sds/compare/v2.0.1...v2.0.2) (2026-09-01)
 
 ### Bug Fixes
