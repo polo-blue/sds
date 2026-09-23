@@ -49,7 +49,9 @@
   --color-info: oklch(62% 0.188 260);
 
   /* typography */
-  --font-family-sans: vw_textregular, system-ui, ui-sans-serif;
+  --font-family-head: vw_head, vw_headregular_fallback, system-ui, ui-sans-serif;
+  --font-family-text: vw_text, system-ui, ui-sans-serif;
+  --font-family-sans: vw_text, vw_textregular, system-ui, ui-sans-serif;
   --font-family-novamono: Nova Mono;
   --font-family-mono: Nova Mono;
   --font-family-headlight: vw_headlight, vw_headlight_fallback, system-ui;
