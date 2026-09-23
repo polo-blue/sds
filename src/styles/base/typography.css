@@ -1,3 +1,63 @@
+/* Two families, weight variants inside each. Pick a face with `font-weight`
+   (the `font-head` / `font-text` tokens plus `font-light` / `font-bold`), not
+   by switching font-family: a face registered at its real weight also stops
+   the browser synthesising one, so `font-weight: 700` on `vw_text` loads
+   vwtext-bold instead of smearing vwtext-regular.
+   The single-weight families further down are the legacy registration, kept
+   for the `headbold` / `textbold` / ... tokens until their call sites move. */
+
+@font-face {
+  font-family: 'vw_head';
+  src: url('/fonts/vwhead-light-webfont.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'vw_head';
+  src: url('/fonts/vwhead-regular-webfont.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'vw_head';
+  src: url('/fonts/vwhead-bold-webfont.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'vw_text';
+  src: url('/fonts/vwtext-light-webfont.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'vw_text';
+  src: url('/fonts/vwtext-regular-webfont.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'vw_text';
+  src: url('/fonts/vwtext-bold-webfont.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* -- Legacy single-weight families - deprecated, do not add call sites ------
+   Each one re-registers a file already declared above under the same URL, so
+   nothing extra is downloaded. */
+
 @font-face {
   font-family: 'vw_textregular';
   src: url('/fonts/vwtext-regular-webfont.woff2') format('woff2');
