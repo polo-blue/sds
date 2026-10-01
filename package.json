@@ -135,6 +135,7 @@
     "vue": "^3.5.43"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
     "@commitlint/cli": "^21.2.3",
     "@commitlint/config-conventional": "^21.2.3",
     "@eslint/js": "^10.0.1",
@@ -162,6 +163,7 @@
     "prettier": "^3.9.9",
     "prettier-plugin-astro": "^0.14.1",
     "semantic-release": "^25.0.9",
+    "typescript": "^5.9.2",
     "vite": "^8.3.2"
   },
   "packageManager": "pnpm@10.32.1",

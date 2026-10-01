@@ -68,7 +68,7 @@ const { showText, listText, gridText, listAriaLabel, gridAriaLabel, class: class
   }
 
   function updateUI(view: string) {
-    document.querySelectorAll('.view-toggle').forEach(btn => {
+    document.querySelectorAll<HTMLElement>('.view-toggle').forEach(btn => {
       btn.classList.toggle('bg-neutral-lightest', btn.dataset.view === view);
     });
 
