@@ -49,5 +49,6 @@ export function generateTokensCSS(palette?: PaletteInput): string {
     '',
   ];
 
-  return lines.join('\n');
+  // Every group comment starts with '\n'; drop the one right after the opening brace
+  return lines.join('\n').replace(':root {\n\n', ':root {\n');
 }
