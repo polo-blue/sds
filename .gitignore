@@ -54,3 +54,6 @@ Thumbs.db
 *.temp
 
 *storybook.log
+
+# PWA dev service worker (vite-pwa devOptions)
+dev-dist/

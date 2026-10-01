@@ -14,10 +14,11 @@ fi
 
 # Auto-format code
 echo "🎨 Auto-formatting code..."
+STAGED=$(git diff --cached --name-only --diff-filter=ACMR)
 pnpm run format
 
-# Re-add formatted files to staging
-git add -u
+# Re-add only the files that were already staged, so unrelated changes stay out of the commit
+[ -n "$STAGED" ] && echo "$STAGED" | xargs git add --
 
 echo "✅ Code formatted successfully!"
 
