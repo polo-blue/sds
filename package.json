@@ -6,6 +6,15 @@
   "main": "./index.ts",
   "module": "./index.ts",
   "types": "./index.ts",
+  "files": [
+    "index.ts",
+    "src",
+    "uno-config",
+    "uno.config.ts",
+    "icon.config.ts",
+    "icon-collections.ts",
+    "public"
+  ],
   "exports": {
     ".": {
       "import": "./index.ts",
@@ -15,7 +24,7 @@
     "./styles/*": "./src/styles/*",
     "./scripts/*": "./src/scripts/*",
     "./icons": "./icon.config.ts",
-    "./icon-collections": "./icon.collections.ts",
+    "./icon-collections": "./icon-collections.ts",
     "./uno-config": "./uno-config/index.ts",
     "./components/*": "./src/components/*",
     "./components/Product/product-gallery.css": "./src/components/Product/product-gallery.css",
