@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/polo-blue/sds/compare/v2.1.0...v2.1.1) (2026-10-01)
+
+### Bug Fixes
+
+* **release:** pin conventional-changelog-conventionalcommits to v9 ([66432a9](https://github.com/polo-blue/sds/commit/66432a9630515200dff557a00a18bb4452ba688c))
+* support Node 22.18 through 26 and update dependencies ([865397e](https://github.com/polo-blue/sds/commit/865397e364cb15c81113bd160f910f3c3cc728ca))
+
 ## [2.1.0](https://github.com/polo-blue/sds/compare/v2.0.2...v2.1.0) (2026-09-23)
 
 ### Features
