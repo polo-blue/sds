@@ -38,7 +38,7 @@ jobs:
       # comes from publishConfig in package.json, so the option was only ever
       # writing that line. See actions/setup-node#1551, npm/documentation#1960.
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: 'pnpm'
