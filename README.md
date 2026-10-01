@@ -12,7 +12,7 @@ Please feel free to fork it, edit it and let me know what do you think about it.
 
 ## Requirements
 
-- **Node.js**: >= 22.17.0
+- **Node.js**: >= 22.18.0 (tested on 22, 24 LTS and 26)
 - **Package Manager**: pnpm >= 10.16.1 (v10.17.1 recommended)
 
 ## Dual-Purpose Architecture
