@@ -142,7 +142,7 @@
     "@vue/compiler-sfc": "^3.5.43",
     "@vue/eslint-config-typescript": "^14.9.0",
     "astro": "^7.3.5",
-    "conventional-changelog-conventionalcommits": "^10.4.0",
+    "conventional-changelog-conventionalcommits": "^9.3.1",
     "eslint": "^10.11.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^1.7.0",
