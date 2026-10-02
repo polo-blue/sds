@@ -42,6 +42,8 @@ export default defineConfig({
       scope: '/',
       includeAssets: ['favicon.svg', 'safari-pinned-tab.svg', 'brands/*.svg', 'fonts/*.woff2', 'fonts/*.svg', 'vw.svg', 'polo.blue.svg', 'spoko.space.svg'],
       registerType: 'autoUpdate',
+      // Plain registerSW.js script: no virtual:pwa-register import, so no workbox-window dependency
+      injectRegister: 'script',
       manifest: {
         name: 'Spoko Design System',
         short_name: 'SDS',
