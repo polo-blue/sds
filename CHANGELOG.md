@@ -1,3 +1,10 @@
+## [2.1.3](https://github.com/polo-blue/sds/compare/v2.1.2...v2.1.3) (2026-10-02)
+
+### Bug Fixes
+
+* **deps:** add sharp; register the service worker without workbox-window ([273d2ad](https://github.com/polo-blue/sds/commit/273d2ad8e384dfef772cf28e2fc78ec8d49730cb))
+* **deps:** restore @unocss/reset ([6fd2103](https://github.com/polo-blue/sds/commit/6fd2103709afc88cd24fb3631d040d31a12f54a7)), closes [#502](https://github.com/polo-blue/sds/issues/502)
+
 ## [2.1.2](https://github.com/polo-blue/sds/compare/v2.1.1...v2.1.2) (2026-10-02)
 
 ### Bug Fixes
