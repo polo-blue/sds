@@ -114,6 +114,7 @@
     "@unocss/preset-typography": "66.9.1",
     "@unocss/preset-uno": "66.9.1",
     "@unocss/preset-web-fonts": "66.9.1",
+    "@unocss/reset": "66.9.1",
     "@vite-pwa/astro": "^1.2.0",
     "@vueuse/core": "^15.0.0",
     "astro-icon": "^1.2.0",
