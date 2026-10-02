@@ -1,3 +1,9 @@
+## [2.1.5](https://github.com/polo-blue/sds/compare/v2.1.4...v2.1.5) (2026-10-02)
+
+### Bug Fixes
+
+* **uno-config:** let a consumer's fontFamily override reach the page ([#509](https://github.com/polo-blue/sds/issues/509)) ([7d80ac6](https://github.com/polo-blue/sds/commit/7d80ac677a718eb074f0c91da42917203248ce38))
+
 ## [2.1.4](https://github.com/polo-blue/sds/compare/v2.1.3...v2.1.4) (2026-10-02)
 
 ### Bug Fixes
