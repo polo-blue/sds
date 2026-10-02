@@ -14,7 +14,6 @@ import {
 // These presets must be imported explicitly to be used in the configuration
 import presetUno from '@unocss/preset-uno';             // Primary UnoCSS preset
 import presetTypography from '@unocss/preset-typography'; // Typography preset
-import presetWebFonts from '@unocss/preset-web-fonts';    // Web fonts preset
 
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
@@ -203,21 +202,21 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
         },
         collections: Object.fromEntries(ICON_COLLECTIONS.map((n) => [n, fromFS(n)]))
       }),
+      // No presetWebFonts: with provider 'none' it only rewrote theme.fontFamily from SDS's
+      // own defaults, which undid a consumer's override. The theme already carries the fonts.
       presetTypography(),
-      presetWebFonts({
-        provider: 'none',
-        fonts: theme.fontFamily
-      })
     ],
 
     // Additional optimizations for static Astro builds
     preflights: [
       {
-        getCSS: () => `
+        // The body font follows the `sans` token of the final theme, so a consumer that
+        // overrides `theme.fontFamily.sans` changes the page default too.
+        getCSS: ({ theme: { fontFamily } }: { theme: { fontFamily?: Record<string, string | string[]> } }) => `
           /* Optimized base styles for static builds */
           *,*::before,*::after{box-sizing:border-box;border-width:0;border-style:solid}
           html{line-height:1.5;-webkit-text-size-adjust:100%}
-          body{margin:0;font-family:vw_text,vw_textregular,system-ui,sans-serif}
+          body{margin:0;font-family:${[fontFamily?.sans ?? [], 'sans-serif'].flat().join(',')}}
         `
       }
     ],

@@ -129,9 +129,6 @@ importers:
       '@unocss/preset-uno':
         specifier: 66.9.1
         version: 66.9.1
-      '@unocss/preset-web-fonts':
-        specifier: 66.9.1
-        version: 66.9.1
       '@unocss/reset':
         specifier: 66.9.1
         version: 66.9.1
