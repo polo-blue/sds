@@ -1,3 +1,18 @@
+## [2.1.2](https://github.com/polo-blue/sds/compare/v2.1.1...v2.1.2) (2026-10-02)
+
+### Bug Fixes
+
+* **package:** repair ./icon-collections export and publish only package files ([3fbd808](https://github.com/polo-blue/sds/commit/3fbd808860d745496edb45f87309437dab67bde9))
+* repair category links and ProductModels, make astro check run ([eda3df4](https://github.com/polo-blue/sds/commit/eda3df433f286cdec2c55e03426adef5e8e6e982))
+* **deps:** update @astrojs/mdx to v8 ([49c503c](https://github.com/polo-blue/sds/commit/49c503c44884de5cde7ac7da63dfa7b5a572fc0e))
+* **deps:** update @iconify/utils to v3 ([d548190](https://github.com/polo-blue/sds/commit/d5481908fb150d6273fa265a703c7db114db0090))
+* **deps:** update @vueuse/core to v15 ([e11c9d9](https://github.com/polo-blue/sds/commit/e11c9d9135a6f29a14112d90296704c2abb5626c))
+* **deps:** update swiper to v14 ([c79d612](https://github.com/polo-blue/sds/commit/c79d61248b5b99cdbd1303ff668db4ad80ad38b4))
+
+### Performance Improvements
+
+* **deps:** drop unused dependencies, including the 486 MB @iconify/json ([7678674](https://github.com/polo-blue/sds/commit/76786741aa683d2c22ecd7b5bdc02af2d4c4e40f))
+
 ## [2.1.1](https://github.com/polo-blue/sds/compare/v2.1.0...v2.1.1) (2026-10-01)
 
 ### Bug Fixes
