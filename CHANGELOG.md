@@ -1,3 +1,9 @@
+## [2.1.4](https://github.com/polo-blue/sds/compare/v2.1.3...v2.1.4) (2026-10-02)
+
+### Bug Fixes
+
+* **typography:** add German letters to VW webfonts and bust their cache ([#508](https://github.com/polo-blue/sds/issues/508)) ([614b924](https://github.com/polo-blue/sds/commit/614b92487d92cbc11043b518b716efdba7746475))
+
 ## [2.1.3](https://github.com/polo-blue/sds/compare/v2.1.2...v2.1.3) (2026-10-02)
 
 ### Bug Fixes
