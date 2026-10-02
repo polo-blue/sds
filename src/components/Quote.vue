@@ -1,18 +1,14 @@
 <script setup lang="ts">
-import { PropType } from 'vue';
-
-const props = defineProps({
-  as: {
-    type: String as PropType<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'div' | 'span'>,
-    default: 'div',
-    required: false,
-  },
-  text: {
-    type: String,
-    default: '',
-    required: false,
-  },
-});
+const props = withDefaults(
+  defineProps<{
+    as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'div' | 'span';
+    text?: string;
+  }>(),
+  {
+    as: 'div',
+    text: '',
+  }
+);
 </script>
 
 <template>

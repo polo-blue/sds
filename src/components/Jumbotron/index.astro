@@ -57,7 +57,7 @@ const hasSubtitleContent = await hasSlotContent('subtitle');
 const hasCtaContent = await hasSlotContent('cta-content');
 
 // Content helpers
-const hasMetadata = author || date;
+const hasMetadata = Boolean(author || date);
 const hasCategories = categories.length > 0;
 
 // Props to pass to variants

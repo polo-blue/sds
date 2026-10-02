@@ -19,7 +19,7 @@
   /* accent */
   --color-accent-light: oklch(65% 0.143 238);
   --color-accent-medium: oklch(59% 0.158 248);
-  --color-accent-default: oklch(59% 0.13 238);
+  --color-accent-default: oklch(59% 0.130 238);
   --color-accent-dark: oklch(51% 0.121 241);
   --color-accent-darker: oklch(38% 0.111 251);
   --color-accent-deepBlue: oklch(22% 0.051 261);
@@ -60,5 +60,5 @@
   --font-family-textlight: vw_textlight;
   --font-family-textregular: vw_textregular;
   --font-family-textbold: vw_textbold;
-  --font-size-xxs: 0.625rem;
+  --font-size-xxs: .625rem;
 }
