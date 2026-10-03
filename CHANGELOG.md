@@ -1,3 +1,9 @@
+## [2.1.6](https://github.com/polo-blue/sds/compare/v2.1.5...v2.1.6) (2026-10-03)
+
+### Bug Fixes
+
+* **uno-config:** let jumbotron-info and product-link--url wrap under text spacing ([#511](https://github.com/polo-blue/sds/issues/511)) ([7e1dbcd](https://github.com/polo-blue/sds/commit/7e1dbcdd33a69598da26de0f550953291dcaf430)), closes [polo-blue/polo.blue#425](https://github.com/polo-blue/polo.blue/issues/425)
+
 ## [2.1.5](https://github.com/polo-blue/sds/compare/v2.1.4...v2.1.5) (2026-10-02)
 
 ### Bug Fixes
