@@ -48,7 +48,9 @@ export const jumbotronShortcuts = [
 
   // Content styles
   ['jumbotron-description', 'mb-1 line-clamp-3 text-base sm:text-lg leading-tight'],
-  ['jumbotron-info', 'font-medium mb-4 line-clamp-1 text-base sm:text-lg mt-2'],
+  // No line clamp: under the WCAG 1.4.12 text-spacing override the one-line clamp clipped
+  // the description; the hero is auto-height, so the text wraps instead.
+  ['jumbotron-info', 'font-medium mb-4 text-base sm:text-lg mt-2'],
 
   // Post Split variant
   ['jumbotron-split-wrapper', 'w-full'],
