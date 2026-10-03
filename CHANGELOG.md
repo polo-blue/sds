@@ -1,3 +1,9 @@
+## [2.1.7](https://github.com/polo-blue/sds/compare/v2.1.6...v2.1.7) (2026-10-03)
+
+### Bug Fixes
+
+* **language-suggestion:** mark the banner with the language it speaks ([#512](https://github.com/polo-blue/sds/issues/512)) ([563f4ea](https://github.com/polo-blue/sds/commit/563f4eaeaf607578f38600ca6f6cb2a9cf32cf82)), closes [polo-blue/sds#510](https://github.com/polo-blue/sds/issues/510)
+
 ## [2.1.6](https://github.com/polo-blue/sds/compare/v2.1.5...v2.1.6) (2026-10-03)
 
 ### Bug Fixes
