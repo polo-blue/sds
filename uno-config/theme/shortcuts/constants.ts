@@ -74,6 +74,8 @@ export const BUTTON_STYLES = {
     layout: 'inline-flex items-center justify-center rounded-full',
     text: 'text-base font-medium text-center leading-4.5',
     transition: 'transition-all duration-200 ease-in-out',
+    // Visible keyboard focus for every button variant (WCAG 2.4.7)
+    focus: 'focus-visible:(outline-none ring-2 ring-offset-2 ring-blue-light dark:ring-blue-lightest dark:ring-offset-slate-darkest)',
   },
   sizes: {
     normal: 'md:px-10 md:py-2 md:text-lg px-8 py-3 whitespace-nowrap h-12',
@@ -90,8 +92,8 @@ export const BUTTON_STYLES = {
       outline: 'border-neutral-dark border text-neutral-dark hover:(text-white bg-neutral-dark)',
     },
     tertiary: {
-      solid: 'bg-blue-darker hover:bg-accent-darker text-white focus:(ring-4 outline-none ring-blue-light)',
-      outline: 'border-blue-darker text-blue-darker focus:(ring-2 outline-none ring-blue-light)',
+      solid: 'bg-blue-darker hover:bg-accent-darker text-white',
+      outline: 'border-blue-darker text-blue-darker',
     },
   },
   hover: {

@@ -3,7 +3,7 @@
 
 export const inputShortcuts = [
   // Base input - core class for the input without peer selectors
-  ['input-base', 'block w-full text-4.5 text-blue-medium border-0 border-b-1 border-neutral-light appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-lightest focus:outline-none focus:ring-0 focus:border-blue-medium'],
+  ['input-base', 'block w-full text-4.5 text-blue-medium border-0 border-b-1 border-neutral-light appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-lightest focus:outline-none focus:ring-0 focus:border-blue-medium focus:shadow-[0_1px_0_0_currentColor]'],
   
   // Base label - basic styles for the label without transformations and states
   ['input-label-base', 'absolute text-sm text-slate-light dark:text-neutral-default origin-top-left transform-gpu transition-all duration-300 ease-in-out'],

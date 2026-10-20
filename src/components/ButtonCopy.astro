@@ -16,6 +16,7 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
 ---
 
 <button
+  type="button"
   aria-label={texts.copy}
   class="btn-copy"
   data-copy-text={productNumber}
@@ -130,14 +131,16 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
     width: 1.5rem;
     height: 1.5rem;
     line-height: 1;
-    opacity: 0.1;
+    /* Dimmed at rest but still perceivable (WCAG 1.4.11) */
+    opacity: 0.6;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     transition: opacity 0.2s ease-in-out;
   }
 
-  .btn-copy:hover {
+  .btn-copy:hover,
+  .btn-copy:focus-visible {
     opacity: 1;
   }
 
