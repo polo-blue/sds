@@ -1,3 +1,10 @@
+## [2.1.8](https://github.com/polo-blue/sds/compare/v2.1.7...v2.1.8) (2026-10-21)
+
+### Bug Fixes
+
+* **deps:** move pnpm settings to pnpm-workspace.yaml for pnpm 12 ([#526](https://github.com/polo-blue/sds/issues/526)) ([f32de19](https://github.com/polo-blue/sds/commit/f32de19f3c8cd300612d43234b2dc7da71284c7a))
+* **a11y:** WCAG 2.2 AA remediation ([#522](https://github.com/polo-blue/sds/issues/522)) ([41b0877](https://github.com/polo-blue/sds/commit/41b087768e62d04687de9a559d8869559599a1ad)), closes [#514](https://github.com/polo-blue/sds/issues/514) [#515](https://github.com/polo-blue/sds/issues/515) [#516](https://github.com/polo-blue/sds/issues/516) [#517](https://github.com/polo-blue/sds/issues/517) [#518](https://github.com/polo-blue/sds/issues/518) [#519](https://github.com/polo-blue/sds/issues/519) [#520](https://github.com/polo-blue/sds/issues/520) [#521](https://github.com/polo-blue/sds/issues/521)
+
 ## [2.1.7](https://github.com/polo-blue/sds/compare/v2.1.6...v2.1.7) (2026-10-03)
 
 ### Bug Fixes
