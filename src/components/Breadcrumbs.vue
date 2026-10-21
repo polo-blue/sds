@@ -13,6 +13,10 @@ interface Props {
   showBack?: boolean;
   textBack?: string;
   showHome?: boolean;
+  // Accessible name of the icon-only home link
+  textHome?: string;
+  // Accessible name of the breadcrumb navigation landmark
+  ariaLabel?: string;
   breadcrumbs: Breadcrumb[];
   suffix?: string;
   titlePrefix?: string;
@@ -24,6 +28,8 @@ const props = withDefaults(defineProps<Props>(), {
   showBack: false,
   textBack: 'Back',
   showHome: false,
+  textHome: 'Home',
+  ariaLabel: 'Breadcrumb',
   suffix: undefined,
   titlePrefix: '',
   // Default keeps the original behaviour: the suffix is hidden below `sm`.
@@ -66,11 +72,17 @@ const listItemMicrodata = computed(() =>
 </script>
 
 <template>
-  <nav>
-    <ul class="breadcrumbs-base">
-      <li v-if="props.showBack" class="breadcrumb-item">
-        <button class="breadcrumb-back-btn" :title="props.textBack" onclick="history.back()">
-          <span class="block px-3" i-bx-bx-arrow-back />
+  <nav :aria-label="props.ariaLabel">
+    <ul v-if="props.showBack" class="breadcrumbs-base">
+      <li class="breadcrumb-item">
+        <button
+          type="button"
+          class="breadcrumb-back-btn"
+          :title="props.textBack"
+          :aria-label="props.textBack"
+          onclick="history.back()"
+        >
+          <span class="block px-3" aria-hidden="true" i-bx-bx-arrow-back />
         </button>
       </li>
     </ul>
@@ -79,7 +91,8 @@ const listItemMicrodata = computed(() =>
         <a
           href="/"
           class="breadcrumb-link flex items-center px-3 sm:px-0 py-4.25 sm:py-1 hover:text-brand-secondary whitespace-nowrap translate-y-0 text-sm my-auto"
-          :title="props.textBack"
+          :title="props.textHome"
+          :aria-label="props.textHome"
           v-bind="withMicrodata ? { itemprop: 'item' } : {}"
           i-carbon-home
         />
@@ -96,6 +109,7 @@ const listItemMicrodata = computed(() =>
           v-if="index > 0 || props.showHome"
           class="text-gray-400 px-1 py-4.25 sm:py-1"
           :class="mobileHidden('separators')"
+          aria-hidden="true"
         >
           /
         </span>
@@ -116,6 +130,7 @@ const listItemMicrodata = computed(() =>
           :href="crumb.path"
           class="breadcrumb-link breadcrumb-link-disabled"
           :title="getTitle(crumb.name, true)"
+          aria-current="page"
           v-bind="withMicrodata ? { itemprop: 'item' } : {}"
         >
           <span class="font-normal" v-bind="withMicrodata ? { itemprop: 'name' } : {}">

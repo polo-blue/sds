@@ -20,10 +20,10 @@ const { data } = Astro.props;
       class="faq-details [&_summary:after]:open:-rotate-180"
     >
       <summary
-        class="py-2 outline-none cursor-pointer focus:underline text-xl font-500 relative items-center flex justify-between list-none
+        class="py-2 cursor-pointer focus-visible:underline text-xl font-500 relative items-center flex justify-between list-none
       after:(block duration-200 content-empty bg-[url(/arrow-bottom.svg)] bg-contain bg-center bg-no-repeat h-3 w-4 min-w-4 my-auto ml-4 opacity-60)"
       >
-        <h2 itemprop="name" class="font-headbold" set:html={data.question} />
+        <h3 itemprop="name" class="faq-question font-headbold" set:html={data.question} />
       </summary>
       <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <div itemprop="text" class="px-0 pb-4">
@@ -36,7 +36,7 @@ const { data } = Astro.props;
 
 <style is:global>
   .faq-details {
-    &[open] h2 {
+    &[open] .faq-question {
       @apply text-accent-light;
     }
 
@@ -57,7 +57,7 @@ const { data } = Astro.props;
       @apply list-decimal;
     }
 
-    h2 {
+    .faq-question {
       @apply text-blue-medium;
 
       &:hover {
@@ -65,7 +65,7 @@ const { data } = Astro.props;
       }
     }
 
-    h3 {
+    h3:not(.faq-question) {
       @apply mt-2;
     }
 

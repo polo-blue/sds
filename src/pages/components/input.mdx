@@ -41,7 +41,7 @@ import Input from 'spoko-design-system/src/components/Input.vue';
     Floating standard
   </label>
 </div>`}>
-  <div class="bg-white grid items-end w-full gap-6 md:grid-cols-3 px-4 py-6">
+  <div class="bg-white dark:bg-accent-deepBlue grid items-end w-full gap-6 md:grid-cols-3 px-4 py-6">
     <Input id="name-filled" label="Floating filled" variant="filled" />
     <Input id="email-standard" label="Floating standard" variant="standard" />
   </div>
@@ -83,7 +83,7 @@ import Input from 'spoko-design-system/src/components/Input.vue';
     Floating standard
   </label>
 </div>`}>
-  <div class="bg-white grid items-end w-full gap-6 md:grid-cols-3 px-4 py-6">
+  <div class="bg-white dark:bg-accent-deepBlue grid items-end w-full gap-6 md:grid-cols-3 px-4 py-6">
     <Input id="name-filled-ta" label="Floating filled" variant="filled" type="textarea" />
     <Input id="email-standard-ta" label="Floating standard" variant="standard" type="textarea" />
   </div>
@@ -122,7 +122,7 @@ The Input component supports error states to provide validation feedback to user
   </label>
   <div class="input-error-message">Please enter a valid email</div>
 </div>`}>
-  <div class="bg-white grid items-end w-full gap-6 md:grid-cols-2 px-4 py-6">
+  <div class="bg-white dark:bg-accent-deepBlue grid items-end w-full gap-6 md:grid-cols-2 px-4 py-6">
     <Input id="error-filled" label="With error" variant="filled" error="This field is required" />
     <Input id="error-standard" label="With error" variant="standard" error="Please enter a valid email" />
   </div>
@@ -156,7 +156,7 @@ Similar to errors, you can indicate a successful validation state using the `suc
     With success
   </label>
 </div>`}>
-  <div class="bg-white grid items-end w-full gap-6 md:grid-cols-2 px-4 py-6">
+  <div class="bg-white dark:bg-accent-deepBlue grid items-end w-full gap-6 md:grid-cols-2 px-4 py-6">
     <Input id="success-filled" label="With success" variant="filled" success="Username is available" />
     <Input id="success-standard" label="With success" variant="standard" success={true} />
   </div>
@@ -202,7 +202,7 @@ The Input component supports different sizes: `sm`, `md` (default), and `lg`.
     Large input
   </label>
 </div>`}>
-  <div class="bg-white grid items-end w-full gap-6 px-4 py-6">
+  <div class="bg-white dark:bg-accent-deepBlue grid items-end w-full gap-6 px-4 py-6">
     <Input id="small-input" label="Small input" variant="filled" size="sm" />
     <Input id="medium-input" label="Medium input (default)" variant="filled" size="md" />
     <Input id="large-input" label="Large input" variant="filled" size="lg" />
@@ -227,7 +227,7 @@ You can mark an input as required, which will add a red asterisk to the label.
     Required field<span class="text-red-500 ml-1">*</span>
   </label>
 </div>`}>
-  <div class="bg-white grid items-end w-full gap-6 md:grid-cols-2 px-4 py-6">
+  <div class="bg-white dark:bg-accent-deepBlue grid items-end w-full gap-6 md:grid-cols-2 px-4 py-6">
     <Input id="required-filled" label="Required field" variant="filled" required />
     <Input id="required-standard" label="Required field" variant="standard" required />
   </div>
@@ -268,7 +268,7 @@ The Input component supports all standard HTML input types, plus a special `text
     Password
   </label>
 </div>`}>
-  <div class="bg-white grid items-end w-full gap-6 md:grid-cols-2 px-4 py-6">
+  <div class="bg-white dark:bg-accent-deepBlue grid items-end w-full gap-6 md:grid-cols-2 px-4 py-6">
     <Input id="email-input" label="Email" type="email" variant="filled" />
     <Input id="password-input" label="Password" type="password" variant="standard" />
     <Input id="number-input" label="Age" type="number" variant="filled" />

@@ -1,5 +1,10 @@
 <template>
-  <div class="relative flex" title="FUCK PUTIN! FUCK RUZZIA!">
+  <div
+    class="relative flex"
+    role="img"
+    title="FUCK PUTIN! FUCK RUZZIA!"
+    aria-label="FUCK PUTIN! FUCK RUZZIA!"
+  >
     <div i-mdi:tank class="inline-block bg-ukraine mr-1 mt-0.5" />
     <div i-mdi:tank class="inline-block bg-ukraine mr-1 mt-0.5" />
     <div i-mdi:tank class="inline-block bg-ukraine mr-5 mt-0.5" />
@@ -26,24 +31,33 @@
 
 .animate-bull {
   top: -2px;
-  animation-iteration-count: infinite;
+  /* Bullets come to rest at the target instead of looping forever */
+  animation-fill-mode: both;
 }
 
+/* Every animation stops within ~5 seconds (WCAG 2.2.2 Pause, Stop, Hide) */
 .animate-bull--1 {
   animation-duration: 2s;
   animation-name: AnimateBull1;
+  animation-iteration-count: 2;
 }
 
 .animate-bull--2 {
   animation-duration: 1.332s;
   animation-name: AnimateBull2;
   animation-delay: 1s;
+  animation-iteration-count: 3;
 }
 
 .animate-bull--3 {
   animation-duration: 0.666s;
   animation-name: AnimateBull3;
   animation-delay: 2s;
+  animation-iteration-count: 4;
+}
+
+.animate-ping {
+  animation-iteration-count: 5;
 }
 
 @keyframes AnimateBull1 {

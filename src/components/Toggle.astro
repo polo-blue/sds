@@ -2,6 +2,8 @@
 export interface SegmentedItem {
   value: string;
   label: string;
+  // Use either links (navigation, e.g. language switch) or buttons (radio selection) for all
+  // items of one segmented control; mixing both is not a valid ARIA structure.
   href?: string;
   hreflang?: string;
   disabled?: boolean;
@@ -50,7 +52,7 @@ const sizeMap = {
     thumb: 'w-3 h-3',
     thumbTranslate: 'translate-x-4',
     label: 'text-xs',
-    segBtn: 'px-2 py-1 text-xs',
+    segBtn: 'px-2 py-1 text-xs min-h-6',
   },
   md: {
     track: 'w-10 h-5',
@@ -83,7 +85,8 @@ const s = sizeMap[size];
       data-value={value}
       data-look={look}
       class:list={[
-        'sds-toggle-switch inline-flex items-center gap-2 group',
+        // min-h-6 keeps the hit area at least 24px tall even for size="sm" (WCAG 2.5.8)
+        'sds-toggle-switch inline-flex items-center gap-2 group min-h-6',
         look === 'default' && 'inline-flex items-center gap-2',
         disabled && 'opacity-50 cursor-not-allowed',
         !disabled && 'cursor-pointer',
@@ -136,7 +139,7 @@ const s = sizeMap[size];
 {
   variant === 'segmented' && (
     <div
-      role="group"
+      role={items.every(item => item.href) ? 'group' : 'radiogroup'}
       aria-label={groupLabel}
       data-look={look}
       class:list={[
@@ -146,8 +149,12 @@ const s = sizeMap[size];
         className,
       ]}
     >
-      {items.map(item => {
+      {items.map((item, index) => {
         const isActive = item.value === current;
+        // Keep the radiogroup reachable by keyboard when no option matches `current`
+        const firstEnabledIndex = items.findIndex(i => !i.disabled);
+        const hasActive = items.some(i => i.value === current && !i.disabled);
+        const isTabStop = isActive || (!hasActive && index === firstEnabledIndex);
         const isLink = !!item.href;
         const isDisabled = !!item.disabled;
         const baseClasses = [
@@ -156,7 +163,7 @@ const s = sizeMap[size];
             'inline-flex items-center justify-center gap-1.5 rounded-md font-textbold transition-colors',
             s.segBtn,
             isActive
-              ? 'bg-white dark:bg-slate-darkest text-blue-medium dark:text-blue-light shadow-sm'
+              ? 'bg-white dark:bg-slate-darkest text-blue-medium dark:text-blue-300 shadow-sm'
               : 'text-slate-dark dark:text-neutral-lighter hover:bg-white/60 dark:hover:bg-slate-darkest/60',
           ],
           isActive && 'is-active',
@@ -166,7 +173,7 @@ const s = sizeMap[size];
         if (isLink) {
           return (
             <a
-              href={item.href}
+              href={isDisabled ? undefined : item.href}
               class:list={baseClasses}
               aria-current={isActive ? 'page' : undefined}
               aria-disabled={isDisabled ? 'true' : undefined}
@@ -185,7 +192,7 @@ const s = sizeMap[size];
             role="radio"
             aria-checked={isActive ? 'true' : 'false'}
             disabled={isDisabled}
-            tabindex={isActive ? 0 : -1}
+            tabindex={isTabStop ? 0 : -1}
             data-value={item.value}
             class:list={baseClasses}
           >
@@ -369,7 +376,8 @@ const s = sizeMap[size];
     color: theme('colors.neutral.lighter');
   }
   html.dark .sds-toggle-switch[data-look='outline'][aria-checked='true'] {
-    color: theme('colors.blue.light');
+    /* blue-light is only 3.1:1 on slate-darkest */
+    color: theme('colors.blue.300');
   }
   html.dark .sds-toggle-switch[data-look='outline'][aria-checked='true'] .sds-toggle-track {
     background: theme('colors.blue.light');
@@ -438,7 +446,7 @@ const s = sizeMap[size];
                 'bg-white',
                 'dark:bg-slate-darkest',
                 'text-blue-medium',
-                'dark:text-blue-light',
+                'dark:text-blue-300',
                 'shadow-sm'
               );
               r.classList.add('text-slate-dark', 'dark:text-neutral-lighter');
@@ -452,7 +460,7 @@ const s = sizeMap[size];
               'bg-white',
               'dark:bg-slate-darkest',
               'text-blue-medium',
-              'dark:text-blue-light',
+              'dark:text-blue-300',
               'shadow-sm'
             );
             radio.classList.remove('text-slate-dark', 'dark:text-neutral-lighter');

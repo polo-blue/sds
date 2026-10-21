@@ -8,19 +8,20 @@
 import FaqItem from '../components/FaqItem.astro';
 
 interface Props {
+  title?: string;
   questions: {
     question: string;
     answer: string;
   }[];
 }
 
-const { questions } = Astro.props;
+const { questions, title = 'Frequently Asked Questions' } = Astro.props;
 ---
 
 <div class="flex flex-col mt-6 mb-4 w-full px-4 md:px-0" itemscope itemtype="https://schema.org/FAQPage">
-  <div class="mb-6 text-4xl font-headbold sm:text-4xl text-blue-802 faq-heading">
-    Frequently Asked Questions
-  </div>
+  <h2 class="mb-6 text-4xl font-headbold sm:text-4xl text-blue-802 faq-heading">
+    {title}
+  </h2>
   <div class="flex flex-col divide-y dark:divide-gray-700">
     {questions.map(question => <FaqItem data={question} />)}
   </div>

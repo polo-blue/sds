@@ -9,6 +9,8 @@ interface Props {
   variant?: 'default' | 'hero' | 'post' | 'post-split';
   title?: string;
   image?: string;
+  // Alt text for the image; empty by default (decorative next to the title heading)
+  imageAlt?: string;
   imageWidth?: number;
   imageHeight?: number;
   imageClass?: string;
@@ -29,6 +31,7 @@ const {
   variant = 'default',
   title = '',
   image,
+  imageAlt,
   imageWidth,
   imageHeight,
   imageClass,
@@ -62,6 +65,7 @@ const hasCategories = categories.length > 0;
 
 // Props to pass to variants
 const commonProps = {
+  imageAlt,
   title,
   image,
   hasIntroContent,

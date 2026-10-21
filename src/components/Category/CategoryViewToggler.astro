@@ -15,23 +15,27 @@ const { showText, listText, gridText, listAriaLabel, gridAriaLabel, class: class
 
 <div class:list={[className]}>
   <span class="text-slate-default text-sm">{showText}</span>
-  <div class="flex border rounded">
+  <div class="flex border rounded" role="group" aria-label={showText}>
     <button
+      type="button"
       data-view="list"
       data-view-toggle
+      aria-pressed="false"
       class="view-toggle flex items-center gap-1 px-3 py-0.5 transition-colors"
       aria-label={listAriaLabel}
     >
-      <Icon name="ant-design:bars-outlined" class="w-4 h-4" />
+      <Icon name="ant-design:bars-outlined" class="w-4 h-4" aria-hidden="true" />
       <span class="text-sm">{listText}</span>
     </button>
     <button
+      type="button"
       data-view="grid"
       data-view-toggle
+      aria-pressed="false"
       class="view-toggle flex items-center gap-1 px-3 py-0.5 transition-colors"
       aria-label={gridAriaLabel}
     >
-      <Icon name="ant-design:appstore-outlined" class="w-4 h-4" />
+      <Icon name="ant-design:appstore-outlined" class="w-4 h-4" aria-hidden="true" />
       <span class="text-sm">{gridText}</span>
     </button>
   </div>
@@ -69,7 +73,10 @@ const { showText, listText, gridText, listAriaLabel, gridAriaLabel, class: class
 
   function updateUI(view: string) {
     document.querySelectorAll<HTMLElement>('.view-toggle').forEach(btn => {
-      btn.classList.toggle('bg-neutral-lightest', btn.dataset.view === view);
+      const isActive = btn.dataset.view === view;
+      btn.classList.toggle('bg-neutral-lightest', isActive);
+      // Selected view is exposed to assistive technology, not only by colour
+      btn.setAttribute('aria-pressed', String(isActive));
     });
 
     const productsContainer = document.querySelector('.products-container');

@@ -62,6 +62,7 @@ const classes = {
 };
 
 const attrs = useAttrs();
+// Icon-only buttons (e.g. `circle`) need an accessible name: pass `aria-label`, it is forwarded via attrs.
 </script>
 
 <template>
@@ -71,6 +72,7 @@ const attrs = useAttrs();
     v-bind="attrs"
     :href="props.href"
     :title="props.title ? props.title : null"
+    :type="tag === 'button' ? (attrs.type ?? 'button') : undefined"
   >
     <slot />
   </component>

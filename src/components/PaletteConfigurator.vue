@@ -31,6 +31,22 @@ const palette = computed(() => {
   }
 });
 
+// Per-field validity so aria-invalid lands on the field that actually failed
+const isValidColor = (value: string) => {
+  try {
+    generatePalette({ primary: value });
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+const invalidColors = computed(() => ({
+  primary: !isValidColor(primary.value),
+  secondary: Boolean(secondary.value) && !isValidColor(secondary.value),
+  accent: Boolean(accent.value) && !isValidColor(accent.value),
+}));
+
 const colorGroups = computed(() => {
   if (!palette.value) return [];
   return Object.entries(palette.value).map(([group, shades]) => ({
@@ -87,7 +103,7 @@ const copyConfig = () => copy(exportCode.value);
         <label class="flex flex-col gap-1.5">
           <span class="text-sm font-textbold text-slate-dark dark:text-neutral-lighter">
             Primary
-            <span class="text-red-500" aria-label="required">*</span>
+            <span class="text-red-700 dark:text-red-300" aria-hidden="true">*</span>
           </span>
           <div class="flex items-center gap-2">
             <input
@@ -100,6 +116,9 @@ const copyConfig = () => copy(exportCode.value);
               type="text"
               v-model="primary"
               aria-label="Primary color hex value"
+              required
+              :aria-invalid="invalidColors.primary ? 'true' : undefined"
+              :aria-describedby="invalidColors.primary ? 'palette-color-error' : undefined"
               class="font-mono text-sm border border-slate-200 dark:border-slate-dark dark:bg-slate-darkest rounded px-2 py-1 w-24"
             />
           </div>
@@ -118,6 +137,8 @@ const copyConfig = () => copy(exportCode.value);
               v-model="secondary"
               aria-label="Secondary color hex value"
               placeholder="auto"
+              :aria-invalid="invalidColors.secondary ? 'true' : undefined"
+              :aria-describedby="invalidColors.secondary ? 'palette-color-error' : undefined"
               class="font-mono text-sm border border-slate-200 dark:border-slate-dark dark:bg-slate-darkest rounded px-2 py-1 w-24"
             />
           </div>
@@ -139,6 +160,8 @@ const copyConfig = () => copy(exportCode.value);
               v-model="accent"
               aria-label="Accent color hex value"
               placeholder="#..."
+              :aria-invalid="invalidColors.accent ? 'true' : undefined"
+              :aria-describedby="invalidColors.accent ? 'palette-color-error' : undefined"
               class="font-mono text-sm border border-slate-200 dark:border-slate-dark dark:bg-slate-darkest rounded px-2 py-1 w-24"
             />
           </div>
@@ -146,13 +169,22 @@ const copyConfig = () => copy(exportCode.value);
       </div>
     </section>
 
-    <div v-if="!palette" class="mb-8 p-3 bg-red-50 border border-red-200 rounded text-sm text-red-700">
+    <div
+      v-if="!palette"
+      id="palette-color-error"
+      role="alert"
+      class="mb-8 p-3 bg-red-50 border border-red-200 rounded text-sm text-red-700"
+    >
       Invalid color value — enter a valid hex, rgb, or oklch color.
     </div>
 
     <div v-else class="space-y-8 mb-10">
       <div v-for="{ group, entries } in colorGroups" :key="group">
-        <h3 class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">{{ group }}</h3>
+        <h3
+          class="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-neutral-light mb-3"
+        >
+          {{ group }}
+        </h3>
         <div class="flex flex-wrap gap-3">
           <template v-for="[name, value] in entries" :key="name">
             <div class="flex flex-col items-center gap-1">
@@ -161,7 +193,9 @@ const copyConfig = () => copy(exportCode.value);
                 :style="`background: ${value}`"
                 :title="`${cssVar(group, name)}: ${value}`"
               />
-              <span class="text-xs text-gray-500 text-center leading-tight max-w-12">{{ name }}</span>
+              <span class="text-xs text-gray-500 dark:text-neutral-light text-center leading-tight max-w-12">
+                {{ name }}
+              </span>
             </div>
           </template>
         </div>
@@ -178,8 +212,10 @@ const copyConfig = () => copy(exportCode.value);
         >
           {{ copied ? '✓ Copied' : 'Copy' }}
         </button>
+        <span class="sr-only" role="status">{{ copied ? 'Configuration copied to clipboard' : '' }}</span>
       </div>
       <pre
+        tabindex="0"
         class="bg-gray-900 p-4 overflow-x-auto"
       ><code class="text-gray-200 text-sm">{{ exportCode }}</code></pre>
     </div>

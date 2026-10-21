@@ -28,7 +28,7 @@ import PrCode from 'spoko-design-system/src/components/PrCode.vue'
 ### Basic Usage:
 
 <div class="component-preview">
-     <div class="bg-white p-6 w-full flex gap-2">
+     <div class="bg-white dark:bg-accent-deepBlue p-6 w-full flex gap-2">
           <PrCode prcode={{ code: "2JP", group: "STF", description: "R-Line bumper", variant_category: "R_LINE" }} />
           <PrCode prcode={{ code: "1ZJ", group: "BAV", description: "Disk brakes in front (Geomet D); 256x22mm (vented)" }} />
      </div>
@@ -54,25 +54,25 @@ import PrCode from 'spoko-design-system/src/components/PrCode.vue'
 PR codes for special editions are automatically color-coded based on their `variant_category`:
 
 <div class="component-preview">
-     <div class="bg-white p-6 w-full flex flex-wrap gap-3">
+     <div class="bg-white dark:bg-accent-deepBlue p-6 w-full flex flex-wrap gap-3">
           <div class="flex flex-col gap-1">
-               <small class="text-xs text-gray-500">GTI (Red)</small>
+               <small class="text-xs text-gray-500 dark:text-neutral-light">GTI (Red)</small>
                <PrCode prcode={{ code: "2JD", group: "STF", description: "Sports bumpers (e.g. Polo 6R/6C GTI)", variant_category: "GTI" }} />
           </div>
           <div class="flex flex-col gap-1">
-               <small class="text-xs text-gray-500">WRC (Blue)</small>
+               <small class="text-xs text-gray-500 dark:text-neutral-light">WRC (Blue)</small>
                <PrCode prcode={{ code: "E5M", group: "AAU", description: "Polo WRC", variant_category: "WRC" }} />
           </div>
           <div class="flex flex-col gap-1">
-               <small class="text-xs text-gray-500">CROSS (Orange)</small>
+               <small class="text-xs text-gray-500 dark:text-neutral-light">CROSS (Orange)</small>
                <PrCode prcode={{ code: "2JK", group: "STF", description: "Sports bumpers (e.g. Polo 6R/6C Cross)", variant_category: "CROSS" }} />
           </div>
           <div class="flex flex-col gap-1">
-               <small class="text-xs text-gray-500">BlueGT</small>
+               <small class="text-xs text-gray-500 dark:text-neutral-light">BlueGT</small>
                <PrCode prcode={{ code: "2JE", group: "STF", description: "Partially painted bumpers (e.g. Polo 6R/6C BlueGT)", variant_category: "BLUEGT" }} />
           </div>
           <div class="flex flex-col gap-1">
-               <small class="text-xs text-gray-500">Bluemotion</small>
+               <small class="text-xs text-gray-500 dark:text-neutral-light">Bluemotion</small>
                <PrCode prcode={{ code: "2JZ", group: "STF", description: "Standard bumpers (e.g. Polo 6R Bluemotion)", variant_category: "BLUEMOTION" }} />
           </div>
      </div>
@@ -121,7 +121,7 @@ import ProductCodes from 'spoko-design-system/src/components/ProductCodes.vue'
 ### Usage:
 
 <div class="component-preview">
-     <div class="bg-white p-6 w-full">
+     <div class="bg-white dark:bg-accent-deepBlue p-6 w-full">
           <ProductCodes prcodes={[
                { code: "2JP", group: "STF", description: "R-Line bumper", variant_category: "R_LINE" },
                { code: "1ZJ", group: "BAV", description: "Disk brakes in front (Geomet D); 256x22mm (vented)" },

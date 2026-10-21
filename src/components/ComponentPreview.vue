@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, nextTick, useId } from 'vue';
 import { useClipboard } from '@vueuse/core';
 
 interface Props {
@@ -22,6 +22,36 @@ const tabs = computed<TabName[]>(() => {
 });
 
 const activeTab = ref<TabName>(tabs.value[0] ?? 'html');
+
+// Stable ids that tie each tab to the shared code panel (WAI-ARIA tabs pattern)
+const uid = useId();
+const tabId = (tab: TabName) => `${uid}-tab-${tab}`;
+const panelId = `${uid}-panel`;
+const tabRefs = ref<HTMLButtonElement[]>([]);
+
+// Arrow keys / Home / End move between tabs; focus follows selection
+async function onTabKeydown(event: KeyboardEvent, index: number) {
+  const last = tabs.value.length - 1;
+  const next =
+    event.key === 'ArrowRight'
+      ? index === last
+        ? 0
+        : index + 1
+      : event.key === 'ArrowLeft'
+        ? index === 0
+          ? last
+          : index - 1
+        : event.key === 'Home'
+          ? 0
+          : event.key === 'End'
+            ? last
+            : null;
+  if (next === null) return;
+  event.preventDefault();
+  activeTab.value = tabs.value[next];
+  await nextTick();
+  tabRefs.value[next]?.focus();
+}
 
 const activeCode = computed<string>(() => {
   const code = props[activeTab.value];
@@ -116,6 +146,11 @@ const chunks = computed<string[]>(() => {
 const { copy: copyAll, copied: copiedAll } = useClipboard({ source: activeCode, legacy: true });
 
 const copiedChunkIdx = ref<number | null>(null);
+
+// Announced through a polite live region so the copy result is not visual-only (WCAG 4.1.3)
+const copyStatus = computed(() =>
+  copiedAll.value || copiedChunkIdx.value !== null ? 'Copied to clipboard' : ''
+);
 async function copyChunk(idx: number, text: string) {
   try {
     await navigator.clipboard.writeText(text);
@@ -144,53 +179,69 @@ async function copyChunk(idx: number, text: string) {
       class="rounded-b border border-t-0 border-neutral-lighter dark:border-slate-dark overflow-hidden -mt-px"
     >
       <div
-        role="tablist"
         class="flex items-center bg-neutral-lightest dark:bg-slate-darkest px-3 gap-0.5 border-b border-neutral-lighter dark:border-slate-dark"
       >
+        <div role="tablist" aria-label="Code examples" class="flex items-center gap-0.5">
+          <button
+            v-for="(tab, index) in tabs"
+            :id="tabId(tab)"
+            :key="tab"
+            ref="tabRefs"
+            type="button"
+            role="tab"
+            :aria-selected="activeTab === tab"
+            :aria-controls="panelId"
+            :tabindex="activeTab === tab ? 0 : -1"
+            class="px-3 py-2 text-xs font-medium uppercase tracking-wide transition-colors focus-visible:outline-offset-[-2px]"
+            :class="
+              activeTab === tab
+                ? 'text-blue-medium dark:text-blue-ultralight border-b-2 border-blue-medium dark:border-blue-light -mb-px bg-white dark:bg-slate-dark'
+                : 'text-slate-default dark:text-neutral-light hover:text-slate-darkest dark:hover:text-neutral-lighter'
+            "
+            @click="activeTab = tab"
+            @keydown="onTabKeydown($event, index)"
+          >
+            {{ tab }}
+          </button>
+        </div>
         <button
-          v-for="tab in tabs"
-          :key="tab"
           type="button"
-          role="tab"
-          :aria-selected="activeTab === tab"
-          class="px-3 py-2 text-xs font-medium uppercase tracking-wide transition-colors"
-          :class="
-            activeTab === tab
-              ? 'text-blue-medium dark:text-blue-ultralight border-b-2 border-blue-medium dark:border-blue-light -mb-px bg-white dark:bg-slate-dark'
-              : 'text-slate-light dark:text-neutral-light hover:text-slate-default dark:hover:text-neutral-lighter'
-          "
-          @click="activeTab = tab"
-        >
-          {{ tab }}
-        </button>
-        <button
-          type="button"
-          aria-label="Copy entire code block"
           class="ml-auto text-xs px-2.5 py-1 rounded border border-neutral-lighter dark:border-slate-dark bg-white dark:bg-slate-dark hover:bg-neutral-lightest dark:hover:bg-slate-darkest transition-colors text-slate-default dark:text-neutral-lighter leading-none"
           @click="copyAll()"
         >
           {{ copiedAll ? '✓ Copied all' : 'Copy all' }}
         </button>
+        <span class="sr-only" role="status">{{ copyStatus }}</span>
       </div>
-      <div v-if="chunks.length > 1" role="tabpanel" class="bg-gray-900 divide-y divide-gray-800">
+      <div
+        v-if="chunks.length > 1"
+        :id="panelId"
+        role="tabpanel"
+        :aria-labelledby="tabId(activeTab)"
+        class="bg-gray-900 divide-y divide-gray-800"
+      >
         <div v-for="(chunk, idx) in chunks" :key="idx" class="relative group">
           <button
             type="button"
             aria-label="Copy snippet"
-            class="absolute top-2 right-2 z-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity text-xs px-2 py-1 rounded bg-gray-700 hover:bg-gray-600 text-gray-100 leading-none"
+            class="absolute top-2 right-2 z-1 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 focus:opacity-100 transition-opacity text-xs px-2 py-1 rounded bg-gray-700 hover:bg-gray-600 text-gray-100 leading-none"
             @click="copyChunk(idx, chunk)"
           >
             {{ copiedChunkIdx === idx ? '✓ Copied' : 'Copy' }}
           </button>
           <pre
-            class="p-4 pr-16 text-sm overflow-x-auto text-gray-100 m-0 leading-relaxed"
+            tabindex="0"
+            class="p-4 pr-16 text-sm overflow-x-auto text-gray-100 m-0 leading-relaxed focus-visible:outline-offset-[-2px]"
           ><code class="font-mono">{{ chunk }}</code></pre>
         </div>
       </div>
       <pre
         v-else
+        :id="panelId"
         role="tabpanel"
-        class="p-4 text-sm overflow-x-auto bg-gray-900 text-gray-100 m-0 leading-relaxed"
+        :aria-labelledby="tabId(activeTab)"
+        tabindex="0"
+        class="focus-visible:outline-offset-[-2px] p-4 text-sm overflow-x-auto bg-gray-900 text-gray-100 m-0 leading-relaxed"
       ><code class="font-mono">{{ activeCode }}</code></pre>
     </div>
   </div>

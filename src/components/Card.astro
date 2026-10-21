@@ -1,11 +1,19 @@
 ---
-const { imgSrc, imgAlt, href } = Astro.props;
+interface Props {
+  imgSrc?: string;
+  imgAlt?: string;
+  href?: string;
+  // Accessible name of the image link; falls back to imgAlt
+  linkLabel?: string;
+}
+
+const { imgSrc, imgAlt, href, linkLabel } = Astro.props;
 
 import Image from '../components/Image.astro';
 ---
 
-<div class="bg-white border border-gray-200 rounded-lg shadow overflow-hidden">
-  <a href={href} class="aspect-ratio-video block relative">
+<div class="bg-white text-slate-darkest border border-gray-200 rounded-lg shadow overflow-hidden">
+  <a href={href} class="aspect-ratio-video block relative" aria-label={linkLabel}>
     {
       imgSrc && (
         <Image

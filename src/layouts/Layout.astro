@@ -18,9 +18,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
   </head>
 
   <body class="bg-blue-50">
-    <div class="bg-white z-10 mb-11 relative">
+    <main class="bg-white z-10 mb-11 relative">
       <slot />
-    </div>
+    </main>
     <footer>
       <Copyright class="fixed bottom-0 z-0 w-full">
         <a
@@ -31,11 +31,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
           class="flex my-auto items-center mx-auto"
           title={`Proudly made in Poland by ${import.meta.env.COPYRIGHT_DOMAIN}`}
         >
-          <div class="text-xxs md:text-xs mr-1 mt-0.5 whitespace-nowrap">createdy by</div>
+          <div class="text-xxs md:text-xs mr-1 mt-0.5 whitespace-nowrap">created by</div>
           <img
             class="h-4 w-min md:h-5"
             src="spoko.space.svg"
-            alt="Modern Websites"
+            alt="spoko.space"
             width="126"
             height="23"
             loading="lazy"

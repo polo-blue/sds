@@ -1,5 +1,21 @@
 ---
-const { class: className } = Astro.props;
+interface Props {
+  class?: string;
+  // Accessible name and target of the icon-only language link
+  languageLabel?: string;
+  languageHref?: string;
+  // Accessible names that tell the two navigation landmarks apart
+  mainNavLabel?: string;
+  languageNavLabel?: string;
+}
+
+const {
+  class: className,
+  languageLabel = 'Change language',
+  languageHref = '#',
+  mainNavLabel = 'Main',
+  languageNavLabel = 'Language',
+} = Astro.props;
 import { Icon } from 'astro-icon/components';
 
 const navItemsLeft = [
@@ -31,6 +47,7 @@ const navItemsLeft = [
 
     <div class="hidden sm:block sm:ml-6">
       <nav
+        aria-label={mainNavLabel}
         class="flex space-x-4"
         itemprop="hasPart"
         itemscope
@@ -40,7 +57,7 @@ const navItemsLeft = [
           navItemsLeft.map(({ title, description, url }) => (
             <a
               href={url}
-              class="text-gray-400 hover:bg-blue-darker hover:text-white px-3 py-1 rounded-full text-sm font-medium"
+              class="text-gray-500 dark:text-neutral-light hover:bg-blue-darker hover:text-white px-3 py-1 rounded-full text-sm font-medium"
               title={description}
               itemprop="url"
             >
@@ -57,13 +74,21 @@ const navItemsLeft = [
   </div>
 
   <nav
+    aria-label={languageNavLabel}
     class="flex items-center pr-0 sm:static sm:inset-auto ml-auto sm:ml-6 -mr-2 print:hidden order-3 sm:order-3 w-20 justify-end"
     itemprop="hasPart"
     itemscope
     itemtype="https://schema.org/SiteNavigationElement"
   >
-    <a class="icon-btn mx-2" title="" aria-label="" href="#" itemprop="url" data-astro-reload>
-      <Icon name="carbon:language" />
+    <a
+      class="icon-btn mx-2"
+      title={languageLabel}
+      aria-label={languageLabel}
+      href={languageHref}
+      itemprop="url"
+      data-astro-reload
+    >
+      <Icon name="carbon:language" aria-hidden="true" />
     </a>
   </nav>
 </header>

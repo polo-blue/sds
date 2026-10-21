@@ -25,11 +25,17 @@ const targetPath = customPath
     position === 'top' ? 'top-4' : 'bottom-4',
     className,
   ]}
-  role="alert"
+  role="status"
   lang={preferredLocale}
 >
   <a href={targetPath} hreflang={preferredLocale} class="flex items-center gap-2 font-medium hover:underline">
-    {showIcon && <span class="material-icons-outlined text-sm">translate</span>}
+    {
+      showIcon && (
+        <span class="material-icons-outlined text-sm" aria-hidden="true">
+          translate
+        </span>
+      )
+    }
     {new Intl.DisplayNames([preferredLocale], { type: 'language' }).of(preferredLocale)}
   </a>
   <button
@@ -49,11 +55,26 @@ const targetPath = customPath
     const popup = document.getElementById('languageSuggestion');
     popup?.classList.remove('hidden');
 
-    if (dismissTimeout) {
-      setTimeout(() => {
-        popup?.classList.add('opacity-0');
-        setTimeout(() => popup?.remove(), 300);
-      }, dismissTimeout);
+    if (dismissTimeout && popup) {
+      // The timer pauses while the user hovers or focuses the popup, so it never
+      // disappears mid-interaction (WCAG 2.2.1 Timing Adjustable)
+      let timer;
+      const startTimer = () => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          popup.classList.add('opacity-0');
+          setTimeout(() => popup.remove(), 300);
+        }, dismissTimeout);
+      };
+      const pauseTimer = () => clearTimeout(timer);
+      const restartIfInactive = () => {
+        if (!popup.matches(':hover') && !popup.matches(':focus-within')) startTimer();
+      };
+      popup.addEventListener('mouseenter', pauseTimer);
+      popup.addEventListener('focusin', pauseTimer);
+      popup.addEventListener('mouseleave', restartIfInactive);
+      popup.addEventListener('focusout', restartIfInactive);
+      startTimer();
     }
   }
 </script>

@@ -25,6 +25,29 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
   import '../scripts/tooltips.ts';
 </script>
 
+<script>
+  // Docs-only: make horizontally scrollable demo/code regions reachable by keyboard
+  // when they hold nothing focusable themselves (WCAG 2.1.1)
+  function makeScrollRegionsFocusable() {
+    let regionCount = 0;
+    document
+      .querySelectorAll<HTMLElement>('.content .component-preview, .content pre.astro-code')
+      .forEach(el => {
+        const overflows = el.scrollWidth > el.clientWidth || el.scrollHeight > el.clientHeight;
+        const hasFocusable = el.querySelector('a[href], button, input, select, textarea, [tabindex]');
+        if (overflows && !hasFocusable && !el.hasAttribute('tabindex')) {
+          el.setAttribute('tabindex', '0');
+          if (!el.matches('pre')) {
+            el.setAttribute('role', 'region');
+            // Numbered so every region landmark keeps a unique name
+            el.setAttribute('aria-label', `Component preview ${++regionCount}`);
+          }
+        }
+      });
+  }
+  document.addEventListener('astro:page-load', makeScrollRegionsFocusable);
+</script>
+
 <html dir={content.dir ?? 'ltr'} lang={content.lang ?? 'en-us'} class="initial">
   <head>
     <HeadCommon />
@@ -82,11 +105,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
           class="flex my-auto items-center mx-auto"
           title={`Proudly made in Poland by spoko.space`}
         >
-          <div class="text-xxs md:text-xs mr-1 mt-0.5 whitespace-nowrap">createdy by</div>
+          <div class="text-xxs md:text-xs mr-1 mt-0.5 whitespace-nowrap">created by</div>
           <img
             class="h-4 md:h-5 w-min"
             src="/spoko.space.svg"
-            alt="Modern Websites"
+            alt="spoko.space"
             width="126"
             height="23"
             loading="lazy"

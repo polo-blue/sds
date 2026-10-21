@@ -1,5 +1,10 @@
 <template>
-  <button class="category-toggler md:w-8" type="button" aria-label="Toggle category sidebar">
+  <button
+    class="category-toggler md:w-8"
+    type="button"
+    aria-label="Toggle category sidebar"
+    aria-controls="sidebar"
+  >
     <slot />
   </button>
 </template>

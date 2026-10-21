@@ -43,7 +43,7 @@ export const componentShortcuts = [
   // Navigation
   ['nav-link', 'text-slate-light hover:bg-blue-darker hover:text-white px-3 py-3.5 md:py-2 rounded-full text-sm font-medium'],
   ['btn-navigation', `${COLORS.bgWhite} drop-shadow-md rounded-full border ${LAYOUT.flex.center} w-1/2 h-11 bottom-1 z-2 md:(w-11 h-11 bg-white/90 text-inherit hover:(text-accent-light bg-white))`],
-  ['btn-navigation__active', 'border border-transparent md:(border-neutral-lighter focus:ring-0) font-medium text-white bg-blue-darker hover:bg-accent-darker focus:ring-2 focus:outline-none focus:ring-blue-300'],
+  ['btn-navigation__active', 'border border-transparent md:border-neutral-lighter font-medium text-white bg-blue-darker hover:bg-accent-darker focus-visible:(ring-2 outline-none ring-blue-300)'],
   ['btn-gallery-arrow', `${COLORS.bgWhite} bg-white/80 drop-shadow-sm rounded-full border border-neutral-lighter ${LAYOUT.flex.center} w-11 h-11 cursor-pointer text-neutral-600 hover:(text-accent-light bg-white) disabled:(hidden)`],
 
   // Carousel
@@ -76,10 +76,10 @@ export const componentShortcuts = [
   ['badge', 'px-1.5 py-px text-white text-xs mb-1 max-w-fit whitespace-nowrap'],
   ['badge-primary', `${BADGE_STYLE} bg-brand-primary text-white`],
   ['badge-secondary', `${BADGE_STYLE} bg-brand-secondary text-blue-darker`],
-  ['badge-success', `${BADGE_STYLE} bg-system-success/15 text-system-success`],
-  ['badge-error', `${BADGE_STYLE} bg-system-error/15 text-system-error`],
-  ['badge-warning', `${BADGE_STYLE} bg-system-warning/15 text-slate-dark`],
-  ['badge-info', `${BADGE_STYLE} bg-system-info/15 text-system-info`],
+  ['badge-success', `${BADGE_STYLE} bg-system-success/15 text-green-800 dark:text-green-300`],
+  ['badge-error', `${BADGE_STYLE} bg-system-error/15 text-red-700 dark:text-red-300`],
+  ['badge-warning', `${BADGE_STYLE} bg-system-warning/15 text-slate-dark dark:text-yellow-200`],
+  ['badge-info', `${BADGE_STYLE} bg-system-info/15 text-blue-700 dark:text-blue-300`],
   ['badge-neutral', `${BADGE_STYLE} bg-neutral-lighter text-neutral-darker dark:(bg-slate-dark text-neutral-lighter)`],
 
   // Details

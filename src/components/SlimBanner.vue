@@ -43,7 +43,7 @@ const props = defineProps({
   },
   closeButtonAriaLabel: {
     type: String,
-    default: 'Toggle',
+    default: 'Close banner',
   },
 
   // Show flag icon (Ukraine flag by default)
@@ -124,12 +124,12 @@ const closePermanently = () => {
   <template v-if="!isHidden">
     <div v-if="isShow" data-pagefind-ignore class="slimbanner">
       <slot name="icon">
-        <span v-if="props.showIcon" :class="props.iconClass" />
+        <span v-if="props.showIcon" :class="props.iconClass" aria-hidden="true" />
       </slot>
 
       <span class="leading-none inline-flex">
         <slot>
-          <span :data-text="props.message" />
+          <span>{{ props.message }}</span>
           <a
             v-if="props.linkUrl"
             :href="props.linkUrl"
@@ -137,19 +137,21 @@ const closePermanently = () => {
             rel="noopener"
             :title="props.linkTitle || props.linkText"
             class="underline underline-offset-2 hover:text-blue-wrc ml-1.5"
-            :data-text="props.linkText"
-          />
-          <span v-if="props.linkUrl" data-text="." />
+          >
+            {{ props.linkText }}
+          </a>
+          <span v-if="props.linkUrl">.</span>
         </slot>
       </span>
 
       <button
         v-if="props.showCloseButton && (props.toggleMessage || props.persistClose)"
+        type="button"
         class="btn-close text-white"
         :aria-label="props.closeButtonAriaLabel"
         @click="props.persistClose ? closePermanently() : toggleVisibility()"
       >
-        <span class="close close-dark" />
+        <span class="close close-dark" aria-hidden="true" />
       </button>
     </div>
     <div
@@ -164,11 +166,15 @@ const closePermanently = () => {
       </div>
       <button
         v-if="props.showCloseButton"
+        type="button"
         class="btn-close"
         :aria-label="props.closeButtonAriaLabel"
         @click="props.persistClose ? closePermanently() : toggleVisibility()"
       >
-        <span :class="props.toggleTextClass === 'text-white' ? 'close close-light' : 'close close-dark'" />
+        <span
+          :class="props.toggleTextClass === 'text-white' ? 'close close-light' : 'close close-dark'"
+          aria-hidden="true"
+        />
       </button>
     </div>
   </template>

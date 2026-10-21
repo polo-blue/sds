@@ -25,6 +25,11 @@ export default defineConfig({
     // "Unexpected token Colon". Restore the esbuild CSS minifier we built with.
     build: { cssMinify: 'esbuild' },
   },
+  markdown: {
+    // github-dark comments (#6a737d) are 3:1 on their background; github-dark-default
+    // keeps every token above the WCAG 1.4.3 4.5:1 minimum.
+    shikiConfig: { theme: 'github-dark-default' },
+  },
   image: {
     service: sharpImageService(),
     domains: ["placehold.co", "api.polo.blue", "polo.blue", "media.istockphoto.com", "freepik.com", "img.freepik.com", "polo6r.pl"],
