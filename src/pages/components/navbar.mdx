@@ -55,7 +55,7 @@ import Drawer from 'spoko-design-system/components/Drawer.astro';
     <a href="#" class="sds-navbar-link" data-drawer-close>Journal</a>
   </nav>
 </Drawer>`}>
-  <Navbar brand="Studio" drawerId="nav-pattern-1">
+  <Navbar ariaLabel="Demo navigation 1" brand="Studio" drawerId="nav-pattern-1">
     <div slot="utility" class="flex items-center gap-3">
       <a href="#" class="hover:underline">+48 600 000 000</a>
       <span class="text-slate-300">·</span>
@@ -114,7 +114,7 @@ from a CMS) and a locale switcher. The hamburger only appears below `lg`.
     <a href="#" class="text-xs px-2 py-1 hover:underline">EN</a>
   </div>
 </Navbar>`}>
-  <Navbar brand="Journal" drawerId="nav-pattern-2">
+  <Navbar ariaLabel="Demo navigation 2" brand="Journal" drawerId="nav-pattern-2">
     <input
       slot="search"
       type="search"
@@ -166,7 +166,7 @@ search button next to it, locale switcher anchors the right end.
     <a href="#" class="text-xs px-2 py-1 hover:underline">DE</a>
   </div>
 </Navbar>`}>
-  <Navbar drawerId="nav-pattern-3">
+  <Navbar ariaLabel="Demo navigation 3" drawerId="nav-pattern-3">
     <a slot="logo" href="/" class="flex items-center gap-2 leading-tight">
       <span class="w-8 h-8 rounded bg-blue-medium text-white grid place-items-center font-textbold">▣</span>
       <span class="flex flex-col">
@@ -219,7 +219,7 @@ labeled hamburger that opens the full menu. No inline nav, no locale switcher
     <a href="#" class="text-xs px-3 py-1 hover:underline">EN</a>
   </nav>
 </Drawer>`}>
-  <Navbar brand="App" drawerId="nav-pattern-4">
+  <Navbar ariaLabel="Demo navigation 4" brand="App" drawerId="nav-pattern-4">
     <div slot="actions" class="flex items-center gap-2">
       <button type="button" aria-label="Search" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-dark">
         <span class="i-lucide-search text-lg" />
@@ -257,7 +257,7 @@ Any of the patterns above accepts `sticky` to pin to the top with a backdrop blu
     <button class="btn-primary btn-sm">Get started</button>
   </div>
 </Navbar>`}>
-  <Navbar brand="App" sticky>
+  <Navbar ariaLabel="Demo navigation 5" brand="App" sticky>
     <div slot="nav" class="flex items-center gap-1">
       <a href="#" class="sds-navbar-link">Home</a>
       <a href="#" class="sds-navbar-link">Docs</a>
