@@ -12,7 +12,7 @@
     >
       <!-- Search input -->
       <div class="border-b border-slate-200 dark:border-slate-dark">
-        <div class="flex items-center gap-3 px-4 py-3.5">
+        <div class="flex items-center gap-3 px-4 py-3.5 focus-within:(ring-2 ring-inset ring-blue-light)">
           <svg
             class="shrink-0 text-slate-400 dark:text-neutral-light"
             width="20"
@@ -32,7 +32,12 @@
             type="search"
             placeholder="Search components and docs…"
             aria-label="Search docs"
-            class="sds-search-input flex-1 border-none outline-none bg-transparent text-base text-slate-900 dark:text-neutral-lighter leading-relaxed placeholder:text-slate-400 dark:placeholder:text-neutral-light"
+            role="combobox"
+            aria-autocomplete="list"
+            aria-controls="sds-search-results"
+            :aria-expanded="query && results.length ? 'true' : 'false'"
+            :aria-activedescendant="activeIndex >= 0 ? `sds-search-result-${activeIndex}` : undefined"
+            class="sds-search-input flex-1 border-none outline-none bg-transparent text-base text-slate-900 dark:text-neutral-lighter leading-relaxed placeholder:text-slate-500 dark:placeholder:text-neutral-light"
             @input="onSearch"
             @keydown="onInputKeydown"
           />
@@ -69,6 +74,8 @@
 
       <!-- Results -->
       <div class="overflow-y-auto flex-1 min-h-0">
+        <!-- Announces search progress and result count to screen readers (WCAG 4.1.3) -->
+        <span class="sr-only" role="status">{{ statusMessage }}</span>
         <div v-if="loading" class="py-8 px-4 text-center text-slate-500 dark:text-neutral-light text-sm">
           Searching…
         </div>
@@ -82,8 +89,20 @@
           Start typing to search components and docs…
         </div>
 
-        <ul v-if="query && results.length" class="list-none m-0 p-2">
-          <li v-for="(result, index) in results" :key="result.url || index">
+        <ul
+          v-if="query && results.length"
+          id="sds-search-results"
+          role="listbox"
+          aria-label="Search results"
+          class="list-none m-0 p-2"
+        >
+          <li
+            v-for="(result, index) in results"
+            :id="`sds-search-result-${index}`"
+            :key="result.url || index"
+            role="option"
+            :aria-selected="index === activeIndex ? 'true' : 'false'"
+          >
             <a
               :href="result.url"
               class="search-result-link block p-3 rounded-lg no-underline text-inherit transition-colors"
@@ -157,7 +176,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, nextTick } from 'vue';
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue';
 
 interface PagefindResultData {
   url?: string;
@@ -174,6 +193,14 @@ const results = ref<PagefindResultData[]>([]);
 const loading = ref(false);
 const searchDone = ref(false);
 const activeIndex = ref(-1);
+
+const statusMessage = computed(() => {
+  if (loading.value) return 'Searching…';
+  if (!query.value || !searchDone.value) return '';
+  const count = results.value.length;
+  if (!count) return 'No results found';
+  return `${count} ${count === 1 ? 'result' : 'results'} available`;
+});
 
 let pagefind: any = null;
 let debounceTimer: ReturnType<typeof setTimeout> | null = null;

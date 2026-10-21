@@ -66,7 +66,8 @@ import SearchModal from './SearchModal.vue';
         type="button"
         id="dark-mode-toggle"
         class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-dark transition-colors text-slate-700 dark:text-neutral-light"
-        aria-label="Toggle dark mode"
+        aria-label="Dark mode"
+        aria-pressed="false"
       >
         <span class="i-lucide-moon text-xl dark:hidden" aria-hidden="true"></span>
         <span class="i-lucide-sun text-xl hidden dark:inline-block" aria-hidden="true"></span>
@@ -133,7 +134,16 @@ import SearchModal from './SearchModal.vue';
 </style>
 
 <script>
+  // Expose the current theme on every theme toggle on the page (WCAG 4.1.2)
+  function syncThemeTogglePressed() {
+    const isDark = document.documentElement.classList.contains('dark');
+    document
+      .querySelectorAll<HTMLElement>('#dark-mode-toggle, [data-sds-menu-theme-toggle]')
+      .forEach(el => el.setAttribute('aria-pressed', String(isDark)));
+  }
+
   function setupDarkModeToggle() {
+    syncThemeTogglePressed();
     const toggle = document.getElementById('dark-mode-toggle');
     if (toggle && toggle.dataset.bound !== '1') {
       toggle.dataset.bound = '1';
@@ -145,6 +155,7 @@ import SearchModal from './SearchModal.vue';
         } catch {
           /* localStorage may be unavailable */
         }
+        syncThemeTogglePressed();
       });
     }
   }

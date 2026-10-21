@@ -210,7 +210,8 @@ const headingId = `${id}-heading`;
                   <button
                     type="button"
                     class="sds-menu-theme-chip"
-                    aria-label="Toggle dark mode"
+                    aria-label="Dark mode"
+                    aria-pressed="false"
                     data-sds-menu-theme-toggle
                   >
                     <svg
@@ -689,7 +690,16 @@ const headingId = `${id}-heading`;
 </style>
 
 <script>
+  // Expose the current theme on every theme toggle on the page (WCAG 4.1.2)
+  function syncThemeTogglePressed() {
+    const isDark = document.documentElement.classList.contains('dark');
+    document
+      .querySelectorAll<HTMLElement>('#dark-mode-toggle, [data-sds-menu-theme-toggle]')
+      .forEach(el => el.setAttribute('aria-pressed', String(isDark)));
+  }
+
   function setupThemeToggles() {
+    syncThemeTogglePressed();
     document.querySelectorAll<HTMLButtonElement>('[data-sds-menu-theme-toggle]').forEach(btn => {
       if (btn.dataset.bound === '1') return;
       btn.dataset.bound = '1';
@@ -701,6 +711,7 @@ const headingId = `${id}-heading`;
         } catch {
           /* localStorage may be unavailable */
         }
+        syncThemeTogglePressed();
       });
     });
   }

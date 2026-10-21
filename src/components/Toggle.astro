@@ -136,7 +136,7 @@ const s = sizeMap[size];
 {
   variant === 'segmented' && (
     <div
-      role="group"
+      role={items.some(item => item.href) ? 'group' : 'radiogroup'}
       aria-label={groupLabel}
       data-look={look}
       class:list={[
@@ -146,8 +146,12 @@ const s = sizeMap[size];
         className,
       ]}
     >
-      {items.map(item => {
+      {items.map((item, index) => {
         const isActive = item.value === current;
+        // Keep the radiogroup reachable by keyboard when no option matches `current`
+        const firstEnabledIndex = items.findIndex(i => !i.disabled);
+        const hasActive = items.some(i => i.value === current && !i.disabled);
+        const isTabStop = isActive || (!hasActive && index === firstEnabledIndex);
         const isLink = !!item.href;
         const isDisabled = !!item.disabled;
         const baseClasses = [
@@ -166,7 +170,7 @@ const s = sizeMap[size];
         if (isLink) {
           return (
             <a
-              href={item.href}
+              href={isDisabled ? undefined : item.href}
               class:list={baseClasses}
               aria-current={isActive ? 'page' : undefined}
               aria-disabled={isDisabled ? 'true' : undefined}
@@ -185,7 +189,7 @@ const s = sizeMap[size];
             role="radio"
             aria-checked={isActive ? 'true' : 'false'}
             disabled={isDisabled}
-            tabindex={isActive ? 0 : -1}
+            tabindex={isTabStop ? 0 : -1}
             data-value={item.value}
             class:list={baseClasses}
           >

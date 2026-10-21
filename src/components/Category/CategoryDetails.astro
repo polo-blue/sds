@@ -111,6 +111,17 @@ const subcategoryPath = subcategory?.path || `/${category.slug}/${subcategory?.s
     }
 
     updateTogglers(doc, isCollapsed);
+
+    // On mobile the sidebar is an off-canvas panel that starts hidden
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      setTogglersExpanded(doc, !!sidebar?.classList.contains('show'));
+    }
+  }
+
+  function setTogglersExpanded(doc: Document, expanded: boolean) {
+    doc.querySelectorAll('.category-sidebar-toggler').forEach(toggler => {
+      toggler.setAttribute('aria-expanded', String(expanded));
+    });
   }
 
   function updateTogglers(doc: Document, isCollapsed: boolean) {
@@ -135,6 +146,7 @@ const subcategoryPath = subcategory?.path || `/${category.slug}/${subcategory?.s
       if (isMobile) {
         const isShown = sidebar.classList.toggle('show');
         document.body.classList.toggle('overflow-hidden', isShown);
+        setTogglersExpanded(document, isShown);
       } else {
         const isCollapsed = sidebar.classList.toggle('collapsed');
         document.body.classList.remove('overflow-hidden');
