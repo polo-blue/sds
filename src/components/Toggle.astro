@@ -2,6 +2,8 @@
 export interface SegmentedItem {
   value: string;
   label: string;
+  // Use either links (navigation, e.g. language switch) or buttons (radio selection) for all
+  // items of one segmented control; mixing both is not a valid ARIA structure.
   href?: string;
   hreflang?: string;
   disabled?: boolean;
@@ -137,7 +139,7 @@ const s = sizeMap[size];
 {
   variant === 'segmented' && (
     <div
-      role={items.some(item => item.href) ? 'group' : 'radiogroup'}
+      role={items.every(item => item.href) ? 'group' : 'radiogroup'}
       aria-label={groupLabel}
       data-look={look}
       class:list={[

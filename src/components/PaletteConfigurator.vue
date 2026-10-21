@@ -31,6 +31,22 @@ const palette = computed(() => {
   }
 });
 
+// Per-field validity so aria-invalid lands on the field that actually failed
+const isValidColor = (value: string) => {
+  try {
+    generatePalette({ primary: value });
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+const invalidColors = computed(() => ({
+  primary: !isValidColor(primary.value),
+  secondary: Boolean(secondary.value) && !isValidColor(secondary.value),
+  accent: Boolean(accent.value) && !isValidColor(accent.value),
+}));
+
 const colorGroups = computed(() => {
   if (!palette.value) return [];
   return Object.entries(palette.value).map(([group, shades]) => ({
@@ -101,8 +117,8 @@ const copyConfig = () => copy(exportCode.value);
               v-model="primary"
               aria-label="Primary color hex value"
               required
-              :aria-invalid="palette ? undefined : 'true'"
-              :aria-describedby="palette ? undefined : 'palette-color-error'"
+              :aria-invalid="invalidColors.primary ? 'true' : undefined"
+              :aria-describedby="invalidColors.primary ? 'palette-color-error' : undefined"
               class="font-mono text-sm border border-slate-200 dark:border-slate-dark dark:bg-slate-darkest rounded px-2 py-1 w-24"
             />
           </div>
@@ -121,6 +137,8 @@ const copyConfig = () => copy(exportCode.value);
               v-model="secondary"
               aria-label="Secondary color hex value"
               placeholder="auto"
+              :aria-invalid="invalidColors.secondary ? 'true' : undefined"
+              :aria-describedby="invalidColors.secondary ? 'palette-color-error' : undefined"
               class="font-mono text-sm border border-slate-200 dark:border-slate-dark dark:bg-slate-darkest rounded px-2 py-1 w-24"
             />
           </div>
@@ -142,6 +160,8 @@ const copyConfig = () => copy(exportCode.value);
               v-model="accent"
               aria-label="Accent color hex value"
               placeholder="#..."
+              :aria-invalid="invalidColors.accent ? 'true' : undefined"
+              :aria-describedby="invalidColors.accent ? 'palette-color-error' : undefined"
               class="font-mono text-sm border border-slate-200 dark:border-slate-dark dark:bg-slate-darkest rounded px-2 py-1 w-24"
             />
           </div>

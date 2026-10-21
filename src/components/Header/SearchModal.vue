@@ -34,7 +34,7 @@
             aria-label="Search docs"
             role="combobox"
             aria-autocomplete="list"
-            aria-controls="sds-search-results"
+            :aria-controls="query && results.length ? 'sds-search-results' : undefined"
             :aria-expanded="query && results.length ? 'true' : 'false'"
             :aria-activedescendant="activeIndex >= 0 ? `sds-search-result-${activeIndex}` : undefined"
             class="sds-search-input flex-1 border-none outline-none bg-transparent text-base text-slate-900 dark:text-neutral-lighter leading-relaxed placeholder:text-slate-500 dark:placeholder:text-neutral-light"
@@ -230,6 +230,9 @@ async function onSearch() {
   }
 
   loading.value = true;
+  // Stale results must not stay active (aria-activedescendant) while the new query runs
+  results.value = [];
+  activeIndex.value = -1;
   const currentSearchId = ++searchId;
 
   debounceTimer = setTimeout(async () => {

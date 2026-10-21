@@ -67,10 +67,13 @@ const targetPath = customPath
         }, dismissTimeout);
       };
       const pauseTimer = () => clearTimeout(timer);
+      const restartIfInactive = () => {
+        if (!popup.matches(':hover') && !popup.matches(':focus-within')) startTimer();
+      };
       popup.addEventListener('mouseenter', pauseTimer);
       popup.addEventListener('focusin', pauseTimer);
-      popup.addEventListener('mouseleave', startTimer);
-      popup.addEventListener('focusout', startTimer);
+      popup.addEventListener('mouseleave', restartIfInactive);
+      popup.addEventListener('focusout', restartIfInactive);
       startTimer();
     }
   }

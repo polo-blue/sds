@@ -101,9 +101,12 @@ const labelClass = computed(() => {
 const errorId = computed(() => `${props.id}-error`);
 const successId = computed(() => `${props.id}-success`);
 const describedBy = computed(() => {
-  if (props.error && typeof props.error === 'string') return errorId.value;
-  if (props.success && typeof props.success === 'string') return successId.value;
-  return undefined;
+  const ids: string[] = [];
+  const own = attrs['aria-describedby'];
+  if (typeof own === 'string' && own) ids.push(own);
+  if (props.error && typeof props.error === 'string') ids.push(errorId.value);
+  else if (props.success && typeof props.success === 'string') ids.push(successId.value);
+  return ids.length ? ids.join(' ') : undefined;
 });
 const ariaInvalid = computed(() => (props.error ? 'true' : undefined));
 
@@ -132,8 +135,8 @@ const handleBlur = (event: FocusEvent) => emit('blur', event);
       :placeholder="placeholder"
       :value="modelValue"
       :aria-invalid="ariaInvalid"
-      :aria-describedby="describedBy"
       v-bind="attrs"
+      :aria-describedby="describedBy"
       @input="handleInput"
       @focus="handleFocus"
       @blur="handleBlur"
@@ -150,8 +153,8 @@ const handleBlur = (event: FocusEvent) => emit('blur', event);
       :placeholder="placeholder"
       :value="modelValue"
       :aria-invalid="ariaInvalid"
-      :aria-describedby="describedBy"
       v-bind="attrs"
+      :aria-describedby="describedBy"
       @input="handleInput"
       @focus="handleFocus"
       @blur="handleBlur"
