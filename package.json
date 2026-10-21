@@ -1,6 +1,6 @@
 {
   "name": "spoko-design-system",
-  "version": "2.1.7",
+  "version": "2.1.8",
   "type": "module",
   "private": false,
   "main": "./index.ts",
@@ -161,18 +161,6 @@
     "vite": "^8.3.2"
   },
   "packageManager": "pnpm@12.14.0",
-  "pnpm": {
-    "default": "9.15.3",
-    "overrides": {
-      "file-type@>=17.0.0 <17.1.3": ">=17.1.3",
-      "sharp@<0.30.5": ">=0.30.5"
-    },
-    "ignoredBuiltDependencies": [
-      "esbuild",
-      "sharp",
-      "vue-demi"
-    ]
-  },
   "engines": {
     "node": ">=22.18.0",
     "pnpm": ">=10.16.1"
