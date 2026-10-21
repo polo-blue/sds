@@ -50,7 +50,7 @@ const sizeMap = {
     thumb: 'w-3 h-3',
     thumbTranslate: 'translate-x-4',
     label: 'text-xs',
-    segBtn: 'px-2 py-1 text-xs',
+    segBtn: 'px-2 py-1 text-xs min-h-6',
   },
   md: {
     track: 'w-10 h-5',
@@ -83,7 +83,8 @@ const s = sizeMap[size];
       data-value={value}
       data-look={look}
       class:list={[
-        'sds-toggle-switch inline-flex items-center gap-2 group',
+        // min-h-6 keeps the hit area at least 24px tall even for size="sm" (WCAG 2.5.8)
+        'sds-toggle-switch inline-flex items-center gap-2 group min-h-6',
         look === 'default' && 'inline-flex items-center gap-2',
         disabled && 'opacity-50 cursor-not-allowed',
         !disabled && 'cursor-pointer',
