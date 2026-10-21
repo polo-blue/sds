@@ -34,7 +34,8 @@
       "labels": [
         "dependencies",
         "risk-high"
-      ]
+      ],
+      "separateMajorMinor": false
     },
     {
       "description": "Low-risk dev dependency patch/minor updates merge themselves once every status check is green (Renovate verifies it, independent of branch protection)",
@@ -51,6 +52,21 @@
         "dependencies",
         "risk-low"
       ]
+    }
+  ],
+  "customManagers": [
+    {
+      "description": "Keep the Node version passed to withastro/action in the Pages deploy workflow under the toolchain rule",
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^\\.github/workflows/deploy\\.yml$/"
+      ],
+      "matchStrings": [
+        "uses: withastro/action@\\S+\\s+with:[\\s\\S]*?node-version: (?<currentValue>\\d+)"
+      ],
+      "depNameTemplate": "node",
+      "datasourceTemplate": "node-version",
+      "versioningTemplate": "node"
     }
   ]
 }
