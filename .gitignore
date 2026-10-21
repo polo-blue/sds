@@ -57,3 +57,8 @@ Thumbs.db
 
 # PWA dev service worker (vite-pwa devOptions)
 dev-dist/
+
+# Agent pipeline QA artifacts (generated per run)
+.ai/qa/artifacts_*/
+.ai/qa/test-env.json
+.ai/qa/test-env.env
