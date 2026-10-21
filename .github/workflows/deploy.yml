@@ -28,7 +28,9 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v6
         with:
-          package-manager: pnpm@10.32.1
+          # No package-manager pin: the action detects pnpm from pnpm-lock.yaml and takes
+          # the version from package.json "packageManager", the single source of truth.
+          # A second pin here drifted from it and failed with ERR_PNPM_BAD_PM_VERSION.
           node-version: 24
 
   deploy:

@@ -1,6 +1,72 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    ":dependencyDashboard",
+    ":semanticCommits"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "minimumReleaseAge": "3 days",
+  "internalChecksFilter": "strict",
+  "prConcurrentLimit": 5,
+  "packageRules": [
+    {
+      "description": "Major updates wait for approval in the Dependency Dashboard",
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "dependencyDashboardApproval": true,
+      "labels": [
+        "dependencies",
+        "risk-high"
+      ]
+    },
+    {
+      "description": "pnpm and Node toolchain bumps (packageManager, engines, workflow pins) ship as one PR and always need approval, also for minor versions",
+      "matchPackageNames": [
+        "pnpm",
+        "node"
+      ],
+      "groupName": "pnpm and Node toolchain",
+      "dependencyDashboardApproval": true,
+      "labels": [
+        "dependencies",
+        "risk-high"
+      ],
+      "separateMajorMinor": false
+    },
+    {
+      "description": "Low-risk dev dependency patch/minor updates merge themselves once every status check is green (Renovate verifies it, independent of branch protection)",
+      "matchDepTypes": [
+        "devDependencies"
+      ],
+      "matchUpdateTypes": [
+        "patch",
+        "minor"
+      ],
+      "automerge": true,
+      "platformAutomerge": false,
+      "labels": [
+        "dependencies",
+        "risk-low"
+      ]
+    }
+  ],
+  "customManagers": [
+    {
+      "description": "Keep the Node version passed to withastro/action in the Pages deploy workflow under the toolchain rule",
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^\\.github/workflows/deploy\\.yml$/"
+      ],
+      "matchStrings": [
+        "uses: withastro/action@\\S+\\s+with:[\\s\\S]*?node-version: (?<currentValue>\\d+)"
+      ],
+      "depNameTemplate": "node",
+      "datasourceTemplate": "node-version",
+      "versioningTemplate": "node"
+    }
   ]
 }
