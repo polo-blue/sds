@@ -35,10 +35,10 @@ const FormattedWrapper = isPdp ? 'h3' : 'div';
       </div>
 
       <div class={['code-formatted', trackingClass].join(' ')}>
-        <div class="relative inset-0" data-pagefind-ignore>
+        <div class="relative inset-0" data-pagefind-ignore aria-hidden="true">
           {formatted.dot}
         </div>
-        <div class="absolute inset-0" data-pagefind-ignore>
+        <div class="absolute inset-0" data-pagefind-ignore aria-hidden="true">
           {formatted.dash}
         </div>
         <FormattedWrapper class="number-secondary">{formatted.standard}</FormattedWrapper>

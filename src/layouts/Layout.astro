@@ -18,9 +18,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
   </head>
 
   <body class="bg-blue-50">
-    <div class="bg-white z-10 mb-11 relative">
+    <main class="bg-white z-10 mb-11 relative">
       <slot />
-    </div>
+    </main>
     <footer>
       <Copyright class="fixed bottom-0 z-0 w-full">
         <a

@@ -5,9 +5,18 @@ interface Props {
   drawerId?: string;
   sticky?: boolean;
   class?: string;
+  // Accessible name of the navigation landmark
+  ariaLabel?: string;
 }
 
-const { brand, brandHref = '/', drawerId, sticky = false, class: className = '' } = Astro.props;
+const {
+  brand,
+  brandHref = '/',
+  drawerId,
+  sticky = false,
+  class: className = '',
+  ariaLabel = 'Top navigation',
+} = Astro.props;
 
 const hasUtility = Astro.slots.has('utility');
 const hasLogo = Astro.slots.has('logo');
@@ -35,7 +44,7 @@ const hamburgerClass = hasNav ? 'lg:hidden' : '';
     )
   }
 
-  <nav title="Top Navigation" class="max-w-7xl mx-auto flex items-center gap-4 px-4 py-3">
+  <nav aria-label={ariaLabel} class="max-w-7xl mx-auto flex items-center gap-4 px-4 py-3">
     {
       drawerId && (
         <button
