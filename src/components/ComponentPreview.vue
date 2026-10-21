@@ -157,7 +157,7 @@ async function copyChunk(idx: number, text: string) {
           :class="
             activeTab === tab
               ? 'text-blue-medium dark:text-blue-ultralight border-b-2 border-blue-medium dark:border-blue-light -mb-px bg-white dark:bg-slate-dark'
-              : 'text-slate-light dark:text-neutral-light hover:text-slate-default dark:hover:text-neutral-lighter'
+              : 'text-slate-default dark:text-neutral-light hover:text-slate-darkest dark:hover:text-neutral-lighter'
           "
           @click="activeTab = tab"
         >

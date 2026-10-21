@@ -152,7 +152,11 @@ const copyConfig = () => copy(exportCode.value);
 
     <div v-else class="space-y-8 mb-10">
       <div v-for="{ group, entries } in colorGroups" :key="group">
-        <h3 class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">{{ group }}</h3>
+        <h3
+          class="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-neutral-light mb-3"
+        >
+          {{ group }}
+        </h3>
         <div class="flex flex-wrap gap-3">
           <template v-for="[name, value] in entries" :key="name">
             <div class="flex flex-col items-center gap-1">
@@ -161,7 +165,9 @@ const copyConfig = () => copy(exportCode.value);
                 :style="`background: ${value}`"
                 :title="`${cssVar(group, name)}: ${value}`"
               />
-              <span class="text-xs text-gray-500 text-center leading-tight max-w-12">{{ name }}</span>
+              <span class="text-xs text-gray-500 dark:text-neutral-light text-center leading-tight max-w-12">
+                {{ name }}
+              </span>
             </div>
           </template>
         </div>

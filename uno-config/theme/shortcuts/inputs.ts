@@ -6,10 +6,10 @@ export const inputShortcuts = [
   ['input-base', 'block w-full text-4.5 text-blue-medium border-0 border-b-1 border-neutral-light appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-lightest focus:outline-none focus:ring-0 focus:border-blue-medium focus:shadow-[0_1px_0_0_currentColor]'],
   
   // Base label - basic styles for the label without transformations and states
-  ['input-label-base', 'absolute text-sm text-slate-light dark:text-neutral-default origin-top-left transform-gpu transition-all duration-300 ease-in-out'],
+  ['input-label-base', 'absolute text-sm text-slate-default dark:text-neutral-light origin-top-left transform-gpu transition-all duration-300 ease-in-out'],
   
   // Base placeholders
-  ['input-placeholder', 'placeholder:text-slate-light dark:placeholder:text-neutral-default placeholder:opacity-60'],
+  ['input-placeholder', 'placeholder:text-slate-light dark:placeholder:text-neutral-light'],
   
   // Variant-specific container classes
   ['input-wrapper-standard', 'relative z-0'],
@@ -55,10 +55,10 @@ export const inputShortcuts = [
   
   // Status classes
   ['input-error', 'border-red-500 focus:border-red-500 dark:border-red-400 dark:focus:border-red-400'],
-  ['input-label-error', 'text-red-500 dark:text-red-400'],
-  ['input-error-message', 'mt-1 text-xs text-red-500 dark:text-red-400'],
+  ['input-label-error', 'text-red-700 dark:text-red-300'],
+  ['input-error-message', 'mt-1 text-xs text-red-700 dark:text-red-300'],
   
   ['input-success', 'border-green-500 focus:border-green-500 dark:border-green-400 dark:focus:border-green-400'],
-  ['input-label-success', 'text-green-500 dark:text-green-400'],
-  ['input-success-message', 'mt-1 text-xs text-green-500 dark:text-green-400'],
+  ['input-label-success', 'text-green-700 dark:text-green-300'],
+  ['input-success-message', 'mt-1 text-xs text-green-700 dark:text-green-300'],
 ];

@@ -156,7 +156,7 @@ const s = sizeMap[size];
             'inline-flex items-center justify-center gap-1.5 rounded-md font-textbold transition-colors',
             s.segBtn,
             isActive
-              ? 'bg-white dark:bg-slate-darkest text-blue-medium dark:text-blue-light shadow-sm'
+              ? 'bg-white dark:bg-slate-darkest text-blue-medium dark:text-blue-300 shadow-sm'
               : 'text-slate-dark dark:text-neutral-lighter hover:bg-white/60 dark:hover:bg-slate-darkest/60',
           ],
           isActive && 'is-active',
@@ -369,7 +369,8 @@ const s = sizeMap[size];
     color: theme('colors.neutral.lighter');
   }
   html.dark .sds-toggle-switch[data-look='outline'][aria-checked='true'] {
-    color: theme('colors.blue.light');
+    /* blue-light is only 3.1:1 on slate-darkest */
+    color: theme('colors.blue.300');
   }
   html.dark .sds-toggle-switch[data-look='outline'][aria-checked='true'] .sds-toggle-track {
     background: theme('colors.blue.light');
@@ -438,7 +439,7 @@ const s = sizeMap[size];
                 'bg-white',
                 'dark:bg-slate-darkest',
                 'text-blue-medium',
-                'dark:text-blue-light',
+                'dark:text-blue-300',
                 'shadow-sm'
               );
               r.classList.add('text-slate-dark', 'dark:text-neutral-lighter');
@@ -452,7 +453,7 @@ const s = sizeMap[size];
               'bg-white',
               'dark:bg-slate-darkest',
               'text-blue-medium',
-              'dark:text-blue-light',
+              'dark:text-blue-300',
               'shadow-sm'
             );
             radio.classList.remove('text-slate-dark', 'dark:text-neutral-lighter');

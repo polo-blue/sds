@@ -56,27 +56,32 @@ defineProps({
 /* Semantic Variant Category Colors */
 /* GTI - Red */
 .btn-prcode--variant-gti {
-  @apply text-red-600 dark:text-red-500;
+  @apply text-red-700 dark:text-red-400;
 }
 
 /* WRC/R - Blue */
 .btn-prcode--variant-wrc {
-  @apply text-blue-600 dark:text-blue-500;
+  @apply text-blue-700 dark:text-blue-400;
 }
 
 /* CROSS - Orange */
 .btn-prcode--variant-cross {
-  color: #f3881d;
+  /* Darkened from #f3881d (2.5:1) to meet WCAG 1.4.3 on white */
+  color: #b45309;
+}
+
+:global(.dark) .btn-prcode--variant-cross {
+  color: #fb923c;
 }
 
 /* BlueGT - Accent Dark */
 .btn-prcode--variant-bluegt {
-  @apply text-accent-dark dark:text-accent-dark;
+  @apply text-accent-dark dark:text-sky-400;
 }
 
 /* Bluemotion - Accent Light */
 .btn-prcode--variant-bluemotion {
-  @apply text-accent-light dark:text-accent-light;
+  @apply text-sky-700 dark:text-sky-300;
 }
 
 /* R-Line - Default styling with possible future customization */

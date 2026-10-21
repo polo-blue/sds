@@ -37,7 +37,7 @@ const trail = [
 <Breadcrumbs
   breadcrumbs={trail}
   suffix="6R0XXXXXX"
-  class="py-1 px-1 max-w-full flex bg-white"
+  class="py-1 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
   showBack
   textBack="Back"
   client:visible
@@ -56,7 +56,7 @@ const trail = [
   <Breadcrumbs
     :breadcrumbs="trail"
     suffix="6R0XXXXXX"
-    class="py-1 px-1 max-w-full flex bg-white"
+    class="py-1 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
     show-back
     text-back="Back"
   />
@@ -64,7 +64,7 @@ const trail = [
   <Breadcrumbs
     breadcrumbs={[{name: 'Level1', path: '#level1'}, {name: 'Level 2', path: '#level2'}, {name: 'Level 3', path: '#level3'}]}
     suffix="6R0XXXXXX"
-    class="py-1 order-0 px-1 max-w-full flex bg-white"
+    class="py-1 order-0 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
     show-back
     text-back="Back"
   />
@@ -77,20 +77,20 @@ const trail = [
   astro={`<Breadcrumbs
   breadcrumbs={trail}
   suffix="6R0XXXXXX"
-  class="py-1 px-1 max-w-full flex bg-white"
+  class="py-1 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
   showHome
   client:visible
 />`}
   vue={`<Breadcrumbs
   :breadcrumbs="trail"
   suffix="6R0XXXXXX"
-  class="py-1 px-1 max-w-full flex bg-white"
+  class="py-1 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
   show-home
 />`}>
   <Breadcrumbs
     breadcrumbs={[{name: 'Level1', path: '#level1'}, {name: 'Level 2', path: '#level2'}, {name: 'Level 3', path: '#level3'}]}
     suffix="6R0XXXXXX"
-    class="py-1 order-0 px-1 max-w-full flex bg-white"
+    class="py-1 order-0 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
     show-home
   />
 </ComponentPreview>
@@ -102,18 +102,18 @@ const trail = [
   astro={`<Breadcrumbs
   breadcrumbs={trail}
   suffix="6R0XXXXXX"
-  class="py-1 px-1 max-w-full flex bg-white"
+  class="py-1 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
   client:visible
 />`}
   vue={`<Breadcrumbs
   :breadcrumbs="trail"
   suffix="6R0XXXXXX"
-  class="py-1 px-1 max-w-full flex bg-white"
+  class="py-1 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
 />`}>
   <Breadcrumbs
     breadcrumbs={[{name: 'Level1', path: '#level1'}, {name: 'Level 2', path: '#level2'}, {name: 'Level 3', path: '#level3'}]}
     suffix="6R0XXXXXX"
-    class="py-1 order-0 px-1 max-w-full flex bg-white"
+    class="py-1 order-0 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
   />
 </ComponentPreview>
 
@@ -129,21 +129,21 @@ parts to hide. Resize the preview below to see the suffix and separators come an
   breadcrumbs={trail}
   suffix="6R0XXXXXX"
   hideOnMobile={['suffix', 'separators']}
-  class="py-1 px-1 max-w-full flex bg-white"
+  class="py-1 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
   client:visible
 />`}
   vue={`<Breadcrumbs
   :breadcrumbs="trail"
   suffix="6R0XXXXXX"
   :hide-on-mobile="['suffix', 'separators']"
-  class="py-1 px-1 max-w-full flex bg-white"
+  class="py-1 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
 />`}>
   <Breadcrumbs
     breadcrumbs={[{name: 'Level1', path: '#level1'}, {name: 'Level 2', path: '#level2'}, {name: 'Level 3', path: '#level3'}]}
     suffix="6R0XXXXXX"
     hideOnMobile={['suffix', 'separators']}
     showHome
-    class="py-1 order-0 px-1 max-w-full flex bg-white"
+    class="py-1 order-0 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
   />
 </ComponentPreview>
 

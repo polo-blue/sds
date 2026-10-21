@@ -55,7 +55,7 @@ const getColorClass = (category: string, name: string) => {
           <!-- Color Info -->
           <div class="mt-2 space-y-1">
             <!-- Color Name -->
-            <div class="text-sm font-medium text-gray-700 text-center">
+            <div class="text-sm font-medium text-gray-700 dark:text-neutral-lighter text-center">
               {{ name }}
             </div>
 

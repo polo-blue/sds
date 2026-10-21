@@ -21,7 +21,7 @@ export const buttonShortcuts = [
     ['btn-tertiary-outline', `${base.layout} border ${base.text} ${base.focus} ${variants.tertiary.outline} ${TRANSITIONS.base}`],
     
     // Utility buttons
-    ['btn-text', `text-neutral-dark border border-transparent hover:underline focus-visible:underline ${TRANSITIONS.base}`],
+    ['btn-text', `text-neutral-darker dark:text-neutral-light border border-transparent hover:underline focus-visible:underline ${TRANSITIONS.base}`],
     ['btn-tag', `
         inline-flex items-center
         px-3 py-1
@@ -51,5 +51,5 @@ export const buttonShortcuts = [
     ['btn-circle', `rounded-full !p-0 aspect-square inline-flex`],
     ['btn-copy', `leading-none opacity-60 hover:opacity-100 focus-visible:opacity-100 ml-auto w-6 h-6 -right-7 sm:-right-6 ${LAYOUT.position.absolute}`],
     ['btn-copy-text', 'shadow-sm py-0.5 px-1 bg-gray-100 -ml-1 -mt-4 text-xxs whitespace-nowrap'],
-    ['btn-prcode', `${LAYOUT.position.relative} inline-block text-center leading-none px-1 py-0.5 mr-1 cursor-pointer font-mono border-solid border-1 border-gray-200 select-none text-gray-500 last:mr-0 not-last:mr-2 not-last:after:content-[+] after:(text-blue-darker ${LAYOUT.position.absolute} w-4 pl-0.5)`]
+    ['btn-prcode', `${LAYOUT.position.relative} inline-block text-center leading-none px-1 py-0.5 mr-1 cursor-pointer font-mono border-solid border-1 border-gray-200 select-none text-gray-600 dark:text-neutral-light last:mr-0 not-last:mr-2 not-last:after:content-[+] after:(text-blue-darker ${LAYOUT.position.absolute} w-4 pl-0.5)`]
 ];

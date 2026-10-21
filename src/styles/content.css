@@ -66,22 +66,8 @@ html.dark .content .component-preview {
   background-color: rgba(255, 255, 255, 0.03);
 }
 
-/* Prose tables dark mode */
-html.dark table:not(.table-base) {
-  @apply bg-slate-dark border-slate-dark;
-
-  thead {
-    @apply bg-slate-darkest text-neutral-lighter;
-  }
-
-  td,
-  th {
-    @apply text-neutral-lighter;
-  }
-}
-
 /* Prose tables from markdown — excluded when table-base shortcut is used */
-table:not(.table-base) {
+:where(table:not(.table-base)) {
   @apply table-auto text-left border bg-white shadow-md;
 
   tr {
@@ -95,5 +81,20 @@ table:not(.table-base) {
 
   thead {
     @apply bg-gray-100;
+  }
+}
+
+/* Prose tables dark mode — must follow the light rules: both have the same specificity */
+/* :where() keeps prose table defaults below utility classes (e.g. a colored thead) */
+:where(html.dark table:not(.table-base)) {
+  @apply bg-slate-dark border-slate-dark;
+
+  thead {
+    @apply bg-slate-darkest text-neutral-lighter;
+  }
+
+  td,
+  th {
+    @apply text-neutral-lighter;
   }
 }

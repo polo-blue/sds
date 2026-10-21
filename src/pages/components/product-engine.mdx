@@ -51,7 +51,7 @@ See [Tooltips documentation](/core/tooltips) for details.
 ### Basic Usage (New API Structure):
 
 <div class="component-preview">
-     <div class="bg-white p-6 w-full flex gap-2">
+     <div class="bg-white dark:bg-accent-deepBlue p-6 w-full flex gap-2">
           <ProductEngine engine={{
                code: "CAYA",
                name: "1.6 TDI",
@@ -98,9 +98,9 @@ import { ProductEngine } from 'spoko-design-system';
 Engine codes for special editions are automatically color-coded:
 
 <div class="component-preview">
-     <div class="bg-white p-6 w-full flex flex-wrap gap-3">
+     <div class="bg-white dark:bg-accent-deepBlue p-6 w-full flex flex-wrap gap-3">
           <div class="flex flex-col gap-1">
-               <small class="text-xs text-gray-500">GTI Engine (Red)</small>
+               <small class="text-xs text-gray-500 dark:text-neutral-light">GTI Engine (Red)</small>
                <ProductEngine engine={{
                     code: "CAVE",
                     name: "1.4 TSI",
@@ -110,7 +110,7 @@ Engine codes for special editions are automatically color-coded:
                }} />
           </div>
           <div class="flex flex-col gap-1">
-               <small class="text-xs text-gray-500">WRC Engine (Blue)</small>
+               <small class="text-xs text-gray-500 dark:text-neutral-light">WRC Engine (Blue)</small>
                <ProductEngine engine={{
                     code: "CDLJ",
                     name: "1.6 TDI",
@@ -120,7 +120,7 @@ Engine codes for special editions are automatically color-coded:
                }} />
           </div>
           <div class="flex flex-col gap-1">
-               <small class="text-xs text-gray-500">Special Blue</small>
+               <small class="text-xs text-gray-500 dark:text-neutral-light">Special Blue</small>
                <ProductEngine engine={{
                     code: "CPTA",
                     name: "1.0 TSI",
@@ -165,7 +165,7 @@ import { ProductEngines } from 'spoko-design-system'
 ### Usage:
 
 <div class="component-preview">
-     <div class="bg-white p-6 w-full">
+     <div class="bg-white dark:bg-accent-deepBlue p-6 w-full">
           <ProductEngines engines={[
                {
                     id: 13,

@@ -6,7 +6,7 @@ const { headers } = Astro.props;
   {
     headers.map(({ slug, text }) => {
       return (
-        <li class="text-slate-400 hover:text-slate-800 hover:text-slate-900">
+        <li class="text-slate-500 dark:text-neutral-light hover:text-slate-900 dark:hover:text-neutral-lighter">
           #<a href={`#${slug}`}>{text}</a>
         </li>
       );

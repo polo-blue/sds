@@ -85,15 +85,15 @@ export const BUTTON_STYLES = {
   variants: {
     primary: {
       solid: 'bg-brand-secondary border border-transparent hover:bg-accent-light text-blue-darker shadow',
-      outline: 'border-accent-light border text-accent-default hover:(bg-accent-light text-white)',
+      outline: 'border-accent-light border text-accent-dark dark:text-sky-300 hover:(bg-accent-light text-white)',
     },
     secondary: {
       solid: 'bg-neutral-dark border border-transparent hover:bg-neutral-darker text-white shadow',
-      outline: 'border-neutral-dark border text-neutral-dark hover:(text-white bg-neutral-dark)',
+      outline: 'border-neutral-dark border text-neutral-darker dark:text-neutral-light hover:(text-white bg-neutral-dark)',
     },
     tertiary: {
       solid: 'bg-blue-darker hover:bg-accent-darker text-white',
-      outline: 'border-blue-darker text-blue-darker',
+      outline: 'border-blue-darker text-blue-darker dark:(border-neutral-light text-neutral-lighter)',
     },
   },
   hover: {
