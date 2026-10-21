@@ -27,6 +27,7 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
 >
   <span class="copy-icon" role="img" aria-hidden="true"></span>
 </button>
+<span class="sr-only" role="status" data-copy-status></span>
 
 <script>
   import { updateTooltipContent } from '../scripts/tooltips';
@@ -46,6 +47,11 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
 
     private get copyText(): string {
       return this.button.dataset.copyText || '';
+    }
+
+    private get statusRegion(): HTMLElement | null {
+      const next = this.button.nextElementSibling;
+      return next instanceof HTMLElement && next.hasAttribute('data-copy-status') ? next : null;
     }
 
     private get category(): string {
@@ -86,9 +92,14 @@ const COPY_ICON = `url("data:image/svg+xml;utf8,${encodeURIComponent(
       if (this.resetTimer) clearTimeout(this.resetTimer);
       updateTooltipContent(this.button, this.copiedText);
       this.button.setAttribute('aria-label', this.copiedText);
+      // Swapping the label of the focused button is not announced, so use a live region
+      const status = this.statusRegion;
+      if (status) status.textContent = this.copiedText;
       this.resetTimer = setTimeout(() => {
         updateTooltipContent(this.button, this.originalText);
         this.button.setAttribute('aria-label', this.originalText);
+        const status = this.statusRegion;
+        if (status) status.textContent = '';
         this.resetTimer = null;
       }, ClipboardButton.COPY_TIMEOUT);
     }

@@ -30,6 +30,8 @@ const getColorClass = (category: string, name: string) => {
 
 <template>
   <div class="flex flex-col space-y-12">
+    <!-- Copy feedback for screen readers (WCAG 4.1.3) -->
+    <span class="sr-only" role="status">{{ copiedItem ? 'Copied to clipboard' : '' }}</span>
     <div v-for="[category, shades] in colorCategories" :key="category">
       <h3 class="capitalize text-xl font-bold mb-4">
         {{ category }}

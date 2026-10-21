@@ -97,6 +97,16 @@ const labelClass = computed(() => {
   return classes.join(' ');
 });
 
+// Tie error/success text to the field so it is announced with it (WCAG 1.3.1, 3.3.1)
+const errorId = computed(() => `${props.id}-error`);
+const successId = computed(() => `${props.id}-success`);
+const describedBy = computed(() => {
+  if (props.error && typeof props.error === 'string') return errorId.value;
+  if (props.success && typeof props.success === 'string') return successId.value;
+  return undefined;
+});
+const ariaInvalid = computed(() => (props.error ? 'true' : undefined));
+
 // Emit modelValue on input change
 const handleInput = (event: Event) => {
   const target = event.target as HTMLInputElement | HTMLTextAreaElement;
@@ -121,6 +131,8 @@ const handleBlur = (event: FocusEvent) => emit('blur', event);
       :class="inputClass"
       :placeholder="placeholder"
       :value="modelValue"
+      :aria-invalid="ariaInvalid"
+      :aria-describedby="describedBy"
       v-bind="attrs"
       @input="handleInput"
       @focus="handleFocus"
@@ -137,6 +149,8 @@ const handleBlur = (event: FocusEvent) => emit('blur', event);
       :class="inputClass"
       :placeholder="placeholder"
       :value="modelValue"
+      :aria-invalid="ariaInvalid"
+      :aria-describedby="describedBy"
       v-bind="attrs"
       @input="handleInput"
       @focus="handleFocus"
@@ -146,16 +160,16 @@ const handleBlur = (event: FocusEvent) => emit('blur', event);
     <!-- Label with guaranteed correct transform origin -->
     <label :for="id" :class="labelClass" style="transform-origin: top left">
       {{ label }}
-      <span v-if="required" class="text-red-500 ml-1">*</span>
+      <span v-if="required" class="text-red-700 dark:text-red-300 ml-1" aria-hidden="true">*</span>
     </label>
 
     <!-- Error message -->
-    <div v-if="error && typeof error === 'string'" class="input-error-message">
+    <div v-if="error && typeof error === 'string'" :id="errorId" class="input-error-message">
       {{ error }}
     </div>
 
     <!-- Success message -->
-    <div v-if="success && typeof success === 'string'" class="input-success-message">
+    <div v-if="success && typeof success === 'string'" :id="successId" class="input-success-message">
       {{ success }}
     </div>
   </div>

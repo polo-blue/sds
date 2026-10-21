@@ -87,7 +87,7 @@ const copyConfig = () => copy(exportCode.value);
         <label class="flex flex-col gap-1.5">
           <span class="text-sm font-textbold text-slate-dark dark:text-neutral-lighter">
             Primary
-            <span class="text-red-500" aria-label="required">*</span>
+            <span class="text-red-700 dark:text-red-300" aria-hidden="true">*</span>
           </span>
           <div class="flex items-center gap-2">
             <input
@@ -100,6 +100,9 @@ const copyConfig = () => copy(exportCode.value);
               type="text"
               v-model="primary"
               aria-label="Primary color hex value"
+              required
+              :aria-invalid="palette ? undefined : 'true'"
+              :aria-describedby="palette ? undefined : 'palette-color-error'"
               class="font-mono text-sm border border-slate-200 dark:border-slate-dark dark:bg-slate-darkest rounded px-2 py-1 w-24"
             />
           </div>
@@ -146,7 +149,12 @@ const copyConfig = () => copy(exportCode.value);
       </div>
     </section>
 
-    <div v-if="!palette" class="mb-8 p-3 bg-red-50 border border-red-200 rounded text-sm text-red-700">
+    <div
+      v-if="!palette"
+      id="palette-color-error"
+      role="alert"
+      class="mb-8 p-3 bg-red-50 border border-red-200 rounded text-sm text-red-700"
+    >
       Invalid color value — enter a valid hex, rgb, or oklch color.
     </div>
 
@@ -184,8 +192,10 @@ const copyConfig = () => copy(exportCode.value);
         >
           {{ copied ? '✓ Copied' : 'Copy' }}
         </button>
+        <span class="sr-only" role="status">{{ copied ? 'Configuration copied to clipboard' : '' }}</span>
       </div>
       <pre
+        tabindex="0"
         class="bg-gray-900 p-4 overflow-x-auto"
       ><code class="text-gray-200 text-sm">{{ exportCode }}</code></pre>
     </div>
