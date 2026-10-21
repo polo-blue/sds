@@ -99,9 +99,10 @@ chore: update dependencies [skip ci]
 On merge to `main`, GitHub Actions automatically:
 1. Analyzes commits
 2. Determines version bump
-3. Updates package.json and CHANGELOG.md
-4. Creates GitHub release
-5. Publishes to npm
+3. Publishes to npm (the version is set in the published package only)
+4. Creates the git tag and a GitHub Release with the generated release notes
+
+No commit is pushed back to `main`: release notes live in [GitHub Releases](https://github.com/polo-blue/sds/releases), and the `version` field in the repository's `package.json` is not kept in sync.
 
 ## Features
 

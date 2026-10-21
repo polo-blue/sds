@@ -12,7 +12,7 @@ What it enforces on `main`:
   this is what stops a red Renovate PR (like #492) from being merged;
 - no force-push, no branch deletion.
 
-Bypass: only the GitHub Actions app (id 15368), so the release workflow (semantic-release) can still
-push its `chore(release)` commit. Repository admins are intentionally **not** on the bypass list.
+No bypass actors: the release workflow does not push to `main` (semantic-release publishes to npm and
+creates the git tag and GitHub Release only), so nothing needs to skip these rules — not even admins.
 
 Keep the check names in sync with the job names in `.github/workflows/code-quality.yml`.

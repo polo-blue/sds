@@ -1,3 +1,6 @@
+> **Note:** from 2.1.9 on, release notes are published only on [GitHub Releases](https://github.com/polo-blue/sds/releases).
+> This file is an archive of earlier releases.
+
 ## [2.1.8](https://github.com/polo-blue/sds/compare/v2.1.7...v2.1.8) (2026-10-21)
 
 ### Bug Fixes
