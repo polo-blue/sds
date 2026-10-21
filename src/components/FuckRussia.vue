@@ -1,5 +1,10 @@
 <template>
-  <div class="relative flex" title="FUCK PUTIN! FUCK RUZZIA!">
+  <div
+    class="relative flex"
+    role="img"
+    title="FUCK PUTIN! FUCK RUZZIA!"
+    aria-label="FUCK PUTIN! FUCK RUZZIA!"
+  >
     <div i-mdi:tank class="inline-block bg-ukraine mr-1 mt-0.5" />
     <div i-mdi:tank class="inline-block bg-ukraine mr-1 mt-0.5" />
     <div i-mdi:tank class="inline-block bg-ukraine mr-5 mt-0.5" />

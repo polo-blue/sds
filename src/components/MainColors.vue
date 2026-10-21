@@ -41,6 +41,8 @@ const getColorClass = (category: string, name: string) => {
             class="w-full h-10 rounded-lg shadow-md transition-all duration-200 hover:shadow-xl hover:scale-105 cursor-pointer relative overflow-hidden"
             :style="`background: ${value}`"
             :title="`Click to copy hex: ${value}`"
+            :aria-label="`Copy ${category} ${name} hex ${value}`"
+            type="button"
             @click="copyToClipboard(value, `${category}-${name}-hex`)"
           >
             <!-- Copied indicator -->
@@ -65,6 +67,8 @@ const getColorClass = (category: string, name: string) => {
               <button
                 class="flex-1 px-2 py-1 bg-gray-100 hover:bg-gray-200 rounded transition-colors text-gray-600 hover:text-gray-900 relative"
                 :title="`Copy hex: ${value}`"
+                :aria-label="`Copy hex ${value}`"
+                type="button"
                 @click="copyToClipboard(value, `${category}-${name}-hex`)"
               >
                 <span v-if="copiedItem === `${category}-${name}-hex`" class="text-green-600">✓</span>
@@ -75,6 +79,8 @@ const getColorClass = (category: string, name: string) => {
               <button
                 class="flex-1 px-2 py-1 bg-blue-100 hover:bg-blue-200 rounded transition-colors text-blue-700 hover:text-blue-900 relative"
                 :title="`Copy class: text-${getColorClass(category, name)}`"
+                :aria-label="`Copy class text-${getColorClass(category, name)}`"
+                type="button"
                 @click="copyToClipboard(`text-${getColorClass(category, name)}`, `${category}-${name}-class`)"
               >
                 <span v-if="copiedItem === `${category}-${name}-class`" class="text-green-600">✓</span>
@@ -85,6 +91,8 @@ const getColorClass = (category: string, name: string) => {
               <button
                 class="flex-1 px-2 py-1 bg-purple-100 hover:bg-purple-200 rounded transition-colors text-purple-700 hover:text-purple-900 relative"
                 :title="`Copy class: bg-${getColorClass(category, name)}`"
+                :aria-label="`Copy class bg-${getColorClass(category, name)}`"
+                type="button"
                 @click="copyToClipboard(`bg-${getColorClass(category, name)}`, `${category}-${name}-bg`)"
               >
                 <span v-if="copiedItem === `${category}-${name}-bg`" class="text-green-600">✓</span>

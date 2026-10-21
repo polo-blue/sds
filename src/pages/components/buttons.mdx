@@ -187,7 +187,7 @@ import { Icon } from 'astro-icon/components';
 ---
 <Button tertiary href="#">
   Read more
-  <Icon name="la:arrow-right" class="ml-2 text-2xl -my-1 -mr-1" />
+  <Icon name="la:arrow-right" aria-hidden="true" class="ml-2 text-2xl -my-1 -mr-1" />
 </Button>`}
   vue={`<script setup>
 import Button from 'spoko-design-system/src/components/Button.vue';
@@ -197,32 +197,32 @@ import Button from 'spoko-design-system/src/components/Button.vue';
   <!-- Vue uses UnoCSS icon classes (astro-icon is Astro-only) -->
   <Button tertiary href="#">
     Read more
-    <span class="i-la-arrow-right ml-2 text-2xl -my-1 -mr-1" />
+    <span class="i-la-arrow-right ml-2 text-2xl -my-1 -mr-1" aria-hidden="true" />
   </Button>
 </template>`}
   html={`<a href="#" class="btn-tertiary btn-normal btn-medium-hover">
   Read more
-  <span class="i-la-arrow-right ml-2 text-2xl -my-1 -mr-1"></span>
+  <span class="i-la-arrow-right ml-2 text-2xl -my-1 -mr-1" aria-hidden="true"></span>
 </a>
 <a href="#" class="btn-tertiary btn-sm btn-medium-hover">
   Read more
-  <span class="i-la-arrow-right ml-2 text-2xl -my-1 -mr-1"></span>
+  <span class="i-la-arrow-right ml-2 text-2xl -my-1 -mr-1" aria-hidden="true"></span>
 </a>
 <a href="#" class="btn-tertiary btn-xs btn-medium-hover px-5">
   Read more
-  <span class="i-la-arrow-right ml-2 text-2xl -my-1 -mr-1"></span>
+  <span class="i-la-arrow-right ml-2 text-2xl -my-1 -mr-1" aria-hidden="true"></span>
 </a>`}>
   <Button tertiary href="#">
     Read more
-    <Icon name="la:arrow-right" class="ml-2 text-2xl -my-1 -mr-1" />
+    <Icon name="la:arrow-right" aria-hidden="true" class="ml-2 text-2xl -my-1 -mr-1" />
   </Button>
   <Button tertiary href="#" medium>
     Read more
-    <Icon name="la:arrow-right" class="ml-2 text-2xl -my-1 -mr-1" />
+    <Icon name="la:arrow-right" aria-hidden="true" class="ml-2 text-2xl -my-1 -mr-1" />
   </Button>
   <Button tertiary href="#" small class="px-5">
     Read more
-    <Icon name="la:arrow-right" class="ml-2 text-2xl -my-1 -mr-1" />
+    <Icon name="la:arrow-right" aria-hidden="true" class="ml-2 text-2xl -my-1 -mr-1" />
   </Button>
 </ComponentPreview>
 
@@ -394,14 +394,14 @@ Circle buttons are perfect for icon-only actions, maintaining equal width and he
 import Button from 'spoko-design-system/components/Button.vue';
 import { Icon } from 'astro-icon/components';
 ---
-<Button primary circle>
-  <Icon name="la:arrow-right" />
+<Button primary circle aria-label="Next">
+  <Icon name="la:arrow-right" aria-hidden="true" />
 </Button>
-<Button secondary circle>
-  <Icon name="la:arrow-right" />
+<Button secondary circle aria-label="Next">
+  <Icon name="la:arrow-right" aria-hidden="true" />
 </Button>
-<Button tertiary circle>
-  <Icon name="la:arrow-right" />
+<Button tertiary circle aria-label="Next">
+  <Icon name="la:arrow-right" aria-hidden="true" />
 </Button>`}
   vue={`<script setup>
 import Button from 'spoko-design-system/src/components/Button.vue';
@@ -409,47 +409,47 @@ import Button from 'spoko-design-system/src/components/Button.vue';
 
 <template>
   <!-- Vue uses UnoCSS icon classes (astro-icon is Astro-only) -->
-  <Button primary circle>
-    <span class="i-la-arrow-right" />
+  <Button primary circle aria-label="Next">
+    <span class="i-la-arrow-right" aria-hidden="true" />
   </Button>
-  <Button secondary circle>
-    <span class="i-la-arrow-right" />
+  <Button secondary circle aria-label="Next">
+    <span class="i-la-arrow-right" aria-hidden="true" />
   </Button>
-  <Button tertiary circle>
-    <span class="i-la-arrow-right" />
+  <Button tertiary circle aria-label="Next">
+    <span class="i-la-arrow-right" aria-hidden="true" />
   </Button>
 </template>`}
-  html={`<button class="btn-primary btn-normal btn-circle">
-  <span class="i-la-arrow-right"></span>
+  html={`<button class="btn-primary btn-normal btn-circle" aria-label="Next">
+  <span class="i-la-arrow-right" aria-hidden="true"></span>
 </button>
-<button class="btn-secondary btn-normal btn-circle">
-  <span class="i-la-arrow-right"></span>
+<button class="btn-secondary btn-normal btn-circle" aria-label="Next">
+  <span class="i-la-arrow-right" aria-hidden="true"></span>
 </button>
-<button class="btn-tertiary btn-normal btn-medium-hover btn-circle">
-  <span class="i-la-arrow-right"></span>
+<button class="btn-tertiary btn-normal btn-medium-hover btn-circle" aria-label="Next">
+  <span class="i-la-arrow-right" aria-hidden="true"></span>
 </button>
 
 <!-- Size modifiers: btn-sm (medium), btn-xs (small) -->
-<button class="btn-primary btn-sm btn-circle">
-  <span class="i-la-arrow-right text-xl"></span>
+<button class="btn-primary btn-sm btn-circle" aria-label="Next">
+  <span class="i-la-arrow-right text-xl" aria-hidden="true"></span>
 </button>
-<button class="btn-primary btn-xs btn-circle">
-  <span class="i-la-arrow-right text-lg"></span>
+<button class="btn-primary btn-xs btn-circle" aria-label="Next">
+  <span class="i-la-arrow-right text-lg" aria-hidden="true"></span>
 </button>`}>
   <div class="flex w-full gap-4 items-center">
-      <Button primary circle><Icon name="la:arrow-right" /></Button>
-      <Button secondary circle><Icon name="la:arrow-right" /></Button>
-      <Button tertiary circle><Icon name="la:arrow-right" /></Button>
+      <Button primary circle aria-label="Next"><Icon name="la:arrow-right" aria-hidden="true" /></Button>
+      <Button secondary circle aria-label="Next"><Icon name="la:arrow-right" aria-hidden="true" /></Button>
+      <Button tertiary circle aria-label="Next"><Icon name="la:arrow-right" aria-hidden="true" /></Button>
   </div>
   <div class="flex w-full gap-4 items-center">
-      <Button primary medium circle><Icon name="la:arrow-right" class="text-xl" /></Button>
-      <Button secondary medium circle><Icon name="la:arrow-right" class="text-xl" /></Button>
-      <Button tertiary medium circle><Icon name="la:arrow-right" class="text-xl" /></Button>
+      <Button primary medium circle aria-label="Next"><Icon name="la:arrow-right" aria-hidden="true" class="text-xl" /></Button>
+      <Button secondary medium circle aria-label="Next"><Icon name="la:arrow-right" aria-hidden="true" class="text-xl" /></Button>
+      <Button tertiary medium circle aria-label="Next"><Icon name="la:arrow-right" aria-hidden="true" class="text-xl" /></Button>
   </div>
   <div class="flex w-full gap-4 items-center">
-      <Button primary small circle><Icon name="la:arrow-right" class="text-lg" /></Button>
-      <Button secondary small circle><Icon name="la:arrow-right" class="text-lg" /></Button>
-      <Button tertiary small circle><Icon name="la:arrow-right" class="text-lg" /></Button>
+      <Button primary small circle aria-label="Next"><Icon name="la:arrow-right" aria-hidden="true" class="text-lg" /></Button>
+      <Button secondary small circle aria-label="Next"><Icon name="la:arrow-right" aria-hidden="true" class="text-lg" /></Button>
+      <Button tertiary small circle aria-label="Next"><Icon name="la:arrow-right" aria-hidden="true" class="text-lg" /></Button>
   </div>
 </ComponentPreview>
 
@@ -460,42 +460,42 @@ import Button from 'spoko-design-system/src/components/Button.vue';
 import Button from 'spoko-design-system/components/Button.vue';
 import { Icon } from 'astro-icon/components';
 ---
-<Button primary-outline circle>
-  <Icon name="la:arrow-right" class="text-2xl" />
+<Button primary-outline circle aria-label="Next">
+  <Icon name="la:arrow-right" aria-hidden="true" class="text-2xl" />
 </Button>
-<Button secondary-outline circle>
-  <Icon name="la:arrow-right" class="text-2xl" />
+<Button secondary-outline circle aria-label="Next">
+  <Icon name="la:arrow-right" aria-hidden="true" class="text-2xl" />
 </Button>
-<Button tertiary-outline circle>
-  <Icon name="la:arrow-right" class="text-2xl" />
+<Button tertiary-outline circle aria-label="Next">
+  <Icon name="la:arrow-right" aria-hidden="true" class="text-2xl" />
 </Button>`}
   vue={`<script setup>
 import Button from 'spoko-design-system/src/components/Button.vue';
 </script>
 
 <template>
-  <Button primary-outline circle>
-    <span class="i-la-arrow-right text-2xl" />
+  <Button primary-outline circle aria-label="Next">
+    <span class="i-la-arrow-right text-2xl" aria-hidden="true" />
   </Button>
-  <Button secondary-outline circle>
-    <span class="i-la-arrow-right text-2xl" />
+  <Button secondary-outline circle aria-label="Next">
+    <span class="i-la-arrow-right text-2xl" aria-hidden="true" />
   </Button>
-  <Button tertiary-outline circle>
-    <span class="i-la-arrow-right text-2xl" />
+  <Button tertiary-outline circle aria-label="Next">
+    <span class="i-la-arrow-right text-2xl" aria-hidden="true" />
   </Button>
 </template>`}
-  html={`<button class="btn-primary-outline btn-normal btn-circle">
-  <span class="i-la-arrow-right text-2xl"></span>
+  html={`<button class="btn-primary-outline btn-normal btn-circle" aria-label="Next">
+  <span class="i-la-arrow-right text-2xl" aria-hidden="true"></span>
 </button>
-<button class="btn-secondary-outline btn-normal btn-circle">
-  <span class="i-la-arrow-right text-2xl"></span>
+<button class="btn-secondary-outline btn-normal btn-circle" aria-label="Next">
+  <span class="i-la-arrow-right text-2xl" aria-hidden="true"></span>
 </button>
-<button class="btn-tertiary-outline btn-normal btn-medium-hover btn-circle">
-  <span class="i-la-arrow-right text-2xl"></span>
+<button class="btn-tertiary-outline btn-normal btn-medium-hover btn-circle" aria-label="Next">
+  <span class="i-la-arrow-right text-2xl" aria-hidden="true"></span>
 </button>`}>
-  <Button primary-outline circle><Icon name="la:arrow-right" class="text-2xl" /></Button>
-  <Button secondary-outline circle><Icon name="la:arrow-right" class="text-2xl" /></Button>
-  <Button tertiary-outline circle><Icon name="la:arrow-right" class="text-2xl" /></Button>
+  <Button primary-outline circle aria-label="Next"><Icon name="la:arrow-right" aria-hidden="true" class="text-2xl" /></Button>
+  <Button secondary-outline circle aria-label="Next"><Icon name="la:arrow-right" aria-hidden="true" class="text-2xl" /></Button>
+  <Button tertiary-outline circle aria-label="Next"><Icon name="la:arrow-right" aria-hidden="true" class="text-2xl" /></Button>
 </ComponentPreview>
 
 ## CSS Class Reference
@@ -523,8 +523,8 @@ Size modifiers: `btn-normal` (default), `btn-sm` (medium), `btn-xs` (small).
 <button class="btn-primary btn-normal rounded-full">Rounded</button>
 
 <!-- Circle (icon-only) -->
-<button class="btn-primary btn-normal btn-circle">
-  <span class="i-la-arrow-right"></span>
+<button class="btn-primary btn-normal btn-circle" aria-label="Next">
+  <span class="i-la-arrow-right" aria-hidden="true"></span>
 </button>
 
 <!-- Link rendered as <a> -->
@@ -549,7 +549,7 @@ Size modifiers: `btn-normal` (default), `btn-sm` (medium), `btn-xs` (small).
   { name: 'medium', type: 'boolean', default: 'false', description: 'Medium size (btn-sm)' },
   { name: 'rounded', type: 'boolean', default: 'true', description: 'Legacy no-op. All SDS button shortcuts bake `rounded-full` into their base layout — pill shape is the universal default. Use `sharp` to opt out.' },
   { name: 'sharp', type: 'boolean', default: 'false', description: 'Applies `!rounded-none` to force sharp corners (overrides the default pill shape).' },
-  { name: 'circle', type: 'boolean', default: 'false', description: 'Equal width/height circle — for icon-only buttons' },
+  { name: 'circle', type: 'boolean', default: 'false', description: 'Equal width/height circle — for icon-only buttons. Always pass an `aria-label` too' },
   { name: 'href', type: 'string', default: 'undefined', description: 'Renders as <a> tag when provided' },
   { name: 'title', type: 'string', default: 'undefined', description: 'Native title attribute' },
 ]} />

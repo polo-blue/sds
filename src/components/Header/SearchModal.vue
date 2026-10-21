@@ -1,6 +1,7 @@
 <template>
   <dialog
     ref="dialogRef"
+    aria-label="Search documentation"
     class="sds-search-dialog fixed inset-0 z-100 pt-[10vh] px-4 pb-4 max-sm:px-2 max-sm:pt-4 w-full h-full border-none bg-transparent overflow-visible"
     @click="onBackdropClick"
     @close="onClose"

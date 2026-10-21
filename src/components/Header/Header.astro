@@ -35,12 +35,12 @@ import SearchModal from './SearchModal.vue';
       <button
         type="button"
         class="sds-search-trigger ml-6 hidden md:flex items-center gap-2 px-3 h-9 rounded-lg border border-slate-200 dark:border-slate-dark bg-slate-50 dark:bg-slate-darkest text-slate-500 dark:text-neutral-light hover:border-blue-medium dark:hover:border-blue-light hover:text-slate-900 dark:hover:text-neutral-lighter transition-colors min-w-56 text-left"
-        aria-label="Open search"
+        aria-keyshortcuts="Control+K"
         onclick="window.dispatchEvent(new CustomEvent('sds-open-search'))"
       >
         <span class="i-lucide-search text-base" aria-hidden="true"></span>
         <span class="text-sm flex-1">Search docs…</span>
-        <span class="hidden lg:inline-flex items-center gap-1 text-xs">
+        <span class="hidden lg:inline-flex items-center gap-1 text-xs" aria-hidden="true">
           <kbd
             class="px-1.5 py-0.5 border border-slate-300 dark:border-slate-dark rounded-sm bg-white dark:bg-slate-dark font-mono text-[0.65rem] leading-none"
             >Ctrl</kbd
@@ -54,7 +54,7 @@ import SearchModal from './SearchModal.vue';
       <button
         type="button"
         class="sds-search-trigger md:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-dark transition-colors text-slate-700 dark:text-neutral-light"
-        aria-label="Open search"
+        aria-label="Search docs"
         onclick="window.dispatchEvent(new CustomEvent('sds-open-search'))"
       >
         <span class="i-lucide-search text-xl" aria-hidden="true"></span>
