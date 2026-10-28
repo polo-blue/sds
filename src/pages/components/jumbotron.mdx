@@ -71,7 +71,7 @@ The default variant is ideal for primary content sections. It supports custom in
 ```
 
 ## Slim Variant
-A more compact version of the default variant, useful for secondary content sections or when vertical space is limited.
+A more compact version of the default variant, useful for secondary content sections or when vertical space is limited. `variant="small"` is a shorthand for `variant="default"` with `slim`.
 
 <div class="component-preview">
     <Jumbotron
@@ -486,7 +486,7 @@ Shows how to fully customize the header section using the intro slot. Useful for
 ### Common
 
 <PropsTable data={[
-  { name: 'variant', type: "'default' | 'hero' | 'post' | 'post-split'", default: "'default'", description: 'Layout variant.' },
+  { name: 'variant', type: "'default' | 'small' | 'hero' | 'post' | 'post-split'", default: "'default'", description: "Layout variant. 'small' is 'default' with slim." },
   { name: 'title', type: 'string', required: false, description: 'Main heading text. Supports inline HTML for styling.' },
   { name: 'image', type: 'string', required: false, description: 'Image URL (required for hero, post, post-split variants).' },
   { name: 'slim', type: 'boolean', default: 'false', description: 'Reduces vertical padding and height (default, hero, post-split variants).' },
