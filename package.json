@@ -118,7 +118,6 @@
     "@vueuse/core": "^15.0.0",
     "astro-icon": "^1.2.0",
     "astro-meta-tags": "^0.4.1",
-    "astro-navbar": "^2.4.0",
     "astro-pagefind": "^2.0.1",
     "astro-remote": "^0.3.4",
     "culori": "^4.0.2",

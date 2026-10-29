@@ -109,7 +109,6 @@ No commit is pushed back to `main`: release notes live in [GitHub Releases](http
 - ⚡️ [Vue 3](https://github.com/vuejs/core), [Vite](https://github.com/vitejs/vite), [pnpm](https://pnpm.io/) - born with fastness
 - 🎨 [UnoCSS](https://github.com/antfu/unocss) - the instant on-demand atomic CSS engine
 - 😃 [astro-icon](https://github.com/natemoo-re/astro-icon) - for local icons, sprites and `@iconify-json/*` sets
-- 🍔 [astro-navbar](https://github.com/surjithctly/astro-navbar) - fully responsive and accessible headless navigation bar
 - 🔎 [astro-pagefind](https://github.com/shishkin/astro-pagefind) - Astro integration for Pagefind static site search
 - 🗒 [astrojs/mdx](https://github.com/withastro/astro/tree/main/packages/integrations/mdx/) - markdown support
 - 📦 [Playform compression](https://github.com/Playform/compress) - compression utilities to your Astro project
