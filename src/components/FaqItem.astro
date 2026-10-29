@@ -21,7 +21,7 @@ const { data } = Astro.props;
     >
       <summary
         class="py-2 cursor-pointer focus-visible:underline text-xl font-500 relative items-center flex justify-between list-none
-      after:(block duration-200 content-empty bg-[url(/arrow-bottom.svg)] bg-contain bg-center bg-no-repeat h-3 w-4 min-w-4 my-auto ml-4 opacity-60)"
+      after:(block duration-200 content-empty bg-contain bg-center bg-no-repeat h-3 w-4 min-w-4 my-auto ml-4 opacity-60)"
       >
         <h3 itemprop="name" class="faq-question font-headbold" set:html={data.question} />
       </summary>
@@ -36,6 +36,11 @@ const { data } = Astro.props;
 
 <style is:global>
   .faq-details {
+    /* Inlined so consumers need no /arrow-bottom.svg in their public/ */
+    summary::after {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 10'%3E%3Cg transform='matrix(-0.0247114,0,0,-0.0237442,23.7506,13.5573)'%3E%3Cpath d='M254.6,477.479C259.711,473.272 561.717,170.223 561.717,170.223C561.717,170.223 576.205,153.951 597.839,153.983C621.181,154.019 636.425,170.096 636.425,170.096C636.425,170.096 939.167,475.94 940.854,477.463C967.2,501.255 956.012,536.939 942.827,551.356C928.606,566.906 896.33,575.498 868.319,549.101C865.351,546.304 604.846,285.516 604.846,285.516C604.846,285.516 601.137,280.823 597.481,280.661C594.25,280.517 589.683,285.449 589.683,285.449C589.683,285.449 332.794,543.858 326.478,549.801C312.614,562.847 276.463,576.895 252.279,552.019C218.24,517.006 250.72,480.673 254.6,477.479Z' fill='rgb(48,53,59)'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
     &[open] .faq-question {
       @apply text-accent-light;
     }
