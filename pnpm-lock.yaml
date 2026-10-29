@@ -302,9 +302,6 @@ importers:
       astro-meta-tags:
         specifier: ^0.4.1
         version: 0.4.1(astro@7.3.5(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
-      astro-navbar:
-        specifier: ^2.4.0
-        version: 2.4.0
       astro-pagefind:
         specifier: ^2.0.1
         version: 2.0.1(astro@7.3.5(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
@@ -2971,9 +2968,6 @@ packages:
     resolution: {integrity: sha512-sDwhUstpNnaMROAtMxbD7YoaEQey3Z8YHeAHjgLnbIoVBceC5y+xu67Q0pQxeAbgSE1CQTs6LHzbsENgjkv2lQ==}
     peerDependencies:
       astro: '>=4.0.0'
-
-  astro-navbar@2.4.0:
-    resolution: {integrity: sha512-UhQnU8lz3a0NKL5gTBXFwYg1CVzP/DNlw1z6qW7f9Q1j33oMHdjwX/TmC2/xkJTKeq4a2RxgaqeJ+6CxCxRELg==}
 
   astro-pagefind@2.0.1:
     resolution: {integrity: sha512-zhMTctuVuKrYH1C0Xl+p8mhexEuxVrqfT8paQOAbKZFtgUIWAMtR2nCeU11ti4Rfeit16LhiCxZFwjOqYoiaNQ==}
@@ -9018,8 +9012,6 @@ snapshots:
   astro-meta-tags@0.4.1(astro@7.3.5(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)):
     dependencies:
       astro: 7.3.5(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
-
-  astro-navbar@2.4.0: {}
 
   astro-pagefind@2.0.1(astro@7.3.5(@types/node@25.9.9)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)):
     dependencies:
