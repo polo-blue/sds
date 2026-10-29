@@ -4,6 +4,7 @@ layout: "../../layouts/MainLayout.astro"
 ---
 import ProductGallery from '../../components/Product/ProductGallery.astro'
 import PropsTable from '../../components/PropsTable.astro'
+import ProductGalleryDocsInit from '../../layouts/partials/ProductGalleryDocsInit.astro'
 
 # ProductGallery
 
@@ -181,6 +182,4 @@ interface GalleryImage {
 </ProductGallery>
 ```
 
-<script>
-  import '../../scripts/product-gallery-docs-init';
-</script>
+<ProductGalleryDocsInit />

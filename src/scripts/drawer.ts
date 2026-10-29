@@ -13,8 +13,7 @@
  *  - aria-expanded synced on the trigger
  */
 
-const FOCUSABLE =
-  'a[href], button:not([disabled]), textarea:not([disabled]), input:not([type="hidden"]):not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+import { FOCUSABLE } from './focusable';
 
 const _triggerFor = new WeakMap<HTMLElement, HTMLElement>();
 const _returnFocusFor = new WeakMap<HTMLElement, HTMLElement>();

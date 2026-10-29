@@ -163,8 +163,9 @@
     scroll-behavior: auto;
   }
 
-  .pg-arrow,
-  .pg-zoom-img {
+  /* Covers arrows, counter, thumbs, dialog chrome and zoom — standalone,
+     consumers may not load the global reduced-motion rule from base.css */
+  [data-product-gallery] * {
     transition: none;
   }
 }
