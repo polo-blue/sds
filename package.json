@@ -30,6 +30,7 @@
     "./components/ProductDetailName.vue": "./src/components/ProductDetailsListName.vue",
     "./components/Product/product-gallery.css": "./src/components/Product/product-gallery.css",
     "./scripts/product-gallery": "./src/components/Product/product-gallery.ts",
+    "./scripts/product-gallery-auto": "./src/scripts/product-gallery-auto.ts",
     "./astro/*": "./src/astro/*",
     "./vue/*": "./src/vue/*",
     "./react/*": "./src/react/*",

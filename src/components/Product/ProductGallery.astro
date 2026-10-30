@@ -377,12 +377,22 @@ const total = images.length;
       </div>
     )
   }
-</div>
 
-<!-- No auto-init <script> here — adding one breaks cross-project Astro
-  builds in consumers (Astro 6 virtual-module metadata error). Consumers
-  initialize manually:
-    import { initProductGallery } from 'spoko-design-system/scripts/product-gallery';
-    document.querySelectorAll('[data-product-gallery]').forEach(initProductGallery);
-  See: https://sds.spoko.space/components/product-gallery/
--->
+  {
+    /*
+    Registers this root for spoko-design-system/scripts/product-gallery-auto.
+    is:inline on purpose: a hoisted/bundled <script> here breaks cross-project
+    Astro builds in consumers (Astro 6 virtual-module metadata error), while an
+    inline one is emitted as-is. Without the auto import the queue is inert and
+    initProductGallery(root) can still be called manually.
+  */
+  }
+  {
+    hasImages && (
+      <script is:inline>
+        (window.__sdsGalleryQueue = window.__sdsGalleryQueue ||
+        []).push(document.currentScript.parentElement);
+      </script>
+    )
+  }
+</div>

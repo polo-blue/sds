@@ -15,6 +15,23 @@ Scroll-snap based product image gallery with fullscreen dialog lightbox. Zero ex
 import ProductGallery from 'spoko-design-system/components/Product/ProductGallery.astro'
 ```
 
+**Initialize** — import the auto-init once, e.g. in the layout of pages that render galleries:
+```astro
+<script>
+  import 'spoko-design-system/scripts/product-gallery-auto';
+</script>
+```
+
+Each gallery registers itself on `window.__sdsGalleryQueue` with a tiny inline script, and the
+auto-init wires up every registered gallery — including ones rendered after it loads and pages
+swapped in by Astro view transitions. Initialization is idempotent, so the import can sit in a
+shared layout. To initialize by hand instead (e.g. HTML injected via `innerHTML`, where inline
+scripts don't run), call `initProductGallery(root)`:
+```js
+import { initProductGallery } from 'spoko-design-system/scripts/product-gallery';
+document.querySelectorAll('[data-product-gallery]').forEach(initProductGallery);
+```
+
 ## Features
 
 - **Slider** — CSS scroll-snap, swipe on mobile, mouse drag on desktop

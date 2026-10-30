@@ -30,7 +30,7 @@ test.describe('ProductGallery a11y', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(PAGE);
     gallery = page.locator(GALLERY).first();
-    // Wait until the docs init script has wired the gallery up
+    // Wait until the auto-init has wired the gallery up
     await expect(gallery).toHaveAttribute('data-sds-gallery-bound', '1');
   });
 
