@@ -22,7 +22,6 @@ export { default as ProductEngineType } from './src/components/Product/ProductEn
 export { default as ProductButton } from './src/components/Product/ProductButton.vue';
 export { default as ProductColors } from './src/components/Product/ProductColors.vue';
 export { default as ProductDetailName } from './src/components/Product/ProductDetailName.vue';
-// export { default as ProductDetails } from './src/components/Product/ProductDetails.vue';
 export { default as ProductDoc } from './src/components/Product/ProductDoc.vue';
 export { default as ProductModel } from './src/components/Product/ProductModel.vue';
 export { default as ProductModels } from './src/components/Product/ProductModels.vue';
@@ -31,6 +30,7 @@ export { default as ProductPositions } from './src/components/Product/ProductPos
 export { default as ProductLink } from './src/components/Product/ProductLink.vue';
 export { default as Input } from './src/components/Input.vue';
 
+// Renders a single category link. The category list in PostHeader/Jumbotron is Post/PostCategories.astro (not exported).
 export { default as PostCategories } from './src/components/Post/PostCategories.vue';
 export { default as CategorySidebarToggler } from './src/components/Category/CategorySidebarToggler.vue';
 export { default as SubCategoryLink } from './src/components/Category/SubCategoryLink.vue';
@@ -52,8 +52,8 @@ export { default as CategoryTile } from './src/components/Category/CategoryTile.
 // Astro Components WITH <script> tags — NOT in barrel to prevent script hoisting.
 // Import directly: import ButtonCopy from 'spoko-design-system/components/ButtonCopy.astro'
 // See: https://github.com/withastro/astro/issues/6906
-// - ButtonCopy, CategoryDetails, LanguageSuggestion
-
+// - ButtonCopy, CategoryDetails, CategoryViewToggler, Drawer, LanguageSuggestion, MenuDrawer, Modal,
+//   ProductGallery, Toggle
 
 // Utils: Product
 export { default as getPriceFormatted } from './src/utils/product/getPriceFormatted';

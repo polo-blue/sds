@@ -70,7 +70,8 @@ import ButtonCopy from 'spoko-design-system/components/ButtonCopy.astro';
 
 Components **without** `<script>` tags are safe in the barrel file.
 
-Currently excluded from barrel: **ButtonCopy**, **CategoryDetails**, **LanguageSuggestion**.
+Currently excluded from barrel: **ButtonCopy**, **CategoryDetails**, **CategoryViewToggler**, **Drawer**,
+**LanguageSuggestion**, **MenuDrawer**, **Modal**, **ProductGallery**, **Toggle**.
 
 ### UnoCSS Configuration System
 
