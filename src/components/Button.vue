@@ -2,26 +2,43 @@
 import { useAttrs } from 'vue';
 
 interface ButtonProps {
+  /** Renders as `<a>` when provided */
   href?: string;
+  /** Native title attribute */
   title?: string;
+  /** Primary solid button style */
   primary?: boolean;
+  /** Primary outline variant */
   primaryOutline?: boolean;
+  /** Secondary solid button style */
   secondary?: boolean;
+  /** Secondary outline variant */
   secondaryOutline?: boolean;
+  /** Tertiary / ghost button style */
   tertiary?: boolean;
+  /** Tertiary outline variant */
   tertiaryOutline?: boolean;
+  /** Underline-on-hover text button */
   text?: boolean;
+  /** Pill-shaped tag button */
   tag?: boolean;
+  /** Extra-small size (`btn-xs`) */
   small?: boolean;
+  /** Medium size (`btn-sm`) */
   medium?: boolean;
-  /** Legacy no-op — all SDS buttons are rounded by default via shortcut */
+  /** Legacy no-op — all SDS buttons are rounded by default via shortcut. Use `sharp` to opt out. */
   rounded?: boolean;
   /** Opt-out — forces sharp corners with `!rounded-none` */
   sharp?: boolean;
+  /** White hover state (`btn-white-hover`) */
   whiteHover?: boolean;
+  /** Light hover state (`btn-light-hover`) */
   lightHover?: boolean;
+  /** Medium hover state (`btn-medium-hover`); applied by default to `tertiary` and to `tertiaryOutline` without another hover prop */
   mediumHover?: boolean;
+  /** Dark hover state (`btn-dark-hover`) */
   darkHover?: boolean;
+  /** Equal width/height circle — for icon-only buttons. Always pass an `aria-label` too */
   circle?: boolean;
   [key: string]: any; // To allow additional props
 }
