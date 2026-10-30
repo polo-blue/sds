@@ -42,16 +42,18 @@ Issue: #452
 
 ## Progress
 
+PR: #534
+
 > Convention: `- [ ]` pending, `- [x]` done. Append ` — <commit sha>` when a step lands. Do not rename step titles.
 
 ### Phase 1: TS-interface extraction and `source` prop
 
-- [ ] 1.1 Astro interface Props extraction with unit tests
-- [ ] 1.2 Vue defineProps generic and withDefaults extraction
-- [ ] 1.3 PropsTable source prop, lookup, caption and link
-- [ ] 1.4 Migrate buttons.mdx and JSDoc Button.vue
+- [x] 1.1 Astro interface Props extraction with unit tests — 4d1ba94
+- [x] 1.2 Vue defineProps generic and withDefaults extraction — 4d1ba94
+- [x] 1.3 PropsTable source prop, lookup, caption and link — 50e71cd, 72a051b
+- [x] 1.4 Migrate buttons.mdx and JSDoc Button.vue — 7348fd2
 
 ### Phase 2: runtime-object defineProps
 
-- [ ] 2.1 Runtime-object defineProps extraction
-- [ ] 2.2 Deprecated badge and badges.mdx migration
+- [x] 2.1 Runtime-object defineProps extraction — 4d1ba94
+- [x] 2.2 Deprecated badge and badges.mdx migration — 50e71cd, ffdbae2
