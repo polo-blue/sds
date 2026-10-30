@@ -48,6 +48,7 @@
     "lint": "eslint \"src/**/*.{js,ts,jsx,tsx,vue,astro}\"",
     "lint:fix": "eslint \"src/**/*.{js,ts,jsx,tsx,vue,astro}\" --fix",
     "check": "astro check",
+    "test:unit": "node --test \"tests/unit/*.test.ts\"",
     "test:e2e": "playwright test",
     "prepare": "husky"
   },
