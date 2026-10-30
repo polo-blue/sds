@@ -17,6 +17,7 @@ const { data = [], source, sourceUrl } = Astro.props;
 
 let rows: PropDefinition[] = data;
 let href: string | undefined;
+let sourcePath: string | undefined;
 let componentName: string | undefined;
 if (source) {
   // Loaded only on this branch so the `data`-only path never pulls in the parser or `typescript`.
@@ -27,12 +28,13 @@ if (source) {
   const { extractProps, loadComponentSource, mergeProps, normalizeSource } =
     await import('../utils/docs/extractProps');
   const { SITE } = await import('../config');
-  const { props, warnings } = extractProps(await loadComponentSource(files, source), source);
+  const { props, warnings } = await extractProps(await loadComponentSource(files, source), source);
   for (const warning of warnings) console.warn(`PropsTable: ${warning}`);
   if (!props.length && !data.length) console.warn(`PropsTable: no props found in src/components/${source}`);
 
   rows = mergeProps(props, data);
-  href = sourceUrl ?? `https://github.com/${SITE.github}/blob/main/src/components/${normalizeSource(source)}`;
+  sourcePath = `src/components/${normalizeSource(source)}`;
+  href = sourceUrl ?? `https://github.com/${SITE.github}/blob/main/${sourcePath}`;
   componentName = source
     .split('/')
     .pop()
@@ -56,7 +58,7 @@ if (source) {
         rows.length === 0 && (
           <tr class="table-row">
             <td class="table-cell text-sm" colspan="4">
-              No props declared
+              {source ? 'No typed props found' : 'No props declared'}
             </td>
           </tr>
         )
@@ -102,9 +104,9 @@ if (source) {
           target="_blank"
           rel="noopener noreferrer"
           class="link-primary"
-          aria-label={`src/components/${source} on GitHub (opens in a new tab)`}
+          aria-label={`${sourcePath} (opens in a new tab)`}
         >
-          src/components/{source}
+          {sourcePath}
         </a>
       </p>
     )

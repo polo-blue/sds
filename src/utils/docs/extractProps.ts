@@ -1,5 +1,5 @@
-import * as ts from 'typescript';
-import { parse as parseSfc } from '@vue/compiler-sfc';
+import type * as TS from 'typescript';
+import type { parse as ParseSfc } from '@vue/compiler-sfc';
 
 export interface PropDefinition {
   name: string;
@@ -23,7 +23,8 @@ export interface ExtractResult {
  * and Vue runtime-object `defineProps({ ... })`. JSDoc above a prop becomes its
  * description; `@default` overrides a default read from code; `@internal` hides it.
  */
-export function extractProps(source: string, fileName: string): ExtractResult {
+export async function extractProps(source: string, fileName: string): Promise<ExtractResult> {
+  await loadParsers();
   const isAstro = fileName.endsWith('.astro');
   const script = isAstro ? astroFrontmatter(source) : parseSfc(source).descriptor.scriptSetup?.content;
   if (!script) return { props: [], warnings: [] };
@@ -32,6 +33,25 @@ export function extractProps(source: string, fileName: string): ExtractResult {
   const sf = ts.createSourceFile(fileName + '.ts', script, ts.ScriptTarget.Latest, true);
   const props = isAstro ? fromAstro(sf, warnings) : fromVue(sf, warnings);
   return { props, warnings: warnings.map(w => `${fileName}: ${w}`) };
+}
+
+let ts: typeof TS;
+let parseSfc: typeof ParseSfc;
+
+/**
+ * Both parsers are devDependencies used only by the docs build. They are imported through
+ * non-literal specifiers so a consumer's bundler never tries to resolve them when this module
+ * is reachable (via `PropsTable.astro`) but never runs.
+ */
+async function loadParsers(): Promise<void> {
+  if (ts) return;
+  const [typescriptName, sfcName] = ['typescript', '@vue/compiler-sfc'];
+  const [tsModule, sfcModule] = await Promise.all([
+    import(/* @vite-ignore */ typescriptName),
+    import(/* @vite-ignore */ sfcName),
+  ]);
+  ts = tsModule.default ?? tsModule;
+  parseSfc = sfcModule.parse ?? sfcModule.default.parse;
 }
 
 /** Normalize a `source` path (relative to `src/components/`), dropping a leading `./` or `/`. */
@@ -65,7 +85,7 @@ function astroFrontmatter(source: string): string | undefined {
 }
 
 /** Initializers and expression statements at the top level of the script — where props are declared. */
-function topLevelExpressions(sf: ts.SourceFile): ts.Expression[] {
+function topLevelExpressions(sf: TS.SourceFile): TS.Expression[] {
   return sf.statements.flatMap(s => {
     if (ts.isExpressionStatement(s)) return [s.expression];
     if (ts.isVariableStatement(s))
@@ -74,9 +94,13 @@ function topLevelExpressions(sf: ts.SourceFile): ts.Expression[] {
   });
 }
 
-function fromAstro(sf: ts.SourceFile, warnings: string[]): PropDefinition[] {
+function fromAstro(sf: TS.SourceFile, warnings: string[]): PropDefinition[] {
   const decl = findTypeDeclaration(sf, 'Props');
-  if (!decl) return [];
+  if (!decl) {
+    if (sf.text.includes('Astro.props'))
+      warnings.push('no local `Props` type; imported or untyped props are not listed');
+    return [];
+  }
   const defaults = new Map<string, string>();
   for (const s of sf.statements) {
     if (!ts.isVariableStatement(s)) continue;
@@ -88,12 +112,12 @@ function fromAstro(sf: ts.SourceFile, warnings: string[]): PropDefinition[] {
       }
     }
   }
-  return fromTypeDeclaration(sf, decl, defaults, warnings);
+  return fromTypeDeclaration(sf, decl, name => defaults.get(name), warnings);
 }
 
-function fromVue(sf: ts.SourceFile, warnings: string[]): PropDefinition[] {
-  let call: ts.CallExpression | undefined;
-  let defaultsArg: ts.Expression | undefined;
+function fromVue(sf: TS.SourceFile, warnings: string[]): PropDefinition[] {
+  let call: TS.CallExpression | undefined;
+  let defaultsArg: TS.Expression | undefined;
   for (const expr of topLevelExpressions(sf)) {
     if (!ts.isCallExpression(expr)) continue;
     const callee = expr.expression.getText(sf);
@@ -115,12 +139,19 @@ function fromVue(sf: ts.SourceFile, warnings: string[]): PropDefinition[] {
     return arg && ts.isObjectLiteralExpression(arg) ? fromRuntimeObject(sf, arg) : [];
   }
 
-  const defaults = new Map<string, string>();
+  const defaultNodes = new Map<string, TS.Expression>();
   if (defaultsArg && ts.isObjectLiteralExpression(defaultsArg)) {
     for (const p of defaultsArg.properties) {
-      if (ts.isPropertyAssignment(p)) defaults.set(propName(p.name, sf), p.initializer.getText(sf));
+      if (ts.isPropertyAssignment(p)) defaultNodes.set(propName(p.name, sf), p.initializer);
     }
   }
+  // withDefaults wraps object/array defaults in factories (but a function-typed prop's default is the
+  // function itself); a boolean prop with no default is cast to `false` by Vue.
+  const defaults: DefaultLookup = (name, type) => {
+    const node = defaultNodes.get(name);
+    if (!node) return type === 'boolean' ? 'false' : undefined;
+    return type.includes('=>') ? node.getText(sf) : factoryValue(node, sf);
+  };
   if (ts.isTypeLiteralNode(typeArg)) return fromMembers(sf, typeArg.members, defaults);
   const decl = findTypeDeclaration(sf, typeArg.getText(sf));
   if (decl) return fromTypeDeclaration(sf, decl, defaults, warnings);
@@ -128,9 +159,12 @@ function fromVue(sf: ts.SourceFile, warnings: string[]): PropDefinition[] {
   return [];
 }
 
-type TypeDeclaration = ts.InterfaceDeclaration | ts.TypeAliasDeclaration;
+type TypeDeclaration = TS.InterfaceDeclaration | TS.TypeAliasDeclaration;
 
-function findTypeDeclaration(sf: ts.SourceFile, name: string): TypeDeclaration | undefined {
+/** Default value for a prop, given its name and declared type. */
+type DefaultLookup = (name: string, type: string) => string | undefined;
+
+function findTypeDeclaration(sf: TS.SourceFile, name: string): TypeDeclaration | undefined {
   return sf.statements.find(
     (s): s is TypeDeclaration =>
       (ts.isInterfaceDeclaration(s) || ts.isTypeAliasDeclaration(s)) && s.name.text === name
@@ -138,9 +172,9 @@ function findTypeDeclaration(sf: ts.SourceFile, name: string): TypeDeclaration |
 }
 
 function fromTypeDeclaration(
-  sf: ts.SourceFile,
+  sf: TS.SourceFile,
   decl: TypeDeclaration,
-  defaults: Map<string, string>,
+  defaults: DefaultLookup,
   warnings: string[]
 ): PropDefinition[] {
   if (ts.isInterfaceDeclaration(decl)) {
@@ -155,20 +189,21 @@ function fromTypeDeclaration(
 }
 
 function fromMembers(
-  sf: ts.SourceFile,
-  members: ts.NodeArray<ts.TypeElement>,
-  defaults: Map<string, string>
+  sf: TS.SourceFile,
+  members: TS.NodeArray<TS.TypeElement>,
+  defaults: DefaultLookup
 ): PropDefinition[] {
   const props: PropDefinition[] = [];
   for (const member of members) {
     // Index signatures (`[key: string]: any`) and methods are not props.
     if (!ts.isPropertySignature(member)) continue;
     const name = propName(member.name, sf);
+    const type = member.type ? normalizeType(member.type.getText(sf)) : 'unknown';
     const prop = withDoc(member, {
       name,
-      type: member.type ? normalizeType(member.type.getText(sf)) : 'unknown',
+      type,
       required: !member.questionToken,
-      default: defaults.get(name),
+      default: defaults(name, type),
       description: '',
     });
     if (prop) props.push(prop);
@@ -186,7 +221,7 @@ const CONSTRUCTOR_TYPES: Record<string, string> = {
   Date: 'Date',
 };
 
-function fromRuntimeObject(sf: ts.SourceFile, obj: ts.ObjectLiteralExpression): PropDefinition[] {
+function fromRuntimeObject(sf: TS.SourceFile, obj: TS.ObjectLiteralExpression): PropDefinition[] {
   const props: PropDefinition[] = [];
   for (const p of obj.properties) {
     if (!ts.isPropertyAssignment(p)) continue;
@@ -211,6 +246,7 @@ function fromRuntimeObject(sf: ts.SourceFile, obj: ts.ObjectLiteralExpression): 
       // Shorthand: `name: String` or `name: [String, Number]`.
       prop.type = runtimeType(p.initializer, sf);
     }
+    if (prop.type === 'boolean' && prop.default === undefined) prop.default = 'false';
 
     const documented = withDoc(p, prop);
     if (documented) props.push(documented);
@@ -219,7 +255,7 @@ function fromRuntimeObject(sf: ts.SourceFile, obj: ts.ObjectLiteralExpression): 
 }
 
 // Object/array defaults are factories in Vue; show the value they return, not the function.
-function factoryValue(node: ts.Node, sf: ts.SourceFile): string {
+function factoryValue(node: TS.Node, sf: TS.SourceFile): string {
   const body =
     ts.isMethodDeclaration(node) || ts.isFunctionExpression(node) || ts.isArrowFunction(node)
       ? node.body
@@ -233,11 +269,11 @@ function factoryValue(node: ts.Node, sf: ts.SourceFile): string {
   return node.getText(sf);
 }
 
-function stripParens(expr: ts.Expression): ts.Expression {
+function stripParens(expr: TS.Expression): TS.Expression {
   return ts.isParenthesizedExpression(expr) ? stripParens(expr.expression) : expr;
 }
 
-function runtimeType(expr: ts.Expression, sf: ts.SourceFile): string {
+function runtimeType(expr: TS.Expression, sf: TS.SourceFile): string {
   // `type: Array as PropType<Item[]>` — the PropType argument is the precise type.
   if (ts.isAsExpression(expr)) {
     const t = expr.type;
@@ -252,7 +288,7 @@ function runtimeType(expr: ts.Expression, sf: ts.SourceFile): string {
 }
 
 /** Apply the node's JSDoc to a prop: description, `@default` override, `@deprecated`; `@internal` drops it. */
-function withDoc(node: ts.Node, prop: PropDefinition): PropDefinition | undefined {
+function withDoc(node: TS.Node, prop: PropDefinition): PropDefinition | undefined {
   const doc = ts.getJSDocCommentsAndTags(node).filter(ts.isJSDoc).at(-1);
   if (!doc) return prop;
 
@@ -266,13 +302,13 @@ function withDoc(node: ts.Node, prop: PropDefinition): PropDefinition | undefine
   return prop;
 }
 
-function commentText(comment: string | ts.NodeArray<ts.JSDocComment> | undefined): string {
+function commentText(comment: string | TS.NodeArray<TS.JSDocComment> | undefined): string {
   if (!comment) return '';
   const text = typeof comment === 'string' ? comment : comment.map(c => c.text).join('');
   return text.replace(/\s+/g, ' ').trim();
 }
 
-function propName(name: ts.PropertyName, sf: ts.SourceFile): string {
+function propName(name: TS.PropertyName, sf: TS.SourceFile): string {
   if (ts.isIdentifier(name) || ts.isStringLiteral(name) || ts.isNumericLiteral(name)) return name.text;
   return name.getText(sf);
 }

@@ -22,7 +22,7 @@ test('mergeProps: overrides by name and appends unmatched rows', () => {
   );
 });
 
-test('vue: only the <script setup> block is read, even with a plain <script> before it', () => {
+test('vue: only the <script setup> block is read, even with a plain <script> before it', async () => {
   const source = `<script lang="ts">
 export default { inheritAttrs: false };
 </script>
@@ -32,14 +32,14 @@ defineProps<{
   label?: string;
 }>();
 </script>`;
-  const [label] = extractProps(source, 'D.vue').props;
+  const [label] = (await extractProps(source, 'D.vue')).props;
   assert.equal(label.name, 'label');
   assert.equal(label.description, 'Label text');
 });
 
 const byName = (props: { name: string }[]) => Object.fromEntries(props.map(p => [p.name, p]));
 
-test('astro: interface Props with JSDoc, unions, optional/required and destructuring defaults', () => {
+test('astro: interface Props with JSDoc, unions, optional/required and destructuring defaults', async () => {
   const source = `---
 interface Props {
   /** Visible heading */
@@ -61,7 +61,7 @@ const { title, size = 'md', count = 3, class: className = '' } = Astro.props;
 ---
 <div class={className}>{title}</div>
 `;
-  const { props, warnings } = extractProps(source, 'Card.astro');
+  const { props, warnings } = await extractProps(source, 'Card.astro');
   assert.deepEqual(warnings, []);
   assert.deepEqual(
     props.map(p => p.name),
@@ -81,12 +81,15 @@ const { title, size = 'md', count = 3, class: className = '' } = Astro.props;
   assert.equal(p.class.default, "''");
 });
 
-test('astro: no Props interface yields no props', () => {
-  assert.deepEqual(extractProps('---\nconst year = 2026;\n---\n<p>{year}</p>', 'Copyright.astro').props, []);
+test('astro: no Props interface yields no props', async () => {
+  assert.deepEqual(
+    (await extractProps('---\nconst year = 2026;\n---\n<p>{year}</p>', 'Copyright.astro')).props,
+    []
+  );
 });
 
-test('astro: extends clause is reported, local members still listed', () => {
-  const { props, warnings } = extractProps(
+test('astro: extends clause is reported, local members still listed', async () => {
+  const { props, warnings } = await extractProps(
     '---\ninterface Props extends Base { a?: string }\n---\n',
     'X.astro'
   );
@@ -98,7 +101,7 @@ test('astro: extends clause is reported, local members still listed', () => {
   assert.match(warnings[0], /extends Base/);
 });
 
-test('vue: defineProps<T>() with withDefaults, @internal hidden', () => {
+test('vue: defineProps<T>() with withDefaults, @internal hidden', async () => {
   const source = `<script setup lang="ts">
 interface InputProps {
   /** Field label */
@@ -112,39 +115,39 @@ const props = withDefaults(defineProps<InputProps>(), {
 });
 </script>
 <template><input /></template>`;
-  const p = byName(extractProps(source, 'Input.vue').props);
+  const p = byName((await extractProps(source, 'Input.vue')).props);
   assert.deepEqual(Object.keys(p), ['label', 'type']);
   assert.equal(p.label.required, true);
   assert.equal(p.label.description, 'Field label');
   assert.equal(p.type.default, "'text'");
 });
 
-test('vue: defineProps with a type alias and an inline type literal', () => {
+test('vue: defineProps with a type alias and an inline type literal', async () => {
   const alias = `<script setup lang="ts">
 type Props = { tone?: 'info' | 'warn' };
 defineProps<Props>();
 </script>`;
-  assert.equal(extractProps(alias, 'A.vue').props[0].type, "'info' | 'warn'");
+  assert.equal((await extractProps(alias, 'A.vue')).props[0].type, "'info' | 'warn'");
   const inline = `<script setup lang="ts">
 defineProps<{ open: boolean }>();
 </script>`;
   assert.deepEqual(
-    extractProps(inline, 'B.vue').props.map(p => [p.name, p.type, p.required]),
+    (await extractProps(inline, 'B.vue')).props.map(p => [p.name, p.type, p.required]),
     [['open', 'boolean', true]]
   );
 });
 
-test('vue: imported props type is reported', () => {
+test('vue: imported props type is reported', async () => {
   const source = `<script setup lang="ts">
 import type { Shared } from './types';
 defineProps<Shared>();
 </script>`;
-  const { props, warnings } = extractProps(source, 'C.vue');
+  const { props, warnings } = await extractProps(source, 'C.vue');
   assert.deepEqual(props, []);
   assert.match(warnings[0], /`Shared` is not declared/);
 });
 
-test('vue: runtime-object defineProps', () => {
+test('vue: runtime-object defineProps', async () => {
   const source = `<script setup lang="ts">
 import type { PropType } from 'vue';
 const props = defineProps({
@@ -159,7 +162,7 @@ const props = defineProps({
   legacy: Boolean,
 });
 </script>`;
-  const p = byName(extractProps(source, 'Badge.vue').props);
+  const p = byName((await extractProps(source, 'Badge.vue')).props);
   assert.equal(p.badge.type, 'string');
   assert.equal(p.badge.required, false);
   assert.equal(p.badge.description, 'Badge text');
@@ -176,28 +179,67 @@ const props = defineProps({
   assert.equal(p.legacy.deprecated, true);
 });
 
-test('real source: Button.vue lists the hover props and skips the index signature', () => {
+test('real source: Button.vue lists the hover props and skips the index signature', async () => {
   const source = readFileSync(new URL('../../src/components/Button.vue', import.meta.url), 'utf8');
-  const names = extractProps(source, 'Button.vue').props.map(p => p.name);
+  const names = (await extractProps(source, 'Button.vue')).props.map(p => p.name);
   for (const name of ['primary', 'href', 'whiteHover', 'lightHover', 'mediumHover', 'darkHover']) {
     assert.ok(names.includes(name), `missing ${name}`);
   }
   assert.ok(!names.some(n => n.includes('key')));
 });
 
-test('real source: Badges.vue factory default and PropType type', () => {
+test('real source: Badges.vue factory default and PropType type', async () => {
   const source = readFileSync(new URL('../../src/components/Badges.vue', import.meta.url), 'utf8');
-  const [badges] = extractProps(source, 'Badges.vue').props;
+  const [badges] = (await extractProps(source, 'Badges.vue')).props;
   assert.equal(badges.type, '(string | BadgeObject)[]');
   assert.equal(badges.default, '[]');
 });
 
-test('real source: Badge.vue runtime props are extracted', () => {
+test('real source: Badge.vue runtime props are extracted', async () => {
   const source = readFileSync(new URL('../../src/components/Badge.vue', import.meta.url), 'utf8');
   assert.deepEqual(
-    extractProps(source, 'Badge.vue').props.map(p => p.name),
+    (await extractProps(source, 'Badge.vue')).props.map(p => p.name),
     ['badge', 'class']
   );
+});
+
+test('vue: withDefaults factories are unwrapped, function defaults kept, booleans default to false', async () => {
+  const source = `<script setup lang="ts">
+interface Props {
+  hide?: string[];
+  format?: (v: string) => string;
+  open?: boolean;
+  dense?: boolean;
+}
+withDefaults(defineProps<Props>(), {
+  hide: () => ['suffix'],
+  format: (v: string) => v.trim(),
+  dense: true,
+});
+</script>`;
+  const p = byName((await extractProps(source, 'E.vue')).props);
+  assert.equal(p.hide.default, "['suffix']");
+  assert.equal(p.format.default, '(v: string) => v.trim()');
+  assert.equal(p.open.default, 'false');
+  assert.equal(p.dense.default, 'true');
+});
+
+test('vue: runtime Boolean without default is shown as false', async () => {
+  const source = `<script setup lang="ts">
+defineProps({ active: Boolean, label: String });
+</script>`;
+  const p = byName((await extractProps(source, 'F.vue')).props);
+  assert.equal(p.active.default, 'false');
+  assert.equal(p.label.default, undefined);
+});
+
+test('astro: untyped or imported props are reported, not silently empty', async () => {
+  const { props, warnings } = await extractProps(
+    "---\nimport type { Props } from './types';\nconst props = Astro.props as Props;\n---\n",
+    'Jumbotron.astro'
+  );
+  assert.deepEqual(props, []);
+  assert.match(warnings[0], /^Jumbotron\.astro: no local `Props` type/);
 });
 
 test('loadComponentSource resolves paths and throws for a missing component', async () => {
