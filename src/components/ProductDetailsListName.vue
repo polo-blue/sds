@@ -1,4 +1,5 @@
-<!-- Internal header cell of ProductDetailsList, with the dotted leader line. Not exported; the public label is Product/ProductDetailName. -->
+<!-- Header cell of ProductDetailsList, with the dotted leader line. Not exported from the barrel; the old subpath
+     `components/ProductDetailName.vue` still maps here via package.json. The barrel's ProductDetailName is Product/ProductDetailName. -->
 <script lang="ts" setup>
 import type { PropType } from 'vue';
 import type { ElementTag } from '../types/common';
