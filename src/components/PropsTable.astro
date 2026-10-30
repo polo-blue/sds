@@ -13,33 +13,31 @@ interface Props {
   sourceUrl?: string;
 }
 
-const SOURCE_BASE_URL = 'https://github.com/polo-blue/sds/blob/main/src/components/';
-
 const { data = [], source, sourceUrl } = Astro.props;
 
 let rows: PropDefinition[] = data;
+let href: string | undefined;
+let componentName: string | undefined;
 if (source) {
   // Loaded only on this branch so the `data`-only path never pulls in the parser or `typescript`.
   const files = import.meta.glob<string>('/src/components/**/*.{astro,vue}', {
     query: '?raw',
     import: 'default',
   });
-  const { extractProps, loadComponentSource } = await import('../utils/docs/extractProps');
+  const { extractProps, loadComponentSource, mergeProps, normalizeSource } =
+    await import('../utils/docs/extractProps');
+  const { SITE } = await import('../config');
   const { props, warnings } = extractProps(await loadComponentSource(files, source), source);
   for (const warning of warnings) console.warn(`PropsTable: ${warning}`);
   if (!props.length && !data.length) console.warn(`PropsTable: no props found in src/components/${source}`);
 
-  const overrides = new Map(data.map(row => [row.name, row]));
-  rows = props.map(prop => ({ ...prop, ...overrides.get(prop.name) }));
-  const extracted = new Set(props.map(prop => prop.name));
-  rows.push(...data.filter(row => !extracted.has(row.name)));
+  rows = mergeProps(props, data);
+  href = sourceUrl ?? `https://github.com/${SITE.github}/blob/main/src/components/${normalizeSource(source)}`;
+  componentName = source
+    .split('/')
+    .pop()
+    ?.replace(/\.(astro|vue)$/, '');
 }
-
-const componentName = source
-  ?.split('/')
-  .pop()
-  ?.replace(/\.(astro|vue)$/, '');
-const href = source ? (sourceUrl ?? SOURCE_BASE_URL + source.replace(/^\.?\//, '')) : undefined;
 ---
 
 <div class="overflow-x-auto">

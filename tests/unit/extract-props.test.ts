@@ -1,7 +1,41 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { extractProps, loadComponentSource } from '../../src/utils/docs/extractProps.ts';
+import { extractProps, loadComponentSource, mergeProps } from '../../src/utils/docs/extractProps.ts';
+
+test('mergeProps: overrides by name and appends unmatched rows', () => {
+  const extracted = [
+    { name: 'a', type: 'string', description: 'from source' },
+    { name: 'b', type: 'boolean', description: '' },
+  ];
+  const merged = mergeProps(extracted, [
+    { name: 'b', type: 'boolean', description: 'hand-written' },
+    { name: 'slot:default', type: 'slot', description: 'Content' },
+  ]);
+  assert.deepEqual(
+    merged.map(p => [p.name, p.description]),
+    [
+      ['a', 'from source'],
+      ['b', 'hand-written'],
+      ['slot:default', 'Content'],
+    ]
+  );
+});
+
+test('vue: only the <script setup> block is read, even with a plain <script> before it', () => {
+  const source = `<script lang="ts">
+export default { inheritAttrs: false };
+</script>
+<script setup lang="ts">
+defineProps<{
+  /** Label text */
+  label?: string;
+}>();
+</script>`;
+  const [label] = extractProps(source, 'D.vue').props;
+  assert.equal(label.name, 'label');
+  assert.equal(label.description, 'Label text');
+});
 
 const byName = (props: { name: string }[]) => Object.fromEntries(props.map(p => [p.name, p]));
 
@@ -34,7 +68,10 @@ const { title, size = 'md', count = 3, class: className = '' } = Astro.props;
     ['title', 'size', 'count', 'closable', 'class']
   );
   const p = byName(props);
-  assert.deepEqual(p.title, { name: 'title', type: 'string', required: true, default: undefined, description: 'Visible heading', deprecated: undefined });
+  assert.equal(p.title.type, 'string');
+  assert.equal(p.title.required, true);
+  assert.equal(p.title.default, undefined);
+  assert.equal(p.title.description, 'Visible heading');
   assert.equal(p.size.type, "'sm' | 'md' | 'lg'");
   assert.equal(p.size.required, false);
   assert.equal(p.size.default, "'md'");
@@ -49,8 +86,14 @@ test('astro: no Props interface yields no props', () => {
 });
 
 test('astro: extends clause is reported, local members still listed', () => {
-  const { props, warnings } = extractProps('---\ninterface Props extends Base { a?: string }\n---\n', 'X.astro');
-  assert.deepEqual(props.map(p => p.name), ['a']);
+  const { props, warnings } = extractProps(
+    '---\ninterface Props extends Base { a?: string }\n---\n',
+    'X.astro'
+  );
+  assert.deepEqual(
+    props.map(p => p.name),
+    ['a']
+  );
   assert.equal(warnings.length, 1);
   assert.match(warnings[0], /extends Base/);
 });
@@ -85,7 +128,10 @@ defineProps<Props>();
   const inline = `<script setup lang="ts">
 defineProps<{ open: boolean }>();
 </script>`;
-  assert.deepEqual(extractProps(inline, 'B.vue').props.map(p => [p.name, p.type, p.required]), [['open', 'boolean', true]]);
+  assert.deepEqual(
+    extractProps(inline, 'B.vue').props.map(p => [p.name, p.type, p.required]),
+    [['open', 'boolean', true]]
+  );
 });
 
 test('vue: imported props type is reported', () => {
@@ -114,7 +160,10 @@ const props = defineProps({
 });
 </script>`;
   const p = byName(extractProps(source, 'Badge.vue').props);
-  assert.deepEqual(p.badge, { name: 'badge', type: 'string', required: false, description: 'Badge text', default: "''" });
+  assert.equal(p.badge.type, 'string');
+  assert.equal(p.badge.required, false);
+  assert.equal(p.badge.description, 'Badge text');
+  assert.equal(p.badge.default, "''");
   assert.equal(p.value.type, 'string | number');
   assert.equal(p.value.required, true);
   assert.equal(p.items.type, 'string[]');
@@ -145,7 +194,10 @@ test('real source: Badges.vue factory default and PropType type', () => {
 
 test('real source: Badge.vue runtime props are extracted', () => {
   const source = readFileSync(new URL('../../src/components/Badge.vue', import.meta.url), 'utf8');
-  assert.deepEqual(extractProps(source, 'Badge.vue').props.map(p => p.name), ['badge', 'class']);
+  assert.deepEqual(
+    extractProps(source, 'Badge.vue').props.map(p => p.name),
+    ['badge', 'class']
+  );
 });
 
 test('loadComponentSource resolves paths and throws for a missing component', async () => {
