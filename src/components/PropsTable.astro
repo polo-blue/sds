@@ -1,21 +1,50 @@
 ---
-interface PropDefinition {
-  name: string;
-  type: string;
-  default?: string;
-  required?: boolean;
-  description: string;
-}
+import type { PropDefinition } from '../utils/docs/extractProps';
 
 interface Props {
-  data: PropDefinition[];
+  /** Hand-written rows. With `source`, rows with a matching `name` override the extracted ones and the rest are appended. */
+  data?: PropDefinition[];
+  /**
+   * Component file to extract props from, relative to `src/components/` (e.g. `Button.vue`).
+   * Docs-site only: the lookup resolves against the project that renders the table.
+   */
+  source?: string;
+  /** Overrides the GitHub link to the source file. */
+  sourceUrl?: string;
 }
 
-const { data } = Astro.props;
+const SOURCE_BASE_URL = 'https://github.com/polo-blue/sds/blob/main/src/components/';
+
+const { data = [], source, sourceUrl } = Astro.props;
+
+let rows: PropDefinition[] = data;
+if (source) {
+  // Loaded only on this branch so the `data`-only path never pulls in the parser or `typescript`.
+  const files = import.meta.glob<string>('/src/components/**/*.{astro,vue}', {
+    query: '?raw',
+    import: 'default',
+  });
+  const { extractProps, loadComponentSource } = await import('../utils/docs/extractProps');
+  const { props, warnings } = extractProps(await loadComponentSource(files, source), source);
+  for (const warning of warnings) console.warn(`PropsTable: ${warning}`);
+  if (!props.length && !data.length) console.warn(`PropsTable: no props found in src/components/${source}`);
+
+  const overrides = new Map(data.map(row => [row.name, row]));
+  rows = props.map(prop => ({ ...prop, ...overrides.get(prop.name) }));
+  const extracted = new Set(props.map(prop => prop.name));
+  rows.push(...data.filter(row => !extracted.has(row.name)));
+}
+
+const componentName = source
+  ?.split('/')
+  .pop()
+  ?.replace(/\.(astro|vue)$/, '');
+const href = source ? (sourceUrl ?? SOURCE_BASE_URL + source.replace(/^\.?\//, '')) : undefined;
 ---
 
 <div class="overflow-x-auto">
   <table class="table-base">
+    {componentName && <caption class="sr-only">Props of {componentName}</caption>}
     <thead>
       <tr>
         <th class="table-header">Prop</th>
@@ -26,7 +55,16 @@ const { data } = Astro.props;
     </thead>
     <tbody>
       {
-        data.map(prop => (
+        rows.length === 0 && (
+          <tr class="table-row">
+            <td class="table-cell text-sm" colspan="4">
+              No props declared
+            </td>
+          </tr>
+        )
+      }
+      {
+        rows.map(prop => (
           <tr class="table-row">
             <td class="table-cell">
               <code class="font-mono text-xs">{prop.name}</code>
@@ -35,19 +73,42 @@ const { data } = Astro.props;
                   *
                 </span>
               )}
+              {prop.deprecated && (
+                <span class="ml-1 text-xs text-system-error uppercase tracking-wide">deprecated</span>
+              )}
             </td>
             <td class="table-cell">
-              <code class="font-mono text-xs text-blue-medium dark:text-blue-300">{prop.type}</code>
+              <code class="font-mono text-xs text-blue-medium dark:text-blue-300 break-words">
+                {prop.type}
+              </code>
             </td>
             <td class="table-cell">
               <code class="font-mono text-xs text-slate-default dark:text-neutral-light">
                 {prop.default ?? '—'}
               </code>
             </td>
-            <td class="table-cell text-sm text-slate-dark dark:text-neutral-lighter">{prop.description}</td>
+            <td class="table-cell text-sm text-slate-dark dark:text-neutral-lighter">
+              {prop.description || '—'}
+            </td>
           </tr>
         ))
       }
     </tbody>
   </table>
+  {
+    href && (
+      <p class="mt-2 text-xs text-slate-default dark:text-neutral-light">
+        Source:{' '}
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-primary"
+          aria-label={`src/components/${source} on GitHub (opens in a new tab)`}
+        >
+          src/components/{source}
+        </a>
+      </p>
+    )
+  }
 </div>
