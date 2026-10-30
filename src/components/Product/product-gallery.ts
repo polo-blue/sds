@@ -6,7 +6,21 @@
  * - Thumbnail sync (click → scrollIntoView)
  * - Arrow navigation (scrollBy)
  * - Dialog open/close with zoom + pan
+ * - Dialog focus management: focus moves in on open, is trapped while open,
+ *   and returns to the active slide on close
  */
+
+import { FOCUSABLE } from '../../scripts/focusable';
+
+// Smooth scrolling only when the user hasn't asked for reduced motion
+function scrollBehavior(): ScrollBehavior {
+  // 'instant', not 'auto': 'auto' defers to a consumer's CSS scroll-behavior
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
+}
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), max);
+}
 
 export function initProductGallery(root: HTMLElement) {
   const slider = root.querySelector<HTMLElement>('[data-gallery-slider]');
@@ -64,13 +78,16 @@ export function initProductGallery(root: HTMLElement) {
     return observer;
   }
 
-  // Main slider observer
-  createSlideObserver(slider, index => {
+  function syncMain(index: number) {
     activeIndex = index;
+    updateCurrentSlide(slider, index);
     updateCounter(counterCurrent, index);
     updateThumbs(thumbButtons, index);
     updateArrows(prevBtn, nextBtn, index, totalSlides);
-  });
+  }
+
+  // Main slider observer
+  createSlideObserver(slider, syncMain);
 
   // Fix subpixel slide width: percentage-based widths can produce fractional
   // pixels (e.g. 780.5px) causing 0.5px bleed of next slide.
@@ -89,11 +106,7 @@ export function initProductGallery(root: HTMLElement) {
   function syncInitialState() {
     const w = slider.clientWidth;
     if (w === 0) return; // layout not ready, rAF will retry
-    const index = Math.round(slider.scrollLeft / w);
-    activeIndex = index;
-    updateCounter(counterCurrent, index);
-    updateThumbs(thumbButtons, index);
-    updateArrows(prevBtn, nextBtn, index, totalSlides);
+    syncMain(Math.round(slider.scrollLeft / w));
   }
 
   // Try sync now, fallback to after layout
@@ -101,6 +114,18 @@ export function initProductGallery(root: HTMLElement) {
     syncInitialState();
   } else {
     requestAnimationFrame(syncInitialState);
+  }
+
+  // ── Active slide (aria-current) ──
+
+  function updateCurrentSlide(container: HTMLElement, index: number) {
+    container.querySelectorAll<HTMLElement>('[data-index]').forEach(slide => {
+      if (Number(slide.dataset.index) === index) {
+        slide.setAttribute('aria-current', 'true');
+      } else {
+        slide.removeAttribute('aria-current');
+      }
+    });
   }
 
   // ── Counter ──
@@ -132,7 +157,7 @@ export function initProductGallery(root: HTMLElement) {
         ) {
           scrollContainer.scrollTo({
             left: btn.offsetLeft - scrollContainer.clientWidth / 2 + btn.clientWidth / 2,
-            behavior: 'smooth',
+            behavior: scrollBehavior(),
           });
         }
       }
@@ -142,7 +167,7 @@ export function initProductGallery(root: HTMLElement) {
   function scrollToSlide(container: HTMLElement, index: number) {
     const slide = container.querySelector<HTMLElement>(`[data-index="${index}"]`);
     if (slide) {
-      slide.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      slide.scrollIntoView({ behavior: scrollBehavior(), block: 'nearest', inline: 'center' });
     }
   }
 
@@ -167,8 +192,14 @@ export function initProductGallery(root: HTMLElement) {
     index: number,
     total: number
   ) {
+    // Read focus before disabling: a disabled (and hidden) button drops
+    // focus to <body>, where the gallery's key handlers no longer run.
+    // Hand it to the opposite arrow, which is enabled whenever total > 1.
+    const focused = document.activeElement;
     if (prev) prev.disabled = index === 0;
     if (next) next.disabled = index === total - 1;
+    if (focused === next && next?.disabled) prev?.focus({ preventScroll: true });
+    else if (focused === prev && prev?.disabled) next?.focus({ preventScroll: true });
   }
 
   prevBtn?.addEventListener('click', () => {
@@ -197,6 +228,7 @@ export function initProductGallery(root: HTMLElement) {
   let dialogObserver: IntersectionObserver | null = null;
   let dialogActiveIndex = 0;
   let savedOverflow = '';
+  let returnFocusTo: HTMLElement | null = null;
 
   // Open dialog on slide click or Enter/Space (but not after drag)
   slides.forEach(slide => {
@@ -232,9 +264,13 @@ export function initProductGallery(root: HTMLElement) {
     dialogSlider.style.scrollSnapType = 'none';
     dialogSlider.style.scrollBehavior = 'auto';
 
+    returnFocusTo = document.activeElement as HTMLElement | null;
     dialog.showModal();
     savedOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
+    // Move focus into the dialog explicitly — showModal()'s own choice
+    // varies between browsers
+    dialogClose?.focus({ preventScroll: true });
 
     // Preload full-res images around the starting slide
     preloadDialogImages(startIndex);
@@ -251,21 +287,23 @@ export function initProductGallery(root: HTMLElement) {
       dialogSlider.style.scrollBehavior = '';
     });
 
-    dialogActiveIndex = startIndex;
-    updateCounter(dialogCurrent, startIndex);
-    updateThumbs(dialogThumbs, startIndex);
-    updateArrows(dialogPrev, dialogNext, startIndex, totalSlides);
+    syncDialog(startIndex);
 
     // Start observing dialog slides
     if (!dialogObserver) {
       dialogObserver = createSlideObserver(dialogSlider, index => {
-        dialogActiveIndex = index;
-        updateCounter(dialogCurrent, index);
-        updateThumbs(dialogThumbs, index);
-        updateArrows(dialogPrev, dialogNext, index, totalSlides);
+        syncDialog(index);
         preloadDialogImages(index);
       });
     }
+  }
+
+  function syncDialog(index: number) {
+    dialogActiveIndex = index;
+    updateCurrentSlide(dialogSlider!, index);
+    updateCounter(dialogCurrent, index);
+    updateThumbs(dialogThumbs, index);
+    updateArrows(dialogPrev, dialogNext, index, totalSlides);
   }
 
   function teardownDialog() {
@@ -282,6 +320,17 @@ export function initProductGallery(root: HTMLElement) {
 
     // Sync main slider to dialog position
     scrollToSlide(slider, dialogActiveIndex);
+
+    // Return focus. When the dialog was opened from a slide, focus the slide
+    // now shown (the user may have navigated inside the dialog) so a second
+    // Enter reopens the image they were looking at.
+    const opener = returnFocusTo;
+    returnFocusTo = null;
+    const openedFromSlide = !!opener && slider.contains(opener) && !!opener.closest('[data-index]');
+    const target = openedFromSlide
+      ? slider.querySelector<HTMLElement>(`[data-index="${dialogActiveIndex}"]`)
+      : opener;
+    if (target?.isConnected) target.focus({ preventScroll: true });
   }
 
   function closeDialog() {
@@ -298,31 +347,47 @@ export function initProductGallery(root: HTMLElement) {
     if (e.target === dialog) closeDialog();
   });
 
-  // Dialog arrow navigation
-  dialogPrev?.addEventListener('click', () => {
-    scrollToSlide(dialogSlider!, Math.max(0, dialogActiveIndex - 1));
-  });
+  // Record the target right away (the observer confirms it once the smooth
+  // scroll lands) so closing mid-scroll returns to the image navigated to
+  function goToDialogSlide(index: number) {
+    dialogActiveIndex = clamp(index, 0, totalSlides - 1);
+    scrollToSlide(dialogSlider!, dialogActiveIndex);
+  }
 
-  dialogNext?.addEventListener('click', () => {
-    scrollToSlide(dialogSlider!, Math.min(totalSlides - 1, dialogActiveIndex + 1));
-  });
+  // Dialog arrow navigation
+  dialogPrev?.addEventListener('click', () => goToDialogSlide(dialogActiveIndex - 1));
+  dialogNext?.addEventListener('click', () => goToDialogSlide(dialogActiveIndex + 1));
 
   // Dialog thumbnail clicks
   dialogThumbs?.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const index = Number(btn.dataset.thumbIndex);
-      scrollToSlide(dialogSlider!, index);
-    });
+    btn.addEventListener('click', () => goToDialogSlide(Number(btn.dataset.thumbIndex)));
   });
 
-  // Keyboard navigation in dialog
+  // Keyboard navigation + focus trap in dialog
   dialog.addEventListener('keydown', e => {
-    if (e.key === 'ArrowLeft') {
+    if (e.key === 'Tab') {
+      // showModal() already makes the page inert, but Tab past the last
+      // control still escapes to browser chrome — wrap it instead.
+      // Visible controls only: hidden arrows/disabled buttons are skipped.
+      const focusable = Array.from(dialog.querySelectorAll<HTMLElement>(FOCUSABLE)).filter(
+        el => el.offsetParent !== null
+      );
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    } else if (e.key === 'ArrowLeft') {
       e.preventDefault();
-      scrollToSlide(dialogSlider!, Math.max(0, dialogActiveIndex - 1));
+      goToDialogSlide(dialogActiveIndex - 1);
     } else if (e.key === 'ArrowRight') {
       e.preventDefault();
-      scrollToSlide(dialogSlider!, Math.min(totalSlides - 1, dialogActiveIndex + 1));
+      goToDialogSlide(dialogActiveIndex + 1);
     }
   });
 
@@ -459,7 +524,7 @@ function initDragScroll(container: HTMLElement, freeScroll = false) {
             : Math.max(currentIndex - 1, 0);
       }
 
-      container.style.scrollBehavior = 'smooth';
+      container.style.scrollBehavior = scrollBehavior();
       container.scrollLeft = targetIndex * w;
       resetTimer = setTimeout(() => {
         resetStyles();
@@ -524,10 +589,6 @@ function initZoom(container: HTMLElement) {
   if (!img) return;
 
   let isZoomed = false;
-
-  function clamp(value: number, min: number, max: number) {
-    return Math.min(Math.max(value, min), max);
-  }
 
   function zoomIn(clientX: number, clientY: number) {
     isZoomed = true;

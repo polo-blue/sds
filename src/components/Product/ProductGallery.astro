@@ -89,6 +89,7 @@ const total = images.length;
                 aria-roledescription="slide"
                 aria-label={`Open image ${index + 1} of ${total}: ${image.alt}`}
                 aria-haspopup="dialog"
+                aria-current={index === 0 ? 'true' : undefined}
                 data-index={index}
                 data-full={image.full || image.src}
                 tabindex="0"
