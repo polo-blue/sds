@@ -74,6 +74,27 @@ test.describe('ProductGallery a11y', () => {
     await expect(slide(gallery, 1)).toBeFocused();
   });
 
+  test('keeps focus in the dialog when the focused Next arrow disables at the last image', async ({
+    page,
+  }) => {
+    const dialog = await openFromFirstSlide(page, gallery);
+    const total = await gallery.locator('[data-gallery-slider] [data-index]').count();
+    const next = dialog.locator('[data-dialog-next]');
+
+    await next.focus();
+    for (let i = 1; i < total; i++) {
+      await page.keyboard.press('Enter');
+      await expect(dialog.locator('[data-dialog-current]')).toHaveText(String(i + 1));
+    }
+
+    await expect(next).toBeDisabled();
+    // Focus moved to the Previous arrow instead of falling to <body>…
+    await expect(dialog.locator('[data-dialog-prev]')).toBeFocused();
+    // …so dialog keyboard navigation still works
+    await page.keyboard.press('ArrowLeft');
+    await expect(dialog.locator('[data-dialog-current]')).toHaveText(String(total - 1));
+  });
+
   test.describe('with reduced motion', () => {
     test.use({ reducedMotion: 'reduce' });
 
@@ -96,7 +117,7 @@ test.describe('ProductGallery a11y', () => {
 
       const recorded = await behaviors.jsonValue();
       expect(recorded.length).toBeGreaterThan(0);
-      expect(recorded).not.toContain('smooth');
+      expect(recorded.every(b => b === 'instant')).toBe(true);
       await expect(slider).toHaveCSS('scroll-behavior', 'auto');
     });
   });

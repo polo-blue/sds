@@ -163,9 +163,9 @@
     scroll-behavior: auto;
   }
 
-  /* Covers arrows, counter, thumbs, dialog chrome and zoom — standalone,
-     consumers may not load the global reduced-motion rule from base.css */
+  /* Covers arrows, counter, thumbs, dialog chrome and zoom. Standalone because
+     consumers may not load base.css; !important beats UnoCSS transition utilities */
   [data-product-gallery] * {
-    transition: none;
+    transition: none !important;
   }
 }

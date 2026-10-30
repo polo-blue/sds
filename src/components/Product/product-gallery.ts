@@ -14,7 +14,12 @@ import { FOCUSABLE } from '../../scripts/focusable';
 
 // Smooth scrolling only when the user hasn't asked for reduced motion
 function scrollBehavior(): ScrollBehavior {
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+  // 'instant', not 'auto': 'auto' defers to a consumer's CSS scroll-behavior
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
+}
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), max);
 }
 
 export function initProductGallery(root: HTMLElement) {
@@ -187,8 +192,14 @@ export function initProductGallery(root: HTMLElement) {
     index: number,
     total: number
   ) {
+    // Read focus before disabling: a disabled (and hidden) button drops
+    // focus to <body>, where the gallery's key handlers no longer run.
+    // Hand it to the opposite arrow, which is enabled whenever total > 1.
+    const focused = document.activeElement;
     if (prev) prev.disabled = index === 0;
     if (next) next.disabled = index === total - 1;
+    if (focused === next && next?.disabled) prev?.focus({ preventScroll: true });
+    else if (focused === prev && prev?.disabled) next?.focus({ preventScroll: true });
   }
 
   prevBtn?.addEventListener('click', () => {
@@ -336,21 +347,20 @@ export function initProductGallery(root: HTMLElement) {
     if (e.target === dialog) closeDialog();
   });
 
-  // Dialog arrow navigation
-  dialogPrev?.addEventListener('click', () => {
-    scrollToSlide(dialogSlider!, Math.max(0, dialogActiveIndex - 1));
-  });
+  // Record the target right away (the observer confirms it once the smooth
+  // scroll lands) so closing mid-scroll returns to the image navigated to
+  function goToDialogSlide(index: number) {
+    dialogActiveIndex = clamp(index, 0, totalSlides - 1);
+    scrollToSlide(dialogSlider!, dialogActiveIndex);
+  }
 
-  dialogNext?.addEventListener('click', () => {
-    scrollToSlide(dialogSlider!, Math.min(totalSlides - 1, dialogActiveIndex + 1));
-  });
+  // Dialog arrow navigation
+  dialogPrev?.addEventListener('click', () => goToDialogSlide(dialogActiveIndex - 1));
+  dialogNext?.addEventListener('click', () => goToDialogSlide(dialogActiveIndex + 1));
 
   // Dialog thumbnail clicks
   dialogThumbs?.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const index = Number(btn.dataset.thumbIndex);
-      scrollToSlide(dialogSlider!, index);
-    });
+    btn.addEventListener('click', () => goToDialogSlide(Number(btn.dataset.thumbIndex)));
   });
 
   // Keyboard navigation + focus trap in dialog
@@ -362,6 +372,7 @@ export function initProductGallery(root: HTMLElement) {
       const focusable = Array.from(dialog.querySelectorAll<HTMLElement>(FOCUSABLE)).filter(
         el => el.offsetParent !== null
       );
+      if (!focusable.length) return;
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
       if (e.shiftKey && document.activeElement === first) {
@@ -373,10 +384,10 @@ export function initProductGallery(root: HTMLElement) {
       }
     } else if (e.key === 'ArrowLeft') {
       e.preventDefault();
-      scrollToSlide(dialogSlider!, Math.max(0, dialogActiveIndex - 1));
+      goToDialogSlide(dialogActiveIndex - 1);
     } else if (e.key === 'ArrowRight') {
       e.preventDefault();
-      scrollToSlide(dialogSlider!, Math.min(totalSlides - 1, dialogActiveIndex + 1));
+      goToDialogSlide(dialogActiveIndex + 1);
     }
   });
 
@@ -578,10 +589,6 @@ function initZoom(container: HTMLElement) {
   if (!img) return;
 
   let isZoomed = false;
-
-  function clamp(value: number, min: number, max: number) {
-    return Math.min(Math.max(value, min), max);
-  }
 
   function zoomIn(clientX: number, clientY: number) {
     isZoomed = true;
