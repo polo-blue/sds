@@ -1,11 +1,13 @@
+<!-- Internal header cell of ProductDetailsList, with the dotted leader line. Not exported; the public label is Product/ProductDetailName. -->
 <script lang="ts" setup>
-import { PropType } from 'vue';
+import type { PropType } from 'vue';
+import type { ElementTag } from '../types/common';
 
 const props = defineProps({
   as: {
-    type: String as PropType<'th' | 'td' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'div' | 'span'>,
+    type: String as PropType<ElementTag>,
     default: 'div',
-    required: true,
+    required: false,
   },
   text: {
     type: String,

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { PropType, computed } from 'vue';
-import ProductDetailName from './ProductDetailName.vue';
+import ProductDetailsListName from './ProductDetailsListName.vue';
 
 interface Link {
   type: string;
@@ -92,7 +92,7 @@ const validatedItems = computed(() => {
     </colgroup>
     <tbody>
       <tr v-for="(row, index) in validatedItems" :key="index" class="details-table-row">
-        <ProductDetailName as="th" :text="getHeaderText(row)" class="details-table-header" />
+        <ProductDetailsListName as="th" :text="getHeaderText(row)" class="details-table-header" />
 
         <!-- Links Array -->
         <td v-if="isLinksArray(row)" class="details-table-cell">
