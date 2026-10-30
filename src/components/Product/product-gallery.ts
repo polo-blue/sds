@@ -30,6 +30,10 @@ export function initProductGallery(root: HTMLElement) {
   const totalSlides = slides.length;
   if (totalSlides === 0) return;
 
+  // Idempotent: the auto-init queue, page scans and manual calls may overlap
+  if (root.dataset.sdsGalleryBound === '1') return;
+  root.dataset.sdsGalleryBound = '1';
+
   // Elements
   const counterCurrent = root.querySelector<HTMLElement>('[data-gallery-current]');
   const prevBtn = root.querySelector<HTMLButtonElement>('[data-gallery-prev]');
