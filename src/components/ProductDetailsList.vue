@@ -71,7 +71,9 @@ const getLinkIconClass = (linkType: string) => {
 
 // Extract YouTube video ID from URL
 const getYoutubeVideoId = (url: string): string | null => {
-  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([a-zA-Z0-9_-]{11})/);
+  const match = url.match(
+    /(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|v\/))([a-zA-Z0-9_-]{11})/
+  );
   return match ? match[1] : null;
 };
 
@@ -89,6 +91,11 @@ const getVideoThumbnail = (link: Link): string | null => {
   // Vimeo thumbnails require API call — not available client-side
   return null;
 };
+
+const getVideoTiles = (item: TableItem) =>
+  (item.value as Link[]).map(link => ({ ...link, thumbnail: getVideoThumbnail(link) }));
+
+const LINK_ICON_CLASS = 'leading-none inline-block mr-2 w-4 min-w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5';
 
 // Validate items
 const validatedItems = computed(() => {
@@ -119,24 +126,27 @@ const validatedItems = computed(() => {
         <td v-if="isVideoLinks(row)" class="details-table-cell">
           <div class="flex flex-col gap-3">
             <a
-              v-for="(link, linkIndex) in row.value as Link[]"
+              v-for="(link, linkIndex) in getVideoTiles(row)"
               :key="linkIndex"
               :href="link.url"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-start gap-3 no-underline text-inherit hover:text-[var(--clr-primary-400,#0099da)] group"
+              class="flex items-start gap-3 no-underline text-inherit hover:text-[var(--clr-primary-400,#0099da)]"
             >
-              <div class="relative flex-shrink-0 w-28 aspect-video overflow-hidden bg-gray-100 rounded">
+              <div class="relative flex-shrink-0 w-28 aspect-video overflow-hidden bg-gray-600 rounded">
                 <img
-                  v-if="getVideoThumbnail(link)"
-                  :src="getVideoThumbnail(link)!"
-                  :alt="link.anchor"
-                  width="240"
+                  v-if="link.thumbnail"
+                  :src="link.thumbnail"
+                  alt=""
+                  width="320"
                   height="180"
                   loading="lazy"
                   class="w-full h-full object-cover"
                 />
-                <span class="i-lucide-play absolute inset-0 m-auto w-7 h-7 text-white drop-shadow-lg" />
+                <span
+                  aria-hidden="true"
+                  class="i-lucide-play absolute inset-0 m-auto w-7 h-7 text-white drop-shadow-lg"
+                />
               </div>
               <span class="text-sm leading-snug pt-0.5 transition-colors duration-150">
                 {{ link.anchor }}
@@ -153,12 +163,7 @@ const validatedItems = computed(() => {
               :key="linkIndex"
               class="mb-2 last:mb-0 flex items-start"
             >
-              <span
-                :class="[
-                  getLinkIconClass(link.type),
-                  'leading-none inline-block mr-2 w-4 min-w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5',
-                ]"
-              />
+              <span :class="[getLinkIconClass(link.type), LINK_ICON_CLASS]" />
               <a :href="link.url" target="_blank" rel="noopener noreferrer" class="link-primary">
                 {{ link.anchor }}
               </a>
@@ -169,12 +174,7 @@ const validatedItems = computed(() => {
         <!-- Individual Link (flat format: id=blog/youtube/vimeo, value=url, name=anchor) -->
         <td v-else-if="isIndividualLink(row)" class="details-table-cell">
           <div class="flex items-start">
-            <span
-              :class="[
-                getLinkIconClass(row.id),
-                'leading-none inline-block mr-2 w-4 min-w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5',
-              ]"
-            />
+            <span :class="[getLinkIconClass(row.id), LINK_ICON_CLASS]" />
             <a :href="row.value as string" target="_blank" rel="noopener noreferrer" class="link-primary">
               {{ row.name || row.label || row.id }}
             </a>
