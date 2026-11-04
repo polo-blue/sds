@@ -34,9 +34,24 @@
   flex: 0 0 auto;
   /* Use viewport-relative width matching the scroll container
      to avoid subpixel rounding issues with percentage widths.
-     JS sets --pg-slide-width on init for pixel-perfect slides. */
+     JS keeps --pg-slide-width in sync for pixel-perfect slides. */
   width: var(--pg-slide-width, 100%);
   min-width: var(--pg-slide-width, 100%);
+}
+
+/* ── Focus rings ──
+   These sit flush with a clipping container, so the global outline, drawn
+   outside the element, would be cut off. Keep it inside, clear of the active
+   thumbnail border. The colour ignores the theme: it lands on the image, which
+   stays light in dark mode, and must also hold 3:1 on the black lightbox. */
+
+.pg-slider:focus-visible,
+.pg-dialog-slider:focus-visible,
+.pg-slide:focus-visible,
+.pg-thumb:focus-visible,
+.pg-dialog-thumb:focus-visible {
+  outline-color: var(--pg-focus-ring, oklch(57% 0.237 260));
+  outline-offset: -4px;
 }
 
 /* ── Arrow + counter hover reveal ── */
