@@ -8,7 +8,7 @@ directory automatically — import it once:
 What it enforces on `main`:
 
 - changes land only through pull requests (no direct pushes);
-- the PR must pass `Lint and Format Check` and `Build (Node 22.18 / 24 / 26)` before it can merge —
+- the PR must pass `Lint and Format Check` and `Build (Node 22.23 / 24 / 26)` before it can merge —
   this is what stops a red Renovate PR (like #492) from being merged;
 - no force-push, no branch deletion.
 
