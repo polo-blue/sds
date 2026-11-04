@@ -4,9 +4,7 @@ import SkipToContent from './SkipToContent.astro';
 import SearchModal from './SearchModal.vue';
 ---
 
-<header
-  class="p-3 bg-blue-medium bg-opacity-10 dark:bg-slate-darkest dark:border-slate-dark backdrop-blur-md border-b text-slate-900 dark:text-neutral-lighter"
->
+<header class="p-3 bg-blue-medium bg-opacity-10 dark:bg-slate-darkest dark:border-slate-dark backdrop-blur-md border-b text-slate-900 dark:text-neutral-lighter">
   <SkipToContent />
   <nav aria-label="Site navigation" class="mx-auto flex justify-between items-center px-4">
     <div class="flex items-center gap-2">
@@ -41,14 +39,12 @@ import SearchModal from './SearchModal.vue';
         <span class="i-lucide-search text-base" aria-hidden="true"></span>
         <span class="text-sm flex-1">Search docs…</span>
         <span class="hidden lg:inline-flex items-center gap-1 text-xs" aria-hidden="true">
-          <kbd
-            class="px-1.5 py-0.5 border border-slate-300 dark:border-slate-dark rounded-sm bg-white dark:bg-slate-dark font-mono text-[0.65rem] leading-none"
-            >Ctrl</kbd
-          >
-          <kbd
-            class="px-1.5 py-0.5 border border-slate-300 dark:border-slate-dark rounded-sm bg-white dark:bg-slate-dark font-mono text-[0.65rem] leading-none"
-            >K</kbd
-          >
+          <kbd class="px-1.5 py-0.5 border border-slate-300 dark:border-slate-dark rounded-sm bg-white dark:bg-slate-dark font-mono text-[0.65rem] leading-none">
+            Ctrl
+          </kbd>
+          <kbd class="px-1.5 py-0.5 border border-slate-300 dark:border-slate-dark rounded-sm bg-white dark:bg-slate-dark font-mono text-[0.65rem] leading-none">
+            K
+          </kbd>
         </span>
       </button>
       <button
@@ -72,28 +68,24 @@ import SearchModal from './SearchModal.vue';
         <span class="i-lucide-moon text-xl dark:hidden" aria-hidden="true"></span>
         <span class="i-lucide-sun text-xl hidden dark:inline-block" aria-hidden="true"></span>
       </button>
-      {
-        SITE.github && (
-          <a
-            title="Github"
-            class="opacity-80 hover:opacity-100 hover:bg-slate-200 dark:hover:bg-slate-dark p-2 rounded-full transition-colors"
-            href={'https://github.com/' + SITE.github}
-          >
-            <img class="h-7 dark:invert" src="/github.svg" alt="GitHub" />
-          </a>
-        )
-      }
-      {
-        SITE.linkedin && (
-          <a
-            title="linkedin"
-            class="opacity-80 hover:opacity-100 hover:bg-blue-50 p-2 rounded-full transition-colors"
-            href={'https://linkedin.com/in/' + SITE.linkedin}
-          >
-            <img class="h-7" src="/linkedin.svg" alt="LinkedIn" />
-          </a>
-        )
-      }
+      {SITE.github && (
+        <a
+          title="Github"
+          class="opacity-80 hover:opacity-100 hover:bg-slate-200 dark:hover:bg-slate-dark p-2 rounded-full transition-colors"
+          href={'https://github.com/' + SITE.github}
+        >
+          <img class="h-7 dark:invert" src="/github.svg" alt="GitHub" />
+        </a>
+      )}
+      {SITE.linkedin && (
+        <a
+          title="linkedin"
+          class="opacity-80 hover:opacity-100 hover:bg-blue-50 p-2 rounded-full transition-colors"
+          href={'https://linkedin.com/in/' + SITE.linkedin}
+        >
+          <img class="h-7" src="/linkedin.svg" alt="LinkedIn" />
+        </a>
+      )}
     </div>
   </nav>
 </header>

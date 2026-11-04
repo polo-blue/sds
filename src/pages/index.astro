@@ -109,24 +109,20 @@ const exampleSites = [
       </Button>
     </Jumbotron>
     <nav>
-      <div
-        class="px-4 flex-col flex flex-wrap md:flex-nowrap gap-4 max-w-5xl mx-auto text-left mt-12 md:(px-0 flex-row)"
-      >
-        {
-          navItems.map(({ title, description, url, icon }) => (
-            <a
-              href={url}
-              title={description}
-              class="flex w-full flex-wrap bg-white rounded-md hover:-translate-y-1 hover:shadow-lg transition-all flex-1 items-center py-10 px-4 min-h-24 md:(flex-col w-auto flex-nowrap text-center py-16 min-h-48)"
-            >
-              <Headline as="h2" class="text-3xl" underline={false}>
-                <Icon name={icon} aria-hidden="true" class="text-blue-400 mr-3 text-4xl w-10 h-10 shrink-0" />
-                {title}
-              </Headline>
-              <p class="text-slate-500 w-full">{description}</p>
-            </a>
-          ))
-        }
+      <div class="px-4 flex-col flex flex-wrap md:flex-nowrap gap-4 max-w-5xl mx-auto text-left mt-12 md:(px-0 flex-row)">
+        {navItems.map(({ title, description, url, icon }) => (
+          <a
+            href={url}
+            title={description}
+            class="flex w-full flex-wrap bg-white rounded-md hover:-translate-y-1 hover:shadow-lg transition-all flex-1 items-center py-10 px-4 min-h-24 md:(flex-col w-auto flex-nowrap text-center py-16 min-h-48)"
+          >
+            <Headline as="h2" class="text-3xl" underline={false}>
+              <Icon name={icon} aria-hidden="true" class="text-blue-400 mr-3 text-4xl w-10 h-10 shrink-0" />
+              {title}
+            </Headline>
+            <p class="text-slate-500 w-full">{description}</p>
+          </a>
+        ))}
       </div>
     </nav>
 
@@ -143,21 +139,19 @@ const exampleSites = [
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {
-          features.map(({ title, icon, description }) => (
-            <div class="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100 min-h-40">
-              <Headline
-                as="h3"
-                class="text-2xl mb-3 text-gray-900 flex items-center justify-center"
-                underline={false}
-              >
-                <Icon name={icon} aria-hidden="true" class="text-4xl text-blue-400 mr-3 w-10 h-10 shrink-0" />
-                {title}
-              </Headline>
-              <p class="text-gray-600" set:html={description} />
-            </div>
-          ))
-        }
+        {features.map(({ title, icon, description }) => (
+          <div class="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100 min-h-40">
+            <Headline
+              as="h3"
+              class="text-2xl mb-3 text-gray-900 flex items-center justify-center"
+              underline={false}
+            >
+              <Icon name={icon} aria-hidden="true" class="text-4xl text-blue-400 mr-3 w-10 h-10 shrink-0" />
+              {title}
+            </Headline>
+            <p class="text-gray-600" set:html={description} />
+          </div>
+        ))}
       </div>
     </section>
 
@@ -236,22 +230,20 @@ const exampleSites = [
 
           <!-- Example Sites Grid -->
           <div class="grid gap-4 mb-6">
-            {
-              exampleSites.map(({ url, title, description }) => (
-                <a
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:border-blue-400 hover:shadow-md transition-all group"
-                >
-                  <div class="text-left">
-                    <h4 class="font-semibold text-gray-900 group-hover:text-blue-600">{title}</h4>
-                    <p class="text-sm text-gray-600">{description}</p>
-                  </div>
-                  <Icon name="lucide:link" class="text-gray-400 group-hover:text-blue-400" />
-                </a>
-              ))
-            }
+            {exampleSites.map(({ url, title, description }) => (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:border-blue-400 hover:shadow-md transition-all group"
+              >
+                <div class="text-left">
+                  <h4 class="font-semibold text-gray-900 group-hover:text-blue-600">{title}</h4>
+                  <p class="text-sm text-gray-600">{description}</p>
+                </div>
+                <Icon name="lucide:link" class="text-gray-400 group-hover:text-blue-400" />
+              </a>
+            ))}
           </div>
 
           <p class="text-gray-600 text-sm">See the design system in action across different project types</p>

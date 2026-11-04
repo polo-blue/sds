@@ -82,9 +82,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
     <div class="flex bg-white dark:bg-slate-darkest z-10 mb-11 relative">
       <!-- Desktop sidebar -->
-      <div
-        class="hidden lg:flex sticky top-0 h-screen w-64 shrink-0 border-r border-neutral-lightest dark:border-slate-dark"
-      >
+      <div class="hidden lg:flex sticky top-0 h-screen w-64 shrink-0 border-r border-neutral-lightest dark:border-slate-dark">
         <LeftSidebar currentPage={currentPage} />
       </div>
 

@@ -93,52 +93,46 @@ const cleanTitle = stripHtml(title);
 
           {description && <p class="jumbotron-description order-3 w-full mt-0" set:html={description} />}
 
-          {
-            hasCategories && (
-              <div class="jumbotron-categories">
-                <PostCategories categories={categories} lang={lang} />
-              </div>
-            )
-          }
+          {hasCategories && (
+            <div class="jumbotron-categories">
+              <PostCategories categories={categories} lang={lang} />
+            </div>
+          )}
 
-          {
-            hasMetadata && (
-              <div class="jumbotron-split-meta">
-                {author && (
-                  <span class="text-sm" title={author.firstName} data-pagefind-ignore>
-                    {author.name}
-                  </span>
-                )}
-                {author && date && <span class="mx-1">-</span>}
-                {date && <Date date={date} />}
-              </div>
-            )
-          }
+          {hasMetadata && (
+            <div class="jumbotron-split-meta">
+              {author && (
+                <span class="text-sm" title={author.firstName} data-pagefind-ignore>
+                  {author.name}
+                </span>
+              )}
+              {author && date && <span class="mx-1">-</span>}
+              {date && <Date date={date} />}
+            </div>
+          )}
         </div>
       </div>
 
-      {
-        image && (
-          <div
-            class:list={[
-              'jumbotron-split-image-wrapper',
-              imageWrapperClass,
-              { 'jumbotron-split-image-wrapper-slim': slim },
-            ]}
-          >
-            <div class:list={['jumbotron-split-image', imageClass, { 'jumbotron-split-image-slim': slim }]}>
-              <Image
-                class="jumbotron-split-img"
-                src={image}
-                alt={cleanTitle}
-                width={imageWidth}
-                height={imageHeight}
-                loading="eager"
-              />
-            </div>
+      {image && (
+        <div
+          class:list={[
+            'jumbotron-split-image-wrapper',
+            imageWrapperClass,
+            { 'jumbotron-split-image-wrapper-slim': slim },
+          ]}
+        >
+          <div class:list={['jumbotron-split-image', imageClass, { 'jumbotron-split-image-slim': slim }]}>
+            <Image
+              class="jumbotron-split-img"
+              src={image}
+              alt={cleanTitle}
+              width={imageWidth}
+              height={imageHeight}
+              loading="eager"
+            />
           </div>
-        )
-      }
+        </div>
+      )}
     </header>
   </div>
 </div>

@@ -18,14 +18,12 @@ const heightClass = slim ? 'py-6 min-h-32' : 'py-8 h-56 sm:h-72 md:max-h-72';
 ---
 
 <div class={`relative w-full ${backgroundClass}`}>
-  {
-    image && (
-      <div class="absolute inset-0 w-full h-full">
-        <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-transparent opacity-90 z-1" />
-        <img class="w-full h-full object-cover" src={image} alt={imageAlt} />
-      </div>
-    )
-  }
+  {image && (
+    <div class="absolute inset-0 w-full h-full">
+      <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-transparent opacity-90 z-1" />
+      <img class="w-full h-full object-cover" src={image} alt={imageAlt} />
+    </div>
+  )}
 
   <div class:list={['xl:container mx-auto px-3.5 md:px-8 items-center flex', heightClass]}>
     <header class="relative z-10 text-white">
