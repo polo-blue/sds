@@ -2,6 +2,8 @@
 interface Props {
   title: string;
   image: string;
+  // Alt text for the image; empty by default because the image is decorative next to the title heading
+  imageAlt?: string;
   date?: string | null;
   lang: string;
 
@@ -16,7 +18,7 @@ interface Props {
   }[];
 }
 
-const { image, title, categories, date, author, lang } = Astro.props;
+const { image, imageAlt = '', title, categories, date, author, lang } = Astro.props;
 import PostCategories from './Post/PostCategories.astro';
 import Date from './Date.astro';
 ---
@@ -46,7 +48,7 @@ import Date from './Date.astro';
     </div>
   </div>
   <div class="featured-image">
-    <img src={image} alt={title} />
+    <img src={image} alt={imageAlt} />
   </div>
 </header>
 

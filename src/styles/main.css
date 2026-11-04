@@ -4,6 +4,5 @@
 
 @import 'content.css';
 
-/* Tippy.js for tooltips (used by ProductEngine component) */
-@import 'tippy.js/dist/tippy.css';
-@import './tippy-theme.css';
+/* SDS Tooltip styles (powered by Floating UI) */
+@import './sds-tooltip.css';

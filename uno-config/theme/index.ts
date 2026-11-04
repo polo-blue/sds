@@ -1,27 +1,27 @@
 // uno-config/theme/index.ts
-import { colors } from './colors';
-import { typography } from './typography';
-import { breakpoints } from './breakpoints';
-import { dimensions } from './dimensions';
-import { effects } from './effects';
-import { gridTemplates } from './grid';
-import { container } from './container';
+import { colors } from './colors.ts';
+import { typography } from './typography.ts';
+import { breakpoints } from './breakpoints.ts';
+import { dimensions } from './dimensions.ts';
+import { effects } from './effects.ts';
+import { gridTemplates } from './grid.ts';
+import { container } from './container.ts';
 
 export const theme = {
   colors,
   ...typography,
   ...dimensions,
   ...effects,
-  gridTemplateColumn: gridTemplates.columns, 
+  gridTemplateColumn: gridTemplates.columns,
   breakpoints,
   screens: breakpoints,
   container,
 };
 
-export { colors } from './colors';
-export { typography } from './typography';
-export { breakpoints } from './breakpoints';
-export { dimensions } from './dimensions';
-export { effects } from './effects';
-export { gridTemplates } from './grid';
-export { container } from './container';
+export { colors } from './colors.ts';
+export { typography } from './typography.ts';
+export { breakpoints } from './breakpoints.ts';
+export { dimensions } from './dimensions.ts';
+export { effects } from './effects.ts';
+export { gridTemplates } from './grid.ts';
+export { container } from './container.ts';

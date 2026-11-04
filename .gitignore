@@ -2,6 +2,7 @@
 dist/
 .output/
 .astro/
+src/styles/sds.css
 
 # dependencies
 node_modules/
@@ -21,6 +22,10 @@ pnpm-debug.log*
 # testing
 coverage/
 .nyc_output/
+test-results/
+playwright-report/
+blob-report/
+.playwright/
 
 # IDE files (keep shared .vscode config, ignore personal settings)
 .vscode/settings.local.json
@@ -39,9 +44,21 @@ Thumbs.db
 
 # Claude Code local settings
 .claude/settings.local.json
+.claude/scheduled_tasks.lock
+
+# Playwright MCP snapshot cache
+.playwright-mcp/
 
 # Temporary files
 *.tmp
 *.temp
 
 *storybook.log
+
+# PWA dev service worker (vite-pwa devOptions)
+dev-dist/
+
+# Agent pipeline QA artifacts (generated per run)
+.ai/qa/artifacts_*/
+.ai/qa/test-env.json
+.ai/qa/test-env.env

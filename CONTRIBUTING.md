@@ -9,7 +9,7 @@ This project uses **semantic-release** for fully automated version management an
 1. **Conventional Commits** - All commits must follow the conventional commit format
 2. **Automated Versioning** - Version bumps are determined automatically from commit messages
 3. **Automated Publishing** - Packages are published to npm automatically on main branch
-4. **Changelog Generation** - CHANGELOG.md is automatically updated with each release
+4. **Release Notes** - Generated for every release and published on [GitHub Releases](https://github.com/polo-blue/sds/releases) (`CHANGELOG.md` is an archive up to 2.1.8)
 
 ### Commit Message Format
 
@@ -116,10 +116,8 @@ add new button component
    - GitHub Actions will automatically:
      - Analyze commit messages
      - Determine version bump
-     - Update package.json
-     - Generate CHANGELOG.md
-     - Create GitHub release
      - Publish to npm
+     - Create the git tag and GitHub Release with release notes
 
 ### Manual Release (if needed)
 
@@ -153,7 +151,7 @@ Make sure your npm account has publish access to the `spoko-design-system` packa
 ### Version History
 
 All releases are automatically documented in:
-- [CHANGELOG.md](./CHANGELOG.md) - Detailed changelog
+- [GitHub Releases](https://github.com/polo-blue/sds/releases) - Release notes ([CHANGELOG.md](./CHANGELOG.md) archives releases up to 2.1.8)
 - [GitHub Releases](https://github.com/polo-blue/sds/releases) - Release notes
 - [npm Versions](https://www.npmjs.com/package/spoko-design-system?activeTab=versions) - Published versions
 

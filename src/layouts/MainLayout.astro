@@ -4,16 +4,17 @@ import HeadSEO from '../layouts/partials/HeadSEO.astro';
 import Header from '../components/Header/Header.astro';
 import PageContent from '../components/PageContent.astro';
 import LeftSidebar from '../components/LeftSidebar.astro';
+import Drawer from '../components/Drawer.astro';
 import * as CONFIG from '../config';
 import '../styles/main.css';
 import Copyright from '../components/Copyright.astro';
+
 const { content = {} } = Astro.props;
 const currentPage = Astro.url.pathname;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
 <script>
-  // Swiper Element
   import { register } from 'swiper/element/bundle';
   document.addEventListener('astro:page-load', () => {
     register();
@@ -21,8 +22,30 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 </script>
 
 <script>
-  // Global Tooltips - Tippy.js
   import '../scripts/tooltips.ts';
+</script>
+
+<script>
+  // Docs-only: make horizontally scrollable demo/code regions reachable by keyboard
+  // when they hold nothing focusable themselves (WCAG 2.1.1)
+  function makeScrollRegionsFocusable() {
+    let regionCount = 0;
+    document
+      .querySelectorAll<HTMLElement>('.content .component-preview, .content pre.astro-code')
+      .forEach(el => {
+        const overflows = el.scrollWidth > el.clientWidth || el.scrollHeight > el.clientHeight;
+        const hasFocusable = el.querySelector('a[href], button, input, select, textarea, [tabindex]');
+        if (overflows && !hasFocusable && !el.hasAttribute('tabindex')) {
+          el.setAttribute('tabindex', '0');
+          if (!el.matches('pre')) {
+            el.setAttribute('role', 'region');
+            // Numbered so every region landmark keeps a unique name
+            el.setAttribute('aria-label', `Component preview ${++regionCount}`);
+          }
+        }
+      });
+  }
+  document.addEventListener('astro:page-load', makeScrollRegionsFocusable);
 </script>
 
 <html dir={content.dir ?? 'ltr'} lang={content.lang ?? 'en-us'} class="initial">
@@ -32,25 +55,46 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
     <title>
       {content.title ? `${content.title} 🚀 ${CONFIG.SITE.title}` : CONFIG.SITE.title}
     </title>
+    <script is:inline>
+      (function () {
+        var saved = localStorage.getItem('sds-color-scheme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var isDark = saved === 'dark' || (!saved && prefersDark);
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        }
+        // Sets browser-default text color (caret, form controls, fallback text)
+        // synchronously so first paint is correct — no black→white flash.
+        document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+      })();
+    </script>
   </head>
 
-  <body class="bg-blue-50">
-    <div class="sticky top-0 z-20 w-full bg-white/70">
-      <Header currentPage={currentPage} />
+  <body class="bg-blue-50 text-slate-darkest dark:bg-slate-darkest dark:text-neutral-lighter">
+    <div class="sticky top-0 w-full bg-white/70 dark:bg-slate-darkest/90">
+      <Header />
     </div>
 
-    <div class="flex bg-white z-10 mb-11 relative">
-      <div class="sticky top-0 flex lg:(h-screen w-64) z-50">
-        <div class="mr-auto" transition:name="sidebar">
-          <LeftSidebar currentPage={currentPage} />
-        </div>
+    <!-- Mobile drawer (hidden by default, slides in on trigger) -->
+    <Drawer id="nav-drawer">
+      <LeftSidebar currentPage={currentPage} />
+    </Drawer>
+
+    <div class="flex bg-white dark:bg-slate-darkest z-10 mb-11 relative">
+      <!-- Desktop sidebar -->
+      <div
+        class="hidden lg:flex sticky top-0 h-screen w-64 shrink-0 border-r border-neutral-lightest dark:border-slate-dark"
+      >
+        <LeftSidebar currentPage={currentPage} />
       </div>
-      <main class="pb-4 px-4 sm:px-8 col-auto sm:(pb-32) overflow-auto w-full">
+
+      <main class="pb-4 px-4 sm:px-8 col-auto sm:pb-32 overflow-auto w-full">
         <PageContent content={content} transition:name="content">
           <slot />
         </PageContent>
       </main>
     </div>
+
     <footer>
       <Copyright class="fixed bottom-0 z-0 w-full">
         <a
@@ -61,11 +105,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
           class="flex my-auto items-center mx-auto"
           title={`Proudly made in Poland by spoko.space`}
         >
-          <div class="text-xxs md:text-xs mr-1 mt-0.5 whitespace-nowrap">createdy by</div>
+          <div class="text-xxs md:text-xs mr-1 mt-0.5 whitespace-nowrap">created by</div>
           <img
             class="h-4 md:h-5 w-min"
             src="/spoko.space.svg"
-            alt="Modern Websites"
+            alt="spoko.space"
             width="126"
             height="23"
             loading="lazy"

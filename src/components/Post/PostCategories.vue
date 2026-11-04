@@ -22,6 +22,7 @@ const props = withDefaults(defineProps<Props>(), {
     :href="props.category.link"
     class="category-link-base"
     :class="{ 'category-link-active': props.active }"
+    :aria-current="props.active ? 'page' : undefined"
     :title="props.category.description || props.category.name"
   >
     {{ props.category.name }}

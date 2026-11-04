@@ -21,7 +21,7 @@ const { product, nameFormatted, price, url, index, bigTile } = Astro.props;
   {
     index !== null && (
       <>
-        <meta itemprop="position" content={index} />
+        <meta itemprop="position" content={String(index)} />
         <meta itemprop="name" content={nameFormatted} />
       </>
     )

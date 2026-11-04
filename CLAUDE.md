@@ -70,7 +70,8 @@ import ButtonCopy from 'spoko-design-system/components/ButtonCopy.astro';
 
 Components **without** `<script>` tags are safe in the barrel file.
 
-Currently excluded from barrel: **ButtonCopy**, **CategoryDetails**, **LanguageSuggestion**.
+Currently excluded from barrel: **ButtonCopy**, **CategoryDetails**, **CategoryViewToggler**, **Drawer**,
+**LanguageSuggestion**, **MenuDrawer**, **Modal**, **ProductGallery**, **Toggle**.
 
 ### UnoCSS Configuration System
 
@@ -206,9 +207,10 @@ chore: update dependencies [skip ci]
 On merge to `main`, GitHub Actions automatically:
 1. Analyzes commits
 2. Determines version bump
-3. Updates package.json and CHANGELOG.md
-4. Creates GitHub release
-5. Publishes to npm
+3. Publishes to npm (the version is set in the published package only)
+4. Creates the git tag and a GitHub Release with the generated release notes
+
+No commit is pushed back to `main`: release notes live in [GitHub Releases](https://github.com/polo-blue/sds/releases), and the `version` field in the repository's `package.json` is not kept in sync.
 
 ## Development Guidelines
 
@@ -277,7 +279,7 @@ Before using an icon, verify it's in `icon.config.ts`:
   - `./icon-collections`: Icon collection list
   - `./uno-config`: UnoCSS config for consumers
 
-- **Engines**: Node >= 22.17.0, pnpm >= 10.16.1
+- **Engines**: Node >= 22.18.0 (first version with unflagged TS type stripping, used by `scripts/*.ts`), pnpm >= 10.16.1
 - **Package manager**: pnpm (v10.17.1)
 
 ## Important Notes

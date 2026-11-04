@@ -1,10 +1,17 @@
 ---
 import useFormatProductNumber from '../../utils/product/useFormatProductNumber';
 
-const { productNumber, isPdp = false, small = false, big = false, class: customClass = '' } = Astro.props;
+const {
+  productNumber,
+  numberFormatted,
+  isPdp = false,
+  small = false,
+  big = false,
+  class: customClass = '',
+} = Astro.props;
 
-// Use formatted product number using a helper function
-const { formattedNumbers: formatted } = useFormatProductNumber(productNumber);
+// Use API-provided number_formatted if available, otherwise compute client-side
+const formatted = numberFormatted ?? useFormatProductNumber(productNumber).formattedNumbers;
 
 // Define classes dynamically
 const classNames = ['product-number', big ? 'text-4.5' : 'number-big', customClass].filter(Boolean).join(' ');
@@ -28,10 +35,10 @@ const FormattedWrapper = isPdp ? 'h3' : 'div';
       </div>
 
       <div class={['code-formatted', trackingClass].join(' ')}>
-        <div class="relative inset-0" data-pagefind-ignore>
+        <div class="relative inset-0" data-pagefind-ignore aria-hidden="true">
           {formatted.dot}
         </div>
-        <div class="absolute inset-0" data-pagefind-ignore>
+        <div class="absolute inset-0" data-pagefind-ignore aria-hidden="true">
           {formatted.dash}
         </div>
         <FormattedWrapper class="number-secondary">{formatted.standard}</FormattedWrapper>

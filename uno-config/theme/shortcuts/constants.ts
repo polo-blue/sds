@@ -71,9 +71,11 @@ export const TRANSITIONS = {
 // Button base styles
 export const BUTTON_STYLES = {
   base: {
-    layout: 'inline-flex items-center justify-center',
+    layout: 'inline-flex items-center justify-center rounded-full',
     text: 'text-base font-medium text-center leading-4.5',
     transition: 'transition-all duration-200 ease-in-out',
+    // Visible keyboard focus for every button variant (WCAG 2.4.7)
+    focus: 'focus-visible:(outline-none ring-2 ring-offset-2 ring-blue-light dark:ring-blue-lightest dark:ring-offset-slate-darkest)',
   },
   sizes: {
     normal: 'md:px-10 md:py-2 md:text-lg px-8 py-3 whitespace-nowrap h-12',
@@ -83,15 +85,15 @@ export const BUTTON_STYLES = {
   variants: {
     primary: {
       solid: 'bg-brand-secondary border border-transparent hover:bg-accent-light text-blue-darker shadow',
-      outline: 'border-accent-light border text-accent-default hover:(bg-accent-light text-white)',
+      outline: 'border-accent-light border text-accent-dark dark:text-sky-300 hover:(bg-accent-light text-white)',
     },
     secondary: {
       solid: 'bg-neutral-dark border border-transparent hover:bg-neutral-darker text-white shadow',
-      outline: 'border-neutral-dark border text-neutral-dark hover:(text-white bg-neutral-dark)',
+      outline: 'border-neutral-dark border text-neutral-darker dark:text-neutral-light hover:(text-white bg-neutral-dark)',
     },
     tertiary: {
-      solid: 'bg-blue-darker hover:bg-accent-darker text-white focus:(ring-4 outline-none ring-blue-light)',
-      outline: 'border-blue-darker text-blue-darker focus:(ring-2 outline-none ring-blue-light)',
+      solid: 'bg-blue-darker hover:bg-accent-darker text-white',
+      outline: 'border-blue-darker text-blue-darker dark:(border-neutral-light text-neutral-lighter)',
     },
   },
   hover: {
@@ -135,7 +137,9 @@ export const PRODUCT_STYLES = {
   },
   link: {
     base: 'relative flex w-full after:(absolute bg-accent-light w-[calc(100%-1rem)] left-0 h-px top-[calc(100%-1px)] bottom-1 content-empty scale-x-0 transition-transform-300 origin-top-right) hover:after:(origin-top-left scale-x-100)',
-    url: 'font-light leading-none mb-2 pr-4 line-clamp-2 h-[2em]',
+    // min-h, not h, and no line clamp: a fixed 2em box with line-clamp-2 clipped the name
+    // under the WCAG 1.4.12 text-spacing override. min-h keeps short names aligned in grids.
+    url: 'font-light leading-none mb-2 pr-4 min-h-[2em]',
     urlOverlay: 'before:(content-empty absolute left-0 right-4 h-full top-0)',
     bigTile: `${aspectRatios['4/3']} ${LAYOUT.flex.center} mb-3 w-60 min-w-60 h-auto object-contain object-top bg-gray-50 relative ${IMAGE_STYLES.overlay}`,
   },

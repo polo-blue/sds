@@ -1,12 +1,9 @@
 ---
+// PostHeader and Jumbotron document `{ name, uri }`; `link` is kept for callers that pass WordPress-style terms
 interface Category {
-  id: number;
   name: string;
-  slug: string;
-  description: string;
-  count: number;
-  parent: number;
-  link: string;
+  uri?: string;
+  link?: string;
 }
 
 interface Props {
@@ -29,7 +26,7 @@ const categoryLabel = lang === 'pl' ? 'Kategoria' : 'Category';
             <a
               class="term-link text-sm sm:text-base hover:text-light-blue-400"
               data-pagefind-filter={`${categoryLabel}:${category.name}`}
-              href={category.link}
+              href={category.uri ?? category.link}
             >
               {category.name}
             </a>

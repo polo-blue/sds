@@ -89,6 +89,7 @@ const total = images.length;
                 aria-roledescription="slide"
                 aria-label={`Open image ${index + 1} of ${total}: ${image.alt}`}
                 aria-haspopup="dialog"
+                aria-current={index === 0 ? 'true' : undefined}
                 data-index={index}
                 data-full={image.full || image.src}
                 tabindex="0"
@@ -367,7 +368,7 @@ const total = images.length;
       </>
     ) : (
       <div
-        class="flex items-center justify-center bg-neutral-lightest text-neutral-500"
+        class="flex items-center justify-center bg-neutral-lightest text-neutral-600"
         style={`aspect-ratio: ${aspectRatio}`}
       >
         <slot name="empty">
@@ -376,9 +377,22 @@ const total = images.length;
       </div>
     )
   }
-</div>
 
-<!-- Script removed — consumer must initialize manually:
-  import { initProductGallery } from 'spoko-design-system/scripts/product-gallery';
-  See: https://sds.spoko.space/components/product-gallery/
--->
+  {
+    /*
+    Registers this root for spoko-design-system/scripts/product-gallery-auto.
+    is:inline on purpose: a hoisted/bundled <script> here breaks cross-project
+    Astro builds in consumers (Astro 6 virtual-module metadata error), while an
+    inline one is emitted as-is. Without the auto import the queue is inert and
+    initProductGallery(root) can still be called manually.
+  */
+  }
+  {
+    hasImages && (
+      <script is:inline>
+        (window.__sdsGalleryQueue = window.__sdsGalleryQueue ||
+        []).push(document.currentScript.parentElement);
+      </script>
+    )
+  }
+</div>

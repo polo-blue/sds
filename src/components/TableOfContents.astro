@@ -2,14 +2,19 @@
 const { headers } = Astro.props;
 ---
 
-<ul class="flex flex-col gap-4 mt-24">
-  {
-    headers.map(({ slug, text }) => {
-      return (
-        <li class="text-slate-400 hover:text-slate-800 hover:text-slate-900">
-          #<a href={`#${slug}`}>{text}</a>
-        </li>
-      );
-    })
-  }
-</ul>
+<nav aria-label="On this page">
+  <ul class="flex flex-col gap-4 mt-24">
+    {
+      headers.map(({ slug, text }) => {
+        return (
+          <li class="text-slate-500 dark:text-neutral-light hover:text-slate-900 dark:hover:text-neutral-lighter">
+            <>
+              <span aria-hidden="true">#</span>
+              <a href={`#${slug}`}>{text}</a>
+            </>
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>

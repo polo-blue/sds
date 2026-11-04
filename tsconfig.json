@@ -18,7 +18,7 @@
     "moduleResolution": "node",
     "jsx": "preserve",
     "allowJs": true,
-    "types": ["vite/client", "vitest", "@vue/runtime-dom", "@astrojs/ts", "@astrojs/ts-plugin", "unplugin-vue-macros/macros-global", "unplugin-icons/types/astro"],
+    "types": ["node", "vite/client", "@vue/runtime-dom"],
     "paths": {
       "@components/*": ["components/*"],
       "@utils/*": ["utils/*"],

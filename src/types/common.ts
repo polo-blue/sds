@@ -35,3 +35,6 @@ export interface Position {
   sort: number;
   name: string;
 }
+
+// HTML tags a component with an `as` prop can render as
+export type ElementTag = 'th' | 'td' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'div' | 'span';

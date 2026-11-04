@@ -24,12 +24,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Install, build, and upload your site
-        uses: withastro/action@v5
+        uses: withastro/action@v6
         with:
-          package-manager: pnpm@10.30.3
-          node-version: 22
+          # No package-manager pin: the action detects pnpm from pnpm-lock.yaml and takes
+          # the version from package.json "packageManager", the single source of truth.
+          # A second pin here drifted from it and failed with ERR_PNPM_BAD_PM_VERSION.
+          node-version: 24
 
   deploy:
     needs: build
@@ -40,4 +42,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

@@ -4,4 +4,5 @@
 export * from './product';
 export * from './category';
 export * from './common';
-export * from './catalog';
+// catalog.ts also declares Product and ProductImage; import those from './catalog' directly
+export type { BaseProduct, ShopProduct, CatalogProduct, ProductLinkProps } from './catalog';

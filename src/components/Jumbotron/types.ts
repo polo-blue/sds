@@ -11,9 +11,12 @@ export interface Category {
 
 export interface Props {
   // Common props
-  variant?: 'default' | 'hero' | 'post' | 'post-split';
+  // 'small' is the default variant, always slim
+  variant?: 'default' | 'small' | 'hero' | 'post' | 'post-split';
   title?: string;
   image?: string;
+  // Alt text for the image; empty by default because the image is decorative next to the title heading
+  imageAlt?: string;
   imageWidth?: number;
   imageHeight?: number;
   imageClass?: string;

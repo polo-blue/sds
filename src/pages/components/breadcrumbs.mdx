@@ -5,6 +5,8 @@ layout: "../../layouts/MainLayout.astro"
 
 ---
 import Breadcrumbs from '../../components/Breadcrumbs.vue'
+import ComponentPreview from '../../components/ComponentPreview.vue'
+import PropsTable from '../../components/PropsTable.astro'
 
 # Breadcrumbs
 
@@ -12,7 +14,7 @@ Breadcrumbs component with BreadcrumbList Microdata.
 
 Structured Data for Breadcrumbs that produce a Rich Snippet (in this case breadcrumbs) in search results that are clickable, too!
 
-#
+
 
 https://schema.org/BreadcrumbList
 
@@ -22,96 +24,141 @@ https://schema.org/ListItem
 
 ## Show back
 
-<div class="component-preview">
-    <Breadcrumbs
-      breadcrumbs={ [ {"name": "Level1", "path": "#level2"}, {"name": "Level 2", "path": "#level2"}, {"name": "Level 3", "path": "#level3"} ] }
-      product-number="6R0XXXXXX"
-      class="py-1 order-0 px-1 max-w-full flex bg-white"
-      show-back
-      text-back="Back"
-    />
-</div>
+<ComponentPreview client:visible
+  astro={`---
+import Breadcrumbs from 'spoko-design-system/components/Breadcrumbs.vue';
 
-```js
+const trail = [
+  { name: 'Level 1', path: '/level1' },
+  { name: 'Level 2', path: '/level2' },
+  { name: 'Level 3', path: '/level3' },
+];
+---
 <Breadcrumbs
-  breadcrumbs={ 
-    [ 
-      {"name": "Level1", "path": "level1"},
-      {"name": "Level 2", "path": "level2"},
-      {"name": "Level 3", "path": "level3"}
-    ] 
-  }
-  product-number="6R0XXXXXX"
-  class="py-1 order-0 px-1 max-w-full flex bg-white"
-  show-back
-  text-back="Back"
-/>
-```
+  breadcrumbs={trail}
+  suffix="6R0XXXXXX"
+  class="py-1 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
+  showBack
+  textBack="Back"
+  client:visible
+/>`}
+  vue={`<script setup>
+import Breadcrumbs from 'spoko-design-system/src/components/Breadcrumbs.vue';
+
+const trail = [
+  { name: 'Level 1', path: '/level1' },
+  { name: 'Level 2', path: '/level2' },
+  { name: 'Level 3', path: '/level3' },
+];
+</script>
+
+<template>
+  <Breadcrumbs
+    :breadcrumbs="trail"
+    suffix="6R0XXXXXX"
+    class="py-1 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
+    show-back
+    text-back="Back"
+  />
+</template>`}>
+  <Breadcrumbs ariaLabel="Breadcrumb demo 1"
+    breadcrumbs={[{name: 'Level1', path: '#level1'}, {name: 'Level 2', path: '#level2'}, {name: 'Level 3', path: '#level3'}]}
+    suffix="6R0XXXXXX"
+    class="py-1 order-0 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
+    show-back
+    text-back="Back"
+  />
+</ComponentPreview>
 
 
 ## Show home
 
-<div class="component-preview">
-    <Breadcrumbs
-      breadcrumbs={ [ {"name": "Level1", "path": "#level2"}, {"name": "Level 2", "path": "#level2"}, {"name": "Level 3", "path": "#level3"} ] }
-      product-number="6R0XXXXXX"
-      class="py-1 order-0 px-1 max-w-full flex bg-white"
-      show-home
-    />
-</div>
-
-```js
-<Breadcrumbs
-  breadcrumbs={ 
-    [ 
-      {"name": "Level1", "path": "level 1"},
-      {"name": "Level 2", "path": "level2"},
-      {"name": "Level 3", "path": "level3"}
-    ] 
-  }
-  product-number="6R0XXXXXX"
-  class="py-1 order-0 px-1 max-w-full flex bg-white"
+<ComponentPreview client:visible
+  astro={`<Breadcrumbs
+  breadcrumbs={trail}
+  suffix="6R0XXXXXX"
+  class="py-1 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
+  showHome
+  client:visible
+/>`}
+  vue={`<Breadcrumbs
+  :breadcrumbs="trail"
+  suffix="6R0XXXXXX"
+  class="py-1 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
   show-home
-/>
-```
+/>`}>
+  <Breadcrumbs ariaLabel="Breadcrumb demo 2"
+    breadcrumbs={[{name: 'Level1', path: '#level1'}, {name: 'Level 2', path: '#level2'}, {name: 'Level 3', path: '#level3'}]}
+    suffix="6R0XXXXXX"
+    class="py-1 order-0 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
+    show-home
+  />
+</ComponentPreview>
 
 
 ## Simply
 
-<div class="component-preview">
-    <Breadcrumbs
-      breadcrumbs={ [ {"name": "Level1", "path": "#level2"}, {"name": "Level 2", "path": "#level2"}, {"name": "Level 3", "path": "#level3"} ] }
-      product-number="6R0XXXXXX"
-      class="py-1 order-0 px-1 max-w-full flex bg-white"
-    />
-</div>
+<ComponentPreview client:visible
+  astro={`<Breadcrumbs
+  breadcrumbs={trail}
+  suffix="6R0XXXXXX"
+  class="py-1 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
+  client:visible
+/>`}
+  vue={`<Breadcrumbs
+  :breadcrumbs="trail"
+  suffix="6R0XXXXXX"
+  class="py-1 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
+/>`}>
+  <Breadcrumbs ariaLabel="Breadcrumb demo 3"
+    breadcrumbs={[{name: 'Level1', path: '#level1'}, {name: 'Level 2', path: '#level2'}, {name: 'Level 3', path: '#level3'}]}
+    suffix="6R0XXXXXX"
+    class="py-1 order-0 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
+  />
+</ComponentPreview>
 
-```js
-<Breadcrumbs
-  breadcrumbs={ 
-    [ 
-      {"name": "Level1", "path": "level 1"},
-      {"name": "Level 2", "path": "level2"},
-      {"name": "Level 3", "path": "level3"}
-    ] 
-  }
-  product-number="6R0XXXXXX"
-  class="py-1 order-0 px-1 max-w-full flex bg-white"
-  show-back
-  text-back="Back"
-/>
-```
+## Hide parts on mobile
+
+Use `hideOnMobile` to hide selected parts below the `sm` breakpoint (640px); they
+reappear from `sm` up. Accepted parts: `'suffix'`, `'home'`, `'separators'`, `'trail'`.
+It defaults to `['suffix']`, so pass `[]` to show everything on mobile, or list more
+parts to hide. Resize the preview below to see the suffix and separators come and go.
+
+<ComponentPreview client:visible
+  astro={`<Breadcrumbs
+  breadcrumbs={trail}
+  suffix="6R0XXXXXX"
+  hideOnMobile={['suffix', 'separators']}
+  class="py-1 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
+  client:visible
+/>`}
+  vue={`<Breadcrumbs
+  :breadcrumbs="trail"
+  suffix="6R0XXXXXX"
+  :hide-on-mobile="['suffix', 'separators']"
+  class="py-1 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
+/>`}>
+  <Breadcrumbs ariaLabel="Breadcrumb demo 4"
+    breadcrumbs={[{name: 'Level1', path: '#level1'}, {name: 'Level 2', path: '#level2'}, {name: 'Level 3', path: '#level3'}]}
+    suffix="6R0XXXXXX"
+    hideOnMobile={['suffix', 'separators']}
+    showHome
+    class="py-1 order-0 px-1 max-w-full flex bg-white dark:bg-accent-deepBlue"
+  />
+</ComponentPreview>
 
 ## Props
 
-| Prop            | Type      | Default | Description                                                                 |
-| --------------- | --------- | ------- | --------------------------------------------------------------------------- |
-| `breadcrumbs`   | Array     | -       | Array of breadcrumb objects with `name` and `path` properties (required)    |
-| `showBack`      | Boolean   | `false` | Show back button                                                            |
-| `textBack`      | String    | `'Back'`| Text for back button title                                                  |
-| `showHome`      | Boolean   | `false` | Show home icon as first breadcrumb                                          |
-| `productNumber` | String    | `null`  | Product number to display after last breadcrumb (mobile hidden)             |
-| `withMicrodata` | Boolean   | `true`  | Include Schema.org BreadcrumbList microdata (set to `false` for duplicates) |
+<PropsTable data={[
+  { name: 'breadcrumbs', type: 'Array<{ name: string; path: string }>', required: true, description: 'Breadcrumb items — each needs name and path' },
+  { name: 'showBack', type: 'boolean', default: 'false', description: 'Show a back button before the breadcrumbs' },
+  { name: 'textBack', type: 'string', default: "'Back'", description: 'Label text for the back button' },
+  { name: 'showHome', type: 'boolean', default: 'false', description: 'Show home icon as first breadcrumb' },
+  { name: 'suffix', type: 'string', default: 'undefined', description: 'Text appended after the last breadcrumb — e.g. a product number' },
+  { name: 'titlePrefix', type: 'string', default: "''", description: 'Optional prefix prepended to each link title attribute — e.g. a brand name' },
+  { name: 'hideOnMobile', type: "Array<'suffix' | 'home' | 'separators' | 'trail'>", default: "['suffix']", description: 'Parts hidden below the sm breakpoint (restored from sm up). Defaults to hiding the suffix; pass [] to show everything on mobile' },
+  { name: 'withMicrodata', type: 'boolean', default: 'true', description: 'Include Schema.org BreadcrumbList markup — set false to avoid duplicates when rendering twice' },
+]} />
 
 ## Microdata Control
 

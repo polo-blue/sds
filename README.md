@@ -12,7 +12,7 @@ Please feel free to fork it, edit it and let me know what do you think about it.
 
 ## Requirements
 
-- **Node.js**: >= 22.17.0
+- **Node.js**: >= 22.18.0 (tested on 22, 24 LTS and 26)
 - **Package Manager**: pnpm >= 10.16.1 (v10.17.1 recommended)
 
 ## Dual-Purpose Architecture
@@ -99,16 +99,16 @@ chore: update dependencies [skip ci]
 On merge to `main`, GitHub Actions automatically:
 1. Analyzes commits
 2. Determines version bump
-3. Updates package.json and CHANGELOG.md
-4. Creates GitHub release
-5. Publishes to npm
+3. Publishes to npm (the version is set in the published package only)
+4. Creates the git tag and a GitHub Release with the generated release notes
+
+No commit is pushed back to `main`: release notes live in [GitHub Releases](https://github.com/polo-blue/sds/releases), and the `version` field in the repository's `package.json` is not kept in sync.
 
 ## Features
 
 - ⚡️ [Vue 3](https://github.com/vuejs/core), [Vite](https://github.com/vitejs/vite), [pnpm](https://pnpm.io/) - born with fastness
 - 🎨 [UnoCSS](https://github.com/antfu/unocss) - the instant on-demand atomic CSS engine
 - 😃 [astro-icon](https://github.com/natemoo-re/astro-icon) - for local icons, sprites and `@iconify-json/*` sets
-- 🍔 [astro-navbar](https://github.com/surjithctly/astro-navbar) - fully responsive and accessible headless navigation bar
 - 🔎 [astro-pagefind](https://github.com/shishkin/astro-pagefind) - Astro integration for Pagefind static site search
 - 🗒 [astrojs/mdx](https://github.com/withastro/astro/tree/main/packages/integrations/mdx/) - markdown support
 - 📦 [Playform compression](https://github.com/Playform/compress) - compression utilities to your Astro project

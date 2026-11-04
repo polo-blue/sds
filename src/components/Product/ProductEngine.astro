@@ -21,7 +21,7 @@ const { engine, showComma = false, translations = {} } = Astro.props;
 const tooltipContent = getEngineTooltipContent(engine, translations);
 ---
 
-<span class="engine-code" class:list={[`engine-code-${engine.code}`]} data-tippy-content={tooltipContent}>
+<span class="engine-code" class:list={[`engine-code-${engine.code}`]} data-sds-tooltip={tooltipContent}>
   {engine.code}{showComma && ','}
 </span>
 
@@ -30,12 +30,12 @@ const tooltipContent = getEngineTooltipContent(engine, translations);
   .engine-code {
     @apply inline-block mr-1;
     @apply underline decoration-dotted underline-offset-4 py-0.5;
-    @apply decoration-neutral-light cursor-default;
+    @apply decoration-neutral-light cursor-pointer;
     @apply transition-colors duration-200;
   }
 
   .engine-code:hover {
-    @apply decoration-blue-darker dark:decoration-blue-light;
+    @apply text-black dark:text-white decoration-blue-darker;
   }
 
   /* Semantic Engine Code Colors */
@@ -44,17 +44,17 @@ const tooltipContent = getEngineTooltipContent(engine, translations);
   .engine-code-CTHE,
   .engine-code-DAJA,
   .engine-code-DAYB {
-    @apply text-red-600 dark:text-red-500;
+    @apply text-red-700 dark:text-red-300;
   }
 
   /* WRC R Engine - Blue */
   .engine-code-CDLJ {
-    @apply text-blue-600 dark:text-blue-500;
+    @apply text-blue-700 dark:text-blue-300;
   }
 
   /* Special Blue Engines */
   .engine-code-CPTA,
   .engine-code-CZEA {
-    @apply text-blue-700 dark:text-blue-600;
+    @apply text-blue-800 dark:text-blue-200;
   }
 </style>
