@@ -11,6 +11,10 @@
     
     // Astro will directly run your TypeScript code, no transpilation needed.
     "noEmit": true,
+    "allowImportingTsExtensions": true,
+
+    // TypeScript 6 turned strict on by default; this code base has not migrated yet.
+    "strict": false,
 
     "target": "esnext",
     "useDefineForClassFields": true,
