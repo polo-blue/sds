@@ -22,7 +22,8 @@ const tooltipContent = getEngineTooltipContent(engine, translations);
 ---
 
 <span class="engine-code" class:list={[`engine-code-${engine.code}`]} data-sds-tooltip={tooltipContent}>
-  {engine.code}{showComma && ','}
+  {engine.code}
+  {showComma && ','}
 </span>
 
 <style>

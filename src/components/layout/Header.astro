@@ -53,18 +53,16 @@ const navItemsLeft = [
         itemscope
         itemtype="https://schema.org/SiteNavigationElement"
       >
-        {
-          navItemsLeft.map(({ title, description, url }) => (
-            <a
-              href={url}
-              class="text-gray-500 dark:text-neutral-light hover:bg-blue-darker hover:text-white px-3 py-1 rounded-full text-sm font-medium"
-              title={description}
-              itemprop="url"
-            >
-              {title}
-            </a>
-          ))
-        }
+        {navItemsLeft.map(({ title, description, url }) => (
+          <a
+            href={url}
+            class="text-gray-500 dark:text-neutral-light hover:bg-blue-darker hover:text-white px-3 py-1 rounded-full text-sm font-medium"
+            title={description}
+            itemprop="url"
+          >
+            {title}
+          </a>
+        ))}
       </nav>
     </div>
   </div>

@@ -26,34 +26,32 @@ for (const item of SIDEBAR) {
   class="w-64 px-4 pt-4 pb-10 overflow-y-auto h-full bg-white dark:bg-slate-darkest"
   aria-label="Documentation navigation"
 >
-  {
-    sections.map(section => (
-      <>
-        {section.header && (
-          <h2 class="mt-5 mb-1 px-2 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-neutral-light">
-            {section.header}
-          </h2>
-        )}
-        <ul>
-          {section.items.map(item => (
-            <li>
-              <a
-                href={item.link}
-                class:list={[
-                  'block py-1.5 px-3 rounded text-sm my-0.5 transition-colors border-l-2',
-                  isActive(item.link)
-                    ? 'border-blue-medium text-slate-900 dark:text-neutral-lighter font-medium bg-blue-lightest/20 dark:bg-blue-medium/20'
-                    : 'border-transparent text-slate-500 dark:text-neutral-light hover:text-slate-900 dark:hover:text-neutral-lighter hover:bg-slate-50 dark:hover:bg-slate-dark',
-                ]}
-                aria-current={isActive(item.link) ? 'page' : undefined}
-                data-drawer-close
-              >
-                {item.text}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </>
-    ))
-  }
+  {sections.map(section => (
+    <>
+      {section.header && (
+        <h2 class="mt-5 mb-1 px-2 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-neutral-light">
+          {section.header}
+        </h2>
+      )}
+      <ul>
+        {section.items.map(item => (
+          <li>
+            <a
+              href={item.link}
+              class:list={[
+                'block py-1.5 px-3 rounded text-sm my-0.5 transition-colors border-l-2',
+                isActive(item.link)
+                  ? 'border-blue-medium text-slate-900 dark:text-neutral-lighter font-medium bg-blue-lightest/20 dark:bg-blue-medium/20'
+                  : 'border-transparent text-slate-500 dark:text-neutral-light hover:text-slate-900 dark:hover:text-neutral-lighter hover:bg-slate-50 dark:hover:bg-slate-dark',
+              ]}
+              aria-current={isActive(item.link) ? 'page' : undefined}
+              data-drawer-close
+            >
+              {item.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </>
+  ))}
 </nav>

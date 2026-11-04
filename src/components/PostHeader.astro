@@ -25,23 +25,17 @@ import Date from './Date.astro';
 
 <header class="post-header pt-11 w-full justify-center text-white z-2 bg-blue-darkest">
   <div class="heading flex flex-wrap">
-    <div
-      class="w-full sm:max-w-[640px] md:max-w-3xl lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[1536px] px-4 py-5 flex flex-col flex-wrap"
-    >
-      <h1
-        class="font-textbold text-2xl mb-1 sm:text-3xl md:(text-4xl mb-3) xl:text-6xl mt-1 order-2 line-clamp-3 pb-1"
-      >
+    <div class="w-full sm:max-w-[640px] md:max-w-3xl lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[1536px] px-4 py-5 flex flex-col flex-wrap">
+      <h1 class="font-textbold text-2xl mb-1 sm:text-3xl md:(text-4xl mb-3) xl:text-6xl mt-1 order-2 line-clamp-3 pb-1">
         {title}
       </h1>
       <PostCategories categories={categories} lang={lang} />
       <div class="order-3 flex items-center text-gray-1 00">
-        {
-          author && (
-            <span class="text-sm" title={author.firstName} data-pagefind-ignore>
-              {author.name}
-            </span>
-          )
-        }
+        {author && (
+          <span class="text-sm" title={author.firstName} data-pagefind-ignore>
+            {author.name}
+          </span>
+        )}
         {author && date && <span class="mx-1">-</span>}
         {date && <Date date={date} />}
       </div>

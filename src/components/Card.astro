@@ -14,18 +14,16 @@ import Image from '../components/Image.astro';
 
 <div class="bg-white text-slate-darkest border border-gray-200 rounded-lg shadow overflow-hidden">
   <a href={href} class="aspect-ratio-video block relative" aria-label={linkLabel}>
-    {
-      imgSrc && (
-        <Image
-          imageObject={{
-            src: imgSrc,
-            alt: imgAlt,
-            height: '405',
-            width: '720',
-          }}
-        />
-      )
-    }
+    {imgSrc && (
+      <Image
+        imageObject={{
+          src: imgSrc,
+          alt: imgAlt,
+          height: '405',
+          width: '720',
+        }}
+      />
+    )}
   </a>
   <div class="p-5">
     <slot />

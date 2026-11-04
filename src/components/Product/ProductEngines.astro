@@ -22,19 +22,17 @@ const sortedEngines = engines.length
   : [];
 ---
 
-{
-  sortedEngines.length > 0 && (
-    <div class="engines-list inline-flex flex-wrap items-center gap-x-0.5">
-      {sortedEngines.map((engine, index) => (
-        <ProductEngine
-          engine={engine}
-          showComma={index !== sortedEngines.length - 1}
-          translations={translations}
-        />
-      ))}
-    </div>
-  )
-}
+{sortedEngines.length > 0 && (
+  <div class="engines-list inline-flex flex-wrap items-center gap-x-0.5">
+    {sortedEngines.map((engine, index) => (
+      <ProductEngine
+        engine={engine}
+        showComma={index !== sortedEngines.length - 1}
+        translations={translations}
+      />
+    ))}
+  </div>
+)}
 
 <style>
   .engines-list {

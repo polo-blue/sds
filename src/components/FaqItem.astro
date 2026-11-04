@@ -11,28 +11,26 @@ interface Props {
 const { data } = Astro.props;
 ---
 
-{
-  data.answer && (
-    <details
-      itemscope
-      itemprop="mainEntity"
-      itemtype="https://schema.org/Question"
-      class="faq-details [&_summary:after]:open:-rotate-180"
-    >
-      <summary
-        class="py-2 cursor-pointer focus-visible:underline text-xl font-500 relative items-center flex justify-between list-none
+{data.answer && (
+  <details
+    itemscope
+    itemprop="mainEntity"
+    itemtype="https://schema.org/Question"
+    class="faq-details [&_summary:after]:open:-rotate-180"
+  >
+    <summary
+      class="py-2 cursor-pointer focus-visible:underline text-xl font-500 relative items-center flex justify-between list-none
       after:(block duration-200 content-empty bg-contain bg-center bg-no-repeat h-3 w-4 min-w-4 my-auto ml-4 opacity-60)"
-      >
-        <h3 itemprop="name" class="faq-question font-headbold" set:html={data.question} />
-      </summary>
-      <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-        <div itemprop="text" class="px-0 pb-4">
-          <Markdown content={data.answer} />
-        </div>
+    >
+      <h3 itemprop="name" class="faq-question font-headbold" set:html={data.question} />
+    </summary>
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+      <div itemprop="text" class="px-0 pb-4">
+        <Markdown content={data.answer} />
       </div>
-    </details>
-  )
-}
+    </div>
+  </details>
+)}
 
 <style is:global>
   .faq-details {

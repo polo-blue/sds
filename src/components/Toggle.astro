@@ -73,136 +73,132 @@ const sizeMap = {
 const s = sizeMap[size];
 ---
 
-{
-  variant === 'switch' && (
-    <button
-      type="button"
-      role="switch"
-      aria-checked={checked ? 'true' : 'false'}
-      aria-label={!label ? groupLabel : undefined}
-      disabled={disabled}
-      data-name={name}
-      data-value={value}
-      data-look={look}
-      class:list={[
-        // min-h-6 keeps the hit area at least 24px tall even for size="sm" (WCAG 2.5.8)
-        'sds-toggle-switch inline-flex items-center gap-2 group min-h-6',
-        look === 'default' && 'inline-flex items-center gap-2',
-        disabled && 'opacity-50 cursor-not-allowed',
-        !disabled && 'cursor-pointer',
-        className,
-      ]}
-    >
-      {label && labelPosition === 'before' && (
-        <span
-          class:list={[
-            'sds-toggle-label',
-            look === 'default' && ['text-slate-dark dark:text-neutral-lighter', s.label],
-          ]}
-        >
-          {label}
-        </span>
-      )}
-
+{variant === 'switch' && (
+  <button
+    type="button"
+    role="switch"
+    aria-checked={checked ? 'true' : 'false'}
+    aria-label={!label ? groupLabel : undefined}
+    disabled={disabled}
+    data-name={name}
+    data-value={value}
+    data-look={look}
+    class:list={[
+      // min-h-6 keeps the hit area at least 24px tall even for size="sm" (WCAG 2.5.8)
+      'sds-toggle-switch inline-flex items-center gap-2 group min-h-6',
+      look === 'default' && 'inline-flex items-center gap-2',
+      disabled && 'opacity-50 cursor-not-allowed',
+      !disabled && 'cursor-pointer',
+      className,
+    ]}
+  >
+    {label && labelPosition === 'before' && (
       <span
         class:list={[
-          'sds-toggle-track relative inline-flex shrink-0 rounded-full transition-colors',
-          look === 'default' && [
-            s.track,
-            checked ? 'bg-blue-medium dark:bg-blue-light' : 'bg-slate-light dark:bg-slate-dark',
-          ],
+          'sds-toggle-label',
+          look === 'default' && ['text-slate-dark dark:text-neutral-lighter', s.label],
         ]}
-        aria-hidden="true"
       >
-        <span
-          class:list={[
-            'sds-toggle-thumb absolute top-1/2 left-0.5 -translate-y-1/2 bg-white rounded-full shadow transition-transform',
-            look === 'default' && [s.thumb, checked && s.thumbTranslate],
-          ]}
-        />
+        {label}
       </span>
+    )}
 
-      {label && labelPosition === 'after' && (
-        <span
-          class:list={[
-            'sds-toggle-label',
-            look === 'default' && ['text-slate-dark dark:text-neutral-lighter', s.label],
-          ]}
-        >
-          {label}
-        </span>
-      )}
-    </button>
-  )
-}
-
-{
-  variant === 'segmented' && (
-    <div
-      role={items.every(item => item.href) ? 'group' : 'radiogroup'}
-      aria-label={groupLabel}
-      data-look={look}
+    <span
       class:list={[
-        'sds-toggle-segmented',
-        look === 'default' &&
-          'inline-flex items-center gap-0.5 p-0.5 rounded-lg bg-slate-100 dark:bg-slate-dark border border-slate-200 dark:border-slate-darkest',
-        className,
+        'sds-toggle-track relative inline-flex shrink-0 rounded-full transition-colors',
+        look === 'default' && [
+          s.track,
+          checked ? 'bg-blue-medium dark:bg-blue-light' : 'bg-slate-light dark:bg-slate-dark',
+        ],
       ]}
+      aria-hidden="true"
     >
-      {items.map((item, index) => {
-        const isActive = item.value === current;
-        // Keep the radiogroup reachable by keyboard when no option matches `current`
-        const firstEnabledIndex = items.findIndex(i => !i.disabled);
-        const hasActive = items.some(i => i.value === current && !i.disabled);
-        const isTabStop = isActive || (!hasActive && index === firstEnabledIndex);
-        const isLink = !!item.href;
-        const isDisabled = !!item.disabled;
-        const baseClasses = [
-          'sds-toggle-seg-btn',
-          look === 'default' && [
-            'inline-flex items-center justify-center gap-1.5 rounded-md font-textbold transition-colors',
-            s.segBtn,
-            isActive
-              ? 'bg-white dark:bg-slate-darkest text-blue-medium dark:text-blue-300 shadow-sm'
-              : 'text-slate-dark dark:text-neutral-lighter hover:bg-white/60 dark:hover:bg-slate-darkest/60',
-          ],
-          isActive && 'is-active',
-          isDisabled && 'opacity-50 cursor-not-allowed pointer-events-none',
-        ];
+      <span
+        class:list={[
+          'sds-toggle-thumb absolute top-1/2 left-0.5 -translate-y-1/2 bg-white rounded-full shadow transition-transform',
+          look === 'default' && [s.thumb, checked && s.thumbTranslate],
+        ]}
+      />
+    </span>
 
-        if (isLink) {
-          return (
-            <a
-              href={isDisabled ? undefined : item.href}
-              class:list={baseClasses}
-              aria-current={isActive ? 'page' : undefined}
-              aria-disabled={isDisabled ? 'true' : undefined}
-              hreflang={item.hreflang}
-              data-value={item.value}
-              data-reload={reload ? 'true' : undefined}
-            >
-              {item.label}
-            </a>
-          );
-        }
+    {label && labelPosition === 'after' && (
+      <span
+        class:list={[
+          'sds-toggle-label',
+          look === 'default' && ['text-slate-dark dark:text-neutral-lighter', s.label],
+        ]}
+      >
+        {label}
+      </span>
+    )}
+  </button>
+)}
 
+{variant === 'segmented' && (
+  <div
+    role={items.every(item => item.href) ? 'group' : 'radiogroup'}
+    aria-label={groupLabel}
+    data-look={look}
+    class:list={[
+      'sds-toggle-segmented',
+      look === 'default' &&
+        'inline-flex items-center gap-0.5 p-0.5 rounded-lg bg-slate-100 dark:bg-slate-dark border border-slate-200 dark:border-slate-darkest',
+      className,
+    ]}
+  >
+    {items.map((item, index) => {
+      const isActive = item.value === current;
+      // Keep the radiogroup reachable by keyboard when no option matches `current`
+      const firstEnabledIndex = items.findIndex(i => !i.disabled);
+      const hasActive = items.some(i => i.value === current && !i.disabled);
+      const isTabStop = isActive || (!hasActive && index === firstEnabledIndex);
+      const isLink = !!item.href;
+      const isDisabled = !!item.disabled;
+      const baseClasses = [
+        'sds-toggle-seg-btn',
+        look === 'default' && [
+          'inline-flex items-center justify-center gap-1.5 rounded-md font-textbold transition-colors',
+          s.segBtn,
+          isActive
+            ? 'bg-white dark:bg-slate-darkest text-blue-medium dark:text-blue-300 shadow-sm'
+            : 'text-slate-dark dark:text-neutral-lighter hover:bg-white/60 dark:hover:bg-slate-darkest/60',
+        ],
+        isActive && 'is-active',
+        isDisabled && 'opacity-50 cursor-not-allowed pointer-events-none',
+      ];
+
+      if (isLink) {
         return (
-          <button
-            type="button"
-            role="radio"
-            aria-checked={isActive ? 'true' : 'false'}
-            disabled={isDisabled}
-            tabindex={isTabStop ? 0 : -1}
-            data-value={item.value}
+          <a
+            href={isDisabled ? undefined : item.href}
             class:list={baseClasses}
+            aria-current={isActive ? 'page' : undefined}
+            aria-disabled={isDisabled ? 'true' : undefined}
+            hreflang={item.hreflang}
+            data-value={item.value}
+            data-reload={reload ? 'true' : undefined}
           >
             {item.label}
-          </button>
+          </a>
         );
-      })}
-    </div>
-  )
-}
+      }
+
+      return (
+        <button
+          type="button"
+          role="radio"
+          aria-checked={isActive ? 'true' : 'false'}
+          disabled={isDisabled}
+          tabindex={isTabStop ? 0 : -1}
+          data-value={item.value}
+          class:list={baseClasses}
+        >
+          {item.label}
+        </button>
+      );
+    })}
+  </div>
+)}
 
 <style is:global>
   .sds-toggle-switch:focus-visible .sds-toggle-track,

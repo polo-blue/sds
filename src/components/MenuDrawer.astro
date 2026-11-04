@@ -66,216 +66,208 @@ const headingId = `${id}-heading`;
 
 <Drawer id={id} label={label} position={position} class="sds-drawer-menu">
   <div class="sds-menu">
-    {
-      (brand || Astro.slots.has('close')) && (
-        <header class="sds-menu-header">
-          {Astro.slots.has('brand') ? (
-            <slot name="brand" />
-          ) : brand ? (
-            <a
-              href={brand.href ?? '/'}
-              class="sds-menu-brand"
-              aria-label={brand.logoAlt ?? brand.text ?? 'Home'}
-            >
-              {brand.logoSrc ? (
-                <img src={brand.logoSrc} alt={brand.logoAlt ?? ''} loading="eager" />
-              ) : (
-                <span class="sds-menu-brand-text">{brand.text}</span>
-              )}
-            </a>
-          ) : (
+    {(brand || Astro.slots.has('close')) && (
+      <header class="sds-menu-header">
+        {Astro.slots.has('brand') ? (
+          <slot name="brand" />
+        ) : brand ? (
+          <a
+            href={brand.href ?? '/'}
+            class="sds-menu-brand"
+            aria-label={brand.logoAlt ?? brand.text ?? 'Home'}
+          >
+            {brand.logoSrc ? (
+              <img src={brand.logoSrc} alt={brand.logoAlt ?? ''} loading="eager" />
+            ) : (
+              <span class="sds-menu-brand-text">{brand.text}</span>
+            )}
+          </a>
+        ) : (
+          <span />
+        )}
+
+        <button type="button" class="sds-menu-close" aria-label="Close menu" data-drawer-close>
+          <span class="sds-menu-close-icon" aria-hidden="true">
             <span />
-          )}
+            <span />
+          </span>
+        </button>
+      </header>
+    )}
 
-          <button type="button" class="sds-menu-close" aria-label="Close menu" data-drawer-close>
-            <span class="sds-menu-close-icon" aria-hidden="true">
-              <span />
-              <span />
-            </span>
-          </button>
-        </header>
-      )
-    }
+    <h2 id={headingId} class="sr-only">
+      {label}
+    </h2>
 
-    <h2 id={headingId} class="sr-only">{label}</h2>
-
-    {
-      (primary.length > 0 || Astro.slots.has('primary')) && (
-        <nav class="sds-menu-primary" aria-label={label}>
-          {Astro.slots.has('primary') ? (
-            <slot name="primary" />
-          ) : (
-            primary.map(item => (
-              <a href={item.href} class="sds-menu-primary-link" data-drawer-close>
-                <div class="sds-menu-primary-text">
-                  <span class="sds-menu-primary-title">{item.title}</span>
-                  {item.sub && <span class="sds-menu-primary-sub">{item.sub}</span>}
-                </div>
-                <svg
-                  class="sds-menu-primary-arrow"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
-            ))
-          )}
-        </nav>
-      )
-    }
-
-    {
-      (chips || Astro.slots.has('chips')) && (
-        <section class="sds-menu-section" aria-label={chips?.title}>
-          {Astro.slots.has('chips') ? (
-            <slot name="chips" />
-          ) : chips ? (
-            <>
-              <h3 class="sds-menu-section-title">{chips.title}</h3>
-              <div class="sds-menu-chips">
-                {chips.items.map(chip => (
-                  <a href={chip.href} class="sds-menu-chip" data-drawer-close>
-                    {chip.label}
-                  </a>
-                ))}
+    {(primary.length > 0 || Astro.slots.has('primary')) && (
+      <nav class="sds-menu-primary" aria-label={label}>
+        {Astro.slots.has('primary') ? (
+          <slot name="primary" />
+        ) : (
+          primary.map(item => (
+            <a href={item.href} class="sds-menu-primary-link" data-drawer-close>
+              <div class="sds-menu-primary-text">
+                <span class="sds-menu-primary-title">{item.title}</span>
+                {item.sub && <span class="sds-menu-primary-sub">{item.sub}</span>}
               </div>
-            </>
-          ) : null}
-        </section>
-      )
-    }
+              <svg
+                class="sds-menu-primary-arrow"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          ))
+        )}
+      </nav>
+    )}
+
+    {(chips || Astro.slots.has('chips')) && (
+      <section class="sds-menu-section" aria-label={chips?.title}>
+        {Astro.slots.has('chips') ? (
+          <slot name="chips" />
+        ) : chips ? (
+          <>
+            <h3 class="sds-menu-section-title">{chips.title}</h3>
+            <div class="sds-menu-chips">
+              {chips.items.map(chip => (
+                <a href={chip.href} class="sds-menu-chip" data-drawer-close>
+                  {chip.label}
+                </a>
+              ))}
+            </div>
+          </>
+        ) : null}
+      </section>
+    )}
 
     {Astro.slots.has('middle') && <slot name="middle" />}
 
     <div class="sds-menu-spacer"></div>
 
-    {
-      (helpCard || Astro.slots.has('help')) && (
-        <section class="sds-menu-help-card" aria-label={helpCard?.title}>
-          {Astro.slots.has('help') ? (
-            <slot name="help" />
-          ) : helpCard ? (
-            <>
-              <div class="sds-menu-help-text">
-                <p class="sds-menu-help-title">{helpCard.title}</p>
-                {helpCard.sub && <p class="sds-menu-help-sub">{helpCard.sub}</p>}
-              </div>
-              <a href={helpCard.cta.href} class="sds-menu-help-cta" data-drawer-close>
-                {helpCard.cta.label}
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  aria-hidden="true"
-                >
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
-              </a>
-            </>
-          ) : null}
-        </section>
-      )
-    }
+    {(helpCard || Astro.slots.has('help')) && (
+      <section class="sds-menu-help-card" aria-label={helpCard?.title}>
+        {Astro.slots.has('help') ? (
+          <slot name="help" />
+        ) : helpCard ? (
+          <>
+            <div class="sds-menu-help-text">
+              <p class="sds-menu-help-title">{helpCard.title}</p>
+              {helpCard.sub && <p class="sds-menu-help-sub">{helpCard.sub}</p>}
+            </div>
+            <a href={helpCard.cta.href} class="sds-menu-help-cta" data-drawer-close>
+              {helpCard.cta.label}
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                aria-hidden="true"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+          </>
+        ) : null}
+      </section>
+    )}
 
-    {
-      (footer || Astro.slots.has('footer-left') || Astro.slots.has('footer-right')) && (
-        <footer class="sds-menu-footer">
-          <div class="sds-menu-footer-utility">
-            {Astro.slots.has('footer-left') ? (
-              <slot name="footer-left" />
-            ) : (
-              <>
-                {footer?.locales && footer.locales.length > 0 && (
-                  <div class="sds-menu-lang" role="group" aria-label="Language">
-                    {footer.locales.map(locale => (
-                      <a
-                        href={locale.href}
-                        class:list={['sds-menu-lang-btn', locale.active && 'is-active']}
-                        aria-current={locale.active ? 'page' : undefined}
-                        hreflang={locale.code}
-                      >
-                        {locale.label}
-                      </a>
-                    ))}
-                  </div>
-                )}
-                {footer?.themeToggle && (
-                  <button
-                    type="button"
-                    class="sds-menu-theme-chip"
-                    aria-label="Dark mode"
-                    aria-pressed="false"
-                    data-sds-menu-theme-toggle
-                  >
-                    <svg
-                      class="hidden dark:block"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      aria-hidden="true"
-                    >
-                      <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" />
-                    </svg>
-                    <svg
-                      class="block dark:hidden"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      aria-hidden="true"
-                    >
-                      <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                    </svg>
-                  </button>
-                )}
-              </>
-            )}
-          </div>
-
-          {Astro.slots.has('footer-right') ? (
-            <slot name="footer-right" />
+    {(footer || Astro.slots.has('footer-left') || Astro.slots.has('footer-right')) && (
+      <footer class="sds-menu-footer">
+        <div class="sds-menu-footer-utility">
+          {Astro.slots.has('footer-left') ? (
+            <slot name="footer-left" />
           ) : (
-            footer?.socials &&
-            footer.socials.length > 0 && (
-              <div class="sds-menu-footer-socials">
-                {footer.socials.map(social =>
-                  social.iconSvg ? (
+            <>
+              {footer?.locales && footer.locales.length > 0 && (
+                <div class="sds-menu-lang" role="group" aria-label="Language">
+                  {footer.locales.map(locale => (
                     <a
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={social.label}
-                      class="sds-menu-footer-social"
-                      set:html={social.iconSvg}
-                    />
-                  ) : (
-                    <a
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={social.label}
-                      class="sds-menu-footer-social"
+                      href={locale.href}
+                      class:list={['sds-menu-lang-btn', locale.active && 'is-active']}
+                      aria-current={locale.active ? 'page' : undefined}
+                      hreflang={locale.code}
                     >
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        {social.iconPath && <path d={social.iconPath} />}
-                      </svg>
+                      {locale.label}
                     </a>
-                  )
-                )}
-              </div>
-            )
+                  ))}
+                </div>
+              )}
+              {footer?.themeToggle && (
+                <button
+                  type="button"
+                  class="sds-menu-theme-chip"
+                  aria-label="Dark mode"
+                  aria-pressed="false"
+                  data-sds-menu-theme-toggle
+                >
+                  <svg
+                    class="hidden dark:block"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" />
+                  </svg>
+                  <svg
+                    class="block dark:hidden"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                  </svg>
+                </button>
+              )}
+            </>
           )}
-        </footer>
-      )
-    }
+        </div>
+
+        {Astro.slots.has('footer-right') ? (
+          <slot name="footer-right" />
+        ) : (
+          footer?.socials &&
+          footer.socials.length > 0 && (
+            <div class="sds-menu-footer-socials">
+              {footer.socials.map(social =>
+                social.iconSvg ? (
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    class="sds-menu-footer-social"
+                    set:html={social.iconSvg}
+                  />
+                ) : (
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    class="sds-menu-footer-social"
+                  >
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      {social.iconPath && <path d={social.iconPath} />}
+                    </svg>
+                  </a>
+                )
+              )}
+            </div>
+          )
+        )}
+      </footer>
+    )}
   </div>
 </Drawer>
 

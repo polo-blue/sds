@@ -18,12 +18,10 @@ const { product, nameFormatted, price, url, index, bigTile } = Astro.props;
   {price && <p class="block mb-2 font-600 font-headbold text-5">{price}</p>}
   <a class="product-link--url" href={url} itemprop="url" title={product.number} set:html={nameFormatted} />
   <ProductNumber productNumber={product.number} copyDisabled={true} />
-  {
-    index !== null && (
-      <>
-        <meta itemprop="position" content={String(index)} />
-        <meta itemprop="name" content={nameFormatted} />
-      </>
-    )
-  }
+  {index !== null && (
+    <>
+      <meta itemprop="position" content={String(index)} />
+      <meta itemprop="name" content={nameFormatted} />
+    </>
+  )}
 </div>

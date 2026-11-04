@@ -22,11 +22,9 @@ const { title = '', slim = false, hasIntroContent, hasSubtitleContent, hasCtaCon
 
   {hasSubtitleContent && <slot name="subtitle" />}
 
-  {
-    hasCtaContent && (
-      <div class="jumbotron-cta-wrapper">
-        <slot name="cta-content" />
-      </div>
-    )
-  }
+  {hasCtaContent && (
+    <div class="jumbotron-cta-wrapper">
+      <slot name="cta-content" />
+    </div>
+  )}
 </header>

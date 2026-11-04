@@ -12,30 +12,27 @@ const loremText = 'Lorem ipsum dolor sit amet, consectetur adipiscing';
 
     <!-- Font Preview Cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-      {
-        fonts.map(([name, family]) => (
-          <div class="bg-white text-slate-darkest rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
-            <div class={`font-${name} text-3xl mb-4 min-h-[120px] flex items-center`}>{loremText}</div>
+      {fonts.map(([name, family]) => (
+        <div class="bg-white text-slate-darkest rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+          <div class={`font-${name} text-3xl mb-4 min-h-[120px] flex items-center`}>{loremText}</div>
 
-            <div class="border-t pt-4">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-lg font-medium text-gray-900">{name}</span>
-                <span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-600">font-{name}</span>
-              </div>
-              <code class="text-sm text-gray-500 block overflow-x-auto whitespace-nowrap" tabindex="0">
-                {family.join(', ')}
-              </code>
+          <div class="border-t pt-4">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-lg font-medium text-gray-900">{name}</span>
+              <span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-600">font-{name}</span>
             </div>
+            <code class="text-sm text-gray-500 block overflow-x-auto whitespace-nowrap" tabindex="0">
+              {family.join(', ')}
+            </code>
           </div>
-        ))
-      }
+        </div>
+      ))}
     </div>
 
     <!-- Font Configuration Code -->
     <div class="bg-gray-900 rounded-lg overflow-hidden">
       <div class="bg-gray-800 px-4 py-2 text-gray-300">Font Configuration</div>
-      <pre
-        class="p-4 overflow-x-auto">
+      <pre class="p-4 overflow-x-auto">
                 <code class="text-gray-200 text-sm">
 {fonts.map(([name, family]) => `font-${name}:\n${family.join(', ')}
 `).join('\n')}</code>
