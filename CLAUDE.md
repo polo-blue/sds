@@ -279,7 +279,7 @@ Before using an icon, verify it's in `icon.config.ts`:
   - `./icon-collections`: Icon collection list
   - `./uno-config`: UnoCSS config for consumers
 
-- **Engines**: Node >= 22.18.0 (first version with unflagged TS type stripping, used by `scripts/*.ts`), pnpm >= 10.16.1
+- **Engines**: Node >= 22.23.4 (minimum supported by Astro 7.4; `scripts/*.ts` also rely on unflagged TS type stripping), pnpm >= 10.16.1
 - **Package manager**: pnpm (v10.17.1)
 
 ## Important Notes
