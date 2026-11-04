@@ -11,6 +11,7 @@ interface BadgeObject {
 }
 
 const props = defineProps({
+  /** Array of badge labels (strings) or badge objects with slug, label, type, color, and priority properties. */
   badges: {
     type: Array as PropType<(string | BadgeObject)[]>,
     required: false,

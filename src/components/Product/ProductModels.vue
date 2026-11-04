@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { PropType } from 'vue';
+import ProductModel from './ProductModel.vue';
 
 const props = defineProps({
   modelIds: {

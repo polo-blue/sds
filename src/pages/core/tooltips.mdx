@@ -56,7 +56,7 @@ Add the script to your main layout's `<head>`:
 Add the `data-sds-tooltip` attribute to any element:
 
 <div class="component-preview">
-  <div class="bg-white p-6 w-full">
+  <div class="bg-white dark:bg-accent-deepBlue p-6 w-full">
     <button
       class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
       data-sds-tooltip="This is a basic tooltip">
@@ -76,7 +76,7 @@ Add the `data-sds-tooltip` attribute to any element:
 Tooltips support HTML content:
 
 <div class="component-preview">
-  <div class="bg-white p-6 w-full">
+  <div class="bg-white dark:bg-accent-deepBlue p-6 w-full">
     <span
       class="underline decoration-dotted cursor-help"
       data-sds-tooltip="<strong>Bold text</strong> and <em>italic text</em>">
@@ -96,9 +96,9 @@ Tooltips support HTML content:
 For complex tooltips with headers and multiple sections:
 
 <div class="component-preview">
-  <div class="bg-white p-6 w-full">
+  <div class="bg-white dark:bg-accent-deepBlue p-6 w-full">
     <span
-      class="underline decoration-dotted cursor-help text-blue-600"
+      class="underline decoration-dotted cursor-help text-blue-600 dark:text-blue-300"
       data-sds-tooltip='<div class="tooltip-header"><strong>Product Details</strong></div><div class="tooltip-specs"><div class="tooltip-row"><span class="tooltip-label">SKU:</span><span class="tooltip-value">12345</span></div><div class="tooltip-row"><span class="tooltip-label">Weight:</span><span class="tooltip-value">2.5 kg</span></div></div>'>
       Product Info
     </span>
@@ -414,7 +414,7 @@ Tooltips work in all modern browsers:
 <label>
   Email
   <span
-    class="inline-block ml-1 text-gray-400 cursor-help"
+    class="inline-block ml-1 text-gray-500 cursor-help"
     data-sds-tooltip="We'll never share your email">
     ⓘ
   </span>

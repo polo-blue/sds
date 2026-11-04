@@ -14,62 +14,39 @@ import {
 // These presets must be imported explicitly to be used in the configuration
 import presetUno from '@unocss/preset-uno';             // Primary UnoCSS preset
 import presetTypography from '@unocss/preset-typography'; // Typography preset
-import presetWebFonts from '@unocss/preset-web-fonts';    // Web fonts preset
 
-import { shortcuts } from './theme/shortcuts';
-import { theme } from './theme';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
+import { loadCollectionFromFS } from '@iconify/utils/lib/loader/fs';
 
-// Static imports for all icon collections (prevents Vite module runner issues)
-import antDesignIcons from '@iconify-json/ant-design/icons.json';
-import biIcons from '@iconify-json/bi/icons.json';
-import bxIcons from '@iconify-json/bx/icons.json';
-import carbonIcons from '@iconify-json/carbon/icons.json';
-import circleFlagsIcons from '@iconify-json/circle-flags/icons.json';
-import eiIcons from '@iconify-json/ei/icons.json';
-import elIcons from '@iconify-json/el/icons.json';
-import eosIcons from '@iconify-json/eos-icons/icons.json';
-import etIcons from '@iconify-json/et/icons.json';
-import flowbiteIcons from '@iconify-json/flowbite/icons.json';
-import fluentIcons from '@iconify-json/fluent/icons.json';
-import fluentEmojiIcons from '@iconify-json/fluent-emoji/icons.json';
-import icIcons from '@iconify-json/ic/icons.json';
-import iconParkOutlineIcons from '@iconify-json/icon-park-outline/icons.json';
-import laIcons from '@iconify-json/la/icons.json';
-import lucideIcons from '@iconify-json/lucide/icons.json';
-import materialSymbolsLightIcons from '@iconify-json/material-symbols-light/icons.json';
-import mdiIcons from '@iconify-json/mdi/icons.json';
-import notoV1Icons from '@iconify-json/noto-v1/icons.json';
-import octiconIcons from '@iconify-json/octicon/icons.json';
-import phIcons from '@iconify-json/ph/icons.json';
-import simpleIcons from '@iconify-json/simple-icons/icons.json';
-import systemUiconsIcons from '@iconify-json/system-uicons/icons.json';
-import uilIcons from '@iconify-json/uil/icons.json';
-import vscodeIcons from '@iconify-json/vscode-icons/icons.json';
-import streamlineFreehandColorIcons from '@iconify-json/streamline-freehand-color/icons.json';
+import { shortcuts } from './theme/shortcuts/index.ts';
+import { theme } from './theme/index.ts';
+import { generatePalette, defaultPalette, type PaletteInput } from './palette-generator.ts';
+import { peerSelectorClasses, peerVariant } from './peer-variants.ts';
 
-// List of peer selectors we want to preserve during build
-const peerSelectorClasses = [
-  // Focus state classes
-  'peer-focus:text-blue-light',
-  'peer-focus:dark:text-blue-lightest',
-  'peer-focus:scale-75',
-  'peer-focus:-translate-y-6',
-  'peer-focus:-translate-y-4',
-  'peer-focus:start-0',
-  
-  // Placeholder shown classes
-  'peer-placeholder-shown:scale-100',
-  'peer-placeholder-shown:translate-y-0',
-  
-  // Not placeholder shown classes
-  'peer-not-placeholder-shown:scale-75',
-  'peer-not-placeholder-shown:-translate-y-6',
-  'peer-not-placeholder-shown:-translate-y-4',
-];
+// Icon collections are loaded from disk via loadCollectionFromFS anchored at
+// this file's own directory. This lets Node's module resolution walk up the
+// tree and find @iconify-json/* regardless of whether SDS is the root project
+// or a nested dep under strict pnpm — without going through the Vite module
+// runner (which closes before icons are resolved during consumer builds).
+// Static imports are deliberately avoided: inlining 26 collection JSONs into
+// this module produces a sourcemap > V8's max string length on Vite 8 / Astro 7.
+const _thisDir = dirname(fileURLToPath(import.meta.url));
+const fromFS = (name: string) => () => loadCollectionFromFS(name, false, '@iconify-json', _thisDir);
+
+const ICON_COLLECTIONS = [
+  'ant-design', 'bi', 'bx', 'carbon', 'circle-flags', 'ei', 'el',
+  'eos-icons', 'et', 'flowbite', 'fluent', 'fluent-emoji', 'ic',
+  'icon-park-outline', 'la', 'lucide', 'material-symbols-light', 'mdi',
+  'noto-v1', 'octicon', 'ph', 'simple-icons', 'system-uicons', 'uil',
+  'vscode-icons', 'streamline-freehand-color',
+] as const;
 
 interface CustomConfig extends Partial<UserConfig> {
   shortcuts?: UserShortcuts;
   theme?: Partial<typeof theme>;
+  /** Brand colors for palette generation. When provided, replaces the default blue palette. */
+  palette?: PaletteInput;
 }
 
 /**
@@ -83,6 +60,14 @@ interface CustomConfig extends Partial<UserConfig> {
  * @returns Complete UnoCSS configuration
  */
 export function createSdsConfig(customConfig: CustomConfig = {}) {
+  const { palette, ...restConfig } = customConfig;
+  const resolvedColors = palette ? generatePalette(palette) : defaultPalette;
+  const resolvedTheme = {
+    ...theme,
+    colors: resolvedColors,
+    ...(restConfig.theme || {}),
+  };
+
   return defineConfig({
     // Optimizations for static builds
     ...(process.env.NODE_ENV === 'production' && {
@@ -97,44 +82,10 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
     ],
     shortcuts: {
       ...shortcuts,
-      ...(customConfig.shortcuts || {})
+      ...(restConfig.shortcuts || {})
     },
-    theme: {
-      ...theme,
-      ...(customConfig.theme || {})
-    },
-    // Enhanced variants to better handle peer selectors
-    variants: [
-      // Add specific peer variant support
-      (matcher) => {
-        if (!matcher.startsWith('peer-'))
-          return matcher;
-        
-        const peerVariant = matcher.slice(5);
-        const selectorMap = {
-          'focus:': (s) => `.peer:focus ~ ${s}`,
-          'hover:': (s) => `.peer:hover ~ ${s}`,
-          'placeholder-shown:': (s) => `.peer:placeholder-shown ~ ${s}`,
-          'not-placeholder-shown:': (s) => `.peer:not(:placeholder-shown) ~ ${s}`,
-        };
-        
-        // Check for nested variants like 'peer-focus:text-blue'
-        for (const [key, selectorFn] of Object.entries(selectorMap)) {
-          if (peerVariant.startsWith(key)) {
-            return {
-              matcher: peerVariant.slice(key.length),
-              selector: selectorFn,
-            };
-          }
-        }
-        
-        // Default peer handling
-        return {
-          matcher: peerVariant,
-          selector: (s) => `.peer:${peerVariant} ~ ${s}`,
-        };
-      },
-    ],
+    theme: resolvedTheme,
+    variants: [peerVariant],
     // Optimized safelist for static Astro builds
     safelist: [
       // Layout and grid classes that might be used dynamically
@@ -155,6 +106,10 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
       'resize-none',
       'origin-top-left',
       'transform-gpu',
+
+      // Dark mode toggle icons
+      'i-lucide-moon',
+      'i-lucide-sun',
 
       // Dynamic icons from ProductDetailsList component
       'i-lucide-book-text',
@@ -235,7 +190,7 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
     ],
     // IMPORTANT: All of these presets are required for proper functioning
     presets: [
-      presetUno(),
+      presetUno({ dark: 'class' }),
       presetAttributify(),
       presetIcons({
         scale: 1.2,
@@ -245,58 +200,32 @@ export function createSdsConfig(customConfig: CustomConfig = {}) {
           'display': 'inline-block',
           'vertical-align': 'middle',
         },
-        collections: {
-          // All icon collections with static imports to prevent Vite module runner issues
-          'ant-design': antDesignIcons,
-          'bi': biIcons,
-          'bx': bxIcons,
-          'carbon': carbonIcons,
-          'circle-flags': circleFlagsIcons,
-          'ei': eiIcons,
-          'el': elIcons,
-          'eos-icons': eosIcons,
-          'et': etIcons,
-          'flowbite': flowbiteIcons,
-          'fluent': fluentIcons,
-          'fluent-emoji': fluentEmojiIcons,
-          'ic': icIcons,
-          'icon-park-outline': iconParkOutlineIcons,
-          'la': laIcons,
-          'lucide': lucideIcons,
-          'material-symbols-light': materialSymbolsLightIcons,
-          'mdi': mdiIcons,
-          'noto-v1': notoV1Icons,
-          'octicon': octiconIcons,
-          'ph': phIcons,
-          'simple-icons': simpleIcons,
-          'system-uicons': systemUiconsIcons,
-          'uil': uilIcons,
-          'vscode-icons': vscodeIcons,
-          'streamline-freehand-color': streamlineFreehandColorIcons,
-        }
+        collections: Object.fromEntries(ICON_COLLECTIONS.map((n) => [n, fromFS(n)]))
       }),
+      // No presetWebFonts: with provider 'none' it only rewrote theme.fontFamily from SDS's
+      // own defaults, which undid a consumer's override. The theme already carries the fonts.
       presetTypography(),
-      presetWebFonts({
-        provider: 'none',
-        fonts: theme.fontFamily
-      })
     ],
 
     // Additional optimizations for static Astro builds
     preflights: [
       {
-        getCSS: () => `
+        // The body font follows the `sans` token of the final theme, so a consumer that
+        // overrides `theme.fontFamily.sans` changes the page default too.
+        getCSS: ({ theme: { fontFamily } }: { theme: { fontFamily?: Record<string, string | string[]> } }) => `
           /* Optimized base styles for static builds */
           *,*::before,*::after{box-sizing:border-box;border-width:0;border-style:solid}
           html{line-height:1.5;-webkit-text-size-adjust:100%}
-          body{margin:0;font-family:vw_textregular,system-ui,sans-serif}
+          body{margin:0;font-family:${[fontFamily?.sans ?? [], 'sans-serif'].flat().join(',')}}
         `
       }
     ],
 
-    ...customConfig
+    ...restConfig
   });
 }
 
-export * from './theme';
-export * from './theme/shortcuts';
+export * from './theme/index.ts';
+export * from './theme/shortcuts/index.ts';
+export { generatePalette, defaultPalette, type PaletteInput } from './palette-generator.ts';
+export { generateTokensCSS } from './token-exporter.ts';

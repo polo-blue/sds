@@ -7,15 +7,17 @@ import {
   TOOLTIP_STYLES,
   PRODUCT_STYLES,
   aspectRatios
-} from './constants'
+} from './constants.ts'
+
+const BADGE_STYLE = 'inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium max-w-fit whitespace-nowrap';
 
 export const componentShortcuts = [
   // Product related
-  ['product-row', `${COLORS.bgWhite} ${LAYOUT.flex.wrap} odd:(pr-2.5 pl-3.5 sm:px-0) even:(pl-2.5 pr-3.5 sm:px-0) w-1/2 sm:(w-auto grid grid-cols-3) gap-x-1 gap-y-0 md:(${LAYOUT.grid.product} gap-x-4) justify-start content-start content-start place-content-start py-4 pb-6 sm:pb-4`],
+  ['product-row', `${COLORS.bgWhite} ${LAYOUT.flex.wrap} odd:(pr-2.5 pl-3.5 sm:px-0) even:(pl-2.5 pr-3.5 sm:px-0) w-1/2 sm:(w-full grid grid-cols-3) gap-x-1 gap-y-0 md:(${LAYOUT.grid.product} gap-x-4) justify-start content-start content-start place-content-start py-4 pb-6 sm:pb-4 border-0 border-b-1 border-b-neutral-lightest border-r-1 border-r-transparent hover:(border-r-neutral-light border-b-neutral-light) transition-border-color duration-100`],
 
   ['product-row__photo', `${aspectRatios['4/3']} mb-2 sm:mb-0 ${IMAGE_STYLES.overlay} w-100 col-span-1 row-span-3 max-w-full text-left overflow-hidden ${LAYOUT.position.relative} ${COLORS.bgNeutralLightest} md:(col-span-1 row-span-1) box-content`],
   ['product-row__description', `${PRODUCT_STYLES.description.base} mt-2 ${PRODUCT_STYLES.description.md}`],
-  ['product-row__main', 'w-full sm:w-auto col-span-2 leading-none relative sm:pl-1 md:(pl-0 row-start-1 col-start-2 col-span-1)'],
+  ['product-row__main', 'w-full sm:w-auto col-span-2 leading-none sm:pl-1 md:(pl-0 row-start-1 col-start-2 col-span-1)'],
 
   // Product elements
   ['product-number',`font-novamono content-center flex flex-wrap flex-col content-start pr-5 ${COLORS.bgWhite}`],
@@ -44,7 +46,7 @@ export const componentShortcuts = [
   // Navigation
   ['nav-link', 'text-slate-light hover:bg-blue-darker hover:text-white px-3 py-3.5 md:py-2 rounded-full text-sm font-medium'],
   ['btn-navigation', `${COLORS.bgWhite} drop-shadow-md rounded-full border ${LAYOUT.flex.center} w-1/2 h-11 bottom-1 z-2 md:(w-11 h-11 bg-white/90 text-inherit hover:(text-accent-light bg-white))`],
-  ['btn-navigation__active', 'border border-transparent md:(border-neutral-lighter focus:ring-0) font-medium text-white bg-blue-darker hover:bg-accent-darker focus:ring-2 focus:outline-none focus:ring-blue-300'],
+  ['btn-navigation__active', 'border border-transparent md:border-neutral-lighter font-medium text-white bg-blue-darker hover:bg-accent-darker focus-visible:(ring-2 outline-none ring-blue-300)'],
   ['btn-gallery-arrow', `${COLORS.bgWhite} bg-white/80 drop-shadow-sm rounded-full border border-neutral-lighter ${LAYOUT.flex.center} w-11 h-11 cursor-pointer text-neutral-600 hover:(text-accent-light bg-white) disabled:(hidden)`],
 
   // Carousel
@@ -60,7 +62,7 @@ export const componentShortcuts = [
 
   // PLP (Product List Page)
   ['plp-name', `${LAYOUT.flex.alignCenter} leading-none font-headregular cursor-pointer sm:pr-6 md:pr-12`],
-  ['plp-desc', `hidden sm:block col-span-3 md:col-span-1 md:col-start-3 ${LAYOUT.position.relative} px-2 sm:px-0`],
+  ['plp-desc', `hidden sm:block col-span-3 md:col-span-1 md:col-start-3 px-2 sm:px-0`],
   ['plp-materials', 'text-xs md:text-sm text-slate-darkest dark:text-neutral-light leading-tight font-textlight md:font-textregular whitespace-normal md:whitespace-pre-wrap'],
   ['plp-b-desc', `pb-4 ${COLORS.bgWhite} text-base ${LAYOUT.flex.wrap} mt-6`],
   ['plp-icons', `${LAYOUT.position.absolute} top-0 -right-2 md:(top-0.5 right-0) w-12 bottom-auto ${LAYOUT.flex.justifyEnd} text-sm`],
@@ -68,13 +70,20 @@ export const componentShortcuts = [
 
   // Miscellaneous
   ['flag-ua', 'inline-block text-4xl w-6 h-3.5 min-w-[1.25rem] mr-3 bg-gradient-to-b stops-[#0057b7_50%,50%,#ffd700_100%]'],
-  ['engine-info', `${LAYOUT.position.absolute} z-20 inline-block w-56 text-xs font-light text-slate-light ${TRANSITIONS.base} ${COLORS.bgWhite} border border-neutral-lighter rounded-lg shadow-sm dark:text-neutral-default dark:border-slate-default dark:bg-slate-darker bottom-full mb-2 invisible opacity-0 group-hover:(opacity-100 visible -left-full before:left-9) before:(absolute w-0 h-0 -bottom-3 border-l-transparent border-r-transparent border-t-neutral-lightest dark:border-t-slate-dark border-l-10 border-r-10 border-t-10 content-empty)`],
+  ['engine-info', `${LAYOUT.position.absolute} z-20 inline-block w-56 text-xs font-light text-slate-light ${TRANSITIONS.base} ${COLORS.bgWhite} border border-neutral-lighter rounded-lg shadow-sm dark:text-neutral-default dark:border-slate-default dark:bg-slate-dark bottom-full mb-2 invisible opacity-0 group-hover:(opacity-100 visible -left-full before:left-9) before:(absolute w-0 h-0 -bottom-3 border-l-transparent border-r-transparent border-t-neutral-lightest dark:border-t-slate-dark border-l-10 border-r-10 border-t-10 content-empty)`],
   ['engine-code', 'underline decoration-dotted underline-offset-4 py-0.5 decoration-neutral-light group-hover:(decoration-blue-lightest dark:decoration-accent-light)'],
   ['number-secondary', `block ${LAYOUT.position.absolute} inset-0 text-slate-light select-all ${COLORS.bgWhite} dark:bg-accent-deepBlue`],
   ['code-formatted', 'leading-none mt-0 relative text-xs'],
 
   // Badges
   ['badge', 'px-1.5 py-px text-white text-xs mb-1 max-w-fit whitespace-nowrap'],
+  ['badge-primary', `${BADGE_STYLE} bg-brand-primary text-white`],
+  ['badge-secondary', `${BADGE_STYLE} bg-brand-secondary text-blue-darker`],
+  ['badge-success', `${BADGE_STYLE} bg-system-success/15 text-green-800 dark:text-green-300`],
+  ['badge-error', `${BADGE_STYLE} bg-system-error/15 text-red-700 dark:text-red-300`],
+  ['badge-warning', `${BADGE_STYLE} bg-system-warning/15 text-slate-dark dark:text-yellow-200`],
+  ['badge-info', `${BADGE_STYLE} bg-system-info/15 text-blue-700 dark:text-blue-300`],
+  ['badge-neutral', `${BADGE_STYLE} bg-neutral-lighter text-neutral-darker dark:(bg-slate-dark text-neutral-lighter)`],
 
   // Details
   ['detail-name', 'text-gray-900 leading-tight font-textlight line-clamp-3 whitespace-normal md:(whitespace-pre-wrap line-clamp-9 font-textregular)'],
@@ -124,6 +133,13 @@ export const componentShortcuts = [
   ['details-table-cell', 'relative'],
   ['details-table-col', 'w-1/2 md:w-auto'],
   ['link-primary', 'leading-none text-brand-primary hover:text-accent-light hover:underline'],
+
+  // Generic table
+  ['table-base', 'w-full border-collapse text-sm'],
+  ['table-header', 'bg-neutral-lightest text-left font-medium text-slate-default px-4 py-3 dark:(bg-slate-dark text-neutral-lighter)'],
+  ['table-row', 'border-b border-neutral-lighter hover:bg-neutral-lightest/50 transition-colors duration-100 dark:(border-slate-default hover:bg-slate-dark/50)'],
+  ['table-cell', 'px-4 py-3 text-slate-default dark:text-neutral-lighter'],
+  ['table-striped', 'odd:bg-white even:bg-neutral-lightest/40 dark:(odd:bg-slate-darkest even:bg-slate-dark/20)'],
 
 
 ];

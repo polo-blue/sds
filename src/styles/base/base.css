@@ -20,8 +20,43 @@ body {
   overflow-x: hidden;
 }
 
-*:focus {
-  outline: none !important;
+/*
+ * Focus indicators (WCAG 2.4.7 Focus Visible, 2.4.11 Focus Not Obscured).
+ * Pointer focus stays ring-free, keyboard focus always gets a visible outline.
+ * Consumers can re-theme the ring through --sds-focus-ring.
+ */
+:root {
+  --sds-focus-ring: oklch(57% 0.237 260); /* blue-light, >= 3:1 on white */
+}
+
+.dark {
+  --sds-focus-ring: oklch(80% 0.11 245); /* light blue, >= 3:1 on slate-darkest */
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--sds-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Honour the user's reduced-motion preference for every animation and transition (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Keep anchor and skip-link targets clear of the sticky header */
+html {
+  scroll-padding-top: 5rem;
 }
 
 /* Background gradients - keep in CSS (radial-gradient not supported in UnoCSS shortcuts) */

@@ -49,7 +49,9 @@ const subcategoryPath = subcategory?.path || `/${category.slug}/${subcategory?.s
             </a>
             <meta itemprop="position" content="1" />
           </div>
-          <span class="text-neutral-lighter text-lg inline-block px-1 font-headlight">/</span>
+          <span class="text-neutral-lighter text-lg inline-block px-1 font-headlight" aria-hidden="true">
+            /
+          </span>
           {!subsubtitle ? (
             <div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
               <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
@@ -70,7 +72,9 @@ const subcategoryPath = subcategory?.path || `/${category.slug}/${subcategory?.s
                 </a>
                 <meta itemprop="position" content="2" />
               </div>
-              <span class="text-neutral-lighter text-lg inline-block px-1 font-headlight">/</span>
+              <span class="text-neutral-lighter text-lg inline-block px-1 font-headlight" aria-hidden="true">
+                /
+              </span>
               <div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                 <h1 class="text-lg py-2.5 sm:py-0 whitespace-nowrap underline underline-offset-6 decoration-blue-300 decoration-0.5">
                   <span itemprop="name">{subsubtitle}</span> <span class="sr-only"> catalog</span>
@@ -111,6 +115,17 @@ const subcategoryPath = subcategory?.path || `/${category.slug}/${subcategory?.s
     }
 
     updateTogglers(doc, isCollapsed);
+
+    // On mobile the sidebar is an off-canvas panel that starts hidden
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      setTogglersExpanded(doc, !!sidebar?.classList.contains('show'));
+    }
+  }
+
+  function setTogglersExpanded(doc: Document, expanded: boolean) {
+    doc.querySelectorAll('.category-sidebar-toggler').forEach(toggler => {
+      toggler.setAttribute('aria-expanded', String(expanded));
+    });
   }
 
   function updateTogglers(doc: Document, isCollapsed: boolean) {
@@ -135,6 +150,7 @@ const subcategoryPath = subcategory?.path || `/${category.slug}/${subcategory?.s
       if (isMobile) {
         const isShown = sidebar.classList.toggle('show');
         document.body.classList.toggle('overflow-hidden', isShown);
+        setTogglersExpanded(document, isShown);
       } else {
         const isCollapsed = sidebar.classList.toggle('collapsed');
         document.body.classList.remove('overflow-hidden');

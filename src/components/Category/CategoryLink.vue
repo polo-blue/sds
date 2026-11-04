@@ -1,5 +1,10 @@
 <template>
-  <a :href="href" class="category-link" :class="{ active: active }">
+  <a
+    :href="href"
+    class="category-link"
+    :class="{ active: active }"
+    :aria-current="active ? 'page' : undefined"
+  >
     {{ text }}
   </a>
 </template>

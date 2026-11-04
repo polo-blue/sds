@@ -18,7 +18,7 @@ export const colors = {
         medium: 'oklch(34% 0.139 261)',     // #02307d
         darker: 'oklch(25% 0.099 259)',     // #001e50
         darkest: 'oklch(17% 0.058 256)',    // #000f28
-        wrc: 'oklch(38% 0.261 264)',        // #0000c8 - Special WRC color
+        wrc: 'oklch(38% 0.261 264)', // #0000c8 - Special WRC color (polo.blue-specific, optional in generated palettes)
     },
 
     // Secondary colors - accent palette (cyan-blue tones)
@@ -64,6 +64,14 @@ export const colors = {
     }
 };
 
-// Export types for TypeScript
-export type Colors = typeof colors;
-export type ColorShade = keyof typeof colors;
+// Explicit interface so palette-generator can omit domain-specific fields (e.g. wrc)
+export interface Colors {
+    brand:   { primary: string; secondary: string };
+    blue:    { ultralight: string; lightest: string; light: string; default: string; medium: string; darker: string; darkest: string; wrc?: string };
+    accent:  { light: string; medium: string; default: string; dark: string; darker: string; deepBlue: string };
+    neutral: { lightest: string; lighter: string; light: string; default: string; dark: string; darker: string };
+    slate:   { light: string; default: string; dark: string; darkest: string };
+    system:  { success: string; warning: string; error: string; info: string };
+    state:   { overlay: string; disabled: string };
+}
+export type ColorShade = keyof Colors;

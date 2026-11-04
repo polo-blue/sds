@@ -3,6 +3,7 @@ title: "HandDrive"
 layout: "../../layouts/MainLayout.astro"
 ---
 import HandDrive from '../../components/HandDrive.astro'
+import PropsTable from '../../components/PropsTable.astro'
 
 
 # HandDrive
@@ -17,13 +18,13 @@ import HandDrive from 'spoko-design-system/src/components/HandDrive.astro'
 
 ## Props
 
-| Prop | Type | Required | Default | Description |
-|------|------|----------|---------|-------------|
-| `handDrive` | `'lhd' \| 'rhd'` | Yes | - | Hand drive type |
-| `text` | `string` | No | - | Display text from API |
-| `class` | `string` | No | - | CSS classes for styling |
-| `biggerText` | `boolean` | No | `false` | Use larger text size |
-| `title` | `string` | No | - | Override tooltip text |
+<PropsTable data={[
+  { name: 'handDrive', type: "'lhd' | 'rhd'", required: true, description: 'Hand drive type' },
+  { name: 'text', type: 'string', required: false, description: 'Display text from API' },
+  { name: 'class', type: 'string', required: false, description: 'CSS classes for styling' },
+  { name: 'biggerText', type: 'boolean', default: 'false', description: 'Use larger text size' },
+  { name: 'title', type: 'string', required: false, description: 'Override tooltip text' },
+]} />
 
 ## Examples
 

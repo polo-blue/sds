@@ -1,3 +1,171 @@
+> **Note:** from 2.1.9 on, release notes are published only on [GitHub Releases](https://github.com/polo-blue/sds/releases).
+> This file is an archive of earlier releases.
+
+## [2.1.8](https://github.com/polo-blue/sds/compare/v2.1.7...v2.1.8) (2026-10-21)
+
+### Bug Fixes
+
+* **deps:** move pnpm settings to pnpm-workspace.yaml for pnpm 12 ([#526](https://github.com/polo-blue/sds/issues/526)) ([f32de19](https://github.com/polo-blue/sds/commit/f32de19f3c8cd300612d43234b2dc7da71284c7a))
+* **a11y:** WCAG 2.2 AA remediation ([#522](https://github.com/polo-blue/sds/issues/522)) ([41b0877](https://github.com/polo-blue/sds/commit/41b087768e62d04687de9a559d8869559599a1ad)), closes [#514](https://github.com/polo-blue/sds/issues/514) [#515](https://github.com/polo-blue/sds/issues/515) [#516](https://github.com/polo-blue/sds/issues/516) [#517](https://github.com/polo-blue/sds/issues/517) [#518](https://github.com/polo-blue/sds/issues/518) [#519](https://github.com/polo-blue/sds/issues/519) [#520](https://github.com/polo-blue/sds/issues/520) [#521](https://github.com/polo-blue/sds/issues/521)
+
+## [2.1.7](https://github.com/polo-blue/sds/compare/v2.1.6...v2.1.7) (2026-10-03)
+
+### Bug Fixes
+
+* **language-suggestion:** mark the banner with the language it speaks ([#512](https://github.com/polo-blue/sds/issues/512)) ([563f4ea](https://github.com/polo-blue/sds/commit/563f4eaeaf607578f38600ca6f6cb2a9cf32cf82)), closes [polo-blue/sds#510](https://github.com/polo-blue/sds/issues/510)
+
+## [2.1.6](https://github.com/polo-blue/sds/compare/v2.1.5...v2.1.6) (2026-10-03)
+
+### Bug Fixes
+
+* **uno-config:** let jumbotron-info and product-link--url wrap under text spacing ([#511](https://github.com/polo-blue/sds/issues/511)) ([7e1dbcd](https://github.com/polo-blue/sds/commit/7e1dbcdd33a69598da26de0f550953291dcaf430)), closes [polo-blue/polo.blue#425](https://github.com/polo-blue/polo.blue/issues/425)
+
+## [2.1.5](https://github.com/polo-blue/sds/compare/v2.1.4...v2.1.5) (2026-10-02)
+
+### Bug Fixes
+
+* **uno-config:** let a consumer's fontFamily override reach the page ([#509](https://github.com/polo-blue/sds/issues/509)) ([7d80ac6](https://github.com/polo-blue/sds/commit/7d80ac677a718eb074f0c91da42917203248ce38))
+
+## [2.1.4](https://github.com/polo-blue/sds/compare/v2.1.3...v2.1.4) (2026-10-02)
+
+### Bug Fixes
+
+* **typography:** add German letters to VW webfonts and bust their cache ([#508](https://github.com/polo-blue/sds/issues/508)) ([614b924](https://github.com/polo-blue/sds/commit/614b92487d92cbc11043b518b716efdba7746475))
+
+## [2.1.3](https://github.com/polo-blue/sds/compare/v2.1.2...v2.1.3) (2026-10-02)
+
+### Bug Fixes
+
+* **deps:** add sharp; register the service worker without workbox-window ([273d2ad](https://github.com/polo-blue/sds/commit/273d2ad8e384dfef772cf28e2fc78ec8d49730cb))
+* **deps:** restore @unocss/reset ([6fd2103](https://github.com/polo-blue/sds/commit/6fd2103709afc88cd24fb3631d040d31a12f54a7)), closes [#502](https://github.com/polo-blue/sds/issues/502)
+
+## [2.1.2](https://github.com/polo-blue/sds/compare/v2.1.1...v2.1.2) (2026-10-02)
+
+### Bug Fixes
+
+* **package:** repair ./icon-collections export and publish only package files ([3fbd808](https://github.com/polo-blue/sds/commit/3fbd808860d745496edb45f87309437dab67bde9))
+* repair category links and ProductModels, make astro check run ([eda3df4](https://github.com/polo-blue/sds/commit/eda3df433f286cdec2c55e03426adef5e8e6e982))
+* **deps:** update @astrojs/mdx to v8 ([49c503c](https://github.com/polo-blue/sds/commit/49c503c44884de5cde7ac7da63dfa7b5a572fc0e))
+* **deps:** update @iconify/utils to v3 ([d548190](https://github.com/polo-blue/sds/commit/d5481908fb150d6273fa265a703c7db114db0090))
+* **deps:** update @vueuse/core to v15 ([e11c9d9](https://github.com/polo-blue/sds/commit/e11c9d9135a6f29a14112d90296704c2abb5626c))
+* **deps:** update swiper to v14 ([c79d612](https://github.com/polo-blue/sds/commit/c79d61248b5b99cdbd1303ff668db4ad80ad38b4))
+
+### Performance Improvements
+
+* **deps:** drop unused dependencies, including the 486 MB @iconify/json ([7678674](https://github.com/polo-blue/sds/commit/76786741aa683d2c22ecd7b5bdc02af2d4c4e40f))
+
+## [2.1.1](https://github.com/polo-blue/sds/compare/v2.1.0...v2.1.1) (2026-10-01)
+
+### Bug Fixes
+
+* **release:** pin conventional-changelog-conventionalcommits to v9 ([66432a9](https://github.com/polo-blue/sds/commit/66432a9630515200dff557a00a18bb4452ba688c))
+* support Node 22.18 through 26 and update dependencies ([865397e](https://github.com/polo-blue/sds/commit/865397e364cb15c81113bd160f910f3c3cc728ca))
+
+## [2.1.0](https://github.com/polo-blue/sds/compare/v2.0.2...v2.1.0) (2026-09-23)
+
+### Features
+
+* **typography:** register the VW faces as two weight-variant families ([#482](https://github.com/polo-blue/sds/issues/482)) ([cf4d362](https://github.com/polo-blue/sds/commit/cf4d362edeeb2ed407643fd229c577c4ef706a12))
+
+## [2.0.2](https://github.com/polo-blue/sds/compare/v2.0.1...v2.0.2) (2026-09-01)
+
+### Bug Fixes
+
+* **deps:** align UnoCSS to 66.9.1 ([#478](https://github.com/polo-blue/sds/issues/478)) ([1e2e252](https://github.com/polo-blue/sds/commit/1e2e2521357fad20680dcf9a541ad075b54b8139))
+
+## [2.0.1](https://github.com/polo-blue/sds/compare/v2.0.0...v2.0.1) (2026-06-26)
+
+### Bug Fixes
+
+* **uno-config:** load icon collections from disk via loadCollectionFromFS ([#473](https://github.com/polo-blue/sds/issues/473)) ([cfbd892](https://github.com/polo-blue/sds/commit/cfbd8923dab1692c67b9272ce9e4e77cb6980755))
+
+## [2.0.0](https://github.com/polo-blue/sds/compare/v1.40.0...v2.0.0) (2026-06-25)
+
+### ⚠ BREAKING CHANGES
+
+* the Breadcrumbs prop `productNumber` is renamed to `suffix`
+and the hard-coded `Polo 6R` link-title prefix is removed (use `titlePrefix`).
+This first shipped in 1.40.0, which a release-config bug mis-versioned as a
+minor; 1.40.0 is deprecated in favour of 2.0.0. See MIGRATION-BREADCRUMBS.md.
+
+### Bug Fixes
+
+* upgrade to Astro 7 (Vite 8/rolldown) and correct release config ([#472](https://github.com/polo-blue/sds/issues/472)) ([77b6e26](https://github.com/polo-blue/sds/commit/77b6e269573800e7cd376be6f19d95439175f279))
+
+## [1.40.0](https://github.com/polo-blue/sds/compare/v1.39.3...v1.40.0) (2026-06-25)
+
+### ⚠ BREAKING CHANGES
+
+* **Breadcrumbs:** the Breadcrumbs prop `productNumber` is renamed to `suffix`,
+and the hard-coded `Polo 6R` link-title prefix is removed (use `titlePrefix`).
+Consumers must update usages and bump spoko-design-system to ^2.0.0.
+
+### Features
+
+* **Breadcrumbs:** universal props (suffix/titlePrefix/hideOnMobile) ([#471](https://github.com/polo-blue/sds/issues/471)) ([8a23dac](https://github.com/polo-blue/sds/commit/8a23dacc55cd8e8248c7c3365990cb5c8df509a3))
+
+## [1.39.3](https://github.com/polo-blue/sds/compare/v1.39.2...v1.39.3) (2026-06-17)
+
+### Bug Fixes
+
+* **Header:** repair navbar dark-mode toggle (duplicate listeners) ([#468](https://github.com/polo-blue/sds/issues/468)) ([8e915c3](https://github.com/polo-blue/sds/commit/8e915c3452b670d3280fde19c0410412f2208e33)), closes [#dark-mode-toggle](https://github.com/polo-blue/sds/issues/dark-mode-toggle)
+
+## [1.39.2](https://github.com/polo-blue/sds/compare/v1.39.1...v1.39.2) (2026-06-17)
+
+## [1.39.1](https://github.com/polo-blue/sds/compare/v1.39.0...v1.39.1) (2026-06-17)
+
+### Bug Fixes
+
+* **release:** republish 1.39.0 after npm publish 403 ([#466](https://github.com/polo-blue/sds/issues/466)) ([849193a](https://github.com/polo-blue/sds/commit/849193a67d4c4016d92982730b001e7cb7cf5cab))
+
+## [1.39.0](https://github.com/polo-blue/sds/compare/v1.38.1...v1.39.0) (2026-06-17)
+
+### Features
+
+* design system overhaul — Navbar, Toggle, MenuDrawer, Search modal, universal split scaffolding ([#456](https://github.com/polo-blue/sds/issues/456)) ([8bce7e8](https://github.com/polo-blue/sds/commit/8bce7e8326a10c15c2b3fbfccce23417e29fe9d0)), closes [#440](https://github.com/polo-blue/sds/issues/440) [#442](https://github.com/polo-blue/sds/issues/442)
+
+### Bug Fixes
+
+* replace freepik urls with placehold.co to prevent netlify build failures ([#439](https://github.com/polo-blue/sds/issues/439)) ([3b2aeb2](https://github.com/polo-blue/sds/commit/3b2aeb287dba7c6fd2928338e06f9f56cb614d37))
+* **ci:** unblock main CI after Astro 6 upgrade ([#460](https://github.com/polo-blue/sds/issues/460)) ([41e24fb](https://github.com/polo-blue/sds/commit/41e24fb33cf63e33f46fec0063bfd425eebd38af))
+
+## [1.38.1](https://github.com/polo-blue/sds/compare/v1.38.0...v1.38.1) (2026-04-13)
+
+### Bug Fixes
+
+* add outline style to hover state for product-row ([c2ea57f](https://github.com/polo-blue/sds/commit/c2ea57f3541df652da14be9244aad7160500bb12))
+* cancel hide timer when entering parent/child of tooltip target ([bc90dab](https://github.com/polo-blue/sds/commit/bc90dab7467ea0d2beeada5cf629953bc7acf328))
+* darken border-bottom on hover to match border-right ([f475622](https://github.com/polo-blue/sds/commit/f475622db8b35b298e142b51a66054782c3bd27f))
+* explicit border-0 reset, sm:w-full for consistent width ([336ed2b](https://github.com/polo-blue/sds/commit/336ed2b84a99d809688714ba8eb0704c5de20a92))
+* hover outline only, keep border-bottom unchanged ([e07fa4a](https://github.com/polo-blue/sds/commit/e07fa4a4c3a7e3c3b65bf2fb2e56ca5d4d8bf3f4))
+* increase hide delays (150/250ms) to prevent flicker between adjacent targets ([d8fbdce](https://github.com/polo-blue/sds/commit/d8fbdce4bd95c1d4a59318d26f9f3f8b28a45ed9))
+* instant tooltip switch between adjacent targets ([#432](https://github.com/polo-blue/sds/issues/432)) ([b9bb6f5](https://github.com/polo-blue/sds/commit/b9bb6f5c240b44dafbac3d49e8a5377cb05eaf1c))
+* match border-bottom color with outline on hover ([0d13fca](https://github.com/polo-blue/sds/commit/0d13fca9e3253cd37f5a30338d95b270c6535eea))
+* pre-allocate outline transparent, transition only color ([b9a9e11](https://github.com/polo-blue/sds/commit/b9a9e11876123e356384dfe732f49d8a3294553b))
+* reduce hover border-right to 1px ([bf6bd81](https://github.com/polo-blue/sds/commit/bf6bd817bf60ccf244921a1a094a84c2f7fba4f2))
+* remove px-2 and -mt-3 from products-wrapper, cards handle own padding ([536b465](https://github.com/polo-blue/sds/commit/536b4655cb192d5d8fa7d804574f457b6d1c6a5b))
+* remove px-2 from product-row, image flush to edge ([9acc74a](https://github.com/polo-blue/sds/commit/9acc74ad43ba6228fce7162b6032f71d176a18c3))
+* remove relative from plp-desc, fix manufacturer grid row ([f11df17](https://github.com/polo-blue/sds/commit/f11df17e92f3b532d8328633c031fc6cb084a5c3))
+* remove sm:px-0 from odd/even that overrode card padding ([b8902e0](https://github.com/polo-blue/sds/commit/b8902e03b83e305166df117f4e4347dfb90f7989))
+* restore sm:px-0 in odd/even to reset mobile padding on desktop ([7fd12f1](https://github.com/polo-blue/sds/commit/7fd12f1586b72d149a2d8b1974d5ba5fb7c4c8b7))
+* single border between cards, outline on hover ([7d0e281](https://github.com/polo-blue/sds/commit/7d0e281a207e6e66c3a73a230f8093f486597e90))
+
+## [1.37.5](https://github.com/polo-blue/sds/compare/v1.37.4...v1.37.5) (2026-03-26)
+
+## [1.37.4](https://github.com/polo-blue/sds/compare/v1.37.3...v1.37.4) (2026-03-26)
+
+## [1.37.3](https://github.com/polo-blue/sds/compare/v1.37.2...v1.37.3) (2026-03-26)
+
+## [1.37.2](https://github.com/polo-blue/sds/compare/v1.37.1...v1.37.2) (2026-03-26)
+
+## [1.37.1](https://github.com/polo-blue/sds/compare/v1.37.0...v1.37.1) (2026-03-26)
+
+## [1.37.0](https://github.com/polo-blue/sds/compare/v1.36.1...v1.37.0) (2026-03-26)
+
+### Features
+
+* add updateTooltipContent export and migrate ButtonCopy to SDS tooltip ([#414](https://github.com/polo-blue/sds/issues/414)) ([d6d7f28](https://github.com/polo-blue/sds/commit/d6d7f289c4d8a1ce28b7b00df9dad8d45612f20a))
+
 ## [1.36.1](https://github.com/polo-blue/sds/compare/v1.36.0...v1.36.1) (2026-03-24)
 
 ## [1.36.0](https://github.com/polo-blue/sds/compare/v1.35.1...v1.36.0) (2026-03-24)

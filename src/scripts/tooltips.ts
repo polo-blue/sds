@@ -8,6 +8,7 @@
  * Supported attributes:
  * - data-sds-tooltip             — HTML content to display
  * - data-sds-tooltip-placement   — placement override (default: 'top')
+ * - data-sds-tooltip-offset      — distance in px between trigger and tooltip (default: 8)
  * - data-sds-tooltip-interactive — allow hovering over tooltip (for clickable links)
  */
 
@@ -19,8 +20,8 @@ const OFFSET = 8;
 const ARROW_SIZE = 13;
 const SHIFT_PADDING = 5;
 const SHOW_DELAY = 80;
-const HIDE_DELAY = 60;
-const INTERACTIVE_HIDE_DELAY = 150;
+const HIDE_DELAY = 150;
+const INTERACTIVE_HIDE_DELAY = 250;
 
 let tooltipEl: HTMLElement | null = null;
 let arrowEl: HTMLElement | null = null;
@@ -59,6 +60,13 @@ function getPlacement(target: HTMLElement): Placement {
   return attr && VALID_PLACEMENTS.has(attr as Placement) ? (attr as Placement) : 'top';
 }
 
+function getOffset(target: HTMLElement): number {
+  const attr = target.getAttribute('data-sds-tooltip-offset');
+  if (!attr) return OFFSET;
+  const val = parseInt(attr, 10);
+  return Number.isFinite(val) ? val : OFFSET;
+}
+
 function getOrCreateTooltip(): {
   tooltip: HTMLElement;
   arrow: HTMLElement;
@@ -84,10 +92,16 @@ function getOrCreateTooltip(): {
 
 function updatePosition(target: HTMLElement, tooltip: HTMLElement, arrowElement: HTMLElement) {
   const placement = getPlacement(target);
+  const offsetPx = getOffset(target);
 
   computePosition(target, tooltip, {
     placement,
-    middleware: [offset(OFFSET), flip(), shift({ padding: SHIFT_PADDING }), arrow({ element: arrowElement })],
+    middleware: [
+      offset(offsetPx),
+      flip(),
+      shift({ padding: SHIFT_PADDING }),
+      arrow({ element: arrowElement }),
+    ],
   }).then(({ x, y, placement: finalPlacement, middlewareData }) => {
     Object.assign(tooltip.style, {
       left: `${x}px`,
@@ -144,6 +158,17 @@ export function showTooltip(target: HTMLElement) {
   });
 }
 
+/**
+ * Update tooltip content for a target element.
+ * If the tooltip is currently visible for this target, updates the displayed content immediately.
+ */
+export function updateTooltipContent(target: HTMLElement, html: string) {
+  target.setAttribute('data-sds-tooltip', html);
+  if (currentTarget === target && contentEl) {
+    contentEl.innerHTML = html;
+  }
+}
+
 export function hideTooltip() {
   if (!tooltipEl || !currentTarget) return;
 
@@ -173,23 +198,29 @@ function handleMouseEnter(e: Event) {
     return;
   }
 
-  const target = el.closest?.(SELECTOR);
-  if (!(target instanceof HTMLElement)) return;
+  const target = el.closest?.(SELECTOR) || (el.matches?.(SELECTOR) ? el : null);
 
-  if (hideTimer) {
+  // Cancel pending hide if we're entering a tooltip target or any of its ancestors/descendants
+  if (hideTimer && (target || el.querySelector?.(SELECTOR))) {
     clearTimeout(hideTimer);
     hideTimer = null;
   }
 
+  if (!(target instanceof HTMLElement)) return;
+
   if (showTimer) clearTimeout(showTimer);
+
+  // If tooltip is already visible (switching between targets), show immediately
+  const delay = currentTarget ? 0 : SHOW_DELAY;
   showTimer = setTimeout(() => {
     showTooltip(target);
     showTimer = null;
-  }, SHOW_DELAY);
+  }, delay);
 }
 
 function handleMouseLeave(e: Event) {
-  const el = e.target as HTMLElement;
+  const me = e as MouseEvent;
+  const el = me.target as HTMLElement;
 
   // Leaving the tooltip itself — schedule hide
   if (isInteractive && tooltipEl && (el === tooltipEl || tooltipEl.contains(el))) {
@@ -202,6 +233,10 @@ function handleMouseLeave(e: Event) {
 
   const target = el.closest?.(SELECTOR);
   if (!(target instanceof HTMLElement)) return;
+
+  // If cursor is moving to a child/parent within the same tooltip target, ignore
+  const related = me.relatedTarget as HTMLElement | null;
+  if (related && target.contains(related)) return;
 
   if (showTimer) {
     clearTimeout(showTimer);

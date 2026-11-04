@@ -3,13 +3,15 @@
 interface Props {
   title?: string;
   image?: string;
+  // Alt text for the image; empty by default because the image is decorative next to the title heading
+  imageAlt?: string;
   description?: string;
   info?: string;
   backgroundClass?: string;
   slim?: boolean;
 }
 
-const { title = '', image, description, info, backgroundClass, slim = false } = Astro.props;
+const { title = '', image, imageAlt = '', description, info, backgroundClass, slim = false } = Astro.props;
 
 // Height classes based on slim prop
 const heightClass = slim ? 'py-6 min-h-32' : 'py-8 h-56 sm:h-72 md:max-h-72';
@@ -20,7 +22,7 @@ const heightClass = slim ? 'py-6 min-h-32' : 'py-8 h-56 sm:h-72 md:max-h-72';
     image && (
       <div class="absolute inset-0 w-full h-full">
         <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-transparent opacity-90 z-1" />
-        <img class="w-full h-full object-cover" src={image} alt={title} />
+        <img class="w-full h-full object-cover" src={image} alt={imageAlt} />
       </div>
     )
   }

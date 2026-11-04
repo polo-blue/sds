@@ -11,13 +11,14 @@
   left: 0;
   width: max-content;
   z-index: 9999;
-  background-color: #f3f4f6; /* neutral-lightest */
+  background-color: #ffffff;
   color: #1e293b; /* slate-darkest */
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   line-height: 1.5;
   border-radius: 2px;
   box-shadow:
-    0 30px 90px -20px rgba(0, 0, 0, 0.3),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    0 30px 90px -20px rgba(0, 0, 0, 0.15),
     0 0 0 1px #eaecf0;
   max-width: 280px;
   margin: 3px 0;

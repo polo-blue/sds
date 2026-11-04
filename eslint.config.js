@@ -4,6 +4,7 @@ import typescriptParser from '@typescript-eslint/parser';
 import vue from 'eslint-plugin-vue';
 import astro from 'eslint-plugin-astro';
 import globals from 'globals';
+import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default [
   js.configs.recommended,
@@ -56,6 +57,13 @@ export default [
 
   // Astro files
   ...astro.configs.recommended,
+
+  // Disable all ESLint formatting rules that conflict with Prettier.
+  // Prettier is the single source of truth for formatting (run via the
+  // pre-commit hook), so rules like vue/max-attributes-per-line and
+  // vue/html-self-closing must be turned off to avoid fighting it.
+  // MUST stay last so it overrides the recommended configs above.
+  eslintConfigPrettier,
 
   // Global ignores
   {

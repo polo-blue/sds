@@ -163,8 +163,9 @@
     scroll-behavior: auto;
   }
 
-  .pg-arrow,
-  .pg-zoom-img {
-    transition: none;
+  /* Covers arrows, counter, thumbs, dialog chrome and zoom. Standalone because
+     consumers may not load base.css; !important beats UnoCSS transition utilities */
+  [data-product-gallery] * {
+    transition: none !important;
   }
 }

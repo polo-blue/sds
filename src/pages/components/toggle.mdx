@@ -1,0 +1,378 @@
+---
+title: "Toggle"
+layout: "../../layouts/MainLayout.astro"
+---
+import Toggle from '../../components/Toggle.astro'
+import ComponentPreview from '../../components/ComponentPreview.vue'
+import PropsTable from '../../components/PropsTable.astro'
+
+# Toggle
+
+Universal toggle component with two semantic shapes:
+
+- **`switch`** — binary on/off (one boolean setting). Uses `role="switch"`, `aria-checked`.
+- **`segmented`** — mutually exclusive options (2+ values). Uses `role="group"` with
+  `aria-current="page"` for navigation links, or `role="radio"` + `aria-checked`
+  for state-only buttons.
+
+Powers language switchers, theme pickers, filters, view-mode toggles — anything
+where the UI shape is "pick exactly one".
+
+> `Toggle.astro` is Astro-only (uses `<script>`). Import via subpath, not the barrel.
+
+## Switch — boolean filter
+
+The `gbx-toolbar` "EU market only" filter pattern: a single setting, on/off, with
+a visible label next to the track.
+
+<ComponentPreview client:visible
+  astro={`---
+import Toggle from 'spoko-design-system/components/Toggle.astro';
+---
+<Toggle variant="switch" label="EU market only" checked name="eu-only" />`}>
+  <Toggle variant="switch" label="EU market only" checked name="eu-only" />
+</ComponentPreview>
+
+### Off state
+
+<ComponentPreview client:visible
+  astro={`<Toggle variant="switch" label="Show archived" name="show-archived" />`}>
+  <Toggle variant="switch" label="Show archived" name="show-archived" />
+</ComponentPreview>
+
+### Label position
+
+<ComponentPreview client:visible previewClass="flex-col items-start gap-3"
+  astro={`<Toggle variant="switch" label="Notifications" checked labelPosition="before" />
+<Toggle variant="switch" label="Notifications" checked labelPosition="after" />`}>
+  <Toggle variant="switch" label="Notifications" checked labelPosition="before" />
+  <Toggle variant="switch" label="Notifications" checked labelPosition="after" />
+</ComponentPreview>
+
+### Sizes
+
+<ComponentPreview client:visible previewClass="flex-col items-start gap-3"
+  astro={`<Toggle variant="switch" size="sm" label="Small" checked />
+<Toggle variant="switch" size="md" label="Medium" checked />
+<Toggle variant="switch" size="lg" label="Large" checked />`}>
+  <Toggle variant="switch" size="sm" label="Small" checked />
+  <Toggle variant="switch" size="md" label="Medium" checked />
+  <Toggle variant="switch" size="lg" label="Large" checked />
+</ComponentPreview>
+
+### Disabled
+
+<ComponentPreview client:visible
+  astro={`<Toggle variant="switch" label="Feature locked" disabled />`}>
+  <Toggle variant="switch" label="Feature locked" disabled />
+</ComponentPreview>
+
+## Segmented — language switcher
+
+Navigation-style switcher where each option is an anchor with a pre-resolved URL.
+Active option marked with `aria-current="page"`. Pass `reload` for stacks where
+view transitions can't safely swap the locale (forces `window.location.href`).
+
+<ComponentPreview client:visible
+  astro={`<Toggle
+  variant="segmented"
+  groupLabel="Language"
+  current="en"
+  reload
+  items={[
+    { value: 'en', label: 'EN', href: '/gearboxes/', hreflang: 'en' },
+    { value: 'pl', label: 'PL', href: '/pl/skrzynie-biegow/', hreflang: 'pl' },
+    { value: 'de', label: 'DE', href: '/de/getriebe/', hreflang: 'de' },
+  ]}
+/>`}>
+  <Toggle
+    variant="segmented"
+    groupLabel="Language"
+    current="en"
+    reload
+    items={[
+      { value: 'en', label: 'EN', href: '#en', hreflang: 'en' },
+      { value: 'pl', label: 'PL', href: '#pl', hreflang: 'pl' },
+      { value: 'de', label: 'DE', href: '#de', hreflang: 'de' },
+    ]}
+  />
+</ComponentPreview>
+
+### Segmented — state-only (theme picker)
+
+When items have no `href`, the component renders `<button role="radio">` with
+arrow-key navigation between options and emits a `toggle-change` CustomEvent.
+
+<ComponentPreview client:visible
+  astro={`<Toggle
+  variant="segmented"
+  groupLabel="Theme"
+  current="auto"
+  items={[
+    { value: 'light', label: 'Light' },
+    { value: 'dark', label: 'Dark' },
+    { value: 'auto', label: 'Auto' },
+  ]}
+/>`}>
+  <Toggle
+    variant="segmented"
+    groupLabel="Theme"
+    current="auto"
+    items={[
+      { value: 'light', label: 'Light' },
+      { value: 'dark', label: 'Dark' },
+      { value: 'auto', label: 'Auto' },
+    ]}
+  />
+</ComponentPreview>
+
+### Segmented — view mode
+
+<ComponentPreview client:visible
+  astro={`<Toggle
+  variant="segmented"
+  groupLabel="View"
+  current="grid"
+  items={[
+    { value: 'list', label: 'List' },
+    { value: 'grid', label: 'Grid' },
+    { value: 'compact', label: 'Compact' },
+  ]}
+/>`}>
+  <Toggle
+    variant="segmented"
+    groupLabel="View"
+    current="grid"
+    items={[
+      { value: 'list', label: 'List' },
+      { value: 'grid', label: 'Grid' },
+      { value: 'compact', label: 'Compact' },
+    ]}
+  />
+</ComponentPreview>
+
+### Segmented — sizes
+
+<ComponentPreview client:visible previewClass="flex-col items-start gap-3"
+  astro={`<Toggle variant="segmented" size="sm" groupLabel="Range" current="d"
+  items={[
+    { value: 'd', label: 'Day' },
+    { value: 'w', label: 'Week' },
+    { value: 'm', label: 'Month' },
+  ]} />
+<Toggle variant="segmented" size="md" groupLabel="Range" current="d"
+  items={[
+    { value: 'd', label: 'Day' },
+    { value: 'w', label: 'Week' },
+    { value: 'm', label: 'Month' },
+  ]} />
+<Toggle variant="segmented" size="lg" groupLabel="Range" current="d"
+  items={[
+    { value: 'd', label: 'Day' },
+    { value: 'w', label: 'Week' },
+    { value: 'm', label: 'Month' },
+  ]} />`}>
+  <Toggle variant="segmented" size="sm" groupLabel="Range" current="d"
+    items={[
+      { value: 'd', label: 'Day' },
+      { value: 'w', label: 'Week' },
+      { value: 'm', label: 'Month' },
+    ]} />
+  <Toggle variant="segmented" size="md" groupLabel="Range" current="d"
+    items={[
+      { value: 'd', label: 'Day' },
+      { value: 'w', label: 'Week' },
+      { value: 'm', label: 'Month' },
+    ]} />
+  <Toggle variant="segmented" size="lg" groupLabel="Range" current="d"
+    items={[
+      { value: 'd', label: 'Day' },
+      { value: 'w', label: 'Week' },
+      { value: 'm', label: 'Month' },
+    ]} />
+</ComponentPreview>
+
+### Segmented — with disabled option
+
+<ComponentPreview client:visible
+  astro={`<Toggle
+  variant="segmented"
+  groupLabel="Plan"
+  current="pro"
+  items={[
+    { value: 'free', label: 'Free' },
+    { value: 'pro', label: 'Pro' },
+    { value: 'enterprise', label: 'Enterprise', disabled: true },
+  ]}
+/>`}>
+  <Toggle
+    variant="segmented"
+    groupLabel="Plan"
+    current="pro"
+    items={[
+      { value: 'free', label: 'Free' },
+      { value: 'pro', label: 'Pro' },
+      { value: 'enterprise', label: 'Enterprise', disabled: true },
+    ]}
+  />
+</ComponentPreview>
+
+## Styled looks
+
+Three opt-in recipes ported from real-world toggles. Apply via `look` prop.
+
+### `look="pill"` — solid-fill segmented (catalog-style)
+
+White pill container with a thin tinted border. Active option is filled solid
+with the darkest blue and white text — strong visual emphasis, no shadow trick.
+
+<ComponentPreview client:visible
+  astro={`<Toggle
+  variant="segmented"
+  look="pill"
+  groupLabel="Language"
+  current="en"
+  reload
+  items={[
+    { value: 'en', label: 'EN', href: '/', hreflang: 'en' },
+    { value: 'pl', label: 'PL', href: '/pl/', hreflang: 'pl' },
+    { value: 'de', label: 'DE', href: '/de/', hreflang: 'de' },
+  ]}
+/>`}>
+  <Toggle
+    variant="segmented"
+    look="pill"
+    groupLabel="Language"
+    current="en"
+    items={[
+      { value: 'en', label: 'EN', href: '#en', hreflang: 'en' },
+      { value: 'pl', label: 'PL', href: '#pl', hreflang: 'pl' },
+      { value: 'de', label: 'DE', href: '#de', hreflang: 'de' },
+    ]}
+  />
+</ComponentPreview>
+
+### `look="spoko"` — transparent pill with dark active fill
+
+Transparent container with a softer outline. Active option uses a near-black
+navy on light backgrounds and inverts to near-white in dark mode.
+
+<ComponentPreview client:visible
+  astro={`<Toggle
+  variant="segmented"
+  look="spoko"
+  groupLabel="Language"
+  current="en"
+  items={[
+    { value: 'en', label: 'EN', href: '/', hreflang: 'en' },
+    { value: 'pl', label: 'PL', href: '/pl/', hreflang: 'pl' },
+  ]}
+/>`}>
+  <Toggle
+    variant="segmented"
+    look="spoko"
+    groupLabel="Language"
+    current="en"
+    items={[
+      { value: 'en', label: 'EN', href: '#en', hreflang: 'en' },
+      { value: 'pl', label: 'PL', href: '#pl', hreflang: 'pl' },
+    ]}
+  />
+</ComponentPreview>
+
+### `look="outline"` — switch wrapped in an outlined frame
+
+The catalog `toggler` pattern — track + thumb + label sit inside a rounded
+border that tints toward the accent on hover and turns into the accent colour
+when on. Useful when the switch needs to read as a discrete chip rather than a
+bare slider.
+
+<ComponentPreview client:visible
+  astro={`<Toggle
+  variant="switch"
+  look="outline"
+  checked
+  label="EU market only"
+/>`}>
+  <Toggle
+    variant="switch"
+    look="outline"
+    checked
+    label="EU market only"
+  />
+</ComponentPreview>
+
+<ComponentPreview client:visible
+  astro={`<Toggle
+  variant="switch"
+  look="outline"
+  label="Show archived"
+/>`}>
+  <Toggle
+    variant="switch"
+    look="outline"
+    label="Show archived"
+  />
+</ComponentPreview>
+
+## Listening to changes
+
+Both variants dispatch a bubbling `toggle-change` CustomEvent.
+
+```ts
+document.addEventListener('toggle-change', (e) => {
+  const detail = (e as CustomEvent).detail;
+  // switch:   { name?, value?, checked: boolean }
+  // segmented: { value: string }
+  console.log(detail);
+});
+```
+
+## Accessibility
+
+All colour pairs in the default style meet **WCAG AA** contrast (≥4.5:1 for text,
+≥3:1 for UI components):
+
+| Surface | Pair | Ratio |
+| --- | --- | --- |
+| Active segmented option (`bg-white` + `text-blue-medium` #02307d) | text vs background | ≈ 15:1 |
+| Inactive segmented option (`bg-slate-100` + `text-slate-dark` #334155) | text vs background | ≈ 9:1 |
+| Switch ON track (`bg-blue-medium` + white thumb) | thumb vs track | ≈ 15:1 |
+| Switch OFF track (`bg-slate-light` #64748B + white thumb) | thumb vs track | ≈ 4.7:1 |
+| Disabled (opacity 0.5) | text vs background | ≥ 4.5:1 |
+
+ARIA contract:
+
+- **Switch**: `role="switch"`, `aria-checked` toggled on click/space/enter, `disabled` propagated, focus ring via `:focus-visible`.
+- **Segmented (links)**: `role="group"` + `aria-label`, active item gets `aria-current="page"`, hreflang propagated when supplied.
+- **Segmented (radios)**: `role="group"` + `aria-label`, each option `role="radio"` + `aria-checked`, only the active option is tab-stop (others `tabindex="-1"`), `←`/`→` moves focus and updates selection.
+
+## Props
+
+<PropsTable data={[
+  { name: 'variant', type: "'switch' | 'segmented'", default: "'switch'", description: 'Toggle shape — boolean switch or mutually-exclusive options' },
+  { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Visual size of the control (only honored by `look="default"`)' },
+  { name: 'look', type: "'default' | 'pill' | 'spoko' | 'outline'", default: "'default'", description: "Visual style. `pill` and `spoko` apply to segmented; `outline` applies to switch" },
+  { name: 'checked', type: 'boolean', default: 'false', description: '[switch] Initial on/off state' },
+  { name: 'label', type: 'string', default: 'undefined', description: '[switch] Visible label rendered next to the track' },
+  { name: 'labelPosition', type: "'before' | 'after'", default: "'after'", description: '[switch] Whether the label sits before or after the track' },
+  { name: 'disabled', type: 'boolean', default: 'false', description: '[switch] Disable interaction' },
+  { name: 'name', type: 'string', default: 'undefined', description: '[switch] Identifier emitted in toggle-change detail' },
+  { name: 'value', type: 'string', default: 'undefined', description: '[switch] Value emitted in toggle-change detail' },
+  { name: 'items', type: 'SegmentedItem[]', default: '[]', description: '[segmented] Options — each `{ value, label, href?, hreflang?, disabled? }`' },
+  { name: 'current', type: 'string', default: 'undefined', description: '[segmented] Value of the active option' },
+  { name: 'groupLabel', type: 'string', default: "'Options'", description: '[segmented] aria-label for the group' },
+  { name: 'reload', type: 'boolean', default: 'false', description: '[segmented] Force `window.location.href` on link clicks — use when view transitions cannot handle the swap (e.g. locale changes)' },
+  { name: 'class', type: 'string', default: "''", description: 'Extra classes on the root element' },
+]} />
+
+## CSS recipe classes
+
+| Class | Purpose |
+| --- | --- |
+| `sds-toggle-switch` | Root of a switch — flex container with label + track |
+| `sds-toggle-track` | Rounded track holding the thumb |
+| `sds-toggle-thumb` | Sliding white circle inside the track |
+| `sds-toggle-label` | Visible label text |
+| `sds-toggle-segmented` | Root of a segmented group |
+| `sds-toggle-seg-btn` | Individual option — link or button |

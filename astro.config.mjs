@@ -19,9 +19,23 @@ export default defineConfig({
   server: {
     port: 1234
   },
+  vite: {
+    // Vite 8 changed the default CSS minifier to lightningcss, which is stricter
+    // than esbuild and rejects some of our UnoCSS-generated CSS with
+    // "Unexpected token Colon". Restore the esbuild CSS minifier we built with.
+    build: { cssMinify: 'esbuild' },
+  },
+  markdown: {
+    // github-dark comments (#6a737d) are 3:1 on their background; github-dark-default
+    // keeps every token above the WCAG 1.4.3 4.5:1 minimum.
+    shikiConfig: { theme: 'github-dark-default' },
+  },
   image: {
     service: sharpImageService(),
-    domains: ["placehold.co", "api.polo.blue", "polo.blue", "media.istockphoto.com", "freepik.com", "img.freepik.com", "polo6r.pl"]
+    domains: ["placehold.co", "api.polo.blue", "polo.blue", "media.istockphoto.com", "freepik.com", "img.freepik.com", "polo6r.pl"],
+    // Astro 6 disabled SVG processing by default; restore Astro 5 behavior
+    // since placehold.co (used in docs demos) returns SVG without an extension.
+    dangerouslyProcessSVG: true,
   },
   integrations: [
     // Enable Vue to support Vue3 components
@@ -33,6 +47,8 @@ export default defineConfig({
       scope: '/',
       includeAssets: ['favicon.svg', 'safari-pinned-tab.svg', 'brands/*.svg', 'fonts/*.woff2', 'fonts/*.svg', 'vw.svg', 'polo.blue.svg', 'spoko.space.svg'],
       registerType: 'autoUpdate',
+      // Plain registerSW.js script: no virtual:pwa-register import, so no workbox-window dependency
+      injectRegister: 'script',
       manifest: {
         name: 'Spoko Design System',
         short_name: 'SDS',

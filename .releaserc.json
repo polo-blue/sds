@@ -13,7 +13,6 @@
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
-    "@semantic-release/changelog",
     [
       "@semantic-release/npm",
       {
@@ -21,17 +20,7 @@
         "tarballDir": "dist"
       }
     ],
-    "@semantic-release/github",
-    [
-      "@semantic-release/git",
-      {
-        "assets": [
-          "package.json",
-          "CHANGELOG.md"
-        ],
-        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-      }
-    ]
+    "@semantic-release/github"
   ],
   "preset": "conventionalcommits",
   "parserOpts": {
@@ -48,6 +37,10 @@
   },
   "analyzeCommits": {
     "releaseRules": [
+      {
+        "breaking": true,
+        "release": "major"
+      },
       {
         "type": "feat",
         "release": "minor"
@@ -83,10 +76,6 @@
       {
         "type": "chore",
         "release": false
-      },
-      {
-        "scope": "BREAKING CHANGE",
-        "release": "major"
       }
     ]
   }
