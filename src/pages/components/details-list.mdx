@@ -45,6 +45,20 @@ export const tableItems = [
     id: "weight",
     label: "Weight",
     value: "5.185 kg"
+  },
+  {
+    id: "youtube",
+    label: "Video",
+    type: "links",
+    value: [
+      { type: "youtube", url: "https://www.youtube.com/watch?v=aqz-KE-bpKQ", anchor: "Installation walkthrough" },
+    ],
+  },
+  {
+    id: "vimeo",
+    label: "Vimeo",
+    type: "links",
+    value: [{ type: "vimeo", url: "https://vimeo.com/76979871", anchor: "Product demo" }],
   }
 ];
 
@@ -171,6 +185,9 @@ Supported link types with icons:
 - `youtube` - YouTube icon
 - `vimeo` - Vimeo icon
 - Default - Generic link icon
+
+### Video Tiles
+A `links` item whose `id` is `youtube` or `vimeo` renders each link as a tile with a play icon instead of a list row. YouTube tiles show the video thumbnail. Vimeo tiles show a plain background, because Vimeo thumbnails need an API call.
 
 ### Generic String Arrays
 Use `isGenericArray: true` to display a bulleted list:

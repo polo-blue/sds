@@ -227,6 +227,7 @@ export const iconConfig: IconConfig = {
       "lightbulb",
       "link",
       "package",
+      "play",
       "qr-code",
       "radio",
       "scan-qr-code",
