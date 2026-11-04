@@ -187,6 +187,31 @@ test.describe('ProductGallery a11y', () => {
     await expect(slide(gallery, 2)).toHaveAttribute('aria-current', 'true');
   });
 
+  test('shows the dialog slide when closing changes the gallery width', async ({ page }) => {
+    // Stands in for the page scrollbar coming back when the dialog unlocks the body
+    await page.addStyleTag({
+      content: `body:not([style*='overflow: hidden']) [data-product-gallery] { width: 400px; }`,
+    });
+    const dialog = await openFromFirstSlide(page, gallery);
+
+    await page.keyboard.press('ArrowRight');
+    await expect(dialog.locator('[data-dialog-current]')).toHaveText('2');
+    await page.keyboard.press('ArrowRight');
+    await expect(dialog.locator('[data-dialog-current]')).toHaveText('3');
+    await page.keyboard.press('Escape');
+
+    await expect(slide(gallery, 2)).toBeFocused();
+    await expect
+      .poll(() =>
+        gallery.locator('[data-gallery-slider]').evaluate(el => {
+          const active = el.querySelector('[data-index="2"]')!.getBoundingClientRect();
+          return Math.abs(active.left - el.getBoundingClientRect().left);
+        })
+      )
+      .toBeLessThan(1);
+    await expect(slide(gallery, 2)).toHaveAttribute('aria-current', 'true');
+  });
+
   test.describe('on a narrow viewport', () => {
     test.use({ viewport: { width: 375, height: 812 } });
 

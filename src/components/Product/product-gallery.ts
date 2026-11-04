@@ -327,7 +327,9 @@ export function initProductGallery(root: HTMLElement) {
 
     document.body.style.overflow = savedOverflow;
 
-    // Sync main slider to dialog position
+    // Sync main slider to dialog position. Unlocking the body can change the
+    // gallery width, so activeIndex must be right before setSlideWidth runs
+    syncMain(dialogActiveIndex);
     scrollToSlide(slider, dialogActiveIndex);
 
     // Return focus. When the dialog was opened from a slide, focus the slide
