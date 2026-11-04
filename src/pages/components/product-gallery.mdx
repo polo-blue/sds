@@ -44,7 +44,7 @@ document.querySelectorAll('[data-product-gallery]').forEach(initProductGallery);
 ## Basic usage
 
 <div class="component-preview">
-  <div class="max-w-xl mx-auto">
+  <div class="w-full min-w-0 max-w-xl mx-auto">
     <ProductGallery ariaLabel="Product image gallery demo: basic"
       images={[
         { src: "https://placehold.co/800x600/e2e8f0/475569?text=Image+1", thumb: "https://placehold.co/160x120/e2e8f0/475569?text=1", alt: "Product image 1" },
@@ -69,7 +69,7 @@ document.querySelectorAll('[data-product-gallery]').forEach(initProductGallery);
 ## Many images (10)
 
 <div class="component-preview">
-  <div class="max-w-xl mx-auto">
+  <div class="w-full min-w-0 max-w-xl mx-auto">
     <ProductGallery ariaLabel="Product image gallery demo 1"
       images={[
         { src: "https://placehold.co/800x600/e2e8f0/475569?text=1+of+10", thumb: "https://placehold.co/160x120/e2e8f0/475569?text=1", alt: "Image 1" },
@@ -90,7 +90,7 @@ document.querySelectorAll('[data-product-gallery]').forEach(initProductGallery);
 ## With badges slot
 
 <div class="component-preview">
-  <div class="max-w-xl mx-auto">
+  <div class="w-full min-w-0 max-w-xl mx-auto">
     <ProductGallery ariaLabel="Product image gallery demo 2"
       images={[
         { src: "https://placehold.co/800x600/e2e8f0/475569?text=With+Badge", thumb: "https://placehold.co/160x120/e2e8f0/475569?text=1", alt: "Product with badge" },
@@ -111,7 +111,7 @@ document.querySelectorAll('[data-product-gallery]').forEach(initProductGallery);
 ## Single image (no thumbnails)
 
 <div class="component-preview">
-  <div class="max-w-xl mx-auto">
+  <div class="w-full min-w-0 max-w-xl mx-auto">
     <ProductGallery ariaLabel="Product image gallery demo: single image"
       images={[
         { src: "https://placehold.co/800x600/e2e8f0/475569?text=Single+Image", alt: "Single product image" },
@@ -123,7 +123,7 @@ document.querySelectorAll('[data-product-gallery]').forEach(initProductGallery);
 ## No images (empty state)
 
 <div class="component-preview">
-  <div class="max-w-xl mx-auto">
+  <div class="w-full min-w-0 max-w-xl mx-auto">
     <ProductGallery images={[]} />
   </div>
 </div>
@@ -131,7 +131,7 @@ document.querySelectorAll('[data-product-gallery]').forEach(initProductGallery);
 ## Custom aspect ratio
 
 <div class="component-preview">
-  <div class="max-w-xl mx-auto">
+  <div class="w-full min-w-0 max-w-xl mx-auto">
     <ProductGallery ariaLabel="Product image gallery demo: custom aspect ratio"
       aspectRatio="16/9"
       images={[
@@ -168,6 +168,10 @@ interface GalleryImage {
 | --- | --- |
 | `default` | Overlay content (e.g. badges) positioned inside the main slider area |
 | `empty` | Custom content when `images` is empty |
+
+## Theming
+
+Focus rings are drawn inside the slides and thumbnails, on top of the image. They keep the same blue in light and dark mode, because the images stay light. Override it with `--pg-focus-ring` on the gallery or any ancestor.
 
 ## Integration examples
 

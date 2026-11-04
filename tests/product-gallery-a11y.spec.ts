@@ -7,6 +7,10 @@ import { expect, type Locator, type Page, test } from '@playwright/test';
  * focus, Tab was not kept inside the dialog, the active main slide had no
  * `aria-current`, and JS-driven scrolling stayed smooth under
  * `prefers-reduced-motion: reduce`.
+ *
+ * Also: slide width was only re-measured on window resize, so a gallery whose
+ * container settled later showed part of the next slide, and focus rings were
+ * clipped by the slider.
  */
 
 const PAGE = '/components/product-gallery/';
@@ -22,6 +26,49 @@ async function openFromFirstSlide(page: Page, gallery: Locator) {
   await page.keyboard.press('Enter');
   await expect(dialog).toHaveAttribute('open', '');
   return dialog;
+}
+
+// Resizes the gallery on its own: no window resize event fires
+const shrink = (gallery: Locator) =>
+  gallery.evaluate(el => {
+    el.style.width = '300px';
+  });
+
+async function expectOneSlideWide(gallery: Locator) {
+  const width = await gallery.locator('[data-gallery-slider]').evaluate(el => el.clientWidth);
+  await expect
+    .poll(() => slide(gallery, 0).evaluate(el => el.getBoundingClientRect().width))
+    .toBe(width);
+}
+
+// Labels of the controls whose outline an overflow-clipping ancestor would cut off
+function clippedFocusRings(root: Locator, selector: string) {
+  return root.evaluate((el, controlSelector) => {
+    const clipped: string[] = [];
+    for (const control of el.querySelectorAll<HTMLElement>(controlSelector)) {
+      control.scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'nearest' });
+      control.focus();
+      const style = getComputedStyle(control);
+      const spread = parseFloat(style.outlineOffset) + parseFloat(style.outlineWidth);
+      const box = control.getBoundingClientRect();
+      for (let a = control.parentElement; a; a = a.parentElement) {
+        if (getComputedStyle(a).overflowX !== 'visible') {
+          const clip = a.getBoundingClientRect();
+          if (
+            box.left - spread < clip.left - 0.5 ||
+            box.right + spread > clip.right + 0.5 ||
+            box.top - spread < clip.top - 0.5 ||
+            box.bottom + spread > clip.bottom + 0.5
+          ) {
+            clipped.push(control.getAttribute('aria-label') ?? control.className);
+            break;
+          }
+        }
+        if (a === el) break;
+      }
+    }
+    return clipped;
+  }, selector);
 }
 
 test.describe('ProductGallery a11y', () => {
@@ -93,6 +140,86 @@ test.describe('ProductGallery a11y', () => {
     // …so dialog keyboard navigation still works
     await page.keyboard.press('ArrowLeft');
     await expect(dialog.locator('[data-dialog-current]')).toHaveText(String(total - 1));
+  });
+
+  test("draws focus rings inside the gallery's clipping containers", async ({ page }) => {
+    // Puts the page in keyboard modality so focus() matches :focus-visible
+    await page.keyboard.press('Tab');
+    expect(
+      await clippedFocusRings(
+        gallery,
+        '[data-gallery-slider], [data-gallery-slider] [data-index], [data-gallery-thumbs] [data-thumb-index]'
+      )
+    ).toEqual([]);
+
+    const dialog = await openFromFirstSlide(page, gallery);
+    expect(
+      await clippedFocusRings(
+        dialog,
+        '[data-dialog-close], [data-dialog-slider], [data-dialog-thumbs] [data-thumb-index]'
+      )
+    ).toEqual([]);
+  });
+
+  test('re-measures slides when the gallery resizes without a window resize', async () => {
+    await shrink(gallery);
+    await expectOneSlideWide(gallery);
+  });
+
+  test('keeps the active slide in place when the gallery resizes', async ({ page }) => {
+    const slider = gallery.locator('[data-gallery-slider]');
+    await slider.focus();
+    await page.keyboard.press('ArrowRight');
+    await expect(slide(gallery, 1)).toHaveAttribute('aria-current', 'true');
+    await page.keyboard.press('ArrowRight');
+    await expect(slide(gallery, 2)).toHaveAttribute('aria-current', 'true');
+
+    await shrink(gallery);
+
+    await expect
+      .poll(() =>
+        slider.evaluate(el => {
+          const active = el.querySelector('[data-index="2"]')!.getBoundingClientRect();
+          return Math.abs(active.left - el.getBoundingClientRect().left);
+        })
+      )
+      .toBeLessThan(1);
+    await expect(slide(gallery, 2)).toHaveAttribute('aria-current', 'true');
+  });
+
+  test('shows the dialog slide when closing changes the gallery width', async ({ page }) => {
+    // Stands in for the page scrollbar coming back when the dialog unlocks the body
+    await page.addStyleTag({
+      content: `body:not([style*='overflow: hidden']) [data-product-gallery] { width: 400px; }`,
+    });
+    const dialog = await openFromFirstSlide(page, gallery);
+
+    await page.keyboard.press('ArrowRight');
+    await expect(dialog.locator('[data-dialog-current]')).toHaveText('2');
+    await page.keyboard.press('ArrowRight');
+    await expect(dialog.locator('[data-dialog-current]')).toHaveText('3');
+    await page.keyboard.press('Escape');
+
+    await expect(slide(gallery, 2)).toBeFocused();
+    await expect
+      .poll(() =>
+        gallery.locator('[data-gallery-slider]').evaluate(el => {
+          const active = el.querySelector('[data-index="2"]')!.getBoundingClientRect();
+          return Math.abs(active.left - el.getBoundingClientRect().left);
+        })
+      )
+      .toBeLessThan(1);
+    await expect(slide(gallery, 2)).toHaveAttribute('aria-current', 'true');
+  });
+
+  test.describe('on a narrow viewport', () => {
+    test.use({ viewport: { width: 375, height: 812 } });
+
+    test('shows exactly one slide', async () => {
+      const slider = gallery.locator('[data-gallery-slider]');
+      expect(await slider.evaluate(el => el.clientWidth)).toBeLessThan(375);
+      await expectOneSlideWide(gallery);
+    });
   });
 
   test.describe('with reduced motion', () => {

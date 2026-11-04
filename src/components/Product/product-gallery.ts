@@ -96,14 +96,19 @@ export function initProductGallery(root: HTMLElement) {
   // Fix subpixel slide width: percentage-based widths can produce fractional
   // pixels (e.g. 780.5px) causing 0.5px bleed of next slide.
   // Set pixel-perfect width via CSS variable from clientWidth (integer).
+  // Observes the slider, not the window: its container can settle after init
+  // or change on its own (sidebar, tabs), which no window resize reports.
+  let slideWidth = 0;
   function setSlideWidth() {
     const w = slider.clientWidth;
-    if (w > 0) {
-      slider.style.setProperty('--pg-slide-width', `${w}px`);
-    }
+    if (w === 0 || w === slideWidth) return;
+    slider.style.setProperty('--pg-slide-width', `${w}px`);
+    // Not on the first measure: scrollLeft may hold a restored position
+    if (slideWidth > 0) slider.scrollTo({ left: activeIndex * w, behavior: 'instant' });
+    slideWidth = w;
   }
   setSlideWidth();
-  window.addEventListener('resize', setSlideWidth);
+  new ResizeObserver(setSlideWidth).observe(slider);
 
   // Explicit initial state sync — IntersectionObserver fires async and may miss
   // the first slide if layout isn't ready or scroll position was restored by browser
@@ -322,7 +327,9 @@ export function initProductGallery(root: HTMLElement) {
 
     document.body.style.overflow = savedOverflow;
 
-    // Sync main slider to dialog position
+    // Sync main slider to dialog position. Unlocking the body can change the
+    // gallery width, so activeIndex must be right before setSlideWidth runs
+    syncMain(dialogActiveIndex);
     scrollToSlide(slider, dialogActiveIndex);
 
     // Return focus. When the dialog was opened from a slide, focus the slide
