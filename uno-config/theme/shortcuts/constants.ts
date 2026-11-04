@@ -129,6 +129,12 @@ export const TYPOGRAPHY = {
   },
 } as const
 
+// Tooltip styles
+export const TOOLTIP_STYLES = {
+  box: `${COLORS.bgNeutralLightest} ${COLORS.textSlateDark} text-xs whitespace-nowrap`,
+  trigger: 'underline decoration-dotted underline-offset-4 decoration-neutral-light cursor-default transition-colors duration-200 hover:decoration-blue-darker',
+} as const
+
 // Product specific styles (merged PRODUCT_STYLES and PRODUCT_CONSTANTS)
 export const PRODUCT_STYLES = {
   thumb: {
