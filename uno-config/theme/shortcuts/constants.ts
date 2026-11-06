@@ -68,10 +68,12 @@ export const TRANSITIONS = {
   hover: 'transition duration-100 ease-in-out',
 } as const
 
-// A hover modifier's colours. `dark:hover:text-*` outranks the `dark:text-*` of btn-text and
-// btn-prcode, which would otherwise keep their light text on these fills.
-const hoverPair = (text: string, bg: string, border: string) =>
-  `hover:(text-${text} bg-${bg} border-${border}) dark:hover:text-${text}`
+// A hover modifier replaces a button's own hover colours as a pair, in both colour schemes. `[&&]`
+// doubles the selector to (0,4,0), above the (0,3,0) of a variant's `dark:hover:*`. Keep variant
+// hover rules below that: a tie is settled by the generated order, which once put a modifier's
+// dark text on a variant's dark hover fill.
+const hoverPair = (text: string, bg: string, border = bg) =>
+  `[&&]:hover:(text-${text} bg-${bg} border-${border})`
 
 // Button base styles
 export const BUTTON_STYLES = {
@@ -87,28 +89,27 @@ export const BUTTON_STYLES = {
     sm: 'px-6 py-2 text-sm whitespace-nowrap h-9.5',
     xs: 'px-4 py-1 text-sm whitespace-nowrap ',
   },
-  // A variant with its own hover colours marks them `!`, so text and background stay a pair. Which
-  // plain rule wins depends on the generated order, and a hover modifier that won only the text
-  // once put dark text on a dark fill. The same goes for btn and btn-tag in buttons.ts.
   variants: {
     primary: {
-      solid: 'bg-brand-secondary border border-transparent hover:(!bg-accent-light !text-blue-darker) text-blue-darker shadow',
-      outline: 'border-accent-light border text-accent-dark dark:text-sky-300 hover:(!bg-accent-dark !text-white border-accent-dark)',
+      solid: 'bg-brand-secondary border border-transparent hover:bg-accent-light text-blue-darker shadow',
+      // On outlines `dark:hover:text-*` outranks `dark:text-*`, which would keep the resting text on
+      // the hover fill.
+      outline: 'border-accent-light border text-accent-dark dark:text-sky-300 hover:(bg-accent-dark text-white border-accent-dark) dark:hover:text-white',
     },
     secondary: {
-      solid: 'bg-neutral-dark border border-transparent hover:(!bg-neutral-darker !text-white) text-white shadow',
-      outline: 'border-neutral-dark border text-neutral-darker dark:text-neutral-light hover:(!text-white !bg-neutral-dark)',
+      solid: 'bg-neutral-dark border border-transparent hover:bg-neutral-darker text-white shadow',
+      outline: 'border-neutral-dark border text-neutral-darker dark:text-neutral-light hover:(text-white bg-neutral-dark) dark:hover:text-white',
     },
     tertiary: {
-      solid: 'bg-blue-darker hover:(!bg-accent-darker !text-white) text-white',
+      solid: 'bg-blue-darker hover:bg-accent-darker text-white',
       outline: 'border-blue-darker text-blue-darker dark:(border-neutral-light text-neutral-lighter)',
     },
   },
   hover: {
     white: hoverPair('blue-darker', 'white', 'blue-darker'),
-    light: hoverPair('blue-darker', 'brand-secondary', 'brand-secondary'),
-    medium: hoverPair('white', 'brand-primary', 'brand-primary'),
-    dark: hoverPair('white', 'blue-darker', 'blue-darker'),
+    light: hoverPair('blue-darker', 'brand-secondary'),
+    medium: hoverPair('white', 'brand-primary'),
+    dark: hoverPair('white', 'blue-darker'),
   },
 } as const
 

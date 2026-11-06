@@ -48,13 +48,13 @@ import Button from 'spoko-design-system/src/components/Button.vue';
 </template>`}
   html={`<button class="btn-primary btn-normal">Primary</button>
 <button class="btn-secondary btn-normal">Secondary</button>
-<button class="btn-tertiary btn-normal btn-medium-hover">Tertiary</button>
+<button class="btn-tertiary btn-normal">Tertiary</button>
 <button class="btn-text btn-sm">Text</button>
 <button class="btn-tag btn-xs">Tag Name</button>
 
 <button class="btn-primary btn-normal rounded-full">Primary</button>
 <button class="btn-secondary btn-normal rounded-full">Secondary</button>
-<button class="btn-tertiary btn-normal btn-medium-hover rounded-full">Tertiary</button>
+<button class="btn-tertiary btn-normal rounded-full">Tertiary</button>
 <button class="btn-text btn-sm rounded-full">Text</button>
 <button class="btn-tag btn-xs rounded-full">Tag Name</button>`}>
   <div class="flex w-full gap-4 items-center">
@@ -170,9 +170,9 @@ import Button from 'spoko-design-system/src/components/Button.vue';
   <Button tertiary medium>Tertiary</Button>
   <Button tertiary small>Tertiary</Button>
 </template>`}
-  html={`<button class="btn-tertiary btn-normal btn-medium-hover">Tertiary</button>
-<button class="btn-tertiary btn-sm btn-medium-hover">Tertiary</button>
-<button class="btn-tertiary btn-xs btn-medium-hover">Tertiary</button>`}>
+  html={`<button class="btn-tertiary btn-normal">Tertiary</button>
+<button class="btn-tertiary btn-sm">Tertiary</button>
+<button class="btn-tertiary btn-xs">Tertiary</button>`}>
   <Button tertiary>Tertiary</Button>
   <Button tertiary medium>Tertiary</Button>
   <Button tertiary small>Tertiary</Button>
@@ -200,15 +200,15 @@ import Button from 'spoko-design-system/src/components/Button.vue';
     <span class="i-la-arrow-right ml-2 text-2xl -my-1 -mr-1" aria-hidden="true" />
   </Button>
 </template>`}
-  html={`<a href="#" class="btn-tertiary btn-normal btn-medium-hover">
+  html={`<a href="#" class="btn-tertiary btn-normal">
   Read more
   <span class="i-la-arrow-right ml-2 text-2xl -my-1 -mr-1" aria-hidden="true"></span>
 </a>
-<a href="#" class="btn-tertiary btn-sm btn-medium-hover">
+<a href="#" class="btn-tertiary btn-sm">
   Read more
   <span class="i-la-arrow-right ml-2 text-2xl -my-1 -mr-1" aria-hidden="true"></span>
 </a>
-<a href="#" class="btn-tertiary btn-xs btn-medium-hover px-5">
+<a href="#" class="btn-tertiary btn-xs px-5">
   Read more
   <span class="i-la-arrow-right ml-2 text-2xl -my-1 -mr-1" aria-hidden="true"></span>
 </a>`}>
@@ -252,7 +252,7 @@ import Button from 'spoko-design-system/src/components/Button.vue';
 </template>`}
   html={`<button class="btn-primary btn-normal rounded-full">Primary</button>
 <button class="btn-secondary btn-normal rounded-full">Secondary</button>
-<button class="btn-tertiary btn-normal btn-medium-hover rounded-full">Tertiary</button>
+<button class="btn-tertiary btn-normal rounded-full">Tertiary</button>
 <button class="btn-text btn-normal rounded-full">Text</button>
 <button class="btn-tag btn-normal rounded-full">Tag Name</button>`}>
   <div class="flex w-full gap-4 items-center">
@@ -336,7 +336,7 @@ import Button from 'spoko-design-system/src/components/Button.vue';
 
 ### Outline button - custom hover
 
-The hover modifiers work on `tertiary-outline` and `text` buttons. Solid, primary/secondary outline and `tag` buttons keep their own hover colours, so text and background stay a readable pair (WCAG 1.4.3).
+A hover modifier replaces a button's own hover colours, text and background together, in both colour schemes, so the pair stays readable (WCAG 1.4.3).
 
 <ComponentPreview client:visible
   astro={`---
@@ -427,7 +427,7 @@ import Button from 'spoko-design-system/src/components/Button.vue';
 <button class="btn-secondary btn-normal btn-circle" aria-label="Next">
   <span class="i-la-arrow-right" aria-hidden="true"></span>
 </button>
-<button class="btn-tertiary btn-normal btn-medium-hover btn-circle" aria-label="Next">
+<button class="btn-tertiary btn-normal btn-circle" aria-label="Next">
   <span class="i-la-arrow-right" aria-hidden="true"></span>
 </button>
 
