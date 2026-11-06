@@ -1,5 +1,6 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { expect, test, type Locator, type Page } from '@playwright/test';
+import { contrastRatio } from './helpers/contrast.ts';
 
 /**
  * PropsTable: tables generated from component source (`source` prop) and the
@@ -47,9 +48,9 @@ async function rowsByName(table: Locator): Promise<Record<string, string[]>> {
   );
 }
 
-/** WCAG contrast ratio of a cell's text against its effective (first opaque ancestor) background. */
+/** Lowest WCAG contrast ratio of a cell's text against its effective (first opaque ancestor) background. */
 async function minContrast(table: Locator): Promise<number> {
-  return table.evaluate(el => {
+  const pairs = await table.evaluate(el => {
     // Computed colors may be oklch(); paint one pixel to get sRGB + alpha regardless of syntax.
     const ctx = document.createElement('canvas').getContext('2d', { willReadFrequently: true })!;
     const rgb = (c: string) => {
@@ -59,10 +60,6 @@ async function minContrast(table: Locator): Promise<number> {
       const [r, g, b, a] = ctx.getImageData(0, 0, 1, 1).data;
       return [r, g, b, a / 255];
     };
-    const lum = ([r, g, b]: number[]) => {
-      const f = (v: number) => ((v /= 255) <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
-      return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b);
-    };
     const background = (node: Element | null): number[] => {
       for (; node; node = node.parentElement) {
         const c = rgb(getComputedStyle(node).backgroundColor);
@@ -70,15 +67,11 @@ async function minContrast(table: Locator): Promise<number> {
       }
       return [255, 255, 255];
     };
-    let min = Infinity;
-    for (const cell of el.querySelectorAll('th, td, td code')) {
-      if (!(cell.textContent ?? '').trim()) continue;
-      const fg = lum(rgb(getComputedStyle(cell).color));
-      const bg = lum(background(cell));
-      min = Math.min(min, (Math.max(fg, bg) + 0.05) / (Math.min(fg, bg) + 0.05));
-    }
-    return min;
+    return [...el.querySelectorAll('th, td, td code')]
+      .filter(cell => (cell.textContent ?? '').trim())
+      .map(cell => [rgb(getComputedStyle(cell).color), background(cell)]);
   });
+  return Math.min(...pairs.map(([text, background]) => contrastRatio(text, background)));
 }
 
 test.describe('PropsTable generated from source', () => {

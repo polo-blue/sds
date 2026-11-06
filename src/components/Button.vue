@@ -34,7 +34,7 @@ interface ButtonProps {
   whiteHover?: boolean;
   /** Light hover state (`btn-light-hover`) */
   lightHover?: boolean;
-  /** Medium hover state (`btn-medium-hover`); applied by default to `tertiary` and to `tertiaryOutline` without another hover prop */
+  /** Medium hover state (`btn-medium-hover`); applied by default to `tertiaryOutline` without another hover prop */
   mediumHover?: boolean;
   /** Dark hover state (`btn-dark-hover`) */
   darkHover?: boolean;
@@ -45,10 +45,9 @@ interface ButtonProps {
 
 const props = defineProps<ButtonProps>();
 
-// Check if we should add a default mediumHover for tertiary
+// A tertiary outline has no hover colours of its own
 const shouldAddDefaultMediumHover =
-  props.tertiary ||
-  (props.tertiaryOutline && !props.whiteHover && !props.lightHover && !props.mediumHover && !props.darkHover);
+  props.tertiaryOutline && !props.whiteHover && !props.lightHover && !props.mediumHover && !props.darkHover;
 
 const tag = props.href && props.href.length ? 'a' : 'button';
 
@@ -106,6 +105,16 @@ const attrs = useAttrs();
 .btn-tertiary {
   svg {
     color: var(--primary);
+  }
+}
+
+/* A hover modifier sets the text colour; icons follow it instead of the rules above */
+.btn-white-hover:hover,
+.btn-light-hover:hover,
+.btn-medium-hover:hover,
+.btn-dark-hover:hover {
+  svg {
+    color: inherit;
   }
 }
 

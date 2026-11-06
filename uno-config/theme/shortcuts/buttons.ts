@@ -5,7 +5,7 @@ const { base, sizes, variants, hover } = BUTTON_STYLES
 
 export const buttonShortcuts = [
     // Base buttons
-    ['btn', `px-4 py-1 rounded inline-block bg-teal-600 text-white cursor-pointer hover:bg-teal-700 disabled:(cursor-default bg-gray-600 opacity-50) ${TRANSITIONS.base}`],
+    ['btn', `px-4 py-1 rounded inline-block bg-accent-dark text-white cursor-pointer not-disabled:hover:bg-accent-darker disabled:(cursor-default bg-gray-600 opacity-50) ${TRANSITIONS.base}`],
     ['icon-btn', `text-[0.9em] inline-block cursor-pointer select-none opacity-75 ${TRANSITIONS.base} hover:(opacity-100 text-teal-600) focus-visible:opacity-100`],
 
     // Primary buttons
