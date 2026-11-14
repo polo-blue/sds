@@ -290,9 +290,11 @@ Documentation and live examples:
 - https://sds.spoko.space/
 
 Most of the components from this repository can be seen in production:
-- https://catalog.polo.blue/
+- https://catalog.polo.blue
+- https://sale.polo.blue
 - https://polo.blue
 - https://polo6r.pl
+- https://polo6r.net
 
 ## Have Fun!
 
