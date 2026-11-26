@@ -11,3 +11,11 @@ allowBuilds:
   esbuild: false
   sharp: false
   vue-demi: false
+
+# Local fixes to dependencies, applied only in this repository (consumers never get them).
+# @astrojs/vue: the editor integration that `astro check` uses to type .vue files cut a
+# runtime-object `defineProps({...})` at its first ")", so four components re-exported
+# from index.ts had no default export. Drop the patch once upstream extracts the call
+# correctly; `pnpm install` fails if a new @astrojs/vue release no longer applies it.
+patchedDependencies:
+  '@astrojs/vue': patches/@astrojs__vue.patch

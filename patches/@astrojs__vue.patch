@@ -1,0 +1,48 @@
+diff --git a/dist/editor.cjs b/dist/editor.cjs
+index daa850f66b1715601997f43adfa47aed2f417696..0532a360bd2ad68b09f50c18c2372e5b8ed309ff 100644
+--- a/dist/editor.cjs
++++ b/dist/editor.cjs
+@@ -25,13 +25,13 @@ function toTSX(code, className) {
+ 						}
+ 				`;
+ 			else {
+-				const defineProps = /defineProps\([\s\S]+?\)/.exec(codeWithoutComments);
++				const defineProps = extractDefinePropsCall(codeWithoutComments);
+ 				if (defineProps) result = `
+ 					import { defineProps } from 'vue';
+ 
+ 					${regularScriptBlockContent}
+ 
+-					const Props = ${defineProps[0]}
++					const Props = ${defineProps}
+ 
+ 					export default function ${className}__AstroComponent_${propsGenericType}(_props: import('@astrojs/vue/vue-shims.d.ts').PropsWithHTMLAttributes<typeof Props>): any {
+ 						<div></div>
+@@ -44,4 +44,27 @@ function toTSX(code, className) {
+ 	}
+ 	return result;
+ }
++// Patched in spoko-design-system (pnpm patch): the upstream lazy regex
++// /defineProps\([\s\S]+?\)/ stopped at the first ")" inside the props object,
++// e.g. in `PropType<(string | X)[]>` or `default() {}`, so the generated TSX had no
++// default export and `astro check` reported "has no exported member 'default'".
++// Scan to the parenthesis that closes the call instead, skipping string literals.
++function extractDefinePropsCall(code) {
++	const start = code.search(/defineProps\(/);
++	if (start === -1) return null;
++	let depth = 0;
++	let quote = null;
++	for (let i = code.indexOf("(", start); i < code.length; i++) {
++		const ch = code[i];
++		if (quote) {
++			if (ch === "\\") i++;
++			else if (ch === quote) quote = null;
++			continue;
++		}
++		if (ch === "'" || ch === '"' || ch === "`") quote = ch;
++		else if (ch === "(") depth++;
++		else if (ch === ")" && --depth === 0) return code.slice(start, i + 1);
++	}
++	return null;
++}
+ exports.toTSX = toTSX;

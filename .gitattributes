@@ -12,3 +12,7 @@
 *.woff2 binary
 *.ttf binary
 *.eot binary
+
+# pnpm patch files are unified diffs of tab-indented upstream code: their context lines
+# start with a space before a tab, which `git diff --check` (the pre-commit hook) rejects.
+patches/*.patch -whitespace

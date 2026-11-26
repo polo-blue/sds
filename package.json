@@ -144,7 +144,6 @@
     "@unocss/transformer-variant-group": "66.13.0",
     "@vitejs/plugin-vue": "^6.0.11",
     "@vue/compiler-sfc": "^3.5.46",
-    "@vue/eslint-config-typescript": "^14.9.0",
     "astro": "^7.4.13",
     "conventional-changelog-conventionalcommits": "^9.3.1",
     "eslint": "^10.15.0",
