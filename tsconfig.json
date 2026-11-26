@@ -19,7 +19,9 @@
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    // Astro 7.4.9+ ships its public types (e.g. the `astro:before-swap` event map) from
+    // @astrojs/runtime through package `exports`, which the legacy `node` resolution ignores.
+    "moduleResolution": "bundler",
     "jsx": "preserve",
     "allowJs": true,
     "types": ["node", "vite/client", "@vue/runtime-dom"],
