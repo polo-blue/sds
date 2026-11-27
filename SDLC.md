@@ -122,6 +122,7 @@ Every PR passes the full validation gate before review sign-off, in this order:
 - `pnpm run format:check`
 - `pnpm run lint`
 - `pnpm run check`
+- `pnpm run test:unit`
 - `pnpm run build`
 
 Any non-zero exit fails the gate and blocks the PR. The implementing skills run the gate before opening a PR, and `om-check-and-commit` runs it before pushing a hand-worked branch. The command list lives in `.ai/agentic.config.json`; when it changes, update it there and in this section together.

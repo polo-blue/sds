@@ -4,7 +4,7 @@
   "tracker": "github",
   "browser": { "provider": "agent-browser" },
   "validation": {
-    "commands": ["pnpm run format:check", "pnpm run lint", "pnpm run check", "pnpm run build"]
+    "commands": ["pnpm run format:check", "pnpm run lint", "pnpm run check", "pnpm run test:unit", "pnpm run build"]
   },
   "labels": {
     "enabled": true,
