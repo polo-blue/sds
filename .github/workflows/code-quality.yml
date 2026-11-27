@@ -38,6 +38,9 @@ jobs:
       - name: Type check
         run: pnpm run check
 
+      - name: Unit tests
+        run: pnpm run test:unit
+
   build-node-matrix:
     name: Build (Node ${{ matrix.node }})
     runs-on: ubuntu-latest

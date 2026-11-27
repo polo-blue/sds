@@ -167,7 +167,7 @@ overrides:
   sharp@<0.30.5: '>=0.30.5'
 
 patchedDependencies:
-  '@astrojs/vue': fd3ce151f820f93fd2d8fa42253ad8aa8e9df2ac1bb5026b03049d1cffd0c364
+  '@astrojs/vue': addbeb31fcf65fe7c38649feb8cb3c32359c17623291fc7ae1ec1eac4c1f62ac
 
 importers:
 
@@ -187,7 +187,7 @@ importers:
         version: 1.11.0(typescript@6.0.3)
       '@astrojs/vue':
         specifier: ^7.1.6
-        version: 7.1.6(patch_hash=fd3ce151f820f93fd2d8fa42253ad8aa8e9df2ac1bb5026b03049d1cffd0c364)(@types/node@26.6.6)(astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(esbuild@0.28.2)(jiti@2.7.0)(supports-color@7.2.0)(terser@5.51.2)(vue@3.5.46(typescript@6.0.3))(yaml@2.9.1)
+        version: 7.1.6(patch_hash=addbeb31fcf65fe7c38649feb8cb3c32359c17623291fc7ae1ec1eac4c1f62ac)(@types/node@26.6.6)(astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(esbuild@0.28.2)(jiti@2.7.0)(supports-color@7.2.0)(terser@5.51.2)(vue@3.5.46(typescript@6.0.3))(yaml@2.9.1)
       '@floating-ui/dom':
         specifier: ^1.8.0
         version: 1.8.0
@@ -6607,7 +6607,7 @@ snapshots:
       '@astrojs/runtime': 0.1.2
       vue: 3.5.46(typescript@6.0.3)
 
-  '@astrojs/vue@7.1.6(patch_hash=fd3ce151f820f93fd2d8fa42253ad8aa8e9df2ac1bb5026b03049d1cffd0c364)(@types/node@26.6.6)(astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(esbuild@0.28.2)(jiti@2.7.0)(supports-color@7.2.0)(terser@5.51.2)(vue@3.5.46(typescript@6.0.3))(yaml@2.9.1)':
+  '@astrojs/vue@7.1.6(patch_hash=addbeb31fcf65fe7c38649feb8cb3c32359c17623291fc7ae1ec1eac4c1f62ac)(@types/node@26.6.6)(astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(esbuild@0.28.2)(jiti@2.7.0)(supports-color@7.2.0)(terser@5.51.2)(vue@3.5.46(typescript@6.0.3))(yaml@2.9.1)':
     dependencies:
       '@astrojs/internal-helpers': 0.13.2
       '@astrojs/vue-renderer': 0.1.2(vue@3.5.46(typescript@6.0.3))

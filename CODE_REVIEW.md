@@ -57,7 +57,7 @@ Review in this order and stop treating lower items as blocking while a higher on
 
 ## Validation gate
 
-The PR must pass, in order: `pnpm run format:check`, `pnpm run lint`, `pnpm run check`, `pnpm run build` (mirrors `.github/workflows/code-quality.yml`). For behaviour covered by `tests/*.spec.ts`, run `pnpm test:e2e`.
+The PR must pass, in order: `pnpm run format:check`, `pnpm run lint`, `pnpm run check`, `pnpm run test:unit`, `pnpm run build` (mirrors `.github/workflows/code-quality.yml`). For behaviour covered by `tests/*.spec.ts`, run `pnpm test:e2e`.
 
 ## Severity guidance
 

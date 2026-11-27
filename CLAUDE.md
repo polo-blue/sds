@@ -290,4 +290,4 @@ Before using an icon, verify it's in `icon.config.ts`:
 - Image domains whitelisted: placehold.co, polo.blue, img.freepik.com, polo6r.pl
 - PWA manifest configured for "Spoko Design System"
 - Compression and inlining enabled for production builds
-- `pnpm run check` (`astro check`) is a blocking CI step and must stay at 0 errors. It relies on `patches/@astrojs__vue.patch` (see `pnpm-workspace.yaml`), which fixes how `@astrojs/vue` extracts runtime-object `defineProps({...})` for type checking
+- `pnpm run check` (`astro check`) is a blocking CI step and must stay at 0 errors. It relies on `patches/@astrojs__vue.patch` (see `pnpm-workspace.yaml`), which fixes how `@astrojs/vue` extracts runtime-object `defineProps({...})` for type checking; `tests/unit/vue-tsx.test.ts` fails when a component's props come out untyped
