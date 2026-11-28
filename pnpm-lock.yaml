@@ -175,10 +175,10 @@ importers:
     dependencies:
       '@astrojs/mdx':
         specifier: ^8.1.6
-        version: 8.1.6(@astrojs/markdown-satteri@0.4.10)(astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+        version: 8.1.6(@astrojs/markdown-satteri@0.4.10)(astro@7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
       '@astrojs/node':
         specifier: ^11.1.14
-        version: 11.1.14(astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(supports-color@7.2.0)
+        version: 11.1.14(astro@7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(supports-color@7.2.0)
       '@astrojs/sitemap':
         specifier: ^3.7.6
         version: 3.7.6
@@ -187,7 +187,7 @@ importers:
         version: 1.11.0(typescript@6.0.3)
       '@astrojs/vue':
         specifier: ^7.1.6
-        version: 7.1.6(patch_hash=addbeb31fcf65fe7c38649feb8cb3c32359c17623291fc7ae1ec1eac4c1f62ac)(@types/node@26.6.6)(astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(esbuild@0.28.2)(jiti@2.7.0)(supports-color@7.2.0)(terser@5.51.2)(vue@3.5.46(typescript@6.0.3))(yaml@2.9.1)
+        version: 7.1.6(patch_hash=addbeb31fcf65fe7c38649feb8cb3c32359c17623291fc7ae1ec1eac4c1f62ac)(@types/node@26.6.7)(astro@7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(esbuild@0.28.2)(jiti@2.7.0)(supports-color@7.2.0)(terser@5.51.2)(vue@3.5.46(typescript@6.0.3))(yaml@2.9.1)
       '@floating-ui/dom':
         specifier: ^1.8.0
         version: 1.8.0
@@ -283,7 +283,7 @@ importers:
         version: 5.0.5(vue@3.5.46(typescript@6.0.3))
       '@unocss/astro':
         specifier: 66.13.0
-        version: 66.13.0(astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(cac@7.1.0)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+        version: 66.13.0(astro@7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(cac@7.1.0)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
       '@unocss/preset-typography':
         specifier: 66.13.0
         version: 66.13.0
@@ -295,7 +295,7 @@ importers:
         version: 66.13.0
       '@vite-pwa/astro':
         specifier: ^1.2.0
-        version: 1.2.0(astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(vite-plugin-pwa@1.3.0(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(workbox-build@7.4.1(supports-color@7.2.0))(workbox-window@7.4.1))
+        version: 1.2.0(astro@7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(vite-plugin-pwa@1.3.0(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(workbox-build@7.4.1(supports-color@7.2.0))(workbox-window@7.4.1))
       '@vueuse/core':
         specifier: ^15.0.0
         version: 15.0.0(vue@3.5.46(typescript@6.0.3))
@@ -304,10 +304,10 @@ importers:
         version: 1.2.0
       astro-meta-tags:
         specifier: ^0.4.1
-        version: 0.4.1(astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+        version: 0.4.1(astro@7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
       astro-pagefind:
         specifier: ^2.0.1
-        version: 2.0.1(astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+        version: 2.0.1(astro@7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
       astro-remote:
         specifier: ^0.3.4
         version: 0.3.4
@@ -316,16 +316,16 @@ importers:
         version: 4.0.2
       sharp:
         specifier: ^0.35.5
-        version: 0.35.5(@types/node@26.6.6)
+        version: 0.35.5(@types/node@26.6.7)
       swiper:
         specifier: ^14.4.0
         version: 14.4.0
       unocss:
         specifier: 66.13.0
-        version: 66.13.0(@oxc-project/types@0.153.0)(@unocss/astro@66.13.0(astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(cac@7.1.0)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)))(cac@7.1.0)(rolldown@1.3.3)(rollup@4.64.10)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+        version: 66.13.0(@oxc-project/types@0.153.0)(@unocss/astro@66.13.0(astro@7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(cac@7.1.0)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)))(cac@7.1.0)(rolldown@1.3.3)(rollup@4.64.10)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
       vite-plugin-pwa:
         specifier: ^1.3.0
-        version: 1.3.0(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(workbox-build@7.4.1(supports-color@7.2.0))(workbox-window@7.4.1)
+        version: 1.3.0(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(workbox-build@7.4.1(supports-color@7.2.0))(workbox-window@7.4.1)
       vue:
         specifier: ^3.5.46
         version: 3.5.46(typescript@6.0.3)
@@ -353,7 +353,7 @@ importers:
         version: 0.0.20
       '@types/node':
         specifier: ^26.6.6
-        version: 26.6.6
+        version: 26.6.7
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.73.0
         version: 8.74.0(@typescript-eslint/parser@8.74.0(eslint@10.15.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@6.0.3))(eslint@10.15.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@6.0.3)
@@ -365,13 +365,13 @@ importers:
         version: 66.13.0
       '@vitejs/plugin-vue':
         specifier: ^6.0.11
-        version: 6.0.11(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3))
+        version: 6.0.11(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3))
       '@vue/compiler-sfc':
         specifier: ^3.5.46
         version: 3.5.46
       astro:
         specifier: ^7.4.13
-        version: 7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+        version: 7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
       conventional-changelog-conventionalcommits:
         specifier: ^9.3.1
         version: 9.3.1
@@ -410,7 +410,7 @@ importers:
         version: 6.0.3
       vite:
         specifier: ^8.3.8
-        version: 8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+        version: 8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
 
 packages:
 
@@ -2652,8 +2652,8 @@ packages:
   '@types/nlcst@2.0.3':
     resolution: {integrity: sha512-vSYNSDe6Ix3q+6Z7ri9lyWqgGhJTmzRjZRqyq15N0Z/1/UnVsno9G/N40NBijoYx2seFDIl0+B2mgAb9mezUCA==}
 
-  '@types/node@26.6.6':
-    resolution: {integrity: sha512-MzQj+8Kx3XI40OmUAE6Qoh58ZMNstNNMwn2nfd3qWsfe7nDNSqJNzes4njhz6AHwrSHOffSLwXU6yb474Q4aog==}
+  '@types/node@26.6.7':
+    resolution: {integrity: sha512-tovuRfrUILu6v46bMG+BgXxMvsqPBx2WO2as8Rpln+JTff1dbexMtAM4KFTejmL0axsnSWViCW7MecUQpLuBRA==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -6543,17 +6543,17 @@ snapshots:
       github-slugger: 2.0.0
       satteri: 0.11.7
 
-  '@astrojs/mdx@8.1.6(@astrojs/markdown-satteri@0.4.10)(astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))':
+  '@astrojs/mdx@8.1.6(@astrojs/markdown-satteri@0.4.10)(astro@7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))':
     dependencies:
       '@astrojs/internal-helpers': 0.13.2
       '@astrojs/markdown-satteri': 0.4.10
-      astro: 7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      astro: 7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
       es-module-lexer: 3.0.4
 
-  '@astrojs/node@11.1.14(astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(supports-color@7.2.0)':
+  '@astrojs/node@11.1.14(astro@7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(supports-color@7.2.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.13.2
-      astro: 7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      astro: 7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
       send: 1.2.1(supports-color@7.2.0)
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -6589,7 +6589,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@astrojs/vite-plugin-astro@0.1.3(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))':
+  '@astrojs/vite-plugin-astro@0.1.3(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))':
     dependencies:
       '@astrojs/compiler-rs': 0.5.3
       '@astrojs/internal-helpers': 0.13.2
@@ -6599,7 +6599,7 @@ snapshots:
       magic-string: 1.4.5
       rolldown: 1.2.19
       smol-toml: 1.9.1
-      vite: 8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      vite: 8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
       zod: 4.6.7
 
   '@astrojs/vue-renderer@0.1.2(vue@3.5.46(typescript@6.0.3))':
@@ -6607,16 +6607,16 @@ snapshots:
       '@astrojs/runtime': 0.1.2
       vue: 3.5.46(typescript@6.0.3)
 
-  '@astrojs/vue@7.1.6(patch_hash=addbeb31fcf65fe7c38649feb8cb3c32359c17623291fc7ae1ec1eac4c1f62ac)(@types/node@26.6.6)(astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(esbuild@0.28.2)(jiti@2.7.0)(supports-color@7.2.0)(terser@5.51.2)(vue@3.5.46(typescript@6.0.3))(yaml@2.9.1)':
+  '@astrojs/vue@7.1.6(patch_hash=addbeb31fcf65fe7c38649feb8cb3c32359c17623291fc7ae1ec1eac4c1f62ac)(@types/node@26.6.7)(astro@7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(esbuild@0.28.2)(jiti@2.7.0)(supports-color@7.2.0)(terser@5.51.2)(vue@3.5.46(typescript@6.0.3))(yaml@2.9.1)':
     dependencies:
       '@astrojs/internal-helpers': 0.13.2
       '@astrojs/vue-renderer': 0.1.2(vue@3.5.46(typescript@6.0.3))
-      '@vitejs/plugin-vue': 6.0.11(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3))
-      '@vitejs/plugin-vue-jsx': 5.1.6(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3))
+      '@vitejs/plugin-vue': 6.0.11(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3))
+      '@vitejs/plugin-vue-jsx': 5.1.6(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3))
       '@vue/compiler-sfc': 3.5.46
-      astro: 7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
-      vite: 8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
-      vite-plugin-vue-devtools: 8.2.1(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3))
+      astro: 7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      vite: 8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      vite-plugin-vue-devtools: 8.2.1(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3))
       vue: 3.5.46(typescript@6.0.3)
     transitivePeerDependencies:
       - '@nuxt/kit'
@@ -8616,7 +8616,7 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
 
-  '@types/node@26.6.6':
+  '@types/node@26.6.7':
     dependencies:
       undici-types: 8.9.0
 
@@ -8626,7 +8626,7 @@ snapshots:
 
   '@types/sax@1.2.7':
     dependencies:
-      '@types/node': 26.6.6
+      '@types/node': 26.6.7
 
   '@types/trusted-types@2.0.7': {}
 
@@ -8731,14 +8731,14 @@ snapshots:
 
   '@ungap/structured-clone@1.4.0': {}
 
-  '@unocss/astro@66.13.0(astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(cac@7.1.0)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))':
+  '@unocss/astro@66.13.0(astro@7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(cac@7.1.0)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))':
     dependencies:
       '@unocss/core': 66.13.0
       '@unocss/reset': 66.13.0
-      '@unocss/vite': 66.13.0(cac@7.1.0)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
-      astro: 7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      '@unocss/vite': 66.13.0(cac@7.1.0)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+      astro: 7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
     optionalDependencies:
-      vite: 8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      vite: 8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
     transitivePeerDependencies:
       - '@devframes/agentic'
       - cac
@@ -8784,7 +8784,7 @@ snapshots:
     dependencies:
       '@unocss/core': 66.13.0
 
-  '@unocss/inspector@66.13.0(cac@7.1.0)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))':
+  '@unocss/inspector@66.13.0(cac@7.1.0)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))':
     dependencies:
       '@jridgewell/remapping': 2.3.5
       '@unocss/autocomplete': 66.13.0
@@ -8797,7 +8797,7 @@ snapshots:
       tinyglobby: 0.2.17
       unplugin-utils: 0.3.2
     optionalDependencies:
-      vite: 8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      vite: 8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
     transitivePeerDependencies:
       - '@devframes/agentic'
       - cac
@@ -8903,45 +8903,45 @@ snapshots:
     dependencies:
       '@unocss/core': 66.13.0
 
-  '@unocss/vite@66.13.0(cac@7.1.0)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))':
+  '@unocss/vite@66.13.0(cac@7.1.0)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))':
     dependencies:
       '@jridgewell/remapping': 2.3.5
       '@unocss/config': 66.13.0
       '@unocss/core': 66.13.0
-      '@unocss/inspector': 66.13.0(cac@7.1.0)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+      '@unocss/inspector': 66.13.0(cac@7.1.0)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
       chokidar: 5.0.0
       magic-string: 1.4.5
       pathe: 2.0.3
       tinyglobby: 0.2.17
       unplugin-utils: 0.3.2
-      vite: 8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      vite: 8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
     transitivePeerDependencies:
       - '@devframes/agentic'
       - cac
       - ocache
       - srvx
 
-  '@vite-pwa/astro@1.2.0(astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(vite-plugin-pwa@1.3.0(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(workbox-build@7.4.1(supports-color@7.2.0))(workbox-window@7.4.1))':
+  '@vite-pwa/astro@1.2.0(astro@7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(vite-plugin-pwa@1.3.0(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(workbox-build@7.4.1(supports-color@7.2.0))(workbox-window@7.4.1))':
     dependencies:
-      astro: 7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
-      vite-plugin-pwa: 1.3.0(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(workbox-build@7.4.1(supports-color@7.2.0))(workbox-window@7.4.1)
+      astro: 7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      vite-plugin-pwa: 1.3.0(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(workbox-build@7.4.1(supports-color@7.2.0))(workbox-window@7.4.1)
 
-  '@vitejs/plugin-vue-jsx@5.1.6(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3))':
+  '@vitejs/plugin-vue-jsx@5.1.6(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3))':
     dependencies:
       '@babel/core': 7.29.7(supports-color@7.2.0)
       '@babel/plugin-syntax-typescript': 7.29.7(@babel/core@7.29.7(supports-color@7.2.0))
       '@babel/plugin-transform-typescript': 7.29.9(@babel/core@7.29.7(supports-color@7.2.0))(supports-color@7.2.0)
       '@rolldown/pluginutils': 1.0.1
       '@vue/babel-plugin-jsx': 2.0.1(@babel/core@7.29.7(supports-color@7.2.0))(supports-color@7.2.0)
-      vite: 8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      vite: 8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
       vue: 3.5.46(typescript@6.0.3)
     transitivePeerDependencies:
       - supports-color
 
-  '@vitejs/plugin-vue@6.0.11(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3))':
+  '@vitejs/plugin-vue@6.0.11(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
-      vite: 8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      vite: 8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
       vue: 3.5.46(typescript@6.0.3)
 
   '@volar/kit@2.4.28(typescript@6.0.3)':
@@ -9277,14 +9277,14 @@ snapshots:
       '@iconify/types': 2.0.0
       '@iconify/utils': 3.1.7
 
-  astro-meta-tags@0.4.1(astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)):
+  astro-meta-tags@0.4.1(astro@7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)):
     dependencies:
-      astro: 7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      astro: 7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
 
-  astro-pagefind@2.0.1(astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)):
+  astro-pagefind@2.0.1(astro@7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)):
     dependencies:
       '@pagefind/component-ui': 1.5.2
-      astro: 7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      astro: 7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
       pagefind: 1.5.2
       sirv: 3.0.2
 
@@ -9296,14 +9296,14 @@ snapshots:
       marked-smartypants: 1.1.12(marked@12.0.2)
       ultrahtml: 1.7.0
 
-  astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1):
+  astro@7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1):
     dependencies:
       '@astrojs/compiler-rs': 0.5.3
       '@astrojs/internal-helpers': 0.13.2
       '@astrojs/markdown-satteri': 0.4.10
       '@astrojs/runtime': 0.1.2
       '@astrojs/telemetry': 3.4.2
-      '@astrojs/vite-plugin-astro': 0.1.3(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+      '@astrojs/vite-plugin-astro': 0.1.3(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
       '@capsizecss/unpack': 4.0.1
       '@clack/prompts': 1.9.0
       '@oslojs/encoding': 1.1.0
@@ -9346,12 +9346,12 @@ snapshots:
       unifont: 1.0.3
       unstorage: 1.17.6
       verkit: 0.5.0
-      vite: 8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
-      vitefu: 1.1.3(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+      vite: 8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      vitefu: 1.1.3(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
       xxhash-wasm: 1.1.0
       zod: 4.6.7
     optionalDependencies:
-      sharp: 0.35.5(@types/node@26.6.6)
+      sharp: 0.35.5(@types/node@26.6.7)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -11694,7 +11694,7 @@ snapshots:
 
   setprototypeof@1.2.0: {}
 
-  sharp@0.35.5(@types/node@26.6.6):
+  sharp@0.35.5(@types/node@26.6.7):
     dependencies:
       '@img/colour': 1.1.0
       detect-libc: 2.1.2
@@ -11725,7 +11725,7 @@ snapshots:
       '@img/sharp-win32-arm64': 0.35.5
       '@img/sharp-win32-ia32': 0.35.5
       '@img/sharp-win32-x64': 0.35.5
-      '@types/node': 26.6.6
+      '@types/node': 26.6.7
 
   shebang-command@2.0.0:
     dependencies:
@@ -11790,7 +11790,7 @@ snapshots:
 
   sitemap@10.0.0:
     dependencies:
-      '@types/node': 26.6.6
+      '@types/node': 26.6.7
       '@types/sax': 1.2.7
       sax: 1.6.1
 
@@ -12227,7 +12227,7 @@ snapshots:
 
   universalify@2.0.1: {}
 
-  unocss@66.13.0(@oxc-project/types@0.153.0)(@unocss/astro@66.13.0(astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(cac@7.1.0)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)))(cac@7.1.0)(rolldown@1.3.3)(rollup@4.64.10)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)):
+  unocss@66.13.0(@oxc-project/types@0.153.0)(@unocss/astro@66.13.0(astro@7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(cac@7.1.0)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)))(cac@7.1.0)(rolldown@1.3.3)(rollup@4.64.10)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)):
     dependencies:
       '@unocss/cli': 66.13.0
       '@unocss/core': 66.13.0
@@ -12246,9 +12246,9 @@ snapshots:
       '@unocss/transformer-compile-class': 66.13.0
       '@unocss/transformer-directives': 66.13.0
       '@unocss/transformer-variant-group': 66.13.0
-      '@unocss/vite': 66.13.0(cac@7.1.0)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+      '@unocss/vite': 66.13.0(cac@7.1.0)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
     optionalDependencies:
-      '@unocss/astro': 66.13.0(astro@7.4.13(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(cac@7.1.0)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+      '@unocss/astro': 66.13.0(astro@7.4.13(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(cac@7.1.0)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
     transitivePeerDependencies:
       - '@devframes/agentic'
       - '@oxc-project/types'
@@ -12308,17 +12308,17 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite-dev-rpc@2.0.0(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)):
+  vite-dev-rpc@2.0.0(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)):
     dependencies:
       birpc: 4.2.0
-      vite: 8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
-      vite-hot-client: 2.2.0(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+      vite: 8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      vite-hot-client: 2.2.0(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
 
-  vite-hot-client@2.2.0(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)):
+  vite-hot-client@2.2.0(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)):
     dependencies:
-      vite: 8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      vite: 8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
 
-  vite-plugin-inspect@11.4.1(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)):
+  vite-plugin-inspect@11.4.1(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)):
     dependencies:
       ansis: 4.4.0
       error-stack-parser-es: 1.0.5
@@ -12328,35 +12328,35 @@ snapshots:
       perfect-debounce: 2.1.0
       sirv: 3.0.2
       unplugin-utils: 0.3.2
-      vite: 8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
-      vite-dev-rpc: 2.0.0(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+      vite: 8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      vite-dev-rpc: 2.0.0(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
 
-  vite-plugin-pwa@1.3.0(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(workbox-build@7.4.1(supports-color@7.2.0))(workbox-window@7.4.1):
+  vite-plugin-pwa@1.3.0(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(workbox-build@7.4.1(supports-color@7.2.0))(workbox-window@7.4.1):
     dependencies:
       debug: 4.4.3(supports-color@7.2.0)
       pretty-bytes: 6.1.1
       tinyglobby: 0.2.17
-      vite: 8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      vite: 8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
       workbox-build: 7.4.1(supports-color@7.2.0)
       workbox-window: 7.4.1
     transitivePeerDependencies:
       - supports-color
 
-  vite-plugin-vue-devtools@8.2.1(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3)):
+  vite-plugin-vue-devtools@8.2.1(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.46(typescript@6.0.3)):
     dependencies:
       '@vue/devtools-core': 8.2.1(vue@3.5.46(typescript@6.0.3))
       '@vue/devtools-kit': 8.2.1
       '@vue/devtools-shared': 8.2.1
       sirv: 3.0.2
-      vite: 8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
-      vite-plugin-inspect: 11.4.1(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
-      vite-plugin-vue-inspector: 6.0.0(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+      vite: 8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      vite-plugin-inspect: 11.4.1(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+      vite-plugin-vue-inspector: 6.0.0(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
       vue: 3.5.46(typescript@6.0.3)
     transitivePeerDependencies:
       - '@nuxt/kit'
       - supports-color
 
-  vite-plugin-vue-inspector@6.0.0(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)):
+  vite-plugin-vue-inspector@6.0.0(supports-color@7.2.0)(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)):
     dependencies:
       '@babel/core': 7.29.7(supports-color@7.2.0)
       '@babel/plugin-proposal-decorators': 7.29.7(@babel/core@7.29.7(supports-color@7.2.0))(supports-color@7.2.0)
@@ -12367,11 +12367,11 @@ snapshots:
       '@vue/compiler-dom': 3.5.46
       kolorist: 1.8.0
       magic-string: 0.30.21
-      vite: 8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      vite: 8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
     transitivePeerDependencies:
       - supports-color
 
-  vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1):
+  vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1):
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.7
@@ -12379,16 +12379,16 @@ snapshots:
       rolldown: 1.2.19
       tinyglobby: 0.2.17
     optionalDependencies:
-      '@types/node': 26.6.6
+      '@types/node': 26.6.7
       esbuild: 0.28.2
       fsevents: 2.3.3
       jiti: 2.7.0
       terser: 5.51.2
       yaml: 2.9.1
 
-  vitefu@1.1.3(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)):
+  vitefu@1.1.3(vite@8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)):
     optionalDependencies:
-      vite: 8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
+      vite: 8.3.8(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
 
   volar-service-css@0.0.71(@volar/language-service@2.4.31(typescript@6.0.3)):
     dependencies:
